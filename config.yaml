@@ -1,0 +1,63 @@
+run:
+  build_system: true
+  write_input: true
+  run_lammps: true
+  analyze: true
+
+case:
+  smiles: "C1CCOC1"
+  name: "thf"
+  workdir: "./cases/thf"
+
+model:
+  n_molecules: 700
+  density_g_cm3: 0.80
+  packmol_seed: 20260320
+  packmol_max_attempts: 8
+  packmol_seed_step: 131
+  packmol_nloop: 400
+  packmol_full_box: false
+  packmol_margin_A: null
+  packmol_strict: false
+
+simulation:
+  equil_input_filename: "in.equil.lammps"
+  replica_input_filename: "in.replica.lammps"
+  replica_dir_prefix: "replica_"
+  n_replicas: 3
+  replica_seed_base: 320000
+  replica_seed_step: 137
+  replica_decorrelation_steps: 500000
+  temperature_K: 298.15
+  seed: 20260320
+  timestep_fs: 1.0
+  npt_pre_50_steps: 200000
+  npt_pre_10_steps: 300000
+  npt_1atm_steps: 2000000
+  nvt_steps: 1000000
+  gk_steps: 10000000
+  acf_sample_every_steps: 5
+  acf_corr_points: 8000
+
+lammps:
+  executable: "/opt/lammps/bin/lmp"
+  mpi_command: "mpirun"
+  mpi_ranks: 8
+  allow_run_as_root: true
+  use_gpu: true
+  gpu_count: 1
+  omp_threads: 1
+  equil_log_file: "run_equil.log"
+  replica_log_prefix: "run_replica"
+
+analysis:
+  hfacf_file: "hfacf.dat"
+  vacf_file: "vacf.dat"
+  gk_data_file: "gk_data.dat"
+  output: "result.csv"
+  visc_t_max_ps: 20.0
+  kappa_t_max_ps: 20.0
+  visc_plateau_start_ps: 5.0
+  kappa_plateau_start_ps: 2.0
+  smooth_window: 50
+  n_blocks: 5
