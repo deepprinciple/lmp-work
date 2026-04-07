@@ -1,0 +1,40 @@
+   1,1,1-trichloroethane                                    Tot. E =     -5.7689
+   1 X     -1    0    0    0.000000   0    0.000000   0    0.000000        0    
+   2 X     -1    0    1    1.000000   0    0.000000   0    0.000000        0    
+   3 C    800  800    2    1.000000   1   90.000000   0    0.000000        0    
+   4 C    801  801    3    1.530320   2   90.000000   1    0.000000        0    
+   5 CL   802  802    3    1.781216   2   55.627399   4  112.649340        0    
+   6 CL   803  803    3    1.781216   2  160.383860   4  161.221739        0    
+   7 CL   804  804    3    1.781216   2   67.827856   4  249.926370        0    
+   8 H    805  805    4    1.089966   3  111.005410   2  353.455191        0    
+   9 H    806  806    4    1.089966   3  111.005403   8  239.999999        0    
+  10 H    807  807    4    1.089966   3  111.005411   8  119.999999        0    
+                    Geometry Variations follow    (2I4,F12.6)                   
+                    Variable Bonds follow         (I4)                          
+0004-0010                                                                       
+                    Additional Bonds follow       (2I4)                         
+                    Harmonic Constraints follow   (2I4,4F10.4)                  
+                    Variable Bond Angles follow   (I4)                          
+0005-0010                                                                       
+                    Additional Bond Angles follow (3I4)                         
+AUTO                                                                            
+                    Variable Dihedrals follow     (3I4,F12.6)                   
+0006-0010                                                                       
+                    Additional Dihedrals follow   (6I4)                         
+AUTO                                                                            
+                    Domain Definitions follow     (4I4)                         
+                    Conformational Search (2I4,2F12.6)                          
+                    Final blank line                                            
+                                                                                
+ Final Non-Bonded Parameters for QM (PM3 CM1Px1.30) Atoms:                      
+                                                                                
+800  6 CT   0.307318  3.500000  0.066000                                        
+801  6 CT  -0.194860  3.500000  0.066000                                        
+802 17 Cl  -0.131659  3.400000  0.300000                                        
+803 17 Cl  -0.131654  3.400000  0.300000                                        
+804 17 Cl  -0.131655  3.400000  0.300000                                        
+805  1 HC   0.094169  2.500000  0.030000                                        
+806  1 HC   0.094172  2.500000  0.030000                                        
+807  1 HC   0.094169  2.500000  0.030000                                        
+                                                                                
+                                                                                

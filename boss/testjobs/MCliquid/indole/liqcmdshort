@@ -1,0 +1,88 @@
+#
+# Command file for the BOSS program.  Execute by entering the following:
+# csh liqcmd >& log &
+#***********************************************************************
+echo '                      Pure Liquid '
+echo '                  Equilibration 2.5K '
+echo '                Averaging     0000-2K '
+#***********************************************************************
+#
+nice +19
+set boss = $BOSSdir/BOSS
+set boxes = $BOSSdir
+set configurations = "500"
+set lambda = "0.0 0.0 0.0"
+#
+setenv INFILE    liqin
+setenv UPFILE    liqup
+setenv SAVE      svtmp
+setenv AVERAGE   liqav
+setenv ZMATRIX   dummy.z
+setenv SLVZMAT   liqzmat
+
+if (-e tmppar) rm tmppar
+cp liqpar tmppar
+cat $BOSSdir/oplsaa.par >> tmppar
+setenv PARAMETER tmppar
+
+setenv BANGPAR   $boxes/oplsaa.sb
+setenv WATERBOX  $boxes/watbox
+setenv ORG1BOX   $boxes/org1box
+setenv ORG2BOX   $boxes/org2box
+setenv SUMMARY   liqsum
+
+date
+#
+#      Equilibration
+#
+setenv OUTPUT    liqota
+setenv PLTFILE   liqplta
+
+# Note: the first 1  below states that this is
+# a new MC calculation; the initial coordinates are to be built.
+# This is only done once.
+# Note: the second 1 below says "restart the averaging".
+# Note: 5 runs of equilibration and 4 runs of averaging
+# are performed with 500K configurations per run.
+
+time $boss 111 $configurations $lambda
+
+# do it again and restart the averaging - first run has high energy
+setenv OUTPUT    liqotb
+setenv PLTFILE   liqpltb
+time $boss 011 $configurations $lambda
+
+# now continue with 3 more runs
+foreach block (c d eq)
+        date
+	setenv OUTPUT    liqot$block
+	setenv PLTFILE   liqplt$block
+# Note: the second 0 below says "continue the averaging"
+	time $boss 001 $configurations $lambda
+end
+
+#
+#      Averaging
+#
+setenv OUTPUT    liqotb
+setenv PLTFILE   liqpltb
+
+# Note: the first 1 below says "restart the averaging"
+
+time $boss 011 $configurations $lambda
+if (-e liqsv) rm liqsv
+mv svtmp liqsv
+
+foreach block (c d e2)
+        date
+        setenv OUTPUT    liqot$block
+        setenv PLTFILE   liqplt$block
+# Note: the second 0 below says "continue the averaging"
+        time $boss 001 $configurations $lambda
+        cat svtmp >>liqsv
+end
+rm svtmp
+rm tmppar
+
+date
+exit

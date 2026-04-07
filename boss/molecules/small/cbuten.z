@@ -1,0 +1,33 @@
+       cyclobutene                                          Tot. E =     69.9920
+   1 C2   142  142    0    0.000000   0    0.000000   0    0.000000        0
+   2 X     -1   -1    1    1.000000   0    0.000000   0    0.000000        0
+   3 X     -1   -1    2    1.000000   1   90.000000   0    0.000000        0
+   4 C3   711  711    1    1.509901   2   90.000000   3    0.000000        0
+   5 C1   142  142    1    1.330058   4   94.075443   2  180.000000        0
+   6 C4   711  711    4    1.544753   1   85.924012   5  359.999792        0
+   7 H    140  140    4    1.088856   1  109.452501   5  117.391187        0
+   8 H    140  140    4    1.088854   1  109.452483   5  242.608372        0
+   9 H    144  144    5    1.080699   1  125.534361   4  180.000424        0
+  10 H    144  144    1    1.080696   5  125.536702   6  179.999595        0
+  11 H    140  140    6    1.088855   4  117.154551   1  109.795131        0
+  12 H    140  140    6    1.088856   4  117.154391   1  250.205214        0
+                    Geometry Variations follow    (2I4,F12.6)                   
+                    Variable Bonds follow         (I4)                          
+0004-0012                                                                       
+                    Additional Bonds follow       (2I4)                         
+00050006                                                                        
+                    Harmonic Constraints follow   (2I4,4F10.4)                  
+                    Variable Bond Angles follow   (I4)                          
+0005-0012                                                                       
+                    Additional Bond Angles follow (3I4)                         
+AUTO                                                                            
+                    Variable Dihedrals follow     (3I4,F12.6)                   
+0006-0012                                                                       
+                   Additional Dihedrals follow   (6I4)                          
+AUTO                                                                            
+                   Domain Definitions follow     (4I4)                          
+                   Conformational Search         (2I4, 2F12.6)                  
+                   Final blank line                                             
+
+                   note: OPLS-AA parameters have not been optimized
+                   for small-ring alkenes

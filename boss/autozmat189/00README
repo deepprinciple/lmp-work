@@ -1,0 +1,93 @@
+This directory contains
+-----------------------
+00README     --- this file
+Copyright    --- Copyright information
+Makefile     --- Makefile
+bin          --- contains autozmat executables
+docs         --- release notes and manuals
+include      --- include files
+lib          --- library files
+libatomtype  --- Ruhong Zhou's atomtype library (optional)
+libmol       --- molecule library
+src          --- front-end interface to libmol library
+sample       --- samples (test)
+utils        --- utility scripts
+
+Compilation
+------------
+ In 'bin' directory, you will find pre-compiled executables for
+ Windows, SGI/IRIX, IBM/AIX, Linux/i386, etc.
+
+ autozmat.exe   --- MS Windows PE 32-bin Intel 80386 console executable
+ autozmat.linux --- ELF 32-bit LSB executable, Intel 80386
+ autozmat.irix  --- SGI/IRIX MIPS3
+ autozmat.aix   --- IBM/AIX 4.2
+ autozmat.dec   --- DEC/Alpha
+
+ If you can find an executable you need to use, skip compilation. 
+
+1. UNIX
+ In most UNIX systems, you need just type 'make' at the top directory.
+
+2. MS-DOS
+ I was able to compile 'autozmat' with DJGPP, CYGWIN, or EGCS-MINGW32.
+
+ 1) Check ATOMTYPE_FLAGS and MY_LIBS in Makefile.dos.
+ 2) make -f Makefile.dos
+ 3) 'autozmat.exe' will be installed in dos/bin directory.
+
+
+Installation
+-------------
+
+ Executable 'autozmat' is stand-alone. However, sometimes it needs to read
+ library files such as oplsaa parameter files or atomtype hash tables,
+ which can be found in 'lib' directory.
+ Therefore, it is recommended to install 'autozmat' executable and library
+ files in the following way.
+
+1. UNIX
+
+ (a) Compilation
+    If you see a binary for your system in bin directory, go to (b).
+  Otherwise, compile the source as below. You may have to edit Makefile
+  for your needs. On some systems, you may have to set PWD variable
+  in Makefile manually.
+
+  % make clean_installed
+  % make
+
+ (b) Test
+    If you have built autozmat by compilation or have a binary already,
+  type 'make test' to try out the program.
+  You may not have a 100% succeess on tests. For failed tests, examine
+  output files in sample/Scratch directory to see whether they are
+  acceptable or have errors.
+
+ (c) Installation
+    Type 'make install' to install autozmat.
+
+    [NOTE] If you have to install autozmat manually, proceed as below.
+       If you want to install 'autozmat' executable in, e.g., /usr/local/bin,
+       install 'lib/boss' and 'lib/opls' (optional) in /usr/local/lib. I.e.,
+       The parent directory of 'bin' and 'lib' should be the same.
+
+       % cp bin/autozmat* /usr/local/bin
+       % cp -r lib/boss /usr/local/lib
+       % cp -r lib/opls /usr/local/lib
+
+2. MS-DOS
+
+ If you want to install 'autozmat' executable in, e.g., C:\bin,
+ install 'lib\boss' and 'lib\opls' (optional) in C:\lib.
+ The parent directory of 'bin' and 'lib' should be the same.
+
+ C:> mkdir C:\bin
+ C:> mkdir C:\lib
+ C:> mkdir C:\lib\boss
+ C:> mkdir C:\lib\opls
+
+ C:> copy bin\autozmat.exe C:\bin
+ C:> copy lib\boss\*.* C:\lib\boss
+ C:> copy lib\opls\*.* C:\lib\opls
+

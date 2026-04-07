@@ -1,0 +1,17 @@
+#!/bin/csh
+# set echo 
+#
+# run the renumber program for building cores        
+#
+# usage - xRENUM
+#
+# test if the enviroment variable BOMBdir has been defined
+# setenv BOMBdir ~/bomb   
+#
+if (!($?BOMBdir)) then
+    echo "BOMBdir has not been defined; please see README"
+    exit (-1)
+endif
+
+$BOMBdir/miscexec/renumb  
+exit

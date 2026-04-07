@@ -1,0 +1,29 @@
+   Propionate Anion                                         Tot. E =    -92.9956
+   1 C1   271  271    0    0.000000   0    0.000000   0    0.000000        0
+   2 DUM   -1    0    1    1.000000   0    0.000000   0    0.000000        0
+   3 DUM   -1    0    2    0.200000   1   90.000000   0    0.000000        0
+   4 O4   272  272    1    1.246543   2   60.000000   3    0.000000        0
+   5 O5   272  272    1    1.246546   2   63.453041   3  180.000000        0
+   6 C6   274  274    1    1.521945   4  118.272114   5  179.673042        0
+   7 C    135  135    6    1.536698   1  112.087848   4  270.128984        0
+   8 H8   140  140    6    1.089406   1  108.373081   7  237.917812        0
+   9 H9   140  140    6    1.089405   1  108.387683   7  122.095487        0
+  10 H    140  140    7    1.088596   6  111.196687   1  180.029515        0
+  11 H    140  140    7    1.090408   6  110.484517  10  239.548506        0
+  12 H    140  140    7    1.090413   6  110.473021  10  120.420400        0
+                    Geometry Variations follow    (2I4,F12.6)                   
+                    Variable Bonds follow         (I4)                          
+0004-0012                                                                       
+                    Additional Bonds follow       (2I4)                         
+                    Harmonic Constraints follow   (2I4,4F10.4)                  
+                    Variable Bond Angles follow   (I4)                          
+0005-0012                                                                       
+                    Additional Bond Angles follow (3I4)                         
+AUTO                                                                            
+                    Variable Dihedrals follow     (3I4,F12.6)                   
+0006-0012                                                                       
+                    Additional Dihedrals follow   (6I4)                         
+AUTO                                                                            
+                    Domain Definitions follow     (4I4)                         
+                    Conformational Search         (2I4, 2F12.6)                 
+                    Final blank line                                            

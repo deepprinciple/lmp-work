@@ -1,0 +1,30 @@
+#!/bin/csh
+set echo
+#
+# take mdl mol file to optimized BOSS Z-matrix
+# with CM1A charges.
+#
+# usage:  xMOLZ-  moleculename
+#
+# file moleculename.mol must be in the directory
+# file moleculename.z is created
+# file optplta contains the PDB file of the optimized structure
+#
+# test if the enviroment variable BOSSdir has been defined
+#
+if (!($?BOSSdir)) then
+   echo "BOSSdir has not been defined; please see README"
+   exit (-1)
+endif
+
+$BOSSdir/autozmat -i mdl -z default <${argv[1]}.mol >${argv[1]}.z
+if (-e optzmat) rm optzmat
+cp ${argv[1]}.z optzmat
+csh $BOSSdir/scripts/AM1SP-cmd >& log
+rm optzmat
+cp sum optzmat
+csh $BOSSdir/scripts/OPTFcmd >& log
+rm ${argv[1]}.z
+cp sum ${argv[1]}.z
+#
+exit

@@ -1,0 +1,21 @@
+#!/bin/csh
+# set echo
+#
+# extract conformer energies
+#
+# usage - xCSINFO
+#
+# test if the enviroment variable BOSSdir has been defined
+#
+
+if (!($?BOSSdir)) then
+   echo "BOSSdir has not been defined; please see README"
+   exit (-1)
+endif
+
+echo  " "
+echo  "extract conformer energies"
+echo  " "
+$BOSSdir/miscexec/csinfo
+#
+exit

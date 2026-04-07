@@ -1,0 +1,105 @@
+#
+# Command file for the BOSS  program.  Execute by entering the following:
+# csh pmfcmd >& pmflog &
+#***********************************************************************
+echo '        MC simulation: pmf for complex'
+echo '                    25 C & 1 atm '
+echo '                 Equilibration  2.5M '
+echo '                   Averaging  0-4M '
+echo '            N = 395  T=25  P=1  Rcut = 9.0'
+#***********************************************************************
+#
+nice +19
+set boss = $BOSSdir/BOSS
+set configurations = "500000"
+
+# nsteps is the number of runs
+set nsteps = 20
+# inc is starting window in Angstroms x 100 (must be >= 210)
+@ inc = 350
+# ninc is the increment in Angstroms x 100 (must be multiple of 2)
+@ ninc = 20
+set boxes = $BOSSdir
+#
+##### Enter a loop. Repeat until i < nsteps.
+set i = 0
+while ($i < $nsteps)
+
+setenv INFILE    d${inc}in
+setenv UPFILE    d${inc}up
+setenv SAVE      d${inc}sv
+setenv AVERAGE   d${inc}av
+setenv ZMATRIX   pmfzmat
+setenv SLVZMAT   slvzmat
+
+if (-e tmppar) rm tmppar
+cp pmfpar tmppar
+cat $BOSSdir/oplsaa.par >> tmppar
+setenv PARAMETER tmppar
+
+setenv BANGPAR   $boxes/oplsaa.sb
+setenv WATERBOX  $boxes/watbox
+setenv ORG1BOX   $boxes/org1box
+setenv ORG2BOX   $boxes/org2box
+setenv SUMMARY   d${inc}sum
+
+# compute lambda values - csh doesn't know floating point, so
+        @ rc0 = $inc - 200
+        @ rc1 = $rc0 - $ninc / 2
+        @ rc2 = $rc0 + $ninc / 2
+        @ int0 = $rc0 / 100
+        @ dec0 = $rc0 - $int0 * 100
+        @ int1 = $rc1 / 100
+        @ dec1 = $rc1 - $int1 * 100
+        @ int2 = $rc2 / 100
+        @ dec2 = $rc2 - $int2 * 100
+
+        set rc0 = ${int0}.${dec0}
+        set rc1 = ${int1}.${dec1}
+        set rc2 = ${int2}.${dec2}
+        set lambda = "$rc0 $rc1 $rc2"
+
+date
+
+setenv OUTPUT    d${inc}ota
+setenv PLTFILE   d${inc}plta
+
+#    Equilibration
+
+time $boss 111 $configurations $lambda
+foreach block (b c d eq)
+        date
+	setenv OUTPUT    d${inc}ot$block
+	setenv PLTFILE   d${inc}plt$block
+	time $boss 001 $configurations $lambda
+end
+
+#    Averaging
+
+setenv OUTPUT    d${inc}ota
+setenv PLTFILE   d${inc}plta
+time $boss 011 $configurations $lambda
+mv d${inc}sv d${inc}sav
+foreach block (b c e2 a b c e4)
+        date
+        setenv OUTPUT    d${inc}ot$block
+        setenv PLTFILE   d${inc}plt$block
+        time $boss 001 $configurations $lambda
+        cat d${inc}sv >>d${inc}sav
+end
+
+rm d${inc}sv
+
+        set oldinc = $inc
+
+        ##### 'inc' is incremented by 'ninc'.
+        ##### copy the current infile for the next calc.
+        @ inc += $ninc
+        cp d${oldinc}in d${inc}in
+
+        ##### increment 'i' by one.
+        @ i++
+end
+rm tmppar
+date
+exit

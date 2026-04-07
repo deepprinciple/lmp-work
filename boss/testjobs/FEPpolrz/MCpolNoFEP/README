@@ -1,0 +1,5 @@
+
+ MC simulation for tetramethylammonium ion
+ in polarizable liquid benzene (N = 260)
+ Only change is on last line of par file
+ requesting the polarizable solvent.

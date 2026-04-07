@@ -1,0 +1,26 @@
+  1,2-dichloroethane                                        Tot. E =      0.3718
+   1 C1   152    0    0    0.000000   0    0.000000   0    0.000000        0
+   2 DUM   -1    0    1    1.000000   0    0.000000   0    0.000000        0
+   3 DUM   -1    0    2    1.000000   1   90.000000   0    0.000000        0
+   4 C2   152    0    1    1.533601   2   90.000000   3    0.000000        0
+   5 CL   151    0    4    1.782835   1  110.793428   2    0.000000        0
+   6 CL   151    0    1    1.782835   4  110.793429   5   67.475663        0
+   7 H    153    0    1    1.090199   4  111.051501   6  119.240174        0
+   8 H    153    0    1    1.090526   4  111.425059   6  239.684580        0
+   9 H    153    0    4    1.090199   1  111.051501   5  119.240174        0
+  10 H    153    0    4    1.090526   1  111.425059   5  239.684580        0
+                    Geometry Variations follow                                  
+                    Variable Bonds follow         (I4)                          
+0004-0010                                                                       
+                    Additional Bonds follow       (2I4)                         
+                    Harmonic Constraints follow                                 
+                    Variable Bond Angles follow   (I4)                          
+0005-0010                                                                       
+                    Additional Bond Angles follow (3I4)                         
+AUTO                                                                            
+                    Variable Dihedrals follow     (3I4,F12.6)                   
+0006-0010                                                                       
+                    Additional Dihedrals follow   (6I4)                         
+AUTO                                                                            
+                    Domain Definitions follow     (4I4)                         
+                    Final blank line                                            

@@ -1,0 +1,26 @@
+           Oxazole                                          Tot. E =      1.6679
+   1 Dum   -1   -1    0    0.000000   0    0.000000   0    0.000000        0    
+   2 Dum   -1   -1    1    1.000000   0    0.000000   0    0.000000        0    
+   3 C2   572  572    1    1.400000   2   90.000000   0    0.000000        0    
+   4 N    573  573    3    1.330104   1   54.000000   2   90.000000        0    
+   5 C4   574  574    4    1.387905   3  104.438784   1    0.000000        0    
+   6 O    571  571    3    1.358798   4  113.862592   5    0.000000        0    
+   7 C5   575  575    6    1.369095   3  103.916407   4    0.000000        0    
+   8 H2   576  576    3    1.080000   4  124.568704   5  180.000000        0    
+   9 H4   577  577    5    1.080000   4  121.715766   3  180.000000        0    
+  10 H5   578  578    7    1.080000   6  116.643126   3  180.000000        0    
+                    Geometry Variations                                         
+                    Variable Bonds follow         (I4)                          
+0004-0010                                                                       
+                    Additional Bonds follow       (2I4)                         
+00050007                                                                        
+                    Harmonic Constraints                                        
+                    Variable Bond Angles follow   (I4)                          
+0005-0010                                                                       
+                    Additional Bond Angles follow (3I4)                         
+AUTO
+                    Variable Dihedrals follow     (3I4,F12.6)                   
+                    Additional Dihedrals follow   (6I4)                         
+                    Domain Definitions follow     (4I4)                         
+                    Final blank line                                            
+                                                                                

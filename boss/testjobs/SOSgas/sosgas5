@@ -1,0 +1,132 @@
+#
+# Command file for the BOSS  program.  Execute by entering the following:
+# csh sosgas5   >& gaslog &
+#***********************************************************************
+echo '                MC/SOS-FEP simulation'
+echo '                    gas phase 25 C '
+echo '                 Equilibration 0.15M  '
+echo '                   Averaging  0-1M '
+#***********************************************************************
+#
+nice +19
+set boss = $BOSSdir/BOSS
+set boxes = $BOSSdir
+setenv BANGPAR   $boxes/oplsaa.sb
+setenv WATERBOX  $boxes/watbox
+setenv ORG1BOX   $boxes/org1box
+setenv ORG2BOX   $boxes/org2box
+setenv ZMATRIX   gaszmat
+setenv SLVZMAT   slvzmat
+
+# for delta lambda = 0.25, 5 simulations are needed
+# to obtain the deltaGs for overlap sampling.
+
+@ nsteps = 5               
+@ i = 0
+##### Enter a loop. Repeat while i < nsteps.
+while ($i < $nsteps)
+# compute lambda values - csh doesn't know floating point, so
+
+        if ($i == 0) then
+           set rc0 = "0.000"
+           set rc1 = "0.000"
+           set rc2 = "0.250"
+           set lab = "000"
+           set nex = "025"
+         # The gaspar0 file is only used for this initial window; gaspar
+         # is used for subsequent windows. The difference is that the
+         # subsequent windows use ZIN and IN for the initial solute and
+         # solvent coordinates, while here they come from ZMAT and BOXES.
+           if (-e tmppar) rm tmppar
+           cp gaspar0 tmppar
+           cat $BOSSdir/oplsaa.par >> tmppar
+        endif
+        if ($i == 1) then
+           set rc0 = "0.250"
+           set rc1 = "0.000"
+           set rc2 = "0.500"
+           set lab = "025"
+           set nex = "050"
+           rm tmppar
+           cp gaspar tmppar
+           cat $BOSSdir/oplsaa.par >> tmppar
+        endif
+       if ($i == 2) then
+           set rc0 = "0.500"
+           set rc1 = "0.250"
+           set rc2 = "0.750"
+           set lab = "050"
+           set nex = "075"
+        endif
+        if ($i == 3) then
+           set rc0 = "0.750"
+           set rc1 = "0.500"
+           set rc2 = "1.000"
+           set lab = "075"
+           set nex = "100"
+        endif
+        if ($i == 4) then
+           set rc0 = "1.000"
+           set rc1 = "0.750"
+           set rc2 = "1.000"
+           set lab = "100"
+           set nex = "125"
+        endif
+
+	setenv INFILE    g${lab}in
+	setenv UPFILE    g${lab}up
+	setenv SAVE      g${lab}sv
+	setenv AVERAGE   g${lab}av
+	setenv SUMMARY   g${lab}sum
+        setenv PARAMETER tmppar
+
+
+       set lambda = "$rc0 $rc1 $rc2"
+
+	#    Equilibration
+
+        set configurations = "50000"
+	date
+	setenv OUTPUT    g${lab}ota
+	setenv PLTFILE   g${lab}plta
+        echo time $boss 111 $configurations $lambda
+	time $boss 111 $configurations $lambda
+	setenv OUTPUT    g${lab}otb
+	setenv PLTFILE   g${lab}pltb
+        echo time $boss 011 $configurations $lambda
+	time $boss 011 $configurations $lambda
+	foreach block (eq)
+        	date
+		setenv OUTPUT    g${lab}ot$block
+		setenv PLTFILE   g${lab}plt$block
+                echo time $boss 001 $configurations $lambda
+		time $boss 001 $configurations $lambda
+	end
+
+	#    Averaging
+
+        set configurations = "250000"
+        rm g${lab}sv
+	setenv OUTPUT    g${lab}ota
+	setenv PLTFILE   g${lab}plta
+
+        echo time $boss 011 $configurations $lambda
+	time $boss 011 $configurations $lambda
+	foreach block (b c e1)
+        	date
+        	setenv OUTPUT    g${lab}ot$block
+        	setenv PLTFILE   g${lab}plt$block
+                echo time $boss 001 $configurations $lambda
+        	time $boss 001 $configurations $lambda
+	end
+        rm g${lab}*a g${lab}*b g${lab}*c f${lab}*eq         
+
+        if ($i < ($nsteps - 1)) cp g${lab}in g${nex}in
+
+	##### increment 'i' by one.
+	@ i++
+end
+	rm $SLVZMAT
+        rm tmppar
+date
+exit

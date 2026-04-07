@@ -1,0 +1,32 @@
+     12_MeNH2-water                                         Tot. E =      5.3908
+   1 NT   900  900    0    1.000000   0    0.000000   0    0.000000        0
+   2 DUM   -1   -1    1    1.000000   0    0.000000   0    0.000000        0
+   3 DUM   -1   -1    2    1.000000   1   90.000000   0    0.000000        0
+   4 CT   903  903    1    1.450937   2   90.000000   3  180.000000        0
+   5 H2   909  909    1    1.023804   4  110.910491   2  240.000000        0
+   6 H2   909  909    1    1.009252   4  110.415524   2  123.709394        0
+   7 HC   911  911    4    1.090820   1  110.749032   5   58.032937        0
+   8 HC   911  911    4    1.090858   1  110.375966   7  240.025230        0
+   9 HC   911  911    4    1.090798   1  110.581022   7  120.269837        0
+TERZ                                                                            
+  10  O   113  113    1    2.964889   4  118.400000   5  359.999999        0
+  11  HO  114  114   10    0.957200   1  141.690000   4    9.340000        0
+  12  HO  114  114   10    0.957200  11  103.760000   1  179.999999        0
+  13  X   115  115   10    0.150000  11   52.260000  12    0.000000        0
+                    Geometry Variations follow    (2I4,F12.6)                   
+                    Variable Bonds follow         (I4 or I4-I4)                 
+0004-0010                                                                       
+                    Additional Bonds follow       (2I4)                         
+                    Harmonic Constraints follow   (2I4,4F10.4)                  
+                    Variable Bond Angles follow   (I4 or I4-I4)                 
+0005-0009                                                                       
+                    Additional Bond Angles follow (3I4)                         
+AUTO                                                                            
+                    Variable Dihedrals follow     (3I4,F12.6)                   
+0006-0009                                                                       
+                    Additional Dihedrals follow   (6I4)                         
+AUTO                                                                            
+                    Domain Definitions follow     (4I4)                         
+                    Conformational Search         (2I4, 2F12.6)                 
+                    Final blank line                                            
+                                                                                

@@ -1,0 +1,35 @@
+I received a question about computing absolute free energies of hydration
+from a BOSS user. Starting with BOSS 5.1, one should see test job FEPannihil.
+The process has been fully automated. 
+
+My response from 2008 follows.
+
+Our first paper on computing absolute free energies of hydration by
+disappearing the solute is Chem Phys 129, 193-200 (1989). We also 
+developed the "double annihilation" procedure to compute absolute
+free energies of binding for host/guest complexes in J Chem Phys 89, 3742-3746 (88).
+J Comp Chem 14, 195-205 (93) describes computing absolute free energies
+of hydration for substituted benzenes and deals with a system with torsional
+degrees of freedom. 
+
+For a rigid (note: rigid) molecule, one obtains the absolute free energy
+of hydration by making the molecule disappear in water. This is done
+by making the charges and L-J parameters go to zero for each atom; we also
+reel in the bonds to ca. 0.1 A. In the BOSS Z-matrix file, the initial atom types
+would be for the real atoms and the final atom types would all be 100
+(q=sigma=epsilon=0). Under geometrical variations, each atom from #2 on  could be listed
+with parameter 1 (bond length) and final value of 0.1 (this says to shrink all
+bonds to 0.1 A). A series of simulations would be run perturbing from Rc (lambda) =
+0.0 (real molecule) to 1.0 (all dummies); to avoid singularities, the last window
+should be run, for example, as Rc0 = 0.90, Rc1 = 0.80 & Rc2 = 1.0, i.e. 0.80 <- 0.90 -> 1.0,
+and not from 1.0 -> 0.90.
+
+A flexible molecule is trickier and different cases may be handled in different
+ways. Some examples are in the above J Comp Chem paper. In general, one has
+to compute the free energy changes for making the molecule disappear both in the
+gas phase and in water. This may again be done by perturbing the charges and L-J
+parameters to zero in both media and contracting the bonds, but leaving any
+bond stretching, angle bending and torsional energy contributors on. In BOSS,
+this would require defining some dummy atom types with the same AMBER types as
+the real atoms, but zero for q, sigma & epsilon. Bill
+

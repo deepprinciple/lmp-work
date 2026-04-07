@@ -1,0 +1,36 @@
+Cl..CH3..Cl- TS                                             Tot. E =    -70.6654
+   1 C    708    0    0    0.000000   0    0.000000   0    0.000000        0
+   2 DUM   -1    0    1    1.000000   0    0.000000   0    0.000000        0
+   3 DUM   -1    0    2    1.000000   1   90.000000   0    0.000000        0
+   4 CL   709    0    1    2.245914   2   89.989571   3    0.000000        0
+   5 CL   709    0    1    2.245914   2   89.989571   3  180.000000        0
+   6 H    710    0    1    1.086999   4   90.012242   3  180.035702        0
+   7 H    710    0    1    1.087011   4   89.993981   3   60.036364        0
+   8 H    710    0    1    1.087011   4   89.993767   3  300.036174        0
+                    Geometry Variations follow    (2I4,F12.6)                   
+                    Variable Bonds follow         (I4)                          
+0004                                                                            
+0006-0008                                                                       
+0005=0004                                                                       
+                    Additional Bonds follow       (2I4)                         
+                    Harmonic Constraints follow   (2I4,4F10.4)                  
+                    Variable Bond Angles follow   (I4)                          
+0004                                                                            
+0006-0008                                                                       
+0005=0004                                                                       
+                    Additional Bond Angles follow (3I4)                         
+                    Variable Dihedrals follow     (3I4,F12.6)                   
+0006-0008                                                                       
+                    Additional Dihedrals follow   (6I4)                         
+                    Domain Definitions follow     (4I4)                         
+                    Final blank line                                            
+      
+ Final Non-Bonded Parameters for QM (PDG CM3Px1.00) Atoms:
+      
+ 800  6 CT   0.240685  3.500000  0.066000
+ 801 17 Cl  -0.766865  3.400000  0.300000
+ 802 17 Cl  -0.766865  3.400000  0.300000
+ 803  1 HC   0.097660  2.500000  0.030000
+ 804  1 HC   0.097692  2.500000  0.030000
+ 805  1 HC   0.097693  2.500000  0.030000
+     

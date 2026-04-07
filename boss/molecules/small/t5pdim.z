@@ -1,0 +1,29 @@
+     TIP5P Water Dimer                                      Tot. E =     -6.7844
+   1  O    97   97    0     .000000   0     .000000   0     .000000        0    
+   2  H    98   98    1     .957200   0     .000000   0     .000000        0    
+   3  H    98   98    1     .957200   2  104.520000   0     .000000        0    
+   4  DU   -1   -1    1     .150000   2   52.260000   3     .000000        0    
+   5  LP   99   99    1     .700000   4  125.265000   2   90.000000        0    
+   6  LP   99   99    1     .700000   4  125.265000   2  -90.000000        0    
+TERZ                                                                            
+   7  O    97   97    1    2.680388   3  102.985045   4  359.995645        0    
+   8  DU   -1   -1    7     .150000   1  129.745446   4  180.002107        0    
+   9  H    98   98    7     .957200   8   52.260000   1   90.004877        0    
+  10  H    98   98    7     .957200   9  104.520000   8     .000000        0    
+  11  LP   99   99    7     .700000   8  125.265000   9   90.000000        0    
+  12  LP   99   99    7     .700000   8  125.265000   9  -90.000000        0    
+                    Geometry Variations Follow                                  
+                    Variable Bonds follow         (I4 or I4-I4)                 
+0007                                                                            
+                    Additional Bonds follow       (2I4)                         
+                    Harmonic Constraints follow                                 
+                    Variable Bond Angles follow   (I4 or I4-I4)                 
+0007-0008                                                                       
+                    Additional Bond Angles follow (3I4)                         
+                    Variable Dihedrals follow     (3I4,F12.6)                   
+0007-0009                                                                       
+                    Additional Dihedrals follow   (6I4)                         
+                    Domain Definitions follow     (4I4)                         
+                    Conformational Search                                       
+                    Final blank line                                            
+                                                                                

@@ -1,0 +1,122 @@
+ Results Summary:    Octanol/Water                   Tue Sep 10 15:29:21 2019
+
+ NMOL = 512          EDGE =   46.7691   46.7691   46.7691    RCUT =   11.0000
+ NACCPT = 50000000   NRJECT = 36276301   MXCON = 5000000     NCON = 5000000
+ T(C) =     25.00    OLD E =  0.20035160D+04    NEW E =  0.20024372D+04
+ RDEL =    0.1000    ADEL =    8.0000    VDEL =     765.0    MXS =    2500
+ P(ATM) =     1.0    VOLD =    102300.3  VNEW =    102300.3  NVCHG =  3125
+ DIELRF =     1.0    Reaction Field NOT Applied
+
+ Information for the Reference Solute:
+ NSCHG=999999        SCUT =   10.0000    ICUT =     0        NCENT =   1    1
+ RDELS1=   0.0000    RDELS2=   0.0000    ADELS1=   0.0000    ADELS2=   0.0000
+ ESOLD=      0.00    ESONE=      0.00    WIMAX=  0.002045    WKC =10000.00
+ EXXOLD=     0.00    EXXNEW=     0.00    DIELEC=   1.0000    CUTOFF E= -182.085
+ EPOOLD=     0.00    EPONEW=     0.00    NPOLX =        0    NPOLS =        0
+ EBNDOL=   0.0000    EBNDNE=   5.5613    EANGOL=   0.0000    EANGNE=  12.0209
+ EDIHOL=   0.0000    EDIHNE=   1.9488    ENBOL=      0.00    ENBNE=      3.37
+ EBCOLD=     0.00    EBCNEW=     0.00    SANEW =     0.00    POLCUT=    10.00
+
+ ESBNOL=  2984.35    ESBNNE=  2984.31    ESANOL=  4352.90    ESANNE=  4353.14
+ ESDIOL=   766.16    ESDINE=   766.16    ESNBOL=  1462.35    ESNBNE=  1462.34
+
+
+ 1-4 Scale Factors: Coul.=   0.20000D+01 L-J=   0.20000D+01  CUTNB =   16.000
+ RC0 =    0.0000   RC1 =    0.0000   RC2 =    0.0000
+
+ Two Solvents Used:  371 nC8OH     141 TIP4P
+
+
+
+
+            *** Averages ***
+ Total Energy =  2030.7584
+     Inter Cp = 19974.7685
+     Alpha(1/deg*e-5)=   107.2155
+     Kappa(1/atm*e-6)=    71.0523
+     Volume=   102570.0
+
+ Flexible Solvent Energy Components:
+ Bond Stretch E      2929.4318
+ Angle Bending E     4391.7860
+ Torsional Energy     766.8697
+ Non-bonded E        1442.7692
+ Total Internal E    9530.8567
+
+
+ Attempts/Accepts: Solute1      50/      50 Solute2       0/       0
+
+                                                Thermodynamic Results
+
+ Run Total Energy     Inter Cp       Volume       Enthalpy        Kappa         Alpha          EXX           ESX
+ 10     1977.826      7112.870    102311.314      1979.317        49.603        39.795         0.000         0.000
+  1     2009.171      6246.108    102502.350      2010.665        48.375        12.556         0.000         0.000
+  2     2057.848      7411.450    103257.362      2059.353        42.860        70.397         0.000         0.000
+  3     2077.878      8995.296    102903.852      2079.378        87.655        -2.460         0.000         0.000
+  4     2087.050     11555.050    102799.116      2088.548        33.559        14.714         0.000         0.000
+  5     2106.245      8039.395    102674.684      2107.742        29.695        56.107         0.000         0.000
+  6     2027.398      6210.342    102220.120      2028.887        51.548       125.307         0.000         0.000
+  7     1946.228      8835.822    102223.114      1947.718        42.131        15.527         0.000         0.000
+  8     2026.233      6560.255    102396.388      2027.726        33.108        37.720         0.000         0.000
+  9     1991.707     11851.791    102412.134      1993.200        47.929       107.963         0.000         0.000
+
+                                            Standard Deviations
+          16.259      3951.234       106.285        16.260         9.633        23.950         0.000         0.000
+
+                                                 Averages
+        2030.758     19974.769    102570.043      2032.253        71.052       107.215         0.000         0.000
+
+
+
+ Energy Components for Flexible Solvent
+ Run      E-Bond        E-Bend       Torsion      Non-Bond        Total
+ 10     2923.413      4398.593       757.495      1443.346      9522.846
+  1     2911.904      4360.659       743.305      1459.053      9474.921
+  2     2927.081      4365.053       746.996      1444.535      9483.665
+  3     2919.093      4399.619       756.825      1451.764      9527.301
+  4     2977.739      4354.615       770.813      1450.169      9553.336
+  5     2919.676      4434.501       778.507      1451.208      9583.891
+  6     2934.444      4411.691       773.702      1437.369      9557.207
+  7     2899.288      4384.179       777.515      1423.111      9484.093
+  8     2944.124      4415.476       782.997      1428.639      9571.236
+  9     2937.558      4393.473       780.543      1438.498      9550.072
+
+                                            Standard Deviations
+           6.750         8.176         4.591         3.510        12.307
+
+                                                 Averages
+        2929.432      4391.786       766.870      1442.769      9530.857
+
+
+
+ Solvent-Solvent Energy Components
+ Run      L-J         Coulomb
+ 10    -3823.646     -3724.127
+  1    -3875.065     -3591.883
+  2    -3803.723     -3618.532
+  3    -3827.241     -3620.414
+  4    -3850.456     -3629.927
+  5    -3822.829     -3655.000
+  6    -3827.183     -3705.868
+  7    -3833.933     -3690.940
+  8    -3805.605     -3740.830
+  9    -3827.810     -3737.010
+
+                                            Standard Deviations
+           6.551        17.379
+
+                                                 Averages
+       -3829.749     -3671.453
+
+
+ Title:    Octanol/Water              
+ ESX-Coul =      0.000 ESX-LJ =      0.000 SASA =      0.000
+ EXX-Coul =      0.000 EXX-LJ =      0.000 MW =       0.0000
+ Tot SASA =      0.000 Mol Vol=      0.000 Dipole=     0.000
+ H-phobic =      0.000 Philic =      0.000 Arom =      0.000 Wkly Polar=      0.000
+ # SX Ints=      0.000 for Ecut=    -9.500
+ # SX Ints=      0.000 for Ecut=   -11.500
+ #Donor HB=      0.000 Acptr HB=     0.000
+ Intramol E=     0.000
+ #Prot Ns =          0 #Nitro =          0 #Acid =         0 #Amide =          0
+ #Rotor Bonds=       0 #Real Atoms=      0

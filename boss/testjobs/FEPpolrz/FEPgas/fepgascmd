@@ -1,0 +1,136 @@
+#
+# Command file for the BOSS  program.  Execute by entering the following:
+# csh fepgascmd >& gaslog &
+#***********************************************************************
+echo '                 MC/gas simulation'
+echo '                    gas phase 25 C '
+echo '                 Equilibration  0.1M '
+echo '                   Averaging  0-1M '
+#***********************************************************************
+#
+nice +19
+set boss = $BOSSdir/BOSS
+set boxes = $BOSSdir
+#
+
+##### RC0 starts with 'startval', which is lambda x 100, and is incremented by
+##### ninc at each step. startval needs to be an integer and 100 needs to be
+##### divisable by it.
+##### Number of windows = nsteps = 100/(2*startval).
+##### Calculation is repeated 'nsteps' times.
+
+@ startval = 5
+
+#####
+##### ordinary users don't need to edit beyond this line.
+##### '@' indicates an arithmetic operation.
+#####
+@ ninc = $startval * 2
+@ nsteps = 100 / $ninc
+@ perturb = $ninc / 2
+@ inc = $startval
+@ i = 0
+
+##### Enter a loop. Repeat until i < nsteps.
+while ($i < $nsteps)
+# compute lambda values - csh doesn't know floating point, so
+        @ rc0 = $inc
+        @ rc1 = $rc0 - $perturb
+        @ rc2 = $rc0 + $perturb
+        @ int0 = $rc0 / 100
+        @ dec0 = $rc0 - $int0 * 100
+        @ int1 = $rc1 / 100
+        @ dec1 = $rc1 - $int1 * 100
+        @ int2 = $rc2 / 100
+        @ dec2 = $rc2 - $int2 * 100
+        @ ten0 = $dec0 / 10
+        @ ten1 = $dec1 / 10
+        @ ten2 = $dec2 / 10
+        @ hun0 = $dec0 - $ten0 * 10
+        @ hun1 = $dec1 - $ten1 * 10
+        @ hun2 = $dec2 - $ten2 * 10
+
+        set rc0 = ${int0}.${ten0}${hun0}
+        set rc1 = ${int1}.${ten1}${hun1}
+        set rc2 = ${int2}.${ten2}${hun2}
+        set lambda = "$rc0 $rc1 $rc2"
+        set lab = "$int0$ten0$hun0"
+
+	setenv INFILE    g${lab}in
+	setenv UPFILE    g${lab}up
+	setenv SAVE      g${lab}sv
+	setenv AVERAGE   g${lab}av
+	setenv ZMATRIX   gaszmat
+	setenv SLVZMAT   slvzmt
+
+	# The gaspar0 file is only used for this initial window; gaspar
+	# is used for subsequent windows. The difference is that the
+	# subsequent windows use ZIN and IN for the initial solute and
+	# solvent coordinates, while here they come from ZMAT and BOXES.
+        if (-e tmpgas) rm tmpgas
+        if ($i == 0) then
+                cp gaspar0 tmpgas
+        else
+                cp gaspar tmpgas
+        endif
+        cat $BOSSdir/oplsaa.par >> tmpgas
+        setenv PARAMETER tmpgas
+
+	setenv BANGPAR   $boxes/oplsaa.sb
+	setenv WATERBOX  $boxes/watbox
+	setenv ORG1BOX   $boxes/org1box
+	setenv ORG2BOX   $boxes/org2box
+	setenv SUMMARY   g${lab}sum
+
+	date
+
+	setenv OUTPUT    g${lab}ota
+	setenv PLTFILE   g${lab}plta
+
+	#    Equilibration
+
+        set configurations = "50000"
+        echo time $boss 111 $configurations $lambda
+	time $boss 111 $configurations $lambda
+	foreach block (eq)
+        	date
+		setenv OUTPUT    g${lab}ot$block
+		setenv PLTFILE   g${lab}plt$block
+                echo time $boss 001 $configurations $lambda
+		time $boss 001 $configurations $lambda
+	end
+
+	#    Averaging
+
+        set configurations = "250000"
+	setenv OUTPUT    g${lab}otb
+	setenv PLTFILE   g${lab}pltb
+        rm g${lab}sv
+
+        echo time $boss 011 $configurations $lambda
+	time $boss 011 $configurations $lambda
+	foreach block (c d e1)
+        	date
+        	setenv OUTPUT    g${lab}ot$block
+        	setenv PLTFILE   g${lab}plt$block
+                echo time $boss 001 $configurations $lambda
+        	time $boss 001 $configurations $lambda
+	end
+	rm $SLVZMAT
+        rm tmpgas
+
+	##### 'inc' is incremented by 'ninc'.
+	##### copy the current infile for the next calc.
+	@ inc += $ninc
+        @ int0 = $inc / 100
+        @ dec0 = $inc - $int0 * 100
+        @ ten0 = $dec0 / 10
+        @ hun0 = $dec0 - $ten0 * 10
+        if ($i < ($nsteps - 1)) cp g${lab}in g{$int0$ten0$hun0}in
+
+	##### increment 'i' by one.
+	@ i++
+end
+
+date
+exit

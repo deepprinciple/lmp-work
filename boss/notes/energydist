@@ -1,0 +1,14 @@
+
+An energy pair distribution is the distribution of individual
+molecule-molecule interactions; e.g., for water-water interactions
+the range would be from about -6.5 kcal/mol (the strongest H-bond) to
+ca. +3 kcal/mol in liquid water. This is computed as a histogram. The
+units for the y-axis are # of molecules/(kcal/mol).
+
+A full energy distribution records the distribution of the total
+interaction energy for a molecule with all other molecules. This is
+often rather Gaussian in shape. The mean value is the average energy
+that it would take to transfer one molecule out of the liquid and into the
+gas phase; it is also roughly twice the negative of the energy of vaporization
+for a pure liquid. Its units are mole fraction/(kcal/mol).
+

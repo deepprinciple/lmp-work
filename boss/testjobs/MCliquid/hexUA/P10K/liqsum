@@ -1,0 +1,166 @@
+ Results Summary: Flexible UA Hexane                 Mon Jan 27 21:37:49 2003
+
+ NMOL = 267          EDGE =   34.7028   34.7028   34.7028    RCUT =   11.0000
+ NACCPT = 10000000   NRJECT =  7400244   MXCON =1000000      NCON = 1000000
+ T(C) =     25.00    OLD E = -0.12018339D+04    NEW E = -0.12000814D+04
+ RDEL =    0.0800    ADEL =    8.0000    VDEL =     390.0    MXS =    2500
+ P(ATM) = 10000.0    VOLD =     41792.1  VNEW =     41792.1  NVCHG =  1625
+ DIELRF =     1.0    Reaction Field NOT Applied
+
+ Information for the Reference Solute:
+ NSCHG=999999        SCUT =   10.0000    ICUT =     0        NCENT =   1    1
+ RDELS1=   0.0000    RDELS2=   0.0000    ADELS1=   0.0000    ADELS2=   0.0000
+ ESOLD=    0.0000    ESONE=    0.0000    WIMAX=  0.003839    WKC =10000.00
+ EXXOLD=   0.0000    EXXNEW=   0.0000    DIELEC=   1.0000    CUTOFF E= -185.937
+ EBNDOL=   0.0000    EBNDNE=   1.0636    EANGOL=   0.0000    EANGNE=   0.3453
+ EDIHOL=   0.0000    EDIHNE=  -1.0092    ENBOL=    0.0000    ENBNE=    1.8406
+ EBCOLD=   0.0000    EBCNEW=   0.0000    SANEW =     0.00
+
+ ESBNOL=   415.12    ESBNNE=   415.01    ESANOL=   408.35    ESANNE=   408.31
+ ESDIOL=    13.29    ESDINE=    13.24    ESNBOL=   278.75    ESNBNE=   279.09
+
+
+ 1-4 Scale Factors: Coul.=   0.20000D+01 L-J=   0.20000D+01  CUTNB =   16.000
+ RC0 =    0.0000   RC1 =    0.0000   RC2 =    0.0000
+
+
+
+
+            *** Averages ***
+ Total Energy = -1259.7629
+     Inter Cp =  3913.3022
+     Alpha(1/deg*e-5)=    30.3982
+     Kappa(1/atm*e-6)=    12.8108
+     Volume=    42164.0
+
+                  Refer. Solute  1st Pert. Solute       Delta    2nd Pert. Solute       Delta
+ Solute-Solvent E       0.0000            0.0000        0.0000            0.0000        0.0000
+ Solute-Solute E        0.0000            0.0000        0.0000            0.0000        0.0000
+ Bond Stretch E         0.0000            0.0000        0.0000            0.0000        0.0000
+ Angle Bending E        0.0000            0.0000        0.0000            0.0000        0.0000
+ Torsional Energy       0.0000            0.0000        0.0000            0.0000        0.0000
+ Non-bonded E           0.0000            0.0000        0.0000            0.0000        0.0000
+ Constraints E          0.0000            0.0000        0.0000            0.0000        0.0000
+ Total                                                  0.0000                          0.0000
+
+ Solute  1 - Solvent Energy Components:
+   Lennard-Jones =      0.0000
+   Coulomb       =      0.0000
+   Total         =      0.0000
+
+ Solute  1 - Solute Energy Components:
+   Lennard-Jones =      0.0000
+   Coulomb       =      0.0000
+   Total         =      0.0000
+
+ Flexible Solvent Energy Components:
+ Bond Stretch E       403.1943
+ Angle Bending E      398.5520
+ Torsional Energy      33.5380
+ Non-bonded E         257.1739
+ Total Internal E    1092.4582
+
+ Ave. Dipole Mom.       0.0000            0.0000                          0.0000
+
+ Ave. Solute-Solvent Hydrogen Bonds:
+   Solute as Donor =    0.0000
+   as Acceptor     =    0.0000
+
+
+ Attempts/Accepts: Solute1      10/      10 Solute2       0/       0
+
+                                                Thermodynamic Results
+
+ Run Total Energy     Inter Cp       Volume       Enthalpy        Kappa         Alpha          EXX           ESX
+ 10    -1276.043      1792.270     42083.338      4858.025        11.558        12.500         0.000         0.000
+  1    -1247.671      2541.125     42212.616      4905.240         9.942        15.791         0.000         0.000
+  2    -1264.991      2334.547     42212.931      4887.966        11.462        14.887         0.000         0.000
+  3    -1248.008      1906.063     42217.572      4905.625        10.095        11.252         0.000         0.000
+  4    -1256.008      3338.389     42131.912      4885.140        12.673        26.255         0.000         0.000
+  5    -1269.140      3047.925     42211.822      4883.656        11.653        25.815         0.000         0.000
+  6    -1248.592      2210.321     42162.033      4896.946        10.260        21.322         0.000         0.000
+  7    -1272.770      3342.993     42103.480      4864.234        11.910        35.468         0.000         0.000
+  8    -1252.213      3064.028     42179.016      4895.801        12.377        21.471         0.000         0.000
+  9    -1262.194      4319.498     42125.344      4877.996        12.851        38.610         0.000         0.000
+
+                                            Standard Deviations
+           3.392       448.382        15.929         5.057         0.556         3.992         0.000         0.000
+
+                                                 Averages
+       -1259.763      3913.302     42164.006      4886.063        12.811        30.398         0.000         0.000
+
+
+
+ Energy Components for Flexible Solvent
+ Run      E-Bond        E-Bend       Torsion      Non-Bond        Total
+ 10      400.273       399.783        24.888       267.762      1092.706
+  1      414.503       392.684        47.512       242.070      1096.769
+  2      397.526       398.414        33.394       251.640      1080.974
+  3      408.130       395.570        46.430       245.279      1095.409
+  4      403.785       404.078        40.925       253.427      1102.215
+  5      396.572       391.923        28.882       262.320      1079.697
+  6      406.439       397.920        35.992       258.315      1098.665
+  7      395.517       403.181        33.311       252.751      1084.759
+  8      410.400       400.094        23.842       266.649      1100.985
+  9      398.799       401.875        20.203       271.528      1092.405
+
+                                            Standard Deviations
+           2.049         1.311         2.964         3.108         2.556
+
+                                                 Averages
+         403.194       398.552        33.538       257.174      1092.458
+
+
+
+ SASA Analysis:
+ Run    Tot. SASA      Volume      Hydrophobic    Hydrophilic    Aromatic    Weakly Polar
+ 10        0.000         0.000         0.000         0.000         0.000         0.000
+  1        0.000         0.000         0.000         0.000         0.000         0.000
+  2        0.000         0.000         0.000         0.000         0.000         0.000
+  3        0.000         0.000         0.000         0.000         0.000         0.000
+  4        0.000         0.000         0.000         0.000         0.000         0.000
+  5        0.000         0.000         0.000         0.000         0.000         0.000
+  6        0.000         0.000         0.000         0.000         0.000         0.000
+  7        0.000         0.000         0.000         0.000         0.000         0.000
+  8        0.000         0.000         0.000         0.000         0.000         0.000
+  9        0.000         0.000         0.000         0.000         0.000         0.000
+
+                                            Standard Deviations
+           0.000         0.000         0.000         0.000         0.000         0.000
+
+                                                 Averages
+           0.000         0.000         0.000         0.000         0.000         0.000
+
+
+
+ For Solute  1:
+ Run     ESX-Coul.      ESX-LJ       EXX-Coul.      EXX-LJ
+ 10        0.000         0.000         0.000         0.000
+  1        0.000         0.000         0.000         0.000
+  2        0.000         0.000         0.000         0.000
+  3        0.000         0.000         0.000         0.000
+  4        0.000         0.000         0.000         0.000
+  5        0.000         0.000         0.000         0.000
+  6        0.000         0.000         0.000         0.000
+  7        0.000         0.000         0.000         0.000
+  8        0.000         0.000         0.000         0.000
+  9        0.000         0.000         0.000         0.000
+
+                                            Standard Deviations
+           0.000         0.000         0.000         0.000
+
+                                                 Averages
+           0.000         0.000         0.000         0.000
+
+
+ Title: Flexible UA Hexane            
+ ESX-Coul =      0.000 ESX-LJ =      0.000 SASA =      0.000
+ EXX-Coul =      0.000 EXX-LJ =      0.000 MW =       0.0000
+ Tot SASA =      0.000 Mol Vol=      0.000 Dipole=     0.000
+ H-phobic =      0.000 Philic =      0.000 Arom =      0.000 Wkly Polar=      0.000
+ # SX Ints=      0.000 for Ecut=    -9.500
+ # SX Ints=      0.000 for Ecut=   -11.500
+ #Donor HB=      0.000 Acptr HB=     0.000
+ Intramol E=     0.000
+ #Prot Ns =          0 #Nitro =          0 #Acid =         0 #Amide =          0
+ #Rotor Bonds=       0 #Real Atoms=      0

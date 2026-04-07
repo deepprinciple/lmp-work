@@ -1,0 +1,4 @@
+Examples of cation-pi complexes. Inclusion of 1/r4 terms is controlled
+by the designations for kappa and alpha at the very end of oplsaa.par
+
+A potential energy scan for benzene-K+ is set up in scanzmat and scancmd.

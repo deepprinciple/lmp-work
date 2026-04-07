@@ -1,0 +1,34 @@
+ chloroform                                                 Tot. E =      0.0056
+   1 X     -1    0    0    0.000000   0    0.000000   0    0.000000        0    
+   2 X     -1    0    1    1.000000   0    0.000000   0    0.000000        0    
+   3 C    800  800    2    1.000000   1   90.000000   0    0.000000        0    
+   4 CL   801  801    3    1.781006   2  159.017830   1 -158.668300        0    
+   5 CL   802  802    3    1.781009   2   67.042796   4  -90.426790        0    
+   6 CL   803  803    3    1.781011   4  111.514596   5  234.603201        0    
+   7 H    804  804    3    1.090000   4  107.331382   6  242.697605        0    
+                    Geometry Variations follow    (2I4,F12.6)                   
+                    Variable Bonds follow         (I4)                          
+0004-0007                                                                       
+                    Additional Bonds follow       (2I4)                         
+                    Harmonic Constraints follow   (2I4,4F10.4)                  
+                    Variable Bond Angles follow   (I4)                          
+0005-0007                                                                       
+                    Additional Bond Angles follow (3I4)                         
+AUTO                                                                            
+                    Variable Dihedrals follow     (3I4,F12.6)                   
+0006-0007                                                                       
+                    Additional Dihedrals follow   (6I4)                         
+AUTO                                                                            
+                    Domain Definitions follow     (4I4)                         
+                    Conformational Search (2I4,2F12.6)                          
+                    Final blank line                                            
+                                                                                
+ Final Non-Bonded Parameters for QM (PM3 CM1Px1.30) Atoms:                      
+                                                                                
+800  6 CT   0.214008  3.500000  0.066000                                        
+801 17 Cl  -0.113913  3.400000  0.300000                                        
+802 17 Cl  -0.114114  3.400000  0.300000                                        
+803 17 Cl  -0.114288  3.400000  0.300000                                        
+804  1 HC   0.128307  2.500000  0.030000                                        
+                                                                                
+                                                                                

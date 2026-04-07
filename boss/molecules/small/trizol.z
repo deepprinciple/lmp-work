@@ -1,0 +1,41 @@
+ 1,2,4-triazole                                             Tot. E =     13.0650
+   1 X     -1    0    0    0.000000   0    0.000000   0    0.000000        0    
+   2 X     -1    0    1    1.000000   0    0.000000   0    0.000000        0    
+   3 N    800  800    2    1.000000   1   90.000000   0    0.000000        0    
+   4 C    801  801    3    1.333902   2   90.000000   1    0.000000        0    
+   5 C    802  802    3    1.333948   2   18.702127   4 -179.367850        0    
+   6 H    803  803    3    1.008428   4  125.647768   5  180.000417        0    
+   7 N    804  804    4    1.336099   3  107.403014   5  359.996241        0    
+   8 H    805  805    4    1.081592   3  127.402743   7  180.004276        0    
+   9 N    806  806    7    1.330315   4  108.235455   3    0.004461        0    
+  10 H    807  807    5    1.081604   3  127.424357   4  180.001233        0    
+                    Geometry Variations follow    (2I4,F12.6)                   
+                    Variable Bonds follow         (I4)                          
+0004-0010                                                                       
+                    Additional Bonds follow       (2I4)                         
+   9   5                                                                        
+                    Harmonic Constraints follow   (2I4,4F10.4)                  
+                    Variable Bond Angles follow   (I4)                          
+0005-0010                                                                       
+                    Additional Bond Angles follow (3I4)                         
+AUTO                                                                            
+                    Variable Dihedrals follow     (3I4,F12.6)                   
+0006-0010                                                                       
+                    Additional Dihedrals follow   (6I4)                         
+AUTO                                                                            
+                    Domain Definitions follow     (4I4)                         
+                    Conformational Search (2I4,2F12.6)                          
+                    Final blank line                                            
+                                                                                
+ Final Non-Bonded Parameters for QM (PM3 CM1Px1.30) Atoms:                      
+                                                                                
+800  7 NA  -0.159883  3.250000  0.170000                                        
+801  6 CR  -0.089008  3.550000  0.070000                                        
+802  6 CR  -0.088838  3.550000  0.070000                                        
+803  1 H    0.452264  0.000000  0.000000                                        
+804  7 NB  -0.287300  3.250000  0.170000                                        
+805  1 HA   0.230224  2.420000  0.030000                                        
+806  7 NB  -0.287875  3.250000  0.170000                                        
+807  1 HA   0.230417  2.420000  0.030000                                        
+                                                                                
+                                                                                

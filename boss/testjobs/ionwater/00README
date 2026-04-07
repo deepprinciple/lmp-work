@@ -1,0 +1,33 @@
+
+This illustrates a MC simulation for an ion in TIP4P water.
+One can learn about the solvent structure/coordination about
+the ion in this manner. The system contains the ion and 500
+water molecules. Equilibration: 1M. Averaging: 2M.
+
+Ewald sums are turned on by designating Ewald = 1 in the ionpar file.
+
+The setup is for methylammonium ion; however,
+one could use any of the Z-matrices for ions in the aazmat
+directory or provide an alternative Z-matrix.
+
+    tbucat.z       t-butyl cation
+    c5h5-.z        cyclopentadienyl anion
+    bnzate.z       benzoate ion
+    phopo3.z       phenyl phosphate(2-) ion
+    meoion.z       methoxide ion
+    c186k.z        18-crown-6 K+ ion complex
+    mmphos.z       methyl methylphosphonate anion
+    mbphos.z       methyl benzylphosphonate anion
+    mesion.z       methanethiolate ion
+    tep+.z         tetraethylphosphonium ion
+    tmp+.z         tetramethylphosphonium ion
+    nh4ion.z       ammonium ion
+    metam+.z       methylammonium ion
+    phenem+.?      2-phenethylammonium ion
+    acnion.z       anion of acetonitrile
+    acetat.z       acetate ion
+    acetf.z        fluoroacetate ion
+    acetcl.z       chloroacetate ion
+    sucate.z       succinate monoanion
+    glyzwi.z       glycine zwitterion - 6-31G* CHELPG charges
+

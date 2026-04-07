@@ -1,0 +1,27 @@
+   methylsilane                                             Tot. E =     -0.3660
+   1 Si  1063 1063    0    0.000000   0    0.000000   0    0.000000        0
+   2 DUM   -1    0    1    0.500000   0    0.000000   0    0.000000        0
+   3 DUM   -1    0    2    0.500000   1   90.000000   0    0.000000        0
+   4 C   1065 1065    1    1.869653   2   90.000000   3  180.000000        0
+   5 HC   140  140    4    1.089941   1  110.974579   2    0.000000        0
+   6 HC   140  140    4    1.089935   1  110.977694   5  240.003751        0
+   7 HC   140  140    4    1.089936   1  110.979190   5  119.999004        0
+   8 H   1064 1064    1    1.482880   4  110.160692   5   60.002073        0
+   9 H   1064 1064    1    1.482879   4  110.161459   8  239.996714        0
+  10 H   1064 1064    1    1.482892   4  110.155000   8  119.997851        0
+                    Geometry Variations follow                                  
+                    Variable Bonds follow         (I4 or I4-I4)                 
+0004-0010                                                                       
+                    Additional Bonds follow       (2I4)                         
+                    Harmonic Constraints follow                                 
+                    Variable Bond Angles follow   (I4 or I4-I4)                 
+0005-0010                                                                       
+                    Additional Bond Angles follow (3I4)                         
+AUTO                                                                            
+                    Variable Dihedrals follow     (3I4,F12.6)                   
+0006-0010                                                                       
+                    Additional Dihedrals follow   (6I4)                         
+AUTO                                                                            
+                    Domain Definitions follow     (4I4)                         
+                    Final blank line                                            
+                                                                                

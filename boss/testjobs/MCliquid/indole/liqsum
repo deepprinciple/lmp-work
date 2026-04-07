@@ -1,0 +1,101 @@
+ Results Summary:       Liquid Indole                Thu Sep 15 17:22:56 2005
+
+ NMOL = 267          EDGE =   36.4641   36.4641   36.4640    RCUT =   14.0000
+ NACCPT =  2000000   NRJECT =  1407505   MXCON =  500000     NCON =  500000
+ T(C) =     25.00    OLD E = -0.77343165D+03    NEW E = -0.77343165D+03
+ RDEL =    0.1000    ADEL =   10.0000    VDEL =     390.0    MXS =    2500
+ P(ATM) =     1.0    VOLD =     48483.6  VNEW =     48483.6  NVCHG =  1625
+ DIELRF =     1.0    Reaction Field NOT Applied
+
+ Information for the Reference Solute:
+ NSCHG=999999        SCUT =   10.0000    ICUT =     0        NCENT =   1    1
+ RDELS1=   0.0000    RDELS2=   0.0000    ADELS1=   0.0000    ADELS2=   0.0000
+ ESOLD=    0.0000    ESONE=    0.0000    WIMAX=  0.003864    WKC =10000.00
+ EXXOLD=   0.0000    EXXNEW=   0.0000    DIELEC=   1.0000    CUTOFF E=  -68.550
+ EBNDOL=   0.0000    EBNDNE=   2.2562    EANGOL=   0.0000    EANGNE=   5.0250
+ EDIHOL=   0.0000    EDIHNE=   0.0000    ENBOL=    0.0000    ENBNE=    1.5516
+ EBCOLD=   0.0000    EBCNEW=   0.0000    SANEW =     0.00
+
+ ESBNOL=  1302.49    ESBNNE=  1302.49    ESANOL=  1081.55    ESANNE=  1081.55
+ ESDIOL=     0.00    ESDINE=     0.00    ESNBOL=   512.35    ESNBNE=   512.35
+
+
+ 1-4 Scale Factors: Coul.=   0.20000D+01 L-J=   0.20000D+01  CUTNB =   16.000
+ RC0 =    0.0000   RC1 =    0.0000   RC2 =    0.0000
+
+
+
+
+            *** Averages ***
+ Total Energy =  -660.3043
+     Inter Cp =  6424.2886
+     Alpha(1/deg*e-5)=   119.0996
+     Kappa(1/atm*e-6)=    45.6995
+     Volume=    48872.9
+
+ Flexible Solvent Energy Components:
+ Bond Stretch E      1358.1484
+ Angle Bending E     1091.5117
+ Torsional Energy       0.0000
+ Non-bonded E         512.1737
+ Total Internal E    2961.8337
+
+
+ Attempts/Accepts: Solute1       0/       0 Solute2       0/       0
+
+                                                Thermodynamic Results
+
+ Run Total Energy     Inter Cp       Volume       Enthalpy        Kappa         Alpha          EXX           ESX
+  4     -723.896      2957.522     48591.743      -723.187        33.608        38.473         0.000         0.000
+  1     -605.149      1496.907     49137.186      -604.433        25.524         1.718         0.000         0.000
+  2     -658.424      2254.998     48870.624      -657.711        29.772        36.205         0.000         0.000
+  3     -653.749      2304.367     48892.148      -653.036        18.761        22.826         0.000         0.000
+
+                                            Standard Deviations
+          24.380      2426.491       111.532        24.381        11.301        55.090         0.000         0.000
+
+                                                 Averages
+        -660.304      6424.289     48872.925      -659.592        45.699       119.100         0.000         0.000
+
+
+
+ Energy Components for Flexible Solvent
+ Run      E-Bond        E-Bend       Torsion      Non-Bond        Total
+  4     1341.049      1087.999         0.000       507.689      2936.737
+  1     1367.822      1106.635         0.000       505.608      2980.065
+  2     1358.582      1081.859         0.000       515.419      2955.860
+  3     1365.140      1089.554         0.000       519.978      2974.673
+
+                                            Standard Deviations
+           6.021         5.308         0.000         3.350         9.844
+
+                                                 Averages
+        1358.148      1091.512         0.000       512.174      2961.834
+
+
+
+ Solvent-Solvent Energy Components
+ Run      L-J         Coulomb
+  4    -2892.198      -767.291
+  1    -2865.375      -724.424
+  2    -2880.341      -735.127
+  3    -2879.106      -751.305
+
+                                            Standard Deviations
+           5.488         9.384
+
+                                                 Averages
+       -2879.255      -744.537
+
+
+ Title:       Liquid Indole           
+ ESX-Coul =      0.000 ESX-LJ =      0.000 SASA =      0.000
+ EXX-Coul =      0.000 EXX-LJ =      0.000 MW =       0.0000
+ Tot SASA =      0.000 Mol Vol=      0.000 Dipole=     0.000
+ H-phobic =      0.000 Philic =      0.000 Arom =      0.000 Wkly Polar=      0.000
+ # SX Ints=      0.000 for Ecut=    -9.500
+ # SX Ints=      0.000 for Ecut=   -11.500
+ #Donor HB=      0.000 Acptr HB=     0.000
+ Intramol E=     0.000
+ #Prot Ns =          0 #Nitro =          0 #Acid =         0 #Amide =          0
+ #Rotor Bonds=       0 #Real Atoms=      0

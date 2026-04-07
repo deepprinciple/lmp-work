@@ -1,0 +1,119 @@
+run:
+  build_system: true
+  write_input: true
+  run_lammps: false
+  analyze: false
+
+case:
+  smiles: CO
+  name: methanol_500mol_thermal_rnemd_longbox_20260403
+  workdir: /root/lmp-work/bench_runs/methanol_500mol_thermal_rnemd_longbox_20260403
+
+structure:
+  output_formats:
+    - xyz
+    - pdb
+
+model:
+  n_molecules: 500
+  density_g_cm3: 0.7866
+  packmol_density_scale: 0.85
+  packmol_tolerance_A: 2.0
+  packmol_seed: 20260403
+  packmol_max_attempts: 5
+  packmol_seed_step: 17
+  packmol_nloop: 200
+  packmol_full_box: false
+  packmol_margin_A: null
+  packmol_strict: false
+
+forcefield:
+  engine: openff
+  version: openff-2.0.0
+  strict_stereo: true
+  charge_method: am1bcc
+  charge_fallback: gasteiger
+  use_cache: true
+
+simulation:
+  equil_input_filename: in.equil.lammps
+  temperature_K: 298.15
+  seed: 20260403
+  timestep_fs: 0.5
+  n_replicas: 3
+  replica_seed_base: 650000
+  replica_seed_step: 11
+  replica_decorrelation_steps: 0
+  npt_pre_50_steps: 0
+  npt_pre_10_steps: 0
+  npt_1atm_steps: 100000
+  npt_max_steps: 100000
+  npt_segment_steps: 10000
+  nvt_steps: 200000
+  nvt_min_steps: 200000
+  nvt_segment_steps: 50000
+  fit_sample_steps: 2000000
+  parallel_replicas: true
+  replica_parallel_workers: 3
+
+equilibration_policy:
+  mode: adaptive_segmented
+  segment_steps: 5000
+  max_npt_segments: 10
+  max_nvt_segments: 4
+  init_input_filename: in.equil.init.lammps
+  init_log_file: run_equil_init.log
+  npt_segment_input_filename: in.equil.npt_segment.lammps
+  npt_log_prefix: run_equil_npt_seg
+  npt_density_file: density_npt_segment.dat
+  nvt_segment_input_filename: in.equil.nvt_segment.lammps
+  nvt_log_prefix: run_equil_nvt_seg
+
+qc:
+  tail_fraction: 0.5
+  npt_density_window_lo: 0.95
+  npt_density_window_hi: 1.05
+  target_density_g_cm3: 0.7866
+  nvt_temperature_mean_tol: 0.1
+  nvt_temperature_std_tol: 0.1
+  nvt_etotal_std_tol: 0.1
+  nvt_pe_std_tol: 0.1
+  nvt_ke_std_tol: 0.01
+
+lammps:
+  executable: /opt/lammps/bin/lmp
+  mpi_command: mpirun
+  mpi_ranks: 8
+  allow_run_as_root: true
+  use_gpu: false
+  gpu_count: 0
+  omp_threads: 1
+  equil_log_file: run_equil.log
+  use_hwthread_cpus: true
+
+visualization:
+  render_last_frame: false
+
+thermal_rnemd:
+  box_aspect_ratio: [1.0, 1.0, 3.0]
+  replica_dir_prefix: thermal_conductivity/method_rnemd/replica_
+  replica_input_filename: in.thermal_rnemd.lammps
+  replica_log_prefix: run_thermal_replica
+  run_steps: 2000000
+  edim: z
+  nbin: 20
+  swap_every_steps: 100
+  nswap: 1
+  profile_every_steps: 10
+  profile_repeat: 100
+  profile_freq: 1000
+  profile_file: temp_profile.dat
+  exchange_file: thermal_exchange.dat
+  thermo_file: thermal_rnemd_thermo.dat
+
+benchmark:
+  viscosity_target_cP: 0.59
+  thermal_target_W_mK: 0.1832312892566165
+  density_source: public methanol properties sheet / NIST-linked sources
+  notes: elongated-box thermal conductivity branch using fix thermal/conductivity
+  reference_temperature_C: 25.0

@@ -1,0 +1,40 @@
+ trifluoro-2-chloroethane                                   Tot. E =     -3.8951
+   1 X     -1    0    0    0.000000   0    0.000000   0    0.000000        0    
+   2 X     -1    0    1    1.000000   0    0.000000   0    0.000000        0    
+   3 C    800  800    2    1.000000   1   90.000000   0    0.000000        0    
+   4 C    801  801    3    1.530950   2   90.000000   1 -112.223750        0    
+   5 CL   802  802    3    1.784607   2  158.658143   4 -179.995060        0    
+   6 H    803  803    3    1.089273   4  110.708314   5  240.002979        0    
+   7 H    804  804    3    1.089218   4  110.673202   6  239.980319        0    
+   8 F    805  805    4    1.331879   3  109.124150   5  180.006711        0    
+   9 F    806  806    4    1.332148   3  110.161322   8  240.385197        0    
+  10 F    807  807    4    1.332143   3  110.144057   8  119.594219        0    
+                    Geometry Variations follow    (2I4,F12.6)                   
+                    Variable Bonds follow         (I4)                          
+0004-0010                                                                       
+                    Additional Bonds follow       (2I4)                         
+                    Harmonic Constraints follow   (2I4,4F10.4)                  
+                    Variable Bond Angles follow   (I4)                          
+0005-0010                                                                       
+                    Additional Bond Angles follow (3I4)                         
+AUTO                                                                            
+                    Variable Dihedrals follow     (3I4,F12.6)                   
+0006-0010                                                                       
+                    Additional Dihedrals follow   (6I4)                         
+AUTO                                                                            
+                    Domain Definitions follow     (4I4)                         
+                    Conformational Search (2I4,2F12.6)                          
+                    Final blank line                                            
+                                                                                
+ Final Non-Bonded Parameters for QM (PM3 CM1Px1.30) Atoms:                      
+                                                                                
+800  6 CT  -0.152672  3.500000  0.066000                                        
+801  6 CT   0.527716  3.500000  0.066000                                        
+802 17 Cl  -0.114935  3.400000  0.300000                                        
+803  1 HC   0.121111  2.500000  0.030000                                        
+804  1 HC   0.128223  2.500000  0.030000                                        
+805  9 F   -0.171221  2.900000  0.060000                                        
+806  9 F   -0.168725  2.900000  0.060000                                        
+807  9 F   -0.169497  2.900000  0.060000                                        
+                                                                                
+                                                                                

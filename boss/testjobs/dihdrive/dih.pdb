@@ -1,0 +1,11 @@
+REMARK      1,2-dichloroethane          
+REMARK    Created by BOSS 5.1 Sept 22 Linux 
+ATOM      1  C00 UNK     1       0.000   0.000   0.000
+ATOM      2  C01 UNK     1       0.000   1.546   0.000
+ATOM      3 Cl02 UNK     1       1.626   2.286   0.000
+ATOM      4 Cl03 UNK     1       1.626  -0.740   0.000
+ATOM      5  H04 UNK     1      -0.524  -0.382   0.877
+ATOM      6  H05 UNK     1      -0.524  -0.382  -0.877
+ATOM      7  H06 UNK     1      -0.524   1.928  -0.877
+ATOM      8  H07 UNK     1      -0.524   1.928   0.877
+END

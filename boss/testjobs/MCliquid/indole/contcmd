@@ -1,0 +1,60 @@
+#
+# Command file for the BOSS program.  Execute by entering the following:
+# csh contcmd >& log &
+#***********************************************************************
+echo '                      Pure Liquid '
+echo '             Restart Averaging and Run 4M   '
+#***********************************************************************
+#
+nice +19
+set boss = $BOSSdir/BOSS
+set boxes = $BOSSdir
+set configurations = "500000"
+set lambda = "0.0 0.0 0.0"
+#
+setenv INFILE    liqin
+setenv UPFILE    liqup
+setenv SAVE      svtmp
+setenv AVERAGE   liqav
+setenv ZMATRIX   dummy.z
+setenv SLVZMAT   liqzmat
+
+if (-e tmppar) rm tmppar
+cp liqpar tmppar
+cat $BOSSdir/oplsaa.par >> tmppar
+setenv PARAMETER tmppar
+
+setenv BANGPAR   $boxes/oplsaa.sb
+setenv WATERBOX  $boxes/watbox
+setenv ORG1BOX   $boxes/org1box
+setenv ORG2BOX   $boxes/org2box
+setenv SUMMARY   liqsum
+
+date
+#
+#      Averaging
+#
+setenv OUTPUT    liqota
+setenv PLTFILE   liqplta
+
+# Note: the first 1 below says "restart the averaging"
+
+time $boss 011 $configurations $lambda
+cat svtmp >>liqsv
+
+foreach block (b c e2 a b c e4)
+        date
+        setenv OUTPUT    liqot$block
+        setenv PLTFILE   liqplt$block
+# Note: the second 0 below says "continue the averaging"
+        time $boss 001 $configurations $lambda
+        cat svtmp >>liqsv
+end
+rm svtmp
+rm tmppar
+rm liq*a
+rm liq*b
+rm liq*c
+
+date
+exit

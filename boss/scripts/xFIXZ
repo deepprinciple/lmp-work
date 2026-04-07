@@ -1,0 +1,25 @@
+#!/bin/csh
+# set echo
+#
+# fix Z-matrix for autozmat
+#
+# usage - xFIXZ file
+#
+# test if the enviroment variable BOSSdir has been defined
+#
+
+if (!($?BOSSdir)) then
+   echo "BOSSdir has not been defined; please see README"
+   exit (-1)
+endif
+
+echo  " "
+echo  "utility to repair Z-matrix for autozmat"
+echo  " "
+if (-e in) rm in
+cp $argv[1] in
+$BOSSdir/miscexec/fixz
+rm $argv[1]
+cp out $argv[1]
+#
+exit

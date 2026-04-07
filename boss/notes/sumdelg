@@ -1,0 +1,66 @@
+1/22/01
+I wrote a little program to report the total deltaG and sigma that
+are obtained from a complete FEP calculation. You may already have
+a similar script, but if you don't you can obtain sumdelg from my
+top directory on doctor.
+
+First grep your sum files for "DeltaG":
+
+grep DeltaG *sum* >>delgsum
+
+This will give you in delgsum something like
+
+f05sum: DeltaG (  0.000 to   0.050)  =     -0.096 +/-     0.011
+f05sum: DeltaG (  0.050 to   0.100)  =     -0.085 +/-     0.010
+f15sum: DeltaG (  0.100 to   0.150)  =     -0.094 +/-     0.018
+f15sum: DeltaG (  0.150 to   0.200)  =     -0.079 +/-     0.020
+f25sum: DeltaG (  0.200 to   0.250)  =     -0.046 +/-     0.010
+f25sum: DeltaG (  0.250 to   0.300)  =     -0.047 +/-     0.010
+f35sum: DeltaG (  0.300 to   0.350)  =     -0.079 +/-     0.006
+f35sum: DeltaG (  0.350 to   0.400)  =     -0.092 +/-     0.007
+f45sum: DeltaG (  0.400 to   0.450)  =     -0.184 +/-     0.012
+f45sum: DeltaG (  0.450 to   0.500)  =     -0.211 +/-     0.013
+f55sum: DeltaG (  0.500 to   0.550)  =     -0.172 +/-     0.032
+f55sum: DeltaG (  0.550 to   0.600)  =     -0.206 +/-     0.033
+f65sum: DeltaG (  0.600 to   0.650)  =     -0.248 +/-     0.029
+f65sum: DeltaG (  0.650 to   0.700)  =     -0.289 +/-     0.034
+f75sum: DeltaG (  0.700 to   0.750)  =     -0.282 +/-     0.025
+f75sum: DeltaG (  0.750 to   0.800)  =     -0.322 +/-     0.025
+f85sum: DeltaG (  0.800 to   0.850)  =     -0.413 +/-     0.029
+f85sum: DeltaG (  0.850 to   0.900)  =     -0.470 +/-     0.032
+f95sum: DeltaG (  0.900 to   0.950)  =     -0.572 +/-     0.040
+f95sum: DeltaG (  0.950 to   1.000)  =     -0.645 +/-     0.044
+
+Then, 
+~/boss/miscexec/sumdelg
+
+The program asks for the name of the delgsum file then gives the
+following output in sumout:
+
+     DeltaG       Sigma
+
+      -0.096      0.011
+      -0.085      0.010
+      -0.094      0.018
+      -0.079      0.020
+      -0.046      0.010
+      -0.047      0.010
+      -0.079      0.006
+      -0.092      0.007
+      -0.184      0.012
+      -0.211      0.013
+      -0.172      0.032
+      -0.206      0.033
+      -0.248      0.029
+      -0.289      0.034
+      -0.282      0.025
+      -0.322      0.025
+      -0.413      0.029
+      -0.470      0.032
+      -0.572      0.040
+      -0.645      0.044
+
+ Sum of DeltaGs =   -4.632000
+ Sigma          =    0.110923
+
+

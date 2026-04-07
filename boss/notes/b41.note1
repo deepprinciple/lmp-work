@@ -1,0 +1,128 @@
+-------------------------------------------
+BOSS 4.1 Release Note #  1   March 10, 1999
+-------------------------------------------
+
+A key point with BOSS 4.1 is that the dihedral angle input has
+been much simplified. The attached Z-matrix for butane is now
+sufficient and yields the same energy as the full Z-matrix
+in the aazmat area, butan.z.
+
+Another significant addition is the ability to perform a
+single-point AM1 (or PM3) calculation and have the resultant
+CM1 charges, AMBER atom types (needed for automatic parameter
+determination), and Lennard-Jones parameters output to the sum
+file with atom types 800-899 assigned. Then, this sum file can
+be used as a Z-matrix file and whenever the program sees an
+atom type 800-899, it will get the non-bonded parameters from the
+zmat file rather than the par file. In conjunction with the
+autozmat utility, which is provided, this allows going from
+e.g. a Sybyl mol2 file to a fully flexible BOSS Z-matrix in
+ca. 2 minutes, ready for the full range of calculations possible
+with BOSS.   
+
+            butane                                          Tot. E =      2.0739
+   1  C2  136  136    0    0.000000   0    0.000000   0    0.000000        0
+   2   X   -1   -1    1    1.000000   0    0.000000   0    0.000000        0
+   3   X   -1   -1    2    1.000000   1   90.000000   0    0.000000        0
+   4  C3  136  136    1    1.535165   2   90.000000   3    0.000000        0
+   5  C4  135  135    4    1.532775   1  112.488286   2    0.000000        0
+   6  C1  135  135    1    1.532775   4  112.488281   5  180.000006        0
+   7   H  140  140    1    1.090925   4  109.671313   6  121.760374        0
+   8   H  140  140    1    1.090925   4  109.671305   6  238.239623        0
+   9   H  140  140    4    1.090925   1  109.671298   5  121.760375        0
+  10   H  140  140    4    1.090925   1  109.671306   5  238.239622        0
+  11   H  140  140    5    1.090363   4  110.896654   1  179.999995        0
+  12   H  140  140    5    1.090447   4  111.250417  11  240.177623        0
+  13   H  140  140    5    1.090447   4  111.250423  11  119.822370        0
+  14   H  140  140    6    1.090363   1  110.896651   4  180.000005        0
+  15   H  140  140    6    1.090447   1  111.250411  14  119.822377        0
+  16   H  140  140    6    1.090447   1  111.250416  14  240.177623        0
+                    Geometry Variations follow    (2I4,F12.6)                   
+                    Variable Bonds follow         (I4)                          
+0004-0016                                                                       
+                    Additional Bonds follow       (2I4)                         
+                    Harmonic Constraints follow   (2I4,4F10.4)                  
+                    Variable Bond Angles follow   (I4)                          
+0005-0016                                                                       
+                    Additional Bond Angles follow (3I4)                         
+AUTO                                                                            
+                    Variable Dihedrals follow     (3I4,F12.6)                   
+0006-0016
+                   Additional Dihedrals follow   (6I4)                          
+AUTO
+                   Domain Definitions follow     (4I4)                          
+                   Conformational Search         (2I4, 2F12.6)                  
+                   Final blank line                                             
+
+So, the only parameter assignments that are needed to use the OPLS-AA
+force field are the OPLS-AA atom types in the atom entries (the 135, 136 
+and 140 above). Alternatively, to use AM1/CM1 charges one can do a
+single-point calculation for a molecule with the OPLS atom types replaced
+by the atomic numbers (the OPLS atom types work too).
+In the aazmat area:
+cp yourzmat optzmat
+csh -e qmspcmd >& log &
+
+This would generate the optsum file with the 800-899
+assignments and listed non-bonded parameters. Subsequent force field 
+calculations with that Z-matrix file would use the 800-899 entries and the
+OPLS-AA bond stetching, angle bending and torsion parameters; we can
+call this the AOC force field (AM1-OPLS-CM1A). Here is the result in the
+optsum file of an AM1 single-point calculation on the above Z-matrix using the
+recommended scale factor of 1.2 for the CM1A charges (in the qmpar file):
+
+
+            butane                                          Tot. E =    -26.7951
+   1  C2  800  800    0    0.000000   0    0.000000   0    0.000000        0
+   2   X   -1   -1    1    1.000000   0    0.000000   0    0.000000        0
+   3   X   -1   -1    2    1.000000   1   90.000000   0    0.000000        0
+   4  C3  801  801    1    1.535165   2   90.000000   3    0.000000        0
+   5  C4  802  802    4    1.532775   1  112.488286   2    0.000000        0
+   6  C1  803  803    1    1.532775   4  112.488281   5  180.000006        0
+   7   H  804  804    1    1.090925   4  109.671313   6  121.760374        0
+   8   H  805  805    1    1.090925   4  109.671305   6  238.239623        0
+   9   H  806  806    4    1.090925   1  109.671298   5  121.760375        0
+  10   H  807  807    4    1.090925   1  109.671306   5  238.239622        0
+  11   H  808  808    5    1.090363   4  110.896654   1  179.999995        0
+  12   H  809  809    5    1.090447   4  111.250417  11  240.177623        0
+  13   H  810  810    5    1.090447   4  111.250423  11  119.822370        0
+  14   H  811  811    6    1.090363   1  110.896651   4  180.000005        0
+  15   H  812  812    6    1.090447   1  111.250411  14  119.822377        0
+  16   H  813  813    6    1.090447   1  111.250416  14  240.177623        0
+                    Geometry Variations follow    (2I4,F12.6)                   
+                    Variable Bonds follow         (I4)                          
+0004-0016                                                                       
+                    Additional Bonds follow       (2I4)                         
+                    Harmonic Constraints follow   (2I4,4F10.4)                  
+                    Variable Bond Angles follow   (I4)                          
+0005-0016                                                                       
+                    Additional Bond Angles follow (3I4)                         
+AUTO                                                                            
+                    Variable Dihedrals follow     (3I4,F12.6)                   
+0006-0016                                                                       
+                   Additional Dihedrals follow   (6I4)                          
+AUTO                                                                            
+                   Domain Definitions follow     (4I4)                          
+                   Conformational Search         (2I4, 2F12.6)                  
+                   Final blank line                                             
+
+ Final Non-Bonded Parameters for QM Atoms:
+
+800  6 CT  -0.185610  3.500000  0.066000
+801  6 CT  -0.185610  3.500000  0.066000
+802  6 CT  -0.249527  3.500000  0.066000
+803  6 CT  -0.249527  3.500000  0.066000
+804  1 HC   0.091277  2.500000  0.030000
+805  1 HC   0.091277  2.500000  0.030000
+806  1 HC   0.091277  2.500000  0.030000
+807  1 HC   0.091277  2.500000  0.030000
+808  1 HC   0.084375  2.500000  0.030000
+809  1 HC   0.084104  2.500000  0.030000
+810  1 HC   0.084104  2.500000  0.030000
+811  1 HC   0.084375  2.500000  0.030000
+812  1 HC   0.084104  2.500000  0.030000
+813  1 HC   0.084104  2.500000  0.030000
+
+ AMBER atom types above should be checked.
+
+Bill

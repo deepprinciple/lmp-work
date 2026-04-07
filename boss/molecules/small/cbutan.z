@@ -1,0 +1,32 @@
+       cyclobutane                                          Tot. E =      7.0950
+   1 C2   711  711    0    0.000000   0    0.000000   0    0.000000        0    
+   2 X     -1   -1    1    1.000000   0    0.000000   0    0.000000        0    
+   3 X     -1   -1    2    1.000000   1   90.000000   0    0.000000        0    
+   4 C3   711  711    1    1.527239   2   90.000000   3    0.000000        0    
+   5 C1   711  711    1    1.527237   4   84.573515   2  180.000000        0    
+   6 C4   711  711    4    1.527224   1   84.574993   5   34.184192        0    
+   7 H    140  140    4    1.088592   1  114.438949   5  148.602681        0    
+   8 H    140  140    4    1.090646   1  115.783834   5  278.114773        0    
+   9 H    140  140    5    1.090646   1  115.783939   4   81.885180        0    
+  10 H    140  140    5    1.088590   1  114.439555   4  211.397904        0    
+  11 H    140  140    1    1.088595   4  114.439702   6  148.598032        0    
+  12 H    140  140    1    1.090641   4  115.786545   6  278.118526        0    
+  13 H    140  140    6    1.090654   4  115.788223   1   81.884375        0    
+  14 H    140  140    6    1.088592   4  114.440034   1  211.398996        0    
+                    Geometry Variations follow    (2I4,F12.6)                   
+                    Variable Bonds follow         (I4)                          
+0004-0014                                                                       
+                    Additional Bonds follow       (2I4)                         
+00050006                                                                        
+                    Harmonic Constraints follow   (2I4,4F10.4)                  
+                    Variable Bond Angles follow   (I4)                          
+0005-0014                                                                       
+                    Additional Bond Angles follow (3I4)                         
+AUTO                                                                            
+                    Variable Dihedrals follow     (3I4,F12.6)                   
+0006-0014                                                                       
+                   Additional Dihedrals follow   (6I4)                          
+AUTO                                                                            
+                   Domain Definitions follow     (4I4)                          
+                   Conformational Search         (2I4, 2F12.6)                  
+                   Final blank line                                             

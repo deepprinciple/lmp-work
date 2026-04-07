@@ -1,0 +1,34 @@
+
+Someone asked me recently about the time scale for interconverting
+conformers, e.g., if a synthesis generates one conformer how long
+does it take to convert to another conformer given different barrier
+heights. Here was my reply. This is the origin of the rule-of-thumb
+that trans<->gauche transitions for alkanes should occur every 10-20
+ps in a MD simulation. Bill
+
+-------------------------------------------------------------------------------
+From TS theory, the first-order rate constant is
+
+k = kappa(kB*T/h)exp(-delGact/RT) = 6x10^12 exp(-delGact/RT) in sec^-1 at T =
+298K
+
+then for a first-order process (conformer A -> conformer B)
+
+half-life = t1/2 = (ln 2)/k
+
+So at T = 298 K
+
+     Barrier Height (kcal/mol)      t1/2 (sec)
+             3                      17 x 10^-12  (17 ps)
+             5                      4.8 x 10^-10 (0.5 ns)
+            10                      2.0 x 10^-6  (2 us)
+            15                      0.0084       (8 ms)
+            20                      35           (0.5 min)
+            30                      (6916 days)
+           100                      2.8 x 10^59  (forever)
+
+Conformer B will begin to build-up and revert to A; however, after ca.
+10 half-lifes the system will be close to equilibrium.
+
+Bill
+

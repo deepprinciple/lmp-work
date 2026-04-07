@@ -1,0 +1,44 @@
+2026-04-07 06:51:04 — INFO — INPUT FILE: /root/lmp-work/.compat/ligpargen_buildsystem_smoke2/methanol_opls_smoke2.ligpargen_input.pdb
+2026-04-07 06:51:04 — INFO — NUMBER OF OPTIMIZATIONS: 0
+2026-04-07 06:51:04 — INFO — Parsing molecule from input: /root/lmp-work/.compat/ligpargen_buildsystem_smoke2/methanol_opls_smoke2.ligpargen_input.pdb
+2026-04-07 06:51:04 — INFO — Retreiving atom names form PDB:/root/lmp-work/.compat/ligpargen_buildsystem_smoke2/methanol_opls_smoke2.ligpargen_input.pdb
+2026-04-07 06:51:04 — INFO — Center of mass position:  0.273 -0.248 -0.153
+2026-04-07 06:51:04 — INFO — Closest atom to the center of mass: C  0 with distance :  0.708  (A) 
+2026-04-07 06:51:04 — INFO — MOLECULE CHARGE USED: 0
+2026-04-07 06:51:04 — INFO — CHARGE ALGORITHM USED: CM1A-LBCC
+2026-04-07 06:51:04 — INFO — RESIDUE NAME USED: MOL
+2026-04-07 06:51:04 — INFO — Parsing Bonds, Angles and dihedrals
+2026-04-07 06:51:04 — INFO — Parsing Atoms
+2026-04-07 06:51:04 — INFO — --- SUMMARY MOLECULE STRUCTURE ---
+2026-04-07 06:51:04 — INFO — Number of Atoms: 9
+2026-04-07 06:51:04 — INFO — Number of Variable Bonds: 5
+2026-04-07 06:51:04 — INFO — Number of Additional Bonds: 0
+2026-04-07 06:51:04 — INFO — Number of Variable Angles: 4
+2026-04-07 06:51:04 — INFO — Number of Additional Angles: 3
+2026-04-07 06:51:04 — INFO — Number of Variable Torsions: 1
+2026-04-07 06:51:04 — INFO — Number of Additional Torsions: 2
+2026-04-07 06:51:04 — INFO — Number of excluded Atoms: 0
+2026-04-07 06:51:04 — INFO — Generating Zmat
+2026-04-07 06:51:04 — INFO — Running BOSS
+2026-04-07 06:51:05 — INFO — Parsing BOSS molecule outputs
+2026-04-07 06:51:05 — INFO — Generating Q inputs
+2026-04-07 06:51:05 — INFO — Generating Gromacs inputs
+2026-04-07 06:51:05 — INFO — Generating CHARMM/NAMD inputs
+2026-04-07 06:51:05 — INFO — Generating TINKER inputs
+2026-04-07 06:51:05 — INFO — Generating openMM inputs
+2026-04-07 06:51:05 — INFO — Generating PQR inputs
+2026-04-07 06:51:05 — INFO — Generating DESMOND inputs
+2026-04-07 06:51:05 — INFO — Generating LAMMPS inputs
+2026-04-07 06:51:05 — INFO — Generating XPLOR inputs
+2026-04-07 06:51:05 — INFO —             
+    
+                    LigParGen finished succesfully!
+    
+    Please do not forget to cite the following references: 
+
+        1. LigParGen web server: an automatic OPLS-AA parameter generator for organic ligands  
+           Leela S. Dodda  Israel Cabeza de Vaca  Julian Tirado-Rives William L. Jorgensen 
+           Nucleic Acids Research, Volume 45, Issue W1, 3 July 2017, Pages W331–W336
+
+        2. 1.14*CM1A-LBCC: Localized Bond-Charge Corrected CM1A Charges for Condensed-Phase Simulations
+    

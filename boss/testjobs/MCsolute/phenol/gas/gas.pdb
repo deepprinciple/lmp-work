@@ -1,0 +1,16 @@
+REMARK       phenol                     
+REMARK    Created by BOSS 5.1 Sept 22 Linux 
+ATOM      1  C00 UNK     1       0.000   1.400   0.000
+ATOM      2  C01 UNK     1       0.000   0.694  -1.223
+ATOM      3  C02 UNK     1       0.000   0.751   1.230
+ATOM      4  C03 UNK     1      -0.045  -0.708  -1.190
+ATOM      5  C04 UNK     1       0.003  -0.660   1.275
+ATOM      6  C05 UNK     1      -0.022  -1.345   0.063
+ATOM      7  O06 UNK     1       0.152   2.756   0.042
+ATOM      8  H07 UNK     1      -0.006   1.138  -2.151
+ATOM      9  H08 UNK     1       0.145   1.259   2.210
+ATOM     10  H09 UNK     1      -0.141  -1.362  -2.061
+ATOM     11  H0A UNK     1       0.157  -1.197   2.200
+ATOM     12  H0B UNK     1       0.132  -2.405   0.043
+ATOM     13  H0C UNK     1       0.214   3.137  -0.820
+END

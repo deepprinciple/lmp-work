@@ -1,0 +1,24 @@
+     TIP5P Water - Anion                                    Tot. E =    -13.0354
+   1  O    97   97    0    0.000000   0    0.000000   0    0.000000        0    
+   2  H    98   98    1    0.957200   0    0.000000   0    0.000000        0    
+   3  H    98   98    1    0.957200   2  104.520000   0    0.000000        0    
+   4  DU   -1   -1    1    0.150000   2   52.260000   3    0.000000        0    
+   5  LP   99   99    1    0.700000   4  125.265000   2   90.000000        0    
+   6  LP   99   99    1    0.700000   4  125.265000   2  -90.000000        0    
+TERZ                                                                            
+   7 Cl-  401  401    2    2.780339   1  109.206750   3    0.000183        0    
+                    Geometry Variations Follow                                  
+                    Variable Bonds follow         (I4 or I4-I4)                 
+0007                                                                            
+                    Additional Bonds follow       (2I4)                         
+                    Harmonic Constraints follow                                 
+                    Variable Bond Angles follow   (I4 or I4-I4)                 
+0007                                                                            
+                    Additional Bond Angles follow (3I4)                         
+                    Variable Dihedrals follow     (3I4,F12.6)                   
+0007                                                                            
+                    Additional Dihedrals follow   (6I4)                         
+                    Domain Definitions follow     (4I4)                         
+                    Conformational Search                                       
+                    Final blank line                                            
+                                                                                

@@ -1,0 +1,6 @@
+
+The necessary files are provided to run a MC simulation for pure liquid
+1,2-dichloroethane. Just execute via
+csh -e liqcmd >& log &
+
+execution time is less than 1 hour on a 1 GHz Pentium

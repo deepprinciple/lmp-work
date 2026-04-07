@@ -1,0 +1,26 @@
+#!/bin/csh
+# set echo
+#
+# perform similarity analysis
+#
+# usage - xQS
+#
+# output is in simout
+#
+# test if the enviroment variable QSdir has been defined
+setenv QSdir ~/QikSim
+#
+if (!($?QSdir)) then
+    echo "QSdir has not been defined; please see README"
+    exit (-1)
+endif
+
+if (! -e limits) cp $QSdir/limits.def limits
+if (! -e propsum) cp $QSdir/propsum propsum
+if (-e simout) rm simout
+
+$QSdir/qiksim
+
+more simout
+#
+exit

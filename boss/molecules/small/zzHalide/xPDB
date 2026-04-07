@@ -1,0 +1,25 @@
+#!/bin/csh
+set echo
+#
+# display structure from Z-matrix file    
+#
+# usage - xPDB moleculename
+#
+# test if the enviroment variable BOSSdir has been defined
+#
+# you need to have the rasmol executable available in usr/local/bin
+
+if (!($?BOSSdir)) then
+   echo "BOSSdir has not been defined; please see README"
+   exit (-1)
+endif
+
+if (-e tmppar) rm tmppar
+cp $BOSSdir/scripts/OPLSpar tmppar
+cat $BOSSdir/oplsaa.par >> tmppar
+if (-e plt.pdb) rm plt.pdb
+$BOSSdir/autozmat -x -i boss -o pdb -p tmppar <${argv[1]}.z >plt.pdb       
+rm tmppar
+rasmol plt.pdb
+#
+exit

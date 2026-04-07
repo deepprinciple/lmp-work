@@ -1,0 +1,27 @@
+#!/bin/csh
+set echo
+#
+# script to run a standard linear response job
+# using the OPLS-AA force field
+#
+# usage:  runAA moleculename
+# or to run in background: runAA moleculename &
+#
+# make subdirectory
+mkdir $argv[1]
+cd $argv[1]
+# moleculename.z is copied from the molecules/small area
+cp $BOSSdir/molecules/small/${argv[1]}.z lrzmat
+cp $BOSSdir/testjobs/linres/lrcmd .
+cp $BOSSdir/testjobs/linres/NVTpar .
+cp $BOSSdir/testjobs/linres/lrpar .
+# execute
+csh lrcmd >& log
+rm NVTpar
+rm lrpar
+rm *a *b *c *otd *pltd *sv* *eq *5
+# compute properties
+$BOSSdir/miscexec/PROPAA
+cd ..
+#
+exit

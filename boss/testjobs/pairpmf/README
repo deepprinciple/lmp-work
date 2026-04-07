@@ -1,0 +1,46 @@
+MC/FEP Calculation of Free Energy Profiles
+
+The d500cmd file just runs one window of an fep calculation
+for perturbing benzene dimer from a ring center - ring center
+distance of 5.0 to 4.9 and 5.0 A.
+
+In the pmfzmat file, the distance to atom 15 is the reaction
+coordinate and starts at 4.0 and the geometry variation says
+it goes to 5.0. This difference of 1.0 makes specifications
+for the lambda values in the cmd file easy; a lambda of 0.0
+corresponds to 4.0 A, 0.5 would be 4.5 A, 1.0 is 5.0 A,
+2.0 is 6.0 A, etc.
+ 
+In the pmfpar0 file, note that
+ Center atoms of solute1 & 2 and custom solvent, and ICUTAS array:
+  1 15  0  0  0  0  0  0
+ Atoms solute1 & 2 are rotated about:
+  1 15
+ Cutoff method (ICUT) and ICUTAT array:
+  3  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+ IRECNT, INDSOL, IZLONG, MAXOVL, NOXX and NOSS:
+  1  0  1  0  0  0
+
+For the pmf, it is important that the reaction coordinate distance
+be constant. This requires that INDSOL = 0 so that the solutes
+are translated in tandem. Also, NROTAT1 = 1 and NROTAT2 = 15 so the
+total rotations of solutes 1 and 2 occur about the ring centers;
+otherwise, the reaction coordinate value would change upon rotation.
+MAXOVL is also set to 1 to  maximally overlay the reference and perturbed
+solutes. This causes the perturbed solutes to be totally translated and
+rotated to maximally overlap the reference solute and improves
+convergence of the free energy changes. 
+
+Equilibration 0.5M, Averaging 1.0M. 
+Time required: 1.0 hour on an R5000 SGI.
+
+For proper sampling, these windows need to be run for ca. 2M equilibration
+and 10M averaging. 
+
+___________________________________________________________________________
+
+The subdirectory methanedimer contains the input and results for
+computing an entire pmf for two methanes in water via one job submission.
+
+The subdirectory nacl is set up for running one window of an NaCl pmf
+with Ewald treatment for the electrostatics.

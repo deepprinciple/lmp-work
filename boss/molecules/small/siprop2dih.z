@@ -1,0 +1,32 @@
+2-silapropane                                               Tot. E =     -8.5791
+   1 Si  1062 1062    0    0.000000   0    0.000000   0    0.000000        0
+   2 X     -1   -1    1    1.000000   0    0.000000   0    0.000000        0
+   3 X     -1   -1    2    1.000000   1   90.000000   0    0.000000        0
+   4 C3  1065 1065    1    1.855364   2   90.000000   3    0.000000        0
+   5 C1  1065 1065    1    1.855347   4  108.906497   2  180.000000        0
+   6 H    140  140    4    1.089674   1  110.186470   5  179.982359        0
+   7 H    140  140    4    1.089684   1  110.174467   6  120.005062        0
+   8 H    140  140    4    1.089684   1  110.175194   6  239.993790        0
+   9 H    140  140    5    1.089684   1  110.189381   4  180.018485        0
+  10 H    140  140    5    1.089684   1  110.176098   9  239.992548        0
+  11 H    140  140    5    1.089684   1  110.174628   9  120.003811        0
+  12 H   1064 1064    1    1.478681   4  109.727229   5  239.876607        0
+  13 H   1064 1064    1    1.478681   4  109.728441   5  120.125073        0
+                    Geometry Variations follow    (2I4,F12.6)                   
+                    Variable Bonds follow         (I4)                          
+0004-0013                                                                       
+                    Additional Bonds follow       (2I4)                         
+                    Harmonic Constraints follow   (2I4,4F10.4)                  
+                    Variable Bond Angles follow   (I4)                          
+0005-0013                                                                       
+                    Additional Bond Angles follow (3I4)                         
+AUTO                                                                            
+                    Variable Dihedrals follow     (3I4,F12.6)                   
+0006-0008
+0010-0013                                                                       
+                   Additional Dihedrals follow   (6I4)                          
+0009000500010004
+AUTO                                                                            
+                   Domain Definitions follow     (4I4)                          
+                   Conformational Search         (2I4, 2F12.6)                  
+                   Final blank line                                             

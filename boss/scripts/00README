@@ -1,0 +1,200 @@
+
+              *******************************************
+              Scripts for Execution of Standard BOSS Jobs
+              *******************************************
+
+All except Conversion Utilities function as
+
+xACTION moleculename
+
+where the BOSS Z-matrix file moleculename.z must be in the current directory.
+Output goes to the files out (printed output),
+sum (summary file) and plt.pdb (PDB file of final structure).
+
+ Script                   Action
+---------     ------------------------------------------------------------------
+xOPT        - optimization using the OPLS-AA force field with BFGS optimizer
+xOPTF       - optimization using the OPLS-AA force field with Fletcher-Powell
+              (faster than BFGS, but not as precise; recommended for complexes)
+xOPTP       - optimization using the OPLS-AA force field with Powell
+              (try with flat surfaces, e.g. hydrogen-bonded complexes)
+xOPT1       - xOPT but optimizes the structure for rc0 (lambda) = 1.0
+xOPTUA      - optimization using the OPLS-UA force field with BFGS optimizer
+xFREQ       - perform BFGS optimization followed by normal mode calculation;
+              uses a frequency cutoff of 500 cm-1, T = 25 C, P = 1 atm
+xSP         - single-point force field calculation
+xSPM        - xSP, but prepare output plt.pdb and sum (Z-matrix) files for input
+              to MCPRO; sum and plt.pdb files use the same unique atom names.
+xPDBMCP     - take pdb file to Z-matrix for MCPRO ligand with no optimization of
+              structure with CM1A charges and OPLS-AA atom types assigned.
+
+Include polarization:
+xPOPT       - optimization using the OPLS-AAP force field with BFGS optimizer
+xPOPTF      - optimization using the OPLS-AAP force field with Fletcher-Powell
+
+GB/SA Aqueous Solvation Model:
+xOPTGB      - xOPT with GB/SA (BFGS optimizer)
+xOPTFGB     - xOPTF with GB/SA (Fletcher-Powell) - recommended
+xAM1GBOPT   - xAM1OPT with GB/SA (uses 1.07*CM1 charges)
+xPM3GBOPT   - xPM3OPT with GB/SA (uses 1.07*CM1 charges)
+xPDGGBOPT   - xPDGOPT with GB/SA (uses 1.07*CM3 charges)
+
+xSPGB       - xSP with GB/SA - uses charges as specified in the Z-matrix
+xAM107GB    - xSP with GB/SA - uses 1.07*CM1A charges - yields best
+              estimate of deltaG hydration for a neutral molecule
+
+xCSGB100    - xCS100 including GB/SA hydration model
+xCSGB200    - xCS200 including GB/SA hydration model
+xCSGB500    - xCS500 including GB/SA hydration model
+xMCGB       - xMCGAS with GB/SA solvation; MC for solutes in GB/SA solvent
+dih*cmd     - see the dihdrive test job for dihedral driving with GB/SA
+scan*cmd    - see the scan test job for potential surface scanning with GB/SA
+
+Conformational Search:
+xCS100      - MC conformational search with 100 starting structures 
+xCS200      - MC conformational search with 200 starting structures
+xCS500      - MC conformational search with 500 starting structures
+xCS100F     - MC CS with 100 starting structures - (high resolution-
+xCS200F     - MC CS with 200 starting structures - may get duplicate 
+xCS500F     - MC CS with 500 starting structures - minima)
+xSS100      - stochastic conformational search with 100 starting structures
+xSS200      - stochastic conformational search with 200 starting structures
+xSS500      - stochastic conformational search with 500 starting structures
+xSS100F     - stochastic CS with 100 starting structures - high resolution
+xSS200F     - stochastic CS with 200 starting structures - high resolution
+xSS500F     - stochastic CS with 500 starting structures - high resolution
+              note: output structures are in plt.mol with xCS and xSS scripts.
+xCSINFO     - utility: list energies of found conformers in csout
+xCSMOL      - utility: create separate .mol files for each conformer; they
+              can then be displayed individually with, e.g., RasMol
+xCSZ        - utility: create separate .z files for each conformer
+xGETE       - utility: get Total Energy from first line of Z-matrix file; append
+              to energy.CSV; requires full file name, e.g., xGETE molecule.z
+
+Semiempirical Quantum Calculations:
+xAM1SP      - AM1 single-point calculation for a neutral system;
+              output CM1A charges are scaled by 1.14; usual choice  -
+              see boss/notes/CMcharges.
+xAM1SP07    - AM1 single-point calculation for a neutral system; output
+              CM1A charges are scaled by 1.07; for optimal GB/SA calculations
+xAM1SPL     - AM1 single-point for a neutral system; output CM1A-LBCC charges
+xAM1SP+     - AM1 single-point for a cation - output charges are unscaled
+xAM1SP-     - AM1 single-point for an anion - output charges are unscaled
+xAM1SP2-    - AM1 single-point for a dianion- output charges are unscaled
+xPM3SP      - PM3 single-point for a neutral system;
+              output CM1P charges are scaled by 1.30; see boss/notes/CMcharges.
+xPM3SP+     - PM3 single-point calculation for an cation
+xPM3SP-     - PM3 single-point calculation for an anion
+xAM1OPT     - AM1 optimization for a  neutral system
+xAM1OPTL    - AM1 optimization for a  neutral system; output CM1A-LBCC charges
+xAM1OPT+    - AM1 optimization for a  cation
+xAM1OPT-    - AM1 optimization for an anion
+xAM1OPT2-   - AM1 optimization for a  dianion
+xPM3OPT     - PM3 optimization for a  neutral system
+xPM3OPT+    - PM3 optimization for a  cation
+xPM3OPT-    - PM3 optimization for an anion
+
+xAM1CM1     - AM1 single-point calculation for a neutral system;
+              output CM1A charges are scaled by 1.00
+xAM1CM3     - AM1 single-point calculation for a neutral system;
+              output CM3A charges are scaled by 1.00
+xPM3CM3     - PM3 single-point calculation for a neutral system;
+              output CM3P charges are scaled by 1.00
+
+xPDGSP      - PDDG/PM3 single-point for a neutral system; output
+              CM3P charges are scaled by 1.08; see boss/notes/CMcharges.
+xPDGSP+     - PDDG/PM3 single-point for a cation
+xPDGSP-     - PDDG/PM3 single-point for an anion
+xPDGOPT     - PDDG/PM3  optimization for a neutral system
+xPDGOPT+    - PDDG/PM3  optimization for a cation - output charges are unscaled
+xPDGOPT-    - PDDG/PM3  optimization for an anion - output charges are unscaled
+xMDGOPT     - PDDG/MNDO optimization for a neutral system
+
+OPLS/CM1A:
+xZCM1A      - convert BOSS Z-matrix file to optimized Z-matrix 
+              with 1.14*CM1A charges
+xZCM1AL     - same, but output 1.14*CM1A-LBCC charges
+xZCM1A+     - xZCM1A for a cation -  output 1.0*CM1A charges
+xZCM1A-     - xZCM1A for an anion -  output 1.0*CM1A charges
+
+Monte Carlo Simulations:
+xBOX        - execute standard MC simulation for solutes in periodic cube 
+              with 500 TIP4P waters at 25 C and 1 atm;
+               cutoffs are at 9.0 A with ICUT = 5
+xBOX725     - same as xBOX, but use 725 water molecules; 
+              both run MC job in background.
+xLRCMP      - MC linear response calculation with subsequent properties
+              predictions; use scaled CM1P charges; molecule is in drugs
+xLRCMPup    - xLRCMP and update a comma-separated file with the results summary
+xLRCMPhere  - xLRCMP; molecule is in current directory
+xLR725CMA   - execute MC/LR using 725 water molecules and scaled CM1A charges;
+              molecule is in drugs directory
+xLRAA       - execute MC linear response calculation with subsequent properties
+              predictions; use OPLS-AA charges; molecule is in small directory
+              -- See testjobs/linres for more information on LR calculations --
+
+xMCGAS      - execute standard gas-phase MC calculation at 25 C
+
+Standard X to Y FEP Calculations:
+xFEPGAS     - standard gas-phase FEP calculation at 25 C, 10 windows
+xFEPAQ      - standard aqueous FEP: 25 C, 1 atm, 500 TIP4P waters, 10 windows
+xFEPAQQ     - queue version of xFEPAQ - see testjobs/FEPaq/PhXtoY
+xFEPAQ725   - standard aqueous FEP: 25 C, 1 atm, 725 TIP4P waters, 10 windows
+xFEPCAP     - standard aqueous FEP: 25 C, 1 atm, 22-A TIP4P cap, 10 windows
+xSOSGAS11   - overlap sampling FEP as for xFEPGAS, 11 windows
+xSOSAQ11    - overlap sampling FEP as for xFEPAQ, 11 windows
+xSOSAQQ11   - queue version of xSOSAQ11
+xFEPCLN     - clean-up FEP directory
+xSUMDELG    - extract deltaG results from sum files (for DW-FEP)
+xDELGSOS    - sum DeltaGs from FEP SOS calculation
+xSUMDW      - sum DeltaGs from double-wide FEP calculation
+              See the FEPaq and SOSaq test jobs for more information 
+              on these FEP calculations.
+xZQFEP      - prepare Z-matrix for charge annihilation FEP calculation
+xZLJFEP     - prepare Z-matrix for Lennard-Jones annihilation FEP calculation
+
+Conversion and Display Utilities:
+x           - display PDB file with Rasmol (usage: x filename)
+xPDB        - convert Z-matrix file to PDB file and display with Rasmol
+xRAS        - display structure in plt.pdb with Rasmol 
+xNEAR       - trim large PDB file to focus on region around specified residue(s)
+
+xPDBZ       - convert PDB file to optimized BOSS Z-matrix for neutral system
+xPDBZ+      - same as xPDBZ except for cation
+xPDBZ-      - same as xPDBZ except for anion
+xZmol       - convert Z-matrix file to MDL mol file; creates moleculename.mol
+xZPDB       - convert BOSS Z-matrix file to PDB file; creates moleculename.pdb
+
+xMOLZ       - convert MDL .mol file to optimized BOSS Z-matrix file for neutral
+xMOLZ+      - same as xMOLZ except for cation
+xMOLZ-      - same as xMOLZ except for anion
+xMOLPDB     - convert MDL .mol file to PDB file
+xMOLZnob    - xMOLZ except bond lengths are not optimized (reduce # variables)
+xMOL2Z      - convert .mol2 file to optimized BOSS Z-matrix file
+xGJFZ       - convert Gaussian job file to optimized BOSS Z-matrix file 
+              for neutral molecule
+xTOUNIX     - convert MS-DOS text files to UNIX format 
+              (e.g., remove ^M at end-of-line)
+xADDH       - take pdb file, add hydrogens, and output new pdb
+
+Other Scripts:
+xMANY       - utility to run a script on a list of files (xMANY filelist script)
+              - this is very useful.
+
+xPARGEN     - run the pargen program to interactively generate a BOSS par file
+
+xQPROP      - execute QikProp for properties predictions; input BOSS Z-matrix,
+              MDL mol, mol2, or a PDB file. Need to give full file name, e.g.,
+              xQPROP sustiv.mol
+              QikProp is solely distributed by Schrodinger Inc.
+xQPCON      - combines QikProp output with BOSS conformational search output
+              to yield conformationally averaged QikProp predictions.
+xQS         - execute the QikSim program for similarity analyses.
+xBM         - execute the BOMB program for the generation of analogs or a
+              combinatorial library.
+              Note: the BOMB program is distributed separately from BOSS.
+---------     ------------------------------------------------------------------
+
+Note: not all of the scripts use the latest version of the par file format.
+Some entries may be missing; they are not needed for the script. See 
+boss/par.form for the latest, complete version.

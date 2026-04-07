@@ -1,0 +1,35 @@
+#
+# Command file for the BOSS program.  Execute by entering the following:
+# csh optcmd >& optlog &
+#***********************************************************************
+echo '  Stochastic Conformational Search  - OPLS-AA Force Field'
+#***********************************************************************
+nice +19
+set boss = $BOSSdir/BOSS
+set configurations = "000500"
+set lambda = "0.000 0.000 0.000"
+set boxes = $BOSSdir
+#
+setenv INFILE    optin
+setenv UPFILE    optup
+setenv SAVE      svopt
+setenv AVERAGE   optav
+setenv ZMATRIX   optzmat
+setenv SLVZMAT   slvzmat
+if (-e OPtmp) rm OPtmp
+cp $BOSSdir/scripts/CSFpar OPtmp
+cat $BOSSdir/oplsaa.par >> OPtmp
+setenv PARAMETER OPtmp
+setenv BANGPAR   $BOSSdir/oplsaa.sb
+setenv WATERBOX  $boxes/watbox
+setenv ORG1BOX   $boxes/org1box
+setenv ORG2BOX   $boxes/org2box
+setenv SUMMARY   sum
+
+date
+
+setenv OUTPUT    out
+setenv PLTFILE   plt.mol
+time $boss 611 $configurations $lambda
+rm slvzmat optav optup optin OPtmp
+exit

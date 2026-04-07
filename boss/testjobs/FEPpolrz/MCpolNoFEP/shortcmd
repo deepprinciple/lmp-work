@@ -1,0 +1,72 @@
+#
+# Command file for the BOSS program.  Execute by entering the following:
+# csh cmd >& log &
+# Just need to copy solute zmat to zmat, then execute.
+#***********************************************************************
+echo '            General MC for a Single Solute   '
+echo '                 Equilibration 20K  '
+echo '                 Averaging     40K  '
+echo '            N = 265  T=25  P=1  Rcut = 12.0'
+echo '            Solvent: Polarizable Benzene'
+#***********************************************************************
+#!/bin/csh -f
+#
+nice +19
+set boss = $BOSSdir/BOSS
+set configurations = "5000"
+set lambda = "0.000 0.000 0.000"
+set boxes = $BOSSdir
+
+if (-e in) rm in
+cp -f $boxes/solbox/benz267.in in
+if (-e sav) rm sav
+
+setenv INFILE    in
+setenv UPFILE    up
+setenv SAVE      sv
+setenv AVERAGE   av
+setenv ZMATRIX   zmat
+setenv SLVZMAT   slvzmat
+
+if (-e tmppar) rm tmppar
+cp par tmppar
+cat $BOSSdir/oplsaa.par >> tmppar
+setenv PARAMETER tmppar
+
+setenv BANGPAR   $boxes/oplsaa.sb
+setenv WATERBOX  $boxes/watbox
+setenv ORG1BOX   $boxes/org1box
+setenv ORG2BOX   $boxes/org2box
+setenv SUMMARY   sum
+
+date
+
+#    Equilibration
+
+setenv OUTPUT    ot0
+setenv PLTFILE   plta
+time $boss 110 $configurations $lambda
+foreach block (b c eq)
+        date
+	setenv OUTPUT    ot$block
+	setenv PLTFILE   plt$block
+	time $boss 001 $configurations $lambda
+end
+
+#    Averaging
+
+setenv OUTPUT    ota
+setenv PLTFILE   plta
+time $boss 011 $configurations $lambda
+mv sv sav
+foreach block (b c e2 a b c e4)
+        date
+        setenv OUTPUT    ot$block
+        setenv PLTFILE   plt$block
+        time $boss 001 $configurations $lambda
+        cat sv >>sav
+end
+
+rm sv tmppar *b *c *ota *plta *eq 
+date
+exit

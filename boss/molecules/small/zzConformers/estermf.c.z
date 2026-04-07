@@ -1,0 +1,27 @@
+         Methyl Formate                                     Tot. E =     -4.2675
+   1   C  465    0    0    0.000000   0    0.000000   0    0.000000        0
+   2   X   -1   -1    1    1.000000   0    0.000000   0    0.000000        0
+   3   X   -1   -1    2    1.000000   1   90.000000   0    0.000000        0
+   4   O  466    0    1    1.230655   2   90.000000   3    0.000000        0
+   5   O  467    0    1    1.340158   4  124.227476   2    0.000000        0
+   6   H  279    0    1    1.089970   4  121.815088   2  180.000006        0
+   7   C  468    0    5    1.417113   1  119.186964   4    0.000002        0
+   8   H  469    0    7    1.089846   5  109.973277   1  180.000000        0
+   9   H  469    0    7    1.090849   5  110.875557   8  240.341755        0
+  10   H  469    0    7    1.090849   5  110.875557   8  119.658246        0
+                    Geometry Variations follow    (2I4,F12.6)                   
+                    Variable Bonds follow         (I4)                          
+0004-0010                                                                       
+                    Additional Bonds follow       (2I4)                         
+                    Harmonic Constraints follow   (2I4,4F10.4)                  
+                    Variable Bond Angles follow   (I4)                          
+0005-0010                                                                       
+                    Additional Bond Angles follow (3I4)                         
+AUTO                                                                            
+                    Variable Dihedrals follow     (3I4,F12.6)                   
+0006-0010                                                                       
+                    Additional Dihedrals follow   (6I4)                         
+AUTO                                                                            
+                    Domain Definitions follow     (4I4)                         
+                    Conformational Search (4I2,2F12.6)                          
+                    Final blank line                                            

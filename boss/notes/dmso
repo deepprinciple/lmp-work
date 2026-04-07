@@ -1,0 +1,76 @@
+
+Here are the unpublished OPLS-AA DMSO parameters and molecular
+structure.
+
+non-bonded
+    AN type    q      sigma    epsilon
+496 16 SZ    0.130    3.56      0.395      sulfoxide - all atom
+497 08 OY   -0.420    2.93      0.280      sulfoxide - all atom
+498 06 CT   -0.035    3.500     0.066      CH3 all-atom C: sulfoxide
+499 06 CT    0.025    3.500     0.066      CH2 all-atom C: sulfoxide
+140 01 HC    0.06     2.500     0.030      H      all-atom H: alkanes
+
+torsion
+type    V1        V2        V3      V4
+235   0.0000    0.0000    0.3500    0.0        HC-CT-SY-OY     sulfone
+236   0.0000    0.0000    0.3500    0.0        HC-CT-SY-CT     sulfone
+236   0.0000    0.0000    0.3500    0.0        HC-CT-SY-CA     sulfone
+237   0.0       0.0       0.0       0.0        CT-CT-SY-CT     sulfone
+238   0.0       0.0       0.0       0.0        CT-CT-SY-OY     sulfone
+239   0.0       0.0       0.3500    0.0        HC-CT-CT-SY     sulfone
+
+stretching  
+       k          r0
+SZ-OY 700.       1.53
+SZ-CT 340.       1.79
+CT-HC 340.       1.09    
+
+bending
+             k        theta0
+OY-SZ-CT    74.0      107.0
+SZ-CT-HC    35.0      109.5
+CT-SZ-CT    62.0       96.0
+HC-CT-HC    33.       107.8
+
+See our papers for units and combining rules (geometric). Energies in
+kcal/mol.
+
+Optimized Z-matrix
+     Dimethyl sulfoxide                                     Tot. E =     -5.6315
+   1 S    496  496    0    0.000000   0    0.000000   0    0.000000        0
+   2 X     -1   -1    1    1.000000   0    0.000000   0    0.000000        0
+   3 X     -1   -1    2    1.000000   1   90.000000   0    0.000000        0
+   4 C    498  498    1    1.790749   2   90.000000   3    0.000000        0
+   5 C    498  498    1    1.790749   4   97.675299   2  180.000000        0
+   6 H    140  140    4    1.089918   1  109.798340   5  175.921204        0
+   7 H    140  140    4    1.089739   1  110.644453   6  119.761052        0
+   8 H    140  140    4    1.089979   1  110.628333   6  240.572783        0
+   9 H    140  140    5    1.089918   1  109.798342   4  184.078782        0
+  10 H    140  140    5    1.089739   1  110.644455   9  240.238950        0
+  11 H    140  140    5    1.089979   1  110.628334   9  119.427218        0
+  12 O    497  497    1    1.528872   4  106.772249   5  249.834639        0
+                    Geometry Variations follow    (2I4,F12.6)
+                    Variable Bonds follow         (I4)
+0004-0012
+                    Additional Bonds follow       (2I4)
+                    Harmonic Constraints follow   (2I4,4F10.4)
+                    Variable Bond Angles follow   (I4)
+0005-0012
+                    Additional Bond Angles follow (3I4)
+AUTO
+                    Variable Dihedrals follow     (3I4,F12.6)
+0006-0012
+                   Additional Dihedrals follow   (6I4)
+AUTO
+                   Domain Definitions follow     (4I4)
+                   Conformational Search         (2I4, 2F12.6)
+                   Final blank line
+
+I have tested the parameters in MC simulations of liquid DMSO at
+25 C and 1 atm.
+                OPLS-AA      Expt
+density          1.099       1.095
+deltaHvap        13.27       12.64
+
+B. Jorgensen
+

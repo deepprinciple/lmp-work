@@ -1,0 +1,28 @@
+       N-Methylformamide  (Z)                               Tot. E =     -8.7805
+   1 C    235    0    0    0.000000   0    0.000000   0    0.000000        0
+   2 DUM   -1    0    1    1.000000   0    0.000000   0    0.000000        0
+   3 DUM   -1    0    2    1.000000   1   90.000000   0    0.000000        0
+   4 O    236    0    1    1.227691   2   90.000000   3    0.000000        0
+   5 N    238    0    1    1.336978   4  122.929402   2  270.000000        0
+   6 HCO  279    0    1    1.089958   4  123.042506   2   90.000000        0
+   7 C    242    0    5    1.456419   1  123.503117   4    0.000000        0
+   8 H    241    0    5    1.008301   1  118.164624   7  180.000000        0
+   9 H    140    0    7    1.091271   5  110.704574   1  300.050801        0
+  10 H    140    0    7    1.091271   5  110.704573   9  119.898397        0
+  11 H    140    0    7    1.089897   5  110.547812   9  239.949199        0
+                    Geometry Variations follow    (2I4,F12.6)                   
+                    Variable Bonds follow         (I4 or I4-I4)                 
+0004-0011                                                                       
+                    Additional Bonds follow       (2I4)                         
+                    Harmonic Constraints follow   (2I4,4F10.4)                  
+                    Variable Bond Angles follow   (I4 or I4-I4)                 
+0005-0011                                                                       
+                    Additional Bond Angles follow (3I4)                         
+AUTO                                                                            
+                    Variable Dihedrals follow     (3I4,F12.6)                   
+0006-0011                                                                       
+                    Additional Dihedrals follow   (6I4)                         
+AUTO                                                                            
+                    Domain Definitions follow     (4I4)                         
+                    Conformational Search         (2I4, 2F12.6)                 
+                    Final blank line                                            

@@ -1,0 +1,31 @@
+       2-methylpropene                                      Tot. E =     -0.6363
+   1 C    143  143    0    0.000000   0    0.000000   0    0.000000        0
+   2 Du    -1   -1    1    1.000000   0    0.000000   0    0.000000        0
+   3 Du    -1   -1    2    1.000000   1   90.000000   0    0.000000        0
+   4 C    141  141    1    1.343721   2   90.000000   3    0.000000        0
+   5 C     55   55    4    1.514331   1  118.537537   2  270.000000        0
+   6 C     55   55    4    1.514331   1  118.537538   5  180.000002        0
+   7 H    144  144    1    1.080409   4  121.498730   5  359.999986        0
+   8 H    144  144    1    1.080409   4  121.498713   7  180.000030        0
+   9 H     60   60    5    1.090585   4  112.230017   1    0.000020        0
+  10 H     60   60    5    1.090180   4  110.038417   9  239.554778        0
+  11 H     60   60    5    1.090180   4  110.038391   9  120.445214        0
+  12 H     60   60    6    1.090584   4  112.230002   1    0.000082        0
+  13 H     60   60    6    1.090180   4  110.038455  12  239.554774        0
+  14 H     60   60    6    1.090180   4  110.038451  12  120.445224        0
+                    Geometry Variations follow    (2I4,F12.6)                   
+                    Variable Bonds follow         (I4)                          
+   4-  14                                                                       
+                    Additional Bonds follow       (2I4)                         
+                    Harmonic Constraints follow   (2I4,4F10.4)                  
+                    Variable Bond Angles follow   (I4)                          
+   5-  14                                                                       
+                    Additional Bond Angles follow (3I4)                         
+AUTO                                                                            
+                    Variable Dihedrals follow     (3I4,F12.6)                   
+   6-  14                                                                       
+                    Additional Dihedrals follow   (6I4)                         
+AUTO                                                                            
+                    Domain Definitions follow     (4I4)                         
+                    Conformational Search                                       
+                    Final blank line                                            

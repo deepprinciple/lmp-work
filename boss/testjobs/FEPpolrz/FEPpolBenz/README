@@ -1,0 +1,18 @@
+
+ MC/FEP simulation for tetramethylammonium ion -> neopentane
+ in polarizable liquid benzene (N = 260).
+
+ The job can be run in this directory via 
+ cp tmaneo.z fepzmat
+ csh -e fepcmd >& log &
+
+ or on the queuing system via
+ xFEPQ tmaneo
+ The results are then in the directory tmaneo.fep
+
+ Then execute xSUMDELG to yield
+ sumout which contains a summary of the deltaG results.
+
+ to display a plot file, e.g.,
+ x f005plte10
+

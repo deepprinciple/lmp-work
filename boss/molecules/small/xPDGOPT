@@ -1,0 +1,21 @@
+#!/bin/csh
+#
+echo  perform PDDG/PM3 optimization
+#
+# usage - xPDGOPT moleculename
+#
+# test if the enviroment variable BOSSdir has been defined
+#
+if (!($?BOSSdir)) then
+   echo "BOSSdir has not been defined; please see README"
+   exit (-1)
+endif
+
+if (-e optzmat) rm optzmat
+cp ${argv[1]}.z optzmat
+csh $BOSSdir/scripts/PDGOPTcmd >& log
+echo  output is in out, sum and plt.pdb
+cp sum ${argv[1]}.pdg.z
+rm optzmat
+#
+exit

@@ -1,0 +1,28 @@
+            Ethanol                                         Tot. E =      0.7590
+   1 O    154    0    0    0.000000   0    0.000000   0    0.000000        0
+   2 DUM   -1    0    1    0.500000   0    0.000000   0    0.000000        0
+   3 DUM   -1    0    2    0.500000   1   90.000000   0    0.000000        0
+   4 H    155    0    1    0.946153   2   90.000000   3  180.000000        0
+   5 C1   157    0    1    1.411144   4  109.177619   2  180.000000        0
+   6 C2    54    0    5    1.529481   1  108.836055   4  180.000000        0
+   7 HC    60    0    5    1.090962   6  110.502905   1  120.500489        0
+   8 HC    60    0    5    1.090962   6  110.502907   1  239.499506        0
+   9 HC    60    0    6    1.090049   5  110.992613   1   90.000016        0
+  10 HC    60    0    6    1.090391   5  111.101812   9  119.975535        0
+  11 HC    60    0    6    1.090391   5  111.101817   9  240.024451        0
+                    Geometry Variations follow                                  
+                    Variable Bonds follow         (I4 or I4-I4)                 
+0004-0011                                                                       
+                    Additional Bonds follow       (2I4)                         
+                    Harmonic Constraints follow                                 
+                    Variable Bond Angles follow   (I4 or I4-I4)                 
+0005-0011                                                                       
+                    Additional Bond Angles follow (3I4)                         
+AUTO                                                                            
+                    Variable Dihedrals follow     (3I4,F12.6)                   
+0006-0011                                                                       
+                    Additional Dihedrals follow   (6I4)                         
+AUTO                                                                            
+                    Domain Definitions follow     (4I4)                         
+                    Conformational Search         (2I4, 2F12.6)                 
+                    Final blank line                                            

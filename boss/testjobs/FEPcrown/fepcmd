@@ -1,0 +1,127 @@
+#
+# Command file for the BOSS  program.  Execute by entering the following:
+# csh fepcmd >& feplog &
+#***********************************************************************
+echo '                 MC/FEP simulation'
+echo '                    25 C & 1 atm '
+echo '                 Equilibration    2M '
+echo '                   Averaging  0-2M '
+echo '            N = 200  T=25  P=1  Rcut = 8.0'
+#***********************************************************************
+#
+nice +19
+set boss = $BOSSdir/BOSS
+set configurations = "500000"
+set boxes = $BOSSdir
+#
+
+##### calculation is repeated 'nsteps' times.
+##### RC0 starts with 'startval' and is incremented by 'increment'
+##### at each step. All these values need to be integers.
+set startval = 25
+set increment = 50
+set nsteps = 2
+
+#####
+##### oridinary users don't need to edit beyond this line.
+##### '@' indicates an arithmetic operation.
+#####
+@ perturb = $increment / 2
+set inc = $startval
+set i = 0
+
+##### Enter a loop. Repeat until i < nsteps.
+while ($i < $nsteps)
+	@ rc0 = $inc
+	@ rc1 = $rc0 - $perturb
+	@ rc2 = $rc0 + $perturb
+        @ int0 = $rc0 / 100
+        @ dec0 = $rc0 - $int0 * 100
+        @ int1 = $rc1 / 100
+        @ dec1 = $rc1 - $int1 * 100
+        @ int2 = $rc2 / 100
+        @ dec2 = $rc2 - $int2 * 100
+
+        set rc0 = ${int0}.${dec0}
+        set rc1 = ${int1}.${dec1}
+        set rc2 = ${int2}.${dec2}
+        set lambda = "$rc0 $rc1 $rc2"
+
+	setenv INFILE    f${inc}in
+	setenv UPFILE    f${inc}up
+	setenv SAVE      f${inc}sv
+	setenv AVERAGE   f${inc}av
+	setenv ZMATRIX   fepzmat
+	setenv SLVZMAT   slvzmat
+
+	set SAVESUM = f${inc}sav
+
+	# The feppar0 file is only used for this initial window; feppar
+	# is used for subsequent windows. The difference is that the
+	# subsequent windows use ZIN and IN for the initial solute and
+	# solvent coordinates, while here they come from ZMAT and BOXES.
+        if (-e tmppar) rm tmppar
+        if ($i == 0) then
+                cp feppar0 tmppar
+        else
+                cp feppar tmppar
+        endif
+        cat $BOSSdir/oplsaa.par >> tmppar
+        setenv PARAMETER tmppar
+
+	setenv BANGPAR   $boxes/oplsaa.sb
+	setenv WATERBOX  $boxes/watbox
+	setenv ORG1BOX   $boxes/org1box
+	setenv ORG2BOX   $boxes/org2box
+	setenv SUMMARY   f${inc}sum
+
+	date
+
+	setenv OUTPUT    f${inc}ota
+	setenv PLTFILE   f${inc}plta
+
+	#    Equilibration
+
+echo time $boss 111 $configurations $lambda
+	time $boss 111 $configurations $lambda
+	foreach block (b c eq)
+        	date
+		setenv OUTPUT    f${inc}ot$block
+		setenv PLTFILE   f${inc}plt$block
+echo time $boss 001 $configurations $lambda
+		time $boss 001 $configurations $lambda
+	end
+
+	#    Averaging
+
+	setenv OUTPUT    f${inc}otb
+	setenv PLTFILE   f${inc}pltb
+
+echo time $boss 011 $configurations $lambda
+	time $boss 011 $configurations $lambda
+	mv $SAVE $SAVESUM
+	foreach block (c d e2)
+        	date
+        	setenv OUTPUT    f${inc}ot$block
+        	setenv PLTFILE   f${inc}plt$block
+echo time $boss 001 $configurations $lambda
+        	time $boss 001 $configurations $lambda
+        	cat $SAVE >> $SAVESUM
+		rm $SAVE
+	end
+	rm $SLVZMAT
+        rm tmppar
+
+	set oldinc = $inc
+
+	##### 'inc' is incremented by 'increment'.
+	##### copy the current infile for the next calc.
+	@ inc += $increment
+	cp f${oldinc}in f${inc}in
+
+	##### increment 'i' by one.
+	@ i++
+end
+
+date
+exit

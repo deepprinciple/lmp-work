@@ -1,0 +1,469 @@
+tb07.lcc.chem.pvn
+                MC/SOS-FEP simulation
+                     21 windows 
+                    25 C & 1 atm 
+                 Equilibration 6M/3M 
+                   Averaging  0-10M 
+Fri Jan 18 15:40:45 EST 2019
+time /net/terminus/bill/boss/BOSS 111 2000000 0.000 0.000 0.050
+68.886u 0.012s 1:12.98 94.3%	0+0k 5088+664io 21pf+0w
+time /net/terminus/bill/boss/BOSS 011 2000000 0.000 0.000 0.050
+68.860u 0.049s 1:08.93 99.9%	0+0k 0+656io 0pf+0w
+Fri Jan 18 15:43:07 EST 2019
+time /net/terminus/bill/boss/BOSS 001 2000000 0.000 0.000 0.050
+68.964u 0.050s 1:09.04 99.9%	0+0k 0+680io 0pf+0w
+time /net/terminus/bill/boss/BOSS 011 2000000 0.000 0.000 0.050
+69.219u 0.058s 1:09.29 99.9%	0+0k 0+656io 0pf+0w
+Fri Jan 18 15:45:26 EST 2019
+time /net/terminus/bill/boss/BOSS 001 2000000 0.000 0.000 0.050
+69.190u 0.042s 1:09.25 99.9%	0+0k 0+680io 0pf+0w
+Fri Jan 18 15:46:35 EST 2019
+time /net/terminus/bill/boss/BOSS 001 2000000 0.000 0.000 0.050
+68.799u 0.047s 1:08.87 99.9%	0+0k 0+680io 0pf+0w
+Fri Jan 18 15:47:45 EST 2019
+time /net/terminus/bill/boss/BOSS 001 2000000 0.000 0.000 0.050
+68.973u 0.045s 1:09.04 99.9%	0+0k 0+688io 0pf+0w
+Fri Jan 18 15:48:54 EST 2019
+time /net/terminus/bill/boss/BOSS 001 2000000 0.000 0.000 0.050
+69.863u 0.048s 1:09.93 99.9%	0+0k 0+680io 0pf+0w
+Fri Jan 18 15:50:04 EST 2019
+time /net/terminus/bill/boss/BOSS 111 1000000 0.050 0.000 0.100
+35.088u 0.032s 0:35.13 99.9%	0+0k 0+664io 0pf+0w
+time /net/terminus/bill/boss/BOSS 011 1000000 0.050 0.000 0.100
+34.911u 0.025s 0:34.94 99.9%	0+0k 0+656io 0pf+0w
+Fri Jan 18 15:51:15 EST 2019
+time /net/terminus/bill/boss/BOSS 001 1000000 0.050 0.000 0.100
+34.502u 0.027s 0:34.54 99.9%	0+0k 0+680io 0pf+0w
+time /net/terminus/bill/boss/BOSS 011 2000000 0.050 0.000 0.100
+68.956u 0.206s 1:09.18 99.9%	0+0k 0+656io 0pf+0w
+Fri Jan 18 15:52:59 EST 2019
+time /net/terminus/bill/boss/BOSS 001 2000000 0.050 0.000 0.100
+69.281u 0.016s 1:09.32 99.9%	0+0k 0+680io 0pf+0w
+Fri Jan 18 15:54:08 EST 2019
+time /net/terminus/bill/boss/BOSS 001 2000000 0.050 0.000 0.100
+68.611u 0.047s 1:08.68 99.9%	0+0k 0+680io 0pf+0w
+Fri Jan 18 15:55:17 EST 2019
+time /net/terminus/bill/boss/BOSS 001 2000000 0.050 0.000 0.100
+69.431u 0.042s 1:09.49 99.9%	0+0k 0+688io 0pf+0w
+Fri Jan 18 15:56:27 EST 2019
+time /net/terminus/bill/boss/BOSS 001 2000000 0.050 0.000 0.100
+69.262u 0.043s 1:09.33 99.9%	0+0k 0+680io 0pf+0w
+Fri Jan 18 15:57:37 EST 2019
+time /net/terminus/bill/boss/BOSS 111 2000000 0.100 0.050 0.150
+69.320u 0.056s 1:09.40 99.9%	0+0k 0+664io 0pf+0w
+time /net/terminus/bill/boss/BOSS 011 2000000 0.100 0.050 0.150
+68.953u 0.056s 1:09.03 99.9%	0+0k 0+656io 0pf+0w
+Fri Jan 18 15:59:56 EST 2019
+time /net/terminus/bill/boss/BOSS 001 2000000 0.100 0.050 0.150
+69.053u 0.060s 1:09.13 99.9%	0+0k 0+680io 0pf+0w
+time /net/terminus/bill/boss/BOSS 011 2000000 0.100 0.050 0.150
+69.548u 0.053s 1:09.62 99.9%	0+0k 0+656io 0pf+0w
+Fri Jan 18 16:02:15 EST 2019
+time /net/terminus/bill/boss/BOSS 001 2000000 0.100 0.050 0.150
+69.585u 0.018s 1:09.62 99.9%	0+0k 0+680io 0pf+0w
+Fri Jan 18 16:03:25 EST 2019
+time /net/terminus/bill/boss/BOSS 001 2000000 0.100 0.050 0.150
+69.793u 0.043s 1:09.86 99.9%	0+0k 0+680io 0pf+0w
+Fri Jan 18 16:04:35 EST 2019
+time /net/terminus/bill/boss/BOSS 001 2000000 0.100 0.050 0.150
+70.071u 0.044s 1:10.13 99.9%	0+0k 0+688io 0pf+0w
+Fri Jan 18 16:05:45 EST 2019
+time /net/terminus/bill/boss/BOSS 001 2000000 0.100 0.050 0.150
+68.861u 0.048s 1:08.93 99.9%	0+0k 0+680io 0pf+0w
+Fri Jan 18 16:06:54 EST 2019
+time /net/terminus/bill/boss/BOSS 111 2000000 0.150 0.100 0.200
+69.486u 0.053s 1:09.56 99.9%	0+0k 0+664io 0pf+0w
+time /net/terminus/bill/boss/BOSS 011 2000000 0.150 0.100 0.200
+69.200u 0.057s 1:09.28 99.9%	0+0k 0+656io 0pf+0w
+Fri Jan 18 16:09:14 EST 2019
+time /net/terminus/bill/boss/BOSS 001 2000000 0.150 0.100 0.200
+70.031u 0.013s 1:10.06 99.9%	0+0k 0+680io 0pf+0w
+time /net/terminus/bill/boss/BOSS 011 2000000 0.150 0.100 0.200
+69.783u 0.054s 1:09.85 99.9%	0+0k 0+656io 0pf+0w
+Fri Jan 18 16:11:34 EST 2019
+time /net/terminus/bill/boss/BOSS 001 2000000 0.150 0.100 0.200
+69.027u 0.044s 1:09.09 99.9%	0+0k 0+680io 0pf+0w
+Fri Jan 18 16:12:43 EST 2019
+time /net/terminus/bill/boss/BOSS 001 2000000 0.150 0.100 0.200
+69.577u 0.051s 1:09.65 99.9%	0+0k 0+680io 0pf+0w
+Fri Jan 18 16:13:53 EST 2019
+time /net/terminus/bill/boss/BOSS 001 2000000 0.150 0.100 0.200
+68.987u 0.045s 1:09.05 99.9%	0+0k 0+688io 0pf+0w
+Fri Jan 18 16:15:03 EST 2019
+time /net/terminus/bill/boss/BOSS 001 2000000 0.150 0.100 0.200
+68.746u 0.045s 1:08.81 99.9%	0+0k 0+680io 0pf+0w
+Fri Jan 18 16:16:12 EST 2019
+time /net/terminus/bill/boss/BOSS 111 2000000 0.200 0.150 0.250
+69.130u 0.044s 1:09.19 99.9%	0+0k 0+664io 0pf+0w
+time /net/terminus/bill/boss/BOSS 011 2000000 0.200 0.150 0.250
+68.106u 0.022s 1:08.16 99.9%	0+0k 0+656io 0pf+0w
+Fri Jan 18 16:18:30 EST 2019
+time /net/terminus/bill/boss/BOSS 001 2000000 0.200 0.150 0.250
+69.162u 0.049s 1:09.23 99.9%	0+0k 0+680io 0pf+0w
+time /net/terminus/bill/boss/BOSS 011 2000000 0.200 0.150 0.250
+68.729u 0.046s 1:08.79 99.9%	0+0k 0+656io 0pf+0w
+Fri Jan 18 16:20:48 EST 2019
+time /net/terminus/bill/boss/BOSS 001 2000000 0.200 0.150 0.250
+68.799u 0.051s 1:08.87 99.9%	0+0k 0+680io 0pf+0w
+Fri Jan 18 16:21:57 EST 2019
+time /net/terminus/bill/boss/BOSS 001 2000000 0.200 0.150 0.250
+68.813u 0.065s 1:08.90 99.9%	0+0k 0+680io 0pf+0w
+Fri Jan 18 16:23:06 EST 2019
+time /net/terminus/bill/boss/BOSS 001 2000000 0.200 0.150 0.250
+68.720u 0.047s 1:08.79 99.9%	0+0k 0+688io 0pf+0w
+Fri Jan 18 16:24:15 EST 2019
+time /net/terminus/bill/boss/BOSS 001 2000000 0.200 0.150 0.250
+69.057u 0.059s 1:09.14 99.9%	0+0k 0+680io 0pf+0w
+Fri Jan 18 16:25:25 EST 2019
+time /net/terminus/bill/boss/BOSS 111 2000000 0.250 0.200 0.300
+69.465u 0.041s 1:09.52 99.9%	0+0k 0+664io 0pf+0w
+time /net/terminus/bill/boss/BOSS 011 2000000 0.250 0.200 0.300
+68.870u 0.033s 1:08.92 99.9%	0+0k 0+656io 0pf+0w
+Fri Jan 18 16:27:44 EST 2019
+time /net/terminus/bill/boss/BOSS 001 2000000 0.250 0.200 0.300
+69.304u 0.049s 1:09.37 99.9%	0+0k 0+680io 0pf+0w
+time /net/terminus/bill/boss/BOSS 011 2000000 0.250 0.200 0.300
+69.004u 0.051s 1:09.07 99.9%	0+0k 0+656io 0pf+0w
+Fri Jan 18 16:30:03 EST 2019
+time /net/terminus/bill/boss/BOSS 001 2000000 0.250 0.200 0.300
+69.778u 0.055s 1:09.85 99.9%	0+0k 0+680io 0pf+0w
+Fri Jan 18 16:31:13 EST 2019
+time /net/terminus/bill/boss/BOSS 001 2000000 0.250 0.200 0.300
+69.637u 0.049s 1:09.70 99.9%	0+0k 0+680io 0pf+0w
+Fri Jan 18 16:32:23 EST 2019
+time /net/terminus/bill/boss/BOSS 001 2000000 0.250 0.200 0.300
+68.831u 0.049s 1:08.90 99.9%	0+0k 0+688io 0pf+0w
+Fri Jan 18 16:33:32 EST 2019
+time /net/terminus/bill/boss/BOSS 001 2000000 0.250 0.200 0.300
+68.339u 0.049s 1:08.41 99.9%	0+0k 0+680io 0pf+0w
+Fri Jan 18 16:34:41 EST 2019
+time /net/terminus/bill/boss/BOSS 111 2000000 0.300 0.250 0.350
+68.226u 0.053s 1:08.30 99.9%	0+0k 0+664io 0pf+0w
+time /net/terminus/bill/boss/BOSS 011 2000000 0.300 0.250 0.350
+68.614u 0.050s 1:08.68 99.9%	0+0k 0+656io 0pf+0w
+Fri Jan 18 16:36:58 EST 2019
+time /net/terminus/bill/boss/BOSS 001 2000000 0.300 0.250 0.350
+68.867u 0.039s 1:08.92 99.9%	0+0k 0+680io 0pf+0w
+time /net/terminus/bill/boss/BOSS 011 2000000 0.300 0.250 0.350
+68.705u 0.033s 1:08.76 99.9%	0+0k 0+656io 0pf+0w
+Fri Jan 18 16:39:16 EST 2019
+time /net/terminus/bill/boss/BOSS 001 2000000 0.300 0.250 0.350
+68.941u 0.033s 1:08.99 99.9%	0+0k 0+680io 0pf+0w
+Fri Jan 18 16:40:25 EST 2019
+time /net/terminus/bill/boss/BOSS 001 2000000 0.300 0.250 0.350
+69.400u 0.046s 1:09.47 99.9%	0+0k 0+680io 0pf+0w
+Fri Jan 18 16:41:35 EST 2019
+time /net/terminus/bill/boss/BOSS 001 2000000 0.300 0.250 0.350
+69.133u 0.052s 1:09.20 99.9%	0+0k 0+688io 0pf+0w
+Fri Jan 18 16:42:45 EST 2019
+time /net/terminus/bill/boss/BOSS 001 2000000 0.300 0.250 0.350
+69.261u 0.045s 1:09.32 99.9%	0+0k 0+680io 0pf+0w
+Fri Jan 18 16:43:54 EST 2019
+time /net/terminus/bill/boss/BOSS 111 2000000 0.350 0.300 0.400
+69.212u 0.048s 1:09.28 99.9%	0+0k 0+664io 0pf+0w
+time /net/terminus/bill/boss/BOSS 011 2000000 0.350 0.300 0.400
+69.363u 0.053s 1:09.44 99.9%	0+0k 0+656io 0pf+0w
+Fri Jan 18 16:46:13 EST 2019
+time /net/terminus/bill/boss/BOSS 001 2000000 0.350 0.300 0.400
+69.659u 0.056s 1:09.73 99.9%	0+0k 0+680io 0pf+0w
+time /net/terminus/bill/boss/BOSS 011 2000000 0.350 0.300 0.400
+69.403u 0.053s 1:09.48 99.9%	0+0k 0+656io 0pf+0w
+Fri Jan 18 16:48:33 EST 2019
+time /net/terminus/bill/boss/BOSS 001 2000000 0.350 0.300 0.400
+69.541u 0.041s 1:09.60 99.9%	0+0k 0+680io 0pf+0w
+Fri Jan 18 16:49:43 EST 2019
+time /net/terminus/bill/boss/BOSS 001 2000000 0.350 0.300 0.400
+68.743u 0.045s 1:08.81 99.9%	0+0k 0+680io 0pf+0w
+Fri Jan 18 16:50:52 EST 2019
+time /net/terminus/bill/boss/BOSS 001 2000000 0.350 0.300 0.400
+68.727u 0.044s 1:08.79 99.9%	0+0k 0+688io 0pf+0w
+Fri Jan 18 16:52:01 EST 2019
+time /net/terminus/bill/boss/BOSS 001 2000000 0.350 0.300 0.400
+69.618u 0.151s 1:09.79 99.9%	0+0k 0+680io 0pf+0w
+Fri Jan 18 16:53:11 EST 2019
+time /net/terminus/bill/boss/BOSS 111 2000000 0.400 0.350 0.450
+69.748u 0.047s 1:09.81 99.9%	0+0k 0+664io 0pf+0w
+time /net/terminus/bill/boss/BOSS 011 2000000 0.400 0.350 0.450
+68.470u 0.040s 1:08.53 99.9%	0+0k 0+656io 0pf+0w
+Fri Jan 18 16:55:30 EST 2019
+time /net/terminus/bill/boss/BOSS 001 2000000 0.400 0.350 0.450
+69.510u 0.040s 1:09.57 99.9%	0+0k 0+680io 0pf+0w
+time /net/terminus/bill/boss/BOSS 011 2000000 0.400 0.350 0.450
+69.166u 0.057s 1:09.24 99.9%	0+0k 0+656io 0pf+0w
+Fri Jan 18 16:57:49 EST 2019
+time /net/terminus/bill/boss/BOSS 001 2000000 0.400 0.350 0.450
+68.517u 0.042s 1:08.58 99.9%	0+0k 0+680io 0pf+0w
+Fri Jan 18 16:58:58 EST 2019
+time /net/terminus/bill/boss/BOSS 001 2000000 0.400 0.350 0.450
+69.641u 0.035s 1:09.70 99.9%	0+0k 0+680io 0pf+0w
+Fri Jan 18 17:00:08 EST 2019
+time /net/terminus/bill/boss/BOSS 001 2000000 0.400 0.350 0.450
+69.364u 0.038s 1:09.42 99.9%	0+0k 0+688io 0pf+0w
+Fri Jan 18 17:01:18 EST 2019
+time /net/terminus/bill/boss/BOSS 001 2000000 0.400 0.350 0.450
+69.722u 0.042s 1:09.78 99.9%	0+0k 0+680io 0pf+0w
+Fri Jan 18 17:02:28 EST 2019
+time /net/terminus/bill/boss/BOSS 111 2000000 0.450 0.400 0.500
+69.210u 0.038s 1:09.27 99.9%	0+0k 0+664io 0pf+0w
+time /net/terminus/bill/boss/BOSS 011 2000000 0.450 0.400 0.500
+68.866u 0.036s 1:08.92 99.9%	0+0k 0+656io 0pf+0w
+Fri Jan 18 17:04:46 EST 2019
+time /net/terminus/bill/boss/BOSS 001 2000000 0.450 0.400 0.500
+69.146u 0.057s 1:09.22 99.9%	0+0k 0+680io 0pf+0w
+time /net/terminus/bill/boss/BOSS 011 2000000 0.450 0.400 0.500
+68.626u 0.043s 1:08.69 99.9%	0+0k 0+656io 0pf+0w
+Fri Jan 18 17:07:05 EST 2019
+time /net/terminus/bill/boss/BOSS 001 2000000 0.450 0.400 0.500
+69.025u 0.044s 1:09.09 99.9%	0+0k 0+680io 0pf+0w
+Fri Jan 18 17:08:14 EST 2019
+time /net/terminus/bill/boss/BOSS 001 2000000 0.450 0.400 0.500
+68.926u 0.036s 1:08.98 99.9%	0+0k 0+680io 0pf+0w
+Fri Jan 18 17:09:24 EST 2019
+time /net/terminus/bill/boss/BOSS 001 2000000 0.450 0.400 0.500
+68.590u 0.054s 1:08.67 99.9%	0+0k 0+688io 0pf+0w
+Fri Jan 18 17:10:32 EST 2019
+time /net/terminus/bill/boss/BOSS 001 2000000 0.450 0.400 0.500
+68.947u 0.044s 1:09.01 99.9%	0+0k 0+680io 0pf+0w
+Fri Jan 18 17:11:42 EST 2019
+time /net/terminus/bill/boss/BOSS 111 2000000 0.500 0.450 0.550
+68.482u 0.047s 1:08.55 99.9%	0+0k 0+664io 0pf+0w
+time /net/terminus/bill/boss/BOSS 011 2000000 0.500 0.450 0.550
+68.789u 0.052s 1:08.86 99.9%	0+0k 0+656io 0pf+0w
+Fri Jan 18 17:14:00 EST 2019
+time /net/terminus/bill/boss/BOSS 001 2000000 0.500 0.450 0.550
+68.509u 0.059s 1:08.59 99.9%	0+0k 0+680io 0pf+0w
+time /net/terminus/bill/boss/BOSS 011 2000000 0.500 0.450 0.550
+69.007u 0.040s 1:09.07 99.9%	0+0k 0+656io 0pf+0w
+Fri Jan 18 17:16:18 EST 2019
+time /net/terminus/bill/boss/BOSS 001 2000000 0.500 0.450 0.550
+69.366u 0.062s 1:09.45 99.9%	0+0k 0+680io 0pf+0w
+Fri Jan 18 17:17:27 EST 2019
+time /net/terminus/bill/boss/BOSS 001 2000000 0.500 0.450 0.550
+68.593u 0.041s 1:08.65 99.9%	0+0k 0+680io 0pf+0w
+Fri Jan 18 17:18:36 EST 2019
+time /net/terminus/bill/boss/BOSS 001 2000000 0.500 0.450 0.550
+68.916u 0.039s 1:08.97 99.9%	0+0k 0+688io 0pf+0w
+Fri Jan 18 17:19:46 EST 2019
+time /net/terminus/bill/boss/BOSS 001 2000000 0.500 0.450 0.550
+69.591u 0.045s 1:09.66 99.9%	0+0k 0+680io 0pf+0w
+Fri Jan 18 17:20:56 EST 2019
+time /net/terminus/bill/boss/BOSS 111 2000000 0.550 0.500 0.600
+69.329u 0.044s 1:09.39 99.9%	0+0k 0+664io 0pf+0w
+time /net/terminus/bill/boss/BOSS 011 2000000 0.550 0.500 0.600
+69.097u 0.039s 1:09.16 99.9%	0+0k 0+656io 0pf+0w
+Fri Jan 18 17:23:15 EST 2019
+time /net/terminus/bill/boss/BOSS 001 2000000 0.550 0.500 0.600
+69.256u 0.045s 1:09.32 99.9%	0+0k 0+680io 0pf+0w
+time /net/terminus/bill/boss/BOSS 011 2000000 0.550 0.500 0.600
+69.343u 0.014s 1:09.38 99.9%	0+0k 0+656io 0pf+0w
+Fri Jan 18 17:25:34 EST 2019
+time /net/terminus/bill/boss/BOSS 001 2000000 0.550 0.500 0.600
+69.175u 0.044s 1:09.24 99.9%	0+0k 0+680io 0pf+0w
+Fri Jan 18 17:26:43 EST 2019
+time /net/terminus/bill/boss/BOSS 001 2000000 0.550 0.500 0.600
+69.192u 0.048s 1:09.26 99.9%	0+0k 0+680io 0pf+0w
+Fri Jan 18 17:27:53 EST 2019
+time /net/terminus/bill/boss/BOSS 001 2000000 0.550 0.500 0.600
+71.504u 0.046s 1:11.57 99.9%	0+0k 0+688io 0pf+0w
+Fri Jan 18 17:29:05 EST 2019
+time /net/terminus/bill/boss/BOSS 001 2000000 0.550 0.500 0.600
+70.230u 0.031s 1:10.28 99.9%	0+0k 0+680io 0pf+0w
+Fri Jan 18 17:30:15 EST 2019
+time /net/terminus/bill/boss/BOSS 111 2000000 0.600 0.550 0.650
+69.145u 0.045s 1:09.21 99.9%	0+0k 0+664io 0pf+0w
+time /net/terminus/bill/boss/BOSS 011 2000000 0.600 0.550 0.650
+68.878u 0.044s 1:08.94 99.9%	0+0k 0+656io 0pf+0w
+Fri Jan 18 17:32:34 EST 2019
+time /net/terminus/bill/boss/BOSS 001 2000000 0.600 0.550 0.650
+68.834u 0.057s 1:08.91 99.9%	0+0k 0+680io 0pf+0w
+time /net/terminus/bill/boss/BOSS 011 2000000 0.600 0.550 0.650
+69.418u 0.052s 1:09.49 99.9%	0+0k 0+656io 0pf+0w
+Fri Jan 18 17:34:53 EST 2019
+time /net/terminus/bill/boss/BOSS 001 2000000 0.600 0.550 0.650
+69.134u 0.051s 1:09.21 99.9%	0+0k 0+680io 0pf+0w
+Fri Jan 18 17:36:02 EST 2019
+time /net/terminus/bill/boss/BOSS 001 2000000 0.600 0.550 0.650
+69.017u 0.011s 1:09.05 99.9%	0+0k 0+680io 0pf+0w
+Fri Jan 18 17:37:11 EST 2019
+time /net/terminus/bill/boss/BOSS 001 2000000 0.600 0.550 0.650
+69.274u 0.041s 1:09.34 99.9%	0+0k 0+688io 0pf+0w
+Fri Jan 18 17:38:21 EST 2019
+time /net/terminus/bill/boss/BOSS 001 2000000 0.600 0.550 0.650
+69.041u 0.043s 1:09.10 99.9%	0+0k 0+680io 0pf+0w
+Fri Jan 18 17:39:30 EST 2019
+time /net/terminus/bill/boss/BOSS 111 2000000 0.650 0.600 0.700
+69.192u 0.043s 1:09.26 99.9%	0+0k 0+664io 0pf+0w
+time /net/terminus/bill/boss/BOSS 011 2000000 0.650 0.600 0.700
+68.972u 0.045s 1:09.04 99.9%	0+0k 0+656io 0pf+0w
+Fri Jan 18 17:41:49 EST 2019
+time /net/terminus/bill/boss/BOSS 001 2000000 0.650 0.600 0.700
+68.803u 0.047s 1:08.87 99.9%	0+0k 0+680io 0pf+0w
+time /net/terminus/bill/boss/BOSS 011 2000000 0.650 0.600 0.700
+68.832u 0.012s 1:08.87 99.9%	0+0k 0+656io 0pf+0w
+Fri Jan 18 17:44:07 EST 2019
+time /net/terminus/bill/boss/BOSS 001 2000000 0.650 0.600 0.700
+68.819u 0.045s 1:08.88 99.9%	0+0k 0+680io 0pf+0w
+Fri Jan 18 17:45:17 EST 2019
+time /net/terminus/bill/boss/BOSS 001 2000000 0.650 0.600 0.700
+68.550u 0.035s 1:08.61 99.9%	0+0k 0+680io 0pf+0w
+Fri Jan 18 17:46:26 EST 2019
+time /net/terminus/bill/boss/BOSS 001 2000000 0.650 0.600 0.700
+68.833u 0.039s 1:08.89 99.9%	0+0k 0+688io 0pf+0w
+Fri Jan 18 17:47:35 EST 2019
+time /net/terminus/bill/boss/BOSS 001 2000000 0.650 0.600 0.700
+69.048u 0.037s 1:09.10 99.9%	0+0k 0+680io 0pf+0w
+Fri Jan 18 17:48:44 EST 2019
+time /net/terminus/bill/boss/BOSS 111 2000000 0.700 0.650 0.750
+68.557u 0.033s 1:08.61 99.9%	0+0k 0+664io 0pf+0w
+time /net/terminus/bill/boss/BOSS 011 2000000 0.700 0.650 0.750
+69.142u 0.047s 1:09.21 99.9%	0+0k 0+656io 0pf+0w
+Fri Jan 18 17:51:03 EST 2019
+time /net/terminus/bill/boss/BOSS 001 2000000 0.700 0.650 0.750
+69.183u 0.040s 1:09.24 99.9%	0+0k 0+680io 0pf+0w
+time /net/terminus/bill/boss/BOSS 011 2000000 0.700 0.650 0.750
+69.153u 0.194s 1:09.37 99.9%	0+0k 0+656io 0pf+0w
+Fri Jan 18 17:53:22 EST 2019
+time /net/terminus/bill/boss/BOSS 001 2000000 0.700 0.650 0.750
+68.691u 0.040s 1:08.75 99.9%	0+0k 0+680io 0pf+0w
+Fri Jan 18 17:54:31 EST 2019
+time /net/terminus/bill/boss/BOSS 001 2000000 0.700 0.650 0.750
+69.536u 0.047s 1:09.60 99.9%	0+0k 0+680io 0pf+0w
+Fri Jan 18 17:55:41 EST 2019
+time /net/terminus/bill/boss/BOSS 001 2000000 0.700 0.650 0.750
+69.350u 0.044s 1:09.41 99.9%	0+0k 0+688io 0pf+0w
+Fri Jan 18 17:56:50 EST 2019
+time /net/terminus/bill/boss/BOSS 001 2000000 0.700 0.650 0.750
+68.805u 0.049s 1:08.87 99.9%	0+0k 0+680io 0pf+0w
+Fri Jan 18 17:58:00 EST 2019
+time /net/terminus/bill/boss/BOSS 111 2000000 0.750 0.700 0.800
+68.789u 0.034s 1:08.84 99.9%	0+0k 0+664io 0pf+0w
+time /net/terminus/bill/boss/BOSS 011 2000000 0.750 0.700 0.800
+69.648u 0.046s 1:09.72 99.9%	0+0k 0+656io 0pf+0w
+Fri Jan 18 18:00:18 EST 2019
+time /net/terminus/bill/boss/BOSS 001 2000000 0.750 0.700 0.800
+68.696u 0.040s 1:08.76 99.9%	0+0k 0+680io 0pf+0w
+time /net/terminus/bill/boss/BOSS 011 2000000 0.750 0.700 0.800
+68.917u 0.048s 1:08.99 99.9%	0+0k 0+656io 0pf+0w
+Fri Jan 18 18:02:37 EST 2019
+time /net/terminus/bill/boss/BOSS 001 2000000 0.750 0.700 0.800
+69.400u 0.044s 1:09.47 99.9%	0+0k 0+680io 0pf+0w
+Fri Jan 18 18:03:46 EST 2019
+time /net/terminus/bill/boss/BOSS 001 2000000 0.750 0.700 0.800
+69.165u 0.044s 1:09.23 99.9%	0+0k 0+680io 0pf+0w
+Fri Jan 18 18:04:56 EST 2019
+time /net/terminus/bill/boss/BOSS 001 2000000 0.750 0.700 0.800
+68.515u 0.040s 1:08.57 99.9%	0+0k 0+688io 0pf+0w
+Fri Jan 18 18:06:05 EST 2019
+time /net/terminus/bill/boss/BOSS 001 2000000 0.750 0.700 0.800
+68.731u 0.035s 1:08.79 99.9%	0+0k 0+680io 0pf+0w
+Fri Jan 18 18:07:14 EST 2019
+time /net/terminus/bill/boss/BOSS 111 2000000 0.800 0.750 0.850
+69.497u 0.040s 1:09.56 99.9%	0+0k 0+664io 0pf+0w
+time /net/terminus/bill/boss/BOSS 011 2000000 0.800 0.750 0.850
+69.002u 0.046s 1:09.07 99.9%	0+0k 0+656io 0pf+0w
+Fri Jan 18 18:09:33 EST 2019
+time /net/terminus/bill/boss/BOSS 001 2000000 0.800 0.750 0.850
+67.877u 0.051s 1:07.95 99.9%	0+0k 0+680io 0pf+0w
+time /net/terminus/bill/boss/BOSS 011 2000000 0.800 0.750 0.850
+68.416u 0.048s 1:08.48 99.9%	0+0k 0+656io 0pf+0w
+Fri Jan 18 18:11:50 EST 2019
+time /net/terminus/bill/boss/BOSS 001 2000000 0.800 0.750 0.850
+68.463u 0.050s 1:08.53 99.9%	0+0k 0+680io 0pf+0w
+Fri Jan 18 18:12:59 EST 2019
+time /net/terminus/bill/boss/BOSS 001 2000000 0.800 0.750 0.850
+69.401u 0.044s 1:09.46 99.9%	0+0k 0+680io 0pf+0w
+Fri Jan 18 18:14:08 EST 2019
+time /net/terminus/bill/boss/BOSS 001 2000000 0.800 0.750 0.850
+68.379u 0.042s 1:08.44 99.9%	0+0k 0+688io 0pf+0w
+Fri Jan 18 18:15:17 EST 2019
+time /net/terminus/bill/boss/BOSS 001 2000000 0.800 0.750 0.850
+69.038u 0.042s 1:09.10 99.9%	0+0k 0+680io 0pf+0w
+Fri Jan 18 18:16:27 EST 2019
+time /net/terminus/bill/boss/BOSS 111 2000000 0.850 0.800 0.900
+70.128u 0.040s 1:10.19 99.9%	0+0k 0+664io 0pf+0w
+time /net/terminus/bill/boss/BOSS 011 2000000 0.850 0.800 0.900
+69.219u 0.049s 1:09.29 99.9%	0+0k 0+656io 0pf+0w
+Fri Jan 18 18:18:47 EST 2019
+time /net/terminus/bill/boss/BOSS 001 2000000 0.850 0.800 0.900
+68.935u 0.045s 1:09.00 99.9%	0+0k 0+680io 0pf+0w
+time /net/terminus/bill/boss/BOSS 011 2000000 0.850 0.800 0.900
+69.321u 0.049s 1:09.39 99.9%	0+0k 0+656io 0pf+0w
+Fri Jan 18 18:21:05 EST 2019
+time /net/terminus/bill/boss/BOSS 001 2000000 0.850 0.800 0.900
+68.979u 0.051s 1:09.05 99.9%	0+0k 0+680io 0pf+0w
+Fri Jan 18 18:22:15 EST 2019
+time /net/terminus/bill/boss/BOSS 001 2000000 0.850 0.800 0.900
+69.125u 0.049s 1:09.19 99.9%	0+0k 0+680io 0pf+0w
+Fri Jan 18 18:23:24 EST 2019
+time /net/terminus/bill/boss/BOSS 001 2000000 0.850 0.800 0.900
+68.447u 0.049s 1:08.52 99.9%	0+0k 0+688io 0pf+0w
+Fri Jan 18 18:24:33 EST 2019
+time /net/terminus/bill/boss/BOSS 001 2000000 0.850 0.800 0.900
+68.554u 0.041s 1:08.62 99.9%	0+0k 0+680io 0pf+0w
+Fri Jan 18 18:25:42 EST 2019
+time /net/terminus/bill/boss/BOSS 111 2000000 0.900 0.850 0.950
+69.201u 0.047s 1:09.27 99.9%	0+0k 0+664io 0pf+0w
+time /net/terminus/bill/boss/BOSS 011 2000000 0.900 0.850 0.950
+69.095u 0.028s 1:09.15 99.9%	0+0k 0+656io 0pf+0w
+Fri Jan 18 18:28:01 EST 2019
+time /net/terminus/bill/boss/BOSS 001 2000000 0.900 0.850 0.950
+68.932u 0.041s 1:08.99 99.9%	0+0k 0+680io 0pf+0w
+time /net/terminus/bill/boss/BOSS 011 2000000 0.900 0.850 0.950
+67.929u 0.038s 1:07.98 99.9%	0+0k 0+656io 0pf+0w
+Fri Jan 18 18:30:18 EST 2019
+time /net/terminus/bill/boss/BOSS 001 2000000 0.900 0.850 0.950
+68.872u 0.036s 1:08.93 99.9%	0+0k 0+680io 0pf+0w
+Fri Jan 18 18:31:28 EST 2019
+time /net/terminus/bill/boss/BOSS 001 2000000 0.900 0.850 0.950
+69.163u 0.040s 1:09.22 99.9%	0+0k 0+680io 0pf+0w
+Fri Jan 18 18:32:37 EST 2019
+time /net/terminus/bill/boss/BOSS 001 2000000 0.900 0.850 0.950
+69.267u 0.052s 1:09.34 99.9%	0+0k 0+688io 0pf+0w
+Fri Jan 18 18:33:47 EST 2019
+time /net/terminus/bill/boss/BOSS 001 2000000 0.900 0.850 0.950
+69.181u 0.051s 1:09.25 99.9%	0+0k 0+680io 0pf+0w
+Fri Jan 18 18:34:57 EST 2019
+time /net/terminus/bill/boss/BOSS 111 2000000 0.950 0.900 1.000
+68.181u 0.053s 1:08.25 99.9%	0+0k 0+664io 0pf+0w
+time /net/terminus/bill/boss/BOSS 011 2000000 0.950 0.900 1.000
+68.960u 0.032s 1:09.01 99.9%	0+0k 0+656io 0pf+0w
+Fri Jan 18 18:37:14 EST 2019
+time /net/terminus/bill/boss/BOSS 001 2000000 0.950 0.900 1.000
+69.511u 0.039s 1:09.57 99.9%	0+0k 0+680io 0pf+0w
+time /net/terminus/bill/boss/BOSS 011 2000000 0.950 0.900 1.000
+68.729u 0.045s 1:08.79 99.9%	0+0k 0+656io 0pf+0w
+Fri Jan 18 18:39:33 EST 2019
+time /net/terminus/bill/boss/BOSS 001 2000000 0.950 0.900 1.000
+69.596u 0.041s 1:09.66 99.9%	0+0k 0+680io 0pf+0w
+Fri Jan 18 18:40:43 EST 2019
+time /net/terminus/bill/boss/BOSS 001 2000000 0.950 0.900 1.000
+69.348u 0.044s 1:09.41 99.9%	0+0k 0+680io 0pf+0w
+Fri Jan 18 18:41:53 EST 2019
+time /net/terminus/bill/boss/BOSS 001 2000000 0.950 0.900 1.000
+68.822u 0.042s 1:08.89 99.9%	0+0k 0+688io 0pf+0w
+Fri Jan 18 18:43:02 EST 2019
+time /net/terminus/bill/boss/BOSS 001 2000000 0.950 0.900 1.000
+69.025u 0.046s 1:09.09 99.9%	0+0k 0+680io 0pf+0w
+Fri Jan 18 18:44:11 EST 2019
+time /net/terminus/bill/boss/BOSS 111 2000000 1.000 0.950 1.000
+68.689u 0.038s 1:08.75 99.9%	0+0k 0+664io 0pf+0w
+time /net/terminus/bill/boss/BOSS 011 2000000 1.000 0.950 1.000
+68.672u 0.038s 1:08.73 99.9%	0+0k 0+656io 0pf+0w
+Fri Jan 18 18:46:29 EST 2019
+time /net/terminus/bill/boss/BOSS 001 2000000 1.000 0.950 1.000
+69.118u 0.049s 1:09.19 99.9%	0+0k 0+680io 0pf+0w
+time /net/terminus/bill/boss/BOSS 011 2000000 1.000 0.950 1.000
+68.918u 0.045s 1:08.98 99.9%	0+0k 0+656io 0pf+0w
+Fri Jan 18 18:48:48 EST 2019
+time /net/terminus/bill/boss/BOSS 001 2000000 1.000 0.950 1.000
+68.441u 0.042s 1:08.50 99.9%	0+0k 0+680io 0pf+0w
+Fri Jan 18 18:49:57 EST 2019
+time /net/terminus/bill/boss/BOSS 001 2000000 1.000 0.950 1.000
+68.441u 0.047s 1:08.51 99.9%	0+0k 0+680io 0pf+0w
+Fri Jan 18 18:51:06 EST 2019
+time /net/terminus/bill/boss/BOSS 001 2000000 1.000 0.950 1.000
+68.477u 0.051s 1:08.55 99.9%	0+0k 0+688io 0pf+0w
+Fri Jan 18 18:52:14 EST 2019
+time /net/terminus/bill/boss/BOSS 001 2000000 1.000 0.950 1.000
+68.952u 0.275s 1:09.25 99.9%	0+0k 0+680io 0pf+0w
+Fri Jan 18 18:53:24 EST 2019

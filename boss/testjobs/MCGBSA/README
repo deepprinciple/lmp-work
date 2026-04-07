@@ -1,0 +1,23 @@
+Test job to run a MC simulation for a solute with GB/SA
+hydration. To run here, enter
+
+For Linux/Unix:
+csh gbcmd >& log &
+For Windows:
+gb
+
+This uses gbzmat as the Z-matrix for the solute(s).
+
+To run in any directory for a Z-matrix, zmat.z, use
+xMCGB zmat
+
+gbout contains the output for 1,2-dichloroethane.
+gasout is the corresponding output for DCE in the gas phase
+without the GB/SA solvation (using the MCgas test job).
+
+gbcmd like gascmd performs 1M configurations of equilibration 
+and 2 M configurations of averaging.
+Time required:
+170 sec with GB/SA
+ 92 sec without GB/SA
+on a 2.4 GHz Pentium

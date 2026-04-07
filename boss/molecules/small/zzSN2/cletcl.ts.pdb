@@ -1,0 +1,12 @@
+REMARK    Cl..CH3CH2..Cl- TS            
+REMARK    Created by BOSS 4.5
+ATOM      1  C00 UNK     1       0.000   0.000   0.000
+ATOM      2  Cl0 UNK     1       0.000   2.280   0.000
+ATOM      3  Cl1 UNK     1       0.414  -2.262   0.000
+ATOM      4  C03 UNK     1      -1.471  -0.205  -0.005
+ATOM      5  H04 UNK     1       0.545   0.048   0.953
+ATOM      6  H05 UNK     1       0.553   0.049  -0.949
+ATOM      7  H06 UNK     1      -2.041   0.735  -0.007
+ATOM      8  H07 UNK     1      -1.790  -0.773  -0.888
+ATOM      9  H08 UNK     1      -1.796  -0.774   0.874
+END

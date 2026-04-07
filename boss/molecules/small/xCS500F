@@ -1,0 +1,34 @@
+#!/bin/csh
+echo "MC Conformational Search"
+#
+# perform OPLS-AA conformational search
+#
+# usage - xCS500F moleculename
+#
+# test if the enviroment variable BOSSdir has been defined
+#
+if (!($?BOSSdir)) then
+   echo "BOSSdir has not been defined; please see README"
+   exit (-1)
+endif
+
+if (-e optzmat) rm optzmat
+cp ${argv[1]}.z optzmat
+csh $BOSSdir/scripts/CS500Fcmd >& log
+if (-e ${argv[1]}.cs.z) rm ${argv[1]}.cs.z
+mv svopt ${argv[1]}.cs.z
+if (-e ${argv[1]}.cs.CSV) rm ${argv[1]}.cs.CSV
+mv optav ${argv[1]}.cs.CSV
+rm optzmat
+if (-e ${argv[1]}.cs.out) rm ${argv[1]}.cs.out
+mv out ${argv[1]}.cs.out
+if (-e ${argv[1]}.cs.mol) rm ${argv[1]}.cs.mol
+mv plt.mol ${argv[1]}.cs.mol
+if (-e ${argv[1]}.cs.sum) rm ${argv[1]}.cs.sum
+mv sum ${argv[1]}.cs.sum
+
+echo "output in "
+ls ${argv[1]}.cs.*
+
+#
+exit

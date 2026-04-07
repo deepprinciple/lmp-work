@@ -1,0 +1,63 @@
+g000sum: Run       EXX1          ESX1        DelSOS1         EXX2          ESX2        DelSOS2
+g000sum: DelSOS (  0.000 to   0.000)  =      0.000 +/-     0.000
+g000sum: DelSOS (  0.000 to   0.050)  =      0.596 +/-     0.002
+g005sum: Run       EXX1          ESX1        DelSOS1         EXX2          ESX2        DelSOS2
+g005sum: DelSOS (  0.000 to   0.050)  =      0.572 +/-     0.001
+g005sum: DelSOS (  0.050 to   0.100)  =      0.540 +/-     0.001
+g010sum: Run       EXX1          ESX1        DelSOS1         EXX2          ESX2        DelSOS2
+g010sum: DelSOS (  0.050 to   0.100)  =      0.521 +/-     0.002
+g010sum: DelSOS (  0.100 to   0.150)  =      0.489 +/-     0.001
+g015sum: Run       EXX1          ESX1        DelSOS1         EXX2          ESX2        DelSOS2
+g015sum: DelSOS (  0.100 to   0.150)  =      0.469 +/-     0.001
+g015sum: DelSOS (  0.150 to   0.200)  =      0.437 +/-     0.001
+g020sum: Run       EXX1          ESX1        DelSOS1         EXX2          ESX2        DelSOS2
+g020sum: DelSOS (  0.150 to   0.200)  =      0.415 +/-     0.002
+g020sum: DelSOS (  0.200 to   0.250)  =      0.384 +/-     0.001
+g025sum: Run       EXX1          ESX1        DelSOS1         EXX2          ESX2        DelSOS2
+g025sum: DelSOS (  0.200 to   0.250)  =      0.366 +/-     0.001
+g025sum: DelSOS (  0.250 to   0.300)  =      0.334 +/-     0.001
+g030sum: Run       EXX1          ESX1        DelSOS1         EXX2          ESX2        DelSOS2
+g030sum: DelSOS (  0.250 to   0.300)  =      0.313 +/-     0.000
+g030sum: DelSOS (  0.300 to   0.350)  =      0.280 +/-     0.001
+g035sum: Run       EXX1          ESX1        DelSOS1         EXX2          ESX2        DelSOS2
+g035sum: DelSOS (  0.300 to   0.350)  =      0.263 +/-     0.001
+g035sum: DelSOS (  0.350 to   0.400)  =      0.230 +/-     0.002
+g040sum: Run       EXX1          ESX1        DelSOS1         EXX2          ESX2        DelSOS2
+g040sum: DelSOS (  0.350 to   0.400)  =      0.208 +/-     0.004
+g040sum: DelSOS (  0.400 to   0.450)  =      0.172 +/-     0.005
+g045sum: Run       EXX1          ESX1        DelSOS1         EXX2          ESX2        DelSOS2
+g045sum: DelSOS (  0.400 to   0.450)  =      0.152 +/-     0.003
+g045sum: DelSOS (  0.450 to   0.500)  =      0.114 +/-     0.003
+g050sum: Run       EXX1          ESX1        DelSOS1         EXX2          ESX2        DelSOS2
+g050sum: DelSOS (  0.450 to   0.500)  =      0.089 +/-     0.003
+g050sum: DelSOS (  0.500 to   0.550)  =      0.048 +/-     0.004
+g055sum: Run       EXX1          ESX1        DelSOS1         EXX2          ESX2        DelSOS2
+g055sum: DelSOS (  0.500 to   0.550)  =      0.022 +/-     0.004
+g055sum: DelSOS (  0.550 to   0.600)  =     -0.021 +/-     0.003
+g060sum: Run       EXX1          ESX1        DelSOS1         EXX2          ESX2        DelSOS2
+g060sum: DelSOS (  0.550 to   0.600)  =     -0.048 +/-     0.008
+g060sum: DelSOS (  0.600 to   0.650)  =     -0.092 +/-     0.008
+g065sum: Run       EXX1          ESX1        DelSOS1         EXX2          ESX2        DelSOS2
+g065sum: DelSOS (  0.600 to   0.650)  =     -0.122 +/-     0.005
+g065sum: DelSOS (  0.650 to   0.700)  =     -0.163 +/-     0.004
+g070sum: Run       EXX1          ESX1        DelSOS1         EXX2          ESX2        DelSOS2
+g070sum: DelSOS (  0.650 to   0.700)  =     -0.185 +/-     0.002
+g070sum: DelSOS (  0.700 to   0.750)  =     -0.223 +/-     0.002
+g075sum: Run       EXX1          ESX1        DelSOS1         EXX2          ESX2        DelSOS2
+g075sum: DelSOS (  0.700 to   0.750)  =     -0.247 +/-     0.002
+g075sum: DelSOS (  0.750 to   0.800)  =     -0.279 +/-     0.002
+g080sum: Run       EXX1          ESX1        DelSOS1         EXX2          ESX2        DelSOS2
+g080sum: DelSOS (  0.750 to   0.800)  =     -0.305 +/-     0.003
+g080sum: DelSOS (  0.800 to   0.850)  =     -0.334 +/-     0.003
+g085sum: Run       EXX1          ESX1        DelSOS1         EXX2          ESX2        DelSOS2
+g085sum: DelSOS (  0.800 to   0.850)  =     -0.361 +/-     0.004
+g085sum: DelSOS (  0.850 to   0.900)  =     -0.385 +/-     0.005
+g090sum: Run       EXX1          ESX1        DelSOS1         EXX2          ESX2        DelSOS2
+g090sum: DelSOS (  0.850 to   0.900)  =     -0.416 +/-     0.005
+g090sum: DelSOS (  0.900 to   0.950)  =     -0.446 +/-     0.009
+g095sum: Run       EXX1          ESX1        DelSOS1         EXX2          ESX2        DelSOS2
+g095sum: DelSOS (  0.900 to   0.950)  =     -0.484 +/-     0.006
+g095sum: DelSOS (  0.950 to   1.000)  =     -0.517 +/-     0.007
+g100sum: Run       EXX1          ESX1        DelSOS1         EXX2          ESX2        DelSOS2
+g100sum: DelSOS (  0.950 to   1.000)  =     -0.579 +/-     0.008
+g100sum: DelSOS (  1.000 to   1.000)  =      0.000 +/-     0.000

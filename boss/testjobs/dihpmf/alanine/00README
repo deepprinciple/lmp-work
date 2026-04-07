@@ -1,0 +1,22 @@
+Alanine Dipeptide
+Scan psi with phi fixed. This can be repeated for additional
+fixed phi's to yield the 2D phi, psi pmf.
+Psi increment = 5 degrees. 500 TIP4P waters are used.
+
+Time: 16 hours on a 2.4 GHz Pentium
+
+Note: The initial dihedral value for atom 19 is set to 0 and the
+final value is set to 1 in pmfzmat. This lets the rc (= lambda) values to
+be given in degrees in the cmd file.
+
+xPMFQ can be used to submit the job to our queuing system.
+E.g., for 10 degree increments for phi, one creates 36 Z-matrix
+files, z000, z010, ... z350 with phi set as 0.0, 10.0, ... 350.0.
+Then,
+ls -1 z* >> xxx
+xMANY xxx xPMFQ
+
+submits all 36 jobs to the queue. To complete the 2D pmf, one
+needs to run a job in which psi is fixed and phi is varied in the
+same manner. Then, the relative free energies of all (phi, psi) points
+can be determined.

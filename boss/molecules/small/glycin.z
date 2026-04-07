@@ -1,0 +1,53 @@
+Neutral Glycine                                             Tot. E =    -18.0589
+   1 DU1   -1   -1    0    0.000000   0    0.000000   0    0.000000        0    
+   2 DU2   -1   -1    1    1.000000   0    0.000000   0    0.000000        0    
+   3 DU3   -1   -1    2    1.000000   1   90.000000   0    0.000000        0    
+   4 HN1  909  909    3    1.000000   2   90.000000   1  180.000000 NGL    1    
+   5 N    900  900    4    1.011296   3   90.600000   2  180.000000 NGL    1    
+   6 CA   906  906    5    1.452426   4  106.799513   3  180.000000 NGL    1    
+   7 C    267  267    6    1.528064   5  110.995884   4   55.319941 NGL    1    
+   8 HN2  909  909    5    1.011296   4  103.857807   6  112.670964 NGL    1    
+   9 HA1  911  911    6    1.090775   5  109.755080   7  121.009881 NGL    1    
+  10 HA2  911  911    6    1.090775   5  109.755080   7  238.990119 NGL    1    
+  11 OH   268  268    7    1.353709   6  112.842491   5  180.000000 NGL    1    
+  12 O    269  269    7    1.227515   6  123.912168  11  180.000000 NGL    1    
+  13 HO   270  270   11    0.943466   7  108.517188   6  180.000001 NGL    1    
+                    Geometry Variations follow    (2I4,F12.6)                   
+                    Variable Bonds follow         (I4)                          
+   5-  13                                                                       
+                    Additional Bonds follow       (2I4)                         
+                    Harmonic Constraints follow   (2I4,4F10.4)                  
+                    Variable Bond Angles follow   (I4)                          
+   6-  13                                                                       
+                    Additional Bond Angles follow (3I4)                         
+   6   5   8                                                                    
+   7   6   9                                                                    
+   7   6  10                                                                    
+   9   6  10                                                                    
+  11   7  12                                                                    
+                    Variable Dihedrals follow     (3I4,F12.6)                   
+   7  32  32    5.0                                             HN1-N -CA -C(42)
+   8   0   0    1.0                                           i HN2-N -HN1-CA   
+   9   0   0    1.0                                           i HA1-CA-N  -C    
+  10   0   0    1.0                                           i HA2-CA-N  -C    
+  11  97  97    5.0                                             OH -C -CA -N(37)
+  12 160 160    1.0                                           i O  -C -N  -OH   
+  13 103 103    5.0                                             HO -OH-C  -CA   
+                    Additional Dihedrals follow   (6I4)                         
+   4   5   6   9  30  30                                        HN1-N -CA-HA1(42
+   4   5   6  10  30  30                                        HN1-N -CA-HA2(42
+   8   5   6   7  32  32                                        HN2-N -CA-C  (42
+   8   5   6   9  30  30                                        HN2-N -CA-HA1(42
+   8   5   6  10  30  30                                        HN2-N -CA-HA2(42
+   9   6   7  11  94  94                                        HA1-CA-C -OH(41)
+  10   6   7  11  94  94                                        HA1-CA-C -OH(41)
+   5   6   7  12  91  91                                        N  -CA-C -O(43) 
+   9   6   7  12  94  94                                        HA1-CA-C -O(43) 
+  10   6   7  12  94  94                                        HA1-CA-C -O(43) 
+  12   7  11  13 102 102                                        O  -C -OH-HO    
+                    Domain Definitions follow     (4I4)                         
+                    Excluded Atoms List follows   (10I4)                        
+                    Final blank line                                            
+                                                                                
+                                                                                
+                                                                                

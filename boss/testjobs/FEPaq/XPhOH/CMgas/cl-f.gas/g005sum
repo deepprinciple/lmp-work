@@ -1,0 +1,58 @@
+ Results Summary:    4-chloro to 4-fluorophenol      Mon May 14 14:13:01 2007
+
+ NMOL =   0          EDGE =  100.0000  100.0000  100.0000    RCUT =   10.0000
+ NACCPT =   350000   NRJECT =   136611   MXCON =  250000     NCON =       0
+ T(C) =     25.00    OLD E =  0.36014794D+01    NEW E =  0.36014795D+01
+ RDEL =    0.2000    ADEL =   20.0000    VDEL =       0.0    MXS =    2500
+ P(ATM) =     0.0    VOLD =   1000000.0  VNEW =   1000000.0  NVCHG =999999
+ DIELRF =     1.0    Reaction Field NOT Applied
+
+ Information for the Reference Solute:
+ NSCHG=     1        SCUT =   10.0000    ICUT =     0        NCENT =   1    1
+ RDELS1=   0.0000    RDELS2=   0.0000    ADELS1=   0.0000    ADELS2=   0.0000
+ ESOLD=      0.00    ESONE=      0.00    WIMAX=  0.000000    WKC =  200.00
+ EXXOLD=     0.00    EXXNEW=     0.00    DIELEC=   1.0000    CUTOFF E=    0.000
+ EPOOLD=     0.00    EPONEW=     0.00    NPOLX =        0    NPOLS =        0
+ EBNDOL=   4.3933    EBNDNE=   4.3933    EANGOL=   1.7890    EANGNE=   1.7890
+ EDIHOL=   1.7495    EDIHNE=   1.7495    ENBOL=     -4.33    ENBNE=     -4.33
+ EBCOLD=     0.00    EBCNEW=     0.00    SANEW =     0.00    POLCUT=    10.00
+
+
+ 1-4 Scale Factors: Coul.=   0.20000D+01 L-J=   0.20000D+01  CUTNB =  100.000
+ RC0 =    0.0500   RC1 =    0.0000   RC2 =    0.1000
+
+ Total Solvent Accessible Surface Area =   298.07
+       Total Solvent Accessible Volume =   440.76
+eg*e-5)=   816.2308
+     Kappa(1/atm*e-6)=***********
+     Volume=   714285.7
+
+                  Refer. Solute  1st Pert. Solute       Delta    2nd Pert. Solute       Delta
+ Solute-Solvent E       0.0000            0.0000        0.0000            0.0000        0.0000
+ Solute-Solute  E       0.0000            0.0000        0.0000            0.0000        0.0000
+ Polarization   E       0.0000            0.0000        0.0000            0.0000        0.0000
+ Bond Stretch   E       2.7722            2.7680       -0.0043            2.7765        0.0043
+ Angle Bending  E       2.1344            2.1335       -0.0009            2.1352        0.0009
+ Torsional Energy       2.2814            2.2814        0.0000            2.2814        0.0000
+ Non-bonded     E      -3.5834           -3.5825        0.0010           -3.5855       -0.0021
+ Constraints    E       0.0000            0.0000        0.0000            0.0000        0.0000
+ Total                                                 -0.0042                          0.0031
+ Ave. Dipole Mom.       2.3562            2.3610                          2.3512
+
+ Delta G                                  0.1934                          0.2036
+ Delta H                                  1.4428                          1.4394
+ Delta S                                  4.1905                          4.1449
+
+
+ Solute  1 - Solvent Energy Components:
+   Lennard-Jones =      0.0000
+   Coulomb       =      0.0000
+   Total         =      0.0000
+
+ Solute  1 - Solute Energy Components:
+   Lennard-Jones =      0.0000
+   Coulomb       =      0.0000
+   Total         =      0.0000
+
+
+ Attempts/Accepts: Solute1  350000/  213389 Solute2       0/       0

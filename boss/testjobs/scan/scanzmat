@@ -1,0 +1,30 @@
+Cl..Me(CN)CH..Cl- TS                                        Tot. E =    -44.1940
+   1 C      6    0    0    0.000000   0    0.000000   0    0.000000        0
+   2 DUM   -1    0    1    1.000000   0    0.000000   0    0.000000        0
+   3 DUM   -1    0    2    1.000000   1   90.000000   0    0.000000        0
+   4 CL    17    0    1    2.28       2   90.000000   3    0.000000        0
+   5 CL    17    0    1    2.20       2   79.873873   3  180.000000        0
+   6 C      6    0    1    1.437475   4   90.160675   3   86.671918        0
+   7 C      6    0    1    1.494412   4   92.443139   6  117.100939        0
+   8 H      1    0    1    1.115408   4   86.095034   6  239.594921        0
+   9 DUM   -1    0    6    1.000000   1   90.000000   4  180.000000        0
+  10 N      7    0    6    1.155582   9   90.031227   1  179.814315        0
+  11 H      1    0    7    1.096502   1  109.724549   6  156.543734        0
+  12 H      1    0    7    1.099782   1  113.699822  11  120.148781        0
+  13 H      1    0    7    1.099474   1  112.956522  11  241.210900        0
+                    Geometry Variations follow    (2I4,F12.6)
+                    Variable Bonds follow         (I4)
+0006-0008
+0010-0013
+                    Additional Bonds follow       (2I4)
+                    Harmonic Constraints follow   (2I4,4F10.4)
+                    Variable Bond Angles follow   (I4)
+0005-0008
+0010-0013
+                    Additional Bond Angles follow (3I4)
+                    Variable Dihedrals follow     (3I4,F12.6)
+0006-0008
+0010-0013
+                    Additional Dihedrals follow   (6I4)
+                    Domain Definitions follow     (4I4)
+                    Final blank line

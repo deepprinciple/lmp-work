@@ -1,0 +1,8 @@
+
+ MC/FEP simulation for tetramethylammonium ion -> neopentane
+ in non-polarizable liquid benzene (N = 260).
+
+ sumout has the deltaG results.
+
+ to display a plot file, e.g.,
+ x f005plte10

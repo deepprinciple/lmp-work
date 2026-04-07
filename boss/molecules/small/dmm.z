@@ -1,0 +1,32 @@
+  dimethoxymethane                                          Tot. E =     -2.3911
+   1  X    -1    0    0    0.000000   0    0.000000   0    0.000000        0    
+   2  X    -1    0    1    1.000000   0    0.000000   0    0.000000        0    
+   3  O   186    0    2    1.000000   1   90.000000   0    0.000000        0    
+   4  C   189    0    3    1.390486   2   90.000000   1    0.000000        0    
+   5  C   181    0    3    1.419785   2   79.416440   4 -113.807400        0    
+   6  O   186    0    4    1.390486   3  112.356558   5   66.135623        0    
+   7  H   190    0    4    1.091739   3  109.845364   6  238.838447        0    
+   8  H   190    0    4    1.091739   3  108.723963   6  121.802313        0    
+   9  C   181    0    6    1.419785   4  113.378057   3   66.135622        0    
+  10  H   185    0    9    1.090727   6  111.389974   4   60.284229        0    
+  11  H   185    0    9    1.090876   6  111.488210  10  238.448741        0    
+  12  H   185    0    9    1.089924   6  109.549657  10  119.263193        0    
+  13  H   185    0    5    1.089924   3  109.549657   2  264.914516        0    
+  14  H   185    0    5    1.090727   3  111.389974  13  240.736807        0    
+  15  H   185    0    5    1.090876   3  111.488210  13  119.185548        0    
+                    Geometry Variations follow    (2I4,F12.6)                   
+                    Variable Bonds follow         (I4)                          
+0004-0015                                                                       
+                    Additional Bonds follow       (2I4)                         
+                    Harmonic Constraints follow   (2I4,4F10.4)                  
+                    Variable Bond Angles follow   (I4)                          
+0005-0015                                                                       
+                    Additional Bond Angles follow (3I4)                         
+AUTO                                                                            
+                    Variable Dihedrals follow     (3I4,F12.6)                   
+0006-0015                                                                       
+                    Additional Dihedrals follow   (6I4)                         
+AUTO                                                                            
+                    Domain Definitions follow     (4I4)                         
+                    Conformational Search (4I2,2F12.6)                          
+                    Final blank line                                            

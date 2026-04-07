@@ -1,0 +1,32 @@
+     SPC   Water Dimer                                      Tot. E =     -6.6095
+   1  O   133  133    0     .000000   0     .000000   0     .000000        0    
+   2  DU   -1   -1    1    1.000000   0     .000000   0     .000000        0    
+   3  DU   -1   -1    2    1.000000   1   90.000000   0     .000000        0    
+   4  HO  134  134    1    1.000000   2  127.740000   3   90.000000        0    
+   5  HO  134  134    1    1.000000   4  109.470000   2  180.000000        0    
+   6  X    -1   -1    1     .150000   4   52.260000   5     .000000        0    
+TERZ                                                                            
+   7  O   133  133    1    2.756220   2  125.270966   3  269.686961        0    
+   8  DU   -1   -1    7    1.000000   1   22.377467   2  172.735979        0    
+   9  DU   -1   -1    8    1.000000   7   90.000000   1  171.222515        0    
+  10  HO  134  134    7    1.000000   8  127.740000   9   90.000000        0    
+  11  HO  134  134    7    1.000000  10  109.470000   8  180.000000        0    
+  12  X    -1   -1    7     .150000  10   52.260000  11     .000000        0    
+                    Geometry Variations Follow                                  
+                    Variable Bonds follow         (I4 or I4-I4)                 
+0007                                                                            
+                    Additional Bonds follow       (2I4)                         
+                    Harmonic Constraints follow                                 
+                    Variable Bond Angles follow   (I4 or I4-I4)                 
+0007                                                                            
+0008                                                                            
+                    Additional Bond Angles follow (3I4)                         
+                    Variable Dihedrals follow     (3I4,F12.6)                   
+000700000000  10.                                                               
+000800000000  10.                                                               
+000900000000  10.                                                               
+                    Additional Dihedrals follow   (6I4)                         
+                    Domain Definitions follow     (4I4)                         
+                    Conformational Search                                       
+                    Final blank line                                            
+                                                                                

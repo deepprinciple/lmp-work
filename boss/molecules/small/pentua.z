@@ -1,0 +1,25 @@
+         Pentane(UA)                                        Tot. E =     -0.1112
+   1 C3    71   71    0    0.000000   0    0.000000   0    0.000000        0    
+   2 DUM   -1   -1    1    0.500000   0    0.000000   0    0.000000        0    
+   3 DUM   -1   -1    2    0.500000   1   90.000000   0    0.000000        0    
+   4 C2    71   71    1    1.527231   2  124.000000   3  180.000000        0    
+   5 C4    71   71    1    1.527231   4  112.622911   2  180.000000        0    
+   6 C1    68   68    4    1.526638   1  112.473315   5  180.000000        0    
+   7 C5    68   68    5    1.526638   1  112.473315   4  180.000000        0    
+                    Geometry Variations                                         
+                    Variable Bonds follow         (I4)                          
+0004-0007                                                                       
+                    Additional Bonds follow       (2I4)                         
+                    Harmonic Constraints                                        
+                    Variable Bond Angles follow   (I4)                          
+0005-0007                                                                       
+                    Additional Bond Angles follow (3I4)                         
+                    Variable Dihedrals follow     (3I4,F12.6)                   
+000604040404  15.0                                                              
+000704040404  15.0                                                              
+                    Additional Dihedrals follow   (6I4)                         
+                    Domain Definitions follow     (4I4)                         
+                    Conformational Search (2I4, 2F12.6)                         
+00060003    0.0       360.0                                                     
+00070003    0.0       360.0                                                     
+                    Final blank line                                            

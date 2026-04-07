@@ -1,0 +1,26 @@
+cyclobutadiene                                              Tot. E =     90.4033
+   1   X   -1   -1    0    0.000000   0    0.000000   0    0.000000        0
+   2   X   -1   -1    1    1.000000   0    0.000000   0    0.000000        0
+   3   C  145  145    1    1.400000   2   90.000000   0    0.000000        0
+   4   C  145  145    3    1.400203   1   45.000000   2   90.000000        0
+   5   C  145  145    3    1.400203   4   90.000044   1    0.000000        0
+   6   C  145  145    4    1.400203   3   90.000047   5    0.000000        0
+   7   H  146  146    3    1.080593   4  134.999974   6  180.000000        0
+   8   H  146  146    4    1.080593   3  135.000012   5  180.000000        0
+   9   H  146  146    5    1.080593   3  134.999992   4  180.000000        0
+  10   H  146  146    6    1.080593   4  134.999983   3  180.000000        0
+                    Geometry Variations follow    (2I4,F12.6)                   
+                    Variable Bonds follow         (I4)                          
+0004-0010                                                                       
+                    Additional Bonds follow       (2I4)                         
+00050006                                                                        
+                    Harmonic Constraints follow   (2I4,4F10.4)                  
+                    Variable Bond Angles follow   (I4)                          
+0005-0010                                                                       
+                    Additional Bond Angles follow (3I4)                         
+AUTO                                                                            
+                    Variable Dihedrals follow     (3I4,F12.6)                   
+                    Additional Dihedrals follow   (6I4)                         
+                    Domain Definitions follow     (4I4)                         
+                    Conformational Search (4I2,2F12.6)                          
+                    Final blank line                                            

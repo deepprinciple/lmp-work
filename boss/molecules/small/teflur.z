@@ -1,0 +1,40 @@
+  teflurane                                                 Tot. E =     -3.5367
+   1 X     -1    0    0    0.000000   0    0.000000   0    0.000000        0    
+   2 X     -1    0    1    1.000000   0    0.000000   0    0.000000        0    
+   3 C    800  800    2    1.000000   1   90.000000   0    0.000000        0    
+   4 C    801  801    3    1.534173   2   90.000000   1 -112.223750        0    
+   5 BR   802  802    3    1.947562   2  159.033958   4 -179.961890        0    
+   6 F    803  803    3    1.333521   4  110.577805   5  237.432972        0    
+   7 H    804  804    3    1.089286   4  110.345776   6  241.767581        0    
+   8 F    805  805    4    1.332571   3  109.568287   5  180.769497        0    
+   9 F    806  806    4    1.332685   3  110.236250   8  240.375613        0    
+  10 F    807  807    4    1.332563   3  110.034185   8  119.770903        0    
+                    Geometry Variations follow    (2I4,F12.6)                   
+                    Variable Bonds follow         (I4)                          
+0004-0010                                                                       
+                    Additional Bonds follow       (2I4)                         
+                    Harmonic Constraints follow   (2I4,4F10.4)                  
+                    Variable Bond Angles follow   (I4)                          
+0005-0010                                                                       
+                    Additional Bond Angles follow (3I4)                         
+AUTO                                                                            
+                    Variable Dihedrals follow     (3I4,F12.6)                   
+0006-0010                                                                       
+                    Additional Dihedrals follow   (6I4)                         
+AUTO                                                                            
+                    Domain Definitions follow     (4I4)                         
+                    Conformational Search (2I4,2F12.6)                          
+                    Final blank line                                            
+                                                                                
+ Final Non-Bonded Parameters for QM (PM3 CM1Px1.30) Atoms:                      
+                                                                                
+800  6 CT  -0.010773  3.500000  0.066000                                        
+801  6 CT   0.497866  3.500000  0.066000                                        
+802 35 Br  -0.057113  3.470000  0.470000                                        
+803  9 F   -0.090266  2.900000  0.060000                                        
+804  1 HC   0.130778  2.500000  0.030000                                        
+805  9 F   -0.158324  2.900000  0.060000                                        
+806  9 F   -0.154663  2.900000  0.060000                                        
+807  9 F   -0.157505  2.900000  0.060000                                        
+                                                                                
+                                                                                

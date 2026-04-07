@@ -1,0 +1,15 @@
+REMARK                Benzene           
+REMARK    Created by BOSS 5.1 Sept 22 Linux 
+ATOM      1  C00 UNK     1       0.000   1.400   0.000
+ATOM      2  C01 UNK     1       0.000   0.678  -1.250
+ATOM      3  C02 UNK     1       0.000   0.798   1.231
+ATOM      4  C03 UNK     1      -0.111  -0.697  -1.208
+ATOM      5  C04 UNK     1       0.117  -0.547   1.269
+ATOM      6  C05 UNK     1      -0.061  -1.343   0.054
+ATOM      7  H06 UNK     1       0.110   2.469   0.035
+ATOM      8  H07 UNK     1       0.315   1.122  -2.173
+ATOM      9  H08 UNK     1       0.057   1.369   2.181
+ATOM     10  H09 UNK     1       0.029  -1.282  -2.129
+ATOM     11  H0A UNK     1       0.043  -1.116   2.225
+ATOM     12  H0B UNK     1      -0.242  -2.426   0.065
+END

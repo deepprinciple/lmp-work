@@ -1,0 +1,25 @@
+   cis-1,2-dichloroethene                                   Tot. E =     -0.7629
+   1 C1   227  227    0    0.000000   0    0.000000   0    0.000000        0    
+   2 Du    -1   -1    1    1.000000   0    0.000000   0    0.000000        0    
+   3 Du    -1   -1    2    1.000000   1   90.000000   0    0.000000        0    
+   4 C2   227  227    1    1.342474   2   90.000000   3    0.000000        0    
+   5 Cl   226  226    4    1.727049   1  123.525331   2  270.000000        0    
+   6 Cl   226  226    1    1.727049   4  123.525331   2   90.000000        0    
+   7 H    144  144    1    1.080065   4  121.666742   6  180.000000        0    
+   8 H    144  144    4    1.080065   1  121.666742   5  180.000000        0    
+                    Geometry Variations follow    (2I4,F12.6)                   
+                    Variable Bonds follow         (I4)                          
+0004-0008                                                                       
+                    Additional Bonds follow       (2I4)                         
+                    Harmonic Constraints follow   (2I4,4F10.4)                  
+                    Variable Bond Angles follow   (I4)                          
+0005-0008                                                                       
+                    Additional Bond Angles follow (3I4)                         
+AUTO                                                                            
+                    Variable Dihedrals follow     (3I4,F12.6)                   
+0006-0008                                                                       
+                    Additional Dihedrals follow   (6I4)                         
+AUTO                                                                            
+                    Domain Definitions follow     (4I4)                         
+                    Conformational Search                                       
+                    Final blank line                                            

@@ -1,0 +1,114 @@
+#
+# Command file for the BOSS  program.  Execute by entering the following:
+# csh pmfcmd >& pmflog &
+#***********************************************************************
+echo '        MC simulation: pmf torsion FEP'
+echo '                    25 C & 1 atm '
+echo '                 Equilibration    2M '
+echo '                   Averaging  0-5M '
+echo '            N = 500  T=25  P=1  Rcut = 10.0'
+#***********************************************************************
+#
+nice +19
+set boss = $BOSSdir/BOSS
+set configurations = "1000000"
+set boxes = $BOSSdir
+#
+
+##### set variables for dihedral angle as reaction coordinate.
+##### calculation is repeated 'nsteps' times.
+##### RC0 starts with 'startval' and is incremented by 'increment'
+##### at each step. All these values need to be integers in degrees.
+set startval = 10
+set increment = 20
+set nsteps = 9
+
+#####
+##### ordinary users don't need to edit beyond this line.
+##### '@' indicates an arithmetic operation.
+#####
+@ perturb = $increment / 2
+set inc = $startval
+set i = 0
+
+##### Enter a loop. Repeat until i < nsteps.
+while ($i < $nsteps)
+	@ rc0 = $inc
+	@ rc1 = $rc0 - $perturb
+	@ rc2 = $rc0 + $perturb
+        set lambda = "${rc0}.0 ${rc1}.0 ${rc2}.0"
+
+	setenv INFILE    p${inc}in
+	setenv UPFILE    p${inc}up
+	setenv SAVE      p${inc}sv
+	setenv AVERAGE   p${inc}av
+	setenv ZMATRIX   pmfzmat
+	setenv SLVZMAT   slvzmat
+
+	# The pmfpar0 file is only used for this initial window; pmfpar
+	# is used for subsequent windows. The difference is that the
+	# subsequent windows use ZIN and IN for the initial solute and
+	# solvent coordinates, while here they come from ZMAT and BOXES.
+        if (-e tmppar) rm tmppar
+	if ($i == 0) then
+		cp pmfpar0 tmppar
+	else
+		cp pmfpar tmppar
+	endif
+        cat $BOSSdir/oplsaa.par >> tmppar
+        setenv PARAMETER tmppar
+
+	setenv BANGPAR   $boxes/oplsaa.sb
+	setenv WATERBOX  $boxes/watbox
+	setenv ORG1BOX   $boxes/org1box
+	setenv ORG2BOX   $boxes/org2box
+	setenv SUMMARY   p${inc}sum
+
+	date
+
+	setenv OUTPUT    p${inc}ota
+	setenv PLTFILE   p${inc}plta
+
+	#    Equilibration
+
+echo time $boss 111 $configurations $lambda
+	time $boss 111 $configurations $lambda
+	foreach block (eq)
+        	date
+		setenv OUTPUT    p${inc}ot$block
+		setenv PLTFILE   p${inc}plt$block
+echo time $boss 001 $configurations $lambda
+		time $boss 001 $configurations $lambda
+	end
+
+	#    Averaging
+
+	setenv OUTPUT    p${inc}otb
+	setenv PLTFILE   p${inc}pltb
+        rm p${inc}sv
+
+echo time $boss 011 $configurations $lambda
+	time $boss 011 $configurations $lambda
+	foreach block (c d e e5)
+        	date
+        	setenv OUTPUT    p${inc}ot$block
+        	setenv PLTFILE   p${inc}plt$block
+echo time $boss 001 $configurations $lambda
+        	time $boss 001 $configurations $lambda
+	end
+	rm $SLVZMAT
+        rm tmppar
+
+	set oldinc = $inc
+
+	##### 'inc' is incremented by 'increment'.
+	##### copy the current infile for the next calc.
+	@ inc += $increment
+	cp p${oldinc}in p${inc}in
+
+	##### increment 'i' by one.
+	@ i++
+end
+
+date
+exit

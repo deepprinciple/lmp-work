@@ -1,0 +1,28 @@
+
+The pmfcmd file for UNIX/Linux is set up to compute a
+free energy of activation for a reaction via one job submission:
+csh -e pmfcmd >& log &
+The Z-matrix in pmfzmat is for the SN2 reaction of Cl- + CH3CH2Cl.
+The system is perturbed from the reactants at a Cl...C separation of
+5.5 A (lambda = 0) to the transition structure (lambda = 1) in methanol.
+The pmfcmd file executes 50 runs of double-wide sampling, so
+delta lambda = 0.01.
+Each run has 2.5M configurations of equilibration and 4M of averaging.
+The pmfpar file specifies use of PDDG/PM3 for the solute energetics
+and partial charges, and the chosen solvent is OPLS methanol using
+395 molecules from the stored box of 400.
+The entire  pmf calculation takes ca. 24 hours on a 2.4 GHz Pentium.
+
+Upon completion, the file pmfmeoh.CSV was generated using the utility pmfdelg
+in boss/miscexec. As with the utility sumdelg, each occurrence of
+"DeltaG (" is first grepped from the 50 sum files; the resultant
+file is renamed delgsum and is the input for pmfdelg.
+As summarized in the resultant output file, pmfmeoh.CSV, the computed free
+energy of activation is 22.9 kcal/mol.
+
+In separate, prior FEP calculations, the transition structure was determined
+to occur at r(Cl...C) = 2.39 +/- 0.01 A. 
+The TS was located using TSzmat and TScmd.
+The related calculations for nPrCl and iBuCl are in the subdirectories.
+
+This test job was updated on June 13, 2009 by wlj.

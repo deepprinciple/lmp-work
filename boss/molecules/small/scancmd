@@ -1,0 +1,41 @@
+#
+# Command file for the BOSS program.  Execute by entering the following:
+# csh scancmd >& log &
+#***********************************************************************
+echo '           OPLS-AA Energy Scan'
+#***********************************************************************
+#!/bin/csh -f
+nice +19
+set boss = $BOSSdir/BOSS
+# The Z-matrix needs to be in scanzmat.
+# next line specifies the atom for the chosen variable
+set atom = "000014"
+# specify the increment; 1.0,2.0 or 3.0 for bond length, angle or dihedral;
+# number of energy minimizations to perform
+set lambda = "10.000 2.000 16.00"
+set boxes = $BOSSdir
+#
+setenv INFILE    scanin
+setenv UPFILE    scanup
+setenv SAVE      svscan
+setenv AVERAGE   scanav
+setenv ZMATRIX   scanzmat
+setenv SLVZMAT   slvzmat
+if (-e scanmp) rm scanmp
+cp $BOSSdir/scripts/OPLSpar scanmp
+cat $BOSSdir/oplsaa.par >> scanmp
+setenv PARAMETER scanmp
+setenv BANGPAR   $BOSSdir/oplsaa.sb
+setenv WATERBOX  $boxes/watbox
+setenv ORG1BOX   $boxes/org1box
+setenv ORG2BOX   $boxes/org2box
+setenv SUMMARY   scansum
+setenv OUTPUT    scanout
+setenv PLTFILE   plt.pdb
+
+date
+
+# the 3 below requests the potential surface scan
+time $boss 311 $atom $lambda
+rm slvzmat svscan scanav scanup scanmp scanin
+exit

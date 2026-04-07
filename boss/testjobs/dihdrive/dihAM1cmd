@@ -1,0 +1,57 @@
+#
+# Command file for the BOSS program.  Execute by entering the following:
+# csh dihcmd >& dihlog &
+#***********************************************************************
+echo '             Dihedral Driver - AM1'
+#***********************************************************************
+#
+nice +19
+set boss = $BOSSdir/BOSS
+
+# the next line specifies the atom number for the dihedral angle to vary
+
+set atomnumber = "000006"
+
+# the first entry below specifies the increment between energy
+# evaluations in degrees
+
+set lambda = "10.000 0.000 0.000"
+
+set boxes = $BOSSdir
+setenv INFILE    dihin
+setenv UPFILE    dihup
+setenv SAVE      svdih
+setenv AVERAGE   dihav
+
+# the solute Z-matrix needs to be in dihzmat;
+# the driven dihedral needs to be moved from being
+# variable to being additional in the Z-matrix or it
+# will be optimized rather than fixed.
+
+setenv ZMATRIX   dihzmat
+setenv SLVZMAT   slvzmat
+if (-e OPtmp) rm OPtmp
+cp $BOSSdir/scripts/AM1OPTpar OPtmp
+#
+# to use the Fletcher-Powell optimizer, replace the above line with
+# cp $BOSSdir/scripts/OPLFpar OPtmp
+#
+cat $BOSSdir/oplsaa.par >> OPtmp
+setenv PARAMETER OPtmp
+setenv BANGPAR   $boxes/oplsaa.sb
+setenv WATERBOX  $boxes/watbox
+setenv ORG1BOX   $boxes/org1box
+setenv ORG2BOX   $boxes/org2box
+setenv SUMMARY   dihAM1.CSV
+
+date
+
+setenv OUTPUT    dihAM1out
+setenv PLTFILE   dih.pdb
+
+# the 3 below requests dihedral angle driving
+
+time $boss 311 $atomnumber $lambda
+
+rm slvzmat svdih dihav dihup dihin OPtmp
+exit

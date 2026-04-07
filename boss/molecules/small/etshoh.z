@@ -1,0 +1,30 @@
+  2-mercaptoethanol                                         Tot. E =      2.9712
+   1   X   -1   -1    0    0.000000   0    0.000000   0    0.000000        0
+   2   X   -1   -1    1    1.000000   0    0.000000   0    0.000000        0
+   3   H  170  170    2    1.000000   1   90.000000   0    0.000000        0
+   4   O  169  169    3    0.946228   2   90.000000   1  180.000000        0
+   5   C  173  173    4    1.412482   3  108.858446   2  180.000000        0
+   6   C  206  206    5    1.531850   4  109.405855   3  180.000440        0
+   7   S  200  200    6    1.811220   5  108.699506   4  180.001513        0
+   8   H  204  204    7    1.336390   6   96.019101   5  180.000312        0
+   9   H  176  176    5    1.091059   4  109.491975   6  121.195029        0
+  10   H  176  176    5    1.091061   4  109.491291   6  238.804703        0
+  11   H  140  140    6    1.090533   5  110.805074   7  120.291202        0
+  12   H  140  140    6    1.090535   5  110.804884   7  239.709628        0
+                    Geometry Variations follow    (2I4,F12.6)                   
+                    Variable Bonds follow         (I4 or I4-I4)                 
+0004-0012                                                                       
+                    Additional Bonds follow       (2I4)                         
+                    Harmonic Constraints follow   (2I4,4F10.4)                  
+                    Variable Bond Angles follow   (I4 or I4-I4)                 
+0005-0012                                                                       
+                    Additional Bond Angles follow (3I4)                         
+AUTO                                                                            
+                    Variable Dihedrals follow     (3I4,F12.6)                   
+0006-0012                                                                       
+                   Additional Dihedrals follow   (6I4)                          
+AUTO                                                                            
+                   Domain Definitions follow     (4I4)                          
+                   Conformational Search (2I4, 2F12.6) and (36X,I4,3F10.4)      
+                                    0000    2.0        0.0       0.0            
+                   Final blank line                                             

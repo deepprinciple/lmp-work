@@ -1,0 +1,77 @@
+***********************************************
+   Example fep calculations for PhX -> PhY  
+***********************************************
+
+FEP calculations are setup to allow computation of relative free
+energies of hydration for substituted benzenes. The following FEPs           
+are included:
+
+ CH2OMe <- Pr    NH2 <- NHMe <- NMe2 <- NO2 <- COMe -> CONH2
+           !      !                             !
+    iPr -> Et -> Me -> H <- F <- Cl <- Br     MeC=CH2
+           !      !         !     !
+F <- OH <- OMe   CF3        CN    H
+   / !     !
+ SH  NH2   SMe
+
+The Z-matrices illustrate the setup for standard FEP transformations.
+The same Z-matrices are used for the gas-phase and aqueous calculations
+in the gas and aq directories. 
+
+For example, ch3-cf3 is for PhCH3 -> PhCF3.
+The Z-matrix for the FEP calculation is called ch3-cf3.z
+It uses OPLS-AA parameters with fully flexible geometries.
+
+Run the gas-phase calculation:
+xFEPGAS ch3-cf3
+The resulting total deltaG is dGgas in ch3-cf3.gas/sumout:
+ Sum of DeltaGs =   10.00    
+ Sigma          =    0.00
+
+Run the aqueous-phase calculation:
+xFEPAQ ch3-cf3
+The resulting total deltaG is dGaq in ch3-cf3.aq/sumout:
+ Sum of DeltaGs =   11.36       
+ Sigma          =    0.08     
+
+
+The thermodynamic cycle is
+
+               dGgas
+     PhCH3    ------>     PhCF3
+       I                    I
+       I                    I
+       I dG(PhCH3)          I dG(PhCF3)
+       I                    I
+       V                    V
+     PhCH3    ------>     PhCF3
+               dGaq
+
+  deltaG hydration =
+     dG(PhCF3) - dG(PhCH3) = dGaq - dGgas
+                           = 11.36 - 10.00
+			   = 1.36  (exptl = 0.64)
+
+Execution times on a 2.8 GHz Pentium:
+gas phase         20 minutes
+aqueous phase      6 hours  
+
+Directories aq10 and gas10 contain the input   for the FEP calculations
+using 10 windows. The input files using 25 windows are in aq25 and gas25.
+---------------------------------------------------------------------
+
+To run on the Yale queuing system
+xFEPAQQ ch3-cf3
+
+All of the FEP calculations in water have been run simultaneously
+by listing the Z-matrix names (with the .z) in "filenames", then
+in the aq directory
+xMANY filenames xFEPAQQ
+
+and in the gas directory
+xMANY filenames xFEPGAS
+(the gas jobs could be run on the queue too, but they are
+much faster and can be run sequentially)
+
+The results have been collected in the Excel file PhXtoY.xls
+---------------------------------------------------------------------

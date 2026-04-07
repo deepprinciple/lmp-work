@@ -1,0 +1,31 @@
+    guanidinium chloride                                    Tot. E =    -98.5796
+   1 C    302    0    0    0.000000   0    0.000000   0    0.000000        0
+   2 DUM   -1    0    1    1.000000   0    0.000000   0    0.000000        0
+   3 DUM   -1    0    2    1.000000   1   90.000000   0    0.000000        0
+   4 N    300    0    1    1.330303   2   90.000000   3    0.000000        0
+   5 N    300    0    1    1.335615   4  120.448904   2  270.000000        0
+   6 N    300    0    1    1.330117   4  118.829385   5  179.899713        0
+   7 H    301    0    4    1.005149   1  128.298012   6  180.117392        0
+   8 H    301    0    4    1.046643   1  115.013285   7  180.137927        0
+   9 H    301    0    5    1.009015   1  121.145138   4  180.016242        0
+  10 H    301    0    5    1.008970   1  121.242302   9  180.037229        0
+  11 H    301    0    6    1.047292   1  115.096186   5  179.948037        0
+  12 H    301    0    6    1.005149   1  128.257073  11  180.063177        0
+TERZ                                                                            
+  13 Cl   401    0    1    2.000000   4   59.573505   5  180.072565        0
+                    Geometry Variations follow    (2I4,F12.6)                   
+                    Variable Bonds follow         (I4 or I4-I4)                 
+0004-0012                                                                       
+                    Additional Bonds follow       (2I4)                         
+                    Harmonic Constraints follow   (2I4,4F10.4)                  
+                    Variable Bond Angles follow   (I4 or I4-I4)                 
+0005-0013                                                                       
+                    Additional Bond Angles follow (3I4)                         
+AUTO                                                                            
+                    Variable Dihedrals follow     (3I4,F12.6)                   
+0006-0013                                                                       
+                    Additional Dihedrals follow   (6I4)                         
+AUTO                                                                            
+                    Domain Definitions follow     (4I4)                         
+                    Conformational Search         (2I4, 2F12.6)                 
+                    Final blank line                                            

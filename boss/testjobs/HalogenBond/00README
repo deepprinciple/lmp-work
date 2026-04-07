@@ -1,0 +1,35 @@
+This directory illustrates Z-matrices with Cl, Br and I
+including X sites (a partially positive point charge) on the
+C-X axis. This allows representation of halogen bonds.
+
+Z-matrices:
+benzclX.z          chlorobenzene
+benzbrX.z          bromobenzene
+benziX.z           iodobenzene
+clbace.z           PhCl - acetone complex
+clbacePlanar.z     " constrained to be co-planar
+brbace.z           PhBr - acetone complex
+ibace.z            PhI  - acetone complex
+clbcl.z            PhCl - chloride ion complex
+clbi.z             PhCl - iodide ion complex
+me2co.z            acetone
+
+Interactions Energies                                      MP2*  MP2*
+Complex        E(complex) E(PhX)  E(acetone) r(XO) deltaE deltaE r(XO)
+PhCl-acetone    -7.42     4.40    -9.99      3.28  -1.83  -1.30  3.16
+PhBr-acetone    -8.29     4.14    -9.99      3.21  -2.44  -2.23  3.13
+PhI -acetone    -9.20     4.18    -9.99      3.23  -3.39  -3.22  3.14
+
+* Riley et al., J Mol Model 2011, 17, 3309-3318.
+
+The SOSaq and SOSgas directories have results and example Z-matrices for
+converting a halogen with the X site to one without it for chloro-,
+bromo-, and iodobenzene.
+
+Note: one can obtain the CM1A charges for Z-matrices with the X sites
+via, e.g.,
+xAM1SP benzclX or xZCM1A benzclX
+
+However, one should not do QM optimizations or QM/MM calculations
+on Z-matrices that include the X sites. The X sites are just for
+force field calculations.

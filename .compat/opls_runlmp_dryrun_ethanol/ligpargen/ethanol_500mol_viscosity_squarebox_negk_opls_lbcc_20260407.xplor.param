@@ -1,0 +1,95 @@
+Remarks generated with LigParGen (israel.cabezadevaca@yale.edu)
+
+set echo=false end
+
+{ BOND: atomType1 atomType2 kb r0 }
+BOND   C801  C800    268.0   1.5290
+BOND   O802  C800    320.0   1.4100
+BOND   H803  C801    340.0   1.0900
+BOND   H804  C801    340.0   1.0900
+BOND   H805  C801    340.0   1.0900
+BOND   H806  C800    340.0   1.0900
+BOND   H807  C800    340.0   1.0900
+BOND   H808  O802    553.0   0.9450
+
+{ ANGLE: aType1 aType2 aType3 kt t0 }
+ANGLE  O802  C800  C801     50.0   109.50
+ANGLE  H803  C801  C800     37.5   110.70
+ANGLE  H804  C801  C800     37.5   110.70
+ANGLE  H805  C801  C800     37.5   110.70
+ANGLE  H806  C800  C801     37.5   110.70
+ANGLE  H807  C800  C801     37.5   110.70
+ANGLE  H808  O802  C800     55.0   108.50
+ANGLE  H806  C800  O802     35.0   109.50
+ANGLE  H807  C800  O802     35.0   109.50
+ANGLE  H804  C801  H803     33.0   107.80
+ANGLE  H805  C801  H803     33.0   107.80
+ANGLE  H805  C801  H804     33.0   107.80
+ANGLE  H807  C800  H806     33.0   107.80
+
+{ Proper Dihedrals: aType1 aType2 aType3 aType4 kt period phase }
+DIHEDRAL  H803  C801  C800  O802 MULT 4     0.000    1     0.00
+                                            0.000    2   180.00
+                                            0.150    3     0.00
+                                            0.000    4   180.00
+DIHEDRAL  H804  C801  C800  O802 MULT 4     0.000    1     0.00
+                                            0.000    2   180.00
+                                            0.150    3     0.00
+                                            0.000    4   180.00
+DIHEDRAL  H805  C801  C800  O802 MULT 4     0.000    1     0.00
+                                            0.000    2   180.00
+                                            0.150    3     0.00
+                                            0.000    4   180.00
+DIHEDRAL  H806  C800  C801  H803 MULT 4     0.000    1     0.00
+                                            0.000    2   180.00
+                                            0.150    3     0.00
+                                            0.000    4   180.00
+DIHEDRAL  H807  C800  C801  H803 MULT 4     0.000    1     0.00
+                                            0.000    2   180.00
+                                            0.150    3     0.00
+                                            0.000    4   180.00
+DIHEDRAL  H808  O802  C800  C801 MULT 4    -0.250    1     0.00
+                                            0.100    2   180.00
+                                            0.150    3     0.00
+                                            0.000    4   180.00
+DIHEDRAL  H806  C800  C801  H804 MULT 4     0.000    1     0.00
+                                            0.000    2   180.00
+                                            0.150    3     0.00
+                                            0.000    4   180.00
+DIHEDRAL  H807  C800  C801  H804 MULT 4     0.000    1     0.00
+                                            0.000    2   180.00
+                                            0.150    3     0.00
+                                            0.000    4   180.00
+DIHEDRAL  H806  C800  C801  H805 MULT 4     0.000    1     0.00
+                                            0.000    2   180.00
+                                            0.150    3     0.00
+                                            0.000    4   180.00
+DIHEDRAL  H807  C800  C801  H805 MULT 4     0.000    1     0.00
+                                            0.000    2   180.00
+                                            0.150    3     0.00
+                                            0.000    4   180.00
+DIHEDRAL  H808  O802  C800  H806 MULT 4     0.000    1     0.00
+                                            0.000    2   180.00
+                                            0.176    3     0.00
+                                            0.000    4   180.00
+DIHEDRAL  H808  O802  C800  H807 MULT 4     0.000    1     0.00
+                                            0.000    2   180.00
+                                            0.176    3     0.00
+                                            0.000    4   180.00
+
+{ Improper Dihedrals: aType1 aType2 aType3 aType4 kt period phase }
+
+{ Nonbonded: Type Emin sigma; (1-4): Emin/2 sigma }
+NONBONDED  C801    0.066000    3.500000    0.033000    3.500000
+NONBONDED  C800    0.066000    3.500000    0.033000    3.500000
+NONBONDED  O802    0.170000    3.120000    0.085000    3.120000
+NONBONDED  H803    0.030000    2.500000    0.015000    2.500000
+NONBONDED  H804    0.030000    2.500000    0.015000    2.500000
+NONBONDED  H805    0.030000    2.500000    0.015000    2.500000
+NONBONDED  H806    0.030000    2.500000    0.015000    2.500000
+NONBONDED  H807    0.030000    2.500000    0.015000    2.500000
+NONBONDED  H808    0.000000    0.000000    0.000000    0.000000
+
+set echo=true end
+
+

@@ -1,0 +1,32 @@
+            Benzene                                         Tot. E =      6.5426
+   1 DUM   -1   -1    0    0.000000   0    0.000000   0    0.000000        0
+   2 DUM   -1   -1    1    1.000000   0    0.000000   0    0.000000        0
+   3 C    145  145    1    1.400000   2   90.000000   0    0.000000        0
+   4 C    145  145    3    1.408620   1   60.000000   2   90.000000        0
+   5 C    145  145    3    1.408619   4  119.999841   1    0.000000        0
+   6 C    145  145    4    1.408624   3  119.999954   5    0.000000        0
+   7 C    145  145    5    1.408621   3  120.000406   4    0.000000        0
+   8 C    145  145    6    1.408617   4  119.999903   3    0.000000        0
+   9 H    146  146    3    1.080433   4  120.000137   6  180.000000        0
+  10 H    146  146    4    1.080424   3  120.000583   5  180.000000        0
+  11 H    146  146    5    1.080424   3  120.000486   4  180.000000        0
+  12 H    146  146    6    1.080424   4  119.999635   3  180.000000        0
+  13 H    146  146    7    1.080424   5  119.999387   3  180.000000        0
+  14 H    146  146    8    1.080433   6  119.999753   4  180.000000        0
+                    Geometry Variations follow    (2I4,F12.6)                   
+                    Variable Bonds follow         (I4)                          
+0004-0014                                                                       
+                    Additional Bonds follow       (2I4)                         
+00070008                                                                        
+                    Harmonic Constraints follow   (2I4,4F10.4)                  
+                    Variable Bond Angles follow   (I4)                          
+0005-0014                                                                       
+                    Additional Bond Angles follow (3I4)                         
+AUTO                                                                            
+                    Variable Dihedrals follow     (3I4,F12.6)                   
+0006-0014                                                                       
+                    Additional Dihedrals follow   (6I4)                         
+AUTO                                                                            
+                    Domain Definitions follow     (4I4)                         
+                    Conformational Search (4I2,2F12.6)                          
+                    Final blank line                                            

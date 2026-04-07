@@ -1,0 +1,1028 @@
+REMARK        Liquid Argon              
+REMARK    Created by BOSS 4.8 July11 Linux 
+TER   
+ATOM      1 Ar00 UNK     1      -1.502  -9.608 -10.989
+TER   
+ATOM      2 Ar00 UNK     2       2.998  12.461 -10.039
+TER   
+ATOM      3 Ar00 UNK     3      -6.592  -9.223  -6.469
+TER   
+ATOM      4 Ar00 UNK     4     -13.422 -13.793  12.059
+TER   
+ATOM      5 Ar00 UNK     5     -13.411  12.874 -12.692
+TER   
+ATOM      6 Ar00 UNK     6     -11.888  -0.968 -13.332
+TER   
+ATOM      7 Ar00 UNK     7     -13.829  -0.872  11.628
+TER   
+ATOM      8 Ar00 UNK     8      12.318   2.103 -10.968
+TER   
+ATOM      9 Ar00 UNK     9     -11.031 -13.582  -9.555
+TER   
+ATOM     10 Ar00 UNK    10     -12.759  -9.076  11.148
+TER   
+ATOM     11 Ar00 UNK    11       3.175   4.608 -13.952
+TER   
+ATOM     12 Ar00 UNK    12       5.844  -6.925  -9.138
+TER   
+ATOM     13 Ar00 UNK    13       1.348   7.388  -7.070
+TER   
+ATOM     14 Ar00 UNK    14       9.134   2.106  -8.448
+TER   
+ATOM     15 Ar00 UNK    15      -9.748   1.873 -12.752
+TER   
+ATOM     16 Ar00 UNK    16       0.472  -3.433  -9.799
+TER   
+ATOM     17 Ar00 UNK    17      -6.349   1.284 -12.250
+TER   
+ATOM     18 Ar00 UNK    18       7.378  10.114 -13.659
+TER   
+ATOM     19 Ar00 UNK    19     -14.123 -10.756  14.182
+TER   
+ATOM     20 Ar00 UNK    20      -7.003  -3.940  12.483
+TER   
+ATOM     21 Ar00 UNK    21      -2.229 -13.259  -9.834
+TER   
+ATOM     22 Ar00 UNK    22      10.812  -1.624   6.477
+TER   
+ATOM     23 Ar00 UNK    23       2.860  -5.751  -7.762
+TER   
+ATOM     24 Ar00 UNK    24       9.796   1.161 -13.888
+TER   
+ATOM     25 Ar00 UNK    25      -5.530  -1.553 -14.206
+TER   
+ATOM     26 Ar00 UNK    26       2.065   8.875  12.763
+TER   
+ATOM     27 Ar00 UNK    27      -4.030   7.998 -10.511
+TER   
+ATOM     28 Ar00 UNK    28       5.105   7.113  12.871
+TER   
+ATOM     29 Ar00 UNK    29      11.057   7.493  -9.126
+TER   
+ATOM     30 Ar00 UNK    30       0.358  -8.989 -13.835
+TER   
+ATOM     31 Ar00 UNK    31      -5.146 -10.820 -10.546
+TER   
+ATOM     32 Ar00 UNK    32       7.099   6.370   7.958
+TER   
+ATOM     33 Ar00 UNK    33      -5.815  -8.714 -13.295
+TER   
+ATOM     34 Ar00 UNK    34       1.011  -5.819  -4.487
+TER   
+ATOM     35 Ar00 UNK    35      -5.024  -0.982  -9.975
+TER   
+ATOM     36 Ar00 UNK    36       4.542   3.067 -10.920
+TER   
+ATOM     37 Ar00 UNK    37       6.653   0.080 -11.762
+TER   
+ATOM     38 Ar00 UNK    38       7.460 -10.119 -10.295
+TER   
+ATOM     39 Ar00 UNK    39      -7.850  -8.047 -10.017
+TER   
+ATOM     40 Ar00 UNK    40       1.169  -0.701 -12.033
+TER   
+ATOM     41 Ar00 UNK    41       2.066  12.155   9.733
+TER   
+ATOM     42 Ar00 UNK    42      11.698  14.078  10.105
+TER   
+ATOM     43 Ar00 UNK    43      -8.966  -0.161  -9.792
+TER   
+ATOM     44 Ar00 UNK    44       8.839   5.763  12.560
+TER   
+ATOM     45 Ar00 UNK    45      12.527 -10.373  11.002
+TER   
+ATOM     46 Ar00 UNK    46      11.125   8.458  11.864
+TER   
+ATOM     47 Ar00 UNK    47       9.680  10.789  -9.217
+TER   
+ATOM     48 Ar00 UNK    48       2.346  10.639  -7.142
+TER   
+ATOM     49 Ar00 UNK    49      -8.719   8.553  13.685
+TER   
+ATOM     50 Ar00 UNK    50      -2.855  11.240 -10.438
+TER   
+ATOM     51 Ar00 UNK    51      10.736  12.842  -6.320
+TER   
+ATOM     52 Ar00 UNK    52      -9.919  10.119   0.492
+TER   
+ATOM     53 Ar00 UNK    53      14.144 -11.918   4.895
+TER   
+ATOM     54 Ar00 UNK    54      13.377 -12.233  -4.761
+TER   
+ATOM     55 Ar00 UNK    55      -3.643 -11.418   4.264
+TER   
+ATOM     56 Ar00 UNK    56       2.758  -8.460  12.021
+TER   
+ATOM     57 Ar00 UNK    57       2.095 -13.898   5.474
+TER   
+ATOM     58 Ar00 UNK    58      -8.385 -11.720 -10.502
+TER   
+ATOM     59 Ar00 UNK    59      -1.563  10.981  -3.298
+TER   
+ATOM     60 Ar00 UNK    60      14.056  14.147  -7.418
+TER   
+ATOM     61 Ar00 UNK    61       0.877  -9.631   0.815
+TER   
+ATOM     62 Ar00 UNK    62       1.091  12.956  -4.237
+TER   
+ATOM     63 Ar00 UNK    63       7.525  13.004  -2.349
+TER   
+ATOM     64 Ar00 UNK    64       1.346 -13.592   1.392
+TER   
+ATOM     65 Ar00 UNK    65       0.475 -11.418  -7.737
+TER   
+ATOM     66 Ar00 UNK    66      10.581 -10.260  -2.304
+TER   
+ATOM     67 Ar00 UNK    67     -13.820  10.521  -0.566
+TER   
+ATOM     68 Ar00 UNK    68       8.222 -13.628   5.005
+TER   
+ATOM     69 Ar00 UNK    69     -13.291   6.880  -6.289
+TER   
+ATOM     70 Ar00 UNK    70     -11.524  14.161  -5.082
+TER   
+ATOM     71 Ar00 UNK    71       7.382 -13.667  -8.740
+TER   
+ATOM     72 Ar00 UNK    72       5.520 -12.831 -11.840
+TER   
+ATOM     73 Ar00 UNK    73      -7.523 -12.993   9.400
+TER   
+ATOM     74 Ar00 UNK    74      -8.778  13.772   3.334
+TER   
+ATOM     75 Ar00 UNK    75     -10.154 -10.567   9.116
+TER   
+ATOM     76 Ar00 UNK    76       6.371  12.300 -11.269
+TER   
+ATOM     77 Ar00 UNK    77       4.110 -11.244  -9.048
+TER   
+ATOM     78 Ar00 UNK    78       1.033   5.050   5.402
+TER   
+ATOM     79 Ar00 UNK    79     -12.210  13.605  -1.410
+TER   
+ATOM     80 Ar00 UNK    80       8.325 -10.420   6.889
+TER   
+ATOM     81 Ar00 UNK    81      -8.505  12.953  -1.688
+TER   
+ATOM     82 Ar00 UNK    82      -6.211  10.628  -9.499
+TER   
+ATOM     83 Ar00 UNK    83      -3.591 -14.062   6.734
+TER   
+ATOM     84 Ar00 UNK    84      -2.877  -9.457  -7.604
+TER   
+ATOM     85 Ar00 UNK    85     -13.334 -12.216   8.670
+TER   
+ATOM     86 Ar00 UNK    86      -6.955 -12.430   5.996
+TER   
+ATOM     87 Ar00 UNK    87      -8.853 -12.050  -6.667
+TER   
+ATOM     88 Ar00 UNK    88       5.265 -12.272   6.940
+TER   
+ATOM     89 Ar00 UNK    89       8.371 -13.094   0.711
+TER   
+ATOM     90 Ar00 UNK    90      11.710  12.597  -0.154
+TER   
+ATOM     91 Ar00 UNK    91     -13.711  -4.955  -1.720
+TER   
+ATOM     92 Ar00 UNK    92       7.447  -9.446  14.051
+TER   
+ATOM     93 Ar00 UNK    93      12.962  10.837   2.994
+TER   
+ATOM     94 Ar00 UNK    94     -11.285  12.228   5.662
+TER   
+ATOM     95 Ar00 UNK    95      12.039   1.746  11.772
+TER   
+ATOM     96 Ar00 UNK    96      13.954  -6.685  -9.084
+TER   
+ATOM     97 Ar00 UNK    97     -13.406  -3.541  -7.009
+TER   
+ATOM     98 Ar00 UNK    98     -11.678   3.002  -4.633
+TER   
+ATOM     99 Ar00 UNK    99     -11.295 -12.464 -13.288
+TER   
+ATOM    100 Ar00 UNK   100      13.049  -1.332  -9.115
+TER   
+ATOM    101 Ar00 UNK   101      13.152  10.187 -10.282
+TER   
+ATOM    102 Ar00 UNK   102      13.984  -9.183  -2.111
+TER   
+ATOM    103 Ar00 UNK   103     -11.940   9.157   3.481
+TER   
+ATOM    104 Ar00 UNK   104     -11.575   4.493   3.365
+TER   
+ATOM    105 Ar00 UNK   105     -13.688  -3.778   6.252
+TER   
+ATOM    106 Ar00 UNK   106       8.568   6.345   0.114
+TER   
+ATOM    107 Ar00 UNK   107      13.949  -4.086  12.536
+TER   
+ATOM    108 Ar00 UNK   108      -6.625  -4.709   4.870
+TER   
+ATOM    109 Ar00 UNK   109      13.129   8.316 -13.630
+TER   
+ATOM    110 Ar00 UNK   110      13.389   4.264  -4.030
+TER   
+ATOM    111 Ar00 UNK   111      13.715   2.173   2.089
+TER   
+ATOM    112 Ar00 UNK   112     -12.420   7.645  -9.910
+TER   
+ATOM    113 Ar00 UNK   113     -10.555   6.016   6.410
+TER   
+ATOM    114 Ar00 UNK   114     -14.015  -6.990   4.250
+TER   
+ATOM    115 Ar00 UNK   115      -5.388   4.692   1.172
+TER   
+ATOM    116 Ar00 UNK   116       8.642  -8.268  -4.783
+TER   
+ATOM    117 Ar00 UNK   117      -9.030   7.350   2.647
+TER   
+ATOM    118 Ar00 UNK   118     -10.895  -2.053  -0.490
+TER   
+ATOM    119 Ar00 UNK   119      11.651  -6.799  -3.180
+TER   
+ATOM    120 Ar00 UNK   120     -11.231  13.460   9.105
+TER   
+ATOM    121 Ar00 UNK   121     -12.409  -5.830   9.362
+TER   
+ATOM    122 Ar00 UNK   122      -8.126  -2.417   7.002
+TER   
+ATOM    123 Ar00 UNK   123      14.132 -12.442 -10.914
+TER   
+ATOM    124 Ar00 UNK   124      -1.398  13.996   3.897
+TER   
+ATOM    125 Ar00 UNK   125      -1.885  -8.661  -1.502
+TER   
+ATOM    126 Ar00 UNK   126       7.481 -11.878  -2.479
+TER   
+ATOM    127 Ar00 UNK   127       6.582   4.878  -8.862
+TER   
+ATOM    128 Ar00 UNK   128       9.052  -5.936  12.785
+TER   
+ATOM    129 Ar00 UNK   129       3.393  -2.467  -4.969
+TER   
+ATOM    130 Ar00 UNK   130       0.262   6.618 -13.688
+TER   
+ATOM    131 Ar00 UNK   131      -7.866  -4.699   1.151
+TER   
+ATOM    132 Ar00 UNK   132      -3.033   1.933   3.878
+TER   
+ATOM    133 Ar00 UNK   133       2.567   4.198  -7.629
+TER   
+ATOM    134 Ar00 UNK   134      11.127  -4.453 -12.597
+TER   
+ATOM    135 Ar00 UNK   135      -5.284   7.971   2.759
+TER   
+ATOM    136 Ar00 UNK   136     -12.701   1.319 -10.456
+TER   
+ATOM    137 Ar00 UNK   137       8.155   4.632   4.883
+TER   
+ATOM    138 Ar00 UNK   138       6.876   3.422 -13.638
+TER   
+ATOM    139 Ar00 UNK   139      -8.667   4.179   0.072
+TER   
+ATOM    140 Ar00 UNK   140      13.734   6.571   3.184
+TER   
+ATOM    141 Ar00 UNK   141      -0.147  -9.281  -4.888
+TER   
+ATOM    142 Ar00 UNK   142      -8.850  12.217  -6.407
+TER   
+ATOM    143 Ar00 UNK   143       8.258   2.904   7.976
+TER   
+ATOM    144 Ar00 UNK   144      -7.538 -11.136  -3.423
+TER   
+ATOM    145 Ar00 UNK   145     -11.330   1.404   9.775
+TER   
+ATOM    146 Ar00 UNK   146     -10.418  -7.098   2.958
+TER   
+ATOM    147 Ar00 UNK   147     -11.286  10.483  -3.378
+TER   
+ATOM    148 Ar00 UNK   148      13.093   1.866  -7.278
+TER   
+ATOM    149 Ar00 UNK   149      -7.083  -5.476  -5.616
+TER   
+ATOM    150 Ar00 UNK   150     -12.565  -6.820 -14.008
+TER   
+ATOM    151 Ar00 UNK   151       4.142  -5.332   4.659
+TER   
+ATOM    152 Ar00 UNK   152      -1.640   7.341  -3.572
+TER   
+ATOM    153 Ar00 UNK   153      -4.843  -2.098  -0.606
+TER   
+ATOM    154 Ar00 UNK   154       4.927  -7.336   1.322
+TER   
+ATOM    155 Ar00 UNK   155      -6.416 -13.949  -8.681
+TER   
+ATOM    156 Ar00 UNK   156     -10.067   8.954  -7.439
+TER   
+ATOM    157 Ar00 UNK   157       1.077   1.715   3.652
+TER   
+ATOM    158 Ar00 UNK   158      -1.907  12.649  -0.256
+TER   
+ATOM    159 Ar00 UNK   159       8.402   7.135  -6.537
+TER   
+ATOM    160 Ar00 UNK   160      -4.496  -2.832   7.149
+TER   
+ATOM    161 Ar00 UNK   161       4.246  -2.053   0.207
+TER   
+ATOM    162 Ar00 UNK   162      -7.487 -11.964 -14.157
+TER   
+ATOM    163 Ar00 UNK   163      -2.203  -4.493  -1.823
+TER   
+ATOM    164 Ar00 UNK   164     -12.027   0.022  -7.252
+TER   
+ATOM    165 Ar00 UNK   165      -2.195  -8.535   2.194
+TER   
+ATOM    166 Ar00 UNK   166       7.400   7.859   2.935
+TER   
+ATOM    167 Ar00 UNK   167      -0.859   3.422  -7.403
+TER   
+ATOM    168 Ar00 UNK   168       2.215   6.012  -1.289
+TER   
+ATOM    169 Ar00 UNK   169       6.717 -10.627  -6.657
+TER   
+ATOM    170 Ar00 UNK   170       0.640  -6.806   4.882
+TER   
+ATOM    171 Ar00 UNK   171      -7.221  -3.250  -2.898
+TER   
+ATOM    172 Ar00 UNK   172      -8.668   4.873  12.704
+TER   
+ATOM    173 Ar00 UNK   173       2.148  -5.816 -12.584
+TER   
+ATOM    174 Ar00 UNK   174       4.384  11.775  -3.535
+TER   
+ATOM    175 Ar00 UNK   175      -0.373   8.626  -0.249
+TER   
+ATOM    176 Ar00 UNK   176       6.220 -14.164  11.613
+TER   
+ATOM    177 Ar00 UNK   177       8.356  -4.581   5.647
+TER   
+ATOM    178 Ar00 UNK   178      -3.481   8.712   5.883
+TER   
+ATOM    179 Ar00 UNK   179     -10.975  -3.554  12.392
+TER   
+ATOM    180 Ar00 UNK   180       2.390  -4.968  11.952
+TER   
+ATOM    181 Ar00 UNK   181      11.748   0.775  -4.003
+TER   
+ATOM    182 Ar00 UNK   182      -5.590  -1.567  10.228
+TER   
+ATOM    183 Ar00 UNK   183       3.618 -12.056  -3.816
+TER   
+ATOM    184 Ar00 UNK   184      -6.362   1.854  12.433
+TER   
+ATOM    185 Ar00 UNK   185      -5.326 -13.842   2.700
+TER   
+ATOM    186 Ar00 UNK   186      -4.740 -11.683  11.873
+TER   
+ATOM    187 Ar00 UNK   187     -10.686  -5.529 -10.882
+TER   
+ATOM    188 Ar00 UNK   188       5.339  -6.377  13.898
+TER   
+ATOM    189 Ar00 UNK   189      -9.847   5.444 -12.043
+TER   
+ATOM    190 Ar00 UNK   190      10.001  -3.175   1.042
+TER   
+ATOM    191 Ar00 UNK   191     -13.259 -10.239  -7.880
+TER   
+ATOM    192 Ar00 UNK   192      -5.917  -7.650  -2.554
+TER   
+ATOM    193 Ar00 UNK   193      -2.679   0.475  -6.216
+TER   
+ATOM    194 Ar00 UNK   194     -12.947  -1.000  -3.453
+TER   
+ATOM    195 Ar00 UNK   195      -2.616   6.315  -7.112
+TER   
+ATOM    196 Ar00 UNK   196      -4.818   8.071  -4.870
+TER   
+ATOM    197 Ar00 UNK   197       5.631   0.759  -7.957
+TER   
+ATOM    198 Ar00 UNK   198       8.465  -4.126  -5.355
+TER   
+ATOM    199 Ar00 UNK   199     -11.703   6.737  13.784
+TER   
+ATOM    200 Ar00 UNK   200      -2.903 -13.404  -6.472
+TER   
+ATOM    201 Ar00 UNK   201      -7.599   7.954  10.134
+TER   
+ATOM    202 Ar00 UNK   202       9.328  -4.296  -9.485
+TER   
+ATOM    203 Ar00 UNK   203       3.776  -0.763   3.576
+TER   
+ATOM    204 Ar00 UNK   204      -9.690  -8.318  -4.843
+TER   
+ATOM    205 Ar00 UNK   205     -10.478  -5.598   6.305
+TER   
+ATOM    206 Ar00 UNK   206      -5.510  -8.181   3.245
+TER   
+ATOM    207 Ar00 UNK   207      13.781   8.057  -2.971
+TER   
+ATOM    208 Ar00 UNK   208      -5.604  -4.617 -11.892
+TER   
+ATOM    209 Ar00 UNK   209      10.766   4.567   2.530
+TER   
+ATOM    210 Ar00 UNK   210      -2.760   1.118 -12.693
+TER   
+ATOM    211 Ar00 UNK   211      -4.320  -1.768   3.016
+TER   
+ATOM    212 Ar00 UNK   212       1.094   0.860  -5.085
+TER   
+ATOM    213 Ar00 UNK   213       1.088 -11.916 -11.736
+TER   
+ATOM    214 Ar00 UNK   214      -7.618   3.576  -9.579
+TER   
+ATOM    215 Ar00 UNK   215       6.868 -13.936  -5.268
+TER   
+ATOM    216 Ar00 UNK   216       1.846  -8.451  -2.232
+TER   
+ATOM    217 Ar00 UNK   217       3.886  -2.986 -10.369
+TER   
+ATOM    218 Ar00 UNK   218       4.367   6.885  -5.588
+TER   
+ATOM    219 Ar00 UNK   219       1.087  -2.452  -2.071
+TER   
+ATOM    220 Ar00 UNK   220       0.158 -11.063   4.257
+TER   
+ATOM    221 Ar00 UNK   221       9.427   3.187  -2.962
+TER   
+ATOM    222 Ar00 UNK   222       8.422 -13.497   8.688
+TER   
+ATOM    223 Ar00 UNK   223      11.820   1.515   7.931
+TER   
+ATOM    224 Ar00 UNK   224       4.204   2.639   4.804
+TER   
+ATOM    225 Ar00 UNK   225      12.373  -7.051   0.387
+TER   
+ATOM    226 Ar00 UNK   226       0.524   1.675  10.243
+TER   
+ATOM    227 Ar00 UNK   227      -4.857 -10.045   0.102
+TER   
+ATOM    228 Ar00 UNK   228       4.324   8.622   8.693
+TER   
+ATOM    229 Ar00 UNK   229       7.318  12.286   2.364
+TER   
+ATOM    230 Ar00 UNK   230      10.226   7.423   6.020
+TER   
+ATOM    231 Ar00 UNK   231       4.045   0.174  -2.398
+TER   
+ATOM    232 Ar00 UNK   232     -10.922   6.316  -3.158
+TER   
+ATOM    233 Ar00 UNK   233      -0.577  -6.908  -7.994
+TER   
+ATOM    234 Ar00 UNK   234       2.977   3.050   8.300
+TER   
+ATOM    235 Ar00 UNK   235      -4.217 -10.507   7.975
+TER   
+ATOM    236 Ar00 UNK   236      -7.935  -4.113  -9.190
+TER   
+ATOM    237 Ar00 UNK   237      10.751 -10.735 -12.572
+TER   
+ATOM    238 Ar00 UNK   238      10.568   1.194   0.277
+TER   
+ATOM    239 Ar00 UNK   239      -8.032  -8.551   6.105
+TER   
+ATOM    240 Ar00 UNK   240      -2.913  -8.699  13.395
+TER   
+ATOM    241 Ar00 UNK   241      -1.650  -1.128   5.331
+TER   
+ATOM    242 Ar00 UNK   242      -8.040   0.619   8.725
+TER   
+ATOM    243 Ar00 UNK   243      13.155  -8.197 -11.955
+TER   
+ATOM    244 Ar00 UNK   244      -1.090   5.211   8.313
+TER   
+ATOM    245 Ar00 UNK   245       7.151   0.899  -1.205
+TER   
+ATOM    246 Ar00 UNK   246       9.585  -0.832   9.991
+TER   
+ATOM    247 Ar00 UNK   247     -11.823 -11.065  -0.045
+TER   
+ATOM    248 Ar00 UNK   248      -9.027 -10.695   3.109
+TER   
+ATOM    249 Ar00 UNK   249      -0.897 -11.938   7.661
+TER   
+ATOM    250 Ar00 UNK   250     -12.579 -13.915   2.312
+TER   
+ATOM    251 Ar00 UNK   251      -1.704  -3.662  10.596
+TER   
+ATOM    252 Ar00 UNK   252       1.508   4.948  11.324
+TER   
+ATOM    253 Ar00 UNK   253       5.526  11.759  -7.495
+TER   
+ATOM    254 Ar00 UNK   254      -6.262   1.365   0.293
+TER   
+ATOM    255 Ar00 UNK   255      -4.469  -5.672   0.666
+TER   
+ATOM    256 Ar00 UNK   256      -0.542  -6.830  11.928
+TER   
+ATOM    257 Ar00 UNK   257     -11.708   0.337   1.990
+TER   
+ATOM    258 Ar00 UNK   258       4.293   2.231   0.872
+TER   
+ATOM    259 Ar00 UNK   259       6.830   3.475  -5.394
+TER   
+ATOM    260 Ar00 UNK   260      -2.049 -12.450   0.854
+TER   
+ATOM    261 Ar00 UNK   261       5.273  -8.777  -2.499
+TER   
+ATOM    262 Ar00 UNK   262       3.360  13.588  13.849
+TER   
+ATOM    263 Ar00 UNK   263      -3.341   5.231   5.358
+TER   
+ATOM    264 Ar00 UNK   264      -3.984   3.601  -9.730
+TER   
+ATOM    265 Ar00 UNK   265      -2.122   3.435  -3.989
+TER   
+ATOM    266 Ar00 UNK   266      -5.062  11.612  -2.769
+TER   
+ATOM    267 Ar00 UNK   267      -1.593   7.160  11.675
+TER   
+ATOM    268 Ar00 UNK   268      -5.182   3.183  -6.067
+TER   
+ATOM    269 Ar00 UNK   269       3.267 -14.026  -6.895
+TER   
+ATOM    270 Ar00 UNK   270      10.552   6.416  -3.327
+TER   
+ATOM    271 Ar00 UNK   271      11.526  -5.160  -6.631
+TER   
+ATOM    272 Ar00 UNK   272       1.195  -3.354   3.942
+TER   
+ATOM    273 Ar00 UNK   273      13.839   4.898  -0.576
+TER   
+ATOM    274 Ar00 UNK   274       1.144   4.553  -4.282
+TER   
+ATOM    275 Ar00 UNK   275      -4.946  13.074   9.914
+TER   
+ATOM    276 Ar00 UNK   276       0.646  -6.105   1.310
+TER   
+ATOM    277 Ar00 UNK   277      -1.590   0.001  -3.057
+TER   
+ATOM    278 Ar00 UNK   278       2.167 -10.145   7.957
+TER   
+ATOM    279 Ar00 UNK   279      -7.206   4.204   9.635
+TER   
+ATOM    280 Ar00 UNK   280      -1.887   5.258  -0.918
+TER   
+ATOM    281 Ar00 UNK   281       1.662  11.949  -0.906
+TER   
+ATOM    282 Ar00 UNK   282      11.836   8.137   0.340
+TER   
+ATOM    283 Ar00 UNK   283      -7.956  -1.356   2.208
+TER   
+ATOM    284 Ar00 UNK   284       4.058 -11.042   0.003
+TER   
+ATOM    285 Ar00 UNK   285       2.856   6.150 -10.534
+TER   
+ATOM    286 Ar00 UNK   286     -11.851 -10.718  -3.829
+TER   
+ATOM    287 Ar00 UNK   287       6.880  -4.194   2.109
+TER   
+ATOM    288 Ar00 UNK   288       4.864  13.643  -0.148
+TER   
+ATOM    289 Ar00 UNK   289       8.172  -0.755   2.529
+TER   
+ATOM    290 Ar00 UNK   290      12.825  -2.864  -4.282
+TER   
+ATOM    291 Ar00 UNK   291      -9.154  -6.441  11.029
+TER   
+ATOM    292 Ar00 UNK   292      10.040   5.101 -12.298
+TER   
+ATOM    293 Ar00 UNK   293      -7.249  -5.659   8.177
+TER   
+ATOM    294 Ar00 UNK   294       6.134   0.071   8.711
+TER   
+ATOM    295 Ar00 UNK   295      -5.451   4.199  -2.459
+TER   
+ATOM    296 Ar00 UNK   296      -2.621   2.114   0.270
+TER   
+ATOM    297 Ar00 UNK   297      -0.006  -3.640  13.823
+TER   
+ATOM    298 Ar00 UNK   298      -9.719   2.387   6.069
+TER   
+ATOM    299 Ar00 UNK   299       4.006   6.977   5.403
+TER   
+ATOM    300 Ar00 UNK   300      -8.229 -12.144   0.099
+TER   
+ATOM    301 Ar00 UNK   301       8.054  -8.681  -0.128
+TER   
+ATOM    302 Ar00 UNK   302      12.108  -9.043  -6.328
+TER   
+ATOM    303 Ar00 UNK   303      -2.263  -2.173 -12.256
+TER   
+ATOM    304 Ar00 UNK   304       3.341 -11.446  13.685
+TER   
+ATOM    305 Ar00 UNK   305     -13.560   5.153 -12.294
+TER   
+ATOM    306 Ar00 UNK   306      -7.887  -8.257   0.557
+TER   
+ATOM    307 Ar00 UNK   307      -8.492   1.804  -6.575
+TER   
+ATOM    308 Ar00 UNK   308       1.929  -1.520  11.189
+TER   
+ATOM    309 Ar00 UNK   309       0.900   8.055   9.360
+TER   
+ATOM    310 Ar00 UNK   310      -2.062  -0.513   8.848
+TER   
+ATOM    311 Ar00 UNK   311      -6.689   0.722   5.347
+TER   
+ATOM    312 Ar00 UNK   312      -3.224  -4.805  13.350
+TER   
+ATOM    313 Ar00 UNK   313       7.018 -10.312   2.907
+TER   
+ATOM    314 Ar00 UNK   314      -1.507  -4.810   7.210
+TER   
+ATOM    315 Ar00 UNK   315     -11.051   4.716  -8.615
+TER   
+ATOM    316 Ar00 UNK   316       3.920  -5.583  -1.833
+TER   
+ATOM    317 Ar00 UNK   317      -3.125  -3.817  -8.801
+TER   
+ATOM    318 Ar00 UNK   318       3.412  -9.885   4.356
+TER   
+ATOM    319 Ar00 UNK   319       4.107   0.684  13.881
+TER   
+ATOM    320 Ar00 UNK   320      -2.878  -5.446   3.991
+TER   
+ATOM    321 Ar00 UNK   321       0.935   2.791 -11.006
+TER   
+ATOM    322 Ar00 UNK   322       5.305  -6.051  -5.069
+TER   
+ATOM    323 Ar00 UNK   323      -1.705  -0.433  12.661
+TER   
+ATOM    324 Ar00 UNK   324       3.919  -2.827 -14.196
+TER   
+ATOM    325 Ar00 UNK   325       1.190  -2.919   8.166
+TER   
+ATOM    326 Ar00 UNK   326      13.702   3.884   5.295
+TER   
+ATOM    327 Ar00 UNK   327     -11.320  -7.815  -1.202
+TER   
+ATOM    328 Ar00 UNK   328       6.528   9.567   5.788
+TER   
+ATOM    329 Ar00 UNK   329       0.436   4.140   1.488
+TER   
+ATOM    330 Ar00 UNK   330       9.668  -2.023  -2.387
+TER   
+ATOM    331 Ar00 UNK   331       2.746  -0.056   6.929
+TER   
+ATOM    332 Ar00 UNK   332      -6.998   6.915  -8.420
+TER   
+ATOM    333 Ar00 UNK   333       0.781 -12.185  -2.014
+TER   
+ATOM    334 Ar00 UNK   334      12.876 -12.513  -1.067
+TER   
+ATOM    335 Ar00 UNK   335      -5.274   0.030  -3.751
+TER   
+ATOM    336 Ar00 UNK   336      -3.833   8.680  -0.168
+TER   
+ATOM    337 Ar00 UNK   337       1.259   2.198  -1.257
+TER   
+ATOM    338 Ar00 UNK   338       7.624  -0.321  -5.055
+TER   
+ATOM    339 Ar00 UNK   339      -7.932   9.634  -3.514
+TER   
+ATOM    340 Ar00 UNK   340     -10.783  -1.018   5.437
+TER   
+ATOM    341 Ar00 UNK   341      -0.551  -2.316  -6.314
+TER   
+ATOM    342 Ar00 UNK   342       7.540   2.691   1.808
+TER   
+ATOM    343 Ar00 UNK   343      -4.073  -7.290  -9.849
+TER   
+ATOM    344 Ar00 UNK   344       4.726   5.826   1.026
+TER   
+ATOM    345 Ar00 UNK   345      -8.137   5.527  -5.065
+TER   
+ATOM    346 Ar00 UNK   346      10.757   1.485   4.349
+TER   
+ATOM    347 Ar00 UNK   347       0.473   8.793   5.894
+TER   
+ATOM    348 Ar00 UNK   348      -3.006  -6.454  -5.438
+TER   
+ATOM    349 Ar00 UNK   349       6.449  -6.777  10.236
+TER   
+ATOM    350 Ar00 UNK   350      11.598 -10.958  -9.053
+TER   
+ATOM    351 Ar00 UNK   351      -6.412  -1.569  -6.786
+TER   
+ATOM    352 Ar00 UNK   352      -0.814  -8.055   8.222
+TER   
+ATOM    353 Ar00 UNK   353       2.399  -6.336   8.865
+TER   
+ATOM    354 Ar00 UNK   354       8.091  10.828  -5.194
+TER   
+ATOM    355 Ar00 UNK   355       7.784  -5.484  -1.723
+TER   
+ATOM    356 Ar00 UNK   356      -4.229   2.735   7.627
+TER   
+ATOM    357 Ar00 UNK   357      -1.693  -3.377   1.712
+TER   
+ATOM    358 Ar00 UNK   358       7.047   0.773   5.516
+TER   
+ATOM    359 Ar00 UNK   359     -12.000  -9.182   5.648
+TER   
+ATOM    360 Ar00 UNK   360      -2.153  10.149   2.499
+TER   
+ATOM    361 Ar00 UNK   361      -4.131  -3.155  -4.545
+TER   
+ATOM    362 Ar00 UNK   362      -7.199   7.296   6.037
+TER   
+ATOM    363 Ar00 UNK   363       5.553  -8.038   6.810
+TER   
+ATOM    364 Ar00 UNK   364      -6.579   4.185   4.698
+TER   
+ATOM    365 Ar00 UNK   365     -11.092  -6.658  -7.721
+TER   
+ATOM    366 Ar00 UNK   366      -1.577   9.499  -6.924
+TER   
+ATOM    367 Ar00 UNK   367      -4.261  -6.883   6.638
+TER   
+ATOM    368 Ar00 UNK   368      -5.171  13.570 -12.174
+TER   
+ATOM    369 Ar00 UNK   369       2.113  -0.287  -8.106
+TER   
+ATOM    370 Ar00 UNK   370      -8.172  10.383   3.723
+TER   
+ATOM    371 Ar00 UNK   371      -6.891   7.053  -0.925
+TER   
+ATOM    372 Ar00 UNK   372      -7.007  -9.598  10.110
+TER   
+ATOM    373 Ar00 UNK   373      -4.183  -6.887  10.334
+TER   
+ATOM    374 Ar00 UNK   374       6.531   6.759 -12.402
+TER   
+ATOM    375 Ar00 UNK   375       4.935   4.190  -2.441
+TER   
+ATOM    376 Ar00 UNK   376      -0.655   2.152   6.697
+TER   
+ATOM    377 Ar00 UNK   377      -4.046 -10.655  -3.631
+TER   
+ATOM    378 Ar00 UNK   378      -5.431   6.317  12.191
+TER   
+ATOM    379 Ar00 UNK   379       0.568  -0.677   0.979
+TER   
+ATOM    380 Ar00 UNK   380      -9.591   9.343   7.424
+TER   
+ATOM    381 Ar00 UNK   381      10.355  -7.160   6.733
+TER   
+ATOM    382 Ar00 UNK   382      -0.752   5.773 -10.355
+TER   
+ATOM    383 Ar00 UNK   383       1.881  -8.587  -9.973
+TER   
+ATOM    384 Ar00 UNK   384     -11.135  -2.136   9.042
+TER   
+ATOM    385 Ar00 UNK   385       9.474  11.329   5.011
+TER   
+ATOM    386 Ar00 UNK   386     -13.188  -6.635  -4.830
+TER   
+ATOM    387 Ar00 UNK   387     -10.655  -4.405  -3.529
+TER   
+ATOM    388 Ar00 UNK   388       9.495  -6.933   2.515
+TER   
+ATOM    389 Ar00 UNK   389       5.825  -2.876  -2.719
+TER   
+ATOM    390 Ar00 UNK   390       4.396  -9.017 -12.395
+TER   
+ATOM    391 Ar00 UNK   391      13.457  -1.195   4.028
+TER   
+ATOM    392 Ar00 UNK   392      13.613   4.988  -9.004
+TER   
+ATOM    393 Ar00 UNK   393     -10.682  -3.688   3.303
+TER   
+ATOM    394 Ar00 UNK   394     -14.104   6.762   7.420
+TER   
+ATOM    395 Ar00 UNK   395      10.677   5.591   9.583
+TER   
+ATOM    396 Ar00 UNK   396      11.499  -4.767   3.745
+TER   
+ATOM    397 Ar00 UNK   397      13.754  -8.961   7.943
+TER   
+ATOM    398 Ar00 UNK   398      12.877  -0.645 -13.264
+TER   
+ATOM    399 Ar00 UNK   399      12.643   9.678   6.584
+TER   
+ATOM    400 Ar00 UNK   400      11.745 -14.221   3.754
+TER   
+ATOM    401 Ar00 UNK   401      10.464  -1.167  -6.829
+TER   
+ATOM    402 Ar00 UNK   402     -13.902  -4.308   1.660
+TER   
+ATOM    403 Ar00 UNK   403     -12.059   6.997   0.509
+TER   
+ATOM    404 Ar00 UNK   404       9.177  -4.534   8.974
+TER   
+ATOM    405 Ar00 UNK   405      10.838 -10.411   1.267
+TER   
+ATOM    406 Ar00 UNK   406       8.287  10.357  -0.382
+TER   
+ATOM    407 Ar00 UNK   407      13.624  -1.147  -0.152
+TER   
+ATOM    408 Ar00 UNK   408      10.526 -13.873  -3.156
+TER   
+ATOM    409 Ar00 UNK   409      -8.419  11.954  10.088
+TER   
+ATOM    410 Ar00 UNK   410     -13.650   0.395   7.186
+TER   
+ATOM    411 Ar00 UNK   411     -13.984  -9.411   1.996
+TER   
+ATOM    412 Ar00 UNK   412      12.875  -2.547   9.073
+TER   
+ATOM    413 Ar00 UNK   413      13.778  11.929  -4.039
+TER   
+ATOM    414 Ar00 UNK   414      10.541   4.442  -6.326
+TER   
+ATOM    415 Ar00 UNK   415       5.427   8.305  -8.780
+TER   
+ATOM    416 Ar00 UNK   416       9.454  -7.591  -8.473
+TER   
+ATOM    417 Ar00 UNK   417       9.600  -1.066 -10.574
+TER   
+ATOM    418 Ar00 UNK   418      11.498  -9.782   4.636
+TER   
+ATOM    419 Ar00 UNK   419      -8.830   1.232  -2.410
+TER   
+ATOM    420 Ar00 UNK   420     -12.966   1.603  -1.274
+TER   
+ATOM    421 Ar00 UNK   421      11.399   9.248  -6.190
+TER   
+ATOM    422 Ar00 UNK   422       9.449  12.084  12.240
+TER   
+ATOM    423 Ar00 UNK   423      -9.847  -1.526  -5.044
+TER   
+ATOM    424 Ar00 UNK   424      -6.624   6.526 -12.286
+TER   
+ATOM    425 Ar00 UNK   425     -10.900   6.083   9.623
+TER   
+ATOM    426 Ar00 UNK   426      10.999  13.988  -9.828
+TER   
+ATOM    427 Ar00 UNK   427      -6.003 -13.947  -5.057
+TER   
+ATOM    428 Ar00 UNK   428       4.874 -13.786   3.290
+TER   
+ATOM    429 Ar00 UNK   429     -13.990  10.261  -6.923
+TER   
+ATOM    430 Ar00 UNK   430      -2.487 -13.766  -2.922
+TER   
+ATOM    431 Ar00 UNK   431       3.279  11.502   5.882
+TER   
+ATOM    432 Ar00 UNK   432     -11.975  11.452  -9.655
+TER   
+ATOM    433 Ar00 UNK   433      -0.345  12.880  -7.832
+TER   
+ATOM    434 Ar00 UNK   434      -4.880  11.232  -6.328
+TER   
+ATOM    435 Ar00 UNK   435      -1.588   6.568   2.787
+TER   
+ATOM    436 Ar00 UNK   436      -4.908  11.757   4.407
+TER   
+ATOM    437 Ar00 UNK   437       6.858   7.561  -2.921
+TER   
+ATOM    438 Ar00 UNK   438       1.617   8.601  -3.628
+TER   
+ATOM    439 Ar00 UNK   439      -8.123  12.870   6.721
+TER   
+ATOM    440 Ar00 UNK   440      -0.160  12.422   7.314
+TER   
+ATOM    441 Ar00 UNK   441       3.756   9.527 -12.851
+TER   
+ATOM    442 Ar00 UNK   442       3.560  -9.219  -5.824
+TER   
+ATOM    443 Ar00 UNK   443       4.433   8.948  -0.669
+TER   
+ATOM    444 Ar00 UNK   444      -6.075  10.387   8.056
+TER   
+ATOM    445 Ar00 UNK   445      -6.439  11.158   0.640
+TER   
+ATOM    446 Ar00 UNK   446      -1.742 -14.052  10.348
+TER   
+ATOM    447 Ar00 UNK   447       1.135  11.475   3.064
+TER   
+ATOM    448 Ar00 UNK   448     -10.327 -12.594   6.356
+TER   
+ATOM    449 Ar00 UNK   449       4.475  10.222   2.682
+TER   
+ATOM    450 Ar00 UNK   450      -5.412 -13.798  -1.026
+TER   
+ATOM    451 Ar00 UNK   451       1.899   7.382   2.485
+TER   
+ATOM    452 Ar00 UNK   452      10.920  10.308  -2.640
+TER   
+ATOM    453 Ar00 UNK   453       7.793   8.773  10.936
+TER   
+ATOM    454 Ar00 UNK   454      -9.207  13.001 -12.030
+TER   
+ATOM    455 Ar00 UNK   455      10.404  11.551 -12.803
+TER   
+ATOM    456 Ar00 UNK   456      13.409  13.325   6.629
+TER   
+ATOM    457 Ar00 UNK   457      14.207  10.786   9.324
+TER   
+ATOM    458 Ar00 UNK   458       9.405 -11.866  11.880
+TER   
+ATOM    459 Ar00 UNK   459       2.643 -12.884  10.309
+TER   
+ATOM    460 Ar00 UNK   460       9.946 -12.072  -6.357
+TER   
+ATOM    461 Ar00 UNK   461      -0.680 -10.679  11.029
+TER   
+ATOM    462 Ar00 UNK   462       0.300  12.336 -12.574
+TER   
+ATOM    463 Ar00 UNK   463      12.690   5.028  13.274
+TER   
+ATOM    464 Ar00 UNK   464      -9.976 -12.982  11.991
+TER   
+ATOM    465 Ar00 UNK   465     -11.860   9.794 -13.149
+TER   
+ATOM    466 Ar00 UNK   466      -5.240  10.168  12.038
+TER   
+ATOM    467 Ar00 UNK   467     -10.557  12.169  13.078
+TER   
+ATOM    468 Ar00 UNK   468       5.922  12.072   8.369
+TER   
+ATOM    469 Ar00 UNK   469       6.097  -3.145  -7.609
+TER   
+ATOM    470 Ar00 UNK   470      -9.617  -0.431  12.332
+TER   
+ATOM    471 Ar00 UNK   471       7.866   2.149  11.730
+TER   
+ATOM    472 Ar00 UNK   472      -8.828  -2.881 -13.090
+TER   
+ATOM    473 Ar00 UNK   473       0.154   2.704  13.681
+TER   
+ATOM    474 Ar00 UNK   474      12.217 -13.665  14.076
+TER   
+ATOM    475 Ar00 UNK   475      14.192  -3.803 -11.434
+TER   
+ATOM    476 Ar00 UNK   476      -3.000   2.855  11.041
+TER   
+ATOM    477 Ar00 UNK   477      -1.468  -5.686 -11.597
+TER   
+ATOM    478 Ar00 UNK   478      -8.565  -6.390 -13.776
+TER   
+ATOM    479 Ar00 UNK   479      -1.328   0.255  -9.353
+TER   
+ATOM    480 Ar00 UNK   480       8.566  -7.074 -11.871
+TER   
+ATOM    481 Ar00 UNK   481       4.813  10.886  11.712
+TER   
+ATOM    482 Ar00 UNK   482       9.693  -8.411   9.975
+TER   
+ATOM    483 Ar00 UNK   483     -11.417  -9.528 -11.048
+TER   
+ATOM    484 Ar00 UNK   484     -13.947   3.565   9.170
+TER   
+ATOM    485 Ar00 UNK   485      12.273  -7.293  13.179
+TER   
+ATOM    486 Ar00 UNK   486      -2.664 -11.658 -13.422
+TER   
+ATOM    487 Ar00 UNK   487      11.455 -11.604   7.664
+TER   
+ATOM    488 Ar00 UNK   488      -4.388   6.608   8.900
+TER   
+ATOM    489 Ar00 UNK   489      -2.897   9.885   9.357
+TER   
+ATOM    490 Ar00 UNK   490     -14.192   7.035  10.867
+TER   
+ATOM    491 Ar00 UNK   491      -2.907   5.633 -13.819
+TER   
+ATOM    492 Ar00 UNK   492       5.494  -2.179   6.351
+TER   
+ATOM    493 Ar00 UNK   493     -12.387   3.123  13.282
+TER   
+ATOM    494 Ar00 UNK   494      -2.371   9.204 -13.336
+TER   
+ATOM    495 Ar00 UNK   495     -10.071  -9.262  13.896
+TER   
+ATOM    496 Ar00 UNK   496       0.074   9.327  -9.844
+TER   
+ATOM    497 Ar00 UNK   497      -6.396  13.699  13.009
+TER   
+ATOM    498 Ar00 UNK   498       6.776  -3.699 -12.052
+TER   
+ATOM    499 Ar00 UNK   499       4.830   3.856  11.105
+TER   
+ATOM    500 Ar00 UNK   500       5.335  -3.200  10.332
+TER   
+ATOM    501 Ar00 UNK   501       6.042 -10.389  10.481
+TER   
+ATOM    502 Ar00 UNK   502      10.826  -2.677  12.611
+TER   
+ATOM    503 Ar00 UNK   503       7.542  -1.474  13.402
+TER   
+ATOM    504 Ar00 UNK   504      12.474  -6.085   9.573
+TER   
+ATOM    505 Ar00 UNK   505      10.304  10.893   8.958
+TER   
+ATOM    506 Ar00 UNK   506      -9.015   9.235 -10.894
+TER   
+ATOM    507 Ar00 UNK   507      -2.971  12.696  13.461
+TER   
+ATOM    508 Ar00 UNK   508      13.131  11.449  12.784
+TER   
+ATOM    509 Ar00 UNK   509       0.230 -12.975  13.589
+TER   
+ATOM    510 Ar00 UNK   510       8.814 -13.883 -13.511
+TER   
+ATOM    511 Ar00 UNK   511      -5.876  10.115 -13.008
+TER   
+ATOM    512 Ar00 UNK   512     -11.048   9.753  10.805
+TER   
+END

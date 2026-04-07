@@ -1,0 +1,76 @@
+To perform repetitive energy minimizations as one specified 
+dihedral angle is varied from 0 to 360 degrees-
+
+The input Z-matrix is dihzmat
+
+FOR OPTIMIZATIONS with OPLS-AA:
+Consult the dihcmd file for specification of the dihedral angle
+to be varied and the increment between minimizations. Note that the
+chosen dihedral must be moved from the list of variable dihedral
+angles to the list of additional dihedral angles in the Z-matrix.
+Thus, dihedral angle 6 is listed as an additional one in example dihzmat.
+
+Execute under UNIX/Linux via:
+csh dihcmd 
+
+The results are in the dih.CSV and dihout files.
+The results can be displayed with the perl script, dihxmgr:
+dihxmgr dih.CSV plt
+xmgr plt
+
+or by input of the dih.CSV file into Excel, gnumeric, etc.
+
+Output in dih.CSV with BFGS optimization:
+
+                      1,2-dichloroethane          
+
+              Results Summary for Scanning Dihedral Angle    6
+
+             Phi,          Dipole,         E(Phi),         Delta E
+             0.000,        4.16036,        5.80693,        6.54058
+            10.000,        4.14327,        5.46054,        6.19419
+            20.000,        4.09459,        4.54190,        5.27555
+            30.000,        4.01840,        3.32179,        4.05544
+            40.000,        3.91649,        2.09011,        2.82376
+            50.000,        3.78845,        1.09378,        1.82743
+            60.000,        3.63339,        0.50356,        1.23721
+            70.000,        3.45084,        0.38624,        1.11989
+            80.000,        3.24077,        0.69944,        1.43309
+            90.000,        3.00254,        1.31213,        2.04578
+           100.000,        2.73444,        2.02624,        2.75989
+           110.000,        2.43465,        2.59583,        3.32948
+           120.000,        2.10560,        2.78063,        3.51428
+           130.000,        1.75713,        2.46389,        3.19754
+           140.000,        1.40222,        1.74026,        2.47391
+           150.000,        1.04835,        0.84634,        1.57999
+           160.000,        0.69724,        0.02714,        0.76079
+           170.000,        0.34815,       -0.53488,        0.19877
+           180.000,        0.00001,       -0.73365,        0.00000
+           190.000,        0.34815,       -0.53488,        0.19877
+           200.000,        0.69726,        0.02714,        0.76079
+           210.000,        1.04837,        0.84634,        1.57999
+           220.000,        1.40223,        1.74026,        2.47391
+           230.000,        1.75713,        2.46389,        3.19754
+           240.000,        2.10560,        2.78063,        3.51428
+           250.000,        2.43465,        2.59583,        3.32948
+           260.000,        2.73442,        2.02624,        2.75989
+           270.000,        3.00257,        1.31213,        2.04578
+           280.000,        3.24078,        0.69944,        1.43309
+           290.000,        3.45082,        0.38624,        1.11989
+           300.000,        3.63338,        0.50356,        1.23721
+           310.000,        3.78845,        1.09378,        1.82743
+           320.000,        3.91648,        2.09011,        2.82376
+           330.000,        4.01838,        3.32179,        4.05544
+           340.000,        4.09459,        4.54190,        5.27555
+           350.000,        4.14327,        5.46054,        6.19419
+           360.000,        4.16037,        5.80693,        6.54058
+
+
+FOR OPTIMIZATIONS with GB/SA, AM1, PM3 or PDDG/PM3:
+Use the dihGBcmd, dihAM1cmd, dihPM3cmd, or dihPDGcmd command files
+in the same manner. You can use the same dihzmat as above,
+and edit the cmd file to specify the driver dihedral and increment.
+The output is in dihAM1.CSV, dihAM1out, etc.
+The molecule is expected to be uncharged and a singlet in these
+cases. If this is not true, you need to modify the cmd file
+to use the appropriate par file from the scripts directory.

@@ -1,0 +1,29 @@
+#!/bin/csh
+#
+#   simple script to copy all necessary file from the
+#   test job SOSgas to execute an fep calculation.
+#   only the the Z-matrix needs to be present in the current
+#   directory.
+#
+#   Usage, e.g. for the Z-matrix zmat.z
+#           xSOSGAS zmat
+#
+#
+echo 'starting gas-phase sos-fep job'
+mkdir $argv[1].gas
+cd $argv[1].gas
+cp ../${argv[1]}.z gaszmat
+cp $BOSSdir/testjobs/SOSgas/g* .
+cp $BOSSdir/testjobs/SOSgas/sosgas11 .
+csh sosgas11 >& loggas
+#
+rm  gaszmat
+rm  gaspar*
+#
+if (-e delgsum) rm delgsum
+grep DelSOS g*sum >>delgsum
+$BOSSdir/miscexec/sumdelg
+echo 'finished gas-phase sos-fep job'
+cd ..
+#
+exit

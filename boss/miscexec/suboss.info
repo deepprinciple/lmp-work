@@ -1,0 +1,86 @@
+'suboss' is a C shell script which can be used to submit
+a BOSS job.
+Now it is possible to give command line options.
+E.g., to perform a geometry optimization using Z-matrix file
+'test.zmat' and parameter file 'test.par', you could say simply
+
+% suboss CALC=opt test
+or
+% suboss CALC=opt test.zmat
+
+For scripting purposes, suboss uses . extensions for file names.
+INFILE, UPFILE, SAVE, AVERAGE, ZMATRIX, SLVZMAT, PARAMETER,
+SUMMARY, OUTPUT, and PLTFILE have .in, .up, .save, .ave, .zmat, .slvzmat,
+.par, .sum, .out, and .plt extensions, respectively.
+Input file names are supposed to have this extension scheme.
+Below is the output of 'suboss -help'.
+
+------------------------------------------------------------------------
+Description: suboss.csh is a C shell script for submitting a BOSS job.
+Usage: suboss.csh -h
+       suboss.csh -help       --- Print help message
+
+       suboss.csh [VAR1=VAL1 VAR2=VAL2 ...] [filename[.zmat]]
+
+    Valid VAR names are listed below. (no spaces around '=')
+      BOSS  --- path of BOSS executable (default=/usr/local/bin/BOSS)
+      LIB   --- diretory where BOSS library files (org1box,org2box,watbox,
+                oplsaa.sb) reside (default=/usr/local/lib/boss)
+
+      MXCON --- A positive integer (default=200000)
+                Max configuration if CALC=bgn_equ,cont_equ,bgn_ave, or cont_ave
+                Max optimization cycle if CALC=opt
+                Atom number for the chosen dihedral if CALC=dihed
+                Max tries for conformational searching if CALC=search
+                Ignored when CALC = "freq".
+      NRUN  --- Total number of BOSS runs. (default=5)
+                Meaningful only when CALC=MC
+      CALC  --- A type of calculation to perform. Valid values are
+                bgn_equ  --- begin equilibration of MC simulation. (default)
+                cont_equ --- continue equilibration of MC simulation.
+                bgn_ave  --- begin averaging of MC simulation.
+                cont_ave --- continue averaging of MC simulation.
+                opt      --- geometry optimization.
+                dihed    --- dihedral angle driving.
+                freq     --- frequency calculation.
+                search   --- conformational searching.
+      NEWRUN -- 0 or 1
+                1 = Begin a new conformational searching (default)
+                0 = Restart a previous conformational search
+      RC0   --- Reaction coord for the reference solute     (default=0.5)
+      RC1   --- Reaction coord for the 1st perturbed solute (default=0.0)
+      RC2   --- Reaction coord for the 2nd perturbed solute (default=1.0)
+
+      SENDMAIL -- 0 or 1 (default=1)
+                1 = Send e-mail upon completion of a job
+                0 = Do not send e-mail upon completion of a job
+
+Examples:
+(In all examples, it is assumed that parameter file 'test.par'
+ already exists in the same directory where 'test.zmat' resides.)
+
+1. to begin equilibration using Z-matrix 'test.zmat' with total max
+   configurations of 20000*5 and RC0, RC1, RC3 of 0.1, 0.0, and 0.2,
+  % suboss.csh CALC=bgn_equ MXCON=20000 NRUN=5 RC0=0.1 RC1=0.0 RC2=0.2 test.zmat
+
+2. to continue equilibration of the previous run (mentioned above),
+  % suboss.csh CALC=cont_equ MXCON=200000 NRUN=10 RC0=0.1 RC1=0.0 RC2=0.2 test.zmat
+
+3. to begin an averaging of the previously equilibrated system,
+  % suboss.csh CALC=bgn_ave MXCON=200000 NRUN=10 RC0=0.1 RC1=0.0 RC2=0.2 test.zmat
+
+4. to optimize a geometry using Z-matrix 'test.zmat' without getting e-mail,
+  % suboss.csh CALC=opt SENDMAIL=0 test.zmat
+
+5. to calculate frequencies using Z-matrix 'test.zmat',
+  % suboss.csh CALC=freq test.zmat
+
+6. to perform a conformational search using Z-matrix 'test.zmat',
+  % suboss.csh CALC=search MXCON=1000 test.zmat
+
+7. to restart a previous conformational search,
+  % suboss.csh CALC=search MXCON=1000 NEWRUN=0 test.zmat
+
+8. to use your own BOSS executable (e.g., /home/lim/boss/BOSS),
+  % suboss.csh CALC=opt BOSS=/home/lim/boss/BOSS test.zmat
+

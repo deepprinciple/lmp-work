@@ -1,0 +1,20 @@
+#!/bin/csh
+set echo
+#
+# take pdb file, add hydrogens, and output new pdb
+#
+# usage:  xADDH  moleculename
+#
+# file moleculename.pdb must be in the directory
+# file moleculename.new is created
+#
+# test if the enviroment variable BOSSdir has been defined
+#
+if (!($?BOSSdir)) then
+   echo "BOSSdir has not been defined; please see README"
+   exit (-1)
+endif
+
+$BOSSdir/autozmat -i pdb -o pdb -H <${argv[1]}.pdb >${argv[1]}.new
+#
+exit

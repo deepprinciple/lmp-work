@@ -1,0 +1,16 @@
+
+SART is a temperature reduction ratio in simmulated annealing.
+It MUST range from 0.0 and 1.0. Any value outside this range
+defaults to 0.5.
+An SART value of 0.0 means that the temperature will drop to
+0 K in one step and therefore the energy minimization will take
+only a downhill path. On the other hand, a value of 1.0 will
+not reduce the temperature at all and the minimization will
+not converge.
+Normally you would use a default value 0.5. But if the potential
+energy surface is rather flat or the initial geometry is too
+far from a minimum, you would take a larger value so that
+more surfaces can be scanned before the energy reaches a well.
+Likewise, if the initial guess lies near the bottom, you can
+take a smaller SART value to speed up the minimization.
+

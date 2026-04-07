@@ -1,0 +1,12 @@
+
+ There are many programs including Corina, Concord and Chem3D that
+ can be used to convert a 2D structure file to 3D for input to BOSS or MCPRO.
+ E.g., one can copy & paste a ChemDraw 2D structure into Chem3D, which immediately
+ converts it to an initial 3D structure. After a quick MM2 optimization of this
+ structure, one writes it out as a .mol file. 
+
+ The freeware WebLab ViewerLite from MSI also can
+ take an ISIS or ChemDraw 2D structure to 3D and write it out as a .mol
+ file. Then one can use the xMOLZ script to convert the .mol file to a
+ BOSS or MCPRO .z Z-matrix file.
+

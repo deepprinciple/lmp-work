@@ -1,0 +1,41 @@
+  methanesulfonic acid                                      Tot. E =    -78.5346
+   1 S    800  800    0    0.000000   0    0.000000   0    0.000000        0
+   2 X     -1   -1    1    1.000000   0    0.000000   0    0.000000        0
+   3 X     -1   -1    2    1.000000   1   90.000000   0    0.000000        0
+   4 C    801  801    1    1.751785   2   90.000000   3    0.000000        0
+   5 O    802  802    1    1.653759   4   96.855716   2  180.000000        0
+   6 H    803  803    4    1.087210   1  108.654609   5  180.000737        0
+   7 H    804  804    4    1.087045   1  109.457198   6  119.637491        0
+   8 H    805  805    4    1.087044   1  109.457205   6  240.362319        0
+   9 H    806  806    5    0.942185   1  106.224302   4  179.996242        0
+  10 O    807  807    1    1.434594   4  109.907965   5  247.510265        0
+  11 O    808  808    1    1.434592   4  109.907955   5  112.489452        0
+                    Geometry Variations follow    (2I4,F12.6)                   
+                    Variable Bonds follow         (I4)                          
+0004-0011                                                                       
+                    Additional Bonds follow       (2I4)                         
+                    Harmonic Constraints follow   (2I4,4F10.4)                  
+                    Variable Bond Angles follow   (I4)                          
+0005-0011                                                                       
+                    Additional Bond Angles follow (3I4)                         
+AUTO                                                                            
+                    Variable Dihedrals follow     (3I4,F12.6)                   
+0006-0011                                                                       
+                   Additional Dihedrals follow   (6I4)                          
+AUTO                                                                            
+                   Domain Definitions follow     (4I4)                          
+                   Conformational Search         (2I4, 2F12.6)                  
+                   Final blank line                                             
+                                                                                
+ Final Non-Bonded Parameters for QM (AM1 CM1Ax1.14) Atoms:                      
+                                                                                
+ 800 16 SY   1.395707  3.550000  0.250000                                       
+ 801  6 CT  -0.593790  3.500000  0.066000                                       
+ 802  8 OH  -0.705587  3.120000  0.170000                                       
+ 803  1 HC   0.177677  2.500000  0.030000                                       
+ 804  1 HC   0.177677  2.500000  0.030000                                       
+ 805  1 HC   0.177677  2.500000  0.030000                                       
+ 806  1 HO   0.505018  0.000000  0.000000                                       
+ 807  8 OY  -0.567190  2.960000  0.170000                                       
+ 808  8 OY  -0.567190  2.960000  0.170000                                       
+                                                                                

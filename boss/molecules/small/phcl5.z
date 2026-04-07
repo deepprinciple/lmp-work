@@ -1,0 +1,30 @@
+    pentachlorobenzene                                      Tot. E =      7.0967
+   1 DUM   -1   -1    0    0.000000   0    0.000000   0    0.000000        0    
+   2 DUM   -1   -1    1    1.000000   0    0.000000   0    0.000000        0    
+   3 C    263  263    1    1.400000   2   90.000000   0    0.000000        0    
+   4 C    263  263    3    1.414260   1   60.000000   2   90.000000        0    
+   5 C    263  263    3    1.414260   4  120.014823   1    0.000000        0    
+   6 C    263  263    4    1.412669   3  119.794425   5    0.000000        0    
+   7 C    263  263    5    1.412669   3  119.794427   4    0.000000        0    
+   8 C    145  145    6    1.406369   4  120.031547   3    0.000000        0    
+   9 CL   264  264    3    1.732090   4  119.992567   6  180.000000        0    
+  10 CL   264  264    4    1.731178   3  120.242638   5  180.000000        0    
+  11 CL   264  264    5    1.731178   3  120.242606   4  180.000000        0    
+  12 CL   264  264    6    1.727613   4  121.121658   3  180.000000        0    
+  13 CL   264  264    7    1.727611   5  121.121615   3  180.000000        0    
+  14 H    146  146    8    1.080343   6  119.833342   4  180.000000        0    
+                    Geometry Variations follow    (2I4,F12.6)                   
+                    Variable Bonds follow         (I4)                          
+0004-0014                                                                       
+                    Additional Bonds follow       (2I4)                         
+00070008                                                                        
+                    Harmonic Constraints follow   (2I4,4F10.4)                  
+                    Variable Bond Angles follow   (I4)                          
+0005-0014                                                                       
+                    Additional Bond Angles follow (3I4)                         
+AUTO                                                                            
+                    Variable Dihedrals follow     (3I4,F12.6)                   
+                    Additional Dihedrals follow   (6I4)                         
+                    Domain Definitions follow     (4I4)                         
+                    Conformational Search (4I2,2F12.6)                          
+                    Final blank line                                            

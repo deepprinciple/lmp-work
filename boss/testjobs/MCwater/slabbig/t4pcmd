@@ -1,0 +1,79 @@
+#
+# Command file for the BOSS program.  Execute by entering the following:
+# csh t4pcmd >& t4plog &
+#***********************************************************************
+echo '                      TIP4P Water '
+echo '                  Equilibration 5000K '
+echo '                Averaging     0000-5000K '
+echo '                 T=25  P=1  Rcut =  9.0'
+#***********************************************************************
+#
+nice +19
+set boss = $BOSSdir/BOSS
+set boxes = $BOSSdir
+set configurations = "1000000"
+set lambda = "0.0 0.0 0.0"
+#
+setenv INFILE    t4pin
+setenv UPFILE    t4pup
+setenv SAVE      t4psv
+setenv AVERAGE   t4pav
+setenv ZMATRIX   t4pzmat
+setenv SLVZMAT   slvzmat
+
+if (-e tmppar) rm tmppar
+cp t4ppar tmppar
+cat $BOSSdir/oplsaa.par >> tmppar
+setenv PARAMETER tmppar
+
+setenv BANGPAR   $boxes/oplsua.sb
+setenv WATERBOX  $boxes/watbox
+setenv ORG1BOX   $boxes/org1box
+setenv ORG2BOX   $boxes/org2box
+setenv SUMMARY   t4psum
+
+# clear the save file, if it exists
+if (-e t4psv) rm t4psv 
+
+date
+#
+#      Equilibration
+#
+setenv OUTPUT    t4pota
+setenv PLTFILE   t4pplta
+
+# Note: the first  1 below says "restart the averaging"
+
+time $boss 011 $configurations $lambda
+
+foreach block (b c b eq)
+        date
+	setenv OUTPUT    t4pot$block
+	setenv PLTFILE   t4pplt$block
+# Note: the second 0 below says "continue the averaging"
+	time $boss 001 $configurations $lambda
+end
+
+#
+#      Averaging
+#
+setenv OUTPUT    t4pota
+setenv PLTFILE   t4pplta
+# restart the save file
+rm t4psv
+
+time $boss 011 $configurations $lambda
+
+foreach block (b c b e5)
+        date
+        setenv OUTPUT    t4pot$block
+        setenv PLTFILE   t4pplt$block
+# Note: the second 0 below says "continue the averaging"
+        time $boss 001 $configurations $lambda
+end
+rm *a *b *c
+rm slvzmat
+rm tmppar
+
+date
+exit

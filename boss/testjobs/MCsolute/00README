@@ -1,0 +1,25 @@
+Runs an MC simulation for a solute in TIP4P water
+to compute heats and volumes of solution.
+
+The solute Z-matrix needs to be in the molecules/OPLS2020 directory.
+An equilibration of 25M is followed by 500M or 5000M (5B)  averaging. 
+The solvent is 500 TIP4P water molecules with 10-A cutoffs at 25 C, 1 atm.
+
+The mc500par1 and mc500par3 files are setup assuming that atom 1 or 3 is the center
+atom of the solute. They can be modified if, for example, specific rdfs are desired. 
+
+xMC5001 executes 500M in the current window. Center atom of solute is atom 1. 
+xMC5003 executes 500M in the current window. Center atom of solute is atom 3. 
+xMC500Q1 executes 500M in the queueing system. Center atom of solute is atom 1.
+xMC500Q3 executes 500M in the queueing system. Center atom of solute is atom 3.
+xMC5bQ1 executes 5B in the queueing system. Center atom of solute is atom 1. 
+xMC5bQ3 executes 5B in the queueing system. Center atom of solute is atom 3. 
+
+Sample output is provided in the butane, butane5b, and phenol directories. 
+This came from executing:
+xMC500Q1 butane
+xMC5bQ1  butane
+xMC500Q3 phenol
+
+Results for many molecules generated with 5B averaging are in
+PCCP, 2024, 26, 8141-8147. 

@@ -1,0 +1,38 @@
+     1-butyne                                               Tot. E =     -0.7770
+   1 X     -1    0    0    0.000000   0    0.000000   0    0.000000        0
+   2 X     -1    0    1    1.000000   0    0.000000   0    0.000000        0
+   3 C    136    0    2    1.000000   1   90.000000   0    0.000000        0
+   4 C    135    0    3    1.531838   2  119.198940   1 -115.844200        0
+   5 C    927    0    3    1.470232   2   89.386270   4  115.844200        0
+   6 H    930    0    3    1.090330   2   18.549058   4  294.169902        0
+   7 H    930    0    3    1.090323   2  115.029094   4  225.407254        0
+   8 H    140    0    4    1.090134   3  110.886987   2  282.744940        0
+   9 H    140    0    4    1.090502   3  111.174792   8  119.887036        0
+  10 H    140    0    4    1.090508   3  111.170730   8  240.118431        0
+  11 X     -1    0    5    1.000000   3   90.000000   2    0.000000        0
+  12 C    925    0    5    1.209747  11   90.027423   3  179.955510        0
+  13 X     -1    0   12    1.000000   5   90.000000  11   45.239220        0
+  14 H    926    0   12    1.080042  13   90.011958   5  179.997273        0
+                    Geometry Variations follow    (2I4,F12.6)                   
+                    Variable Bonds follow         (I4)                          
+0004-0010                                                                       
+  12                                                                            
+  14                                                                            
+                    Additional Bonds follow       (2I4)                         
+                    Harmonic Constraints follow   (2I4,4F10.4)                  
+                    Variable Bond Angles follow   (I4)                          
+0005-0010                                                                       
+  12                                                                            
+  14                                                                            
+                    Additional Bond Angles follow (3I4)                         
+AUTO                                                                            
+                    Variable Dihedrals follow     (3I4,F12.6)                   
+0006-0010                                                                       
+  12                                                                            
+  14                                                                            
+                    Additional Dihedrals follow   (6I4)                         
+AUTO                                                                            
+                    Domain Definitions follow     (4I4)                         
+                    Conformational Search (2I4,2F12.6)                          
+                    Final blank line                                            
+                                                                                

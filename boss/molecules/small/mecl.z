@@ -1,0 +1,28 @@
+      methyl chloride                                       Tot. E =      0.2292
+   1 Cl   151    0    0    0.000000   0    0.000000   0    0.000000        0    
+   2 DUM   -1    0    1    0.500000   0    0.000000   0    0.000000        0    
+   3 DUM   -1    0    2    0.500000   1   90.000000   0    0.000000        0    
+   4 C    800    0    1    1.781021   2   90.000000   3  180.000000        0    
+   5 HC   153    0    4    1.089994   1  108.970368   2    0.000000        0    
+   6 HC   153    0    4    1.089983   1  108.973543   5  119.997361        0    
+   7 HC   153    0    4    1.089983   1  108.973530   5  240.002676        0    
+                    Geometry Variations follow                                  
+                    Variable Bonds follow         (I4 or I4-I4)                 
+0004-0007                                                                       
+                    Additional Bonds follow       (2I4)                         
+                    Harmonic Constraints follow                                 
+                    Variable Bond Angles follow   (I4 or I4-I4)                 
+0005-0007                                                                       
+                    Additional Bond Angles follow (3I4)                         
+AUTO                                                                            
+                    Variable Dihedrals follow     (3I4,F12.6)                   
+0006-0007                                                                       
+                    Additional Dihedrals follow   (6I4)                         
+AUTO                                                                            
+                    Domain Definitions follow     (4I4)                         
+                    Conformational Search         (2I4, 2F12.6)                 
+                    Final blank line                                            
+                                                                                
+ Final Non-Bonded Parameters for QM (PM3 CM1Px1.30) Atoms:                      
+                                                                                
+800 06 CT   -0.109     3.500     0.066                                          

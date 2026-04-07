@@ -1,0 +1,2 @@
+molecule,#amine,#nitro,#acid,#amide,#rotor,#atoms,MW,dipole,SASA,FOSA,FISA,PISA,WPSA,volume,donorHB,accptHB,dip^2/V,ACxDN^.5/SA,glob,Bpolrz,BlogPC16,BlogPoct,BlogPw,BlogPo/w,BlogS,BIPCaco,AffyPCaco,BlogBB,AffyPMDCK,BlogKp,BlogKhsa
+"linezolid",0,0,0,1,2,44,337.350,7.306,595.046,366.459,109.104,90.161,29.321,1038.140,1.004,6.993,0.0514166,0.0117755,0.8332688,34.969,8.666,17.404,18.147,1.767,-4.041,140.557,1159.179,-0.548,881.075,-3.021,-0.292

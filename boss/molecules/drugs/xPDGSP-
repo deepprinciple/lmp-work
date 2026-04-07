@@ -1,0 +1,19 @@
+#!/bin/csh
+#
+echo  perform single-point PDDG/PM3 calculation
+#
+# usage - xPDGSP- moleculename
+#
+# test if the enviroment variable BOSSdir has been defined
+#
+if (!($?BOSSdir)) then
+   echo "BOSSdir has not been defined; please see README"
+   exit (-1)
+endif
+
+if (-e optzmat) rm optzmat
+cp ${argv[1]}.z optzmat
+csh $BOSSdir/scripts/PDGSP-cmd >& log
+echo  output is in out, sum and plt.pdb
+#
+exit

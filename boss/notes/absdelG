@@ -1,0 +1,40 @@
+
+There are standard state issues that were not addressed in the
+original double annihilation procedure. This can be treated
+properly by providing a harmonic constraint to keep the disappearing
+particle in the binding site. The best description of the technology
+can be found in J. Hermans & L. Wang, J. Am. Chem. Soc., 119, 2707-2714
+(1997). An analytical correction is made for use of the constraint -
+see Table 5 in this paper. The constraint is only used for the host-guest
+complex; it is not needed for the unbound guest.
+
+To permit such constrained calculations with BOSS 3.8, I have modified
+the harmonic constraint code and input so it can handle either a bond
+constraint (as before) and now the constraint of an atom to a fixed
+XYZ point in space:
+
+In the Z-matrix file:
+C      ANY HARMONIC CONSTRAINTS FOR DISTANCES OR ATOMS - 1 PER LINE:
+C      ATOM I, ATOM J, R0, K0, K1, K2
+C        I4      I4       4F10.4
+C      E CONSTRAINT = K0*(R(I,J)-R0)^2 FOR THE REFERENCE SOLUTE -
+C      K1 AND K2 ARE USED ANALOGOUSLY FOR THE TWO PERTURBED SOLUTES.
+C      IF ATOM J = 9999, THIS IS A POSITION CONSTRAINT FOR ATOM I
+C      WITH R0 = FORCE CONSTANT AND K0, K1, K2 = X, Y, Z COORDINATES
+
+Note that we use K*(R-R0)**2, while Hermans uses (K/2)*(R-R0)**2. So,
+his entry in Table 5 for using K = 10 would be the same as our K = 5.
+ALso, one wants to have IRECNT = 0 for such calculations to avoid 
+recentering the solutes after each run since the X, Y, Z origin of
+the atom constraint is fixed.
+
+I am currently rerunning the Nora/Erin FEP calculations for disappearing
+F- in the calixarene host and bound to one & two water molecules in chloroform.
+The relevant part of the calixarene Z-matrix in that case is
+                    Harmonic Constraints follow   (2I4,4F10.4)
+01149999     2.5       0.177    -2.572     2.068
+                    Variable Bond Angles follow   (I4)
+
+If you need this code, you should obtain the current boss38.f in my boss38
+directory on adrik.
+Bill

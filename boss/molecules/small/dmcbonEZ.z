@@ -1,0 +1,31 @@
+         dimethyl carbonate EZ                              Tot. E =    -12.1573
+   1   C  772    0    0    0.000000   0    0.000000   0    0.000000        0
+   2   X   -1   -1    1    1.000000   0    0.000000   0    0.000000        0
+   3   X   -1   -1    2    1.000000   1   90.000000   0    0.000000        0
+   4   O  771    0    1    1.229018   2   90.000000   3    0.000000        0
+   5   O  773    0    1    1.346389   4  122.075863   2    0.000000        0
+   6   O  773    0    1    1.339991   4  120.238379   2  179.999174        0
+   7   C  789    0    5    1.417416   1  119.230810   4  359.999328        0
+   8   H  469    0    7    1.089775   5  109.987006   1  179.999853        0
+   9   H  469    0    7    1.090863   5  110.863495   8  240.329186        0
+  10   H  469    0    7    1.090863   5  110.863168   8  119.671163        0
+  11   C  789    0    6    1.416765   1  120.261989   4  179.999492        0
+  12   H  469    0   11    1.089825   6  109.843263   1  179.999858        0
+  13   H  469    0   11    1.090763   6  110.924811  12  240.462386        0
+  14   H  469    0   11    1.090763   6  110.924722  12  119.537866        0
+                    Geometry Variations follow    (2I4,F12.6)                   
+                    Variable Bonds follow         (I4)                          
+0004-0014                                                                       
+                    Additional Bonds follow       (2I4)                         
+                    Harmonic Constraints follow   (2I4,4F10.4)                  
+                    Variable Bond Angles follow   (I4)                          
+0005-0014                                                                       
+                    Additional Bond Angles follow (3I4)                         
+AUTO                                                                            
+                    Variable Dihedrals follow     (3I4,F12.6)                   
+0006-0014                                                                       
+                    Additional Dihedrals follow   (6I4)                         
+AUTO                                                                            
+                    Domain Definitions follow     (4I4)                         
+                    Conformational Search (4I2,2F12.6)                          
+                    Final blank line                                            

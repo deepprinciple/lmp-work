@@ -1,0 +1,36 @@
+   Z acetic acid/cl-                                        Tot. E =    -36.2285
+   1 C2   135  135    0    0.000000   0    0.000000   0    0.000000        0    
+   2 X     -1   -1    1    1.000000   0    0.000000   0    0.000000        0    
+   3 X     -1   -1    2    1.000000   1   90.000000   0    0.000000        0    
+   4 C1   267  267    1    1.521394   2   90.000000   3    0.000000        0    
+   5 O    269  269    4    1.227373   1  123.099177   2    0.000000        0    
+   6 OH   268  268    4    1.358779   1  111.096086   2  180.000000        0    
+   7 HO   270  270    6    0.974900   4  114.943217   5    0.000002        0    
+   8 H    140  140    1    1.089503   4  110.379833   5  359.999977        0    
+   9 H    140  140    1    1.089466   4  110.070287   8  120.026157        0    
+  10 H    140  140    1    1.089466   4  110.070287   8  239.973843        0    
+TERZ                                                                            
+  11 CL   401  401    6    3.020235   4  123.024751   1  180.000003        0    
+                    Geometry Variations follow    (2I4,F12.6)                   
+                    Variable Bonds follow         (I4 or I4-I4)                 
+0004-0011                                                                       
+                    Additional Bonds follow       (2I4)                         
+                    Harmonic Constraints follow   (2I4,4F10.4)                  
+                    Variable Bond Angles follow   (I4 or I4-I4)                 
+0005-0011                                                                       
+                    Additional Bond Angles follow (3I4)                         
+000500040006                                                                    
+000800010009                                                                    
+000800010010                                                                    
+000900010010                                                                    
+                    Variable Dihedrals follow     (3I4,F12.6)                   
+000701020102 10.                                                                
+000800940094 10.                                                                
+000900000000  2.                                                                
+001000000000  2.                                                                
+001100000000  2.                                                                
+                   Additional Dihedrals follow   (6I4)                          
+000100040006000701030103                                                        
+                   Domain Definitions follow     (4I4)                          
+                   Conformational Search         (2I4, 2F12.6)                  
+                   Final blank line                                             

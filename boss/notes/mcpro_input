@@ -1,0 +1,19 @@
+Sept 30, 2000
+
+BOSS was modified to facilitate preparation of input structure files for
+MCPRO. IF NEWZMAT = FULLM in the par file, the output plt.pdb file and
+Z-matrix in the sum file will have the same unique PDB-input names for each
+atom. The Z-matrix also has all AUTO entries expanded.
+
+The script xSPM was also added to automate this. If you execute
+xSPM inhibitor
+a single-point force-field calculation will be performed on inhibitor.z
+and the output plt.pdb and sum (Z-matrix) files will be prepared for MCPRO/pepz.
+
+To do this, all atoms have three-character names. Previously, in the PDB file
+atoms with 2-character atomic symbols like chlorine (Cl) had four-character names.
+Some graphics programs (e.g. Midas) will process the 3-character symbols
+correctly (Cl will be green), while others (e.g. RasMol) will not (Cl will
+be grey like carbon). If you have BOSS write a .mol file, RasMol will display
+it properly (xZmol inhbitor; rasmol -mdl inhibitor.mol).
+

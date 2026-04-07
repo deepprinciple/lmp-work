@@ -1,0 +1,184 @@
+ Results Summary:   1,2-dichloroethane               Wed Jul 13 10:23:49 2011
+
+ NMOL = 500          EDGE =   24.6471   24.6471   24.6471    RCUT =   10.0000
+ NACCPT = 20000000   NRJECT = 11616102   MXCON = 2000000     NCON = 2000000
+ T(C) =     25.00    OLD E = -0.50094473D+04    NEW E = -0.50064050D+04
+ RDEL =    0.1500    ADEL =   15.0000    VDEL =     250.0    MXS =    2500
+ P(ATM) =     1.0    VOLD =     14972.6  VNEW =     14972.6  NVCHG =  3125
+ DIELRF =     1.0    Reaction Field NOT Applied
+
+ Information for the Reference Solute:
+ NSCHG=   120        SCUT =   10.0000    ICUT =     5        NCENT =   1    1
+ RDELS1=   0.0500    RDELS2=   0.0500    ADELS1=   5.0000    ADELS2=   5.0000
+ ESOLD=    -14.22    ESONE=    -14.14    WIMAX=  0.002981    WKC =  200.00
+ EXXOLD=     0.00    EXXNEW=     0.00    DIELEC=   1.0000    CUTOFF E=    0.000
+ EPOOLD=     0.00    EPONEW=     0.00    NPOLX =        0    NPOLS =        0
+ EBNDOL=   0.0000    EBNDNE=   0.0000    EANGOL=   0.0000    EANGNE=   0.0000
+ EDIHOL=   0.0000    EDIHNE=   0.0000    EQMOL=  -23.6702    EQMNE=  -22.9545
+ EBCOLD=     0.00    EBCNEW=     0.00    SANEW =   251.84    POLCUT=    10.00
+
+
+ QM/MM Calculation:
+  QM Model = PDG  Charge Model = CM3  Charges Scaled By 1.14
+  Net Charges for Ref. & Pert. Solutes:   0   0   0
+
+
+ 1-4 Scale Factors: Coul.=   0.20000D+01 L-J=   0.20000D+01  CUTNB =  100.000
+ RC0 =    0.0000   RC1 =    0.0000   RC2 =    0.0000
+
+
+
+
+            *** Averages ***
+ Total Energy = -5048.6230
+     Inter Cp =  6727.1397
+     Alpha(1/deg*e-5)=    61.7444
+     Kappa(1/atm*e-6)=    59.5723
+     Volume=    15027.5
+
+                  Refer. Solute  1st Pert. Solute       Delta    2nd Pert. Solute       Delta
+ Solute-Solvent E     -17.2904          -17.2904        0.0000          -17.2904        0.0000
+ Solute-Solute  E       0.0000            0.0000        0.0000            0.0000        0.0000
+ Polarization   E       0.0000            0.0000        0.0000            0.0000        0.0000
+ Bond Stretch   E       0.0000            0.0000        0.0000            0.0000        0.0000
+ Angle Bending  E       0.0000            0.0000        0.0000            0.0000        0.0000
+ Torsional Energy       0.0000            0.0000        0.0000            0.0000        0.0000
+ Esolute from  QM     -21.9867          -21.9867        0.0000          -21.9867        0.0000
+ Constraints    E       0.0000            0.0000        0.0000            0.0000        0.0000
+ Total                                                  0.0000                          0.0000
+ Ave. Dipole Mom.       3.4869            3.4869                          3.4869
+
+
+ Solute  1 - Solvent Energy Components:
+   Lennard-Jones =     -8.5262
+   Coulomb       =     -8.7641
+   Total         =    -17.2904
+
+ Solute  1 - Solute Energy Components:
+   Lennard-Jones =      0.0000
+   Coulomb       =      0.0000
+   Total         =      0.0000
+
+ Ave. Solute-Solvent Hydrogen Bonds:
+   Solute as Donor =    0.0000
+   as Acceptor     =    0.0000
+
+
+ Attempts/Accepts: Solute1  166400/   91546 Solute2       0/       0
+
+                                                Thermodynamic Results
+
+ Run Total Energy     Inter Cp       Volume       Enthalpy        Kappa         Alpha          EXX           ESX
+ 10    -5049.696      3928.031     14836.882     -5049.480        23.554        33.349         0.000       -14.751
+  1    -5049.481      5530.096     15187.169     -5049.260        44.827        20.499         0.000       -18.500
+  2    -5053.107      4731.158     15215.356     -5052.885        32.140        65.454         0.000       -18.494
+  3    -5052.185     10461.654     14955.264     -5051.967        38.142        56.126         0.000       -17.826
+  4    -5036.416      4288.885     14951.139     -5036.198        18.864        44.257         0.000       -17.187
+  5    -5041.995      7860.306     15194.257     -5041.774        41.480        75.815         0.000       -17.704
+  6    -5067.036      7618.429     14989.359     -5066.818        43.939       100.235         0.000       -18.120
+  7    -5031.471      5851.043     15102.666     -5031.251        19.460        48.482         0.000       -16.981
+  8    -5059.423      5794.062     14885.900     -5059.206        17.944        11.300         0.000       -16.250
+  9    -5045.418      5636.739     14956.988     -5045.200        39.629        50.087         0.000       -17.091
+
+                                            Standard Deviations
+           3.313       650.206        43.218         3.313         9.829         9.064         0.000         0.361
+
+                                                 Averages
+       -5048.623      6727.140     15027.498     -5048.404        59.572        61.744         0.000       -17.290
+
+
+
+                     1st Solute    2nd Solute
+ Run     E( PDG )      E( PDG )      E( PDG )
+ 10      -23.144       -23.144       -23.144
+  1      -21.681       -21.681       -21.681
+  2      -22.255       -22.255       -22.255
+  3      -22.160       -22.160       -22.160
+  4      -21.488       -21.488       -21.488
+  5      -21.849       -21.849       -21.849
+  6      -21.638       -21.638       -21.638
+  7      -22.035       -22.035       -22.035
+  8      -21.930       -21.930       -21.930
+  9      -21.689       -21.689       -21.689
+
+                                            Standard Deviations
+           0.150         0.150         0.150
+
+                                                 Averages
+         -21.987       -21.987       -21.987
+
+
+
+ Solvent-Solvent Energy Components
+ Run      L-J         Coulomb
+ 10      895.284     -5907.222
+  1      912.771     -5922.235
+  2      924.522     -5936.847
+  3      905.463     -5917.792
+  4      891.943     -5889.637
+  5      914.850     -5917.416
+  6      903.798     -5931.062
+  7      901.610     -5893.932
+  8      915.085     -5936.108
+  9      894.528     -5901.197
+
+                                            Standard Deviations
+           3.364         5.358
+
+                                                 Averages
+         905.985     -5915.345
+
+
+
+ SASA Analysis:
+ Run    Tot. SASA      Volume      Hydrophobic    Hydrophilic    Aromatic    Weakly Polar
+ 10      250.938       345.568       107.199         0.000         0.000       143.739
+  1      249.554       344.341       112.450         0.000         0.000       137.104
+  2      250.191       345.174       110.960         0.000         0.000       139.232
+  3      250.126       345.143       111.596         0.000         0.000       138.530
+  4      249.906       344.969       111.952         0.000         0.000       137.953
+  5      250.015       345.041       111.570         0.000         0.000       138.445
+  6      250.407       345.697       112.067         0.000         0.000       138.340
+  7      249.481       344.125       111.597         0.000         0.000       137.885
+  8      250.133       345.044       111.380         0.000         0.000       138.753
+  9      249.892       344.993       112.176         0.000         0.000       137.717
+
+                                            Standard Deviations
+           0.132         0.151         0.475         0.000         0.000         0.583
+
+                                                 Averages
+         250.064       345.010       111.295         0.000         0.000       138.770
+
+
+
+ For Solute  1:
+ Run     ESX-Coul.      ESX-LJ       EXX-Coul.      EXX-LJ
+ 10       -5.952        -8.799         0.000         0.000
+  1       -9.817        -8.684         0.000         0.000
+  2      -10.209        -8.285         0.000         0.000
+  3       -8.931        -8.895         0.000         0.000
+  4       -8.865        -8.322         0.000         0.000
+  5       -9.608        -8.096         0.000         0.000
+  6       -9.851        -8.269         0.000         0.000
+  7       -8.328        -8.653         0.000         0.000
+  8       -7.366        -8.884         0.000         0.000
+  9       -8.715        -8.376         0.000         0.000
+
+                                            Standard Deviations
+           0.411         0.091         0.000         0.000
+
+                                                 Averages
+          -8.764        -8.526         0.000         0.000
+
+
+ Title:   1,2-dichloroethane          
+ ESX-Coul =     -8.764 ESX-LJ =     -8.526 SASA =    250.064
+ EXX-Coul =      0.000 EXX-LJ =      0.000 MW =      98.9596
+ Tot SASA =    250.064 Mol Vol=    345.010 Dipole=     3.487
+ H-phobic =    111.295 Philic =      0.000 Arom =      0.000 Wkly Polar=    138.770
+ # SX Ints=      0.379 for Ecut=    -2.750
+ # SX Ints=      0.007 for Ecut=    -3.750
+ #Donor HB=      0.000 Acptr HB=     0.000
+ Intramol E=   -21.987
+ #Prot Ns =          0 #Nitro =          0 #Acid =         0 #Amide =          0
+ #Rotor Bonds=       1 #Real Atoms=      8

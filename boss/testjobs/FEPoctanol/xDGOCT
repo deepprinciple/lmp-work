@@ -1,0 +1,36 @@
+#!/bin/csh
+#
+echo  run FEPs to compute delG hydration
+#
+# usage - xDGOCT moleculename
+#
+# test if the enviroment variable BOSSdir has been defined
+#
+if (!($?BOSSdir)) then
+   echo "BOSSdir has not been defined; please see README"
+   exit (-1)
+endif
+
+mkdir $argv[1]
+cd $argv[1]
+
+# make zmats for Q and LJ FEPs
+cp $BOSSdir/molecules/OPLS2020/${argv[1]}.z .      
+cp ${argv[1]}.z optzmat
+csh $BOSSdir/scripts/ZQFEPcmd >& log
+ren sum Q.z
+csh $BOSSdir/scripts/ZLJFEPcmd >& log
+ren sum LJ.z
+
+# run 4 FEPS with 20 windows each
+# gas averaging is 2M per window
+# aq Q  averaging is 200M per window
+# aq LJ averaging is 500M per window
+$BOSSdir/testjobs/FEPoctanol/xFEPGAS20fQ Q
+$BOSSdir/testjobs/FEPoctanol/xFEPGAS20bQ LJ
+$BOSSdir/testjobs/FEPoctanol/xFEP200f20Q Q
+$BOSSdir/testjobs/FEPoctanol/xFEP500b20Q LJ
+rm log out optzmat
+
+#
+exit

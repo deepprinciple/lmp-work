@@ -1,0 +1,40 @@
+
+This illustrates optimizations with and without polarization.
+
+xPOPTF executes a Fletcher-Powell optimization with polarization.
+FlePow is normally used for complexes or flat energy surfaces;
+BFGS is used when very near an energy minimum. 
+The xPOPTF script performs two cycles of FlePow optimization. E.g.,
+xPOPTF benwpi
+
+Results:
+             benzene   +  H20   --> pi complex   deltaE
+E(OPLS-AA)    6.68         0          2.66       -4.02
+E(OPLS-AAP)   6.68         0          2.05       -4.63
+
+             benzene   +   K+   --> pi complex   deltaE
+E(OPLS-AA)    6.68         0         -1.64        -8.32
+E(OPLS-AAP)   6.68         0        -10.88       -17.56
+
+             benzene   + Me4N+  --> pi complex   deltaE
+E(OPLS-AA)    6.68       48.93       49.21        -6.40
+E(OPLS-AAP)   6.68       48.93       47.02        -8.59
+*Uses CM1A charges for Me4N+ in tmaCM1.z and tmabenCM1.z
+
+           18-crown-6  +   K+   -->  complex     deltaE
+E(OPLS-AA)   20.54         0        -41.68       -62.22
+E(OPLS-AAP)  20.54         0        -78.56       -99.10
+
+Currently, we feel that POLSCX = 1.0 is optimal and
+it is used in the xPOPT and xPOPTF scripts. The chosen
+polarizabilities are scaled linearly by POLSCX.
+
+See JACS 117, 4177 (1995) for related experimental and
+ab initio results.
+
+If you wish to change the polarization scale factors, then
+you need to change the last line of POPLSpar and POPLFpar
+and use the command files POPTcmd and POPTFcmd. E.g.,
+cp benKion.z optzmat
+csh POPTFcmd >& log &
+

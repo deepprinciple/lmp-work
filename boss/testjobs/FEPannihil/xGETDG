@@ -1,0 +1,24 @@
+#!/bin/csh
+#
+echo  
+#
+# usage - xGETDG moleculename
+#
+# test if the enviroment variable BOSSdir has been defined
+#
+if (!($?BOSSdir)) then
+   echo "BOSSdir has not been defined; please see README"
+   exit (-1)
+endif
+
+cd $argv[1]
+echo "aqueous Q and LJ"
+grep = Q.aq/sumout
+grep = LJ.aq/sumout
+echo "gaseous Q and LJ"
+grep = Q.gas/sumout
+grep = LJ.gas/sumout
+
+cd ..
+#
+exit

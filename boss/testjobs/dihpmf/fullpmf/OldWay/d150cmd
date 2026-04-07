@@ -1,0 +1,80 @@
+#
+# Command file for the BOSS  program.  Execute by entering the following:
+# csh d${inc}cmd >& d${inc}log &
+#***********************************************************************
+echo '        MC simulation: pmf torsion FEP'
+echo '                    25 C & 1 atm '
+echo '                 Equilibration    1M '
+echo '                   Averaging  0-2M '
+#***********************************************************************
+#
+nice +19
+set boss = $BOSSdir/BOSS
+set configurations = "500000"
+# inc is current window
+set inc = "150"
+# ninc is next window
+set ninc = "170"
+set lambda = "150.0 140.0 160.0"
+set boxes = $BOSSdir
+#
+setenv INFILE    d${inc}in
+setenv UPFILE    d${inc}up
+setenv SAVE      d${inc}sv
+setenv AVERAGE   d${inc}av
+setenv ZMATRIX   pmfzmat
+setenv SLVZMAT   slvzmat
+# The pmfpar0 file is only used for the initial window; pmfpar
+# is used for subsequent windows. The difference is that the
+# subsequent windows use ZIN and IN for the initial solute and
+# solvent coordinates, while initially they come from ZMAT and BOXES.
+
+if (-e tmppar) rm tmppar
+cp pmfpar tmppar
+cat $BOSSdir/oplsaa.par >> tmppar
+setenv PARAMETER tmppar
+
+setenv BANGPAR   $boxes/oplsaa.sb
+setenv WATERBOX  $boxes/watbox
+setenv ORG1BOX   $boxes/org1box
+setenv ORG2BOX   $boxes/org2box
+setenv SUMMARY   d${inc}sum
+
+date
+
+setenv OUTPUT    d${inc}ota
+setenv PLTFILE   d${inc}plt
+
+#    Equilibration
+
+time $boss 111 $configurations $lambda
+foreach block (eq)
+        date
+	setenv OUTPUT    d${inc}ot$block
+	setenv PLTFILE   d${inc}plt$block
+	time $boss 001 $configurations $lambda
+end
+
+#    Averaging
+
+setenv OUTPUT    d${inc}otb
+setenv PLTFILE   d${inc}pltb
+time $boss 011 $configurations $lambda
+mv d${inc}sv d${inc}sav
+foreach block (c d e2)
+        date
+        setenv OUTPUT    d${inc}ot$block
+        setenv PLTFILE   d${inc}plt$block
+        time $boss 001 $configurations $lambda
+        cat d${inc}sv >>d${inc}sav
+end
+
+rm d${inc}sv slvzmat
+
+#    Submit Next Window
+
+cp d${inc}in d${ninc}in
+csh d${ninc}cmd >& log$ninc &
+
+date
+exit

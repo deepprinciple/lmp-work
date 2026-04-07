@@ -1,0 +1,30 @@
+      1-chloropropane                                       Tot. E =      1.9612
+   1 C2   136  136    0    0.000000   0    0.000000   0    0.000000        0    
+   2 X     -1   -1    1    1.000000   0    0.000000   0    0.000000        0    
+   3 X     -1   -1    2    1.000000   1   90.000000   0    0.000000        0    
+   4 C3   135  135    1    1.533344   2   90.000000   3    0.000000        0    
+   5 C1   152  152    1    1.533630   4  112.698018   2  180.000000        0    
+   6 H    140  140    4    1.090492   1  110.822945   5  180.000032        0    
+   7 H    140  140    4    1.090492   1  111.305804   6  119.746229        0    
+   8 H    140  140    4    1.090492   1  111.305799   6  240.253778        0    
+   9 Cl   151  151    5    1.780998   1  110.032240   4  179.999974        0    
+  10 H    153  153    5    1.090585   1  111.574803   9  240.545062        0    
+  11 H    153  153    5    1.090585   1  111.574807   9  119.454942        0    
+  12 H    140  140    1    1.090855   4  109.378556   5  238.030078        0    
+  13 H    140  140    1    1.090855   4  109.378551   5  121.969915        0    
+                    Geometry Variations follow    (2I4,F12.6)                   
+                    Variable Bonds follow         (I4)                          
+0004-0013                                                                       
+                    Additional Bonds follow       (2I4)                         
+                    Harmonic Constraints follow   (2I4,4F10.4)                  
+                    Variable Bond Angles follow   (I4)                          
+0005-0013                                                                       
+                    Additional Bond Angles follow (3I4)                         
+AUTO                                                                            
+                    Variable Dihedrals follow     (3I4,F12.6)                   
+0006-0013                                                                       
+                   Additional Dihedrals follow   (6I4)                          
+AUTO                                                                            
+                   Domain Definitions follow     (4I4)                          
+                   Conformational Search         (2I4, 2F12.6)                  
+                   Final blank line                                             

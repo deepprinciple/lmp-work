@@ -1,0 +1,13 @@
+
+ MC simulation for an ethanol solute in   
+ liquid OPLS-AA ethanol.
+
+cmd was used to run 4M/2M and then
+cmdrestart to restart from there and run 10M
+Relatively long runs are needed to get converged results for the
+solute because it samples different hydrogen-bonded states with
+1-3 hydrogen bonds.
+
+to change the solute, replace zmat and check par
+
+

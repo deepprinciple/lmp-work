@@ -1,0 +1,56 @@
+
+      Methane dimer pmf - 25 C & 1 atm
+      N = 395 rcut = scut = 9.0 icut = 5
+           Equilibration  2.5M 
+           Averaging  0-4M 
+
+The pmfcmd and pmfzmat files have been set up such that the C-C
+distance goes from 2.0 to 3.0 A as lambda goes from 0 to 1. Any
+subsequent change in lambda is then the same change in Angstroms,
+e.g., delta lambda = 0.1 yields a change of 0.1 Angstrom. The pmfcmd
+file is set up such that the chosen lambda values are to be added to
+the lambda=0 value (2.0 A) to yield the CC separation. Thus, the
+d350 job is run at CC = 3.50 A with perturbations to 3.40 and 3.60 A;
+it uses lambda0,1 and 2 values of 1.500, 1.400, and 1.600, as indicated
+below.
+                                                                     r(C-C)
+d350sum: DeltaG (  1.400 to   1.500)  =     -0.648 +/-     0.024   3.4 to 3.5
+d350sum: DeltaG (  1.500 to   1.600)  =     -0.387 +/-     0.025   3.5 to 3.6
+d370sum: DeltaG (  1.600 to   1.700)  =     -0.196 +/-     0.017   3.6 to 3.7
+d370sum: DeltaG (  1.700 to   1.800)  =     -0.085 +/-     0.017      etc.
+d390sum: DeltaG (  1.800 to   1.900)  =     -0.004 +/-     0.024
+d390sum: DeltaG (  1.900 to   2.000)  =      0.039 +/-     0.026
+d410sum: DeltaG (  2.000 to   2.100)  =      0.023 +/-     0.007
+d410sum: DeltaG (  2.100 to   2.200)  =      0.045 +/-     0.007
+d430sum: DeltaG (  2.200 to   2.300)  =      0.013 +/-     0.024
+d430sum: DeltaG (  2.300 to   2.400)  =      0.017 +/-     0.024
+d450sum: DeltaG (  2.400 to   2.500)  =      0.097 +/-     0.016
+d450sum: DeltaG (  2.500 to   2.600)  =      0.105 +/-     0.017
+d470sum: DeltaG (  2.600 to   2.700)  =      0.137 +/-     0.018
+d470sum: DeltaG (  2.700 to   2.800)  =      0.141 +/-     0.019
+d490sum: DeltaG (  2.800 to   2.900)  =      0.008 +/-     0.037
+d490sum: DeltaG (  2.900 to   3.000)  =     -0.011 +/-     0.043
+d510sum: DeltaG (  3.000 to   3.100)  =      0.157 +/-     0.027
+d510sum: DeltaG (  3.100 to   3.200)  =      0.154 +/-     0.029
+d530sum: DeltaG (  3.200 to   3.300)  =     -0.005 +/-     0.022
+d530sum: DeltaG (  3.300 to   3.400)  =     -0.006 +/-     0.022
+d550sum: DeltaG (  3.400 to   3.500)  =      0.074 +/-     0.017
+d550sum: DeltaG (  3.500 to   3.600)  =      0.082 +/-     0.015
+d570sum: DeltaG (  3.600 to   3.700)  =     -0.146 +/-     0.049
+d570sum: DeltaG (  3.700 to   3.800)  =     -0.151 +/-     0.048
+d590sum: DeltaG (  3.800 to   3.900)  =     -0.032 +/-     0.031
+d590sum: DeltaG (  3.900 to   4.000)  =     -0.038 +/-     0.030
+d610sum: DeltaG (  4.000 to   4.100)  =     -0.085 +/-     0.057
+d610sum: DeltaG (  4.100 to   4.200)  =     -0.100 +/-     0.056
+d630sum: DeltaG (  4.200 to   4.300)  =      0.027 +/-     0.037
+d630sum: DeltaG (  4.300 to   4.400)  =      0.032 +/-     0.034
+d650sum: DeltaG (  4.400 to   4.500)  =     -0.021 +/-     0.021
+d650sum: DeltaG (  4.500 to   4.600)  =     -0.025 +/-     0.021
+d670sum: DeltaG (  4.600 to   4.700)  =     -0.101 +/-     0.022
+d670sum: DeltaG (  4.700 to   4.800)  =     -0.090 +/-     0.025
+d690sum: DeltaG (  4.800 to   4.900)  =      0.000 +/-     0.016
+d690sum: DeltaG (  4.900 to   5.000)  =      0.002 +/-     0.016
+d710sum: DeltaG (  5.000 to   5.100)  =     -0.064 +/-     0.021
+d710sum: DeltaG (  5.100 to   5.200)  =     -0.054 +/-     0.022
+d730sum: DeltaG (  5.200 to   5.300)  =      0.043 +/-     0.035
+d730sum: DeltaG (  5.300 to   5.400)  =      0.042 +/-     0.036

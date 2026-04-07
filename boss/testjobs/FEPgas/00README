@@ -1,0 +1,9 @@
+The Z-matrix for the fep calculation needs to be called gaszmat.
+Then, to execute an entire fep calculation in the gas phase, just enter
+csh fepgascmd >& log &
+
+See xFEPGAS for easy execution of a single gas-phase fep
+calculation in any directory. Uses 10 windows, delta lambda = 0.05
+
+xFEPGAS25 uses 25 windows, delta lambda = 0.02
+xFEPGAS25Q is the queue version.

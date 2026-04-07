@@ -1,0 +1,374 @@
+
+
+
+
+ ********************************************************************************
+ ********************************************************************************
+ ************************** Monte Carlo Simulation of  **************************
+ *************************      carbon dioxide          *************************
+ **************************** T =   25.0 P =     0.0 ****************************
+ *********************** RC0 =     0.0000 MXCON =   500000 **********************
+ ***************************** Solvent Model: NONE  *****************************
+ *************************           BOSS  5.1          *************************
+ ************************* Linux    Version  Feb  2024  *************************
+ ********************************************************************************
+ ********************************************************************************
+
+
+
+
+                         Z-Matrix for Reference Solutes
+
+
+ --------------------------------------------------------------------------------
+                   Init.   Final                        Theta           PHI
+   I    Symbol     Type    Type   J     R(IJ)     K      IJK      L     IJKL
+ --------------------------------------------------------------------------------
+    1    C        1160    1160    0     0.0000    0     0.0000    0     0.0000
+    2    X          -1      -1    1     1.0000    0     0.0000    0     0.0000
+    3    X          -1      -1    2     1.0000    1    90.0000    0     0.0000
+    4    O        1161    1161    1     1.1680    2    90.0000    3     0.0000
+    5    O        1161    1161    1     1.1680    2    90.0000    4   180.0000
+ --------------------------------------------------------------------------------
+ --------------------------------------------------------------------------------
+
+
+
+
+
+                       OPLS Force Field Parameters
+    Atom         Q            Sigma        Epsilon        Alpha
+  C:    1        0.7000        2.6200        0.0676        0.0000      All Solutes    
+        2        0.0000        0.0000        0.0000        0.0000      All Solutes    
+        3        0.0000        0.0000        0.0000        0.0000      All Solutes    
+  O     4       -0.3500        2.9300        0.1888        0.0000      All Solutes    
+  O     5       -0.3500        2.9300        0.1888        0.0000      All Solutes    
+
+                      Net Charge
+   Reference Solute     0.00000
+ 1st Perturbed Solute   0.00000
+ 2nd Perturbed Solute   0.00000
+
+                 Bond Stretching Parameters
+  Atom1   Atom2      R0           K0         R1           K1         R2           K2       Delta
+    4       1      1.1680      700.00      1.1680      700.00      1.1680      700.00      0.0220     O -C:
+    5       1      1.1680      700.00      1.1680      700.00      1.1680      700.00      0.0220     O -C:
+
+                 Angle Bending Parameters
+  Atom1 Atom2 Atom3    A0       K0       A1       K1       A2       K2      Delta
+     2     1     5     0.00     0.00     0.00     0.00     0.00     0.00    2.000       -C:-O 
+     4     1     5   180.00   160.00   180.00   160.00   180.00   160.00    0.000     O -C:-O 
+
+                     Dipole Moment
+   Reference Solute     0.09363 D
+
+ Quadrupole Moment:      XX        XY        XZ        YY        YZ        ZZ
+   Reference Solute    -0.0007    0.0378    0.0000   -4.4701    0.0000    0.0000 D-A
+
+
+ Total Mol. Wt. of Reference Solute =   44.0098
+
+
+
+
+                    Non-bonded Pairs List (Except Inter-solute)
+
+
+ Atom    1:
+
+ Atom    2:
+
+ Atom    3:
+
+ Atom    4:
+
+ Atom    5:
+
+
+Checking for potential problems in the solute Z-matrix file:
+      0 Potential Problems Found.
+
+
+
+                          carbon dioxide          
+                        Mon Apr  1 13:00:43 2024
+                            OPLS Potentials
+
+
+                      Parameters and Coordinates
+
+ NMOL =   0          EDGE =  100.0000  100.0000  100.0000    RCUT =   10.0000
+ NACCPT =   4500000  NRJECT =    688772  MXCON =   500000    NCON =        0
+ T(C) =     25.00    OLD E =  0.13104520D+01    NEW E =  0.13104523D+01
+ RDEL =    0.2000    ADEL =   20.0000    VDEL =       0.0    MXS =    2500
+ P(ATM) =     0.0    VOLD =   1000000.0  VNEW =   1000000.0  NVCHG =999999
+ DIELRF =     1.0    Reaction Field NOT Applied
+
+ Information for the Reference Solute:
+ NSCHG=     1        SCUT =   10.0000    ICUT =     0        NCENT =   1    1
+ RDELS1=   0.0000    RDELS2=   0.0000    ADELS1=   0.0000    ADELS2=   0.0000
+ ESOLD=      0.00    ESONE=      0.00    WIMAX=  0.000000    WKC =  200.00
+ EXXOLD=     0.00    EXXNEW=     0.00    DIELEC=   1.0000    CUTOFF E=    0.000
+ EPOOLD=     0.00    EPONEW=     0.00    NPOLX =        0    NPOLS =        0
+ EBNDOL=   1.2603    EBNDNE=   1.2603    EANGOL=   0.0501    EANGNE=   0.0501
+ EDIHOL=   0.0000    EDIHNE=   0.0000    ENBOL=      0.00    ENBNE=      0.00
+ EBCOLD=     0.00    EBCNEW=     0.00    SANEW =     0.00    POLCUT=    10.00
+
+ ESXCUT=    0.000    ESXCT1=    0.000    ESXCT2=    0.000
+
+
+ 1-4 Scale Factors: Coul.=   0.20000D+01 L-J=   0.20000D+01  CUTNB =  100.000
+
+ Reaction Coordinate or Lambda Values for the Reference and Perturbed Solutes:
+ RC0  =    0.0000    RC1 =     0.0000    RC2  =    0.0000
+
+
+ Coordinates and Distances in Angstroms
+
+
+ Solute 0:   X          Y          Z
+    6     0.00000    0.00000    0.00000  C  
+    0     1.00000    0.00000    0.00000  X  
+    0     1.00000    1.00000    0.00000  X  
+    8     0.00000    1.17880    0.00000  O  
+    8     0.01994   -1.12679    0.00000  O  
+
+ Variable and Additional Bonds
+ Atom I      Atom J      RIJ
+     4           1       1.1788
+     5           1       1.1270
+
+ Variable and Additional Angles
+ Atom I    J     K      Theta
+     2     1     5       88.986
+     4     1     5      178.986
+
+    Surface Area and Volume with Solvent Radius = 1.40
+ Atom    Radius      Access. Area   Access. Vol.  Solute
+   1     1.470          4.686         14.118         1
+   2     0.000          0.000          0.000         1
+   3     0.000          0.000          0.000         1
+   4     1.644         77.859         84.232         1
+   5     1.644         77.747         83.896         1
+
+ Total Solvent Accessible Surface Area =   160.29
+       Total Solvent Accessible Volume =   182.25
+
+  Type            Area          Volume
+ Hydrophobic        0.000          0.000
+ Hydrophilic      155.606        168.128
+ Aromatic           4.686         14.118
+ Weakly Polar       0.000          0.000
+
+ Initial Random Number =0.31690211
+
+ Accepted Volume Moves =      0 Attempted =      0 (  0 %)
+
+
+
+                          carbon dioxide          
+                        Mon Apr  1 13:00:43 2024
+                            OPLS Potentials
+
+
+                      Parameters and Coordinates
+
+ NMOL =   0          EDGE =  100.0000  100.0000  100.0000    RCUT =   10.0000
+ NACCPT =   5000000  NRJECT =    765276  MXCON =   500000    NCON =   500000
+ T(C) =     25.00    OLD E =  0.17814275D+01    NEW E =  0.17814275D+01
+ RDEL =    0.2000    ADEL =   20.0000    VDEL =       0.0    MXS =    2500
+ P(ATM) =     0.0    VOLD =   1000000.0  VNEW =   1000000.0  NVCHG =999999
+ DIELRF =     1.0    Reaction Field NOT Applied
+
+ Information for the Reference Solute:
+ NSCHG=     1        SCUT =   10.0000    ICUT =     0        NCENT =   1    1
+ RDELS1=   0.0000    RDELS2=   0.0000    ADELS1=   0.0000    ADELS2=   0.0000
+ ESOLD=      0.00    ESONE=      0.00    WIMAX=  0.000000    WKC =  200.00
+ EXXOLD=     0.00    EXXNEW=     0.00    DIELEC=   1.0000    CUTOFF E=    0.000
+ EPOOLD=     0.00    EPONEW=     0.00    NPOLX =        0    NPOLS =        0
+ EBNDOL=   1.5624    EBNDNE=   1.5624    EANGOL=   0.2190    EANGNE=   0.2190
+ EDIHOL=   0.0000    EDIHNE=   0.0000    ENBOL=      0.00    ENBNE=      0.00
+ EBCOLD=     0.00    EBCNEW=     0.00    SANEW =   161.18    POLCUT=    10.00
+
+ ESXCUT=    0.000    ESXCT1=    0.000    ESXCT2=    0.000
+
+
+ 1-4 Scale Factors: Coul.=   0.20000D+01 L-J=   0.20000D+01  CUTNB =  100.000
+
+ Reaction Coordinate or Lambda Values for the Reference and Perturbed Solutes:
+ RC0  =    0.0000    RC1 =     0.0000    RC2  =    0.0000
+
+
+ Coordinates and Distances in Angstroms
+
+
+ Solute 0:   X          Y          Z
+    6     0.00000    0.00000    0.00000  C  
+    0     1.00000    0.00000    0.00000  X  
+    0     1.00000    1.00000    0.00000  X  
+    8     0.00000    1.20925    0.00000  O  
+    8    -0.04235   -1.14418    0.00000  O  
+
+ Variable and Additional Bonds
+ Atom I      Atom J      RIJ
+     4           1       1.2092
+     5           1       1.1450
+
+ Variable and Additional Angles
+ Atom I    J     K      Theta
+     2     1     5       92.120
+     4     1     5      177.880
+
+
+
+
+            *** Averages ***
+ Total Energy =     0.8883
+     Inter Cp =     0.0000
+     Alpha(1/deg*e-5)=     0.0000
+     Kappa(1/atm*e-6)=     0.0000
+     Volume=  1000000.0
+
+                  Refer. Solute  1st Pert. Solute       Delta    2nd Pert. Solute       Delta
+ Solute-Solvent E       0.0000            0.0000        0.0000            0.0000        0.0000
+ Solute-Solute  E       0.0000            0.0000        0.0000            0.0000        0.0000
+ Polarization   E       0.0000            0.0000        0.0000            0.0000        0.0000
+ Bond Stretch   E       0.5933            0.5933        0.0000            0.5933        0.0000
+ Angle Bending  E       0.2950            0.2950        0.0000            0.2950        0.0000
+ Torsional Energy       0.0000            0.0000        0.0000            0.0000        0.0000
+ Non-bonded     E       0.0000            0.0000        0.0000            0.0000        0.0000
+ Constraints    E       0.0000            0.0000        0.0000            0.0000        0.0000
+ Total                                                  0.0000                          0.0000
+ Ave. Dipole Mom.       0.0850            0.0850                          0.0850
+
+
+ Solute  1 - Solvent Energy Components:
+   Lennard-Jones =      0.0000
+   Coulomb       =      0.0000
+   Total         =      0.0000
+
+ Solute  1 - Solute Energy Components:
+   Lennard-Jones =      0.0000
+   Coulomb       =      0.0000
+   Total         =      0.0000
+
+ Ave. Total Solute SASA   =    160.8411
+ Ave. Total Solute Volume =    183.0266
+ Hydrophobic  SASA        =      0.0000
+ Hydrophilic  SASA        =    155.6685
+ Aromatic     SASA        =      5.1727
+ Weakly Polar SASA        =      0.0000
+
+
+
+
+     Attempted/Accepted Moves for Each Molecule
+
+
+      Solute  1:  5000000/  4234724
+
+
+
+                                                Thermodynamic Results
+
+ Run Total Energy     Inter Cp       Volume       Enthalpy        Kappa         Alpha          EXX           ESX
+ 10        0.899         0.000   1000000.000         0.899         0.000         0.000         0.000         0.000
+  1        0.892         0.000   1000000.000         0.892         0.000         0.000         0.000         0.000
+  2        0.880         0.000   1000000.000         0.880         0.000         0.000         0.000         0.000
+  3        0.894         0.000   1000000.000         0.894         0.000         0.000         0.000         0.000
+  4        0.882         0.000   1000000.000         0.882         0.000         0.000         0.000         0.000
+  5        0.887         0.000   1000000.000         0.887         0.000         0.000         0.000         0.000
+  6        0.887         0.000   1000000.000         0.887         0.000         0.000         0.000         0.000
+  7        0.888         0.000   1000000.000         0.888         0.000         0.000         0.000         0.000
+  8        0.893         0.000   1000000.000         0.893         0.000         0.000         0.000         0.000
+  9        0.880         0.000   1000000.000         0.880         0.000         0.000         0.000         0.000
+
+                                            Standard Deviations
+           0.002         0.000         0.000         0.002         0.000         0.000         0.000         0.000
+
+                                                 Averages
+           0.888         0.000   1000000.000         0.888         0.000         0.000         0.000         0.000
+
+
+
+                     1st Solute    2nd Solute                  1st Solute    2nd Solute
+ Run      E-Bond        E-Bond        E-Bond        E-Bend        E-Bend        E-Bend
+ 10        0.600         0.600         0.600         0.300         0.300         0.300
+  1        0.595         0.595         0.595         0.297         0.297         0.297
+  2        0.589         0.589         0.589         0.291         0.291         0.291
+  3        0.595         0.595         0.595         0.299         0.299         0.299
+  4        0.590         0.590         0.590         0.292         0.292         0.292
+  5        0.588         0.588         0.588         0.299         0.299         0.299
+  6        0.596         0.596         0.596         0.291         0.291         0.291
+  7        0.596         0.596         0.596         0.292         0.292         0.292
+  8        0.595         0.595         0.595         0.298         0.298         0.298
+  9        0.589         0.589         0.589         0.291         0.291         0.291
+
+                                            Standard Deviations
+           0.001         0.001         0.001         0.001         0.001         0.001
+
+                                                 Averages
+           0.593         0.593         0.593         0.295         0.295         0.295
+
+
+
+ SASA Analysis:
+ Run    Tot. SASA      Volume      Hydrophobic    Hydrophilic    Aromatic    Weakly Polar
+ 10      160.835       183.018         0.000       155.668         5.167         0.000
+  1      160.853       183.043         0.000       155.670         5.183         0.000
+  2      160.838       183.022         0.000       155.668         5.170         0.000
+  3      160.843       183.030         0.000       155.669         5.175         0.000
+  4      160.854       183.044         0.000       155.670         5.183         0.000
+  5      160.840       183.025         0.000       155.668         5.172         0.000
+  6      160.838       183.022         0.000       155.668         5.170         0.000
+  7      160.837       183.020         0.000       155.668         5.169         0.000
+  8      160.841       183.026         0.000       155.668         5.172         0.000
+  9      160.833       183.015         0.000       155.667         5.166         0.000
+
+                                            Standard Deviations
+           0.002         0.003         0.000         0.000         0.002         0.000
+
+                                                 Averages
+         160.841       183.027         0.000       155.668         5.173         0.000
+
+
+
+ For Solute  1:
+ Run     ESX-Coul.      ESX-LJ       EXX-Coul.      EXX-LJ
+ 10        0.000         0.000         0.000         0.000
+  1        0.000         0.000         0.000         0.000
+  2        0.000         0.000         0.000         0.000
+  3        0.000         0.000         0.000         0.000
+  4        0.000         0.000         0.000         0.000
+  5        0.000         0.000         0.000         0.000
+  6        0.000         0.000         0.000         0.000
+  7        0.000         0.000         0.000         0.000
+  8        0.000         0.000         0.000         0.000
+  9        0.000         0.000         0.000         0.000
+
+                                            Standard Deviations
+           0.000         0.000         0.000         0.000
+
+                                                 Averages
+           0.000         0.000         0.000         0.000
+
+ Units: Energies in kcal/mol
+        Entropies in cal/mol-deg
+        Heat Capacity in cal/mol-deg
+        Volume in Angstroms^3
+        Kappa in (1/atm)*10^-6
+        Alpha in (1/deg)*10^-5
+
+ Total Energy = E(Solvent-Solvent) + ESX + EXX + EPOL + E(phi)
+               + E-Bond + E-Bend + ENB + ECUT + E(Internal Solvent)
+ ESX    = Solute-Solvent Energy
+ EXX    = Solute-Solute Energy
+ EPOL   = Polarization Energy
+ E(phi) = Torsional Energy for the Solutes
+ E-Bond = Bond Stretching Energy for the Solutes
+ E-Bend = Angle Bending Energy for the Solutes
+ ENB    = Intrasolute >1,3-nonbonded Energy
+ E-BCON = The Harmonic Distance Constraints Energy (in EXX)
+ E(AM1) or E(PM3) = QM Energy for the Solutes
+ ECUT= The Cutoff Correction to the Solvent-Solvent Energy for Non-aqueous Solvents (L-J Only)
+total CPU time(sec)  =      0.3

@@ -1,0 +1,99 @@
+#! /usr/bin/perl
+unless ($#ARGV >= 1) {
+	print "usage dihxmgr SUMFILE XMGRFILE\n";
+	exit;
+}
+$sum_file = shift @ARGV;
+$xmgr_file = shift @ARGV;
+open (SUMFILE,"$sum_file") || die "Can't open sumfile $sum_file for reading\n";
+open (XMGRFILE,">$xmgr_file") || die "Can't open xmgrfile $xmgr_file for writing\n";
+while (<SUMFILE>) {
+	if (/Phi           Dipole          E/) {
+		while(<SUMFILE>) {
+			@line = split;
+			unless ($line[0]=~/\w/) {
+				shift @line;
+			}
+			push (@phi,$line[0]);
+			push (@dipole,$line[1]);
+			push (@e,$line[2]);
+			push (@rel_e,$line[3]);
+		}
+	} elsif (/\w/) {
+		push (@titles,$_);
+	}
+}
+&xmgr_header;
+for ($i=0;$i<=$#phi;$i++) {
+	print XMGRFILE "$phi[$i] $rel_e[$i]\n";
+}
+sub xmgr_header {
+        $main_title = $titles[0];
+	@main_title = split(/\s/,$main_title);
+	foreach (@main_title) {
+		if ($_ =~ /\w/) {
+        		$title = join(" ",$title,$_);
+		}
+	}
+	@title_line = split(/\s+/,$titles[1]);
+	$lt = $#title_line;
+        $legend = join(" ",$title_line[$lt-2],$title_line[$lt-1],$title_line[$lt]);
+	$xmax = 0.0;
+        $xmin = 100000.0;
+	$ymax = 0.0;
+        $ymin = 100000.0;
+	foreach (@phi) {
+		if ($_ >= $xmax) {
+			$xmax = $_;
+		}
+		if ($_ <= $xmin) {
+			$xmin = $_;
+		}
+	}
+	foreach (@rel_e) {
+		if ($_ >= $ymax) {
+			$ymax = $_;
+		}
+		if ($_ <= $ymin) {
+			$ymin = $_;
+		}
+	}
+	if ($xmax > 270) {
+		$xmax = 360;
+	} elsif ($xmax > 180) {
+		$xmax = 270;
+	} elsif ($xmax > 90) {
+		$xmax = 180;
+	} else {
+		$xmax = 90;
+	}
+	$ymax += 1.0;
+	print XMGRFILE "\@ view ymin 0.10\n";
+	print XMGRFILE "\@ view ymax 0.90\n";
+	printf XMGRFILE "\@ world xmin %4d\n",$xmin;
+	printf XMGRFILE "\@ world ymin %4d\n",$ymin;
+	printf XMGRFILE "\@ world xmax %4d\n",$xmax;
+	printf XMGRFILE "\@ world ymax %4d\n",$ymax;
+	printf XMGRFILE "\@ legend on\n";
+	printf XMGRFILE "\@ legend char size 0.750000\n";
+	printf XMGRFILE "\@ legend x1 0.60\n";
+	printf XMGRFILE "\@ legend y1 0.85\n";
+	printf XMGRFILE "\@ legend string 0 \"$legend\"\n";
+	printf XMGRFILE "\@ xaxis tick major 60.0\n";
+	printf XMGRFILE "\@ xaxis tick minor 30.0\n";
+	printf XMGRFILE "\@ yaxis tick major 1.0\n";
+	printf XMGRFILE "\@ yaxis tick minor 0.5\n";
+	printf XMGRFILE "\@ title \"$title\"\n";
+	printf XMGRFILE "\@ title font 4\n";
+	printf XMGRFILE "\@ title size 1.500000\n";
+	printf XMGRFILE "\@ title color 1\n";
+	printf XMGRFILE "\@ title linewidth 1\n";
+	printf XMGRFILE "\@ xaxis ticklabel on \n";
+	printf XMGRFILE "\@ yaxis ticklabel on \n";
+	printf XMGRFILE "\@ xaxis label color 1\n";
+	print XMGRFILE "\@ xaxis label ",'"\\8Y\\0 (\\So\\N)"',"\n";
+	printf XMGRFILE "\@ yaxis label color 1\n";
+	printf XMGRFILE "\@ yaxis label \"Delta E (kcal/mol)\"\n";
+	printf XMGRFILE "\@WITH G0\n";
+	printf XMGRFILE "\@ TYPE XY\n";
+}

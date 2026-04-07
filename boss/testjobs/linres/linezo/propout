@@ -1,0 +1,46 @@
+
+
+               Properties Predictions for
+                  linezolid                  
+
+                                                  (Range for 95% of Drugs)
+ Descriptors from MC Simulation in Water:
+     Solute-Water  Coulomb Energy        =  -111.050  (-137.5 / -17.3) 
+     Solute-Water  Lennard-Jones Energy  =   -23.433  ( -36.7 /  -4.2) 
+     Solute-Solute Coulomb Energy        =     0.000
+     Solute-Solute Lennard-Jones Energy  =     0.000
+     Solute        Molecular Weight      =   337.350  ( 130.0 / 525.0) 
+     Solute        Dipole Moment (D)     =     7.306  (   1.4 /  11.4) 
+     Solute        Total       SASA      =   595.046  ( 300.0 / 865.0) 
+     Solute        Hydrophobic  SASA     =   366.459  (   0.0 / 475.0) 
+     Solute        Hydrophilic SASA      =   109.104  (   6.0 / 275.0) 
+     Solute        Carbon Pi   SASA      =    90.161  (   0.0 / 370.0) 
+     Solute        Weakly Polar SASA     =    29.321  (   0.0 / 150.0) 
+     Solute        Molecular Volume (A^3)=  1038.140  ( 500.0 /1600.0) 
+     Solute-Water  Medium Interactions   =    11.423  (   2.2 /  15.8) 
+     Solute-Water  Strong Interactions   =     7.946  (   1.2 /  10.9) 
+     Solute as Donor -    Hydrogen Bonds =     1.004  (   0.0 /   4.2) 
+     Solute as Acceptor - Hydrogen Bonds =     6.993  (   0.8 /   8.4) 
+     Solute        No. of Rotatable Bonds=     2.000  (   0.0 /  13.0) 
+     Solute Globularity   (Sphere = 1)   =     0.833  (  0.75 /  0.95) 
+
+ Predictions for Properties:
+      Polarizability (Angstroms^3)       =    34.969  (  10.0 /  52.0) 
+      log P for     hexadecane/gas       =     8.666  (   4.0 /  14.4) 
+      log P for     octanol/gas          =    17.404  (   6.0 /  28.5) 
+      log P for     water/gas            =    18.147  (   4.0 /  30.0) 
+      log P for     octanol/water        =     1.767  (  -1.5 /   5.3) 
+      log S for   aqueous solubility     =    -4.041  (  -6.0 /   0.0) 
+      log BB for     brain/blood         =    -0.548  (  -3.0 /   1.0) 
+      log K hsa Serum Protein Binding    =    -0.292  (  -1.5 /   1.2) 
+      Papp  Caco-2 Permeability (nm/sec) =   140.557  (< 5 low, >100 high) Boehringer
+      Papp  Caco-2 Permeability (nm/sec) =  1159.179  (<25 low, >500 high) Affymax
+      Papp  MDCK   Permeability (nm/sec) =   881.075  (<25 low, >500 high) Affymax
+      log Kp for skin permeability       =    -3.021  (Kp in cm/hr)
+      Jm, max transdermal transport rate =     0.029  (micrograms/cm^2-hr)
+
+      S in micrograms/ml               =      30.685
+
+      * is a 95% violation
+
+

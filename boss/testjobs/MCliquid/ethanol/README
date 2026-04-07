@@ -1,0 +1,23 @@
+The procedure from the methanol example was followed.
+First ran 2M equilibration and 2M averaging:
+csh liqcmd >& log &
+Then restarted and ran 5M averaging:
+csh liqavcmd >& log &
+Output is in liqout5 and liqplot5.
+
+The density from the last run is: N*MW/0.6023*V = 267*46.07/.6023*25746 = 0.793 g/cc. 
+The value in JACS 118, 11225 is 0.799 for OPLS-AA and 0.785 for experiment at 
+25 C and 1 atm.
+
+To compute the heat of vaporization, one should do a gas-phase MC calculation
+(see etoh.out in the MCgas test job); however,
+
+dHvap = E(gas) - E(liq) + RT = E(gas) - Einter(liq) -Eintra(liq) + RT
+      = 7.10 - (-683.6/267) + 0.592 = 10.25
+
+The value in JACS 118, 11225 is 10.29 and the exptl value is 10.11.
+
+Note also that the average intramolecular energy is 1941.7/267 = 7.27 kcal/mol.
+The gas-phase value above is 7.10. The monomers
+distort a little in the liquid to enhance the hydrogen bonding.         
+

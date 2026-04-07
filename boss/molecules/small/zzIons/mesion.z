@@ -1,0 +1,19 @@
+Methane Thiolate 6-31+G*                                                        
+   1 C1   415  415    0    0.000000   0    0.000000   0    0.000000        0    
+   2 DUM   -1    0    1    1.000000   0    0.000000   0    0.000000        0    
+   3 DUM   -1    0    2    1.000000   1   90.000000   0    0.000000        0    
+   4 S4   417  417    1    1.834000   2   90.000000   3    0.000000        0    
+   5 H5   416  416    1    1.089000   4  111.700000   3    0.000000        0    
+   6 H6   416  416    1    1.089000   4  111.700000   5  120.000000        0    
+   7 H7   416  416    1    1.089000   4  111.700000   5  240.000000        0    
+                    Geometry Variations follow    (2I4,F12.6)                   
+                    Variable Bonds follow         (I4)                          
+                    Additional Bonds follow       (2I4)                         
+                    Harmonic Constraints follow   (2I4,4F10.4)                  
+                    Variable Bond Angles follow   (I4)                          
+                    Additional Bond Angles follow (3I4)                         
+                    Variable Dihedrals follow     (3I4,F12.6)                   
+                    Additional Dihedrals follow   (6I4)                         
+                    Domain Definitions follow     (4I4)                         
+                    Conformational Search         (2I4, 2F12.6)                 
+                    Final blank line                                            

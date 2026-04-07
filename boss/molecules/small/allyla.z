@@ -1,0 +1,31 @@
+    allyl alcohol                                           Tot. E =     -1.8002
+   1  X    -1    0    0    0.000000   0    0.000000   0    0.000000        0    
+   2  X    -1    0    1    1.000000   0    0.000000   0    0.000000        0    
+   3  C   142    0    2    1.000000   1   90.000000   0    0.000000        0    
+   4  C   157    0    3    1.511193   2  144.973350   1  180.000000        0    
+   5  C   143    0    3    1.341528   4  124.402897   2  180.000000        0    
+   6  H   144    0    3    1.081485   4  116.101742   5  180.415976        0    
+   7  O   154    0    4    1.408389   3  108.278191   5  111.311780        0    
+   8  H   140    0    4    1.090963   3  110.116931   7  120.579226        0    
+   9  H   140    0    4    1.091220   3  110.821607   7  239.698368        0    
+  10  H   155    0    7    0.945809   4  108.549669   3  306.285647        0    
+  11  H   144    0    5    1.080397   3  120.903943   4  180.199074        0    
+  12  H   144    0    5    1.080445   3  121.442784  11  180.044531        0    
+                    Geometry Variations follow    (2I4,F12.6)                   
+                    Variable Bonds follow         (I4)                          
+0004-0012                                                                       
+                    Additional Bonds follow       (2I4)                         
+                    Harmonic Constraints follow   (2I4,4F10.4)                  
+                    Variable Bond Angles follow   (I4)                          
+0005-0012                                                                       
+                    Additional Bond Angles follow (3I4)                         
+AUTO                                                                            
+                    Variable Dihedrals follow     (3I4,F12.6)                   
+0006-0012                                                                       
+                    Additional Dihedrals follow   (6I4)                         
+AUTO                                                                            
+                    Domain Definitions follow     (4I4)                         
+                    Conformational Search (4I2,2F12.6)                          
+                    Final blank line                                            
+                                                                                
+                                                                                

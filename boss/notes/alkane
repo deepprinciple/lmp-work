@@ -1,0 +1,51 @@
+
+                   **********************************
+                   New Hydrocarbon Torsion Parameters
+                            for OPLS-AA
+                   **********************************
+
+As of 11/99, the 3 basic alkane torsions are being changed as 
+follows to better reproduce exptl data (rather than 6-31G*).
+
+                    V1       V2      V3
+HC-CT-CT-HC          0        0     0.318   OPLS-AA
+                     0        0     0.300   new
+
+HC-CT-CT-CT          0        0     0.366   OPLS-AA
+                     0        0     0.300   new
+
+CT-CT-CT-CT        1.74     -0.157  0.279   OPLS-AA
+                   1.30     -0.050  0.200   new
+
+Results:
+                        OPLS-AA   new      best
+                        -------   ----    --------
+ethane  ecl-stag          3.01    2.84    2.88 expt
+
+propane ecl-stag          3.32    3.02
+
+butane  
+cis                       6.04    5.18    5.25 ai JACS112,114
+gauche                    1.03    0.80    0.69 +/-.1 expt; 0.81 MM3; 0.68 MM4
+120 deg                   3.68    3.23    3.33 ai
+trans                     0       0       0
+
+pentane tg-tt                     0.94    0.86 MM3 JACS111,8551 
+        g+g+-tt                   1.89    1.62 MM3
+        g+g--tt                   3.30    3.51 MM3
+
+neopentane ecl-stag       4.26    3.67    3.35 MM4 JCC17,642
+
+2,3-dimethylbutane g-t   -0.10   -0.23    0.0 expt
+                                          0.04 MP4
+
+cyclohexane twist-chair   8.20    7.01    6-7 various a.i.
+
+methylcyclohexane ax-eq   2.25    1.78    1.75 expt
+
+cyclooctane D4d-Cs       -1.40   -1.04    1.1  MM4
+                                          2.0  MP4
+
+The new parameters fix most of the problems except
+cyclooctane. The difference there is in the non-bonded
+energy, so it is probably not easily fixable.

@@ -1,0 +1,26 @@
+      Acetate Anion                                         Tot. E =    -16.6154
+   1 C1   271  271    0    0.000000   0    0.000000   0    0.000000        0    
+   2 DUM   -1    0    1    1.000000   0    0.000000   0    0.000000        0    
+   3 DUM   -1    0    2    0.200000   1   90.000000   0    0.000000        0    
+   4 O4   272  272    1    1.248980   2   60.000000   3    0.000000        0    
+   5 O5   272  272    1    1.248980   2   66.249633   3  180.000000        0    
+   6 C6   273  273    1    1.517831   4  116.874811   5  180.258170        0    
+   7 H7   140  140    6    1.089016   1  110.219593   4  329.949918        0    
+   8 H8   140  140    6    1.089016   1  110.219794   7  239.856529        0    
+   9 H9   140  140    6    1.088429   1  109.587076   7  119.928199        0    
+                    Geometry Variations follow    (2I4,F12.6)                   
+                    Variable Bonds follow         (I4)                          
+0004-0009                                                                       
+                    Additional Bonds follow       (2I4)                         
+                    Harmonic Constraints follow   (2I4,4F10.4)                  
+                    Variable Bond Angles follow   (I4)                          
+0005-0009                                                                       
+                    Additional Bond Angles follow (3I4)                         
+AUTO                                                                            
+                    Variable Dihedrals follow     (3I4,F12.6)                   
+0006-0009                                                                       
+                    Additional Dihedrals follow   (6I4)                         
+AUTO                                                                            
+                    Domain Definitions follow     (4I4)                         
+                    Conformational Search         (2I4, 2F12.6)                 
+                    Final blank line                                            

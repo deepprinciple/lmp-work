@@ -1,0 +1,31 @@
+   trichlorophosphine                                       Tot. E =    -82.3404
+   1 P     15    0    0    0.000000   0    0.000000   0    0.000000        0
+   2 DUM   -1    0    1    1.000000   0    0.000000   0    0.000000        0
+   3 DUM   -1    0    2    1.000000   1   90.000000   0    0.000000        0
+   4 Cl    17    0    1    1.961177   2   90.000000   3    0.000000        0
+   5 Cl    17    0    1    1.961159   4  101.818525   3    0.000000        0
+   6 Cl    17    0    1    1.961159   4  101.818628   5  255.073070        0
+                    Geometry Variations follow                                  
+                    Variable Bonds follow         (I4 or I4-I4)                 
+0004-0006                                                                       
+                    Additional Bonds follow       (2I4)                         
+                    Harmonic Constraints follow                                 
+                    Variable Bond Angles follow   (I4 or I4-I4)                 
+0005-0006                                                                       
+                    Additional Bond Angles follow (3I4)                         
+AUTO                                                                            
+                    Variable Dihedrals follow     (3I4,F12.6)                   
+0006-0006                                                                       
+                    Additional Dihedrals follow   (6I4)                         
+                    Domain Definitions follow     (4I4)                         
+                    Conformational Search         (2I4, 2F12.6)                 
+                    Final blank line                                            
+                                                                                
+      
+ Final Non-Bonded Parameters for QM (PDG CM3 x1.14) Atoms:
+      
+ 800 15 P   -0.596100  3.740000  0.200000
+ 801 17 Cl   0.198700  3.400000  0.300000
+ 802 17 Cl   0.198700  3.400000  0.300000
+ 803 17 Cl   0.198700  3.400000  0.300000
+     

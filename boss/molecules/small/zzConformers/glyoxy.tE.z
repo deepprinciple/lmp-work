@@ -1,0 +1,26 @@
+ glyoxylic acid tE                                          Tot. E =      2.0461
+   1 C2   267  267    0    0.000000   0    0.000000   0    0.000000        0
+   2 X     -1   -1    1    1.000000   0    0.000000   0    0.000000        0
+   3 X     -1   -1    2    1.000000   1   90.000000   0    0.000000        0
+   4 C1   277  277    1    1.512245   2   90.000000   3    0.000000        0
+   5 O    278  278    4    1.232879   1  118.958502   2    0.000000        0
+   6 H    279  279    4    1.090118   1  118.429726   5  180.000000        0
+   7 O    269  269    1    1.228221   4  122.547294   5  180.000000        0
+   8 O    268  268    1    1.360678   4  116.281057   7  180.000000        0
+   9 H    270  270    8    0.948505   1  106.167091   7  180.000000        0
+                    Geometry Variations follow    (2I4,F12.6)                   
+                    Variable Bonds follow         (I4 or I4-I4)                 
+0004-0009                                                                       
+                    Additional Bonds follow       (2I4)                         
+                    Harmonic Constraints follow   (2I4,4F10.4)                  
+                    Variable Bond Angles follow   (I4 or I4-I4)                 
+0005-0009                                                                       
+                    Additional Bond Angles follow (3I4)                         
+AUTO                                                                            
+                    Variable Dihedrals follow     (3I4,F12.6)                   
+0006-0009                                                                       
+                   Additional Dihedrals follow   (6I4)                          
+AUTO                                                                            
+                   Domain Definitions follow     (4I4)                          
+                   Conformational Search         (2I4, 2F12.6)                  
+                   Final blank line                                             

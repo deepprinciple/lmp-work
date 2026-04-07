@@ -1,0 +1,85 @@
+
+MUSIC run for probe with protein.
+
+The protein is a rigid solute and the probes are solvent 
+molecules that only interact with the solute.
+
+Many copies of the probe are made in a sphere of radius
+cap-radius centered on cap-atom. MC/simulated annealing
+is performed at three temperatures, T1, T2, and T3,
+which are set in muscmd. They are currently 100, 0, -100 C.
+2M MC configurations are sampled at T1 and T2, 1M at T3. 
+The Lennard-Jones sigmas and epsilons for the solute atoms
+can be scaled by SCLLJ, as also set in muscmd. 
+SCLLJ = 0.85, 0.92, 1.00 at T1, T2, and T3 in the current muscmd.
+You can play with these some, but if SCLLJ is too small, probe
+atoms can get too close to protein atoms and cause problems
+with starting the next temperature.
+
+Execution time = 3-4 hours on a 2 GHz Pentium.
+
+REQUIRED
+(1) protein.z - z-matrix for protein. Protein is made rigid
+and is not moved by removing all entries in protein.z after
+the atom definitions. Several are in the proteins subdirectory.
+Protein z-matrices are normally prepared with pepz in MCPRO.
+If the protein is not rigid, it can get distorted to try to lower
+the total interaction energy with all probe molecules.
+
+(2) probe.z - z-matrix for the probe. This can be obtained by
+xPROBE molecule
+where molecule.z is the z-matrix for the probe in the
+boss/molecules/small directory. It can include 800-899 atom types.
+Otherwise, for any molecule.z
+~/$BOSSdir/scripts/xSPM molecule
+cp sum probe.z
+
+(3) Edit muspar to set the cap-atom to the one for protein.z.
+This will be the center of the probe sphere. You can change the
+cap-radius, which controls the extent of the probe molecules.
+There is a limit of 2500 probe molecules.
+
+The limit for protein atoms is 4500 = MXAT.
+
+EXECUTION
+csh muscmd >& log &
+will execute in the current directory
+
+or
+
+xMUSIC molecule >& log &
+This gets molecule from boss/molecules/small and makes it the probe, and
+runs MUSIC in the subdirectory molecule. The calling directory needs
+to contain muscmd, muspar, and protein.z
+e.g.,
+xMUSIC benzen >& log &
+performs the MUSIC run for benzene as the probe
+
+A queue script could be written for this to perform multiple MUSIC
+runs with different probes simultaneously.
+
+muscmdshort is for short (5K) test jobs. It can be executed with, e.g.,
+xSHORT benzen >& log &
+
+MISCELLANEOUS
+dmus is a RasMol script to help display the resulting plt files.
+xNEAR can also be used to trim the system.
+At the end of the output ot files, there is a listing of the interaction
+energy for each probe molecule with the solute.
+
+There are numerous probe possibilities -
+benzen
+meoh
+chexan
+pyrim
+pyrid
+isoxaz
+oxazol
+thiazl
+phenol
+nma
+urea
+...
+see boss/molecules/small/INDEX
+
+

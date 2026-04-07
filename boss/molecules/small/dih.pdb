@@ -1,0 +1,16 @@
+REMARK       2-fluorophenol             
+REMARK    Created by BOSS 4.9 Jun 14 Linux 
+ATOM      1  C00 UNK     1       0.000   1.400   0.000
+ATOM      2  C01 UNK     1       0.000   0.696  -1.219
+ATOM      3  C02 UNK     1       0.000   0.700   1.221
+ATOM      4  C03 UNK     1       0.000  -0.712  -1.221
+ATOM      5  C04 UNK     1       0.000  -0.710   1.221
+ATOM      6  C05 UNK     1       0.000  -1.416   0.001
+ATOM      7  O06 UNK     1       0.000   2.762  -0.017
+ATOM      8  F07 UNK     1       0.000   1.384  -2.386
+ATOM      9  H08 UNK     1       0.000   1.244   2.155
+ATOM     10  H09 UNK     1       0.000  -1.246  -2.159
+ATOM     11  H0A UNK     1       0.000  -1.248   2.158
+ATOM     12  H0B UNK     1       0.000  -2.497   0.001
+ATOM     13  H0C UNK     1       0.000   3.073  -0.912
+END

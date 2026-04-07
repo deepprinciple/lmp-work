@@ -1,0 +1,31 @@
+2-silapropane                                               Tot. E =     -2.2574
+   1 Si  1062 1062    0    0.000000   0    0.000000   0    0.000000        0
+   2 X     -1   -1    1    1.000000   0    0.000000   0    0.000000        0
+   3 X     -1   -1    2    1.000000   1   90.000000   0    0.000000        0
+   4 C3  1065 1065    1    1.868297   2   90.000000   3    0.000000        0
+   5 C1  1065 1065    1    1.868278   4  111.001384   2  180.000000        0
+   6 H    140  140    4    1.089946   1  111.010963   5  179.999794        0
+   7 H    140  140    4    1.089915   1  111.034495   6  119.984887        0
+   8 H    140  140    4    1.089917   1  111.034583   6  240.015069        0
+   9 H    140  140    5    1.089956   1  111.014348   4  180.000104        0
+  10 H    140  140    5    1.089913   1  111.035033   9  240.014481        0
+  11 H    140  140    5    1.089914   1  111.034852   9  119.984967        0
+  12 H   1064 1064    1    1.482753   4  109.332296   5  239.303789        0
+  13 H   1064 1064    1    1.482754   4  109.332405   5  120.696485        0
+                    Geometry Variations follow    (2I4,F12.6)                   
+                    Variable Bonds follow         (I4)                          
+0004-0013                                                                       
+                    Additional Bonds follow       (2I4)                         
+                    Harmonic Constraints follow   (2I4,4F10.4)                  
+                    Variable Bond Angles follow   (I4)                          
+0005-0013                                                                       
+                    Additional Bond Angles follow (3I4)                         
+AUTO                                                                            
+                    Variable Dihedrals follow     (3I4,F12.6)                   
+0007-0013                                                                       
+                   Additional Dihedrals follow   (6I4)                          
+0006000400010005  -1  -1
+AUTO                                                                            
+                   Domain Definitions follow     (4I4)                          
+                   Conformational Search         (2I4, 2F12.6)                  
+                   Final blank line                                             

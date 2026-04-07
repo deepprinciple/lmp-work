@@ -1,0 +1,5 @@
+This job continues a MC simulation of liquid dodecane
+(united atom). Submission of the contcmd file will
+run 10 million configurations of averaging. 
+
+csh contcmd >& log &

@@ -1,0 +1,27 @@
+ Urea                                                       Tot. E =    -27.4714
+   1 C    247  247    0    0.000000   0    0.000000   0    0.000000        0
+   2 DUM   -1   -1    1    1.000000   0    0.000000   0    0.000000        0
+   3 DUM   -1   -1    2    1.000000   1   90.000000   0    0.000000        0
+   4 O    248  248    1    1.221794   2   90.000000   3  180.000000        0
+   5 N1   249  249    1    1.329444   4  121.674959   2   90.000000        0
+   6 N2   249  249    1    1.329444   4  121.674976   5  180.000000        0
+   7 HN1  250  250    5    1.010833   1  117.084461   4    0.000000        0
+   8 HN1  250  250    5    1.007088   1  123.188560   7  180.000000        0
+   9 HN2  250  250    6    1.010833   1  117.084467   4    0.000000        0
+  10 HN2  250  250    6    1.007088   1  123.188568   9  180.000000        0
+                    Geometry Variations follow    (2I4,F12.6)                   
+                    Variable Bonds follow         (I4 or I4-I4)                 
+0004-0010                                                                       
+                    Additional Bonds follow       (2I4)                         
+                    Harmonic Constraints follow   (2I4,4F10.4)                  
+                    Variable Bond Angles follow   (I4 or I4-I4)                 
+0005-0010                                                                       
+                    Additional Bond Angles follow (3I4)                         
+AUTO                                                                            
+                    Variable Dihedrals follow     (3I4,F12.6)                   
+0006-0010                                                                       
+                    Additional Dihedrals follow   (6I4)                         
+AUTO                                                                            
+                    Domain Definitions follow     (4I4)                         
+                    Conformational Search         (2I4, 2F12.6)                 
+                    Final blank line                                            

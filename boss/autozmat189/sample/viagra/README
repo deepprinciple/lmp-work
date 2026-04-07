@@ -1,0 +1,103 @@
+This directory contains:
+README            --- this file
+fix_atomtype.pl   --- perl script for fixing atom types in BOSS Z-matrix
+viagra.azmat_log  --- see below
+viagra.boss
+viagra.mol2
+viagra.sum
+viagra_new.boss
+viagra_new.mol2
+
+----------------
+Purpose: This series of conversions will take a MOL2 file, convert it
+         to BOSS Z-matrix, perform a QM calc (AM1 or PM3) which gives
+         CM1 or Mullien charges and generates new OPLS atom types.
+         Then the BOSS Z-matrix is converted back to MOL2 format with
+         updated QM charges.
+         Atom numberings are changed when converting to BOSS from MOL2,
+         since Z-matrix must be created in an intelligent way.
+         Changed numberings are printed out if '-V' option is specified.
+         I think you can rearrange the atoms in the final MOL2 file,
+         in order to match the original atom numberings.
+
+         -DC, May 20, 1999
+         lim@doctor.chem.yale.edu
+
+1. Create a BOSS Z-matrix for QM calculation.
+
+% autozmat -i mol2 -o qm_boss -V -f viagra.boss viagra.mol2 >& viagra.azmat_log
+
+  <NOTE>
+    -i mol2	--- input format = MOL2
+    -o qm_boss  --- output format = BOSS Z-matrix for QM calc
+    -V          --- verbose
+    -f viagra.boss  --- save the output in viagra.boss
+    viagra.mol2     --- input file name
+    >& viagra.azmat_log  --- save the error messages in viagra.azmat_log
+                             (in thise case, this file will include
+                              changes in atom numbering)
+
+2. Now you have a BOSS z-matrix which can be submitted to QM calc.
+   Run BOSS.
+
+3. Upon the completion of BOSS job, you'll have a new BOSS z-matrix
+   in the summary file where new OPLS atom types (starting from 800)
+   are attached to the end of a normal BOSS Z-matrix.
+
+   There is one problem, i.e., in the Z-matrix, atom types are merely
+   atomic numbers as in
+
+   1  X    -1    0    0    0.000000   0    0.000000   0    0.000000        0
+   2  X    -1    0    1    1.000000   0    0.000000   0    0.000000        0
+   3  C     6    0    2    1.000000   1   90.000000   0    0.000000        0
+   4  N     7    0    3    1.406890   2  151.424170   1  180.000000        0
+   ...
+
+   We need to change this so that it appears as below.
+   1  X    -1    0    0    0.000000   0    0.000000   0    0.000000        0
+   2  X    -1    0    1    1.000000   0    0.000000   0    0.000000        0
+   3  C   800    0    2    1.000000   1   90.000000   0    0.000000        0
+   4  N   801    0    3    1.406890   2  151.424170   1  180.000000        0
+   ...
+
+   You may do it by hand, but you can use a PERL scrip shown below
+   to save time. Save it as 'fix_atomtype.pl' or whatever and make it
+   executable (chmod +x fix_atomtype.pl). If perl is installed in
+   other than /usr/local/bin/perl, change the first line appropriately.
+
+#------- CUT HERE -------
+#!/usr/local/bin/perl
+
+$nlines = 0;
+$current_type = 800;
+
+MAIN: {
+        while (<>) {
+                $nlines++;
+                $type = substr($_, 9, 4);
+                if ($nlines == 1 || $type == -1) {print; next;}
+                if ($type =~ /^[ ]*$/ || !($type =~ /^[ ]*[0-9]+[ ]*$/)) {print; last;}
+                printf("%s%4d%s", substr($_,0,9), $current_type, substr($_,13,9999));
+                $current_type++;
+        }
+        while (<>) {print;}
+}
+#------- CUT HERE -------
+
+4. Using this perl script (fix_atomtype.pl), fix atom types int the Z-matrix.
+
+% fix_atomtype.pl viagra.sum > viagra_new.boss
+
+5. Convert the BOSS Z-matrix back to MOL2 format.
+
+% autozmat -i boss -o mol2 -f viagra_new.mol2 viagra_new.boss
+
+  <NOTE>
+    -i boss   --- input format = BOSS Z-matrix
+                  Do not use '-i qm_boss' because this will cause autozmat to
+                  interprete atom types as atomic nubmers. We want to use
+                  atom types attached to the Z-matrix.
+    -o boss   --- output format = MOL2
+    -f viagra_new.mol2 --- save the output in viagra_new.mol2
+    viagra_new.zmat    --- input file
+

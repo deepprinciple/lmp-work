@@ -1,0 +1,25 @@
+      t-glyoxal                                             Tot. E =      9.6449
+   1 C2   277  277    0    0.000000   0    0.000000   0    0.000000        0    
+   2 X     -1   -1    1    1.000000   0    0.000000   0    0.000000        0    
+   3 X     -1   -1    2    1.000000   1   90.000000   0    0.000000        0    
+   4 C1   277  277    1    1.513861   2   90.000000   3    0.000000        0    
+   5 O    278  278    4    1.231322   1  121.129827   2    0.000000        0    
+   6 H    279  279    4    1.090173   1  117.730724   5  180.000000        0    
+   7 O    278  278    1    1.231322   4  121.129827   5  180.000000        0    
+   8 H    279  279    1    1.090173   4  117.730724   7  180.000000        0    
+                    Geometry Variations follow    (2I4,F12.6)                   
+                    Variable Bonds follow         (I4 or I4-I4)                 
+0004-0008                                                                       
+                    Additional Bonds follow       (2I4)                         
+                    Harmonic Constraints follow   (2I4,4F10.4)                  
+                    Variable Bond Angles follow   (I4 or I4-I4)                 
+0005-0008                                                                       
+                    Additional Bond Angles follow (3I4)                         
+AUTO                                                                            
+                    Variable Dihedrals follow     (3I4,F12.6)                   
+0006-0008                                                                       
+                   Additional Dihedrals follow   (6I4)                          
+AUTO                                                                            
+                   Domain Definitions follow     (4I4)                          
+                   Conformational Search         (2I4, 2F12.6)                  
+                   Final blank line                                             

@@ -1,0 +1,49 @@
+    ---------------------------------------------------------------------------------
+    BOSS 4.2 Update                                                September 19, 2000
+    ---------------------------------------------------------------------------------
+    Conformational search has been enhanced. If MC conformational search is requested
+    and no conformational search specifications are in the Z-matrix, the program will
+    select the key non-ring bonds for torsional variation. With the xCS100 and xCS200
+    scripts, the resulting conformers are in the plt.mol file. Execution of QikProp on
+    plt.mol will then generate the QikProp predictions for each conformer. The
+    conformational search and QikProp results can then be combined with the xQPCON
+    script to obtain confromationally averaged properties for the gas-phase or
+    aqueous-phase conformer distributions. E.g.,
+    xCS100 celeco
+    xQPROP plt.mol
+    xQPCON
+    will provide the results for celeco.z (celecoxib) in the drugs directory.
+
+    The key point is that you can perform a reasonable conformational search now without
+    providing any conformational search information in the Z-matrix. New scripts
+    have also been added -
+
+    xCS100      - execute MC conformational search with 100 starting structures
+    xCS200      - execute MC conformational search with 200 starting structures
+    xCS100F     - execute MC CS with 100 starting structures - with high resolution
+    xCS200F     - execute MC CS with 200 starting structures - with high resolution
+    xSS100      - execute stochastic conformational search with 100 starting structures
+    xSS200      - execute stochastic conformational search with 200 starting structures
+    xSS100F     - execute stochastic CS with 100 starting structures - with high resolution
+    xSS200F     - execute stochastic CS with 200 starting structures - with high resolution
+
+    x??100 and x??200 use less stringent comparison criterion for identifying
+    duplicate conformers - appropriate for drug-like molecules.
+
+    x??100F and x??200F provide higher resolution for small molecules; e.g., they
+    will distinguish trans and gauche ethanol, x??100 and x??200 will not. All
+    scripts will distinguish the four pentane conformers.
+
+-----------------------------------------------------------------------------------------------
+    With the new conformational search ability, one could
+
+    2D -> 3D to yield drug.mol file
+    xMOLZ  drug         ....  convert drug.mol to BOSS Z-matrix file drug.z
+    xCS100 drug         ....  perform conformational search on drug.z -> structures in plt.mol
+
+    rm propsum          ....  start new QikProp propsum file
+    xQPROP plt.mol      ....  execute QikProp for every conformer -> propsum
+    xQPCON              ....  conformationally average QikProp results -> output in out
+-----------------------------------------------------------------------------------------------
+
+

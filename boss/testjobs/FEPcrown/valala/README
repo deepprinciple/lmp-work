@@ -1,0 +1,5 @@
+FEP calculation for Valine -> Alanine bound to 18-crown-6 in methanol.
+Charges from CM1A calculations.
+10 Windows are run.
+One would also have to run the analogous unbound FEP using 
+valala.z as the Z-matrix to compute the relative binding affinity.

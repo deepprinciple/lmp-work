@@ -1,0 +1,22 @@
+#!/bin/csh
+#
+# echo  sum DeltaGs from double-wide fep calculation     
+#
+# usage - zSUMDW             
+#
+# test if the environment variable BOSSdir has been defined
+#
+if (!($?BOSSdir)) then
+   echo "BOSSdir has not been defined; please see README"
+   exit (-1)
+endif
+
+cd ${argv[1]}.fep
+if (-e delgsum) rm delgsum
+if (-e sumout)  rm sumout 
+grep DeltaG *sum* >>delgsum
+$BOSSdir/miscexec/sumdelg             
+grep "DeltaGs =" sumout
+grep "Sigma " sumout
+cd ..
+exit

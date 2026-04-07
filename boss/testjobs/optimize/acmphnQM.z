@@ -1,0 +1,41 @@
+        Acetaminophen                                       Tot. E =    -58.8931
+   1 X     -1   -1    0    0.000000   0    0.000000   0    0.000000        0
+   2 X     -1   -1    1    1.000000   0    0.000000   0    0.000000        0
+   3 C      6    0    1    1.400000   2   90.000000   0    0.000000        0
+   4 C      6    0    3    1.412095   1   60.000000   2   90.000000        0
+   5 C      6    0    3    1.410961   4  118.735907   1    0.000000        0
+   6 C      6    0    4    1.389259   3  121.051662   5    0.000000        0
+   7 C      6    0    5    1.394371   3  120.389993   4    0.000000        0
+   8 C      6    0    6    1.403106   4  119.882281   3    0.000000        0
+   9 N      7    0    3    1.406798   4  118.575807   6  180.000000        0
+  10 H      1    0    4    1.100048   3  120.825681   5  180.000000        0
+  11 H      1    0    5    1.101752   3  120.693788   4  180.000000        0
+  12 H      1    0    6    1.098391   4  120.411827   3  180.000000        0
+  13 H      1    0    7    1.098229   5  119.482604   3  180.000000        0
+  14 OH     8    0    8    1.374410   6  117.153523   4  180.000000        0
+  15 H      1    0    9    0.998140   3  114.636390   4    0.003225        0
+  16 C      6    0    9    1.381812   3  128.369156  15  180.022702        0
+  17 O      8    0   16    1.245117   9  124.089379   3    0.003209        0
+  18 C      6    0   16    1.520358  17  119.965361   9  180.003351        0
+  19 H      1    0   18    1.115682  16  108.391290  17  359.969983        0
+  20 H      1    0   18    1.115334  16  110.394026  19  119.482992        0
+  21 H      1    0   18    1.115337  16  110.395962  19  240.519418        0
+  22 HO     1    0   14    0.966397   8  108.207873   6  180.003069        0
+                    Geometry Variations follow    (2I4,F12.6)                   
+                    Variable Bonds follow         (I4)                          
+0004-0022                                                                       
+                    Additional Bonds follow       (2I4)                         
+                    Harmonic Constraints follow   (2I4,4F10.4)                  
+                    Variable Bond Angles follow   (I4)                          
+0005-0022                                                                       
+                    Additional Bond Angles follow (3I4)                         
+                    Variable Dihedrals follow     (3I4,F12.6)                   
+0006-0022                                                                       
+                    Additional Dihedrals follow   (6I4)                         
+                    Domain Definitions follow     (4I4)                         
+                    Conformational Search (4I2,2F12.6)                          
+                    Final blank line                                            
+
+# For a Z-matrix to be used in QM calculations, (1) the Additional Bonds,
+Angles, and Dihedrals do not need to be designated, and (2) atomic 
+numbers can be used instead of the OPLS atom types.

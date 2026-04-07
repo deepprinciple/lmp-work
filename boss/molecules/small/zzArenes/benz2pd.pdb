@@ -1,0 +1,28 @@
+REMARK     Benzene Dimer stacked        
+REMARK    Created by BOSS 4.8 Sept08 Win 
+ATOM      1  C00 UNK     1       0.000   1.409   0.000
+ATOM      2  C01 UNK     1       0.000   0.704  -1.220
+ATOM      3  C02 UNK     1       0.000   0.705   1.220
+ATOM      4  C03 UNK     1      -0.002  -0.704  -1.220
+ATOM      5  C04 UNK     1      -0.002  -0.704   1.221
+ATOM      6  C05 UNK     1      -0.003  -1.408   0.001
+ATOM      7  H06 UNK     1       0.016   2.489   0.000
+ATOM      8  H07 UNK     1       0.008   1.247  -2.154
+ATOM      9  H08 UNK     1       0.008   1.247   2.154
+ATOM     10  H09 UNK     1       0.000  -1.244  -2.156
+ATOM     11  H0A UNK     1       0.000  -1.243   2.156
+ATOM     12  H0B UNK     1      -0.004  -2.489   0.001
+TER   
+ATOM     13  C0C UNK     2       3.448   1.454  -0.001
+ATOM     14  C0D UNK     2       3.449   2.157   1.219
+ATOM     15  C0E UNK     2       3.448   2.158  -1.221
+ATOM     16  C0F UNK     2       3.452   3.566   1.220
+ATOM     17  C0G UNK     2       3.451   3.567  -1.220
+ATOM     18  C0H UNK     2       3.453   4.271   0.000
+ATOM     19  H0I UNK     2       3.430   0.373  -0.001
+ATOM     20  H0J UNK     2       3.441   1.615   2.153
+ATOM     21  H0K UNK     2       3.438   1.616  -2.155
+ATOM     22  H0M UNK     2       3.452   4.105   2.156
+ATOM     23  H0N UNK     2       3.450   4.107  -2.156
+ATOM     24  H0O UNK     2       3.456   5.351   0.000
+END

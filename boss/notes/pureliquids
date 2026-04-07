@@ -1,0 +1,51 @@
+3/6/03
+
+For simulations of pure liquids in BOSS 4.5, 
+(1) The maximum number of atoms in a solvent molecule
+    has been increased to 50.
+(2) The Lennard-Jones and Coulombic contributions, ESLJ and ESCO,
+    to the total solvent-solvent are now output, e.g, for OPLS-AA methanol:
+
+ Solvent-Solvent Energy Components
+ Run      L-J         Coulomb
+  4     -433.967     -1823.797
+  1     -433.505     -1863.756
+  2     -429.166     -1822.612
+  3     -410.251     -1839.221
+
+                                            Standard Deviations
+           5.596         9.581
+
+                                                 Averages
+        -426.722     -1837.347
+
+    Note that:
+
+    Etotal = ESLJ + ESCO + Eintramolecular
+
+    ESLJ and ESCO are fully evaluated ca. 10 times during each
+    Monte Carlo run and averaged. The Etotal and Eintramolecular
+    are averaged for every configuration. Thus, there may be a little
+    noise in the above equality, e.g., for methanol
+    Etotal = -348.7
+    ESLJ + ESCO + Eintra = -426.7 -1837.3 + 1916.8 = -347.2
+ 
+    These quantities are all for the full system with N = 267 methanol
+    molecules in the example, and note that 
+ 
+    deltaHvap = Egas - Etotal/N + RT
+
+    where Egas is the gas-phase energy for a single molecule, which 
+    may be obtained running the xMCGAS script or see the MCgas test
+    job for more details.
+
+(3) The Z-matrix format for custom solvents has been changed to be the
+    same as for solutes. Please see section 10.13 of the User's Manual.
+    Any solute Z-matrix is readily converted to a solvent Z-matrix by
+    executing the xSPM script. E.g., for the Z-matrix for ethanol, etoh.z,
+    xSPM etoh
+    Then the output file sum contains the desired solvent Z-matrix; just
+    change the title line to only contain 5 characters.
+
+(4) The printed output has been simplified for pure liquids by not
+    outputing results for the dummy solute.

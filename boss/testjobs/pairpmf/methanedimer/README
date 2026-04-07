@@ -1,0 +1,9 @@
+
+Computes pmf for united-atom methane dimer in water.
+Only one job submission is required:
+csh -e pmfcmd >& log &
+
+Time required: 3.5 days on R5000 SGI or 1 day on 500 MHz
+Pentium III.
+
+Summary of results is in delgsum.

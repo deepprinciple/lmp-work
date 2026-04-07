@@ -1,0 +1,31 @@
+   Ethene                                                   Tot. E =     73.1622
+   1 C1   143  143    0    0.000000   0    0.000000   0    0.000000        0
+   2 Du    -1   -1    1    1.000000   0    0.000000   0    0.000000        0
+   3 Du    -1   -1    2    1.000000   1   90.000000   0    0.000000        0
+   4 C2   143  143    1    1.340883   2   90.000000   3    0.000000        0
+   5 H4   144  144    4    1.080589   1  121.093733   2  270.000000        0
+   6 H1   144  144    4    1.080589   1  121.093733   5  180.000000        0
+   7 H2   144  144    1    1.080589   4  121.093733   5  270.000000        0
+   8 H3   144  144    1    1.080589   4  121.093733   7  180.000000        0
+                    Geometry Variations follow    (2I4,F12.6)                   
+                    Variable Bonds follow         (I4)                          
+0004-0008                                                                       
+                    Additional Bonds follow       (2I4)                         
+                    Harmonic Constraints follow   (2I4,4F10.4)                  
+                    Variable Bond Angles follow   (I4)                          
+0005-0008                                                                       
+                    Additional Bond Angles follow (3I4)                         
+AUTO                                                                            
+                    Variable Dihedrals follow     (3I4,F12.6)                   
+                    Additional Dihedrals follow   (6I4)                         
+0006000400010005  -1  -1                                                        
+0007000100040005  -1  -1                                                        
+0008000100040007  -1  -1                                                        
+0006000400010007  -1  -1                                                        
+0006000400010008  -1  -1                                                        
+0005000400010007  -1  -1                                                        
+0005000400010008  -1  -1                                                        
+AUTO                                                                            
+                    Domain Definitions follow     (4I4)                         
+                    Conformational Search                                       
+                    Final blank line                                            

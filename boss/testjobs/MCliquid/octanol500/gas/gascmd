@@ -1,0 +1,66 @@
+#
+# Command file for the BOSS program.  Execute by entering the following:
+# csh gascmd >& gaslog &
+#***********************************************************************
+echo '       Gas-Phase Monte Carlo for a Single Solute'
+echo '             Equilibration: 1000 K'
+echo '                Averaging:  5000 K'
+#***********************************************************************
+#
+nice +19
+set boss = $BOSSdir/BOSS
+set configurations = "200000"
+set lambda = "0.0 0.000 0.000"
+set boxes = $BOSSdir
+#
+setenv INFILE    gasin
+setenv UPFILE    gasup
+setenv SAVE      svmtmp
+setenv AVERAGE   gasav
+setenv ZMATRIX   gaszmat
+setenv SLVZMAT   slvzmat
+
+if (-e tmppar) rm tmppar
+cp gaspar tmppar
+cat $BOSSdir/oplsaa.par >> tmppar
+setenv PARAMETER tmppar
+
+setenv BANGPAR   $boxes/oplsaa.sb
+setenv WATERBOX  $boxes/watbox
+setenv ORG1BOX   $boxes/org1box
+setenv ORG2BOX   $boxes/org2box
+setenv SUMMARY   gassum
+
+date
+setenv OUTPUT    gasota
+setenv PLTFILE   gasplta
+
+#    Equilibration
+
+time $boss 111 $configurations $lambda
+foreach block (b c d e)
+       date
+       setenv OUTPUT    gasot$block
+       setenv PLTFILE   gasplt$block
+       time $boss 001 $configurations $lambda
+end
+
+#    Averaging
+
+setenv OUTPUT    gasota
+setenv PLTFILE   gasplta
+
+set configurations = "500000"
+time $boss 011 $configurations $lambda
+foreach block (b c d a b c a b e5)
+       date
+       setenv OUTPUT    gasot$block
+       setenv PLTFILE   gasplt$block
+       time $boss 001 $configurations $lambda
+end
+cp gasote5 gasout
+rm gasot* slvzmat svmtmp
+cp gasplte5 gas.pdb
+rm gasplt* tmppar
+exit
+

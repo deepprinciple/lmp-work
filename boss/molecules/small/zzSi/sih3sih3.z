@@ -1,0 +1,26 @@
+  disilane                                                  Tot. E =      0.0049
+   1 Si  1082    0    0    0.000000   0    0.000000   0    0.000000        0
+   2 DUM   -1    0    1    0.500000   0    0.000000   0    0.000000        0
+   3 DUM   -1    0    2    0.500000   1   90.000000   0    0.000000        0
+   4 Si  1082    0    1    2.329831   2   90.000000   3    0.000000        0
+   5 H   1064    0    1    1.484974   4  110.160605   2    0.000000        0
+   6 H   1064    0    1    1.484966   4  110.164429   5  119.998024        0
+   7 H   1064    0    1    1.484966   4  110.164427   5  240.001978        0
+   8 H   1064    0    4    1.484966   1  110.164428   5  119.998042        0
+   9 H   1064    0    4    1.484966   1  110.164428   8  120.003954        0
+  10 H   1064    0    4    1.484974   1  110.160605   8  240.001977        0
+                    Geometry Variations follow                                  
+                    Variable Bonds follow         (I4 or I4-I4)                 
+0004-0010                                                                       
+                    Additional Bonds follow       (2I4)                         
+                    Harmonic Constraints follow                                 
+                    Variable Bond Angles follow   (I4 or I4-I4)                 
+0005-0010                                                                       
+                    Additional Bond Angles follow (3I4)                         
+AUTO                                                                            
+                    Variable Dihedrals follow     (3I4,F12.6)                   
+0006-0010                                                                       
+                    Additional Dihedrals follow   (6I4)                         
+AUTO                                                                            
+                    Domain Definitions follow     (4I4)                         
+                    Final blank line                                            

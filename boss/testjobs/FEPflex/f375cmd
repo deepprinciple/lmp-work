@@ -1,0 +1,77 @@
+#
+# Command file for the BOSS  program.  Execute by entering the following:
+# csh f125cmd >& f125log &
+#***********************************************************************
+echo '                   FEP Calculation'
+echo '                    25 C & 1 atm '
+echo '                 Equilibration    0.2M '
+echo '                   Averaging  0-0.4M '
+echo '            N = 260  T=25  P=1  Rcut = 10.0'
+#***********************************************************************
+#
+nice +19
+set boss = $BOSSdir/BOSS
+set configurations = "100000"
+# inc is current window
+set inc = "375"
+# ninc is next window
+set ninc = "625"
+set lambda = "0.375 0.250 0.500"
+set boxes = $BOSSdir
+
+setenv INFILE    f${inc}in
+setenv UPFILE    f${inc}up
+setenv SAVE      f${inc}sv
+setenv AVERAGE   f${inc}av
+setenv ZMATRIX   fepzmat
+setenv SLVZMAT   etoh.zmat
+
+if (-e tmppar) rm tmppar
+cp feppar tmppar
+cat $BOSSdir/oplsua.par >> tmppar
+setenv PARAMETER tmppar
+
+setenv BANGPAR   $boxes/oplsaa.sb
+setenv WATERBOX  $boxes/watbox
+setenv ORG1BOX   $boxes/org1box
+setenv ORG2BOX   $boxes/org2box
+setenv SUMMARY   f${inc}sum
+
+date
+
+setenv OUTPUT    f${inc}ota
+setenv PLTFILE   f${inc}plta
+
+#    Equilibration
+
+time $boss 111 $configurations $lambda
+foreach block (eq)
+        date
+	setenv OUTPUT    f${inc}ot$block
+	setenv PLTFILE   f${inc}plt$block
+	time $boss 001 $configurations $lambda
+end
+
+#    Averaging
+
+setenv OUTPUT    f${inc}otb
+setenv PLTFILE   f${inc}pltb
+time $boss 011 $configurations $lambda
+mv f${inc}sv f${inc}sav
+foreach block (c d e2)
+        date
+        setenv OUTPUT    f${inc}ot$block
+        setenv PLTFILE   f${inc}plt$block
+        time $boss 001 $configurations $lambda
+        cat f${inc}sv >>f${inc}sav
+end
+
+rm f${inc}sv
+
+#    Submit Next Window
+
+cp f${inc}in f${ninc}in
+csh f${ninc}cmd >& log$ninc &
+
+date
+exit

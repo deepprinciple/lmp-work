@@ -1,0 +1,31 @@
+   methyl silylmethyl ether                                 Tot. E =     -3.0335
+   1 Si  1077 1077    0    0.000000   0    0.000000   0    0.000000        0
+   2 DUM   -1    0    1    0.500000   0    0.000000   0    0.000000        0
+   3 DUM   -1    0    2    0.500000   1   90.000000   0    0.000000        0
+   4 O   1078 1078    1    1.660381   2   90.000000   3  180.000000        0
+   5 C    181  181    4    1.411823   1  121.944971   2    0.000000        0
+   6 C   1065 1065    1    1.866857   4  104.388084   5  180.000033        0
+   7 H   1064 1064    1    1.482771   4  110.960929   6  119.026897        0
+   8 H   1064 1064    1    1.482771   4  110.960924   6  240.973132        0
+   9 H    140  140    6    1.089789   1  111.083396   4  179.999190        0
+  10 H    140  140    6    1.089823   1  110.928180   9  120.079856        0
+  11 H    140  140    6    1.089823   1  110.927643   9  239.921306        0
+  12 H    185  185    5    1.090010   4  110.035862   1  179.999998        0
+  13 H    185  185    5    1.090414   4  110.675357  12  119.727491        0
+  14 H    185  185    5    1.090414   4  110.675357  12  240.272509        0
+                    Geometry Variations follow                                  
+                    Variable Bonds follow         (I4 or I4-I4)                 
+0004-0014                                                                       
+                    Additional Bonds follow       (2I4)                         
+                    Harmonic Constraints follow                                 
+                    Variable Bond Angles follow   (I4 or I4-I4)                 
+0005-0014                                                                       
+                    Additional Bond Angles follow (3I4)                         
+AUTO                                                                            
+                    Variable Dihedrals follow     (3I4,F12.6)                   
+0006-0014                                                                       
+                    Additional Dihedrals follow   (6I4)                         
+AUTO                                                                            
+                    Domain Definitions follow     (4I4)                         
+                    Final blank line                                            
+                                                                                

@@ -1,0 +1,27 @@
+bromoacetic acid                                            Tot. E =    -12.9243
+   1 C    267    0    0    0.000000   0    0.000000   0    0.000000        0
+   2 DUM   -1    0    1    1.000000   0    0.000000   0    0.000000        0
+   3 DUM   -1    0    2    1.000000   1   90.000000   0    0.000000        0
+   4 O    269    0    1    1.225836   2   90.000000   3    0.000000        0
+   5 OH   268    0    1    1.357246   4  122.334664   2  270.000000        0
+   6 C    976    0    1    1.526657   4  125.266060   5  179.999983        0
+   7 HO   270    0    5    0.944734   1  108.192325   4  359.999946        0
+   8 Br   975    0    6    1.949295   1  112.303741   4    0.001745        0
+   9 H    977    0    6    1.089406   1  110.036939   8  239.777821        0
+  10 H    977    0    6    1.089406   1  110.036993   8  120.222186        0
+                    Geometry Variations follow    (2I4,F12.6)                   
+                    Variable Bonds follow         (I4 or I4-I4)                 
+0004-0010                                                                       
+                    Additional Bonds follow       (2I4)                         
+                    Harmonic Constraints follow   (2I4,4F10.4)                  
+                    Variable Bond Angles follow   (I4 or I4-I4)                 
+0005-0010                                                                       
+                    Additional Bond Angles follow (3I4)                         
+AUTO                                                                            
+                    Variable Dihedrals follow     (3I4,F12.6)                   
+0006-0010                                                                       
+                    Additional Dihedrals (6I4)                                  
+AUTO                                                                            
+                    Domain Definitions follow     (4I4)                         
+                    Conformational Search         (2I4, 2F12.6)                 
+                    Final blank line                                            

@@ -1,0 +1,17 @@
+REMARK          trans butane            
+REMARK    Created by BOSS 5.1 Sept 22 Linux 
+ATOM      1  C00 UNK     1       0.000   0.000   0.000
+ATOM      2  C01 UNK     1       0.000   1.488   0.000
+ATOM      3  C02 UNK     1       1.429   2.069   0.000
+ATOM      4  C03 UNK     1      -1.427  -0.486  -0.021
+ATOM      5  H04 UNK     1       0.487  -0.466  -0.822
+ATOM      6  H05 UNK     1       0.511  -0.249   0.940
+ATOM      7  H06 UNK     1      -0.512   2.046  -0.845
+ATOM      8  H07 UNK     1      -0.589   1.643   0.974
+ATOM      9  H08 UNK     1       1.877   1.852  -0.997
+ATOM     10  H09 UNK     1       2.127   1.575   0.747
+ATOM     11  H0A UNK     1       1.501   3.150   0.135
+ATOM     12  H0B UNK     1      -1.922   0.128   0.774
+ATOM     13  H0C UNK     1      -1.983  -0.471  -0.905
+ATOM     14  H0D UNK     1      -1.328  -1.549   0.337
+END

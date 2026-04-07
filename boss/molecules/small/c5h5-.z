@@ -1,0 +1,34 @@
+Cyclopentadienyl Anion/Radical                                                  
+   1   X   -1   -1    0    0.000000   0    0.000000   0    0.000000        0    
+   2   X   -1   -1    1    1.000000   0    0.000000   0    0.000000        0    
+   3   C  714  716    1    1.400000   2   90.000000   0    0.000000        0    
+   4   C  714  716    3    1.406500   1   54.000000   2   90.000000        0    
+   5   C  714  716    3    1.406500   4  108.000000   1    0.000000        0    
+   6   C  714  716    4    1.406500   3  108.000000   5    0.000000        0    
+   7   C  714  716    5    1.406500   3  108.000000   4    0.000000        0    
+   8   H  715  717    3    1.078000   4  126.000000   6  180.000000        0    
+   9   H  715  717    4    1.078000   3  126.000000   5  180.000000        0    
+  10   H  715  717    5    1.078000   3  126.000000   4  180.000000        0    
+  11   H  715  717    6    1.078000   4  126.000000   3  180.000000        0    
+  12   H  715  717    7    1.078000   5  126.000000   3  180.000000        0    
+                    Geometry Variations follow    (2I4,F12.6)                   
+00040001 1.418                                                                  
+00050001 1.418                                                                  
+00060001 1.418                                                                  
+00070001 1.418                                                                  
+00080001 1.0725                                                                 
+00090001 1.0725                                                                 
+00100001 1.0725                                                                 
+00110001 1.0725                                                                 
+00120001 1.0725                                                                 
+                    Variable Bonds follow         (I4)                          
+                    Additional Bonds follow       (2I4)                         
+                    Harmonic Constraints follow   (2I4,4F10.4)                  
+                    Variable Bond Angles follow   (I4)                          
+                    Additional Bond Angles follow (3I4)                         
+                    Variable Dihedrals follow     (3I4,F12.6)                   
+                    Additional Dihedrals follow   (6I4)                         
+                    Domain Definitions follow     (4I4)                         
+                    Conformational Search         (4I2,2F12.6)                  
+                    Final blank line                                            
+Note: CHELPG charges and geometries are from 6-31+G* optimizations.             

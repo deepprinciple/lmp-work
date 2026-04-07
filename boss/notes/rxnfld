@@ -1,0 +1,25 @@
+
+For pure water, Quintana & Haymet (Chem Phys Lett 189, 273 (1992))
+compared Ewald and spherical cutoffs and found no difference for the
+free energy of the SPC and CF models.
+
+Kollman et al (JCP 101, 7953 (1994)) compared reaction field and
+spherical cutoff and found little (5%) higher free energy for TIP3P
+water with the reaction field. I think they have ca. 3% noise.
+
+I have compared spherical cutoff at 8.5 A and reaction field for
+TIP4P water. For 267 waters, I get 1-2% effects:
+                Ave E     Ave Volume
+No Rxn Field    -10.05       30.45 A^3
+With Rxn Field   -9.84       30.02
+ 
+Berendsen et al have also looked at several water models with 
+spherical cutoff, reaction field and 9 and 12 A cutoffs. They
+generally find less than 0.5% differences for energy and density
+between the various combinations. Diffusion constants are ca.
+0.2 x 10^-5 cm^2/s higher with the reaction field, e.g.,
+3.7 vs 3.9 for TIP4P (JCP 108, 10220 (1998)).
+
+Bill
+
+

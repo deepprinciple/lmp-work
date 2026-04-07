@@ -1,0 +1,71 @@
+ parg42: MC simulation for a pure liquid
+ The principal solvent is
+OTHER
+ QM Parameters
+    CM1  1.20  0  0  0
+ The solute format is
+ZMAT 
+ Origin of the initial solvent coordinates is
+BOXES
+ Cap atom, radius and force constant:
+   0    0.0000    0.0000
+ Optimizer, ftol, simulated annealing parameters:
+        0.000000NEWZM         0       0    0.0000    0.0000
+ Conformational search parameters:
+0           0.0000    0.0000    0.0000    0.0000    0.0000    0.0000
+ Parameters for normal mode calculation:
+  0  0  0    0.0000    0.0000
+ NMOL, IBOX and BOXCUT for principal solvent:
+ 500 512  0.00
+ Second solvent and number of molecules:
+NONE    0
+ Center atoms of solute1 & 2 and custom solvent, and ICUTAS array:
+  0  0  3  3  8 14 17 23
+ Atoms solute1 & 2 are rotated about:
+  0  0
+ Cutoff method (ICUT) and ICUTAT array:
+  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+ IRECNT, INDSOL, IZLONG, MAXOVL, NOXX and NOSS:
+  0  1  0  0  0  0
+ No. of solvent-solvent and solute-solvent rdfs:
+  3  0
+ First atoms for solvent-solvent rdfs:
+ 23 23 26  0  0  0  0  0  0  0  0  0  0  0  0
+ Second atoms for solvent-solvent rdfs:
+ 23 26 26  0  0  0  0  0  0  0  0  0  0  0  0
+ First atoms for solute-solvent rdfs:
+  0  0  0  0  0  0  0  0  0  0  0  0
+ Second atoms for solute-solvent rdfs:
+  0  0  0  0  0  0  0  0  0  0  0  0
+ Minimum and increment for rdfs:
+    1.2500    0.1000
+ Min & inc for solvent-solvent pair dist.:
+  -11.2000    0.4000
+ Min & inc for solvent-solvent energy dist.:
+  -60.5000    1.0000
+ Min & inc for solute-solvent pair dist.:
+    0.0000    0.0000
+ Min & inc for solute-solvent energy dist.:
+    0.0000    0.0000
+ Frequency of volume & solute moves, and MAXVAR:
+     0999999     0
+ Freq. of coordinate output, NBUSE, NOCUT, NOSMTH:
+999999     1     0     0
+ Range for volume moves, and WKC:
+    0.000010000.0000
+ Ranges for solvent translations & rotations, & radius for SASA:
+    0.1000    8.0000    0.0000
+ Ranges for solute1 translations and rotations:
+    0.0000    0.0000
+ Ranges for solute2 translations and rotations:
+    0.0000    0.0000
+ For local heating, solute number and temperature:
+   0    0.0000
+ Solvent-solvent, solute-solvent, NB cutoffs:
+   12.0000    0.0000    0.0000
+ Temperature, pressure, & torsion cutoff:
+   25.0000    1.0000    0.0000
+ Diel. constant, 1-4 Coulomb & LJ scale factors, e(Rxn Field):
+    1.0000    0.0000    0.0000    1.0000
+ Format for plt files, & solute for E components:
+PDB     1

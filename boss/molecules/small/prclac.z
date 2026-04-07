@@ -1,0 +1,32 @@
+   3-Cl-propanoic acid                                      Tot. E =    -19.3769
+   1 C2   136  136    0    0.000000   0    0.000000   0    0.000000        0    
+   2 X     -1   -1    1    1.000000   0    0.000000   0    0.000000        0    
+   3 X     -1   -1    2    1.000000   1   90.000000   0    0.000000        0    
+   4 C1   267  267    1    1.526910   2   90.000000   3    0.000000        0    
+   5 O    269  269    4    1.226472   1  124.722006   2    0.000000        0    
+   6 OH   268  268    4    1.356718   1  112.525331   5  180.000000        0    
+   7 HO   270  270    6    0.944207   4  108.950754   5    0.000000        0    
+   8 C3   971  971    1    1.535954   4  112.340445   5    0.000000        0    
+   9 H    140  140    1    1.090236   4  108.665602   8  121.938723        0    
+  10 H    140  140    1    1.090236   4  108.665602   8  238.061277        0    
+  11 Cl   970  970    8    1.782714   1  110.270104   4  180.000000        0    
+  12 H    972  972    8    1.090850   1  111.378581  11  119.786169        0    
+  13 H    972  972    8    1.090850   1  111.378581  11  240.213831        0    
+                    Geometry Variations follow    (2I4,F12.6)                   
+                    Variable Bonds follow         (I4 or I4-I4)                 
+0004-0013                                                                       
+                    Additional Bonds follow       (2I4)                         
+                    Harmonic Constraints follow   (2I4,4F10.4)                  
+                    Variable Bond Angles follow   (I4 or I4-I4)                 
+0005-0013                                                                       
+                    Additional Bond Angles follow (3I4)                         
+AUTO                                                                            
+                    Variable Dihedrals follow     (3I4,F12.6)                   
+0006-0013                                                                       
+                   Additional Dihedrals follow   (6I4)                          
+AUTO                                                                            
+                   Domain Definitions follow     (4I4)                          
+                   Conformational Search         (2I4, 2F12.6)                  
+00080003 0.0         360.0                                                      
+00110003 0.0         360.0                                                      
+                   Final blank line                                             

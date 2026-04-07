@@ -1,0 +1,31 @@
+          propyne                                           Tot. E =      1.1394
+   1 C    925  925    0    0.000000   0    0.000000   0    0.000000        0
+   2 Du    -1   -1    1    1.000000   0    0.000000   0    0.000000        0
+   3 Du    -1   -1    2    1.000000   1   90.000000   0    0.000000        0
+   4 C    925  925    1    1.210077   2   90.000000   3    0.000000        0
+   5 C    927  927    1    1.470238   2   90.000052   3  180.000000        0
+   6 H     60   60    5    1.090009   1  109.806402   2    0.000000        0
+   7 H     60   60    5    1.090007   1  109.809671   6  119.999507        0
+   8 H     60   60    5    1.090007   1  109.808527   6  240.002674        0
+   9 Du    -1   -1    4    1.000000   1   90.000000   2    0.000000        0
+  10 H    926  926    4    1.080792   9   89.999992   1  179.999963        0
+                    Geometry Variations follow    (2I4,F12.6)                   
+                    Variable Bonds follow         (I4)                          
+0004-0008                                                                       
+0010                                                                            
+                    Additional Bonds follow       (2I4)                         
+                    Harmonic Constraints follow   (2I4,4F10.4)                  
+                    Variable Bond Angles follow   (I4)                          
+   5-   8                                                                       
+  10                                                                            
+                    Additional Bond Angles follow (3I4)                         
+AUTO                                                                            
+                    Variable Dihedrals follow     (3I4,F12.6)                   
+0007                                                                            
+0008                                                                            
+0010                                                                            
+                    Additional Dihedrals follow   (6I4)                         
+AUTO                                                                            
+                    Domain Definitions follow     (4I4)                         
+                    Conformational Search                                       
+                    Final blank line                                            

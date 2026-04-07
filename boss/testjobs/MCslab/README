@@ -1,0 +1,28 @@
+MC Simulations for Solutes on Water Slabs
+
+slcmd and xSLAB use 500 TIP4P water molecules. They start from
+a stored, equilibrated TIP4P water slab containing 512 water molecules.
+This file is in the boss/solbox directory.
+
+sl725cmd and xSLAB725 use 725 TIP4P waters. They start from a
+regular stored box with 750 waters and discard 25.
+
+There is also a stored, equilibrated water slab with 1235 waters in the
+solbox directory.
+
+For a solute z-matrix such as benzen.z, execute via
+xSLAB benzen &
+or
+xSLAB725 benzen &
+or
+xTEST benzen  (for a short test run)
+
+Equilibration for 5 M and averaging for 25 M.
+T = 25 C, P = 1 atm.
+
+Sample output for quadricyclane is in quadric.
+
+The stored  N = 512 and 1235 water slabs are fully equlibrated. You may 
+not want to do volume moves when running subsequent slab simulations
+as there is a very slow drift to reduce the exposed surface,
+i.e. stretch in the z-direction.

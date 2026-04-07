@@ -1,0 +1,19 @@
+United-Atom Methane Dimer                                       
+   1   X   -1   -1    0    0.000000   0    0.000000   0    0.000000        0
+   2   X   -1   -1    1    1.000000   0    0.000000   0    0.000000        0
+   3 CH4   66   66    1    1.0        2   90.0        0    0.000000
+TERZ                                                                            
+   4 CH4   66   66    1    1.000000   2   90.0        3  180.000000        0
+                    Geometry Variations follow    (2I4,F12.6)                   
+00030001 1.5
+00040001 1.5
+                    Variable Bonds follow         (I4)                          
+                    Additional Bonds follow       (2I4)                         
+                    Harmonic Constraints follow   (2I4,4F10.4)                  
+                    Variable Bond Angles follow   (I4)                          
+                    Additional Bond Angles follow (3I4)                         
+                    Variable Dihedrals follow     (3I4,F12.6)                   
+                    Additional Dihedrals follow   (6I4)                         
+                    Domain Definitions follow     (4I4)                         
+                    Conformational Search (4I2,2F12.6)                          
+                    Final blank line                                            

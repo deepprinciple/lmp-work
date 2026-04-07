@@ -1,0 +1,19 @@
+#!/bin/csh
+#
+echo  display structure with RasMol
+#
+# usage - x moleculename
+#
+# test if the environment variable BOSSdir has been defined
+#
+if (!($?BOSSdir)) then
+   echo "BOSSdir has not been defined; please see README"
+   exit (-1)
+endif
+
+if (-e ttmp.pdb) rm ttmp.pdb
+cp ${argv[1]} ttmp.pdb
+$BOSSdir/miscexec/rasmol ttmp.pdb
+rm ttmp.pdb
+#
+exit

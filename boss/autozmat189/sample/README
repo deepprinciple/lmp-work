@@ -1,0 +1,51 @@
+########################################################
+### Testing
+########################################################
+
+To test a newly compiled autozmat, type 'make test' at the
+shell prompt. Results are compared with authentic files in
+Authentic/atomtyping and Authentic/noatomtyping directories.
+Then the ratios of successful and failed tests are printed
+out at the end.
+
+To test autozmat with atomtyping enabled,
+% make test
+
+To test autozmat with atomtyping disabled,
+% make test ATOMTYPE_OPT=-a
+
+########################################################
+### Usage Examples
+########################################################
+
+For help, 
+% ../bin/autozmat -h
+
+To create a BOSS Z-matrix for QM/MM calculation from
+a MDL MOL format file 'crown.mdl',
+% ../bin/autozmat -i mdl < crown.mdl > crown.boss
+or
+% ../bin/autozmat -i mdl crown.mdl > crown.boss
+
+To create a BOSS Z-matrix for QM/MM calculation from
+a MDL MOL format file 'zantac.mdl',
+% ../bin/autozmat -i mdl zantac.mdl > zantac.boss
+
+To read a BOSS Z-matrix 'zantac.boss' with parameter
+file 'opls.par' and print out a PDB format,
+% ../bin/autozmat -i boss -p opls.par zantac.boss > zantac.pdb
+
+To read a MCPRO Z-matrix 'dim.mcpro' with parameter
+file 'dim.par' and print out a GAUSSIAN Z-matrix,
+% ../bin/autozmat -i mcpro -p dim.par dim.mcpro > dim.gauss
+
+To read a BOSS Z-matrix for QM/MM and print out
+Cartesian coordinates, (Note that this does not require
+a parameter file)
+% ../bin/autozmat -i qm_boss -o xyz crown.boss
+
+To read a Cartesian format file 'benzene.xyz' and add
+hydrogens to carbon atoms, then print out a BOSS Z-matrix
+for QM/MM calc,
+% ../bin/autozmat -i xyz -H benzene.xyz
+

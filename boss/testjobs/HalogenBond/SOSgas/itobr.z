@@ -1,0 +1,31 @@
+PhI to PhBr
+   1 DUM   -1   -1    0    0.000000   0    0.000000   0    0.000000        0    
+   2 DUM   -1   -1    1    1.000000   0    0.000000   0    0.000000        0    
+   3 C    731  729    1    1.400000   2   90.000000   0    0.000000        0    
+   4 C    145  145    3    1.408446   1   60.000000   2   90.000000        0    
+   5 C    145  145    3    1.408447   4  119.991404   1    0.000000        0    
+   6 C    145  145    4    1.409065   3  120.026234   5    0.000000        0    
+   7 C    145  145    5    1.409064   3  120.026902   4    0.000000        0    
+   8 C    145  145    6    1.409058   4  119.980903   3    0.000000        0    
+   9 IBr  732  730    3    2.079535   4  120.004419   6  180.000000        0    
+  10 H    146  146    4    1.080130   3  119.831621   5  180.000000        0    
+  11 H    146  146    5    1.080129   3  119.831007   4  180.000000        0    
+  12 H    146  146    6    1.080417   4  119.970571   3  180.000000        0    
+  13 H    146  146    7    1.080417   5  119.971061   3  180.000000        0    
+  14 H    146  146    8    1.080775   6  120.002393   4  180.000000        0    
+                    Geometry Variations follow    (2I4,F12.6)                   
+00090001 1.87
+                    Variable Bonds follow         (I4)                          
+0004-0014                                                                       
+                    Additional Bonds follow       (2I4)                         
+00070008                                                                        
+                    Harmonic Constraints follow   (2I4,4F10.4)                  
+                    Variable Bond Angles follow   (I4)                          
+0005-0014                                                                       
+                    Additional Bond Angles follow (3I4)                         
+AUTO                                                                            
+                    Variable Dihedrals follow     (3I4,F12.6)                   
+                    Additional Dihedrals follow   (6I4)                         
+                    Domain Definitions follow     (4I4)                         
+                    Conformational Search (4I2,2F12.6)                          
+                    Final blank line                                            

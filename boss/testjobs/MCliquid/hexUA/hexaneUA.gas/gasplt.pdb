@@ -1,0 +1,9 @@
+REMARK    n-Hex                         
+REMARK    Created by BOSS 4.6             
+ATOM      1  C00 UNK     1       0.000   0.000   0.000
+ATOM      2  C01 UNK     1      -0.878  -1.301   0.000
+ATOM      3  C02 UNK     1      -0.124  -2.623   0.000
+ATOM      4  C03 UNK     1      -1.213  -3.681  -0.126
+ATOM      5  C04 UNK     1       1.326   0.065   0.872
+ATOM      6  C05 UNK     1       1.754   1.548   0.919
+END

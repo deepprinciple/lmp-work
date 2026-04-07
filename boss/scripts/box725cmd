@@ -1,0 +1,87 @@
+#
+# Command file for the BOSS program.  Execute by entering the following:
+# csh box725cmd >& log &
+# Just need to copy solute zmat to MCzmat, then execute.
+#***********************************************************************
+echo '             Monte Carlo for Solutes in TIP4P'
+echo '                    25 C & 1 atm '
+echo '                 Equilibration 3.2M '
+echo '              Averaging     0-20M '
+echo '            N = 725  T=25  P=1  Rcut = 9.0'
+#***********************************************************************
+#!/bin/csh -f
+#
+nice +19
+set boss = $BOSSdir/BOSS
+set lambda = "0.000 0.000 0.000"
+set boxes = $BOSSdir
+setenv INFILE    MCin
+setenv UPFILE    MCup
+setenv SAVE      MCsv
+setenv AVERAGE   MCav
+setenv ZMATRIX   MCzmat
+setenv SLVZMAT   slvzmat
+setenv BANGPAR   $boxes/oplsaa.sb
+setenv WATERBOX  $boxes/watbox
+setenv ORG1BOX   $boxes/org1box
+setenv ORG2BOX   $boxes/org2box
+setenv SUMMARY   MCsum
+
+date
+
+#    short NVT Equilibration
+
+set configurations = "200000"
+
+if (-e tmppar) rm tmppar
+cp $BOSSdir/testjobs/linres/lr725par tmppar
+cat $BOSSdir/oplsaa.par >> tmppar
+sed s/'NVTNPT'/'999999'/ tmppar > NVTpar
+setenv PARAMETER NVTpar
+
+setenv OUTPUT    MCota
+setenv PLTFILE   MCplta
+echo Running NVT
+time $boss 110 $configurations $lambda
+
+#    NPT Equilibration
+
+set configurations = "1000000"
+
+sed s/'NVTNPT'/'     0'/ tmppar > NPTpar
+setenv PARAMETER NPTpar
+
+setenv OUTPUT    MCota
+setenv PLTFILE   MCplta
+echo Equilibrating
+time $boss 010 $configurations $lambda
+foreach block (b eq)
+        date
+	setenv OUTPUT    MCot$block
+	setenv PLTFILE   MCplt$block
+        echo Running $block
+	time $boss 001 $configurations $lambda
+end
+
+#    Averaging
+
+setenv OUTPUT    MCota
+setenv PLTFILE   MCplta
+echo Averaging
+time $boss 011 $configurations $lambda
+mv MCsv MCsav
+foreach block (b c d e a b c d e10 a b c d e a b c d e20)
+        date
+        setenv OUTPUT    MCot$block
+        setenv PLTFILE   MCplt$block
+        echo Running $block
+        time $boss 001 $configurations $lambda
+        cat MCsv >>MCsav
+end
+
+rm MCsv slvzmat NVTpar NPTpar tmppar
+rm *ota *otb *otc *otd *ote
+rm *plta *pltb *pltc *pltd *plte
+
+date
+exit

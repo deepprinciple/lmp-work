@@ -1,0 +1,10 @@
+tolerance 2.000000
+seed 192911
+nloop 50
+filetype xyz
+output /root/lmp-work/.compat/ligpargen_buildsystem_smoke2/system.xyz
+
+structure /root/lmp-work/.compat/ligpargen_buildsystem_smoke2/methanol_opls_smoke2.xyz
+  number 4
+  inside box 2.000000 2.000000 2.000000 4.818061 4.818061 4.818061
+end structure

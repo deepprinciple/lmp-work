@@ -1,0 +1,26 @@
+See the file INDEX for a molecule index.
+
+*****************************************************************
+    From PDB, mol or mol2 files to easy execution of BOSS jobs     
+*****************************************************************
+
+See the scripts xPDBZ, xMOLZ and xMOL2Z. E.g.,
+
+xPDBZ moleculename         (moleculename.pdb must exist)
+
+This creates the files moleculename.z, plt.pdb and out.
+
+After execution,
+You could display the structure with, e.g., Rasmol:
+x plt.pdb      
+
+At this point, you could use many of the other scripts in the
+boss/scripts directory to perform standard BOSS jobs on
+moleculename.z.
+
+See also 
+xZCM1A moleculename   (moleculename.z must exist)
+This script takes a BOSS Z-matrix and iteratively computes
+CM1A charges and optimizes the strucutre until convergence.
+It is used for creating a Z-matrix with CM1A charges
+assigned for the OPLS/CM1A force field.

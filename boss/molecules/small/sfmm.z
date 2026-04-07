@@ -1,0 +1,27 @@
+   mathanesulfonamide                                       Tot. E =   -127.6442
+   1 HN   479  479    0    0.000000   0    0.000000   0    0.000000        0
+   2 N    478  478    1    1.005578   0    0.000000   0    0.000000        0
+   3 S    474  474    2    1.637122   1  107.936623   0    0.000000        0
+   4 C    476  476    3    1.748647   2  103.888537   1  114.401853        0
+   5 HC   477  477    4    1.086554   3  109.855012   2  299.135772        0
+   6 HN   479  479    2    1.005554   3  107.942771   4  245.563359        0
+   7 O    475  475    3    1.431335   4  110.005476   2  112.081286        0
+   8 O    475  475    3    1.431334   4  110.008321   2  247.912161        0
+   9 HC   477  477    4    1.086556   5  110.538464   3  238.609721        0
+  10 HC   477  477    4    1.087680   5  109.290458   3  118.282820        0
+                    Geometry Variations follow    (2I4,F12.6)                   
+                    Variable Bonds follow         (I4)                          
+0002-0010                                                                       
+                    Additional Bonds follow       (2I4)                         
+                    Harmonic Constraints follow   (2I4,4F10.4)                  
+                    Variable Bond Angles follow   (I4)                          
+0003-0010                                                                       
+                    Additional Bond Angles follow (3I4)                         
+AUTO                                                                            
+                    Variable Dihedrals follow     (3I4,F12.6)                   
+0004-0010                                                                       
+                    Additional Dihedrals follow   (6I4)                         
+AUTO                                                                            
+                    Domain Definitions follow     (4I4)                         
+                    Conformational Search (4I2,2F12.6)                          
+                    Final blank line                                            

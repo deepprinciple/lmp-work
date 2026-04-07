@@ -1,0 +1,20 @@
+#!/bin/csh
+set echo
+#
+# perform single-point AM1 calculation
+#
+# usage - xAM1SP1 moleculename
+# use 1.0 charge scale factor
+#
+# test if the enviroment variable BOSSdir has been defined
+#
+if (!($?BOSSdir)) then
+   echo "BOSSdir has not been defined; please see README"
+   exit (-1)
+endif
+
+if (-e optzmat) rm optzmat
+cp ${argv[1]}.z optzmat
+csh $BOSSdir/scripts/AM1SP1cmd >& log
+#
+exit

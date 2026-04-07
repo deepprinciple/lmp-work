@@ -1,0 +1,12 @@
+#!/bin/csh
+set echo
+#
+# Convert Windows PDB file to Unix format,
+# and repair PDB file for display with Midas.
+#
+# usage - xFIX file
+#
+chmod -x ${argv[1]}
+dos2unix ${argv[1]}
+gatherpdb <${argv[1]} >${argv[1]}.pdb
+exit

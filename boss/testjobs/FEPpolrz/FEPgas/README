@@ -1,0 +1,8 @@
+
+ MC/FEP simulation for tetramethylammonium ion -> neopentane
+ in the gas phase (N = 1).
+
+ sumout has the deltaG results.
+
+ execute via 
+ csh -e fepgascmd >& log &

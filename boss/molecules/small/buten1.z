@@ -1,0 +1,31 @@
+          1-butene                                          Tot. E =      0.3666
+   1 C    143  143    0    0.000000   0    0.000000   0    0.000000        0    
+   2 Du    -1   -1    1    1.000000   0    0.000000   0    0.000000        0    
+   3 Du    -1   -1    2    1.000000   1   90.000000   0    0.000000        0    
+   4 C    142  142    1    1.341525   2   90.000000   3    0.000000        0    
+   5 C    136  136    4    1.514281   1  124.375947   2  270.000000        0    
+   6 H    144  144    4    1.081222   1  119.263488   5  180.328335        0    
+   7 H    144  144    1    1.080418   4  121.414852   5  359.777443        0    
+   8 H    144  144    1    1.080384   4  120.972239   7  180.080845        0    
+   9 C    135  135    5    1.532266   4  111.086637   1  120.358081        0    
+  10 H    140  140    5    1.090974   4  110.044296   9  237.941055        0    
+  11 H    140  140    5    1.090678   4  108.705454   9  121.249628        0    
+  12 H    140  140    9    1.090310   5  110.863565   4  179.866771        0    
+  13 H    140  140    9    1.090486   5  111.367017  12  240.131859        0    
+  14 H    140  140    9    1.090613   5  111.170996  12  119.740190        0    
+                    Geometry Variations follow    (2I4,F12.6)                   
+                    Variable Bonds follow         (I4)                          
+   4-  14                                                                       
+                    Additional Bonds follow       (2I4)                         
+                    Harmonic Constraints follow   (2I4,4F10.4)                  
+                    Variable Bond Angles follow   (I4)                          
+   5-  14                                                                       
+                    Additional Bond Angles follow (3I4)                         
+AUTO                                                                            
+                    Variable Dihedrals follow     (3I4,F12.6)                   
+   6-  14                                                                       
+                    Additional Dihedrals follow   (6I4)                         
+AUTO                                                                            
+                    Domain Definitions follow     (4I4)                         
+                    Conformational Search                                       
+                    Final blank line                                            

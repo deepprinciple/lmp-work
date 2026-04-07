@@ -1,0 +1,20 @@
+-------------------------------------------
+BOSS 4.1 Release Note #  2   March 12, 1999
+-------------------------------------------
+
+(1) Patch for Normal Mode Calculations
+    for versions of BOSS 4.1 prior to March 12
+Since '999' is used to flag a comment line in the parameter file,
+the following line in SUBROUTINE RDATYPE in boss41.f (UNIX) or
+calc41.f (Windows) should be changed from
+
+           IF (LINE(1:3).EQ.'   '.OR.LINE(1:3).EQ.'999') GO TO 80
+to
+           IF (LINE(1:3).EQ.'   ') GO TO 80
+           IF (LINE(1:3).EQ.'999') GO TO 50
+
+Otherwise, non-bonded interactions in the normal mode analysis
+are not computed correctly when the parameter file contains
+'999' as atom types.
+-DC
+

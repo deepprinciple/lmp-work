@@ -1,0 +1,54 @@
+#
+# Command file for the BOSS program.  Execute by entering the following:
+# csh liqcmd >& log &
+#***********************************************************************
+echo '                      Pure Liquid '
+echo '               Prior Equilibration 15 M   '
+echo '                   Averaging     0-10 M      '
+#***********************************************************************
+#
+nice +19
+set boss = $BOSSdir/BOSS
+set boxes = $BOSSdir
+set configurations = "1000000"
+set lambda = "0.0 0.0 0.0"
+#
+setenv INFILE    liqin
+setenv UPFILE    liqup
+setenv SAVE      svtmp
+setenv AVERAGE   liqav
+setenv ZMATRIX   dummy.z
+setenv SLVZMAT   liqzmat
+if (-e tmppar) rm tmppar
+cp liqpar tmppar
+cat $BOSSdir/oplsaa.par >> tmppar
+setenv PARAMETER tmppar
+setenv BANGPAR   $boxes/oplsaa.sb
+setenv WATERBOX  $boxes/watbox
+setenv ORG1BOX   $boxes/org1box
+setenv ORG2BOX   $boxes/org2box
+setenv SUMMARY   liqsum
+
+date
+
+#
+#    Restart   Averaging
+#
+setenv OUTPUT    liqota
+setenv PLTFILE   liqplta
+
+time $boss 010 $configurations $lambda
+mv svtmp liqsv
+
+foreach block (b c d e5 a b c d e10)
+        date
+        setenv OUTPUT    liqot$block
+        setenv PLTFILE   liqplt$block
+# Note: the second 0 below says "continue the averaging"
+        time $boss 001 $configurations $lambda
+        cat svtmp >>liqsv
+end
+rm svtmp tmppar
+
+date
+exit

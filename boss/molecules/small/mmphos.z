@@ -1,0 +1,31 @@
+   Methyl Methylphosphonate                                 Tot. E =    -54.8719
+   1 DUM   -1    0    0    0.000000   0    0.000000   0    0.000000        0    
+   2 DUM   -1    0    1    1.000000   0    0.000000   0    0.000000        0    
+   3 H3   456  456    2    1.000000   1   90.000000   0    0.000000        0    
+   4 C4   455  455    3    1.087735   2   90.000000   1    0.000000        0    
+   5 P5   450  450    4    1.822566   3  109.134379   2    0.000000        0    
+   6 H6   456  456    4    1.087527   5  109.400270   3  240.150074        0    
+   7 H7   456  456    4    1.087527   5  109.400269   3  119.849926        0    
+   8 O8   452  452    5    1.600582   4  107.627150   3  180.000000        0    
+   9 O9   451  451    5    1.476668   4  106.773421   8  115.436609        0    
+  10 O10  451  451    5    1.476668   4  106.773420   8  244.563392        0    
+  11 C11  453  453    8    1.408071   5  120.206964   4  179.999988        0    
+  12 H12  454  454   11    1.090431   8  109.497766   5  179.999993        0    
+  13 H13  454  454   11    1.090370   8  111.436505  12  119.126399        0    
+  14 H14  454  454   11    1.090370   8  111.436506  12  240.873601        0    
+                    Geometry Variations follow    (2I4,F12.6)                   
+                    Variable Bonds follow         (I4)                          
+0004-0014                                                                       
+                    Additional Bonds follow       (2I4)                         
+                    Harmonic Constraints follow   (2I4,4F10.4)                  
+                    Variable Bond Angles follow   (I4)                          
+0005-0014                                                                       
+                    Additional Bond Angles follow (3I4)                         
+AUTO                                                                            
+                    Variable Dihedrals follow     (3I4,F12.6)                   
+0006-0014                                                                       
+                    Additional Dihedrals follow   (6I4)                         
+AUTO                                                                            
+                    Domain Definitions follow     (4I4)                         
+                    Conformational Search         (2I4, 2F12.6)                 
+                    Final blank line                                            

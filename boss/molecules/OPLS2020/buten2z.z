@@ -1,0 +1,31 @@
+   cis-2-Butene full flex.                                  Tot. E =      0.5480
+   1 C2   142  142    0    0.000000   0    0.000000   0    0.000000        0
+   2 Du    -1   -1    1    1.000000   0    0.000000   0    0.000000        0
+   3 Du    -1   -1    2    1.000000   1   90.000000   0    0.000000        0
+   4 C3   142  142    1    1.346020   2   90.000000   3    0.000000        0
+   5 C4    54   54    4    1.516807   1  127.278690   2  270.000000        0
+   6 H1   144  144    4    1.081090   1  117.934417   5  179.999625        0
+   7 C1    54   54    1    1.516807   4  127.278748   5    0.000052        0
+   8 H3   144  144    1    1.081090   4  117.934204   7  180.000250        0
+   9 H     60   60    5    1.087797   4  113.302645   1    0.000011        0
+  10 H     60   60    5    1.090089   4  109.806381   9  239.323337        0
+  11 H     60   60    5    1.090093   4  109.806458   9  120.676430        0
+  12 H     60   60    7    1.087794   1  113.303454   4  359.999897        0
+  13 H     60   60    7    1.090090   1  109.806070  12  239.322215        0
+  14 H     60   60    7    1.090092   1  109.805224  12  120.677205        0
+                    Geometry Variations                                         
+                    Variable Bonds follow         (I4)                          
+0004-0014                                                                       
+                    Additional Bonds follow       (2I4)                         
+                    Harmonic Constraints                                        
+                    Variable Bond Angles follow   (I4)                          
+0005-0014                                                                       
+                    Additional Bond Angles follow (3I4)                         
+AUTO                                                                            
+                    Variable Dihedrals follow     (3I4,F12.6)                   
+0006-0014                                                                       
+                    Additional Dihedrals follow   (6I4)                         
+AUTO                                                                            
+                    Domain Definitions follow     (4I4)                         
+                    Conformational Search                                       
+                    Final blank line                                            

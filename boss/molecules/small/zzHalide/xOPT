@@ -1,0 +1,21 @@
+#!/bin/csh
+set echo
+#
+# perform OPLS-AA optimization   
+#
+# usage - xOPT moleculename
+#
+# test if the enviroment variable BOSSdir has been defined
+#
+if (!($?BOSSdir)) then
+   echo "BOSSdir has not been defined; please see README"
+   exit (-1)
+endif
+
+if (-e optzmat) rm optzmat
+cp ${argv[1]}.z optzmat
+csh -e $BOSSdir/scripts/OPTcmd >& log 
+grep Tot sum
+rm optzmat
+#
+exit

@@ -1,0 +1,48 @@
+{
+  "smiles": "CO",
+  "name": "methanol_opls_smoke2",
+  "workdir": "/root/lmp-work/.compat/ligpargen_buildsystem_smoke2",
+  "n_molecules": 4,
+  "n_atoms_per_molecule": 6,
+  "molecular_weight_g_mol": 32.041999999999994,
+  "density_target_g_cm3": 0.79,
+  "density_init_g_cm3": 0.6715,
+  "packmol_density_scale": 0.85,
+  "packmol_tolerance_A": 2.0,
+  "packmol_seed": 192911,
+  "packmol_max_attempts": 1,
+  "packmol_seed_step": 97,
+  "packmol_nloop": 50,
+  "packmol_full_box": false,
+  "packmol_margin_A": null,
+  "packmol_strict": false,
+  "box_aspect_ratio": null,
+  "box_lengths_A_requested": null,
+  "structure_output_formats": [
+    "xyz"
+  ],
+  "structure_files": {
+    "xyz": "/root/lmp-work/.compat/ligpargen_buildsystem_smoke2/methanol_opls_smoke2.xyz"
+  },
+  "forcefield_engine": "ligpargen",
+  "forcefield_version": "openff-2.0.0",
+  "forcefield_strict_stereo": true,
+  "forcefield_charge_method": "CM1A-LBCC",
+  "forcefield_charge_fallback": "gasteiger",
+  "forcefield_charge_file": null,
+  "forcefield_use_cache": true,
+  "forcefield_input_mode": "generated_pdb",
+  "forcefield_residue_name": "MOL",
+  "forcefield_n_optimizations": 0,
+  "forcefield_wrapper_script": "/root/lmp-work/.compat/bin/ligpargen_local.sh",
+  "forcefield_debug": false,
+  "box_length_A": 6.818061212573202,
+  "box_lengths_A": [
+    6.818061212573202,
+    6.818061212573202,
+    6.818061212573202
+  ],
+  "single_molecule_data": "/root/lmp-work/.compat/ligpargen_buildsystem_smoke2/ligpargen/methanol_opls_smoke2.lammps.lmp",
+  "system_xyz": "/root/lmp-work/.compat/ligpargen_buildsystem_smoke2/system.xyz",
+  "system_data": "/root/lmp-work/.compat/ligpargen_buildsystem_smoke2/system.data"
+}

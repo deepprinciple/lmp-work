@@ -1,0 +1,23 @@
+     Flex. TIP4F Water                                      Tot. E =      0.0000
+   1  O   795  795    0    0.000000   0    0.000000   0    0.000000        0    
+   2  DU   -1   -1    1    1.000000   0    0.000000   0    0.000000        0    
+   3  DU   -1   -1    2    1.000000   1   90.000000   0    0.000000        0    
+   4  HO  796  796    1    0.957200   2  125.250000   3   90.000000        0    
+   5  HO  796  796    1    0.957200   4  109.500002   2  180.000000        0    
+   6  X   797  797    1    0.175000   4   54.750007   5    0.000000        0    
+                    Geometry Variations Follow                                  
+                    Variable Bonds follow         (I4 or I4-I4)                 
+0004-0006                                                                       
+                    Additional Bonds follow       (2I4)                         
+                    Harmonic Constraints follow                                 
+                    Variable Bond Angles follow   (I4 or I4-I4)                 
+0005-0006                                                                       
+                    Additional Bond Angles follow (3I4)                         
+000500010006                                                                    
+                    Variable Dihedrals follow     (3I4,F12.6)                   
+000600000000 1.0                                                                
+                    Additional Dihedrals follow   (6I4)                         
+                    Domain Definitions follow     (4I4)                         
+                    Conformational Search                                       
+                    Final blank line                                            
+                                                                                

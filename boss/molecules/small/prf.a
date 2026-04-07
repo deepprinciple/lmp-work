@@ -1,0 +1,30 @@
+      1-fluoropropane                                       Tot. E =      1.7122
+   1 C2   136  136    0     .000000   0     .000000   0     .000000        0
+   2 X     -1   -1    1    1.000000   0     .000000   0     .000000        0
+   3 X     -1   -1    2    1.000000   1   90.000000   0     .000000        0
+   4 C3   135  135    1    1.533419   2   90.000000   3     .000000        0
+   5 C1   957  957    1    1.533122   4  112.730660   2  180.000000        0
+   6 H    140  140    4    1.090451   1  110.831051   5  179.999999        0
+   7 H    140  140    4    1.090471   1  111.284295   6  119.762350        0
+   8 H    140  140    4    1.090471   1  111.284295   6  240.237650        0
+   9 F    956  956    5    1.331695   1  109.821949   4  179.999998        0
+  10 H    958  958    5    1.090573   1  111.834178   9  240.913902        0
+  11 H    958  958    5    1.090573   1  111.834177   9  119.086095        0
+  12 H    140  140    1    1.090773   4  109.445338   5  238.060081        0
+  13 H    140  140    1    1.090773   4  109.445339   5  121.939919        0
+                    Geometry Variations follow    (2I4,F12.6)                   
+                    Variable Bonds follow         (I4)                          
+0004-0013                                                                       
+                    Additional Bonds follow       (2I4)                         
+                    Harmonic Constraints follow   (2I4,4F10.4)                  
+                    Variable Bond Angles follow   (I4)                          
+0005-0013                                                                       
+                    Additional Bond Angles follow (3I4)                         
+AUTO                                                                            
+                    Variable Dihedrals follow     (3I4,F12.6)                   
+0006-0013                                                                       
+                   Additional Dihedrals follow   (6I4)                          
+AUTO                                                                            
+                   Domain Definitions follow     (4I4)                          
+                   Conformational Search         (2I4, 2F12.6)                  
+                   Final blank line                                             

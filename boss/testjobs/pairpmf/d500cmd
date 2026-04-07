@@ -1,0 +1,97 @@
+#
+# Command file for the BOSS  program.  Execute by entering the following:
+# csh d500cmd >& d500log &
+#***********************************************************************
+echo '        MC simulation: pmf for complex'
+echo '                    25 C & 1 atm '
+echo '                 Equilibration  0.5M '
+echo '                   Averaging  0-1M '
+echo '            N = 735  T=25  P=1  Rcut = 8.0'
+#***********************************************************************
+#
+nice +19
+set boss = $BOSSdir/BOSS
+set configurations = "250000"
+# inc is current window in Angstroms x 100 (must be >= 420)
+@ inc = 500
+# ninc is the increment in Angstroms x 100
+@ ninc = 10
+set boxes = $BOSSdir
+#
+setenv INFILE    d${inc}in
+setenv UPFILE    d${inc}up
+setenv SAVE      d${inc}sv
+setenv AVERAGE   d${inc}av
+setenv ZMATRIX   pmfzmat
+setenv SLVZMAT   slvzmat
+# The pmfpar0 file is only used for this initial window; pmfpar
+# is used for subsequent windows. The difference is that the
+# subsequent windows use ZIN and IN for the initial solute and
+# solvent coordinates, while here they come from ZMAT and BOXES.
+
+if (-e tmppar) rm tmppar
+cp pmfpar0 tmppar
+cat $BOSSdir/oplsaa.par >> tmppar
+setenv PARAMETER tmppar
+
+setenv BANGPAR   $boxes/oplsaa.sb
+setenv WATERBOX  $boxes/watbox
+setenv ORG1BOX   $boxes/org1box
+setenv ORG2BOX   $boxes/org2box
+setenv SUMMARY   d${inc}sum
+
+# compute lambda values
+        @ rc0 = $inc - 400
+        @ rc1 = $rc0 - $ninc
+        @ rc2 = $rc0 + $ninc
+        @ int0 = $rc0 / 100
+        @ dec0 = $rc0 - $int0 * 100
+        @ int1 = $rc1 / 100
+        @ dec1 = $rc1 - $int1 * 100
+        @ int2 = $rc2 / 100
+        @ dec2 = $rc2 - $int2 * 100
+
+        set rc0 = ${int0}.${dec0}
+        set rc1 = ${int1}.${dec1}
+        set rc2 = ${int2}.${dec2}
+        set lambda = "$rc0 $rc1 $rc2"
+
+date
+
+setenv OUTPUT    d${inc}ota
+setenv PLTFILE   d${inc}plta
+
+#    Equilibration
+
+time $boss 111 $configurations $lambda
+foreach block (eq)
+        date
+	setenv OUTPUT    d${inc}ot$block
+	setenv PLTFILE   d${inc}plt$block
+	time $boss 001 $configurations $lambda
+end
+
+#    Averaging
+
+setenv OUTPUT    d${inc}otb
+setenv PLTFILE   d${inc}pltb
+time $boss 011 $configurations $lambda
+mv d${inc}sv d${inc}sav
+foreach block (c d e2)
+        date
+        setenv OUTPUT    d${inc}ot$block
+        setenv PLTFILE   d${inc}plt$block
+        time $boss 001 $configurations $lambda
+        cat d${inc}sv >>d${inc}sav
+end
+
+rm d${inc}sv slvzmat tmppar
+
+#    Submit Next Window
+
+# @ ninc = ninc + ninc + inc
+# cp d${inc}in d${ninc}in
+# csh d${ninc}cmd >& log$ninc &
+
+date
+exit

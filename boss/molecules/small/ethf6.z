@@ -1,0 +1,26 @@
+      perfluoroethane                                       Tot. E =     -3.2883
+   1 C    961    0    0    0.000000   0    0.000000   0    0.000000        0    
+   2 DUM   -1    0    1    0.500000   0    0.000000   0    0.000000        0    
+   3 DUM   -1    0    2    0.500000   1   90.000000   0    0.000000        0    
+   4 C    961    0    1    1.541645   2   90.000000   3  180.000000        0    
+   5 F    965    0    4    1.333913   1  110.257363   2    0.000000        0    
+   6 F    965    0    4    1.333907   1  110.260899   5  240.001345        0    
+   7 F    965    0    4    1.333908   1  110.260078   5  119.997981        0    
+   8 F    965    0    1    1.333908   4  110.260313   5   60.003185        0    
+   9 F    965    0    1    1.333908   4  110.260630   8  239.997377        0    
+  10 F    965    0    1    1.333912   4  110.257396   8  119.998518        0    
+                    Geometry Variations follow                                  
+                    Variable Bonds follow         (I4 or I4-I4)                 
+0004-0010                                                                       
+                    Additional Bonds follow       (2I4)                         
+                    Harmonic Constraints follow                                 
+                    Variable Bond Angles follow   (I4 or I4-I4)                 
+0005-0010                                                                       
+                    Additional Bond Angles follow (3I4)                         
+AUTO                                                                            
+                    Variable Dihedrals follow     (3I4,F12.6)                   
+0006-0010                                                                       
+                    Additional Dihedrals follow   (6I4)                         
+AUTO                                                                            
+                    Domain Definitions follow     (4I4)                         
+                    Final blank line                                            

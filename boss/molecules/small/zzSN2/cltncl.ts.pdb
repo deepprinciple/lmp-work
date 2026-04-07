@@ -1,0 +1,43 @@
+REMARK   0 Title: Cl-...tBuCHCNCl  TS                                            
+REMARK   1 Creator: XChemEdit/AUTOZMAT                                           
+REMARK   2 WL Jorgensen Group, Dept. of Chemistry, Yale University               
+HETATM    1  C   UNK A   0      0.0000  0.0000  0.0000  0.00  0.00   0           
+HETATM    2 CL   UNK A   0      0.0000  2.2850  0.0000  0.00  0.00   0           
+HETATM    3 CL   UNK A   0      0.9671 -2.0703 -0.0000  0.00  0.00   0           
+HETATM    4  C   UNK A   0     -1.3404 -0.2980 -0.6658  0.00  0.00   0           
+HETATM    5  C   UNK A   0      0.0381  0.0087  1.4342  0.00  0.00   0           
+HETATM    6  H   UNK A   0      0.9195  0.2049 -0.6101  0.00  0.00   0           
+HETATM    7  C   UNK A   0     -1.0733 -0.2406 -2.1682  0.00  0.00   0           
+HETATM    8  C   UNK A   0     -1.8748 -1.6861 -0.2998  0.00  0.00   0           
+HETATM    9  C   UNK A   0     -2.4114  0.7352 -0.3028  0.00  0.00   0           
+HETATM   10  H   UNK A   0     -1.9747 -0.4408 -2.7574  0.00  0.00   0           
+HETATM   11  H   UNK A   0     -0.6996  0.7560 -2.4490  0.00  0.00   0           
+HETATM   12  H   UNK A   0     -0.3137 -0.9867 -2.4473  0.00  0.00   0           
+HETATM   13  H   UNK A   0     -2.9423 -1.8005 -0.5312  0.00  0.00   0           
+HETATM   14  H   UNK A   0     -1.3664 -2.4897 -0.8531  0.00  0.00   0           
+HETATM   15  H   UNK A   0     -1.7453 -1.9161  0.7651  0.00  0.00   0           
+HETATM   16  H   UNK A   0     -3.4269  0.3878 -0.5360  0.00  0.00   0           
+HETATM   17  H   UNK A   0     -2.3929  0.9992  0.7619  0.00  0.00   0           
+HETATM   18  H   UNK A   0     -2.2887  1.6776 -0.8568  0.00  0.00   0           
+HETATM   19  N   UNK A   0      0.0757  0.0174  2.5896  0.00  0.00   0           
+TER
+CONECT    1    3    4    5    6    0    0    0    0    0    0                    
+CONECT    3    1    0    0    0    0    0    0    0    0    0                    
+CONECT    4    1    7    8    9    0    0    0    0    0    0                    
+CONECT    5    1   19    0    0    0    0    0    0    0    0                    
+CONECT    6    1    0    0    0    0    0    0    0    0    0                    
+CONECT    7    4   10   11   12    0    0    0    0    0    0                    
+CONECT    8    4   13   14   15    0    0    0    0    0    0                    
+CONECT    9    4   16   17   18    0    0    0    0    0    0                    
+CONECT   10    7    0    0    0    0    0    0    0    0    0                    
+CONECT   11    7    0    0    0    0    0    0    0    0    0                    
+CONECT   12    7    0    0    0    0    0    0    0    0    0                    
+CONECT   13    8    0    0    0    0    0    0    0    0    0                    
+CONECT   14    8    0    0    0    0    0    0    0    0    0                    
+CONECT   15    8    0    0    0    0    0    0    0    0    0                    
+CONECT   16    9    0    0    0    0    0    0    0    0    0                    
+CONECT   17    9    0    0    0    0    0    0    0    0    0                    
+CONECT   18    9    0    0    0    0    0    0    0    0    0                    
+CONECT   19    5    0    0    0    0    0    0    0    0    0                    
+ENDMDL
+END

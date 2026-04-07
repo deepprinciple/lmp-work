@@ -1,0 +1,27 @@
+         methylamine                                        Tot. E =      8.4857
+   1 NT   900  900    0    1.000000   0    0.000000   0    0.000000        0
+   2 DUM   -1   -1    1    1.000000   0    0.000000   0    0.000000        0
+   3 DUM   -1   -1    2    1.000000   1   90.000000   0    0.000000        0
+   4 CT   903  903    1    1.451779   2   90.000000   3  180.000000        0
+   5 H2   909  909    1    1.011104   4  110.524383   2  240.000000        0
+   6 H2   909  909    1    1.011103   4  110.524925   2  122.362404        0
+   7 HC   911  911    4    1.090968   1  110.897221   5   58.821117        0
+   8 HC   911  911    4    1.091012   1  110.518840   7  239.823534        0
+   9 HC   911  911    4    1.091012   1  110.518742   7  120.174806        0
+                    Geometry Variations follow    (2I4,F12.6)                   
+                    Variable Bonds follow         (I4 or I4-I4)                 
+0004-0009                                                                       
+                    Additional Bonds follow       (2I4)                         
+                    Harmonic Constraints follow   (2I4,4F10.4)                  
+                    Variable Bond Angles follow   (I4 or I4-I4)                 
+0005-0009                                                                       
+                    Additional Bond Angles follow (3I4)                         
+AUTO                                                                            
+                    Variable Dihedrals follow     (3I4,F12.6)                   
+0006-0009                                                                       
+                    Additional Dihedrals follow   (6I4)                         
+AUTO                                                                            
+                    Domain Definitions follow     (4I4)                         
+                    Conformational Search         (2I4, 2F12.6)                 
+                    Final blank line                                            
+                                                                                

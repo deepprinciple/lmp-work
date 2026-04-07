@@ -1,0 +1,17 @@
+#!/bin/csh
+set echo
+#
+# display structure in plt.pdb with RasMol
+#
+# usage - xRAS moleculename
+#
+# test if the environment variable BOSSdir has been defined
+#
+if (!($?BOSSdir)) then
+   echo "BOSSdir has not been defined; please see README"
+   exit (-1)
+endif
+
+$BOSSdir/miscexec/rasmol plt.pdb
+#
+exit

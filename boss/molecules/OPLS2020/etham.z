@@ -1,0 +1,29 @@
+          ethylamine                                        Tot. E =      0.4440
+   1 CT   906  906    0    0.400000   0    0.000000   0    0.000000        0
+   2 DUM   -1   -1    1    1.000000   0    0.000000   0    0.000000        0
+   3 DUM   -1   -1    2    1.000000   1   90.000000   0    0.000000        0
+   4 NT   900  900    1    1.450019   2   90.000000   3  270.000000        0
+   5 H2   909  909    4    1.011244   1  110.326617   2  240.000000        0
+   6 H2   909  909    4    1.010754   1  110.497945   5  242.767324        0
+   7 CT    54   54    1    1.529998   4  109.255867   5  182.233645        0
+   8 HC    60   60    7    1.090422   1  110.671691   4  179.091035        0
+   9 HC    60   60    7    1.090325   1  111.693852   8  119.771939        0
+  10 HC    60   60    7    1.090808   1  111.242339   8  240.652141        0
+  11 HC   911  911    1    1.091290   4  110.008108   7  238.335176        0
+  12 HC   911  911    1    1.091340   4  109.418805   7  120.590514        0
+                    Geometry Variations follow    (2I4,F12.6)                   
+                    Variable Bonds follow         (I4 or I4-I4)                 
+0004-0012                                                                       
+                    Additional Bonds follow       (2I4)                         
+                    Harmonic Constraints follow   (2I4,4F10.4)                  
+                    Variable Bond Angles follow   (I4 or I4-I4)                 
+0005-0012                                                                       
+                    Additional Bond Angles follow (3I4)                         
+AUTO                                                                            
+                    Variable Dihedrals follow     (3I4,F12.6)                   
+0006-0012                                                                       
+                    Additional Dihedrals follow   (6I4)                         
+AUTO                                                                            
+                    Domain Definitions follow     (4I4)                         
+                    Conformational Search         (2I4, 2F12.6)                 
+                    Final blank line                                            

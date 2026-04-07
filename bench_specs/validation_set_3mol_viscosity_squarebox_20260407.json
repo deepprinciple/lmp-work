@@ -1,0 +1,36 @@
+{
+  "selection_date": "2026-04-07",
+  "baseline": "squarebox_viscosity_gk_v1",
+  "source": "/root/lmp-work/bench_specs/validation_set_5mol_v2_20260403.json",
+  "notes": [
+    "Three-molecule follow-up for the restored square-box viscosity GK baseline.",
+    "Thermal conductivity stays on the existing long-box rNEMD baseline.",
+    "Dielectric constant support is intentionally deferred until a future demo."
+  ],
+  "molecules": [
+    {
+      "smiles": "CCO",
+      "name": "ethanol",
+      "viscosity_target_cP": 1.263,
+      "thermal_target_W_mK": 0.1618471934536164,
+      "density_g_cm3": 0.78522,
+      "role": "square-box viscosity rerun"
+    },
+    {
+      "smiles": "CC#N",
+      "name": "acetonitrile",
+      "viscosity_target_cP": 0.358,
+      "thermal_target_W_mK": 0.1744430241202602,
+      "density_g_cm3": 0.786,
+      "role": "square-box viscosity rerun"
+    },
+    {
+      "smiles": "C1CCOC1",
+      "name": "tetrahydrofuran",
+      "viscosity_target_cP": 0.46,
+      "thermal_target_W_mK": 0.1448859584626165,
+      "density_g_cm3": 0.889,
+      "role": "square-box viscosity rerun"
+    }
+  ]
+}

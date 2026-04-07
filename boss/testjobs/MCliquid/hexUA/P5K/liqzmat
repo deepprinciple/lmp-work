@@ -1,0 +1,24 @@
+n-Hex                                                                           
+   1 C3    71    0    0    0.000000   0    0.000000   0    0.000000        0
+   2 DUM   -1    0    1    0.500000   0    0.000000   0    0.000000        0
+   3 DUM   -1    0    2    0.500000   1   90.000000   0    0.000000        0
+   4 C4    71    0    1    1.525683   2  124.000000   3  180.000000        0
+   5 C5    71    0    4    1.525692   1  112.363428   2    0.000000        0
+   6 C6    68    0    5    1.525815   4  112.358725   1  179.995586        0
+   7 C2    71    0    1    1.525692   4  112.363428   5  179.995595        0
+   8 C1    68    0    7    1.525815   1  112.358725   4  179.995586        0
+                    Geometry Variations
+                    Variable Bonds follow         (I4)                          
+0004-0008                                                                            
+                    Additional Bonds follow       (2I4)                         
+                    Harmonic Restraints
+                    Variable Bond Angles follow   (I4)                          
+0005-0008                                                                            
+                    Additional Bond Angles follow (3I4)                         
+                    Variable Dihedrals follow     (3I4,F12.6)                   
+000604040404 12.0     
+000704040404  8.0
+000804040404 12.0
+                    Additional Dihedrals follow   (6I4)                         
+                    Domain Definitions follow     (4I4)                         
+                    Final blank line                                            

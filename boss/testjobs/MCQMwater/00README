@@ -1,0 +1,9 @@
+See the qmcmd file.
+An example calculation is in the dce directory.
+Run time for dce is 25 minutes on a 3GHz cpu
+using the qmcmd file with 20M configurations of
+averaging.
+
+The .bat files are for Windows.
+short.bat is a modified qm.bat for a short test run.
+

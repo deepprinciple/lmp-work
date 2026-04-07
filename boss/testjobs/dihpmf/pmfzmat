@@ -1,0 +1,34 @@
+  1,2-dichloroethane                                        Tot. E =     -0.4837
+   1 C1   152    0    0    0.000000   0    0.000000   0    0.000000        0
+   2 DUM   -1    0    1    1.000000   0    0.000000   0    0.000000        0
+   3 DUM   -1    0    2    1.000000   1   90.000000   0    0.000000        0
+   4 C2   152    0    1    1.530792   2   90.000000   3    0.000000        0
+   5 CL   151    0    4    1.781351   1  110.063128   2    0.000000        0
+   6 CL   151    0    1    1.781351   4  110.063128   5    0.000000        0
+   7 H    153    0    1    1.090490   4  111.352086   6  119.636908        0
+   8 H    153    0    1    1.090490   4  111.352086   6  240.363092        0
+   9 H    153    0    4    1.090490   1  111.352086   5  119.636908        0
+  10 H    153    0    4    1.090490   1  111.352086   5  240.363092        0
+                    Geometry Variations follow                                  
+00060003 1.0
+                    Variable Bonds follow         (I4)                          
+0004-0010                                                                       
+                    Additional Bonds follow       (2I4)                         
+                    Harmonic Constraints follow                                 
+                    Variable Bond Angles follow   (I4)                          
+0005-0010                                                                       
+                    Additional Bond Angles follow (3I4)                         
+AUTO                                                                            
+                    Variable Dihedrals follow     (3I4,F12.6)                   
+0007-0010                                                                       
+                    Additional Dihedrals follow   (6I4)                         
+0006000100040005  -1  -1
+AUTO                                                                            
+                    Domain Definitions follow     (4I4)                         
+                    Final blank line                                            
+
+Note: The initial dihedral value for atom 6 is set to 0 and the
+final value is set to 1. This lets the rc (= lambda) values to
+be given in degrees in the cmd file. Also, the dihedral for atom
+6 is the reaction coordinate, so it must be moved from the list
+of variable to additional dihedral angles.

@@ -1,0 +1,90 @@
+#
+# Command file for the BOSS program.  
+# Just copy a solute zmat to qmzmat, then execute via
+# csh qmcmd >& log &
+#***********************************************************************
+echo '           Monte Carlo for a QM Solute in TIP4P'
+echo '                    25 C & 1 atm '
+echo '                 Equilibration 3.2M '
+echo '              Averaging     0-20M '
+echo '            N = 500  T=25  P=1  Rcut = 10.0'
+#***********************************************************************
+#!/bin/csh -f
+#
+nice +19
+set boss = $BOSSdir/BOSS
+set lambda = "0.000 0.000 0.000"
+set boxes = $BOSSdir
+setenv INFILE    mcqmin
+setenv UPFILE    mcqmup
+setenv SAVE      mcqmsv
+setenv AVERAGE   mcqmav
+setenv ZMATRIX   qmzmat
+setenv SLVZMAT   slvzmat
+setenv BANGPAR   $boxes/oplsaa.sb
+setenv WATERBOX  $boxes/watbox
+setenv ORG1BOX   $boxes/org1box
+setenv ORG2BOX   $boxes/org2box
+setenv SUMMARY   mcqmsum
+
+date
+
+#    short NVT Equilibration
+
+set configurations = "200000"
+
+if (-e tmppar) rm tmppar
+cp qmNVTpar tmppar
+cat $BOSSdir/oplsaa.par >> tmppar
+setenv PARAMETER tmppar
+
+setenv OUTPUT    mcqmota
+setenv PLTFILE   mcqmplta
+echo Running NVT
+time $boss 110 $configurations $lambda
+
+#    NPT Equilibration
+
+set configurations = "1000000"
+
+rm tmppar
+cp qmpar tmppar
+cat $BOSSdir/oplsaa.par >> tmppar
+setenv PARAMETER tmppar
+
+setenv OUTPUT    mcqmota
+setenv PLTFILE   mcqmplta
+echo Equilibrating
+time $boss 010 $configurations $lambda
+foreach block (b eq)
+        date
+	setenv OUTPUT    mcqmot$block
+	setenv PLTFILE   mcqmplt$block
+        echo Running $block
+	time $boss 001 $configurations $lambda
+end
+
+#    Averaging
+
+set configurations = "2000000"
+
+setenv OUTPUT    mcqmota
+setenv PLTFILE   mcqmplta
+echo Averaging
+time $boss 011 $configurations $lambda
+mv mcqmsv mcqmsav
+foreach block (b c d e10 a b c d e20)
+        date
+        setenv OUTPUT    mcqmot$block
+        setenv PLTFILE   mcqmplt$block
+        echo Running $block
+        time $boss 001 $configurations $lambda
+        cat mcqmsv >>mcqmsav
+end
+
+rm mcqmsv slvzmat tmppar
+rm *ota *otb *otc *otd
+rm *plta *pltb *pltc *pltd
+
+date
+exit

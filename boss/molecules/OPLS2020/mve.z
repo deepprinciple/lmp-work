@@ -1,0 +1,29 @@
+  methyl vinyl ether  (cis)                                 Tot. E =      0.4422
+   1  X    -1    0    0    0.000000   0    0.000000   0    0.000000        0    
+   2  X    -1    0    1    1.000000   0    0.000000   0    0.000000        0    
+   3  C   517    0    2    1.000000   1   90.000000   0    0.000000        0    
+   4  C   143    0    3    1.345623   2   90.000000   1    0.000000        0    
+   5  O   179    0    3    1.382073   4  127.916402   2   90.000000        0    
+   6  H   144    0    3    1.081183   4  118.973293   5  180.000000        0    
+   7  H   144    0    4    1.080323   3  120.213889   5  180.000000        0    
+   8  H   144    0    4    1.079433   3  122.808478   7  180.000000        0    
+   9  C   181    0    5    1.420233   3  117.241675   4  360.000000        0    
+  10  H   185    0    9    1.089961   5  109.406838   3  180.000000        0    
+  11  H   185    0    9    1.090870   5  111.369566  10  241.054873        0    
+  12  H   185    0    9    1.090870   5  111.369566  10  118.945127        0    
+                    Geometry Variations follow    (2I4,F12.6)                   
+                    Variable Bonds follow         (I4)                          
+0004-0012                                                                       
+                    Additional Bonds follow       (2I4)                         
+                    Harmonic Constraints follow   (2I4,4F10.4)                  
+                    Variable Bond Angles follow   (I4)                          
+0005-0012                                                                       
+                    Additional Bond Angles follow (3I4)                         
+AUTO                                                                            
+                    Variable Dihedrals follow     (3I4,F12.6)                   
+0006-0012                                                                       
+                    Additional Dihedrals follow   (6I4)                         
+AUTO                                                                            
+                    Domain Definitions follow     (4I4)                         
+                    Conformational Search (4I2,2F12.6)                          
+                    Final blank line                                            

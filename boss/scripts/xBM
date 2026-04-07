@@ -1,0 +1,26 @@
+#!/bin/csh
+# set echo 
+#
+# generate analogs                      
+#
+# usage - xBM   
+#
+# output is in out, filenames, and structure files
+#
+# test if the enviroment variable BOMBdir has been defined
+# setenv BOMBdir ~/bomb  
+#
+if (!($?BOMBdir)) then
+    echo "BOMBdir has not been defined; please see README"
+    exit (-1)
+endif
+
+if !(-e scorfnc.in) cp $BOMBdir/scorfnc.in .
+if !(-e tmppar) cp $BOMBdir/oplsaa.par tmppar
+if !(-e tmprls) cp $BOMBdir/Rlist tmprls     
+if !(-e tmpmod) cp $BOMBdir/mods.z tmpmod
+
+$BOMBdir/BOMB    
+
+#
+exit

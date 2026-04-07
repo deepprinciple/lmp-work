@@ -1,0 +1,102 @@
+
+*******************************************************************
+OPLS-AA atom types for bond stretching, angle bending and torsions.
+*******************************************************************
+
+OPLS and AMBER all-atom definitions (JACS 117, 5179 (1995), Table 1) that
+are in common:
+
+C        carbonyl C
+CT       alkane C
+CM       alkene C
+CA       benzene C; aromatic C in 6-ring
+CB       aromatic C at ring fusion
+CK       adenine/purine C8
+CU       C3 in pyrazole or isoxazole
+CV       C4 in imidazole, oxazole, etc.
+CW       C2 in pyrrole or furan
+CR       C2 in imidazole, oxazole, etc.
+CQ       adenine/purine C2
+
+H        amide H
+HC       alkane or alkene H
+HA       benzene H
+HO       alcohol O
+HS       thiol O
+HW       water O
+H3       ammonium or guanidinium H
+H4       cytosine H on C6 - no longer used
+H5       adenine H on C2 - nolonger used
+
+N        amide N
+NA       5- or 6-ring aryl N-H 
+NB       N= in oxazole, imidazole, etc.
+NC       pyridine N
+N*       purine N9 in nucleosides
+N2       N in guanidinium
+N3       ammonium N
+NH       N in conjugated 5- or 6-ring, e.g., pyrrole
+
+O        carbonyl oxygen
+OH       alcohol oxygen
+OS       ether oxygen
+OW       water oxygen
+O2       carboxylate O
+
+P        phosphate P
+S        sulfide sulfur
+SH       thiol sufur
+
+
+The following additions have been made for OPLS-AA to handle common organic
+functional groups:
+
+CO       acetal C  (O- CR2 -O)
+C=       C2 in  dienes (C1 is CM)
+C#       C3 in trienes (C1 is CM, C2 is C=)
+         (scheme fails for higher polyenes; 
+         bond-order info is needed)
+C:       allene & ketene C2
+CZ       sp C in triple bond
+C+       carbenium carbon
+C!       C1 in biphenyl-like ring
+CS       C3 in heterocycle 5-ring like pyrrole, furan, thiophene
+CU       C next to N:-X in aromatic 5-ring like pyrazole, isoxazole
+CP       C2 in thiophene
+CX       C in C=C in protonated imidazole, histidine
+CY       sp3 carbon in 3-ring or 4-ring
+C$       carbonyl carbon in 3-ring or 4-ring (e.g., lactam)
+CF       carbon in perfluoroalkane
+
+N$       amide N in 3-ring or 4-ring
+NY       N epsilon of neutral Arg
+NZ       sp N in triple bond or azide
+NO       N in N=O (nitro, nitroso)
+N=       N2 in azadiene C=N-C=C, etc.
+NM       N in tertiary amide
+NT       amine nitrogen
+NS       pyrrole N-R
+NX       pyrrole N-Aryl
+
+ON       O in N=O
+OY       O in S=O
+O$       O in 3-ring or 4-ring, e.g., epoxide
+OA       O in furan, oxazole, etc.
+
+P+       phosphonium P
+
+Si       silane Si
+H        H on Si in silane
+
+SY       S in S=O in sulfonamide or sulfone             
+SZ       S in sulfoxide
+S=       S in thiocarbonyl (thiourea, thioamide,...)   
+
+F        F attached to C
+Cl       Cl attached to C
+Br       Br attached to C
+I        I attached to C
+
+LP       negative site in TIP4P or TIP5P water
+
+See oplsaa.par for other examples and ion parameters.

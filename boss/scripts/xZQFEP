@@ -1,0 +1,20 @@
+#!/bin/csh
+#
+echo  make charge annihilation Z-matrix
+#
+# usage - xZQFEP moleculename
+#
+# test if the enviroment variable BOSSdir has been defined
+#
+if (!($?BOSSdir)) then
+   echo "BOSSdir has not been defined; please see README"
+   exit (-1)
+endif
+
+if (-e optzmat) rm optzmat
+cp ${argv[1]}.z optzmat
+csh $BOSSdir/scripts/ZQFEPcmd >& log
+rm optzmat
+echo  output is sum
+#
+exit

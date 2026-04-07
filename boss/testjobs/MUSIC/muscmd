@@ -1,0 +1,105 @@
+#
+# Command file for the BOSS program.  Execute by entering the following:
+# csh muscmd >& log &
+#***********************************************************************
+echo '                 General MUSIC Setup    '
+echo '            T =   100, 0,  -100 C Annealing'
+echo '              2M at T1 and T2, 1M at T3'
+#***********************************************************************
+#!/bin/csh -f
+#
+nice +19
+set boss = $BOSSdir/BOSS
+set lambda = "0.000 0.000 0.000"
+set boxes = $BOSSdir
+setenv INFILE    musin
+setenv UPFILE    musup
+setenv SAVE      mussv
+setenv AVERAGE   musav
+setenv ZMATRIX   protein.z
+setenv SLVZMAT   probe.z
+setenv BANGPAR   $boxes/oplsaa.sb
+setenv WATERBOX  $boxes/watbox
+setenv ORG1BOX   $boxes/org1box
+setenv ORG2BOX   $boxes/org2box
+setenv SUMMARY   mussum
+
+set configurations = "500000"
+
+date
+
+#    Start at T1   
+
+# set temperature T1 and LJ scaling
+if (-e tmppar) rm tmppar
+cp muspar tmppar
+if (-e nowpar) rm nowpar
+sed s/'TTTTTT'/' 100.0'/ tmppar > nowpar
+rm tmppar
+sed s/'LJLJLJ'/'  0.85'/ nowpar > tmppar
+cat $BOSSdir/oplsaa.par >> tmppar
+setenv PARAMETER tmppar
+
+setenv OUTPUT    musot0
+setenv PLTFILE   musplt0
+echo Running 1st T
+time $boss 111 $configurations $lambda
+foreach block (b c T1)
+        date
+	setenv OUTPUT    musot$block
+	setenv PLTFILE   musplt$block
+        echo Running $block
+	time $boss 001 $configurations $lambda
+end
+
+#    Restart at T2
+
+# set temperature T2 and LJ scaling
+rm tmppar
+cp muspar tmppar
+rm nowpar
+sed s/'TTTTTT'/'   0.0'/ tmppar > nowpar
+rm tmppar
+sed s/'LJLJLJ'/'  0.92'/ nowpar > tmppar
+cat $BOSSdir/oplsaa.par >> tmppar
+
+setenv OUTPUT    musota
+setenv PLTFILE   musplta
+echo Running 2nd T 
+time $boss 011 $configurations $lambda
+foreach block (b c T2)
+        date
+        setenv OUTPUT    musot$block
+        setenv PLTFILE   musplt$block
+        echo Running $block
+        time $boss 001 $configurations $lambda
+end
+
+#    Restart at T3
+
+# set temperature T3 and LJ scaling
+rm tmppar
+cp muspar tmppar
+rm nowpar
+sed s/'TTTTTT'/'-100.0'/ tmppar > nowpar
+rm tmppar
+sed s/'LJLJLJ'/'  1.00'/ nowpar > tmppar
+cat $BOSSdir/oplsaa.par >> tmppar
+
+setenv OUTPUT    musota
+setenv PLTFILE   musplta
+echo Running 3rd T 
+time $boss 011 $configurations $lambda
+if (-e mussav) rm mussav
+mv mussv mussav
+foreach block (T3)
+        date
+        setenv OUTPUT    musot$block
+        setenv PLTFILE   musplt$block
+        echo Running $block
+        time $boss 001 $configurations $lambda
+        cat mussv >>mussav
+end
+rm mussv tmppar nowpar          
+date
+exit

@@ -1,0 +1,87 @@
+#
+# Command file for the BOSS program.  Execute by entering the following:
+# csh mc500cmd >& log &
+# Just need to copy solute zmat to MC500zmat, then execute.
+#***********************************************************************
+echo '            General Linear Response Setup    '
+echo '                    25 C & 1 atm '
+echo '                 Equilibration 25M '
+echo '              Averaging     0-500M '
+echo '            N = 500  T=25  P=1  Rcut = 10.0'
+#***********************************************************************
+#!/bin/csh -f
+#
+nice +19
+set boss = $BOSSdir/BOSS
+set lambda = "0.000 0.000 0.000"
+set boxes = $BOSSdir
+setenv INFILE    MC500in
+setenv UPFILE    MC500up
+setenv SAVE      MC500sv
+setenv AVERAGE   MC500av
+setenv ZMATRIX   MC500zmat
+setenv SLVZMAT   slvzmat
+setenv BANGPAR   $boxes/oplsaa.sb
+setenv WATERBOX  $boxes/watbox
+setenv ORG1BOX   $boxes/org1box
+setenv ORG2BOX   $boxes/org2box
+setenv SUMMARY   MC500sum
+
+date
+
+#    short NVT Equilibration
+
+set configurations = "200000"
+
+if (-e tmppar) rm tmppar
+cp mc500par tmppar
+cat $BOSSdir/oplsaa.par >> tmppar
+sed s/'NVTNPT'/'999999'/ tmppar > NVTpar
+setenv PARAMETER NVTpar
+
+setenv OUTPUT    MC500ota
+setenv PLTFILE   MC500plta
+echo Running NVT
+time $boss 110 $configurations $lambda
+
+#    NPT Equilibration
+
+set configurations = "5000000"
+
+sed s/'NVTNPT'/'     0'/ tmppar > NPTpar
+setenv PARAMETER NPTpar
+
+setenv OUTPUT    MC500ota
+setenv PLTFILE   MC500plta
+echo Equilibrating
+time $boss 010 $configurations $lambda
+foreach block (b  c d eq)
+        date
+	setenv OUTPUT    MC500ot$block
+	setenv PLTFILE   MC500plt$block
+        echo Running $block
+	time $boss 001 $configurations $lambda
+end
+
+#    Averaging
+
+set configurations = "50000000"
+setenv OUTPUT    MC500ota
+setenv PLTFILE   MC500plta
+echo Averaging
+time $boss 011 $configurations $lambda
+mv MC500sv MC500sav
+foreach block (100 b 200 c 300 d 400 a 500)
+        date
+        setenv OUTPUT    MC500ot$block
+        setenv PLTFILE   MC500plt$block
+        echo Running $block
+        time $boss 001 $configurations $lambda
+        cat MC500sv >>MC500sav
+end
+
+rm MC500sv slvzmat NVTpar NPTpar
+rm *ota *otb *otc *otd
+rm *plta *pltb *pltc *pltd
+date
+exit

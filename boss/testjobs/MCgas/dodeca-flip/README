@@ -1,0 +1,9 @@
+This MC simulation for dodecane uses the flip protocol for all
+CCCC dihedral angles - see the gaszmat file.
+A standard MC simulation is run otherwise with 2M configurations
+of averaging after 1M for equilibration.
+Execution time: ca. 15 min on a 2.4 GHz Pentium IV.
+
+Note the symmetry of the resultant dihedral angle distributions
+for the flipped dihedrals in comparison to those from the
+the 5X longer run in the dodeca10M directory.

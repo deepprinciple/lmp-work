@@ -1,0 +1,41 @@
+     methanol/methane                                       Tot. E =    -55.0866
+   1 O    800  140    0    0.000000   0    0.000000   0    0.000000        0    
+   2 DUM   -1    0    1    0.500000   0    0.000000   0    0.000000        0    
+   3 DUM   -1    0    2    0.500000   1   90.000000   0    0.000000        0    
+   4 H    801  100    1    0.945698   2   90.000000   3  180.000000        0    
+   5 C    802  138    1    1.411870   4  108.989752   2  180.000000        0    
+   6 HC   803  140    5    1.090450   1  110.239001   4  180.000000        0    
+   7 HC   804  140    5    1.090404   1  110.549523   6  119.850735        0    
+   8 HC   805  140    5    1.090404   1  110.549526   6  240.149263        0    
+                    Geometry Variations follow                                  
+00040001 0.2                                                                    
+00050001 1.09                                                                   
+00060001 1.09                                                                   
+00070001 1.09                                                                   
+00080001 1.09                                                                   
+00060002 109.47                                                                 
+00070002 109.47                                                                 
+00080002 109.47                                                                 
+00070003 120.0                                                                  
+00080003 240.0                                                                  
+                    Variable Bonds follow         (I4 or I4-I4)                 
+                    Additional Bonds follow       (2I4)                         
+                    Harmonic Constraints follow                                 
+                    Variable Bond Angles follow   (I4 or I4-I4)                 
+                    Additional Bond Angles follow (3I4)                         
+                    Variable Dihedrals follow     (3I4,F12.6)                   
+                    Additional Dihedrals follow   (6I4)                         
+                    Domain Definitions follow     (4I4)                         
+                    Conformational Search         (2I4, 2F12.6)                 
+                    Final blank line                                            
+                                                                                
+ Final Non-Bonded Parameters for QM (AM1 CM1Ax1.20) Atoms:                      
+                                                                                
+800  8 OH  -0.617850  3.120000  0.170000                                        
+801  1 HO   0.428283  0.000000  0.000000                                        
+802  6 CT  -0.045934  3.500000  0.066000                                        
+803  1 HC   0.115195  2.500000  0.030000                                        
+804  1 HC   0.060153  2.500000  0.030000                                        
+805  1 HC   0.060153  2.500000  0.030000                                        
+                                                                                
+                                                                                

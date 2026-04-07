@@ -1,0 +1,33 @@
+The Z-matrix for the sos-fep calculation needs to be called fepzmat. Then,
+to execute an entire sos-fep calculation in water with T=25C and #waters=500,
+just enter
+csh soscmd11 >& log &
+
+xSOSAQ11 provides a convenient way to run a single fep calculation
+in any directory. Runs 11 FEP windows (delta lambda = 0.10). 
+This is recommended for general use when addding/removing
+zero or one non-H atom.
+PhXaq11 contains input files for PhX -> PhY perturbations.
+See SOSgas for the corresponding gas-phase perturbations.
+
+xSOSAQ13 uses 13 windows; the first and last window use 
+delta lambda = 0.05. 
+
+xSOSAQ15 uses 15 windows; the first two and last two windows  
+use delta lambda = 0.05. 
+
+For sos, all increments have to be run forward and backward.
+
+For the Yale queuing system:
+xSOSAQQ6     -  6 windows (delta lambda = 0.20)
+xSOSAQQ8     -  8 windows 
+xSOSAQQ11    - 11 windows (delta lambda = 0.10) 
+xSOSAQQ13    - 13 windows 
+xSOSAQQ15    - 15 windows 
+xSOSAQQ21    - 21 windows (delta lambda = 0.05)
+
+Note: FEP with double-wide sampling and SOS calculations use
+unique x-scripts since the schedule of lambda values is different.
+
+xDELGSOS is used to collect and sum the free-energy results;
+the final results are in sumout. 

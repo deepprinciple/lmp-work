@@ -1,0 +1,56 @@
+
+> 
+> Pls summarize the outcome of the SASA effort in a few sentences
+> by email. Should I stick with SAVOL2 or not?
+> 
+
+Stick with SAVOL2 for now, though I'd bet if a large survey was done there
+would be better algorithms out there.  Here's the gist of what I did:
+ 
+
+1) The original Still approximation for SASA is not generalizable, and
+maybe only useful for very approximate, high through-put calcs.
+
+2) There are several points about SAVOL2:
+  a.  differences in SASA are pretty good, but absolute values are high
+  b.  maybe changing radii of aliphatic and aromatic carbons, and
+carbonyls will improve absolute results
+  c.  in 2% of my small molecule test cases, small changes in structure
+will give huge changes in SASA --> I don't know from where this stems.
+Error was relatively small on large molecules
+  d.  it was twice as fast as exact procedures for proteins
+
+3) Exact geometrical procedures, particularly those developed with
+peptides in mind, will occasionally fail for numerical reasons.  These
+problems are documented in the literature and correctable.
+
+
+Conclusion:  Still's code is not acceptable for LR type calcs, SAVOL2
+appears acceptable with above caveats (perhaps frequent averaging will
+drown out occasional large changes), exact procedures would be ideal if
+reliable code was obtained.
+
+
+Dan
+priced@doctor.chem.yale.edu
+
+
+
+& r
+To: Dan Price <priced@doctor.chem.yale.edu>
+Subject: Re: your mail
+
+OK - I have seen the SAVOL2 oddity when you just take, I think,
+methane and gradually shrink the CH distance from 1.09. At some
+point, e.g. 1.081, there is a discontinuous drop in the SASA.
+
+It definitely occurs for e.g. acetone where the HC sigma is the
+smaller 2.42 rather than the usual 2.50. To avoid this in QikProp,
+I always use 2.50 for any HC. Bill
+
+----------------------------------------------------------------------
+The standard probe radius for water in computing SASA 
+is 1.4 A. This was used by Eisenberg (Nature 319, 199 (1986))
+and I believe goes back to Lee & Richards, JMB 55, 379 (1971).
+----------------------------------------------------------------------
+

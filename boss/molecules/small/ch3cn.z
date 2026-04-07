@@ -1,0 +1,29 @@
+       acetonitrile                                         Tot. E =     -5.2767
+   1 C    754  754    0    0.000000   0    0.000000   0    0.000000        0    
+   2 X     -1   -1    1    1.000000   0    0.000000   0    0.000000        0    
+   3 X     -1   -1    2    1.000000   1   90.000000   0    0.000000        0    
+   4 N    753  753    1    1.155784   2   90.000000   3    0.000000        0    
+   5 C    755  755    1    1.455947   2   90.000009   3  180.000000        0    
+   6 H    759  759    5    1.089488   1  109.585490   2  359.998103        0    
+   7 H    759  759    5    1.089488   1  109.585487   6  120.000055        0    
+   8 H    759  759    5    1.089488   1  109.585441   6  240.000043        0    
+                    Geometry Variations follow    (2I4,F12.6)                   
+                    Variable Bonds follow         (I4 or I4-I4)                 
+0004-0008                                                                       
+                    Additional Bonds follow       (2I4)                         
+                    Harmonic Constraints follow   (2I4,4F10.4)                  
+                    Variable Bond Angles follow   (I4 or I4-I4)                 
+0005-0008                                                                       
+                    Additional Bond Angles follow (3I4)                         
+000500010004                                                                    
+000600050007                                                                    
+000600050008                                                                    
+000700050008                                                                    
+                    Variable Dihedrals follow     (3I4,F12.6)                   
+000600000000 15.0                                                               
+000700000000 3.0                                                                
+000800000000 3.0                                                                
+                   Additional Dihedrals follow   (6I4)                          
+                   Domain Definitions follow     (4I4)                          
+                   Conformational Search         (2I4, 2F12.6)                  
+                   Final blank line                                             

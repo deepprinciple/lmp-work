@@ -1,0 +1,18 @@
+REMARK    4-nitro to 4-aminophenol      
+REMARK    Created by BOSS 4.7 Nov06 Linux 
+ATOM      1  C00 UNK     1       0.000   1.400   0.000
+ATOM      2  C01 UNK     1       0.000   0.671  -1.263
+ATOM      3  C02 UNK     1       0.000   0.767   1.240
+ATOM      4  C03 UNK     1       0.073  -0.719  -1.210
+ATOM      5  C04 UNK     1       0.004  -0.654   1.252
+ATOM      6  C05 UNK     1       0.014  -1.398   0.071
+ATOM      7  O06 UNK     1      -0.150   2.748  -0.033
+ATOM      8  H07 UNK     1       0.089   1.252  -2.203
+ATOM      9  H08 UNK     1       0.033   1.248   2.213
+ATOM     10  H09 UNK     1       0.212  -1.223  -2.191
+ATOM     11  H0A UNK     1       0.167  -0.978   2.250
+ATOM     12  N0B UNK     1       0.184  -2.871   0.135
+ATOM     13  H0C UNK     1       0.299   3.105  -0.830
+ATOM     14  O0D UNK     1       0.056  -3.466  -0.877
+ATOM     15  O0E UNK     1       0.331  -3.379   1.213
+END

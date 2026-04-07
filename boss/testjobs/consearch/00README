@@ -1,0 +1,112 @@
+              ************************
+              Conformational Searching
+              ************************
+
+100 starting structures are used for all searches here.
+
+(a) Execute Monte Carlo conformational search for ethanediol via
+xCS100F etdiol
+
+OUTPUT FILES:
+sum contains a summary of the results. 
+etdiol.cs.mol has the .mol file for each conformer.
+etdiol.cs.out has the full output.
+etdiol.cs.z has the Z-matrices for each conformer.
+etdiol.cs.CSV is a comma-separated-file summarizing the key results. Display with gnumeric.
+
+Time required for 1,2-ethanediol: 2 seconds on 2 GHz Intel  
+
+The file mcsum has the results for the sum file, as executed at Yale.
+To view all of the conformers on a PC, use WebLabViewer - enter
+xWLMOL etdiol.cs
+
+In WebLabViewer, use the Window/Hierarchy feature to separate the conformers into
+individual structures. Otherwise,
+if you wish to make an individual .mol file for each structure, enter
+xCSMOL 
+For individual Z-matrices, enter
+xCSZ
+
+(b) Execute MC conformational search including GB/SA solvation via
+xCSGB100 etdiol
+The file GBsum has the results for the sum file, as executed at Yale.
+
+(c) Execute stochastic conformational search via
+xSS100F etdiol
+
+The file sssum has the results for the sum file, as executed at Yale.
+
+OUTPUT FILES:
+etdiol.ss.sum contains a summary of the results. 
+etdiol.ss.mol has the .mol file for each conformer.
+etdiol.ss.out has the full output.
+etdiol.ss.z has the Z-matrices for each conformer.
+The comma-separated-file is not written out.          
+
+A kick radius of 2.0 A has been specified in the zmat file. This
+would be too large for cyclic molecules, ca. 0.5 A is needed in
+that case.
+If there are no conformational search entries in the Z-matrix file,
+the default values for stochastic search are:
+NFIX =   0 RADIUS =     2.0000 PUSH =    0.1000 HWIDTH =    0.5000
+
+The MC procedure finds the seven conformers. The stochastic
+method finds six conformers - more starting structures can be
+used, e.g., xSS200F etdiol
+
+The etdiol.cs.mol file can be directly input to 
+QikProp to obtain the properties predictions for each conformer:
+xQPROP etdiol.cs.mol
+(The xQPROP script must be in this directory or, for Windows, in the bat directory.)
+
+The QikProp and BOSS results can then be combined with the script
+xQPCON to obtain the conformationally averaged properties. Statistical
+factors for degenerate conformers are not included. Sample
+output is in conout.
+
+------------------------------------------------------------------------
+
+    September 19, 2000
+    Conformational search has been enhanced. If MC conformational search is requested
+    and no conformational search specifications are in the Z-matrix, the program will
+    select the key non-ring bonds for torsional variation. With the xCS100 and xCS200
+    scripts, the resulting conformers are in the plt.mol file. Execution of QikProp on
+    plt.mol will then generate the QikProp predictions for each conformer. The
+    conformational search and QikProp results can then be combined with the xQPCON
+    script to obtain confromationally averaged properties for the gas-phase or
+    aqueous-phase conformer distributions. E.g.,
+    xCS100 celeco
+    XQPROP plt.mol
+    xQPCON
+    will provide the results for celeco.z (celecoxib) in the drugs directory.
+
+    The key point is that you can perform a reasonable conformational search now without
+    providing any conformational search information in the Z-matrix. New scripts
+    have also been added -
+
+xCS100      - execute MC conformational search with 100 starting structures (usual)
+xCS200      - execute MC conformational search with 200 starting structures (usual)
+xCS500      - execute MC conformational search with 500 starting structures (usual)
+xCS1K       - execute MC conformational search with 1000 starting structures (usual)
+xCS100F     - execute MC CS with 100 starting structures - (with high resolution -
+xCS200F     - execute MC CS with 200 starting structures - may get duplicate minima -
+xCS500F     - execute MC CS with 500 starting structures - OK for small molecules)
+xSS100      - execute stochastic conformational search with 100 starting structures 
+xSS200      - execute stochastic conformational search with 200 starting structures 
+xSS500      - execute stochastic conformational search with 500 starting structures 
+xSS1K       - execute stochastic conformational search with 1000 starting structures 
+xSS100F     - execute stochastic CS with 100 starting structures - with high resolution
+xSS200F     - execute stochastic CS with 200 starting structures - with high resolution
+xSS500F     - execute stochastic CS with 500 starting structures - with high resolution
+
+xCSINFO     - utility: list energies of found conformers in csout
+xCSMOL      - utility: create separate .mol files for each conformer; they can then
+              be displayed individually with, e.g., RasMol
+
+    x??100, x??200, etc. use less stringent comparison criterion for identifying
+    duplicate conformers - appropriate for drug-like molecules.
+
+    x??100F, x??200F, etc. provide higher resolution for small molecules; e.g., they
+    will distinguish trans and gauche ethanol, x??100 and x??200 will not. All
+    scripts will distinguish the four pentane conformers.
+

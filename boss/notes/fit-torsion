@@ -1,0 +1,27 @@
+To obtain OPLS-AA torsion parameters for specific missing cases:
+
+As an example, we wanted parameters to treat 2-chloro-N-methylacetamide. The Z-matrix was 
+derived from nma.z in the aazmat directory by modifying the CH3 group to CH2Cl using standard 
+OPLS-AA atom types for alkyl chlorides. An optimization was run and BOSS noted that torsion 
+parameters for Cl-CT-C-O and Cl-CT-C-N were missing and that it was using the nearest 
+matches instead, CT-CT-C-O and CT-CT-C-N. Dihedral driving was then executed as in the 
+dihdrive test job and it was found that the profile is 1-fold with Cl-C-C-O cis being 5.5 kcal/mol 
+higher in energy than trans. With Gaussian98, a 6-31G* torsion profile was run and the barrier 
+was found to be 1-fold with height 4.1 kcal/mol. To obtain this result, entries were made in 
+oplsaa.par for Cl-CT-C-O and Cl-CT-C-N with all Vs = 0. The dihedral driving was rerun and the 
+barrier remained at 5.5 kcal/mol. The barrier was reduced to 4.1 kcal/mol by modifying the V1
+terms in oplsaa.par:
+       V1        V2         V3       V4
+352  -0.650     0.000     0.000     0.0        Cl-CT-C -O      2-chloroamide wlj fit to 6-31G*
+353   0.650     0.000     0.000     0.0        Cl-CT-C -N      2-chloroamide wlj fit to 6-31G*
+
+More generally, I would record the ab initio energy profile in a database program like JMP,
+and one should also consider using higher-level ab initio calculations such as LMP2/cc-pVTZ(-f).
+Instead of JMP, one could use our own xlfit or QikFit in a similar manner entering the data in a CSV.
+Then you need to compute the OPLS-AA profile with the to-be-determined torsion parameters
+with all Vs set to zero. Subtract the two columns and the residual is what needs to be fitted
+with the Fourier series. Add columns with 1 + cos phi, 1 - cos 2phi, and 1 + cos 3phi.
+Then run the regression analysis with JMP to determine the optimal V1, V2, and V3. The need for 
+V4 terms is rare, but they can be handled analogously, if needed. If any Vs are near zero (+/- 0.1 
+kcal/mol), set them to zero (exclude them from the fit) and refit again for the final Vs.
+

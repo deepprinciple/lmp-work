@@ -1,0 +1,21 @@
+#!/bin/csh
+set echo
+#
+# perform single-point OPLS-AA calculation    
+# prepare Z-matrix and PDB file for MCPRO
+#
+# usage - xSPM moleculename
+#
+# test if the enviroment variable BOSSdir has been defined
+#
+if (!($?BOSSdir)) then
+   echo "BOSSdir has not been defined; please see README"
+   exit (-1)
+endif
+
+if (-e optzmat) rm optzmat
+cp ${argv[1]}.z optzmat
+csh -e $BOSSdir/scripts/SPMcmd >& log 
+rm optzmat
+#
+exit

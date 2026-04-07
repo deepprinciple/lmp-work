@@ -1,0 +1,27 @@
+        ethanethiol                                         Tot. E =      0.3032
+   1 S    200    0    0    0.000000   0    0.000000   0    0.000000        0
+   2 DUM   -1    0    1    0.500000   0    0.000000   0    0.000000        0
+   3 DUM   -1    0    2    0.500000   1   90.000000   0    0.000000        0
+   4 H    204    0    1    1.336634   2   90.000000   3  180.000000        0
+   5 C    206    0    1    1.811294   4   96.409929   2  180.000000        0
+   6 C     54    0    5    1.531188   1  108.747336   4  179.998836        0
+   7 HC    60    0    5    1.090478   1  109.463638   6  121.079659        0
+   8 HC    60    0    5    1.090478   1  109.468536   6  238.914722        0
+   9 HC    60    0    6    1.090082   5  110.899814   1  179.986981        0
+  10 HC    60    0    6    1.090451   5  111.169308   9  119.883520        0
+  11 HC    60    0    6    1.090450   5  111.172843   9  240.113894        0
+                    Geometry Variations follow                                  
+                    Variable Bonds follow         (I4 or I4-I4)                 
+0004-0011                                                                       
+                    Additional Bonds follow       (2I4)                         
+                    Harmonic Constraints follow                                 
+                    Variable Bond Angles follow   (I4 or I4-I4)                 
+0005-0011                                                                       
+                    Additional Bond Angles follow (3I4)                         
+AUTO                                                                            
+                    Variable Dihedrals follow     (3I4,F12.6)                   
+0006-0011                                                                       
+                    Additional Dihedrals follow   (6I4)                         
+AUTO                                                                            
+                    Domain Definitions follow     (4I4)                         
+                    Final blank line                                            

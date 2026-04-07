@@ -1,0 +1,27 @@
+           Imidazole                                        Tot. E =      3.2377
+   1 Dum   -1   -1    0    0.000000   0    0.000000   0    0.000000        0    
+   2 Dum   -1   -1    1    1.000000   0    0.000000   0    0.000000        0    
+   3 N1   557  557    1    1.400000   2   90.000000   0    0.000000        0    
+   4 C2   558  558    3    1.335423   1   54.000000   2   90.000000        0    
+   5 N3   559  559    4    1.327418   3  113.121914   1    0.000000        0    
+   6 C5   561  561    3    1.384057   4  107.130547   5    0.000000        0    
+   7 C4   560  560    6    1.367426   3  105.662853   4    0.000000        0    
+   8 H1   562  562    3    1.010000   4  126.434726   5  180.000000        0    
+   9 H2   563  563    4    1.080000   3  123.439043   6  180.000000        0    
+  10 H5   565  565    6    1.080000   3  122.618574   4  180.000000        0    
+  11 H4   564  564    7    1.080000   6  129.035535   3  180.000000        0    
+                    Geometry Variations                                         
+                    Variable Bonds follow         (I4)                          
+0004-0011                                                                       
+                    Additional Bonds follow       (2I4)                         
+00050007                                                                        
+                    Harmonic Constraints                                        
+                    Variable Bond Angles follow   (I4)                          
+0005-0011                                                                       
+                    Additional Bond Angles follow (3I4)                         
+AUTO
+                    Variable Dihedrals follow     (3I4,F12.6)                   
+                    Additional Dihedrals follow   (6I4)                         
+                    Domain Definitions follow     (4I4)                         
+                    Final blank line                                            
+                                                                                

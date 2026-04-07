@@ -1,0 +1,23 @@
+#!/bin/csh
+set echo
+#
+# replace a string                             
+#
+# usage - xRPLC file          
+#
+# test if the environment variable BOSSdir has been defined
+#
+if (!($?BOSSdir)) then
+   echo "BOSSdir has not been defined; please see README"
+   exit (-1)
+endif
+
+if (-e in) rm in
+if (-e out) rm out
+cp ${argv[1]} in             
+$BOSSdir/miscexec/replace        
+rm ${argv[1]}
+cp out ${argv[1]}
+rm in out
+#
+exit

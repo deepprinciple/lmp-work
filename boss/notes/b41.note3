@@ -1,0 +1,56 @@
+
+-------------------------------------------
+BOSS 4.1 Release Note #  3   March 22, 1999
+-------------------------------------------
+
+(1)
+For versions of BOSS 4.1 prior to today, please
+note that the SASA components were mislabeled in the run summaries
+(both sum file and ot file). I.e., for ethanol the columns below
+for hydrophilic and hydrophobic should be reversed.
+
+ SASA Analysis:
+ Run    Tot. SASA      Volume      Hydrophilic    Hydrophobic    Aromatic
+ 20      215.001       279.765       159.280        55.721         0.000
+  1      214.020       278.070       156.354        57.666         0.000
+  2      214.736       279.426       156.271        58.465         0.000
+...
+ 19      215.436       280.363       157.520        57.916         0.000
+
+                                            Standard Deviations
+           0.155         0.243         0.200         0.179         0.000
+
+                                                 Averages
+         214.989       279.721       157.845        57.144         0.000
+
+The  breakdown earlier in the ot file was labeled correctly:
+
+ Ave. Total Solute SASA   =    214.9894
+ Ave. Total Solute Volume =    279.7212
+ Hydrophobic SASA         =    157.8453
+ Hydrophilic SASA         =     57.1441
+ Aromatic    SASA         =      0.0000
+
+The version of BOSS 4.1 (boss41m.tar.Z) that is now in the ftp site on omega has 
+this problem corrected. 
+
+(2)
+One can now request the program to expand a Z-matrix that uses ranges (e.g. 0001-0022)
+and AUTO commands into a full, explicit Z-matrix, which is output in
+the sum file. One just uses the keyword FULL instead of NEWZMAT (or
+NEWZM) in the par file. E.g.
+
+replace
+ Optimizer, ftol, simulated annealing parameters:
+BFGS    0.000100NEWZM         0       0    0.0000    0.0000
+
+with
+ Optimizer, ftol, simulated annealing parameters:
+BFGS    0.000100FULL          0       0    0.0000    0.0000
+
+
+This is useful when (1) building a protein-ligand complex using pepz, which does not
+recognize the range and AUTO designationsi, and (2) for generating a Z-matrix for
+a flexible, custom solvent molecule when the original Z-matrix has AUTO designations
+(AUTO designations are only valid for solute Z-matrices). 
+

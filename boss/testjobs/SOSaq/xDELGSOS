@@ -1,0 +1,22 @@
+#!/bin/csh
+#
+echo  sum DeltaGs from SOS calculation     
+#
+# usage - xDELGSOS DirectoryName           
+#
+# test if the environment variable BOSSdir has been defined
+#
+if (!($?BOSSdir)) then
+   echo "BOSSdir has not been defined; please see README"
+   exit (-1)
+endif
+
+cd ${argv[1]}.sos
+if (-e delgsum) rm delgsum
+grep DelSOS *sum* >>delgsum
+$BOSSdir/miscexec/sumdelg             
+grep DeltaGs sumout
+grep "Sigma          =" sumout
+cd ..
+#
+exit

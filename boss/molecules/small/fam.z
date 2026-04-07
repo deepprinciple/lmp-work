@@ -1,0 +1,25 @@
+          Formamide                                         Tot. E =    -22.8407
+   1 C    235    0    0    0.000000   0    0.000000   0    0.000000        0    
+   2 DUM   -1    0    1    1.000000   0    0.000000   0    0.000000        0    
+   3 DUM   -1    0    2    1.000000   1   90.000000   0    0.000000        0    
+   4 O    236    0    1    1.223691   2   90.000000   3    0.000000        0    
+   5 N    237    0    1    1.326928   4  120.738235   2  270.000000        0    
+   6 HCO  279    0    1    1.090000   4  123.672941   2   90.000000        0    
+   7 H    240    0    5    1.007503   1  117.557408   4  360.000000        0    
+   8 H    240    0    5    1.006534   1  120.633425   7  180.000000        0    
+                    Geometry Variations follow    (2I4,F12.6)                   
+                    Variable Bonds follow         (I4 or I4-I4)                 
+0004-0008                                                                       
+                    Additional Bonds follow       (2I4)                         
+                    Harmonic Constraints follow   (2I4,4F10.4)                  
+                    Variable Bond Angles follow   (I4 or I4-I4)                 
+0005-0008                                                                       
+                    Additional Bond Angles follow (3I4)                         
+AUTO                                                                            
+                    Variable Dihedrals follow     (3I4,F12.6)                   
+0006-0008                                                                       
+                    Additional Dihedrals follow   (6I4)                         
+AUTO                                                                            
+                    Domain Definitions follow     (4I4)                         
+                    Conformational Search         (2I4, 2F12.6)                 
+                    Final blank line                                            

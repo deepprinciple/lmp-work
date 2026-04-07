@@ -1,0 +1,73 @@
+------------------------------------------------------------------
+The subdirectory methanol provides a tutorial for setting up a new
+pure liquid simulation - see the README file.
+------------------------------------------------------------------
+
+The ethanol directory is for a
+MC simulation of liquid ethanol using the
+OPLS-AA force field. The 267 solvent molecules are fully
+flexible. Equilibration = 2.5M; Averaging = 2M configurations.
+Time required: c.a 1 hour on a 2 GHz PC.       
+
+Please see section 10.13 of the User's Manual concerning Z-matrices
+for solvent molecules. The xSPM script is used to prepare them.
+
+Note that the densvol script can be used to convert the computed
+volumes per molecule to densities. E.g., for the dodecane simulation:
+
+densvol -m 170.34 -v 378.5
+gives the following output:
+Mol. wt. (g/mol) =  170.34
+Volume (ang^3)  =  378.5
+=> Density (g/cm^3) =  .747334
+
+The cmd file restcmd can be used to restart the averaging and run 4M
+new configurations. This would be done if the system was not equilibrated
+fully during the initial equilibration period requested in liqcmd.
+The cmd file contcmd can be used to continue averaging for another 4M.
+
+-----------------------------------------------------------------------
+The subdirectory indole is a complete exmaple showing how to make a
+box of liquid indole. 
+-----------------------------------------------------------------------
+
+-----------------------------------------------------------------------
+The subdirectory dce provides the files for running an MC simulation
+for pure liquid 1,2-dichloroethane.
+-----------------------------------------------------------------------
+
+-----------------------------------------------------------------------
+The dodecane directory continues a simulation of liquid dodecane
+and uses multiple solvent atoms for the cutoffs (in the ICUTAS
+array in the par file).
+-----------------------------------------------------------------------
+
+-----------------------------------------------------------------------
+Radial Distribution Functions
+
+ No. of solvent-solvent and solute-solvent rdfs:
+  6  0
+ First atoms for solvent-solvent rdfs:
+  1  1  1  4  4  5  0  0  0  0  0  0  0  0  0
+ Second atoms for solvent-solvent rdfs:
+  1  4  5  4  5  5  0  0  0  0  0  0  0  0  0
+ First atoms for solute-solvent rdfs:
+  0  0  0  0  0  0  0  0  0  0  0  0
+ Second atoms for solute-solvent rdfs:
+  0  0  0  0  0  0  0  0  0  0  0  0
+ Minimum and increment for rdfs:
+    1.2000    0.1000
+
+The Minimum and increment determine the range; there are 100 bins,
+so the above has bin centers from 1.25 to 11.15 Angstroms.
+-----------------------------------------------------------------------
+
+xMCGAS molecule
+runs a gas-phase MC for a molecule -
+it makes a subdirectory molecule.gas
+and runs the MC there. The T is 25 C.
+If a different T is needed, the gaspar file must be edited.
+This is the companion gas-phase simulation for the pure liquid
+simulation with flexible liquid molecules.
+e.g.,
+xMCGAS etoh

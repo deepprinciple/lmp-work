@@ -1,0 +1,29 @@
+     Dodecane (UA)                                          Tot. E =     -0.8927
+   1 C     71   71    0    0.000000   0    0.000000   0    0.000000        0    
+   2 DUM   -1   -1    1    0.500000   0    0.000000   0    0.000000        0    
+   3 DUM   -1   -1    2    0.500000   1   90.000000   0    0.000000        0    
+   4 C     71   71    1    1.527111   2  124.000000   3  180.000000        0    
+   5 C     71   71    1    1.527114   4  112.501738   2  180.000000        0    
+   6 C     71   71    4    1.527114   1  112.501738   5  180.000000        0    
+   7 C     71   71    6    1.527141   4  112.503718   1  180.000000        0    
+   8 C     71   71    7    1.527436   6  112.504441   4  180.000000        0    
+   9 C     71   71    5    1.527141   1  112.503718   4  180.000000        0    
+  10 C     71   71    9    1.527436   5  112.504441   1  180.000000        0    
+  11 C     71   71   10    1.526902   9  112.563498   5  180.000000        0    
+  12 C     71   71    8    1.526902   7  112.563498   6  180.000000        0    
+  13 C     68   68   12    1.526606   8  112.468283   7  180.000000        0    
+  14 C     68   68   11    1.526606  10  112.468283   9  180.000000        0    
+                    Geometry Variations                                         
+                    Variable Bonds follow         (I4)                          
+0004-0014                                                                       
+                    Additional Bonds follow       (2I4)                         
+                    Harmonic Constraints                                        
+                    Variable Bond Angles follow   (I4)                          
+0005-0014                                                                       
+                    Additional Bond Angles follow (3I4)                         
+                    Variable Dihedrals follow     (3I4,F12.6)                   
+0006-0014                                                                       
+                    Additional Dihedrals follow   (6I4)                         
+                    Domain Definitions follow     (4I4)                         
+                    Conformational Search (2I4, 2F12.6)                         
+                    Final blank line                                            

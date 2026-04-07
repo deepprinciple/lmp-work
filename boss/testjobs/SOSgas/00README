@@ -1,0 +1,11 @@
+
+Examples of gas-phase SOS-FEP calculations using 
+5, 6, 11, 15 or 21 windows. 
+11 is recommended for typical A->B FEP calculations
+with addition/removal of zero or 1 non-H atom.
+PhXgas11 contains input files for PhX -> PhY perturbations.
+
+xSOSGASn can be run from any directory.
+
+xDELGSOSgas is used to collect the results at the
+end of the FEP calculation.

@@ -1,0 +1,122 @@
+#
+# Command file for the BOSS  program.  Execute by entering the following:
+# csh pmfcmd >& pmflog &
+#***********************************************************************
+echo '        MC simulation: pmf torsion FEP'
+echo '                    25 C & 1 atm '
+echo '                 Equilibration    2M '
+echo '                   Averaging  0-6M '
+echo '            N = 500  T=25  P=1  Rcut = 10.0'
+#***********************************************************************
+#
+nice +19
+set boss = $BOSSdir/BOSS
+set configurations = "1000000"
+set boxes = $BOSSdir
+#
+
+##### set variables for dihedral angle as reaction coordinate.
+##### calculation is repeated 'nsteps' times.
+##### RC0 starts with 'startval' and is incremented by 'increment'
+##### at each step. All these values need to be integers in degrees.
+@ startval  =  5
+@ increment = 10
+@ nsteps = 36
+
+#####
+##### ordinary users don't need to edit beyond this line.
+##### '@' indicates an arithmetic operation.
+#####
+@ perturb = $increment / 2
+@ inc = $startval
+@ i = 0
+
+##### Enter a loop. Repeat until i < nsteps.
+while ($i < $nsteps)
+	@ rc0 = $inc
+        @ int0 = $rc0 / 100
+        @ dec0 = $rc0 - $int0 * 100
+        @ ten0 = $dec0 / 10
+        @ hun0 = $dec0 - $ten0 * 10
+	@ rc1 = $rc0 - $perturb
+	@ rc2 = $rc0 + $perturb
+        set lambda = "${rc0}.0 ${rc1}.0 ${rc2}.0"
+        set lab = "$int0$ten0$hun0"
+
+	setenv INFILE    p${lab}in
+	setenv UPFILE    p${lab}up
+	setenv SAVE      p${lab}sv
+	setenv AVERAGE   p${lab}av
+	setenv ZMATRIX   pmfzmat
+	setenv SLVZMAT   slvzmat
+
+	# The pmfpar0 file is only used for this initial window; pmfpar
+	# is used for subsequent windows. The difference is that the
+	# subsequent windows use ZIN and IN for the initial solute and
+	# solvent coordinates, while here they come from ZMAT and BOXES.
+        if (-e tmppar) rm tmppar
+	if ($i == 0) then
+		cp pmfpar0 tmppar
+	else
+		cp pmfpar tmppar
+	endif
+        cat $BOSSdir/oplsaa.par >> tmppar
+        setenv PARAMETER tmppar
+
+	setenv BANGPAR   $boxes/oplsaa.sb
+	setenv WATERBOX  $boxes/watbox
+	setenv ORG1BOX   $boxes/org1box
+	setenv ORG2BOX   $boxes/org2box
+	setenv SUMMARY   p${lab}sum
+
+	date
+
+	setenv OUTPUT    p${lab}ota
+	setenv PLTFILE   p${lab}plta
+
+	#    Equilibration
+
+echo time $boss 111 $configurations $lambda
+	time $boss 111 $configurations $lambda
+	foreach block (eq)
+        	date
+		setenv OUTPUT    p${lab}ot$block
+		setenv PLTFILE   p${lab}plt$block
+echo time $boss 001 $configurations $lambda
+		time $boss 001 $configurations $lambda
+	end
+
+	#    Averaging
+
+	setenv OUTPUT    p${lab}otb
+	setenv PLTFILE   p${lab}pltb
+        rm p${lab}sv
+
+echo time $boss 011 $configurations $lambda
+	time $boss 011 $configurations $lambda
+	foreach block (c b c b e5)
+        	date
+        	setenv OUTPUT    p${lab}ot$block
+        	setenv PLTFILE   p${lab}plt$block
+echo time $boss 001 $configurations $lambda
+        	time $boss 001 $configurations $lambda
+	end
+        rm tmppar
+        rm *a *b *c *eq 
+
+	##### 'inc' is incremented by 'increment'.
+	##### copy the current infile for the next calc.
+	@ inc += $increment
+        @ int0 = $inc / 100
+        @ dec0 = $inc - $int0 * 100
+        @ ten0 = $dec0 / 10
+        @ hun0 = $dec0 - $ten0 * 10
+	if ($i < ($nsteps - 1)) cp p${lab}in p{$int0$ten0$hun0}in
+
+	##### increment 'i' by one.
+	@ i++
+end
+
+rm $SLVZMAT
+date
+exit

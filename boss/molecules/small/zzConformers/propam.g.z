@@ -1,0 +1,32 @@
+          propylamine                                       Tot. E =     -1.4524
+   1 CT   906  906    0    0.400000   0    0.000000   0    0.000000        0
+   2 DUM   -1   -1    1    1.000000   0    0.000000   0    0.000000        0
+   3 DUM   -1   -1    2    1.000000   1   90.000000   0    0.000000        0
+   4 NT   900  900    1    1.450114   2   90.000000   3  270.000000        0
+   5 H2   909  909    4    1.010344   1  110.504519   2  240.000000        0
+   6 H2   909  909    4    1.010393   1  109.929607   5  242.499681        0
+   7 CT   136  136    1    1.534317   4  110.022178   5   58.173119        0
+   8 CT   135  135    7    1.535036   1  113.226259   4   65.302743        0
+   9 HC   140  140    8    1.090253   7  110.736082   1  175.958584        0
+  10 HC   140  140    8    1.090453   7  111.143569   9  240.411848        0
+  11 HC   140  140    8    1.089871   7  111.752391   9  119.722614        0
+  12 HC   140  140    7    1.091162   1  108.465593   8  120.601395        0
+  13 HC   140  140    7    1.091041   1  110.462957   8  235.965420        0
+  14 HC   911  911    1    1.091412   4  109.045933   7  239.021910        0
+  15 HC   911  911    1    1.091425   4  109.762416   7  122.142720        0
+                    Geometry Variations follow    (2I4,F12.6)                   
+                    Variable Bonds follow         (I4 or I4-I4)                 
+ 004-015                                                                        
+                    Additional Bonds follow       (2I4)                         
+                    Harmonic Constraints follow   (2I4,4F10.4)                  
+                    Variable Bond Angles follow   (I4 or I4-I4)                 
+ 005-015                                                                        
+                    Additional Bond Angles follow (3I4)                         
+AUTO                                                                            
+                    Variable Dihedrals follow     (3I4,F12.6)                   
+0006-0015                                                                       
+                    Additional Dihedrals follow   (6I4)                         
+AUTO                                                                            
+                    Domain Definitions follow     (4I4)                         
+                    Conformational Search         (2I4, 2F12.6)                 
+                    Final blank line                                            

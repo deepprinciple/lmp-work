@@ -1,0 +1,28 @@
+     dimethyl ether                                         Tot. E =      2.9052
+   1 O    180  180    0    0.000000   0    0.000000   0    0.000000        0
+   2 X     -1   -1    1    1.000000   0    0.000000   0    0.000000        0
+   3 X     -1   -1    2    1.000000   1   90.000000   0    0.000000        0
+   4 C3   181  181    1    1.417190   2   90.000000   3    0.000000        0
+   5 C1   181  181    1    1.417179   4  112.490400   2  180.000000        0
+   6 H    185  185    4    1.090099   1  109.649905   5  180.000000        0
+   7 H    794  794    4    1.090858   1  111.243932   6  119.305465        0
+   8 H    794  794    4    1.090858   1  111.243932   6  240.694535        0
+   9 H    794  794    5    1.090106   1  109.651244   4  180.000000        0
+  10 H    794  794    5    1.090859   1  111.244837   9  240.695347        0
+  11 H    794  794    5    1.090859   1  111.244837   9  119.304653        0
+                    Geometry Variations follow    (2I4,F12.6)                   
+                    Variable Bonds follow         (I4)                          
+0004-0011                                                                       
+                    Additional Bonds follow       (2I4)                         
+                    Harmonic Constraints follow   (2I4,4F10.4)                  
+                    Variable Bond Angles follow   (I4)                          
+0005-0011                                                                       
+                    Additional Bond Angles follow (3I4)                         
+AUTO                                                                            
+                    Variable Dihedrals follow     (3I4,F12.6)                   
+0006-0011                                                                       
+                   Additional Dihedrals follow   (6I4)                          
+AUTO                                                                            
+                   Domain Definitions follow     (4I4)                          
+                   Conformational Search         (2I4, 2F12.6)                  
+                   Final blank line                                             

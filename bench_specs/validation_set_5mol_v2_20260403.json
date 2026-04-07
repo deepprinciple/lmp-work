@@ -1,0 +1,51 @@
+{
+  "selection_date": "2026-04-03",
+  "baseline": "longbox_baseline_v2",
+  "source": "/root/lmp-work/bench_data/benchmark_shortlist_room_temp.csv",
+  "notes": [
+    "Prepared as the next validation batch for the shared long-box split-production workflow.",
+    "The set is intentionally diverse in polarity and viscosity while staying in the existing shortlist."
+  ],
+  "molecules": [
+    {
+      "smiles": "CO",
+      "name": "methanol",
+      "viscosity_target_cP": 0.59,
+      "thermal_target_W_mK": 0.1832312892566165,
+      "density_g_cm3": 0.7866,
+      "role": "already-tested control"
+    },
+    {
+      "smiles": "CCO",
+      "name": "ethanol",
+      "viscosity_target_cP": 1.263,
+      "thermal_target_W_mK": 0.1618471934536164,
+      "density_g_cm3": 0.78522,
+      "role": "higher-viscosity polar alcohol"
+    },
+    {
+      "smiles": "CC#N",
+      "name": "acetonitrile",
+      "viscosity_target_cP": 0.358,
+      "thermal_target_W_mK": 0.1744430241202602,
+      "density_g_cm3": 0.786,
+      "role": "low-viscosity polar aprotic"
+    },
+    {
+      "smiles": "CC(=O)C",
+      "name": "acetone",
+      "viscosity_target_cP": 0.303,
+      "thermal_target_W_mK": 0.1373514581236165,
+      "density_g_cm3": 0.7845,
+      "role": "very low-viscosity ketone"
+    },
+    {
+      "smiles": "C1CCOC1",
+      "name": "tetrahydrofuran",
+      "viscosity_target_cP": 0.46,
+      "thermal_target_W_mK": 0.1448859584626165,
+      "density_g_cm3": 0.889,
+      "role": "cyclic ether with distinct packing behavior"
+    }
+  ]
+}

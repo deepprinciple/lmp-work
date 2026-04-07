@@ -1,0 +1,28 @@
+    imidazolium ion                                         Tot. E =    -35.6686
+   1 DUM   -1   -1    0    0.000000   0    0.000000   0    0.000000        0
+   2 DUM   -1   -1    1    1.000000   0    0.000000   0    0.000000        0
+   3 C2   509  509    1    1.400000   2   90.000000   0    0.000000        0
+   4 N    512  512    3    1.330891   1   54.000000   2   90.000000        0
+   5 N    512  512    3    1.330892   4  110.470494   1    0.000000        0
+   6 C    510  510    4    1.385992   3  107.850209   5    0.000000        0
+   7 C    510  510    5    1.385993   3  107.850200   4    0.000000        0
+   8 H    146  146    3    1.081961   4  124.786540   6  180.000000        0
+   9 H    513  513    4    1.013852   3  125.792940   5  180.000000        0
+  10 H    513  513    5    1.013852   3  125.793055   4  180.000000        0
+  11 H    146  146    6    1.080449   4  121.666361   3  180.000000        0
+  12 H    146  146    7    1.080449   5  121.666225   3  180.000000        0
+                    Geometry Variations follow    (2I4,F12.6)                   
+                    Variable Bonds follow         (I4)                          
+0004-0012                                                                       
+                    Additional Bonds follow       (2I4)                         
+00060007                                                                        
+                    Harmonic Constraints follow   (2I4,4F10.4)                  
+                    Variable Bond Angles follow   (I4)                          
+0005-0012                                                                       
+                    Additional Bond Angles follow (3I4)                         
+AUTO                                                                            
+                    Variable Dihedrals follow     (3I4,F12.6)                   
+                    Additional Dihedrals follow   (6I4)                         
+                    Domain Definitions follow     (4I4)                         
+                    Conformational Search         (4I2,2F12.6)                  
+                    Final blank line                                            

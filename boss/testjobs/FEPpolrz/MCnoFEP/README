@@ -1,0 +1,7 @@
+
+ MC simulation for tetramethylammonium ion
+ in non-polarizable liquid benzene (N = 260)
+
+ execute via 
+ csh -e cmd >& log &
+

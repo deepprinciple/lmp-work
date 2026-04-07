@@ -1,0 +1,27 @@
+fluoroacetic acid                                           Tot. E =    -11.4244
+   1 C    267    0    0    0.000000   0    0.000000   0    0.000000        0
+   2 DUM   -1    0    1    1.000000   0    0.000000   0    0.000000        0
+   3 DUM   -1    0    2    1.000000   1   90.000000   0    0.000000        0
+   4 O    269    0    1    1.226320   2   90.000000   3    0.000000        0
+   5 OH   268    0    1    1.357483   4  122.372382   2  270.000000        0
+   6 C    957    0    1    1.526720   4  125.102772   5  179.999736        0
+   7 HO   270    0    5    0.944416   1  108.041054   4    0.000149        0
+   8 F    956    0    6    1.334063   1  112.213017   4  359.999992        0
+   9 H    958    0    6    1.089419   1  110.275375   8  240.073618        0
+  10 H    958    0    6    1.089419   1  110.275278   8  119.926387        0
+                    Geometry Variations follow    (2I4,F12.6)                   
+                    Variable Bonds follow         (I4 or I4-I4)                 
+0004-0010                                                                       
+                    Additional Bonds follow       (2I4)                         
+                    Harmonic Constraints follow   (2I4,4F10.4)                  
+                    Variable Bond Angles follow   (I4 or I4-I4)                 
+0005-0010                                                                       
+                    Additional Bond Angles follow (3I4)                         
+AUTO                                                                            
+                    Variable Dihedrals follow     (3I4,F12.6)                   
+0006-0010                                                                       
+                    Additional Dihedrals (6I4)                                  
+AUTO                                                                            
+                    Domain Definitions follow     (4I4)                         
+                    Conformational Search         (2I4, 2F12.6)                 
+                    Final blank line                                            

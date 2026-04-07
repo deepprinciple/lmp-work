@@ -1,0 +1,41 @@
+REMARK    dodecane                      
+REMARK    Created by BOSS 4.6
+ATOM      1  C00 UNK     1       1.000   1.000   0.000
+ATOM      2  C01 UNK     1      -0.538   1.000   0.000
+ATOM      3  C02 UNK     1       1.602   2.438  -0.001
+ATOM      4  H03 UNK     1       1.371   0.488  -0.871
+ATOM      5  H04 UNK     1       1.363   0.570   0.907
+ATOM      6  C05 UNK     1      -1.092  -0.383  -0.192
+ATOM      7  H06 UNK     1      -0.828   1.370   1.018
+ATOM      8  H07 UNK     1      -0.949   1.693  -0.772
+ATOM      9  C08 UNK     1      -2.639  -0.637   0.065
+ATOM     10  H09 UNK     1      -0.736  -0.639  -1.212
+ATOM     11  H0A UNK     1      -0.517  -1.142   0.467
+ATOM     12  C0B UNK     1      -2.945  -2.185  -0.162
+ATOM     13  H0C UNK     1      -2.862  -0.154   1.050
+ATOM     14  H0D UNK     1      -3.123  -0.018  -0.614
+ATOM     15  C0E UNK     1      -4.489  -2.337  -0.301
+ATOM     16  H0F UNK     1      -2.510  -2.717  -1.057
+ATOM     17  H0G UNK     1      -2.656  -2.736   0.757
+ATOM     18  C0H UNK     1      -4.931  -3.724  -0.775
+ATOM     19  H0I UNK     1      -5.029  -2.158   0.650
+ATOM     20  H0J UNK     1      -5.038  -1.675  -0.980
+ATOM     21  H0K UNK     1      -6.034  -4.004  -0.819
+ATOM     22  H0M UNK     1      -4.430  -4.537  -0.177
+ATOM     23  H0N UNK     1      -4.583  -3.863  -1.778
+ATOM     24  C0O UNK     1       3.074   2.505  -0.331
+ATOM     25  H0P UNK     1       1.195   2.947  -0.858
+ATOM     26  H0Q UNK     1       1.307   3.055   0.884
+ATOM     27  C0R UNK     1       3.950   1.593   0.478
+ATOM     28  H0S UNK     1       3.213   2.267  -1.437
+ATOM     29  H0T UNK     1       3.486   3.511  -0.029
+ATOM     30  C0U UNK     1       5.457   1.681   0.239
+ATOM     31  H0V UNK     1       3.700   1.768   1.555
+ATOM     32  H0W UNK     1       3.680   0.562   0.294
+ATOM     33  C0X UNK     1       6.279   1.080   1.414
+ATOM     34  H0Y UNK     1       5.565   1.188  -0.775
+ATOM     35  H0Z UNK     1       5.761   2.759   0.181
+ATOM     36  H10 UNK     1       6.093   0.065   1.571
+ATOM     37  H11 UNK     1       6.037   1.531   2.318
+ATOM     38  H12 UNK     1       7.400   1.181   1.343
+END

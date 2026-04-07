@@ -1,0 +1,123 @@
+Summary of conformational results from OPLS-AA for the 36 molecules in the test
+set of Halgren et al. See Murphy et al, JCP 1995, 103, 1481 and JCP 1997, 106, 5073.
+The only significant problem is for cyclohexanol; this is a well-known artifact of 
+AA force fields owing to an overly favorable electrostatic interaction between the
+hydroxyl hydrogen and the ring carbons in the axial form - see J Comp Chem 17, 606 (1996).
+It can be remedied by making the charges smaller on aliphatic C and H.
+
+ file name      molecule (conformer)                                      OPLS-AA Energy
+-------------------------------------------------------------------------------------------
+acroln.c.z:      c-acrolein                                            Tot. E =      3.6686
+acroln.t.z:      t-acrolein                                            Tot. E =      1.0625
+                                                        Exptl 2.00     Delta         2.6061
+bdiene.s.z:        1,3-butadiene                                       Tot. E =      4.2504
+bdiene.t.z:        1,3-butadiene                                       Tot. E =      0.9920
+                                                        Exptl 2.49     Delta         3.2584
+but23m.a.z:    2,3-dimethylbutane                                      Tot. E =      1.2969
+but23m.g.z:    2,3-dimethylbutane (C2)                                 Tot. E =      1.0634
+                                                        Exptl 0.17     Delta         0.2335
+butan.g.z:     gauche butane                                           Tot. E =      2.8737
+butan.t.z:      trans butane                                           Tot. E =      2.0724
+                                                        Exptl 0.75     Delta         0.8013
+butano.c.z:   butanone                                                 Tot. E =     -7.6254
+butano.s.z:   butanone                                                 Tot. E =     -6.2948
+                                                        Exptl 1.15     Delta         1.3306
+buten1.c.z:          1-butene                                          Tot. E =      0.9968
+buten1.s.z:          1-butene                                          Tot. E =      0.3666
+                                                        Exptl 0.53     Delta         0.6302
+buten2.c.z:  cis -2-Butene                                             Tot. E =      0.6135
+buten2.t.z: trans-2-Butene                                             Tot. E =     -0.3126
+                                                        Exptl 1.00     Delta         0.9261
+chexam.aC1.z: cyclohexylamine (ax-C1)                                  Tot. E =     -0.0215
+chexam.aCs.z: cyclohexylamine (ax-Cs)                                  Tot. E =      1.2751
+chexam.eC1.z: cyclohexylamine (eq-C1)                                  Tot. E =     -2.3909
+chexam.eCs.z: cyclohexylamine (eq-Cs)                                  Tot. E =     -2.1961
+                                                        Exptl 1.1-1.8  Delta         2.1746
+chexan.ch.z:        Cyclohexane                                        Tot. E =     10.3546
+chexan.tb.z: Twist Boat Cyclohexane                                    Tot. E =     17.3654
+                                                        Exptl 5.50?    Delta         7.0108
+chexme.a.z: methylcyclohexane (ax)                                     Tot. E =     10.7750
+chexme.e.z: methylcyclohexane (eq)                                     Tot. E =      8.9982
+                                                        Exptl 1.75     Delta         1.7768
+chexoh.aC1.z: cyclohexanol      (ax)                                   Tot. E =     -0.6263
+chexoh.aCs.z: cyclohexanol      (ax)                                   Tot. E =      0.6580
+chexoh.eC1.z: cyclohexanol      (eq)                                   Tot. E =      5.2167
+chexoh.eCs.z: cyclohexanol      (eq)                                   Tot. E =      5.0982
+                                                        Exptl 0.52     Delta        -5.7245
+chexom.aC1.z: methoxycyclohexane (ax-C1)                               Tot. E =      9.8096
+chexom.aCs.z: methoxycyclohexane (ax-Cs)                               Tot. E =     15.3543
+chexom.eC1.z: methoxycyclohexane (eq-C1)                               Tot. E =      8.7011
+chexom.eCs.z: methoxycyclohexane (eq-Cs)                               Tot. E =     11.0210
+                                                        Exptl 0.45     Delta         1.1085
+dce.g.z:  1,2-dichloroethane                                           Tot. E =      0.3718
+dce.t.z:  1,2-dichloroethane                                           Tot. E =     -0.7337
+                                                        Exptl 1.20     Delta         1.1055
+dfe.g.z:  1,2-difluoroethane (gauche)                                  Tot. E =     -1.3236
+dfe.t.z:  1,2-difluoroethane (trans)                                   Tot. E =     -0.7633
+                                                        Exptl 0.80     Delta         0.5603
+diox2m.ea.z:2,5-dimethyl-1,3-dioxane (5ax)                             Tot. E =     -8.9542
+diox2m.ee.z: 2,5-dimethyl-1,3-dioxane                                  Tot. E =     -9.4448
+                                                        Exptl 0.90     Delta         0.4906
+eether.tg.z:     ethyl ether TG                                        Tot. E =     -1.7553
+eether.tt.z:     ethyl ether                                           Tot. E =     -3.2876
+                                                        Exptl 1.10     Delta         1.5323
+emether.g.z:     ethyl methyl ether                                    Tot. E =      1.0706
+emether.t.z:     ethyl methyl ether                                    Tot. E =     -0.3977
+                                                        Exptl 1.50     Delta         1.4683
+esteref.cg.z:   Ethyl Formate (cis-g)                                  Tot. E =     -2.9169
+esteref.ct.z:   Ethyl Formate                                          Tot. E =     -3.7829
+                                                        Exptl 0.19     Delta         0.8660
+esterma.c.z:         Methyl Acetate                                    Tot. E =    -11.2603
+esterma.t.z:         Methyl Acetate (E)                                Tot. E =     -2.2409
+                                                        Exptl 7.5-8.5  Delta         9.0194
+estermf.c.z:         Methyl Formate                                    Tot. E =     -4.2675
+estermf.t.z:         Methyl Formate  (E)                               Tot. E =      1.4370
+                                                        Exptl 4.75     Delta         5.7045
+etcho.c.z:          Propanal                                           Tot. E =     -1.1626
+etcho.s.z:          Propanal                                           Tot. E =     -0.2291
+                                                        Exptl 0.95     Delta         1.3917
+etoh.g.z:            Ethanol                                           Tot. E =      0.8580
+etoh.t.z:            Ethanol                                           Tot. E =      0.7809
+                                                        Exptl 0.12     Delta         0.0771
+formic.c.z:          formic acid (Z)                                   Tot. E =    -14.1711
+formic.t.z:          formic acid (E)                                   Tot. E =     -9.3086
+                                                        Exptl 3.90?    Delta         4.8625
+isopre.s.z:    2-methyl-1,3-butadiene                                  Tot. E =      2.7183
+isopre.t.z:    2-methyl-1,3-butadiene                                  Tot. E =     -1.0758
+                                                        Exptl 2.65     Delta         3.7941
+isopro.g.z:    2-propanol                                              Tot. E =     -5.0183
+isopro.t.z:    2-propanol                                              Tot. E =     -4.9495
+                                                        Exptl 0.28     Delta         0.0688
+mepipdn.a.z:   1-methyl piperidine (ax)                                Tot. E =     15.3047
+mepipdn.e.z:   1-methyl piperidine (eq)                                Tot. E =     11.7048
+                                                        Exptl 3.15     Delta         3.5999
+mve.c.z:  methyl vinyl ether  (cis)                                    Tot. E =      0.4422
+mve.s.z:  methyl vinyl ether  (skew)                                   Tot. E =      2.1294
+                                                        Exptl 1.15     Delta         1.6872
+nma.c.z:       N-Methylacetamide (E)                                   Tot. E =    -14.1404
+nma.t.z:       N-Methylacetamide (Z)                                   Tot. E =    -16.4407
+                                                        Exptl 2.30     Delta         2.3003
+nmf.c.z:       N-Methylformamide  (E)                                  Tot. E =     -6.8504
+nmf.t.z:       N-Methylformamide  (Z)                                  Tot. E =     -8.7805
+                                                        Exptl 1.45     Delta         1.9301
+piperdn.a.z:   piperidine (axial)                                      Tot. E =     10.7519
+piperdn.e.z:   piperidine (equatorial)                                 Tot. E =      9.9368
+                                                        Exptl 0.40     Delta         0.8151
+prcl.g.z:      1-chloropropane                                         Tot. E =      1.8711
+prcl.t.z:      1-chloropropane                                         Tot. E =      1.9606
+                                                        Exptl 0.05     Delta         0.0895
+prf.g.z:      1-fluoropropane                                          Tot. E =      1.3673
+prf.t.z:      1-fluoropropane                                          Tot. E =      1.7116
+                                                        Exptl 0.35     Delta         0.3443 
+propam.a.z:          propylamine                                       Tot. E =     -1.9907
+propam.g.z:          propylamine                                       Tot. E =     -1.4524
+                                                        Exptl 0.42     Delta         0.5383
+isopra.a.z:    isopropylamine                                          Tot. E =     -9.0363
+isopra.g.z:    isopropylamine                                          Tot. E =     -9.0813
+                                                        Exptl 0.45     Delta        -0.0450
+thpome.a.z:      2-methoxyTHP axial                                    Tot. E =      1.3199
+thpome.e.z:      2-methoxyTHP equat                                    Tot. E =      2.6615
+                                                        Exptl 1.05     Delta         1.3416
+glyoxy.tE.z: glyoxylic acid tE                                         Tot. E =      2.0461
+glyoxy.tZ.z: glyoxylic acid tZ                                         Tot. E =      3.2908
+                                                        Exptl 1.20     Delta         1.2447

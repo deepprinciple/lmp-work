@@ -1,0 +1,21 @@
+#!/bin/csh
+# set echo
+#
+# generate separate .z files
+#
+# usage - xCSZ
+#
+# test if the enviroment variable BOSSdir has been defined
+#
+
+if (!($?BOSSdir)) then
+   echo "BOSSdir has not been defined; please see README"
+   exit (-1)
+endif
+
+echo  " "
+echo  "utility to separate concatenated .z file"
+echo  " "
+$BOSSdir/miscexec/csz  
+#
+exit

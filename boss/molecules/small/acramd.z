@@ -1,0 +1,30 @@
+ acrylamide                                                 Tot. E =    -27.6566
+   1 X     -1    0    0    0.000000   0    0.000000   0    0.000000        0    
+   2 X     -1    0    1    1.000000   0    0.000000   0    0.000000        0    
+   3 C    142    0    2    1.000000   1   90.000000   0    0.000000        0    
+   4 C    235    0    3    1.450264   2   90.000000   1    0.000000        0    
+   5 C    143    0    3    1.343349   4  121.544181   1    0.000000        0    
+   6 H    144    0    3    1.079724   4  119.991690   5  180.000189        0    
+   7 N    237    0    4    1.325781   3  115.385987   5  179.999751        0    
+   8 O    236    0    4    1.224848   3  125.225697   7  180.000111        0    
+   9 H    240    0    7    1.007705   4  116.983692   3  180.000211        0    
+  10 H    240    0    7    1.005536   4  121.422454   9  179.999871        0    
+  11 H    144    0    5    1.081827   3  121.157526   4    0.000441        0    
+  12 H    144    0    5    1.079199   3  121.191945  11  179.999465        0    
+                    Geometry Variations follow    (2I4,F12.6)                   
+                    Variable Bonds follow         (I4)                          
+0004-0012                                                                       
+                    Additional Bonds follow       (2I4)                         
+                    Harmonic Constraints follow   (2I4,4F10.4)                  
+                    Variable Bond Angles follow   (I4)                          
+0005-0012                                                                       
+                    Additional Bond Angles follow (3I4)                         
+AUTO                                                                            
+                    Variable Dihedrals follow     (3I4,F12.6)                   
+0006-0012                                                                       
+                    Additional Dihedrals follow   (6I4)                         
+AUTO                                                                            
+                    Domain Definitions follow     (4I4)                         
+                    Conformational Search (2I4,2F12.6)                          
+                    Final blank line                                            
+                                                                                

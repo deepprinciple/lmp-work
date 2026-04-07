@@ -1,0 +1,30 @@
+        ethanethiol                                         Tot. E =     -2.1354
+   1 SH   200  200    0    0.000000   0    0.000000   0    0.000000        0
+   2 DUM   -1   -1    1    0.500000   0    0.000000   0    0.000000        0
+   3 DUM   -1   -1    2    0.500000   1   90.000000   0    0.000000        0
+   4 HS   204  204    1    1.336603   2   90.000000   3  180.000000        0
+   5 CT   206  206    1    1.809830   4   96.576003   2  180.000000        0
+   6 CT    54   54    5    1.531761   1  108.947412   4  179.998662        0
+   7 HC    60   60    5    1.089874   1  109.188625   6  121.157049        0
+   8 HC    60   60    5    1.089874   1  109.189175   6  238.841952        0
+   9 HC    60   60    6    1.089731   5  110.996031   1  179.999601        0
+  10 HC    60   60    6    1.090325   5  110.975831   9  120.037934        0
+  11 HC    60   60    6    1.090325   5  110.976634   9  239.960094        0
+  12 XS  1024 1024    1    0.699826   5   96.523614   4   97.468615        0
+  13 XS  1024 1024    1    0.699826   5   96.523601   4  262.531400        0
+                    Geometry Variations follow                                  
+                    Variable Bonds follow         (I4 or I4-I4)                 
+0004-0013                                                                       
+                    Additional Bonds follow       (2I4)                         
+                    Harmonic Constraints follow                                 
+                    Variable Bond Angles follow   (I4 or I4-I4)                 
+0005-0013                                                                       
+                    Additional Bond Angles follow (3I4)                         
+AUTO                                                                            
+                    Variable Dihedrals follow     (3I4,F12.6)                   
+0006-0013                                                                       
+                    Additional Dihedrals follow   (6I4)                         
+AUTO                                                                            
+                    Domain Definitions follow     (4I4)                         
+                    Final blank line                                            
+                                                                                

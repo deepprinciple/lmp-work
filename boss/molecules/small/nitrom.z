@@ -1,0 +1,28 @@
+     Nitromethane                                           Tot. E =     -7.1424
+   1 N1   760  760    0    0.000000   0    0.000000   0    0.000000        0    
+   2 DUM   -1    0    1    1.000000   0    0.000000   0    0.000000        0    
+   3 DUM   -1    0    2    0.200000   1   90.000000   0    0.000000        0    
+   4 O4   761  761    1    1.224730   2   60.000000   3    0.000000        0    
+   5 O5   761  761    1    1.224730   2   64.956030   3  180.000000        0    
+   6 C6   762  762    1    1.489986   4  117.521626   5  180.267515        0    
+   7 H7   763  763    6    1.089831   1  108.115281   4  329.921241        0    
+   8 H8   763  763    6    1.089831   1  108.115367   7  239.905502        0    
+   9 H9   763  763    6    1.089367   1  107.454223   7  119.952740        0    
+                    Geometry Variations follow    (2I4,F12.6)                   
+                    Variable Bonds follow         (I4)                          
+0004-0009                                                                       
+                    Additional Bonds follow       (2I4)                         
+                    Harmonic Constraints follow   (2I4,4F10.4)                  
+                    Variable Bond Angles follow   (I4)                          
+0005-0009                                                                       
+                    Additional Bond Angles follow (3I4)                         
+AUTO                                                                            
+                    Variable Dihedrals follow     (3I4,F12.6)                   
+0006 160 160     1.0                                                            
+0007  00  00    15.0                                                            
+0008  00  00     3.0                                                            
+0009  00  00     3.0                                                            
+                    Additional Dihedrals follow   (6I4)                         
+                    Domain Definitions follow     (4I4)                         
+                    Conformational Search         (2I4, 2F12.6)                 
+                    Final blank line                                            

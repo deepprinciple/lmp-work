@@ -1,0 +1,35 @@
+#!/bin/csh
+#
+#   simple script to copy all necessary file from the
+#   test job FEPaq to execute an fep calculation.
+#   only the the Z-matrix needs to be present in the current
+#   directory.
+#
+#   Usage, e.g. for the Z-matrix zmat.z
+#           xFEPAQ725 zmat
+#
+#
+echo 'starting aqueous fep job - 725 waters'
+mkdir $argv[1].aq
+cd $argv[1].aq
+cp ../${argv[1]}.z fepzmat
+cp $BOSSdir/testjobs/FEPaq/fepaq/sepcmd fepcmd
+cp $BOSSdir/testjobs/FEPaq/fepaq/par7250 feppar0
+cp $BOSSdir/testjobs/FEPaq/fepaq/par725  feppar
+csh fepcmd >& log
+#
+rm  *a
+rm  *b
+rm  *c
+rm  *eq
+rm  *d
+rm  feppar*
+#
+grep DeltaG f*sum >>aqsum
+cp aqsum delgsum
+$BOSSdir/miscexec/sumdelg
+rm delgsum
+echo 'finished aqueous fep job'
+cd ..
+#
+exit

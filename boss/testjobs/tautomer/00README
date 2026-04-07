@@ -1,0 +1,7 @@
+SOS FEP calculations for 
+2-pyridone -> 2-hydroxypyridine
+using OPLS/CM1A
+
+gas delG  = 1.807
+aq  del G = 4.092
+    delta = 2.3   kcal/mol

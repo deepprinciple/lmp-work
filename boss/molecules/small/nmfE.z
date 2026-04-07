@@ -1,0 +1,28 @@
+    E-N-Methylformamide                                     Tot. E =     -9.1875
+   1 C   1055    0    0    0.000000   0    0.000000   0    0.000000        0    
+   2 DUM   -1    0    1    1.000000   0    0.000000   0    0.000000        0    
+   3 DUM   -1    0    2    1.000000   1   90.000000   0    0.000000        0    
+   4 O   1059    0    1    1.223326   2   90.000000   3    0.000000        0    
+   5 N   1052    0    1    1.329336   4  120.265279   2  270.000000        0    
+   6 HCO 1069    0    1    1.090293   4  124.044604   2   89.998539        0    
+   7 C   1064    0    5    1.454830   1  124.816086   4  179.998935        0    
+   8 H   1063    0    5    1.008157   1  114.975836   7  180.000636        0    
+   9 H   1068    0    7    1.091460   5  111.922182   1  359.994888        0    
+  10 H   1068    0    7    1.090553   5  110.208968   9  120.300421        0    
+  11 H   1068    0    7    1.090552   5  110.208921   9  239.700039        0    
+                    Geometry Variations follow    (2I4,F12.6)                   
+                    Variable Bonds follow         (I4 or I4-I4)                 
+0004-0011                                                                       
+                    Additional Bonds follow       (2I4)                         
+                    Harmonic Constraints follow   (2I4,4F10.4)                  
+                    Variable Bond Angles follow   (I4 or I4-I4)                 
+0005-0011                                                                       
+                    Additional Bond Angles follow (3I4)                         
+AUTO                                                                            
+                    Variable Dihedrals follow     (3I4,F12.6)                   
+0006-0011                                                                       
+                    Additional Dihedrals follow   (6I4)                         
+AUTO                                                                            
+                    Domain Definitions follow     (4I4)                         
+                    Conformational Search         (2I4, 2F12.6)                 
+                    Final blank line                                            

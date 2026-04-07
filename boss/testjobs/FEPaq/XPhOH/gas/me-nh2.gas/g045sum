@@ -1,0 +1,180 @@
+ Results Summary: p-cresol to p-aminophenol          Mon May 14 09:44:32 2007
+
+ NMOL =   0          EDGE =  100.0000  100.0000  100.0000    RCUT =   10.0000
+ NACCPT =  1000000   NRJECT =   384603   MXCON =  250000     NCON =  250000
+ T(C) =     25.00    OLD E =  0.93796405D+01    NEW E =  0.10010642D+02
+ RDEL =    0.2000    ADEL =   20.0000    VDEL =       0.0    MXS =    2500
+ P(ATM) =     0.0    VOLD =   1000000.0  VNEW =   1000000.0  NVCHG =999999
+ DIELRF =     1.0    Reaction Field NOT Applied
+
+ Information for the Reference Solute:
+ NSCHG=     1        SCUT =   10.0000    ICUT =     0        NCENT =   1    1
+ RDELS1=   0.0000    RDELS2=   0.0000    ADELS1=   0.0000    ADELS2=   0.0000
+ ESOLD=      0.00    ESONE=      0.00    WIMAX=  0.000000    WKC =  200.00
+ EXXOLD=     0.00    EXXNEW=     0.00    DIELEC=   1.0000    CUTOFF E=    0.000
+ EPOOLD=     0.00    EPONEW=     0.00    NPOLX =        0    NPOLS =        0
+ EBNDOL=   3.6707    EBNDNE=   3.8412    EANGOL=   6.3130    EANGNE=   7.0900
+ EDIHOL=   5.6430    EDIHNE=   5.2365    ENBOL=     -6.25    ENBNE=     -6.16
+ EBCOLD=     0.00    EBCNEW=     0.00    SANEW =   295.58    POLCUT=    10.00
+
+
+ 1-4 Scale Factors: Coul.=   0.20000D+01 L-J=   0.20000D+01  CUTNB =  100.000
+ RC0 =    0.4500   RC1 =    0.4000   RC2 =    0.5000
+
+
+
+
+            *** Averages ***
+ Total Energy =     7.3133
+     Inter Cp =     0.0000
+     Alpha(1/deg*e-5)=     0.0000
+     Kappa(1/atm*e-6)=     0.0000
+     Volume=  1000000.0
+
+                  Refer. Solute  1st Pert. Solute       Delta    2nd Pert. Solute       Delta
+ Solute-Solvent E       0.0000            0.0000        0.0000            0.0000        0.0000
+ Solute-Solute  E       0.0000            0.0000        0.0000            0.0000        0.0000
+ Polarization   E       0.0000            0.0000        0.0000            0.0000        0.0000
+ Bond Stretch   E       4.8885            4.8754       -0.0131            4.9017        0.0131
+ Angle Bending  E       4.3969            4.4416        0.0448            4.3556       -0.0412
+ Torsional Energy       4.2967            4.1616       -0.1351            4.4317        0.1351
+ Non-bonded     E      -6.2688           -5.7442        0.5246           -6.7968       -0.5280
+ Constraints    E       0.0000            0.0000        0.0000            0.0000        0.0000
+ Total                                                  0.4212                         -0.4211
+ Ave. Dipole Mom.       2.1269            2.1255                          2.1318
+
+ Delta G                                  0.4144                         -0.4279
+ Delta H                                  0.4281                         -0.4389
+ Delta S                                  0.0458                         -0.0371
+
+
+ Solute  1 - Solvent Energy Components:
+   Lennard-Jones =      0.0000
+   Coulomb       =      0.0000
+   Total         =      0.0000
+
+ Solute  1 - Solute Energy Components:
+   Lennard-Jones =      0.0000
+   Coulomb       =      0.0000
+   Total         =      0.0000
+
+
+ Attempts/Accepts: Solute1 1000000/  615397 Solute2       0/       0
+
+                                                Thermodynamic Results
+
+ Run Total Energy     Inter Cp       Volume       Enthalpy        Kappa         Alpha          EXX           ESX
+  4        7.365         0.000   1000000.000         7.365         0.000         0.000         0.000         0.000
+  1        7.217         0.000   1000000.000         7.217         0.000         0.000         0.000         0.000
+  2        7.312         0.000   1000000.000         7.312         0.000         0.000         0.000         0.000
+  3        7.360         0.000   1000000.000         7.360         0.000         0.000         0.000         0.000
+
+                                            Standard Deviations
+           0.034         0.000         0.000         0.034         0.000         0.000         0.000         0.000
+
+                                                 Averages
+           7.313         0.000   1000000.000         7.313         0.000         0.000         0.000         0.000
+
+
+
+                1st Perturbed Solute                     2nd Perturbed Solute
+ Run       EXX1          ESX1        Delta G         EXX2          ESX2        Delta G
+  4        0.000         0.000         0.411         0.000         0.000        -0.423
+  1        0.000         0.000         0.417         0.000         0.000        -0.431
+  2        0.000         0.000         0.411         0.000         0.000        -0.423
+  3        0.000         0.000         0.419         0.000         0.000        -0.433
+
+                                            Standard Deviations
+           0.000         0.000         0.002         0.000         0.000         0.003
+
+                                                 Averages
+           0.000         0.000         0.414         0.000         0.000        -0.428
+
+
+
+                     1st Solute    2nd Solute                  1st Solute    2nd Solute
+ Run      E-Bond        E-Bond        E-Bond        E-Bend        E-Bend        E-Bend
+  4        4.921         4.908         4.935         4.389         4.431         4.349
+  1        4.829         4.816         4.843         4.385         4.433         4.341
+  2        4.922         4.909         4.935         4.380         4.421         4.342
+  3        4.882         4.869         4.895         4.434         4.482         4.390
+
+                                            Standard Deviations
+           0.022         0.022         0.022         0.013         0.014         0.012
+
+                                                 Averages
+           4.889         4.875         4.902         4.397         4.442         4.356
+
+
+
+                     1st Solute    2nd Solute                  1st Solute    2nd Solute
+ Run      E(phi)        E(phi)        E(phi)         ENB           ENB           ENB
+  4        4.345         4.208         4.482        -6.290        -5.766        -6.819
+  1        4.301         4.167         4.436        -6.299        -5.774        -6.827
+  2        4.243         4.108         4.378        -6.233        -5.709        -6.760
+  3        4.297         4.164         4.431        -6.253        -5.728        -6.782
+
+                                            Standard Deviations
+           0.021         0.021         0.021         0.016         0.015         0.016
+
+                                                 Averages
+           4.297         4.162         4.432        -6.269        -5.744        -6.797
+
+
+
+ SASA Analysis:
+ Run    Tot. SASA      Volume      Hydrophobic    Hydrophilic    Aromatic    Weakly Polar
+  4      295.055       435.365        66.397        52.893       175.765         0.000
+  1      295.286       435.715        66.520        52.863       175.903         0.000
+  2      294.962       435.135        66.458        52.912       175.592         0.000
+  3      294.969       435.192        66.456        52.825       175.688         0.000
+
+                                            Standard Deviations
+           0.076         0.131         0.025         0.019         0.066         0.000
+
+                                                 Averages
+         295.068       435.352        66.458        52.873       175.737         0.000
+
+
+
+ For Solute  1:
+ Run     ESX-Coul.      ESX-LJ       EXX-Coul.      EXX-LJ
+  4        0.000         0.000         0.000         0.000
+  1        0.000         0.000         0.000         0.000
+  2        0.000         0.000         0.000         0.000
+  3        0.000         0.000         0.000         0.000
+
+                                            Standard Deviations
+           0.000         0.000         0.000         0.000
+
+                                                 Averages
+           0.000         0.000         0.000         0.000
+
+
+
+                  1st Perturbed Solute                      2nd Perturbed Solute
+ Run      Delta G       Delta H       Delta S       Delta G       Delta H       Delta S
+  4        0.411         0.446         0.118        -0.423        -0.457        -0.111
+  1        0.417         0.424         0.025        -0.431        -0.438        -0.023
+  2        0.411         0.435         0.081        -0.423        -0.448        -0.082
+  3        0.419         0.407        -0.043        -0.433        -0.413         0.067
+
+                                            Standard Deviations
+           0.002         0.008         0.035         0.003         0.009         0.039
+
+                                                 Averages
+           0.414         0.428         0.046        -0.428        -0.439        -0.037
+
+
+ Title: p-cresol to p-aminophenol     
+ ESX-Coul =      0.000 ESX-LJ =      0.000 SASA =    295.068
+ EXX-Coul =      0.000 EXX-LJ =      0.000 MW =     108.1396
+ Tot SASA =    295.068 Mol Vol=    435.352 Dipole=     2.127
+ H-phobic =     66.458 Philic =     52.873 Arom =    175.737 Wkly Polar=      0.000
+ # SX Ints=      0.000 for Ecut=     0.000
+ # SX Ints=      0.000 for Ecut=     0.000
+ Intramol E=     7.313
+ #Prot Ns =          0 #Nitro =          0 #Acid =         0 #Amide =          0
+ #Rotor Bonds=       1 #Real Atoms=     16
+ DeltaG (  0.400 to   0.450)  =     -0.414 +/-     0.002
+ DeltaG (  0.450 to   0.500)  =     -0.428 +/-     0.003

@@ -1,0 +1,29 @@
+     01_Water-Water                                         Tot. E =     -6.2314
+   1  O   113  113    0    0.000000   0    0.000000   0    0.000000        0
+   2  DU   -1   -1    1    1.000000   0    0.000000   0    0.000000        0
+   3  DU   -1   -1    2    1.000000   1   90.000000   0    0.000000        0
+   4  HO  114  114    1    0.957200   2  127.740000   3   90.000000        0
+   5  HO  114  114    1    0.957200   4  104.520000   2  180.000000        0
+   6  X   115  115    1    0.150000   4   52.260000   5    0.000000        0
+TERZ                                                                            
+   7  O   113  113    4    1.792110   1  179.354918   6  251.709391        0
+   8  HO  114  114    7    0.957200   4  114.468562   1  349.202303        0
+   9  HO  114  114    7    0.957200   8  104.520000   5  144.965851        0
+  10  X   115  115    7    0.150000   8   52.260000   9    0.000000        0
+                    Geometry Variations Follow                                  
+                    Variable Bonds follow         (I4 or I4-I4)                 
+0007-0007                                                                       
+                    Additional Bonds follow       (2I4)                         
+                    Harmonic Constraints follow                                 
+                    Variable Bond Angles follow   (I4 or I4-I4)                 
+0007-0008                                                                       
+                    Additional Bond Angles follow (3I4)                         
+AUTO                                                                            
+                    Variable Dihedrals follow     (3I4,F12.6)                   
+0007-0009                                                                       
+                    Additional Dihedrals follow   (6I4)                         
+AUTO                                                                            
+                    Domain Definitions follow     (4I4)                         
+                    Conformational Search                                       
+                    Final blank line                                            
+                                                                                

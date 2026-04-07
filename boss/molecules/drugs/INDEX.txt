@@ -1,0 +1,546 @@
+
+          ***************************************
+                Z-matrices for Drugs
+          ***************************************
+ Notes:
+
+ All .z files in this directory use 1.14*CM1A atomic charges.
+ Please see boss/notes/CM1charges for related information.
+
+                          Z-MATRICES
+
+    HETEROCYCLES (see molecules/small for many)
+
+    DRUGS
+    acmphn.z       acetaminophen (Tylenol; paracetemol; analgesic)  NSAID
+    phactn.z       phenacetin (p-ethoxyacetanilide; analgesic) NSAID
+    ibupro.z       ibuprofen (Advil, Motrin, Nuprin) NSAID; Knoll
+    ibudim.z       ibuprofen dimer
+    ketpro.z       ketoprofen (Actron; Orudis) NSAID; AHP
+    naprox.z       naproxen (Alleve) NSAID; Mylan
+    napros.z       naprosyn (NSAID) 
+    indopr.z       indoprofen (antiinflammatory) NSAID
+    salica.z       salicylic acid (antiinflammatory) NSAID
+    aspiri.z       acetyl salicylic acid (aspirin) NSAID
+    fenbuf.z       fenbufen (antiinflammatory) NSAID
+    flurbi.z       flurbiprofen (Ansaid; antiinflammatory)
+    diclof.z       diclofenac (antiinflammatory) NSAID; Searle
+    diclno.z       diclofenac nitrosothiol ester
+    fenclo.z       fenclofenac (antiinflammatory) NSAID
+    diflum.z       diflumidone (antiinflammatory) NSAID
+    flufen.z       flufenamic acid (antiinflammatory) NSAID
+    indome.z       indomethacin (antiinflammatory) NSAID
+    tiapro.z       tiaprofenic acid (antiinflammatory, analgesic) NSAID
+    sulfas.z       sulfasalazine (Azulfidine; antiinflammatory)
+    nabume.z       nabumetone (Relafen; antiinflammatory) NSAID
+    tebufe.z       tebufelone (antiinflammatory; COX inhibitor; JMC41,3515) NSAID
+    mif098.z       MIF098 (antiinflammatory)
+    nalbup.z       nalbuphine (analgesic)
+    piroxi.z       piroxicam (antiinflammatory)
+    propxy.z       propoxyphene (analgesic; Darvon)
+    sulind.z       sulindac (Clinoril; antiinflammatory) NSAID
+    olsala.z       olsalazine (Dipentum; antiinflammatory) Pharmacia
+    oxyphe.z       oxyphenbutazone (antiinflammatory)
+    phenbz.z       phenylbutazone (antiinflammatory)
+    fluoci.z       fluocinonide (Lidex; topical antiinflammatory steroid) Medicis
+    celeco.z       celecoxib (Celebrex; COX-2 inhibitor; NSAID) Searle
+    rofeco.z       rofecoxib (Vioxx; COX-2 inhibitor; NSAID) Merck
+    DFU.z          5,5-dimethyl-3'fluoro rofecoxib analog (COX-2 inhibitor; NSAID) Merck
+    etoric.z       etoricoxib (COX-2 inhibitor; BMCL 11(2001)1059; NSAID) Merck
+    valdec.z       valdecoxib (COX-2 inhibitor; NSAID)
+    cox1j.z        ethyl-celecoxib (COX-2 inhibitor; NSAID) Searle
+    dup697.z       DuPont 697 (COX-2 inhibitor; NSAID) DuPont
+    s2474.z        Shionogi-2474 (COX-2 inhibitor; JMC 43, 2040; NSAID) 
+    sb203580.z     SB203580 (p38 kinase inhibitor) BMS
+    sb24235.z      SB24235  (p38 kinase inhibitor) BMS
+    sb209670.z     SB209670 (endothelin receptor agonist; ADDR 23, 99) BMS
+    sb217242.z     SB217242 (endothelin receptor agonist; ADDR 23, 99) BMS
+    sb222200.z     SB222200 (log BB data point)
+    A3915.z        A3915 (CDK kinase inhibitor lead; JMC 44, 1334) DuPont
+    imatin.z       imatinib (Gleevec; Bcr-Abl tyrosine kinase inhibitor)
+    mmpi40.z       MMP inhibitor #40 in JMC 44, 1060
+    meloxi.z       meloxicam (antiarthritic)
+    caprof.z       caprofen (Rimadyl; canine antiarthritic) Pfizer
+    cbmzpn.z       carbamazepine (analgesic) Basel
+    cbmzpo.z       carbamazepine epoxide
+    aminop.z       aminopyrine (analgesic)
+    antipy.z       antipyrine (analgesic)
+    ehobnz.z       ethyl p-hydroxybenzoate (analgesic)
+    mannit.z       mannitol (diagnostic aid)
+    bnzocn.z       benzocaine (local anesthetic)
+    lidocn.z       lidocaine (local anesthetic)
+    tetrcn.z       tetracaine (local anesthetic)
+    procai.z       procaine (local anesthetic)
+    artica.z       articaine (local anesthetic)
+    phency.z       phencyclidine (anesthetic)
+    tocain.z       tocainide (anesthetic)
+    flecai.z       flecainide (anesthetic)
+    bupivi.z       bupivicaine (anesthetic)
+    atropn.z       atropine (cocaine-like antimuscarinic)
+    morphi.z       morphine (analgesic)
+    morfon.z       hydromorphone (analgesic)
+    meperi.z       meperidine (Demerol; analgesic)
+    cocain.z       cocaine (narcotic)
+    ecgoni.z       ecgonine (Marker for Cocaine Use)
+    methdn.z       methadone (narcotic)
+    tolter.z       tolterodine (Detrol; antimuscarinic, urinary antispasmodic) Pharmacia
+    fentan.z       fentanyl (analgesic, narcotic)
+    tolfen.z       tolfenamic acid (canine/feline analgesic)
+    cromol.z       cromolyn (antiasthmatic)
+    bremaz.z       bremazocine (kappa-opioid receptor agonist)
+    allopu.z       allopurinol (antihyperuricemic; xo inhibitor)
+    purvg3.z       N(4-(6-purinylthio)valeryl)gly-gly-gly ethyl ester
+    epinep.z       l-epinephrine (adrenaline)
+    amphet.z       amphetamine (stimulant)
+    dopami.z       dopamine (adrenergic)
+    ephedr.z       ephedrine (adrenergic, bronchodilator)
+    albute.z       albuterol (Proventil; bronchodilator inhalant) Schering, Warrick
+    fenflu.z       fenfluramine (anorexic; Redux) AHP  
+    phente.z       phentermine (anorexic) AHP
+    furose.z       furosemide (diuretic) Mylan, HMR
+    clofib.z       clofibric acid (hypolipidemic agent)
+    cthiaz.z       chlorothiazide (diuretic)
+    hclthi.z       hydrochlorothiazide (diuretic) SKB
+    bumeta.z       bumetadine (diuretic; Na+,K+ transport blocker)
+    gliben.z       glibenclamide (glyburide; hypoglaecemic; K+ channel blocker)
+    lamotr.z       lamotrigine (antiepileptic; Na+ channel blocker)
+    quidin.z       quinidine (antidysrhythmic; Na+ channel blocker)
+    JNJ5.z         vasopressin inhibitor JNJ5 in BMCL14(2004)2747
+    theoph.z       theophylline (bronchodilator)
+    fenote.z       fenoterol (bronchodilator)
+    diphhy.z       diphenhydramine (Benadryl; antihistamine)
+    hydrox.z       hydroxyzine (Atarax, Vistaril; antihistamine, sedative)
+    proxic.z       proxicromil (anti-allergic)
+    lorata.z       loratadine (Claritin; anti-allergic) Schering
+    clphen.z       chlorpheniramine (Chlortrimeton; antihistamine)
+    mepyra.z       mepyramine (antihistamine)
+    cetiri.z       ceterizine (antihistamine)
+    doxyla.z       doxylamine (antihistamine)
+    promet.z       promethazine (antihistamine)
+    captop.z       captopril (antihypertensive) BMS
+    lisino.z       lisinopril (ACE inhibitor; Zestril) Astra
+    verapa.z       verapamil (antihypertensive) Searle
+    clonid.z       clonidine (antihypertensive) Mylan
+    felodi.z       felodipine (Plendil; antihypertensive) Astra
+    prprnl.z       propranolol (antihypertensive) ESI
+    telmis.z       telmisartan (Micardis; antihypertensive)
+    acebut.z       acebutolol (Sectral; antihypertensive)
+    terazo.z       terazosin (Hytrin; antihypertensive) Abbott
+    prazos.z       prazosin (antihypertensive)
+    sotalo.z       sotalol (antihypertensive)
+    minoxi.z       minoxidil (antihypertensive; hair growth stimulant)
+    losart.z       losartan (Cozaar, Hyzaar; vasodilator) Merck
+    enalap.z       enalapril (Vasotec; vasodilator) Merck
+    diltia.z       diltiazem (Cardizem; vasodilator, antianginal) HMR
+    oxypre.z       oxyprenolol (vasodilator)
+    pindol.z       pindolol (Visken; vasodilator)
+    amlodi.z       amlodipine (Norvasc; vasodilator) Pfizer
+    prcnmd.z       procainamide   (anti-arrhythmic)
+    morici.z       moricizine (anti-arrhythmic)
+    nifedi.z       nifedipine (Procardia; vasodilator) Pfizer
+    guanab.z       guanabenz (vasodilator; antihypertensive)
+    guanfa.z       guanfacine (antihypertensive)
+    guanfa.z       guanfacine (antihypertensive)
+    warfar.z       warfarin (Coumadin; anticoagulant) DuPont
+    plavix.z       clopidogrel (Plavix; anticoagulant) BMS
+    napap.z        NAPAP (thrombin inhibitor; anticoagulant)
+    napaph.z       protonated NAPAP
+    lb30057.z      LB30057 (thrombin inhibitor; anticoagulant)
+    boger113.z     FAAH inhibitor (PNAS 97, 5044(2000))
+    cafein.z       caffeine (stimulant)
+    nicotn.z       nicotine (stimulant)
+    nicoti.z       nicotinamide (vitamin B3)
+    vareni.z       varenicline (smoking cessation agent) Pfizer
+    cytisi.z       (-)-cytisine (smoking cessation agent)
+    mephen.z       methylphenidate (Ritalin; stimulant) Novartis
+    campho.z       camphor (stimulant, diaphoretic)
+    doxepi.z       doxepin (antipruritic - topical)
+    imipra.z       imipramine (antidepressant)
+    amitri.z       amitriptyline (antidepressant) Mylan
+    mirtaz.z       mirtazapine   (antidepressant)
+    desipr.z       desipramine (antidepressant)
+    mianse.z       mianserin   (antidepressant)
+    sertra.z       Zoloft (setraline; antidepressant) Pfizer
+    fluoxe.z       Prozac (fluoxetine; antidepressant) Lilly
+    sultop.z       sultopride (antidepressant)
+    paroxe.z       paroxetine (Paxil; antidepressant, SSRI) SKB
+    domper.z       domperidone (antiemetic)
+    granis.z       granisetron (antiemetic)
+    dolase.z       dolasetron (antiemetic)
+    alpraz.z       alprazolam (Xanax; sedative) Novartis, Pharmacia Teva
+    diazpm.z       diazepam (Valium; sedative) Roche, Mylan
+    lrazpm.z       lorazepam (sedative) AHP, Mylan
+    oxazpm.z       oxazepam (sedative)
+    azpmbr.z       bromazepam (sedative)
+    midazo.z       midazolam (sedative)
+    L663581.z      Merck 663581 (benzodiazepine receptor agonist)
+    L663581M1.z    metabolite of Merck 663581 
+    L663581M2.z    metabolite of Merck 663581 
+    clozap.z       clozapine (antipsychotic; sedative)
+    seroqu.z       seroquel (antipsychotic; Quetiapine) Astra JMC 44(2001)372
+    phbrbl.z       phenobarbital (sedative)
+    barbit.z       barbital (sedative)
+    barb2m.z       5,5-dimethylbarbituric acid
+    pentob.z       pentobarbital (sedative)
+    amobar.z       amobarbital (sedative)
+    heptab.z       heptabarbital (sedative)
+    glutet.z       glutethimide (sedative)
+    thalid.z       thalidomide (teratogen, sedative) review BMC 10, 461 (2002)
+    zoxazo.z       zoxazolamine (muscle relaxant)
+    phenot.z       phenolpthalein (laxative)
+    promaz.z       promazine (antipsychotic)
+    trifpr.z       triflupromazine (antipsychotic)
+    thiori.z       thioridazine (antipsychotic)
+    clprmz.z       chlorpromazine (Thorazine; antipsychotic)
+    perphe.z       perphenazine (antipsychotic)
+    triflu.z       trifluoperazine (antipsychotic)
+    haldol.z       haloperidol (Haldol; antipsychotic)
+    fluphe.z       fluphenazine (antipsychotic)
+    risper.z       risperidone (antipsychotic) Janssen
+    droper.z       droperidol (antipsychotic; D2 antagonist)
+    prochl.z       prochlorperazine (antipsychotic)
+    pericy.z       pericyazine (antipsychotic)
+    sertin.z       sertindole (Serlect; antipsychotic)
+    pimozi.z       pimozide (Orap; antipsychotic)
+    risperOH.z     9-hydroxy-risperidone (metabolite of risperidone)
+    alpren.z       alprenolol (antiadrenergic)
+    atenol.z       atenolol (antiadrenergic) Mylan, Novartis
+    metopr.z       metoprolol (antiadrenergic) Astra, Mylan
+    timolo.z       timolol (antiadrenergic; glaucoma treatment(Timoptic)) Merck
+    labeta.z       labetalol (Normadyne, Trandate; antiadrenergic)
+    nadolo.z       nadolol (Corgard; antiadrenergic)
+    sotalo.z       sotalol (antiarrhythmic)
+    aprini.z       aprinidine (antiarrythmic)
+    quinac.z       quinacrine (antimalarial)
+    quinin.z       quinine (antimalarial)
+    halofa.z       halofantrine (Halfan; antimalarial)
+    practo.z       practolol (beta blocker; antiadrenergic)  
+    moprol.z       moprolol (beta blocker; antiadrenergic)
+    tolipr.z       toliprolol (beta blocker; antiadrenergic)
+    phenyt.z       phenytoin (Dilantin; anticonvulsant) Parke Davis-Pfizer
+    valpro.z       valproic acid (anticonvulsant)
+    serotn.z       serotonin (neurotransmitter)
+    mescln.z       mescaline (hallucinogen)
+    riluzo.z       riluzole (anti-ALS; Rilutek) Aventis
+    lifari.z       lifarizine (anticonvulsant)
+    mexile.z       mexiletine (anti-arrhythmia; Mexitil)
+    ralito.z       ralitoline (anticonvulsant)
+    zonisa.z       zonisamide (anticonvulsant; Zonegran)
+    lubelu.z       lubeluzole (NOS inhibitor, Na channel blocker) Janssen
+    angeli.z       angelicin (iNOS inhibitor; BMC 2701(2000))
+    psoral.z       psoralen (iNOS inhibitor; BMC 2701(2000))
+    besipi.z       besipirdine (cholinergic) Aventis
+    remace.z       remacemide (NMDA antagonist, Na channel blocker) Astra
+    chlorm.z       chlormethiazole (GABA agonist) Astra
+    ideben.z       idebenone (antioxidant) Takeda
+    rufina.z       rufinamide (Na channel blocker)
+    cimeti.z       cimetidine (Tagamet; histamine blocker) Young 1; Mylan
+    raniti.z       ranitidine (Zantac; histamine blocker) Young 9; Glaxo, Novopharm
+    famoti.z       famotidine (Pepcid; histamine blocker) Merck
+    astemi.z       astemizole (Hismanal; histamine H1 receptor antagonist)
+    icotid.z       icotidine   (H2 histamine antagonist) Young 3
+    lupiti.z       lupitidine  (H2 histamine antagonist) Young 5
+    tiotid.z       tiotidine   (H2 histamine antagonist) Young 10
+    temela.z       temelastine (H2 histamine antagonist)
+    tolaza.z       tolazamide  (hypoglcaemic)
+    tolbut.z       tolbutamide (hypoglcaemic)
+    clprop.z       chlorpropamide (hypoglaecemic)
+    zolant.z       zolantidine
+    omepra.z       omeprazole (Prilosec; Losec; gastric acid repressor) Astra
+    lansop.z       lansoprazole (Prevacid; gastric acid repressor) Tap
+    pantop.z       pantoprazole (Rifun; gastric acid repressor)
+    pirenz.z       pirenzepine (antiulcerative)
+    stlbst.z       diethylstilbestrol (estrogen)
+    estrad.z       estradiol (estrogen) Mead, Novartis, Apothecon
+    estron.z       estrone (steroid)
+    estrio.z       estriol (steroid)
+    ouabai.z       ouabain (glycosteroid; digitalis component; antiarrhythmic)
+    testos.z       testosterone (androgen)
+    stanol.z       stanolone (androgen)
+    flutam.z       flutamide (anti-androgen)
+    predni.z       prednisone (steroid) Schein, Pharmacia
+    prelon.z       prednisolone (antiinflammatory, immunosuppressive steroid)
+    prednm.z       methylprednisolone (steroid) Duramed
+    aldost.z       aldosterone (steroid)
+    hydroc.z       hydrocortisone (steroid)
+    cortic.z       corticosterone (steroid)
+    cortis.z       cortisone (steroid)
+    dexame.z       dexamethasone (steroid)
+    proges.z       progesterone (steroid)
+    tibolo.z       tibolone (steroid)
+    diosge.z       diosgenin (steroid - insoluble in water)
+    pge2.z         prostaglandin E2 (abortifacient)
+    lovast.z       lovastatin (Mevacor; anticholesterolemic) Merck
+    simvas.z       simvastatin (Zocor; anticholesterolemic) Merck
+    atorval.z      atorvastatin lactone (Lipitor; anticholesterolemic) Parke Davis-Pfizer
+    atorva.z       atorvastatin (Lipitor; anticholesterolemic) Parke Davis-Pfizer
+    ceriva.z       cerivastatin (Baycol; anticholesterolemic) Bayer recalled
+    fluvas.z       fluvastatin (Lescol; anticholesterolemic) Novartis
+    clofib.z       clofibrate (anticholesterolemic)
+    silden.z       sildenafil (Viagra;) Pfizer
+    scopol.z       scopolamine (anticholinergic)
+    thiope.z       thioperamide (H3 receptor antagonist)
+    eserin.z       eserine (physostigmine; anticholinesterase)
+    phense.z       phenserin (anticholinesterase)
+    bromop.z       bromopride (anti-emetic)
+    pnu156804      prodigiosin analog (immunosuppressant) Pharmacia
+    FK506.z        FK506 (immunosuppressant)
+    rapamy.z       rapamycin (immunosuppressant)
+    cyclos.z       cyclosporin A (immunosuppressant)
+    PA824.z        PA-824 (antituberculosis) Chiron
+    amantn.z       amantadine (antiviral)
+    acylvr.z       acyclovir (Zovirax; antiviral) Glaxo
+    gancic.z       ganciclovir (antiviral) Glaxo
+    famcic.z       famciclovir (antiviral)
+    ag7088.z       AG-7088 (antiviral- rhinovirus - RV3CP) Agouron-Pfizer
+    LY153186.z     LY153186 (antiviral - rhinovirus) Lilly
+    plecon.z       pleconaril (Picovir; FDA-reject antiviral - rhinovirus) ViroPharma
+    ritona.z       ritonavir (Norvir; HIV protease inhibitor) Abbott
+    ampren.z       amprenavir (Agenerase; HIV protease inhibitor) Pfizer
+    azt.z          zidovudine (AZT; antiviral) Glaxo
+    netivu.z       netivudine (antiviral)
+    nevira.z       nevirapine (Viramune; NNRTI) Boehringer
+    nevehm.z       N-ethyl;N-methyl nev analog (12) (NNRTI) Boehringer
+    nevemm.z       N-ethyl;2-methoxy-nevirapine (NNRTI) Boehringer
+    nevi2m.z       2-methyl-nevirapine (NNRTI) Boehringer
+    efavir.z       Sustiva (DMP266, efavirenz; NNRTI) DuPont
+    dpc083.z       DPC 083 (quinazolinone Sustiva analog; NNRTI) DuPont
+    dpc961.z       DPC 961 (quinazolinone Sustiva analog; NNRTI) DuPont
+    dpc963.z       DPC 963 (quinazolinone Sustiva analog; NNRTI) DuPont
+    dpc24.z        DPC #24 in BMCL11(2001)309 (pyridinone,R4=propyl; NNRTI) DuPont
+    dpc27.z        DPC #27 in BMCL11(2001)309 (pyridinone,R4=benzyl; NNRTI) DuPont
+    calano.z       calanolide A (NNRTI)
+    mkc442.z       MKC-442 (emivirine; NNRTI)
+    delavi.z       delavirdine (Rescriptor; NNRTI) Pharmacia
+    pnu32945.z     PNU-32945  (NNRTI) Pharmacia
+    pnu142721.z    PNU-142721 (NNRTI) Pharmacia
+    tibocl.z       9-chloro-TIBO (NNRTI)
+    tibo8cl.z      8-chloro-TIBO (Tivirapine, R86183; NNRTI)
+    loviri.z       alpha-APA (Loviride, R89439; NNRTI)
+    trovir.z       PETT (Trovirdine, LY300046; NNRTI)
+    HI6.z          PETT analog  6 (NNRTI); Parker Hughes BMCL 11, 523 (2001)
+    quinox.z       quinoxaline (HBY097; NNRTI)
+    UC781.z        thiocarboxanilide (UC781; NNRTI)
+    pyridi.z       pyridinone L697661 (NNRTI) Merck
+    LNNRTI13.z     thioacetanilide 13 (NNRTI) Merck BMCL 16, 2748 (2006)
+    LNNRTI29.z     thioacetanilide 29 (NNRTI) Merck BMCL 16, 2748 (2006)
+    benpyr.z       4-benzyl pyridinone derivative 27 JMC43,3949 (NNRTI)
+    fqxpt6.z       6-FQXPT (NNRTI) JMC44,305
+    qxpt8.z        quinoxaline derivative 8 from JMC44,305 (NNRTI)
+    739W94.z       diphenylsulfone 739W94 (NNRTI) JMC44, 1866 Glaxo
+    SDABO3w.z      SDABO 3w (NNRTI) JMC44
+    tmc120.z       TMC120 (NNRTI, diarylpyrimidine (DAPY)) Janssen/Tibotech dapivirine
+    tmc125.z       TMC125 (NNRTI, diarylpyrimidine (DAPY)) Janssen/Tibotech etravirine
+    rilpiv.z       TMC278 rilpivirine (NNRTI)
+    CP94707.z      Pfizer NNRTI lead
+    lamotr.z       lamotrigine (Lamictal; anticonvulsant)
+    gabape.z       gabapentin (Neurontin; anticonvulsant)
+    ropini.z       ropinirole (Requip; antiParkinsonian)
+    RTI55.z        RTI55 (beta-CIT; antiParkinsonian)
+    RTI55H.z       desmethyl-RTI55 (antiParkinsonian)
+    psurac.z       propylthiouracil (anti-hyperthyroidism)
+    ondans.z       ondansetron (Zofran, 5HT3 antagonist; anti-nausea)
+    sumatr.z       sumatriptan (Imitrex, nasal spray; 5HT1 agonist; anti-migraine) Glaxo
+    zolmit.z       zolmitriptan (Zomig; anti-migraine) AstraZeneca
+    buprop.z       bupropion (antidepressant) Glaxo
+    acriva.z       acrivastine (antihistamine)
+    pyrila.z       pyrilamine (antihistamine)
+    terfen.z       terfenadine (antihistamine; Seldane)
+    flupar.z       fluparoxan (neurotransmitter)
+    paxil.z        paxil (paroxetine; antidepressant, SSRI)
+    decarb.z       diethylcarbamazine (antiparasitic; Hetrazan)
+    saxagl.z       saxagliptin (antidiabetic, DPP-4 inhibitor) BMS
+
+Anti-cancer Agents
+    clambu.z       chlorambucil (antineoplastic)
+    clamtb.z       t-butylchlorambucil (antineoplastic)
+    carmus.z       carmustine (BCNU; antineoplastic)
+    pur6SH.z       6-mercaptopurine (antineoplastic)
+    tamoxi.z       tamoxifen (antineoplastic) Barr
+    uraclf.z       5-fluorouracil (antineoplastic)
+    procbz.z       procarbazine (antineoplastic)
+    ag337.z        thymitaq (antineoplastic)
+    distam.z       distamycin fragment (antineoplastic)
+    taxol.z        taxol (antineoplastic)
+    etopos.z       etoposide (antineoplastic, topoisomerase II inhib.)
+    methot.z       methotrexate (antineoplastic)
+    campto.z       camptothecin (antineoplastic; topo I inhibitor)
+    puromy.z       puromycin       (antineoplastic antibiotic)
+    sparso.z       sparsomycin     (antineoplastic antibiotic)
+    mitoxa.z       mitoxantrone (antineoplastic)
+    thiogu.z       6-thioguanine (antileukemia)
+    erloti.z       erlotinib (Tarceva; lung cancer) Roche
+
+Antibiotics
+    amicet.z       amicetin        (antibiotic)
+    anisom.z       anisomycin      (toxic, non-drug)
+    azithr.z       azithromycin    (Zithromax; 15-macrolide antibiotic) Pfizer 
+    erythr.z       erythromycin    (14-macrolide antibiotic)                      
+    clarit.z       clarithromycin  (14-macrolide antibiotic)  
+    tylosi.z       tylosin.mol     (16-macrolide antibiotic)
+    carbom.z       carbomycin      (animal antibiotic for Gramm + infections)
+    clinda.z       clindamycin     (Cleocin; for strep, staph, and pneumo; semisyn from lincomycin) Pharmacia
+    lincom.z       lincomycin      (Lincocin, Lincorex; for Gram-positive penicillin-resistant infections)
+    puromy.z       puromycin       (antineoplastic antibiotic)
+    sparso.z       sparsomycin     (antineoplastic antibiotic)
+    clamph.z       chloramphenicol (antibacterial)
+    trimet.z       trimethoprim    (antibacterial) Teva
+    nitrof.z       nitrofurantoin  (antibacterial) P&G
+    pclphe.z       p-chlorophenol  (antibacterial)
+    penclG.z       penicillin G    (antibiotic)
+    penclV.z       penicillin V    (antibiotic)
+    ampici.z       ampicillin      (antibiotic)
+    piperacillin.z piperacillin    (antibiotic)
+    amoxic.z       amoxicillin     (Amoxil, Trimox; antibiotic) SKB, Apothecon
+    pmpeni.z       phenoxymethylpenicillin (Oracillin, V-Cilin; antibiotic)
+    loraca.z       loracarbef      (Lorabid; beta-lactam antibiotic) Monarch
+    cefale.z       cefalexin       (antibiotic)
+    cefatr.z       cefarizine      (antibiotic)
+    cefuro.z       cefuroxime      (Ceftin; antibiotic) Glaxo
+    linezo.z       linezolid       (Zyvox; for strep, staph, and entero; antibiotic) Pharmacia
+    bacca3.z       13-phenyllactate baccatin III (antibiotic)
+    nifrox.z       nifuroxime      (antibacterial)
+    metron.z       metronidazole   (antibacterial; nitroimidazole)
+    isonia.z       isoniazid (Laniazid, Nydrazid; antibacterial)
+    sulfad.z       sulfadiazine    (antibacterial; sulfonamide)
+    sulfam.z       sulfamethiazole (antibacterial; sulfonamide)        
+    sulfis.z       sulfisoxazole   (antibacterial; sulfonamide)
+    nalidi.z       nalidixic acid  (antibacterial, quinolone)
+    ciprof.z       ciprofloxacin   (antibacterial; fluoroquinolone)
+    enoxac.z       enoxacin        (antibacterial; fluoroquinolone)
+    trovaf.z       trovafloxacin   (antibacterial; fluoroquinolone; Trovan) Pfizer
+    aztreo.z       aztreonam       (antibacterial; monobactam)
+    merope.z       meropenem       (antibacterial; carbapenem)
+    nfuraz.z       nitrofurazone   (antibacterial; topical)
+    bifnzl.z       bifonazole      (antifungal)
+    clotri.z       clotrimazole    (antifungal)
+    ketoco.z       ketoconazole    (antifungal)
+    griseo.z       griseofulvin    (antifungal)
+    flucon.z       fluconazole  (Diflucan; antifungal) Pfizer
+
+Food chemicals 
+    carvon.z       (+)-carvone  (flavoring agent)
+    mentho.z       menthone     (flavoring agent)
+    capsai.z       capsaicin    (pepper)
+    sucros.z       sucrose      (sweetener)
+    raffin.z       raffinose (non-digestable trisaccharide)
+    curcum.z       curcumin (from turmeric) antioxidant, anticancer
+
+Polypeptides
+    ppamvh.z       AcMetValNH2
+    ppaa3b.z       Ac(Ala)3NHtBu
+    ppaayl.z       AcAlaTyrLeuNH2
+    ppanfh.z       AcAsnPheNH2
+    trypto.z       (L)-tryptophan
+    dansyl.z       dansylglycine (non-drug)
+
+Recent additions, to be classified:
+    hycinn.z       hydrocinnamic acid
+    epitio.z       epitiostanol (anabolic steroid) 
+    ethist.z       ethisterone (female sex hormone)
+    alfent.z       alfentanil (Alfenta; analgesic)
+    foscar.z       foscarnet (Foscavir; antiviral)
+    lactul.z       lactulose (Cephulac, Duphalac; laxative)
+    metola.z       metolazone (Mykrox; antihypertensive)
+    nordaz.z       nordazepam (Nordaz; psycholeptic, anxiolytic)
+    sulpir.z       sulpiride (antipsychotic, antidepressant)
+    amilor.z       amiloride (Moduretic; antihypertensive)
+    mefena.z       mefenamic acid (Ponstel; analgesic)
+    azimil.z       azimilide (antiarrhythmic)
+    mibefr.z       mibefradil (Posicor; calcium channel blocker; antihypertensive)
+    perhex.z       perhexiline (antiangina; diuretic; vasodilator)
+    cisapr.z       cisapride (Propulsid; GI drug)
+    E4031.z        E-4031 (antiarrythmic)
+    dofeti.z       dofetilide (Tikosyn; antiarrhythmic)
+    mizola.z       mizolastine (Mizollen; antihistamine)
+    beprid.z       bepridil (Vascor; calcium channel blocker; antihypertensive)
+    astemm.z       desmethylastemizole (antihistamine)
+    olanza.z       olanzapine (antipsychotic)
+    ibutil.z       ibutilide (antiarrythmic)
+    disopy.z       disopyramide (antiarrythmic)
+    amioda.z       amiodarone (antiarrythmic)
+    ebasti.z       ebastine (antihistamine)
+    mitoxa.z       mitoxantrone (antineoplastic)
+    carved.z       carvedilol (beta-blocker)
+    epinas.z       epinastine (antihistamine)
+    terika.z       terikalant (antiarrythmic)
+    neamin.z       neamine
+    brasil.z       brasilicardin A (terpenoid antibiotic)
+    tashir.z       tashironin (terpene)
+    biotin.z       biotin
+    zipras.z       ziprasidone
+    fexofe.z       fexofenadine
+    norast.z       norastemizole
+    aloset.z       alosetron
+    mesori.z       mesoridazine
+    nitren.z       nitrendepine
+    norclo.z       norclozapine
+    vesnar.z       vesnarinone
+    A56268.z       A-56268
+    citalo.z       citalopram
+    MDL74156.z     MDL-74156
+    mefloq.z       mefloquine
+    RP58866.z      RP-58866
+    ascorb.z       ascorbic acid
+    adefov.z       adefovir
+    benaze.z       benazepril
+    cidofo.z       cidofovir
+    cymari.z       cymarin
+    enalat.z       enaliprilat
+    guanox.z       guanoxan
+    metapr.z       metaproterenol
+    methyld.z      methyldopa
+    pirbut.z       pirbuterol
+    reprot.z       reproterol
+    rimite.z       rimiterol
+    lidofl.z       lidoflazine (vasodilator)
+    terodi.z       terodiline 
+    brevitA.z      brevitoxin A
+    7butyltheophylline.z 
+    7chloropteridine.z 
+    alclofenac.z 
+    almokalant.z 
+    alprostadil.z 
+    benzydamine.z 
+    betamethasone.z 
+    buprenorphine.z 
+    butallylonal.z 
+    butethal.z 
+    danazol.z 
+    eperezolid.z 
+    equilenin.z 
+    ethambutol.z 
+    ethinylestradiol.z 
+    glyburide.z 
+    melengestrolOAc.z 
+    miconazole.z 
+    oroticacid.z 
+    phenazopyridine.z 
+    primaquine.z 
+    probenecid.z 
+    reposal.z 
+    tipranavir.z 
+    tirilazad.z 
+    triamcinolone.z 
+    triazolam.z 
+    trimazosin.z 
+    uricacid.z 
+amrino.z
+beclomethasone.z
+budesonide.z
+cefazoline.z
+ceftazidime.z
+cinoxacin.z
+ethosuximide.z
+finasteride.z
+flumazenil.z
+nicardipine.z
+nimodipine.z
+nitrazepam.z
+nizatidine.z
+spironolactone.z
+trazodone.z
+zolpidem.z
+cortexolone.z
+cortis21oac.z
+deoxycortis.z

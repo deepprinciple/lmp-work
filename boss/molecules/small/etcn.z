@@ -1,0 +1,29 @@
+       propionitrile                                        Tot. E =     -1.6478
+   1 C    754  754    0    0.000000   0    0.000000   0    0.000000        0    
+   2 X     -1   -1    1    1.000000   0    0.000000   0    0.000000        0    
+   3 X     -1   -1    2    1.000000   1   90.000000   0    0.000000        0    
+   4 N    753  753    1    1.155699   2   90.000000   3    0.000000        0    
+   5 C    756  756    1    1.457809   2   89.917607   3  180.000000        0    
+   6 C    135  135    5    1.532668   1  112.778314   2  359.998143        0    
+   7 H    759  759    5    1.089842   1  107.668235   6  122.236463        0    
+   8 H    759  759    5    1.089842   1  107.668234   6  237.763537        0    
+   9 H    140  140    6    1.090497   5  110.947429   1   59.886270        0    
+  10 H    140  140    6    1.089983   5  111.077993   9  120.113730        0    
+  11 H    140  140    6    1.090497   5  110.947429   9  240.227460        0    
+                    Geometry Variations follow    (2I4,F12.6)                   
+                    Variable Bonds follow         (I4 or I4-I4)                 
+0004-0011                                                                       
+                    Additional Bonds follow       (2I4)                         
+                    Harmonic Constraints follow   (2I4,4F10.4)                  
+                    Variable Bond Angles follow   (I4 or I4-I4)                 
+0005-0011                                                                       
+                    Additional Bond Angles follow (3I4)                         
+AUTO                                                                            
+000400010005                                                                    
+                    Variable Dihedrals follow     (3I4,F12.6)                   
+0006-0011                                                                       
+                   Additional Dihedrals follow   (6I4)                          
+AUTO                                                                            
+                   Domain Definitions follow     (4I4)                          
+                   Conformational Search         (2I4, 2F12.6)                  
+                   Final blank line                                             

@@ -1,0 +1,15 @@
+
+The d010cmd file just runs one window of an fep calculation.
+1,2-dichloroethane is perturbed from phi(Cl-C-C-Cl) = 10 degrees
+to phi = 0 and 20 degrees.
+
+Note the reaction coordinate is the dihedral angle for atom 6;
+it has been moved from the list of variable dihedrals to the 
+list of additional dihedrals.
+
+Time required: 1.3 hours on an R5000 SGI.
+
+The fullpmf subdirectory contains the files needed to run the entire
+pmf via one job submission.
+
+See the alanine directory for scanning phi or psi for alanine dipeptide.

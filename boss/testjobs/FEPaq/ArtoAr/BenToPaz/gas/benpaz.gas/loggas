@@ -1,0 +1,175 @@
+                 MC/gas simulation
+                    gas phase 25 C 
+                 Equilibration  0.1M 
+                   Averaging  0-1M 
+Fri Aug 17 12:37:34 EDT 2007
+time /home/bill/boss/BOSS 111 50000 0.05 0.00 0.10
+4.523u 0.791s 0:05.31 100.0%	0+0k 0+0io 210pf+0w
+Fri Aug 17 12:37:39 EDT 2007
+time /home/bill/boss/BOSS 001 50000 0.05 0.00 0.10
+4.527u 0.777s 0:05.30 99.8%	0+0k 0+0io 213pf+0w
+time /home/bill/boss/BOSS 011 250000 0.05 0.00 0.10
+19.832u 0.804s 0:20.63 100.0%	0+0k 0+0io 210pf+0w
+Fri Aug 17 12:38:05 EDT 2007
+time /home/bill/boss/BOSS 001 250000 0.05 0.00 0.10
+19.875u 0.792s 0:20.66 100.0%	0+0k 0+0io 213pf+0w
+Fri Aug 17 12:38:26 EDT 2007
+time /home/bill/boss/BOSS 001 250000 0.05 0.00 0.10
+19.896u 0.791s 0:20.70 99.9%	0+0k 0+0io 213pf+0w
+Fri Aug 17 12:38:46 EDT 2007
+time /home/bill/boss/BOSS 001 250000 0.05 0.00 0.10
+19.855u 0.796s 0:20.65 99.9%	0+0k 0+0io 213pf+0w
+Fri Aug 17 12:39:07 EDT 2007
+time /home/bill/boss/BOSS 111 50000 0.15 0.10 0.20
+4.480u 0.724s 0:05.20 100.0%	0+0k 0+0io 210pf+0w
+Fri Aug 17 12:39:12 EDT 2007
+time /home/bill/boss/BOSS 001 50000 0.15 0.10 0.20
+4.447u 0.771s 0:05.21 100.0%	0+0k 0+0io 213pf+0w
+time /home/bill/boss/BOSS 011 250000 0.15 0.10 0.20
+19.462u 0.796s 0:20.25 100.0%	0+0k 0+0io 210pf+0w
+Fri Aug 17 12:39:38 EDT 2007
+time /home/bill/boss/BOSS 001 250000 0.15 0.10 0.20
+19.361u 0.814s 0:20.18 99.9%	0+0k 0+0io 213pf+0w
+Fri Aug 17 12:39:58 EDT 2007
+time /home/bill/boss/BOSS 001 250000 0.15 0.10 0.20
+19.406u 0.802s 0:20.20 100.0%	0+0k 0+0io 213pf+0w
+Fri Aug 17 12:40:18 EDT 2007
+time /home/bill/boss/BOSS 001 250000 0.15 0.10 0.20
+19.367u 0.820s 0:20.18 100.0%	0+0k 0+0io 213pf+0w
+Fri Aug 17 12:40:38 EDT 2007
+time /home/bill/boss/BOSS 111 50000 0.25 0.20 0.30
+4.324u 0.816s 0:05.14 99.8%	0+0k 0+0io 210pf+0w
+Fri Aug 17 12:40:44 EDT 2007
+time /home/bill/boss/BOSS 001 50000 0.25 0.20 0.30
+4.376u 0.759s 0:05.13 99.8%	0+0k 0+0io 213pf+0w
+time /home/bill/boss/BOSS 011 250000 0.25 0.20 0.30
+18.992u 0.812s 0:19.81 99.9%	0+0k 0+0io 210pf+0w
+Fri Aug 17 12:41:09 EDT 2007
+time /home/bill/boss/BOSS 001 250000 0.25 0.20 0.30
+19.345u 0.796s 0:20.14 99.9%	0+0k 0+0io 213pf+0w
+Fri Aug 17 12:41:29 EDT 2007
+time /home/bill/boss/BOSS 001 250000 0.25 0.20 0.30
+18.988u 0.814s 0:19.79 100.0%	0+0k 0+0io 213pf+0w
+Fri Aug 17 12:41:48 EDT 2007
+time /home/bill/boss/BOSS 001 250000 0.25 0.20 0.30
+19.333u 0.822s 0:20.15 100.0%	0+0k 0+0io 213pf+0w
+Fri Aug 17 12:42:09 EDT 2007
+time /home/bill/boss/BOSS 111 50000 0.35 0.30 0.40
+4.333u 0.789s 0:05.12 99.8%	0+0k 0+0io 210pf+0w
+Fri Aug 17 12:42:14 EDT 2007
+time /home/bill/boss/BOSS 001 50000 0.35 0.30 0.40
+4.291u 0.828s 0:05.12 99.8%	0+0k 0+0io 213pf+0w
+time /home/bill/boss/BOSS 011 250000 0.35 0.30 0.40
+19.093u 0.785s 0:19.87 100.0%	0+0k 0+0io 210pf+0w
+Fri Aug 17 12:42:39 EDT 2007
+time /home/bill/boss/BOSS 001 250000 0.35 0.30 0.40
+18.890u 0.771s 0:19.66 100.0%	0+0k 0+0io 213pf+0w
+Fri Aug 17 12:42:58 EDT 2007
+time /home/bill/boss/BOSS 001 250000 0.35 0.30 0.40
+18.851u 0.822s 0:19.67 100.0%	0+0k 0+0io 213pf+0w
+Fri Aug 17 12:43:18 EDT 2007
+time /home/bill/boss/BOSS 001 250000 0.35 0.30 0.40
+18.935u 0.812s 0:19.74 100.0%	0+0k 0+0io 213pf+0w
+Fri Aug 17 12:43:38 EDT 2007
+time /home/bill/boss/BOSS 111 50000 0.45 0.40 0.50
+4.335u 0.755s 0:05.09 99.8%	0+0k 0+0io 210pf+0w
+Fri Aug 17 12:43:43 EDT 2007
+time /home/bill/boss/BOSS 001 50000 0.45 0.40 0.50
+4.257u 0.835s 0:05.10 99.6%	0+0k 0+0io 213pf+0w
+time /home/bill/boss/BOSS 011 250000 0.45 0.40 0.50
+18.796u 0.769s 0:19.56 99.9%	0+0k 0+0io 210pf+0w
+Fri Aug 17 12:44:08 EDT 2007
+time /home/bill/boss/BOSS 001 250000 0.45 0.40 0.50
+18.892u 0.769s 0:19.66 99.9%	0+0k 0+0io 213pf+0w
+Fri Aug 17 12:44:27 EDT 2007
+time /home/bill/boss/BOSS 001 250000 0.45 0.40 0.50
+18.976u 0.791s 0:19.76 100.0%	0+0k 0+0io 213pf+0w
+Fri Aug 17 12:44:47 EDT 2007
+time /home/bill/boss/BOSS 001 250000 0.45 0.40 0.50
+18.824u 0.767s 0:19.59 99.9%	0+0k 0+0io 213pf+0w
+Fri Aug 17 12:45:07 EDT 2007
+time /home/bill/boss/BOSS 111 50000 0.55 0.50 0.60
+4.324u 0.753s 0:05.07 100.0%	0+0k 0+0io 210pf+0w
+Fri Aug 17 12:45:12 EDT 2007
+time /home/bill/boss/BOSS 001 50000 0.55 0.50 0.60
+4.316u 0.761s 0:05.07 100.0%	0+0k 0+0io 213pf+0w
+time /home/bill/boss/BOSS 011 250000 0.55 0.50 0.60
+18.738u 0.750s 0:19.48 100.0%	0+0k 0+0io 210pf+0w
+Fri Aug 17 12:45:36 EDT 2007
+time /home/bill/boss/BOSS 001 250000 0.55 0.50 0.60
+18.703u 0.794s 0:19.49 100.0%	0+0k 0+0io 213pf+0w
+Fri Aug 17 12:45:56 EDT 2007
+time /home/bill/boss/BOSS 001 250000 0.55 0.50 0.60
+19.146u 0.832s 0:19.97 100.0%	0+0k 0+0io 213pf+0w
+Fri Aug 17 12:46:16 EDT 2007
+time /home/bill/boss/BOSS 001 250000 0.55 0.50 0.60
+18.779u 0.728s 0:19.50 99.9%	0+0k 0+0io 213pf+0w
+Fri Aug 17 12:46:35 EDT 2007
+time /home/bill/boss/BOSS 111 50000 0.65 0.60 0.70
+4.275u 0.787s 0:05.07 99.6%	0+0k 0+0io 210pf+0w
+Fri Aug 17 12:46:40 EDT 2007
+time /home/bill/boss/BOSS 001 50000 0.65 0.60 0.70
+4.320u 0.765s 0:05.08 100.0%	0+0k 0+0io 213pf+0w
+time /home/bill/boss/BOSS 011 250000 0.65 0.60 0.70
+18.677u 0.783s 0:19.45 100.0%	0+0k 0+0io 210pf+0w
+Fri Aug 17 12:47:05 EDT 2007
+time /home/bill/boss/BOSS 001 250000 0.65 0.60 0.70
+18.648u 0.804s 0:19.44 100.0%	0+0k 0+0io 213pf+0w
+Fri Aug 17 12:47:24 EDT 2007
+time /home/bill/boss/BOSS 001 250000 0.65 0.60 0.70
+18.681u 0.796s 0:19.47 100.0%	0+0k 0+0io 213pf+0w
+Fri Aug 17 12:47:44 EDT 2007
+time /home/bill/boss/BOSS 001 250000 0.65 0.60 0.70
+18.718u 0.744s 0:19.46 99.9%	0+0k 0+0io 213pf+0w
+Fri Aug 17 12:48:03 EDT 2007
+time /home/bill/boss/BOSS 111 50000 0.75 0.70 0.80
+4.220u 0.841s 0:05.07 99.8%	0+0k 0+0io 210pf+0w
+Fri Aug 17 12:48:08 EDT 2007
+time /home/bill/boss/BOSS 001 50000 0.75 0.70 0.80
+4.277u 0.794s 0:05.07 99.8%	0+0k 0+0io 213pf+0w
+time /home/bill/boss/BOSS 011 250000 0.75 0.70 0.80
+18.712u 0.798s 0:19.69 99.0%	0+0k 0+0io 210pf+0w
+Fri Aug 17 12:48:33 EDT 2007
+time /home/bill/boss/BOSS 001 250000 0.75 0.70 0.80
+18.730u 0.785s 0:19.51 100.0%	0+0k 0+0io 213pf+0w
+Fri Aug 17 12:48:53 EDT 2007
+time /home/bill/boss/BOSS 001 250000 0.75 0.70 0.80
+18.626u 0.798s 0:19.42 99.9%	0+0k 0+0io 213pf+0w
+Fri Aug 17 12:49:12 EDT 2007
+time /home/bill/boss/BOSS 001 250000 0.75 0.70 0.80
+18.636u 0.802s 0:19.43 100.0%	0+0k 0+0io 213pf+0w
+Fri Aug 17 12:49:32 EDT 2007
+time /home/bill/boss/BOSS 111 50000 0.85 0.80 0.90
+4.265u 0.791s 0:05.07 99.6%	0+0k 0+0io 210pf+0w
+Fri Aug 17 12:49:37 EDT 2007
+time /home/bill/boss/BOSS 001 50000 0.85 0.80 0.90
+4.353u 0.773s 0:05.12 100.0%	0+0k 0+0io 213pf+0w
+time /home/bill/boss/BOSS 011 250000 0.85 0.80 0.90
+18.628u 0.767s 0:19.39 99.9%	0+0k 0+0io 210pf+0w
+Fri Aug 17 12:50:01 EDT 2007
+time /home/bill/boss/BOSS 001 250000 0.85 0.80 0.90
+18.574u 0.816s 0:19.38 100.0%	0+0k 0+0io 213pf+0w
+Fri Aug 17 12:50:21 EDT 2007
+time /home/bill/boss/BOSS 001 250000 0.85 0.80 0.90
+18.634u 0.753s 0:19.39 99.9%	0+0k 0+0io 213pf+0w
+Fri Aug 17 12:50:40 EDT 2007
+time /home/bill/boss/BOSS 001 250000 0.85 0.80 0.90
+18.626u 0.851s 0:19.47 100.0%	0+0k 0+0io 213pf+0w
+Fri Aug 17 12:51:00 EDT 2007
+time /home/bill/boss/BOSS 111 50000 0.95 0.90 1.00
+4.251u 0.765s 0:05.01 100.0%	0+0k 0+0io 210pf+0w
+Fri Aug 17 12:51:05 EDT 2007
+time /home/bill/boss/BOSS 001 50000 0.95 0.90 1.00
+4.205u 0.789s 0:05.01 99.4%	0+0k 0+0io 213pf+0w
+time /home/bill/boss/BOSS 011 250000 0.95 0.90 1.00
+18.390u 0.792s 0:19.18 100.0%	0+0k 0+0io 210pf+0w
+Fri Aug 17 12:51:29 EDT 2007
+time /home/bill/boss/BOSS 001 250000 0.95 0.90 1.00
+18.378u 0.826s 0:19.20 99.9%	0+0k 0+0io 213pf+0w
+Fri Aug 17 12:51:48 EDT 2007
+time /home/bill/boss/BOSS 001 250000 0.95 0.90 1.00
+18.453u 0.750s 0:19.20 100.0%	0+0k 0+0io 213pf+0w
+Fri Aug 17 12:52:07 EDT 2007
+time /home/bill/boss/BOSS 001 250000 0.95 0.90 1.00
+18.343u 0.839s 0:19.20 99.8%	0+0k 0+0io 213pf+0w
+Fri Aug 17 12:52:27 EDT 2007

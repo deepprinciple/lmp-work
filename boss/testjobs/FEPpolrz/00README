@@ -1,0 +1,101 @@
+This examines the effect of solvent polarization on an FEP calculation
+for Me4N+ --> Me4C in liquid benzene.
+
+Addition of polarization is controlled on the last line of the par files.
+POLSCX = POLSCS = 0.0 for no polarization (OPLS-AA).
+
+POLSCX = 1.0 for addition of solute-solute polarization, i.e.,
+inducible dipoles are added to solute atoms as specified below.
+The electric field is computed at a solute atom including the
+contributions from all atoms in other solutes.
+
+POLSCS = 1.0 for addition of solvent by solute polarization.
+Inducible dipoles are added to all solvent atoms as specified
+below. Only "custom" solvents are allowed to have inducible
+dipoles; a "custom" solvent requires a solvent Z-matrix.
+The electric field is computed at a solvent atom including 
+the contributions from all atoms in solutes. A 10-Angstrom
+cutoff is applied. Specifically, for a given solvent molecule,
+all distances specified by the solute-solvent cutoff procedure
+are computed. If any is less than 10-A, all inducible dipoles
+are included for that solvent molecule. E.g., for ICUT = 5,
+all distances between non-H atoms of the solutes and the
+solvent atoms specified in the ICUTAS array are computed; if
+any is less than 10 A, the inducible dipoles are included for
+that solvent molecule.
+
+Solvent-solvent polarization is not allowed as it is implicit
+in the parameterization of the OPLS-AA solvent models.
+Solute by solvent polarization is also not treated as it
+is normally not substantial. The key problems that are addressed
+by the present polarization treatment are ions in solution and
+polar molecules in low-dielectric solvents.
+
+Currently, atoms that are assigned polarizabilites have the following
+types PSYM; the corresponding polarizabilites are in PVAL. The PVALs
+are scaled by POLSCX and POLSCS, and the utilized values are listed in
+the output ot files.
+C
+      DATA PSYM/'CT','CM','C=','CZ','C ',
+     *          'CA','CW','CR','CQ','CV',
+     *          'CX','C!','CB','CN','CK',
+     *          'CS','CY','CO','CU','C$',
+     *          'NA','NB','NC','N*','OS',
+     *          'Si','S ','Cl','Br','I '/
+C     Polarizabilities in Angstroms**3
+      DATA PVAL/1.0,  1.0,  1.0,  1.0,  1.0,
+     *          1.0,  1.0,  1.0,  1.0,  1.0,
+     *          1.0,  1.0,  1.0,  1.0,  1.0,
+     *          1.0,  1.0,  1.0,  1.0,  1.0,
+     *          1.5,  1.5,  1.5,  1.5,  1.5,
+     *          2.5,  1.5,  1.5,  2.0,  2.5/
+ 
+FEPBenz/
+The FEP calculation in OPLS-AA benzene (no polarization, N=260).
+12-A cutoffs in box.
+
+FEPpolBenz/
+The FEP calculation in polarizable (OPLS-AAP) benzene.
+12-A cutoffs in box.
+
+FEPwater/
+The FEP calculation in TIP4P water box (N=500) with 10-A cutoffs.
+
+FEPwatercap/
+The FEP calculation in TIP4P water cap with 15-A radius and no cutoffs.
+
+FEPgas/
+The FEP calculation in the gas phase.
+
+MCnoFEP/
+MC simulation for Me4N+ in OPLS-AAP benzene.
+12-A cutoffs in box.
+
+MCpolNoFEP/
+MC simulation for Me4N+ in OPLS-AA  benzene.
+12-A cutoffs in box.
+                                                      Relative
+    Me4N+ --> Me4C             FEP            Free Energy of Solvation
+Summary of FEP results:       deltaG         deldelGsolvation     Expt.
+                          --------------     ----------------     -----
+deltaG gas                -49.92 +- 0.01        0.0
+
+deltaG water 10-A cutoffs   4.54 +- 0.19       54.46 +- 0.19      54.5
+deltaG water 15-A cap      -8.65 +- 0.18       41.27 +- 0.18      54.5
+deltaG water cap + Born     2.28 +- 0.18       52.20 +- 0.18      54.5
+
+deltaG OPLS-AA  benzene   -33.27 +- 0.15       16.65 +- 0.15       ?
++ Born correction         -25.53 +- 0.15       24.39 +- 0.15
+deltaG OPLS-AAP benzene    -8.65 +- 0.18       41.27 +- 0.18       ?
++ Born correction          -0.91 +- 0.18       49.01 +- 0.18 
+
+Born corr for water cap = -166/15*(1-1/80) = -10.93 kcal/mol
+Born corr for benzene = -166/12*(1-1/2.27) =  -7.74 kcal/mol
+
+(This used solvent polarization scale factor = 1.0, inducible dipoles
+on each benzene carbon, and a polarization cutoff of 10 A. Currently,
+we prefer POLSCX = POLSCS = 1.0)
+
+optimize/
+This directory illustrates performing energy minimizations with and
+without polarization.

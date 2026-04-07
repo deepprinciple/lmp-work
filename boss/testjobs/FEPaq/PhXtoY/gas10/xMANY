@@ -1,0 +1,25 @@
+#!/bin/csh
+
+# usage: xMANY file script
+# executes script on each file name listed in file
+# JTR 2/01
+
+if ($#argv > 1) then
+   if (-e $argv[1]) then
+      set flist = (`cat $argv[1]`)
+      shift
+      set command = ($argv[*])
+   else
+      echo file $argv[1] does not exist
+      exit
+   endif
+#   set command = $argv[2]
+else
+   echo "   usage:" many file_list command
+   exit
+endif
+
+foreach file ($flist[*])
+   echo $file
+   $command $file
+end

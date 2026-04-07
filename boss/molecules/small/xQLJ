@@ -1,0 +1,18 @@
+#!/bin/csh
+#
+# execute the typeQLJ program to obtain OPLS/CM1A
+# parameters for an input pdb file
+#
+# usage - xQLJ             
+# echo obtain OPLS/CM1A parameters for input pdb file
+#
+# test if the environment variable BOSSdir has been defined
+#
+if (!($?BOSSdir)) then
+   echo "BOSSdir has not been defined; please see README"
+   exit (-1)
+endif
+
+$BOSSdir/miscexec/typeQLJ
+#
+exit

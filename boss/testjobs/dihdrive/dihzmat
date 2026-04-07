@@ -1,0 +1,30 @@
+  1,2-dichloroethane                                        Tot. E =     -0.7337
+   1 C1   152    0    0    0.000000   0    0.000000   0    0.000000        0
+   2 DUM   -1    0    1    1.000000   0    0.000000   0    0.000000        0
+   3 DUM   -1    0    2    1.000000   1   90.000000   0    0.000000        0
+   4 C2   152    0    1    1.530808   2   90.000000   3    0.000000        0
+   5 CL   151    0    4    1.781347   1  110.061312   2    0.000000        0
+   6 CL   151    0    1    1.781347   4  110.061312   5  180.000001        0
+   7 H    153    0    1    1.090473   4  111.351160   6  119.635063        0
+   8 H    153    0    1    1.090473   4  111.351161   6  240.364936        0
+   9 H    153    0    4    1.090473   1  111.351160   5  119.635063        0
+  10 H    153    0    4    1.090473   1  111.351161   5  240.364936        0
+                    Geometry Variations follow                                  
+                    Variable Bonds follow         (I4)                          
+0004-0010                                                                       
+                    Additional Bonds follow       (2I4)                         
+                    Harmonic Constraints follow                                 
+                    Variable Bond Angles follow   (I4)                          
+0005-0010                                                                       
+                    Additional Bond Angles follow (3I4)                         
+AUTO                                                                            
+                    Variable Dihedrals follow     (3I4,F12.6)                   
+0007-0010                                                                       
+                    Additional Dihedrals follow   (6I4)                         
+0006000100040005  -1  -1
+AUTO                                                                            
+                    Domain Definitions follow     (4I4)                         
+                    Final blank line                                            
+
+Note: Dihedral angle 6 is the reaction coordinate. It has been removed
+fm the list of variable dihredals and added to the additional dihedrals.

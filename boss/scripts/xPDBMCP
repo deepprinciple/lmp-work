@@ -1,0 +1,31 @@
+#!/bin/csh
+set echo
+#
+# take pdb file to Z-matrix for MCPRO ligand
+# with CM1A charges and OPLS-AA atom types assigned
+# with no optimization of structure
+#
+# usage:  xPDBMCP moleculename
+#
+# file moleculename.pdb must be in the directory
+# file moleculename.z is created
+# file moleculename.plt contains the structure
+#
+# test if the enviroment variable BOSSdir has been defined
+#
+if (!($?BOSSdir)) then
+   echo "BOSSdir has not been defined; please see README"
+   exit (-1)
+endif
+
+if (-e optzmat) rm optzmat
+$BOSSdir/autozmat -i pdb -z default <${argv[1]}.pdb >optzmat
+csh $BOSSdir/scripts/AM1SPcmd >& log
+rm optzmat
+cp sum optzmat
+csh $BOSSdir/scripts/SPMcmd >& log
+cp sum ${argv[1]}.z
+cp plt.pdb ${argv[1]}.plt
+rm optzmat
+#
+exit

@@ -1,0 +1,33 @@
+        t-butyl cation                                      Tot. E =      5.7436
+   1 C    700    0    0    0.000000   0    0.000000   0    0.000000        0
+   2 DUM   -1    0    1    1.000000   0    0.000000   0    0.000000        0
+   3 DUM   -1    0    2    1.000000   1   90.000000   0    0.000000        0
+   4 C    701    0    1    1.464646   2   90.000000   3    0.000000        0
+   5 C    701    0    1    1.464646   4  119.999999   2  270.000000        0
+   6 C    701    0    1    1.464646   4  119.999999   5  179.999996        0
+   7 H    702    0    4    1.091638   1  109.553172   6  180.000157        0
+   8 H    702    0    4    1.091855   1  109.131440   7  119.037897        0
+   9 H    702    0    4    1.091855   1  109.131442   7  240.962079        0
+  10 H    702    0    5    1.091638   1  109.553172   4  179.999965        0
+  11 H    702    0    5    1.091855   1  109.131442  10  119.037910        0
+  12 H    702    0    5    1.091855   1  109.131441  10  240.962092        0
+  13 H    702    0    6    1.091638   1  109.553173   5  179.999878        0
+  14 H    702    0    6    1.091855   1  109.131442  13  119.037919        0
+  15 H    702    0    6    1.091855   1  109.131441  13  240.962101        0
+                    Geometry Variations follow    (2I4,F12.6)                   
+                    Variable Bonds follow         (I4 or I4-I4)                 
+0004-0015                                                                       
+                    Additional Bonds follow       (2I4)                         
+                    Harmonic Constraints follow   (2I4,4F10.4)                  
+                    Variable Bond Angles follow   (I4 or I4-I4)                 
+0005-0015                                                                       
+                    Additional Bond Angles follow (3I4)                         
+AUTO                                                                            
+                    Variable Dihedrals follow     (3I4,F12.6)                   
+   6 162 162    5.0                                                             
+0007-0015                                                                       
+                    Additional Dihedrals follow   (6I4)                         
+AUTO                                                                            
+                    Domain Definitions follow     (4I4)                         
+                    Conformational Search         (2I4, 2F12.6)                 
+                    Final blank line                                            

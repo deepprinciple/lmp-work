@@ -1,0 +1,21 @@
+#!/bin/csh
+set echo
+#
+# script to run a standard MC job
+# using the OPLS-AA force field
+#
+# usage:  xMC500 moleculename
+# or to run in background: xMC500 moleculename &
+#
+# make subdirectory
+mkdir $argv[1]
+cd $argv[1]
+cp $BOSSdir/molecules/OPLS2020/${argv[1]}.z MC500zmat
+cp $BOSSdir/testjobs/MCsolute/mc500cmd .
+cp $BOSSdir/testjobs/MCsolute/mc500par1 mc500par
+# execute
+csh mc500cmd >& log 
+rm *a *b *c *otd *pltd *sv* *eq
+cd ..
+#
+exit

@@ -1,0 +1,26 @@
+  1-chloro-2-fluoroethane                                   Tot. E =     -0.2914
+   1 C1   957    0    0    0.000000   0    0.000000   0    0.000000        0
+   2 DUM   -1    0    1    1.000000   0    0.000000   0    0.000000        0
+   3 DUM   -1    0    2    1.000000   1   90.000000   0    0.000000        0
+   4 C2   152    0    1    1.532445   2   90.000000   3    0.000000        0
+   5 CL   151    0    4    1.782576   1  110.646058   2    0.000000        0
+   6 F    956    0    1    1.360372   4  110.510742   5   63.487775        0
+   7 H    958    0    1    1.090198   4  111.466217   6  119.143410        0
+   8 H    958    0    1    1.090480   4  111.554264   6  240.365877        0
+   9 H    153    0    4    1.090084   1  111.242330   5  119.611113        0
+  10 H    153    0    4    1.090327   1  111.166292   5  240.184586        0
+                    Geometry Variations follow                                  
+                    Variable Bonds follow         (I4)                          
+0004-0010                                                                       
+                    Additional Bonds follow       (2I4)                         
+                    Harmonic Constraints follow                                 
+                    Variable Bond Angles follow   (I4)                          
+0005-0010                                                                       
+                    Additional Bond Angles follow (3I4)                         
+AUTO                                                                            
+                    Variable Dihedrals follow     (3I4,F12.6)                   
+0006-0010                                                                       
+                    Additional Dihedrals follow   (6I4)                         
+AUTO                                                                            
+                    Domain Definitions follow     (4I4)                         
+                    Final blank line                                            

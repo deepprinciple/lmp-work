@@ -1,0 +1,127 @@
+#
+# Command file for the MCPRO  program.  Execute by entering the following:
+# csh f4f20cmd >& log &
+#***********************************************************************
+echo '                    MC/FEP simulation'
+echo '                 Equilibration  6M/3M  '
+echo '                    Averaging   20M '
+echo '                   4 Forward Windows '
+#***********************************************************************
+# wlj Dec 2007
+#
+nice +19
+set BOSS = $BOSSdir/BOSS 
+setenv BANGPAR   $BOSSdir/oplsaa.sb
+setenv WATERBOX  $BOSSdir/watbox
+setenv ORG1BOX   $BOSSdir/org1box
+setenv ORG2BOX   $BOSSdir/org2box
+setenv SLVZMAT   slvzmat
+setenv ZMATRIX   fepzmat
+
+@ nsteps = 4             
+##### Enter a loop. Repeat until i < nsteps.
+@ i = 0
+while ($i < $nsteps)
+# set lambda values
+
+        if ($i == 0) then
+           set rc0 = "0.000"                   
+           set rc1 = "0.250"                  
+           set rc2 = "0.000"                    
+           set lab = "00"
+           set nex = "25"
+	 # The feppar0 file is only used for this initial window; feppar
+	 # is used for subsequent windows. The difference is that the
+	 # subsequent windows use ZIN and IN for the initial solute and
+	 # solvent coordinates, while here they come from ZMAT and MCPdir.
+           if (-e tmppar) rm tmppar
+           cp feppar0 tmppar
+           cat $BOSSdir/oplsaa.par >> tmppar
+#          optional:
+#          use stored 25 A water cluster for initial solvent coordinates
+#          cp $BOSSdir/solbox/wcapin.25 f${lab}in
+        endif
+        if ($i == 1) then
+           set rc0 = "0.250"                   
+           set rc1 = "0.500"                  
+           set rc2 = "0.000"                    
+           set lab = "25"
+           set nex = "50"
+           rm tmppar
+           cp feppar tmppar
+           cat $BOSSdir/oplsaa.par >> tmppar
+        endif
+        if ($i == 2) then
+           set rc0 = "0.500"                   
+           set rc1 = "0.750"                  
+           set rc2 = "0.250"                    
+           set lab = "50"
+           set nex = "75"
+        endif
+        if ($i == 3) then
+           set rc0 = "0.750"                   
+           set rc1 = "1.000"                  
+           set rc2 = "0.500"                    
+           set lab = "75"
+           set nex = "100"
+        endif
+	setenv INFILE    f${lab}in
+	setenv UPFILE    f${lab}up
+	setenv SAVE      f${lab}sv
+	setenv AVERAGE   f${lab}av
+	setenv SUMMARY   f${lab}sum
+        setenv PARAMETER tmppar
+
+#    Equilibration   #
+
+	date
+        set configurations = "1000000"
+#       equilibrate longer for the first window
+        if ($i == 0) set configurations = "2000000"
+#       don't waste time doing the perturbations during equilibration
+        set lambda = "$rc0 $rc0 $rc0"
+	setenv OUTPUT    f${lab}ota
+	setenv PLTFILE   f${lab}plta
+        echo time $BOSS 111 $configurations $lambda
+	time $BOSS 111 $configurations $lambda
+	setenv OUTPUT    f${lab}otb
+	setenv PLTFILE   f${lab}pltb
+	time $BOSS 011 $configurations $lambda
+	foreach block (eq)
+        	date
+		setenv OUTPUT    f${lab}ot$block
+		setenv PLTFILE   f${lab}plt$block
+                echo time $BOSS 001 $configurations $lambda
+		time $BOSS 001 $configurations $lambda
+	end
+
+#    Averaging   #
+
+#       reset lambda for FEP
+        set lambda = "$rc0 $rc1 $rc2"
+        set configurations = "4000000"
+        rm f${lab}sv
+
+	setenv OUTPUT    f${lab}ota
+	setenv PLTFILE   f${lab}plta
+        echo time $BOSS 011 $configurations $lambda
+	time $BOSS 011 $configurations $lambda
+	foreach block (b c d e20)
+        	date
+        	setenv OUTPUT    f${lab}ot$block
+        	setenv PLTFILE   f${lab}plt$block
+                echo time $BOSS 001 $configurations $lambda
+        	time $BOSS 001 $configurations $lambda
+	end
+        rm f${lab}*a f${lab}*b f${lab}*c f${lab}*d
+
+        if ($i < ($nsteps - 1)) cp f${lab}in f${nex}in
+
+	##### increment 'i' by one.
+	@ i++
+end
+
+rm slvzmat
+
+date
+exit

@@ -1,0 +1,36 @@
+      hydrazine                                             Tot. E =     36.4732
+   1 NT   800  800    0    1.000000   0    0.000000   0    0.000000        0
+   2 DUM   -1   -1    1    1.000000   0    0.000000   0    0.000000        0
+   3 DUM   -1   -1    2    1.000000   1   90.000000   0    0.000000        0
+   4 NT   801  801    1    1.447795   2   90.000000   3  180.000000        0
+   5 H    802  802    1    1.014629   4  111.368814   2  240.000000        0
+   6 H    803  803    1    1.015100   4  109.553850   2  122.075602        0
+   7 H    804  804    4    1.014631   1  111.363520   5   42.370160        0
+   8 H    805  805    4    1.015111   1  109.551493   7  242.083538        0
+                    Geometry Variations follow    (2I4,F12.6)                   
+                    Variable Bonds follow         (I4 or I4-I4)                 
+0004-0008                                                                       
+                    Additional Bonds follow       (2I4)                         
+                    Harmonic Constraints follow   (2I4,4F10.4)                  
+                    Variable Bond Angles follow   (I4 or I4-I4)                 
+0005-0008                                                                       
+                    Additional Bond Angles follow (3I4)                         
+AUTO                                                                            
+                    Variable Dihedrals follow     (3I4,F12.6)                   
+0006-0008                                                                       
+                    Additional Dihedrals follow   (6I4)                         
+AUTO                                                                            
+                    Domain Definitions follow     (4I4)                         
+                    Conformational Search         (2I4, 2F12.6)                 
+                    Final blank line                                            
+                                                                                
+                                                                                
+ Final Non-Bonded Parameters for QM (AM1 CM1Ax1.14) Atoms:                      
+                                                                                
+ 800  7 NT  -0.727852  3.300000  0.170000                                       
+ 801  7 NT  -0.727827  3.300000  0.170000                                       
+ 802  1 H    0.363922  0.000000  0.000000                                       
+ 803  1 H    0.363922  0.000000  0.000000                                       
+ 804  1 H    0.363917  0.000000  0.000000                                       
+ 805  1 H    0.363917  0.000000  0.000000                                       
+                                                                                

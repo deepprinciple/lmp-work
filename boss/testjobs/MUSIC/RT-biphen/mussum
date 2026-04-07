@@ -1,0 +1,150 @@
+ Results Summary: 1s9e HIV-RT rigid for MUSIC        Mon Sep 26 21:38:33 2005
+
+ NMOL = 326          EDGE =  100.0000  100.0000  100.0000    RCUT =   10.0000
+ NACCPT =  1000000   NRJECT =   802771   MXCON =  500000     NCON =  500000
+ T(C) =   -100.00    OLD E =  0.33507317D+04    NEW E =  0.33629478D+04
+ RDEL =    0.2000    ADEL =   10.0000    VDEL =     480.0    MXS =    2500
+ P(ATM) =     1.0    VOLD =   1000000.0  VNEW =   1000000.0  NVCHG =999999
+ DIELRF =     1.0    Reaction Field NOT Applied
+
+ Information for the Reference Solute:
+ NSCHG=999999        SCUT =  100.0000    ICUT =     5        NCENT =   1    1
+ RDELS1=   0.0000    RDELS2=   0.0000    ADELS1=   0.0000    ADELS2=   0.0000
+ ESOLD=-3854.0231    ESONE=-3841.9872    WIMAX=  0.003068    WKC =20000.00
+ EXXOLD=   0.0000    EXXNEW=   0.0000    DIELEC=   1.0000    CUTOFF E=    0.000
+ EBNDOL=   0.0000    EBNDNE=   3.3721    EANGOL=   0.0000    EANGNE=   2.7094
+ EDIHOL=   0.0000    EDIHNE=   2.6077    ENBOL=    0.0000    ENBNE=   11.4516
+ EBCOLD=   0.0000    EBCNEW=   0.0000    SANEW =  8020.53
+
+ ESBNOL=  1640.10    ESBNNE=  1640.14    ESANOL=  1105.04    ESANNE=  1105.13
+ ESDIOL=   737.81    ESDINE=   737.58    ESNBOL=  3721.81    ESNBNE=  3722.09
+
+
+ 1-4 Scale Factors: Coul.=   0.20000D+01 L-J=   0.20000D+01  CUTNB =  100.000
+ RC0 =    0.0000   RC1 =    0.0000   RC2 =    0.0000
+
+ Solvent Cap is Used:
+ Cap Atom =2729  Cap Radius =   24.0000  Force Const. =    2.0000
+
+
+
+
+            *** Averages ***
+ Total Energy =  3783.6287
+     Inter Cp = 38957.0037
+     Alpha(1/deg*e-5)=     0.0000
+     Kappa(1/atm*e-6)=     0.0000
+     Volume=  1000000.0
+
+                  Refer. Solute  1st Pert. Solute       Delta    2nd Pert. Solute       Delta
+ Solute-Solvent E   -3805.2897        -3805.2897        0.0000        -3805.2897        0.0000
+ Solute-Solute E        0.0000            0.0000        0.0000            0.0000        0.0000
+ Bond Stretch E         0.0000            0.0000        0.0000            0.0000        0.0000
+ Angle Bending E        0.0000            0.0000        0.0000            0.0000        0.0000
+ Torsional Energy       0.0000            0.0000        0.0000            0.0000        0.0000
+ Non-bonded E           0.0000            0.0000        0.0000            0.0000        0.0000
+ Constraints E          0.0000            0.0000        0.0000            0.0000        0.0000
+ Total                                                  0.0000                          0.0000
+ Ave. Dipole Mom.     485.7289          485.7289                        485.7289
+
+
+ Solute  1 - Solvent Energy Components:
+   Lennard-Jones =   -581.8135
+   Coulomb       =  -3227.3464
+   Total         =  -3809.1599
+
+ Solute  1 - Solute Energy Components:
+   Lennard-Jones =      0.0000
+   Coulomb       =      0.0000
+   Total         =      0.0000
+
+ Ave. Solute-Solvent Hydrogen Bonds:
+   Solute as Donor =    0.0000
+   as Acceptor     =    0.0000
+
+ Flexible Solvent Energy Components:
+ Bond Stretch E      1837.1951
+ Angle Bending E     1261.2863
+ Torsional Energy     724.4203
+ Non-bonded E        3766.0167
+ Total Internal E    7588.9184
+
+
+ Attempts/Accepts: Solute1       0/       0 Solute2       0/       0
+
+                                                Thermodynamic Results
+
+ Run Total Energy     Inter Cp       Volume       Enthalpy        Kappa         Alpha          EXX           ESX
+  2     3499.138      3475.773   1000000.000      3513.714         0.000         0.000         0.000     -3836.514
+  1     4068.120     41708.226   1000000.000      4082.696         0.000         0.000         0.000     -3774.065
+
+                                            Standard Deviations
+         284.491     25164.329         0.000       284.491         0.000         0.000         0.000        31.225
+
+                                                 Averages
+        3783.629     38957.004   1000000.000      3798.205         0.000         0.000         0.000     -3805.290
+
+
+
+ Energy Components for Flexible Solvent
+ Run      E-Bond        E-Bend       Torsion      Non-Bond        Total
+  2     1707.603      1148.993       728.324      3750.733      7335.652
+  1     1966.788      1373.579       720.517      3781.301      7842.185
+
+                                            Standard Deviations
+         129.592       112.293         3.903        15.284       253.266
+
+                                                 Averages
+        1837.195      1261.286       724.420      3766.017      7588.918
+
+
+
+ Solvent-Solvent Energy Components
+ Run      L-J         Coulomb
+  2        0.000         0.000
+  1        0.000         0.000
+
+                                            Standard Deviations
+           0.000         0.000
+
+                                                 Averages
+           0.000         0.000
+
+
+
+ SASA Analysis:
+ Run    Tot. SASA      Volume      Hydrophobic    Hydrophilic    Aromatic    Weakly Polar
+  2     8020.526     77461.046      3221.286      3824.738       911.032        63.471
+  1     8020.526     77461.046      3221.286      3824.738       911.032        63.471
+
+                                            Standard Deviations
+           0.000         0.000         0.000         0.000         0.000         0.000
+
+                                                 Averages
+        8020.526     77461.046      3221.286      3824.738       911.032        63.471
+
+
+
+ For Solute  1:
+ Run     ESX-Coul.      ESX-LJ       EXX-Coul.      EXX-LJ
+  2    -3222.436      -617.752         0.000         0.000
+  1    -3232.257      -545.875         0.000         0.000
+
+                                            Standard Deviations
+           4.910        35.939         0.000         0.000
+
+                                                 Averages
+       -3227.346      -581.813         0.000         0.000
+
+
+ Title: 1s9e HIV-RT rigid for MUSIC   
+ ESX-Coul =  -3227.346 ESX-LJ =   -581.813 SASA =   8020.526
+ EXX-Coul =      0.000 EXX-LJ =      0.000 MW =   19103.0003
+ Tot SASA =   8020.526 Mol Vol=  77461.046 Dipole=   485.729
+ H-phobic =   3221.286 Philic =   3824.738 Arom =    911.032 Wkly Polar=     63.471
+ # SX Ints=    118.888 for Ecut=    -2.750
+ # SX Ints=    118.888 for Ecut=    -3.750
+ #Donor HB=      0.000 Acptr HB=     0.000
+ Intramol E=     0.000
+ #Prot Ns =          2 #Nitro =          0 #Acid =         0 #Amide =        183
+ #Rotor Bonds=     657 #Real Atoms=   2725

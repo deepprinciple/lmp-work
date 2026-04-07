@@ -1,0 +1,29 @@
+
+Michelle Lamb writes:
+>From michelle  Wed Dec 21 13:48:51 1994
+From: Michelle Lamb <michelle>
+Message-Id: <9412211848.AA17489@rani.chem.yale.edu>
+Subject: "bar" program
+To: theoryg@rani.chem.yale.edu
+Date: Wed, 21 Dec 94 13:48:11 EST
+X-Mailer: ELM [version 2.3 PL11]
+
+Hi all,
+
+	If you've used Toan/Dan's program "bar" to make xmgr plots
+from BOSS average files, you might be interested in a new version,
+also called "bar". It's modified to read MCPRO average files as well.
+
+Usage : bar avgfile [-b]oss [-mc]pro
+
+ie, bar filename.avg -mc 
+to generate MCPRO energy distribution and dihedral angle plots
+
+The default filetype is a BOSS average file.
+
+Michelle
+
+
+
+
+

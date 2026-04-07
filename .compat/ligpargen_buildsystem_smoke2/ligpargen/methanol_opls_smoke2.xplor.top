@@ -1,0 +1,39 @@
+Remarks generated with LigParGen (israel.cabezadevaca@yale.edu)
+
+set echo=false end
+
+autogenerate angles=True dihedrals=True end
+
+{ atomType mass }
+MASS C800 12.0110
+MASS O801 15.9990
+MASS H802 1.0080
+MASS H803 1.0080
+MASS H804 1.0080
+MASS H805 1.0080
+
+RESIdue   MOL
+
+GROUP
+
+{ atomName atomType Charge }
+ATOM    C1  TYPE=   C800 CHARGE=   0.0508 END
+ATOM    O1  TYPE=   O801 CHARGE=  -0.6872 END
+ATOM    H1  TYPE=   H802 CHARGE=   0.0767 END
+ATOM    H2  TYPE=   H803 CHARGE=   0.0767 END
+ATOM    H3  TYPE=   H804 CHARGE=   0.0767 END
+ATOM    H4  TYPE=   H805 CHARGE=   0.4062 END
+
+{ Bonds: atomName1 atomName2 }
+BOND  O1   C1 
+BOND  H1   C1 
+BOND  H2   C1 
+BOND  H3   C1 
+BOND  H4   O1 
+
+{ Improper Dihedrals: aName1 aName2 aName3 aName4 }
+
+END {RESIdue MOL}
+
+set echo=true end
+

@@ -1,0 +1,26 @@
+        Acetaldehyde                                        Tot. E =     -4.6203
+   1 C    277    0    0    0.000000   0    0.000000   0    0.000000        0
+   2 DUM   -1    0    1    1.000000   0    0.000000   0    0.000000        0
+   3 DUM   -1    0    2    1.000000   1   90.000000   0    0.000000        0
+   4 O    278    0    1    1.228280   2   90.000000   3    0.000000        0
+   5 CA   135    0    1    1.520799   4  120.527338   2  270.000000        0
+   6 HCO  279    0    1    1.090008   4  123.723641   2   90.000000        0
+   7 H    282    0    5    1.089974   1  110.325779   4  360.000000        0
+   8 H    282    0    5    1.089466   1  110.167321   7  240.034604        0
+   9 H    282    0    5    1.089466   1  110.167321   7  119.965396        0
+                    Geometry Variations follow    (2I4,F12.6)                   
+                    Variable Bonds follow         (I4 or I4-I4)                 
+0004-0009                                                                       
+                    Additional Bonds follow       (2I4)                         
+                    Harmonic Constraints follow   (2I4,4F10.4)                  
+                    Variable Bond Angles follow   (I4 or I4-I4)                 
+0005-0009                                                                       
+                    Additional Bond Angles follow (3I4)                         
+AUTO                                                                            
+                    Variable Dihedrals follow     (3I4,F12.6)                   
+0006-0009                                                                       
+                    Additional Dihedrals follow   (6I4)                         
+AUTO                                                                            
+                    Domain Definitions follow     (4I4)                         
+                    Conformational Search         (2I4, 2F12.6)                 
+                    Final blank line                                            

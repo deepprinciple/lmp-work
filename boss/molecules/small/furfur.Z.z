@@ -1,0 +1,32 @@
+     furfural                                               Tot. E =     12.8139
+   1 Dum   -1   -1    0    0.000000   0    0.000000   0    0.000000        0
+   2 Dum   -1   -1    1    1.000000   0    0.000000   0    0.000000        0
+   3 O    566  566    1    1.400000   2   90.000000   0    0.000000        0
+   4 C2   567  567    3    1.361261   1   54.000000   2   90.000000        0
+   5 C3   568  568    4    1.367087   3  111.679687   1    0.000000        0
+   6 C2   567  567    3    1.362635   4  105.683084   5  359.999999        0
+   7 C3   568  568    6    1.368772   3  110.963654   4  359.999999        0
+   8 C    780  780    4    1.496894   3  124.791786   6  180.000000        0
+   9 H3   570  570    5    1.080643   4  126.587308   3  180.000000        0
+  10 H2   569  569    6    1.081000   3  115.046967   4  180.000000        0
+  11 H3   570  570    7    1.080680   6  125.829423   3  180.000000        0
+  12 O    278  278    8    1.229773   4  121.292748   3    0.000000        0
+  13 H    279  279    8    1.090195   4  115.546057  12  180.000000        0
+                    Geometry Variations                                         
+                    Variable Bonds follow         (I4)                          
+0004-0013                                                                       
+                    Additional Bonds follow       (2I4)                         
+00050007                                                                        
+                    Harmonic Constraints                                        
+                    Variable Bond Angles follow   (I4)                          
+0005-0013                                                                       
+                    Additional Bond Angles follow (3I4)                         
+AUTO                                                                            
+                    Variable Dihedrals follow     (3I4,F12.6)                   
+0006-0013                                                                       
+                    Additional Dihedrals follow   (6I4)                         
+AUTO                                                                            
+                    Domain Definitions follow     (4I4)                         
+                    Conformational Search                                       
+                    Final blank line                                            
+                                                                                

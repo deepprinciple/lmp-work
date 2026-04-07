@@ -1,0 +1,30 @@
+         Fluorobenzene                                      Tot. E =      6.8527
+   1 DUM   -1   -1    0    0.000000   0    0.000000   0    0.000000        0    
+   2 DUM   -1   -1    1    1.000000   0    0.000000   0    0.000000        0    
+   3 C    718  718    1    1.400000   2   90.000000   0    0.000000        0    
+   4 C    145  145    3    1.404407   1   60.000000   2   90.000000        0    
+   5 C    145  145    3    1.404407   4  122.862728   1    0.000000        0    
+   6 C    145  145    4    1.409832   3  118.279689   5    0.000000        0    
+   7 C    145  145    5    1.409832   3  118.279692   4    0.000000        0    
+   8 C    145  145    6    1.412632   4  120.050519   3    0.000000        0    
+   9 F    719  719    3    1.353430   4  118.568637   6  180.000000        0    
+  10 H    146  146    4    1.079902   3  120.539813   5  180.000000        0    
+  11 H    146  146    5    1.079902   3  120.539828   4  180.000000        0    
+  12 H    146  146    6    1.080369   4  119.907139   3  180.000000        0    
+  13 H    146  146    7    1.080369   5  119.907120   3  180.000000        0    
+  14 H    146  146    8    1.080922   6  119.761561   4  180.000000        0    
+                    Geometry Variations follow    (2I4,F12.6)                   
+                    Variable Bonds follow         (I4)                          
+0004-0014                                                                       
+                    Additional Bonds follow       (2I4)                         
+00070008                                                                        
+                    Harmonic Constraints follow   (2I4,4F10.4)                  
+                    Variable Bond Angles follow   (I4)                          
+0005-0014                                                                       
+                    Additional Bond Angles follow (3I4)                         
+AUTO                                                                            
+                    Variable Dihedrals follow     (3I4,F12.6)                   
+                    Additional Dihedrals follow   (6I4)                         
+                    Domain Definitions follow     (4I4)                         
+                    Conformational Search (4I2,2F12.6)                          
+                    Final blank line                                            

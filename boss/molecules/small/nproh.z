@@ -1,0 +1,31 @@
+          1-Propanol                                        Tot. E =      0.7954
+   1 O    154    0    0    0.000000   0    0.000000   0    0.000000        0    
+   2 DUM   -1    0    1    0.500000   0    0.000000   0    0.000000        0    
+   3 DUM   -1    0    2    0.500000   1   90.000000   0    0.000000        0    
+   4 HO   155    0    1    0.945939   2   90.000000   3  180.000000        0    
+   5 CH2  157    0    1    1.410711   4  109.075920   2  180.000000        0    
+   6 CH2  136    0    5    1.532841   1  108.942640   4  179.999970        0    
+   7 CH3  135    0    6    1.532773   5  112.591836   1  180.000010        0    
+   8 H    140    0    5    1.091119   1  109.436532   6  121.160399        0    
+   9 H    140    0    5    1.091119   1  109.436532   6  238.839603        0    
+  10 H    140    0    6    1.090960   5  109.565634   7  238.131997        0    
+  11 H    140    0    6    1.090960   5  109.565620   7  121.868006        0    
+  12 H    140    0    7    1.090295   6  110.800325   5  179.999934        0    
+  13 H    140    0    7    1.090345   6  111.224091  12  240.224580        0    
+  14 H    140    0    7    1.090345   6  111.224087  12  119.775438        0    
+                    Geometry Variations           (I4)                          
+                    Variable Bonds follow         (I4)                          
+0004-0014                                                                       
+                    Additional Bonds follow       (2I4)                         
+                    Harmonic Constraints follow   (2I4, 4F10.4)                 
+                    Variable Bond Angles follow   (I4)                          
+0005-0014                                                                       
+                    Additional Bond Angles follow (3I4)                         
+AUTO
+                    Variable Dihedrals follow     (3I4,F12.6)                   
+0006-0014
+                    Additional Dihedrals follow   (6I4)                         
+AUTO
+                    Domain Definitions follow     (4I4)                         
+                    Conformational Search                                       
+                    Final blank line                                            

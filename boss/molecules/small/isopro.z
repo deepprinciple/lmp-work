@@ -1,0 +1,31 @@
+    2-propanol                                              Tot. E =     -5.0180
+   1 X     -1    0    0    0.000000   0    0.000000   0    0.000000        0    
+   2 X     -1    0    1    1.000000   0    0.000000   0    0.000000        0    
+   3 C    158    0    2    1.000000   1   90.000000   0    0.000000        0    
+   4 C    135    0    3    1.532188   2   90.000000   1    0.000000        0    
+   5 C    135    0    3    1.531630   4  112.418365   1  180.000000        0    
+   6 O    154    0    3    1.409897   5  108.039083   4  240.033793        0    
+   7 H    140    0    3    1.091427   5  109.285543   4  121.956584        0    
+   8 H    140    0    4    1.090246   3  111.526291   5  179.817601        0    
+   9 H    140    0    4    1.090480   3  110.929253   8  240.281210        0    
+  10 H    140    0    4    1.090866   3  111.331479   8  120.504883        0    
+  11 H    140    0    5    1.090513   3  111.045422   4  179.569994        0    
+  12 H    140    0    5    1.090600   3  111.378189  11  240.050594        0    
+  13 H    140    0    5    1.090187   3  111.187280  11  119.771546        0    
+  14 H    155    0    6    0.945733   3  109.223625   4   62.584988        0    
+                    Geometry Variations follow    (2I4,F12.6)                   
+                    Variable Bonds follow         (I4)                          
+0004-0014                                                                       
+                    Additional Bonds follow       (2I4)                         
+                    Harmonic Constraints follow   (2I4,4F10.4)                  
+                    Variable Bond Angles follow   (I4)                          
+0005-0014                                                                       
+                    Additional Bond Angles follow (3I4)                         
+AUTO                                                                            
+                    Variable Dihedrals follow     (3I4,F12.6)                   
+0006-0014                                                                       
+                    Additional Dihedrals follow   (6I4)                         
+AUTO                                                                            
+                    Domain Definitions follow     (4I4)                         
+                    Conformational Search (2I4,2F12.6)                          
+                    Final blank line                                            

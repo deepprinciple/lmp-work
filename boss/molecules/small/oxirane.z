@@ -1,0 +1,27 @@
+   oxirane                                                  Tot. E =     43.8534
+   1 O   1025 1025    0    0.000000   0    0.000000   0    0.000000        0
+   2 X     -1   -1    1    1.000000   0    0.000000   0    0.000000        0
+   3 X     -1   -1    2    1.000000   1   90.000000   0    0.000000        0
+   4 C   1026 1026    1    1.412940   2   90.000000   3    0.000000        0
+   5 C   1026 1026    1    1.412931   4   64.779284   2  180.000000        0
+   6 H   1029 1029    4    1.088081   1  117.842169   5  107.010813        0
+   7 H   1029 1029    4    1.088081   1  117.842311   5  252.989484        0
+   8 H   1029 1029    5    1.088083   1  117.841530   4  107.013481        0
+   9 H   1029 1029    5    1.088083   1  117.841612   4  252.986687        0
+                    Geometry Variations follow    (2I4,F12.6)                   
+                    Variable Bonds follow         (I4)                          
+0004-0009                                                                       
+                    Additional Bonds follow       (2I4)                         
+00040005                                                                        
+                    Harmonic Constraints follow   (2I4,4F10.4)                  
+                    Variable Bond Angles follow   (I4)                          
+0005-0009                                                                       
+                    Additional Bond Angles follow (3I4)                         
+AUTO                                                                            
+                    Variable Dihedrals follow     (3I4,F12.6)                   
+0006-0009                                                                       
+                   Additional Dihedrals follow   (6I4)                          
+AUTO                                                                            
+                   Domain Definitions follow     (4I4)                          
+                   Conformational Search         (2I4, 2F12.6)                  
+                   Final blank line                                             

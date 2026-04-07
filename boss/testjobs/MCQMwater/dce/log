@@ -1,0 +1,46 @@
+           Monte Carlo for a QM Solute in TIP4P
+                    25 C & 1 atm 
+                 Equilibration 3.2M 
+              Averaging     0-20M 
+            N = 500  T=25  P=1  Rcut = 10.0
+Wed Jul 13 09:59:13 EDT 2011
+Running NVT
+11.563u 0.022s 0:11.59 99.9%	0+0k 0+744io 0pf+0w
+Equilibrating
+61.563u 0.034s 1:01.61 99.9%	0+0k 0+760io 0pf+0w
+Wed Jul 13 10:00:27 EDT 2011
+Running b
+61.725u 0.039s 1:01.79 99.9%	0+0k 0+736io 0pf+0w
+Wed Jul 13 10:01:28 EDT 2011
+Running eq
+61.823u 0.037s 1:01.88 99.9%	0+0k 0+728io 0pf+0w
+Averaging
+124.783u 0.044s 2:04.85 99.9%	0+0k 0+720io 0pf+0w
+Wed Jul 13 10:04:35 EDT 2011
+Running b
+125.437u 0.113s 2:05.58 99.9%	0+0k 0+736io 0pf+0w
+Wed Jul 13 10:06:41 EDT 2011
+Running c
+128.291u 0.090s 2:08.40 99.9%	0+0k 0+728io 0pf+0w
+Wed Jul 13 10:08:49 EDT 2011
+Running d
+128.112u 0.103s 2:08.23 99.9%	0+0k 0+736io 0pf+0w
+Wed Jul 13 10:10:57 EDT 2011
+Running e10
+127.636u 0.038s 2:07.70 99.9%	0+0k 0+736io 0pf+0w
+Wed Jul 13 10:13:05 EDT 2011
+Running a
+128.442u 0.022s 2:08.48 99.9%	0+0k 0+728io 0pf+0w
+Wed Jul 13 10:15:14 EDT 2011
+Running b
+126.976u 0.045s 2:07.05 99.9%	0+0k 0+736io 0pf+0w
+Wed Jul 13 10:17:21 EDT 2011
+Running c
+129.390u 0.033s 2:09.44 99.9%	0+0k 0+736io 0pf+0w
+Wed Jul 13 10:19:30 EDT 2011
+Running d
+128.835u 0.032s 2:08.90 99.9%	0+0k 0+744io 0pf+0w
+Wed Jul 13 10:21:39 EDT 2011
+Running e20
+129.495u 0.035s 2:09.55 99.9%	0+0k 0+752io 0pf+0w
+Wed Jul 13 10:23:49 EDT 2011

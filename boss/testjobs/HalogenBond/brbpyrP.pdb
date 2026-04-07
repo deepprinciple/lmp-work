@@ -1,0 +1,28 @@
+REMARK    Phbr...pyridine perp          
+REMARK    Created by BOSS 4.9 Feb 12 Linux 
+ATOM      1  C00 UNK     1       0.000   1.400   0.000
+ATOM      2  C01 UNK     1       0.000   0.696  -1.220
+ATOM      3  C02 UNK     1       0.000   0.696   1.220
+ATOM      4  C03 UNK     1       0.000  -0.713  -1.220
+ATOM      5  C04 UNK     1       0.000  -0.713   1.220
+ATOM      6  C05 UNK     1       0.000  -1.418   0.000
+ATOM      7 Br06 UNK     1       0.000   3.268   0.000
+ATOM      8  H07 UNK     1       0.000   1.240  -2.152
+ATOM      9  H08 UNK     1       0.000   1.240   2.152
+ATOM     10  H09 UNK     1       0.000  -1.252  -2.157
+ATOM     11  H0A UNK     1       0.000  -1.252   2.157
+ATOM     12  H0B UNK     1       0.000  -2.499   0.000
+ATOM     13 He0C UNK     1       0.001   4.873   0.000
+TER   
+ATOM     14  N0D UNK     2       0.001   6.500   0.000
+ATOM     15  C0E UNK     2      -1.167   7.175   0.000
+ATOM     16  C0F UNK     2      -1.269   8.577   0.000
+ATOM     17  C0G UNK     2       1.160   7.186   0.000
+ATOM     18  C0H UNK     2       1.224   8.587   0.000
+ATOM     19  C0I UNK     2      -0.094   9.341   0.000
+ATOM     20  H0J UNK     2      -2.060   6.568   0.000
+ATOM     21  H0K UNK     2      -2.239   9.052   0.000
+ATOM     22  H0M UNK     2       2.066   6.596   0.000
+ATOM     23  H0N UNK     2       2.172   9.103   0.000
+ATOM     24  H0O UNK     2      -0.123  10.420   0.000
+END

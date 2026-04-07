@@ -1,0 +1,13 @@
+#!/bin/csh
+#
+#    delete all files created by QikProp
+#
+if (-e par) rm par
+if (-e QPlog) rm QPlog
+if (-e QPwarning) rm QPwarning
+if (-e QP.out) rm QP.out
+if (-e QPSA.out) rm QPSA.out
+if (-e QP.CSV) rm QP.CSV
+if (-e Similar.name) rm Similar.name
+#
+exit

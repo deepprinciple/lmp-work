@@ -1,0 +1,56 @@
+#!/bin/csh
+
+# check if bin/autozmat and lib/boss (optionally lib/opls) exist.
+if (! -r bin/autozmat || ! -r lib/boss) then
+	echo "Executable bin/autozmat and/or library lib/boss does not exist."
+	echo "Type 'make' first to build autozmat."
+	exit 1
+endif
+
+echo "Where do you put 'autozmat' executable? (/usr/local/bin): \c"
+set inst_bin_dir = $<
+if ("$inst_bin_dir" == "") set inst_bin_dir = /usr/local/bin
+if (! -d $inst_bin_dir) then
+	echo "Creating directory $inst_bin_dir ..."
+	mkdir $inst_bin_dir
+	if ("$status" != 0 || ! -w $inst_bin_dir) then
+		echo "Can't create $inst_bin_dir. Exiting to shell..."
+		exit 1
+	endif
+else if (! -w $inst_bin_dir) then
+	echo "Can't write to directory $inst_bin_dir (Permission denied)."
+	exit 1
+endif
+
+echo "Copying bin/autozmat to $inst_bin_dir..."
+echo /bin/cp bin/autozmat $inst_bin_dir
+/bin/cp bin/autozmat $inst_bin_dir
+
+echo "Where do you put library files? (/usr/local/lib): \c"
+set inst_lib_dir = $<
+if ("$inst_lib_dir" == "") set inst_lib_dir = /usr/local/lib
+if (! -d $inst_lib_dir) then
+	echo "Creating directory $inst_lib_dir ..."
+	mkdir $inst_lib_dir
+	if ("$status" != 0 || ! -w $inst_lib_dir) then
+		echo "Can't create $inst_lib_dir. Exiting to shell..."
+		exit 1
+	endif
+else if (! -w $inst_lib_dir) then
+	echo "Can't write to directory $inst_lib_dir (Permission denied)."
+	exit 1
+endif
+
+if (-d lib/boss) then
+	echo "Copying lib/boss to $inst_lib_dir ..."
+	echo /bin/cp -r lib/boss $inst_lib_dir
+	/bin/cp -r lib/boss $inst_lib_dir
+endif
+if (-d lib/opls) then
+	echo "Copying lib/opls to $inst_lib_dir ..."
+	echo /bin/cp -r lib/opls $inst_lib_dir
+	/bin/cp -r lib/opls $inst_lib_dir
+endif
+
+echo "Installation is complete."
+

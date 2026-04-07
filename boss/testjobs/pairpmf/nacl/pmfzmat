@@ -1,0 +1,20 @@
+  Na+ ... Cl-           
+   1 DUM   -1   -1    0    0.000000   0    0.000000   0    0.000000        0    
+   2 DUM   -1   -1    1    1.000000   0    0.000000   0    0.000000        0    
+   3 DUM   -1   -1    2    1.000000   1   90.000000   0    0.000000        0    
+   4 Cl   401  401    1    0.0        2   90.000000   3   90.000000
+TERZ                                                                            
+   5 Na   405  405    1    0.0        2   90.000000   3  270.000000        0    
+                    Geometry Variations follow    (2I4,F12.6)                   
+00040001 0.5
+00050001 0.5
+                    Variable Bonds follow         (I4)                          
+                    Additional Bonds follow       (2I4)                         
+                    Harmonic Constraints follow   (2I4,4F10.4)                  
+                    Variable Bond Angles follow   (I4)                          
+                    Additional Bond Angles follow (3I4)                         
+                    Variable Dihedrals follow     (3I4,F12.6)                   
+                   Additional Dihedrals follow   (6I4)                          
+                   Domain Definitions follow     (4I4)                          
+                   Conformational Search         (2I4, 2F12.6)                  
+                   Final blank line                                             

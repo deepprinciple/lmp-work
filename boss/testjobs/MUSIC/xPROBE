@@ -1,0 +1,24 @@
+#!/bin/csh
+#
+echo  convert solute Z-matrix from aazmat directory to probe.z
+#
+# usage - xPROBE moleculename
+#
+# test if the environment variable BOSSdir has been defined
+#
+if (!($?BOSSdir)) then
+   echo "BOSSdir has not been defined; please see README"
+   exit (-1)
+endif
+
+if (-e optzmat) rm optzmat
+cp $BOSSdir/molecules/small/${argv[1]}.z optzmat
+csh $BOSSdir/scripts/SPMcmd >& log
+if (-e probe.z) rm probe.z
+cp sum probe.z
+rm sum      
+echo  probe.z was created                     
+#
+exit
+#
+exit

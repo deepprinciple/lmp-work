@@ -1,0 +1,28 @@
+      K+ Acetate Complex                                    Tot. E =   -137.8316
+   1 C1   271  271    0    0.000000   0    0.000000   0    0.000000        0
+   2 DUM   -1    0    1    1.000000   0    0.000000   0    0.000000        0
+   3 DUM   -1    0    2    0.200000   1   90.000000   0    0.000000        0
+   4 O4   272  272    1    1.250122   2   60.000000   3    0.000000        0
+   5 O5   272  272    1    1.250121   2   60.678768   3  180.000000        0
+   6 C6   273  273    1    1.513444   4  119.661201   5  179.777522        0
+   7 H7   140  140    6    1.089012   1  109.931076   4  270.004587        0
+   8 H8   140  140    6    1.089474   1  110.373996   7  240.064597        0
+   9 H9   140  140    6    1.089477   1  110.377097   7  119.937480        0
+TERZ                                                                            
+  10 K    408  408    5    2.639369   1   95.356222   6  180.225413        0
+                    Geometry Variations follow    (2I4,F12.6)                   
+                    Variable Bonds follow         (I4)                          
+0004-0010                                                                       
+                    Additional Bonds follow       (2I4)                         
+                    Harmonic Constraints follow   (2I4,4F10.4)                  
+                    Variable Bond Angles follow   (I4)                          
+0005-0010                                                                       
+                    Additional Bond Angles follow (3I4)                         
+AUTO                                                                            
+                    Variable Dihedrals follow     (3I4,F12.6)                   
+0006-0010                                                                       
+                    Additional Dihedrals follow   (6I4)                         
+AUTO                                                                            
+                    Domain Definitions follow     (4I4)                         
+                    Conformational Search         (2I4, 2F12.6)                 
+                    Final blank line                                            

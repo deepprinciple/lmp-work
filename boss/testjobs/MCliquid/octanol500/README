@@ -1,0 +1,5 @@
+Setup to run pure liquid simulation for OPLS-AA octanol.
+Restart the averaging and run another 50M with restcmd.
+Start from scratch with liqcmd50.
+
+Results here for >50M equil, 50 M ave.

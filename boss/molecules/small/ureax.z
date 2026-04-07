@@ -1,0 +1,29 @@
+Rigid Urea - Chloride Complex                               Tot. E =    -21.2027
+   1 DUM   -1    0    0    0.000000   0    0.000000   0    0.000000        0    
+   2 DUM   -1    0    1    1.000000   0    0.000000   0    0.000000        0    
+   3 DUM   -1    0    2    1.000000   1   90.000000   0    0.000000        0    
+   4  C   247  247    1    1.000000   2   90.000000   3  270.000000        0    
+   5  O   248  248    4    1.265000   1   90.000000   2   90.000000        0    
+   6  N1  249  249    4    1.350000   5  121.400000   1   90.000000        0    
+   7  N2  249  249    4    1.350000   5  121.400000   6  180.000000        0    
+   8 HN1  250  250    6    1.000000   4  120.000000   5    0.000000        0    
+   9 HN1  250  250    6    1.000000   4  120.000000   8  180.000000        0    
+  10 HN2  250  250    7    1.000000   4  120.000000   5    0.000000        0    
+  11 HN2  250  250    7    1.000000   4  120.000000  10  180.000000        0    
+TERZ                                                                            
+  12 X-   401  401    4    3.886835   1   90.000000   5  180.000000        0    
+                    Geometry Variations follow    (2I4,F12.6)                   
+                    Variable Bonds follow         (I4 or I4-I4)                 
+  12                                                                            
+                    Additional Bonds follow       (2I4)                         
+                    Harmonic Constraints follow   (2I4,4F10.4)                  
+                    Variable Bond Angles follow   (I4 or I4-I4)                 
+  12                                                                            
+                    Additional Bond Angles follow (3I4)                         
+                    Variable Dihedrals follow     (3I4,F12.6)                   
+  12   0   0    0.000000                                                        
+                    Additional Dihedrals follow   (6I4)                         
+                    Domain Definitions follow     (4I4)                         
+   1  11   1  11                                                                
+                    Conformational Search         (2I4, 2F12.6)                 
+                    Final blank line                                            

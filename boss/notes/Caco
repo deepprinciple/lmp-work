@@ -1,0 +1,25 @@
+
+log PCaco fits                            11/12/02
+
+I have redone the MC/LR calculations for the 50
+B-I Yazdanian compounds using 725 waters and averaging for
+20M configurations. This is the xLR725CMA script with the
+BOSS Windows version. The fits are basically the same as before.
+The only 2 descriptors that matter are the saturated amine count
+(#amine) and a FISA term. Labetalol is the only outlier that I exclude
+and I don't do methyl scopolamine since it is a quaternary ammonium
+species. For the remaining 49 compounds, the fit results
+including the intercept, #amine and the following are:
+
+                r^2      rms
+FISA           0.678    0.434
+FISA/glob      0.709    0.412
+FISA/glob^2    0.724    0.401
+FISA/glob^3    0.721    0.403
+
+So, the FISA/glob^2 term still wins, though these fits are all
+pretty equivalent.
+
+We'll redo the Affymax compounds now and make an official combined fit.
+Bill
+

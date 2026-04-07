@@ -1,0 +1,16 @@
+
+This directory contains the executables for miscellaneous 
+utility programs. All scripts can be found in the scripts directory.
+
+PROPCMP    see the xLRCMP script
+PROPAA     see the xLRAA  script
+csmol      see the xCSMOL script
+csinfo     see the xCSINFO script
+qpcona     see the xQPCON script
+analsv     analyze solute or solvent geometries in sav files
+bar        see boss/README
+densvol    read the file
+sumdelg    see boss/testjobs/FEPaq/00README
+nearres    is used to truncate a pdb file around a central residue
+typeQLJ    generates OPLS/CM1A parameters for an input pdb file
+

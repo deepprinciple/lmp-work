@@ -1,0 +1,36 @@
+
+******* Unpublished Flexible Water Models ***************
+
+The quadratic stretching and bending
+terms are evaluated as in JACS 118, 112255 (1996). Units for force constants
+are kcal/mol-A^2 and kcal/mol-rad^2. I used Pettitt's force constants for
+TIP3F and my own for TIP4F. Both models give good properties for liquid water
+at 25C and 1 atm; neither gives a T of max density near 4 C at 1 atm. The
+heat capacities are, of course, too high. Bill
+
+TIP3F parameters:
+
+              q         sigma    epsilon
+116 08 OW   -0.822     3.1760    0.1500    O TIP3F Water flexible model,
+117 01 HW    0.411     0.0       0.0       H TIP3F Water unpublished
+
+Force constants, r0 or theta0
+OW-HW 529.60     0.9572         J Phys Chem 91, 3349 (1987) for TIP3F (OW-HW)
+HW-HW  38.25     1.5139          "        "      "        for TIP3F (HW-HW)
+HW-OW-HW    34.05      104.52   J Phys Chem 91, 3349 (1987) -For TIP3F Water (HW-OW-HW)
+
+______________________________________________________________________________
+TIP4F parameters:
+
+              q         sigma    epsilon
+999 08 OW    0.0      3.270     0.1000     O TIP4F Water  Unpublished
+999 01 HW    0.511    0.0       0.0        H TIP4F Water      "
+999 99 LP   -1.022    0.0       0.0        M TIP4F Water      "
+
+Force constants, r0 or theta0
+OW-HW 600.00     0.9572       For TIP4F Water - wlj 1/98
+OW-LP 900.00     0.1750              "
+
+HW-OW-HW    75.00      109.50   For TIP4F Water - wj 1/98
+HW-OW-LP    50.00       54.75   For TIP4F Water - wj 1/98
+

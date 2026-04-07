@@ -1,0 +1,20 @@
+ NMP              (Z-matrix from BOSS optimization)  uses oplsua.par 
+   1 N      3    0    0    0.000000   0    0.000000   0    0.000000        0
+   2 C      1    0    1    1.332477   0    0.000000   0    0.000000        0
+   3 CH2   71    0    2    1.517644   1  111.028299   0    0.000000        0
+   4 CH2   71    0    3    1.527728   2  104.232408   1    0.000000        0
+   5 CH2   15    0    4    1.532170   3  105.832591   2    0.000000        0
+   6 CH3  276    0    1    1.449000   2  123.584823   3  180.000000        0
+   7 O      2    0    2    1.229000   1  125.736294   3  180.000000        0
+                    Blank Line
+                    Variable Bonds follow         (I4)                          
+                    Additional Bonds follow       (2I4)                         
+                    Blank Line
+                    Variable Bond Angles follow   (I4)                          
+                    Additional Bond Angles follow (3I4)                         
+                    Variable Dihedrals follow     (3I4,F12.6)                   
+                    Additional Dihedrals follow   (6I4)                         
+                    Domain Definitions follow     (4I4)                         
+0001000700010007                                                                
+                    Final blank line                                            
+                    This is a UA Z-matrix - use oplsua.par

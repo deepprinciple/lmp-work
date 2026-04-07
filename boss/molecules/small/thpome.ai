@@ -1,0 +1,46 @@
+
+
+Bill,
+
+the next two mails contain first the zmatrix and then the
+parameter file with the corresponding numbering of the parameters. 
+Below also the 6-31G*//6-31G* calculated rotational profiles 
+for the alpha and beta anomers where the Me-O-C-O dihedral
+angle was changed. I have a directory handy to calculate a profile. 
+
+Lemme know if I can do more. - Wolfgang
+
+E/ kcal/mol   Me-O-C-O
+3.32906        #a0  alpha
+3.82285        #a30
+4.42840        #a60
+7.11370        #a90
+10.39382       #a120
+10.34788       #a150
+10.28545       #a180
+10.17080       #a210
+9.19276        #a240
+4.49642        #a270
+0.00000        #a300
+0.83773        #a330
+5.1328         #b0  beta
+2.5478         #b30
+1.3092         #b60
+3.7794         #b90
+5.8958         #b120
+4.6633         #b150
+4.2368         #b180
+6.6334         #b210
+9.4456         #b240
+8.4918         #b270
+6.4417         #b300
+5.7977         #b330
+
+-----------------------------------------------------------------
+Wolfgang Damm                    |  phone: +41 (1) 632 2264
+Physical Chemistry, ETH Zuerich  |  fax  : +41 (1) 632 1039
+ETH Zentrum CAB D16.1            |
+CH-8092 Zuerich                  |  email:
+Switzerland                      |    damm@igc.phys.chem.ethz.ch
+-----------------------------------------------------------------
+

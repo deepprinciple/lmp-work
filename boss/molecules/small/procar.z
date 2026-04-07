@@ -1,0 +1,33 @@
+   propylene carbonate                                      Tot. E =     -3.4047
+   1  X    -1    0    0    0.000000   0    0.000000   0    0.000000        0    
+   2  X    -1    0    1    1.000000   0    0.000000   0    0.000000        0    
+   3  C   775    0    2    1.000000   1   90.000000   0    0.000000        0    
+   4  C   774    0    3    1.528401   2   90.000000   1    0.000000        0    
+   5  C   776    0    3    1.524314   2  114.683415   4 -116.158210        0    
+   6  O   773    0    3    1.395924   2   12.928244   4  173.913822        0    
+   7  H   778    0    3    1.101419   2  115.404762   4  113.719009        0    
+   8  O   773    0    4    1.417693   3  104.180165   2    2.044730        0    
+   9  H   777    0    4    1.100192   3  112.796237   8  241.231862        0    
+  10  H   777    0    4    1.099505   3  112.397150   8  118.707294        0    
+  11  C   772    0    8    1.315328   4  109.385859   3    0.059936        0    
+  12  O   771    0   11    1.221714   8  124.483632   4  179.965260        0    
+  13  H   779    0    5    1.099529   3  110.684354   2  287.801519        0    
+  14  H   779    0    5    1.099342   3  110.627274  13  239.883764        0    
+  15  H   779    0    5    1.099494   3  111.297498  13  119.585371        0    
+                    Geometry Variations follow    (2I4,F12.6)                   
+                    Variable Bonds follow         (I4)                          
+0004-0015                                                                       
+                    Additional Bonds follow       (2I4)                         
+  11   6                                                                        
+                    Harmonic Constraints follow   (2I4,4F10.4)                  
+                    Variable Bond Angles follow   (I4)                          
+0005-0015                                                                       
+                    Additional Bond Angles follow (3I4)                         
+AUTO                                                                            
+                    Variable Dihedrals follow     (3I4,F12.6)                   
+0006-0015                                                                       
+                    Additional Dihedrals follow   (6I4)                         
+AUTO                                                                            
+                    Domain Definitions follow     (4I4)                         
+                    Conformational Search (4I2,2F12.6)                          
+                    Final blank line                                            

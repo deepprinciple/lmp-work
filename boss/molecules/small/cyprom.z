@@ -1,0 +1,33 @@
+    methylcyclopropane                                      Tot. E =     12.6826
+   1   C  711  711    0    0.000000   0    0.000000   0    0.000000        0    
+   2 DUM   -1   -1    1    1.000000   0    0.000000   0    0.000000        0    
+   3 DUM   -1   -1    2    1.000001   1   89.999950   0    0.000000        0    
+   4   C  712  712    1    1.521186   2   90.000010   3    0.000030        0    
+   5   C  711  711    1    1.522903   4   59.962685   2  179.999960        0    
+   6   C  135  135    4    1.513792   1  118.722923   5  108.474136        0    
+   7   H  140  140    4    1.088751   1  117.244934   5  252.677106        0    
+   8   H  140  140    5    1.088378   1  117.663071   4  107.610879        0    
+   9   H  140  140    5    1.088475   1  117.714267   4  251.837029        0    
+  10   H  140  140    1    1.088375   4  117.670554   5  107.596424        0    
+  11   H  140  140    1    1.088477   4  118.144370   5  252.547951        0    
+  12   H  140  140    6    1.090549   4  111.927339   7  179.960193        0    
+  13   H  140  140    6    1.090228   4  110.794974  12  120.249253        0    
+  14   H  140  140    6    1.090217   4  110.796926  12  239.750235        0    
+                    Geometry Variations follow    (2I4,F12.6)                   
+                    Variable Bonds follow         (I4)                          
+0004-0014                                                                       
+                    Additional Bonds follow       (2I4)                         
+   4   5                                                                        
+                    Harmonic Constraints follow   (2I4,4F10.4)                  
+                    Variable Bond Angles follow   (I4)                          
+0005-0014                                                                       
+                    Additional Bond Angles follow (3I4)                         
+AUTO                                                                            
+                    Variable Dihedrals follow     (3I4,F12.6)                   
+0006-0014                                                                       
+                    Additional Dihedrals follow   (6I4)                         
+AUTO                                                                            
+                    Domain Definitions follow     (4I4)                         
+                    Conformational Search (4I2,2F12.6)                          
+                    Final blank line                                            
+                                                                                

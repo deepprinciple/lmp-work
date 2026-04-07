@@ -1,0 +1,36 @@
+methanol dimer                                              Tot. E =      0.5139
+   1 O    154    0    0    0.000000   0    0.000000   0    0.000000        0
+   2 DUM   -1    0    1    0.500000   0    0.000000   0    0.000000        0
+   3 DUM   -1    0    2    0.500000   1   90.000000   0    0.000000        0
+   4 H    155    0    1    0.959734   2   90.000000   3  180.000000        0
+   5 C    157    0    1    1.410151   4  107.882361   2  180.000000        0
+   6 HC   156    0    5    1.090225   1  110.304199   4  180.167590        0
+   7 HC   156    0    5    1.090329   1  110.376210   6  119.976760        0
+   8 HC   156    0    5    1.090263   1  110.403355   6  240.001535        0
+TERZ                                                                            
+   9 O    154    0    1    2.792841   2   89.963145   3  181.608189        0
+  10 DUM   -1    0    9    0.500000   1   35.258078   2  148.470134        0
+  11 DUM   -1    0   10    0.500000   9   90.000000   1   60.358090        0
+  12 H    155    0    9    0.948323  10  108.828865  11  218.634506        0
+  13 C    157    0    9    1.414330  12  108.503417  10  162.764362        0
+  14 HC   156    0   13    1.090699   9  110.359272  12  179.456124        0
+  15 HC   156    0   13    1.090601   9  110.562671  14  119.815496        0
+  16 HC   156    0   13    1.090496   9  110.581386  14  240.116801        0
+                    Geometry Variations follow                                  
+                    Variable Bonds follow         (I4 or I4-I4)                 
+0004-0009                                                                       
+0012-0016                                                                       
+                    Additional Bonds follow       (2I4)                         
+                    Harmonic Constraints follow                                 
+                    Variable Bond Angles follow   (I4 or I4-I4)                 
+0005-0010                                                                       
+0012-0016                                                                       
+                    Additional Bond Angles follow (3I4)                         
+AUTO                                                                            
+                    Variable Dihedrals follow     (3I4,F12.6)                   
+0006-0016                                                                       
+                    Additional Dihedrals follow   (6I4)                         
+AUTO                                                                            
+                    Domain Definitions follow     (4I4)                         
+                    Conformational Search         (2I4, 2F12.6)                 
+                    Final blank line                                            

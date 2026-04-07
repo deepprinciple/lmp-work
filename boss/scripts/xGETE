@@ -1,0 +1,19 @@
+#!/bin/csh
+#
+echo  extract E from Z-matrix and add to energy.CSV
+#
+# usage - xGETE moleculename
+#
+# test if the enviroment variable BOSSdir has been defined
+#
+if (!($?BOSSdir)) then
+   echo "BOSSdir has not been defined; please see README"
+   exit (-1)
+endif
+
+if (-e optzmat) rm optzmat
+cp ${argv[1]} optzmat
+$BOSSdir/miscexec/getE 
+rm optzmat
+#
+exit

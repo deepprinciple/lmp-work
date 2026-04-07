@@ -1,0 +1,27 @@
+
+This is a MC simulation of a single molecule, ethanol, in the
+gas phase. All internal degrees of freedom are sampled.
+Equilibration = 1M; Averaging = 2M configurations.
+Output is in gasout, gassum and gasplot. etoh.out is the gasout
+file obtained by W. L. Jorgensen.
+Time required: 
+                2 minutes on a 2.4 GHz Pentium IV.
+The averaging period was modified in gascmd to 4M in Sept 2011.
+
+Execute under UNIX/Linux via:
+csh -e gascmd >& log &
+
+To run a different molecule, you can use any Z-matrices in the molecules        
+directories (unchanged) or provide your own:
+cp newmolecule.z gaszmat
+
+To change the temperature, edit the gaspar file:      
+ Temperature, pressure, & torsion cutoff:
+   25.0000     .0000     .0000
+Change the 25.0 to the desired temperature in C.
+
+For easy execution in any directory, use the xMCGAS script:
+xMCGAS molecule
+
+dodeca10M and dodeca-flip contain results for dodecane without and with
+use of the flip option for dihedral angles.

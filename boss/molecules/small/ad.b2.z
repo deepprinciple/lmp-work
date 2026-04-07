@@ -1,0 +1,95 @@
+Ac(Ala)NMe, beta2 (phi, psi fixed)                          Tot. E =    -36.5744
+   1 DU1   -1   -1    0    0.000000   0    0.000000   0    0.000000        0
+   2 DU2   -1   -1    1    1.000000   0    0.000000   0    0.000000        0
+   3 DU3   -1   -1    2    1.000000   1   90.000000   0    0.000000        0
+   4 H1   140  140    3    1.000000   2   90.000000   1  180.000000        0
+   5 CH3  135  135    4    1.090611   3   90.000000   2  180.000000        0
+   6 C    235  235    5    1.521434   4  110.261962   3  180.000000        0
+   7 H2   140  140    5    1.089711   6  110.759398   4  119.637433        0
+   8 H3   140  140    5    1.089916   6  110.552264   4  240.555815        0
+   9 N    238  238    6    1.336973   5  116.707754   4  180.869137        0
+  10 O    236  236    6    1.226015   5  120.185796   9  179.454044        0
+  11 CA   224  224    9    1.465556   6  125.182117   5  182.913246        0
+  12 C    235  235   11    1.539456   9  110.544476   6 -137.900000        0
+  13 HN   241  241    9    1.007991   6  118.566431  11  175.394708        0
+  14 CB   135  135   11    1.539877   9  108.463408  12  237.379561        0
+  15 HA   140  140   11    1.092025   9  110.648149  12  117.968816        0
+  16 HB1  140  140   14    1.091013  11  110.991932   9  182.249494        0
+  17 HB2  140  140   14    1.090258  11  111.120920  16  119.097385        0
+  18 HB3  140  140   14    1.090366  11  111.764072  16  239.992133        0
+  19 NT   238  238   12    1.339298  11  117.432052   9   22.900000        0
+  20 O    236  236   12    1.227866  11  120.611956  19  181.508386        0
+  21 CT   242  242   19    1.456186  12  123.975320  11  180.585421        0
+  22 HN   241  241   19    1.008487  12  116.984886  21  184.664426        0
+  23 HT1  140  140   21    1.089881  19  110.558094  12  180.105337        0
+  24 HT2  140  140   21    1.091279  19  110.637494  23  119.982544        0
+  25 HT3  140  140   21    1.091181  19  110.739243  23  239.854376        0
+                    Geometry Variations follow    (2I4,F12.6)                   
+                    Variable Bonds follow         (I4)                          
+0005-0025                                                                       
+                    Additional Bonds follow       (2I4)                         
+                    Harmonic Constraints follow   (2I4,4F10.4)                  
+                    Variable Bond Angles follow   (I4)                          
+0006-0025                                                                       
+                    Additional Bond Angles follow (3I4)                         
+AUTO                                                                            
+                    Variable Dihedrals follow     (3I4,F12.6)                   
+   7   0   0    1.0          improper to H2                                     
+   8   0   0    1.0          improper to H3                                     
+   9  41  41    5.0          HC-CT-C(O)-N  : Psi"                               
+  10 160 160    1.0          improper to O                                      
+  11  45  45    5.0          CT-C(O)-N-CT  : Omega                              
+  13 161 161    1.0          improper to HN                                     
+  14   0   0    1.0          improper to CB                                     
+  15   0   0    1.0          improper to HA                                     
+  16  64  64    5.0          HC-CT-C(O)-N  : Chi-HN Amides                      
+  17   0   0    1.0          improper to HB2                                    
+  18   0   0    1.0          improper to HB3                                    
+  20 160 160    1.0          improper to O                                      
+  21  45  45    5.0          CT-C(O)-N-CT  : Omega                              
+  22 161 161    1.0          improper to HN                                     
+  23  40  40    5.0          HC-CT-N-C(O)  : Phi"                               
+  24   0   0    1.0          improper to HT2                                    
+  25   0   0    1.0          improper to HT3                                    
+                    Additional Dihedrals follow   (6I4)                         
+  12  11   9   6  36  36     phi                                                
+  19  12  11   9  37  37     psi                                                
+   4   5   6   9  41  41     HC-CT-C(O)-N  : Psi"                               
+   7   5   6   9  41  41     HC-CT-C(O)-N  : Psi"                               
+   8   5   6   9  41  41     HC-CT-C(O)-N  : Psi"                               
+   4   5   6  10  43  43     HC-CT-C(O)-O  : Psi  H-O                           
+   7   5   6  10  43  43     HC-CT-C(O)-O  : Psi  H-O                           
+   8   5   6  10  43  43     HC-CT-C(O)-O  : Psi  H-O                           
+   5   6   9  13  44  44     CT-C(O)-N-HN  : Omega                              
+  10   6   9  11  47  47     O-C(O)-N-CT   : Omega                              
+  10   6   9  13  46  46     O-C(O)-N-HN   : Omega                              
+   6   9  11  14  38  38     C(O)-N-CT-CT  : Phi'                               
+   6   9  11  15  40  40     C(O)-N-CT-HC  : Phi"                               
+  13   9  11  12  42  42     H-N-CT-C(O)                                        
+  13   9  11  14  42  42     H-N-CT-C(O)                                        
+  13   9  11  15  42  42     H-N-CT-C(O)                                        
+   9  11  12  20  43  43     N-CT-C(O)-O                                        
+  14  11  12  19  39  39     CT-CT-C(O)-N  : Psi'                               
+  14  11  12  20  43  43     CT-CT-C(O)-O                                       
+  15  11  12  19  41  41     HC-CT-C(O)-N  : Psi"                               
+  15  11  12  20  43  43     HC-CT-C(O)-O                                       
+  16  14  11  12 115 115     HC-CT-CT-C(O) : Chi-HC Aldehydes                   
+  16  14  11  15   1   1     HC-CT-CT-HC   : Chi-HH Hydrocarbons                
+  17  14  11   9  64  64     HC-CT-CT-N    : Chi-HN amides                      
+  17  14  11  12 115 115     HC-CT-CT-C(O) : Chi-HC Aldehydes                   
+  17  14  11  15   1   1     HC-CT-CT-HC   : Chi-HH Hydrocarbons                
+  18  14  11   9  64  64     HC-CT-CT-N    : Chi-HN amides                      
+  18  14  11  12 115 115     HC-CT-CT-C(O) : Chi-HC Aldehydes                   
+  18  14  11  15   1   1     HC-CT-CT-HC   : Chi-HH Hydrocarbons                
+  11  12  19  22  44  44     CT-C(O)-N-HN  : Omega                              
+  20  12  19  21  47  47     O-C(O)-N-CT   : Omega                              
+  20  12  19  22  46  46     O-C(O)-N-HN   : Omega                              
+  12  19  21  23  40  40     C(O)-N-CT-HC  : Phi"                               
+  12  19  21  24  40  40     C(O)-N-CT-HC  : Phi"                               
+  12  19  21  25  40  40     C(O)-N-CT-HC  : Phi"                               
+  22  19  21  23  42  42     H-N-CT-C(O)                                        
+  22  19  21  24  42  42     H-N-CT-C(O)                                        
+  22  19  21  25  42  42     H-N-CT-C(O)                                        
+                    Domain Definitions follow     (4I4)                         
+                    Final blank line                                            
+                                                                                

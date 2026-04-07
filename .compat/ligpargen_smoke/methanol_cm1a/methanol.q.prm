@@ -1,0 +1,60 @@
+*---------------------------------------------
+*        Generated with LigParGen 
+*        William L. Jorgensen Lab
+*     Author: israel.cabezadevaca@yale.edu
+*    OPLS Force Field with CM1A derived Atomic Charges
+*---------------------------------------------
+[options]
+vdw_rule     geometric !vwd combination rule
+scale_14     0.5       !electrostatics 1-4 scaling factor
+switch_atoms on
+improper_potential      periodic
+force_field AMBER
+improper_definition explicit
+
+[atom_types]
+*tac--Avdw1--Avdw2--Bvdw1--Avdw3--Bvdw2&3--mass--comment
+O800     760.6450     760.6450      25.0448     537.8572      17.7094      15.9990 !   MOL
+C801     944.5180     944.5180      22.0296     667.8751      15.5773      12.0110 !   MOL
+H802      84.5728      84.5728       5.4127      59.8020       3.8273       1.0080 !   MOL
+H803      84.5728      84.5728       5.4127      59.8020       3.8273       1.0080 !   MOL
+H804      84.5728      84.5728       5.4127      59.8020       3.8273       1.0080 !   MOL
+H805       0.0000       0.0000       0.0000       0.0000       0.0000       1.0080 !   MOL
+
+[bonds]
+!*iaci--iacj--force.c--dist.
+C801       O800            640.0     1.410
+H802       C801            680.0     1.090
+H803       C801            680.0     1.090
+H804       C801            680.0     1.090
+H805       O800           1106.0     0.945
+
+[angles]
+!*iaci--iacj--iack--force.c--angle.
+H802       C801       O800          70.00     109.500
+H803       C801       O800          70.00     109.500
+H804       C801       O800          70.00     109.500
+H805       O800       C801         110.00     108.500
+H803       C801       H802          66.00     107.800
+H804       C801       H802          66.00     107.800
+H804       C801       H803          66.00     107.800
+
+[torsions]
+!*iaci--iacj--iack--iackl--force.c--minima--phase--path.
+H805       O800       C801       H802       0.000     -1.000     0.000     1.000
+H805       O800       C801       H802       0.000     -2.000   180.000     1.000
+H805       O800       C801       H802       0.176     -3.000     0.000     1.000
+H805       O800       C801       H802       0.000      4.000   180.000     1.000
+H805       O800       C801       H803       0.000     -1.000     0.000     1.000
+H805       O800       C801       H803       0.000     -2.000   180.000     1.000
+H805       O800       C801       H803       0.176     -3.000     0.000     1.000
+H805       O800       C801       H803       0.000      4.000   180.000     1.000
+H805       O800       C801       H804       0.000     -1.000     0.000     1.000
+H805       O800       C801       H804       0.000     -2.000   180.000     1.000
+H805       O800       C801       H804       0.176     -3.000     0.000     1.000
+H805       O800       C801       H804       0.000      4.000   180.000     1.000
+!  X    X    X    X    0.00000 1 0.000000 1 ! WILD CARD FOR MISSING TORSION PARAMETERS
+
+[impropers]
+!*iaci--iacj--iack--iackl--force.c--phase.
+!  X    X    X    X    0.00000 2 0.000000 1 ! WILD CARD FOR MISSING IMPROPER PARAMETERS

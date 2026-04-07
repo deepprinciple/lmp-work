@@ -1,0 +1,93 @@
+#
+# Command file for the BOSS  program.  Execute by entering the following:
+# csh r18cmd >& r18log &
+#***********************************************************************
+echo '        MC simulation: pmf for a reaction'
+echo '                    25 C & 1 atm '
+echo '                 Equilibration  1.0 M'
+echo '                   Averaging  0-1.0 M '
+#***********************************************************************
+#
+nice +19
+# val is rc in Angstroms times 1000 for current window times 1000.
+# increment is the increment between rc values times 1000.
+set val = 1850
+set increment = 75
+set configurations = "250000"
+#
+set boss = $BOSSdir/BOSS
+set boxes = $BOSSdir
+setenv INFILE    r${val}in
+setenv UPFILE    r${val}up
+setenv SAVE      r${val}sv
+setenv AVERAGE   r${val}av
+setenv ZMATRIX   rxnzmat
+setenv SLVZMAT   slvzmat
+setenv BANGPAR   $boxes/oplsaa.sb
+setenv WATERBOX  $boxes/watbox
+setenv ORG1BOX   $boxes/org1box
+setenv ORG2BOX   $boxes/org2box
+setenv SUMMARY   r${val}sum
+
+# set-up reaction coordinate values
+        @ rc0 = $val
+        @ rc1 = $rc0 - $increment
+        @ rc2 = $rc0 + $increment
+        set lambda = "0.${rc0} 0.${rc1} 0.${rc2}"
+
+#    NVT Equilibration (400 box is not fully equilibrated)
+
+
+if (-e tmppar) rm tmppar
+cp NVTpar tmppar
+cat $BOSSdir/oplsaa.par >> tmppar
+setenv PARAMETER tmppar
+
+setenv OUTPUT    r${val}ota
+setenv PLTFILE   r${val}plta
+
+time $boss 111 $configurations $lambda
+
+#    NPT Equilibration
+
+
+if (-e tmppar) rm tmppar
+cp NPTpar tmppar
+cat $BOSSdir/oplsaa.par >> tmppar
+setenv PARAMETER tmppar
+
+setenv OUTPUT    r${val}otb
+setenv PLTFILE   r${val}pltb
+
+time $boss 011 $configurations $lambda
+foreach block (c eq)
+        date
+        setenv OUTPUT    r${val}ot$block
+        setenv PLTFILE   r${val}plt$block
+        time $boss 001 $configurations $lambda
+end
+
+
+#    Averaging
+
+setenv OUTPUT    r${val}ota
+setenv PLTFILE   r${val}plta
+time $boss 011 $configurations $lambda
+mv r${val}sv r${val}sav
+foreach block (b c e2)
+        date
+        setenv OUTPUT    r${val}ot$block
+        setenv PLTFILE   r${val}plt$block
+        time $boss 001 $configurations $lambda
+        cat r${val}sv >>r${val}sav
+end
+
+rm r${val}sv slvzmat tmppar
+
+#    Submit Next Window
+# @ nval = $val + $increment + $increment
+# cp r${val}in r${nval}in
+# csh r${nval}cmd >& log$nval &
+
+date
+exit

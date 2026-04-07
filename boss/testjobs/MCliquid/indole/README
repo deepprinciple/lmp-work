@@ -1,0 +1,42 @@
+(1) cp ../*cmd* .
+    cp ../*par .
+    cp ../dummy.z .
+    cp ~/boss/molecules/small/indole.z .      
+
+(2) ../xSPM indole
+    mv sum liqzmat
+
+(3) Now edit liqzmat to change title line to
+    5 characters - "Indol". (cosmetic)
+
+(4) Edit dummy.z to say Indole on line 1 (cosmetic)
+
+(5) Edit liqpar so that the center atom of the solvent
+    is as desired (atom 3 here):
+ Center atoms of solute1 & 2 and custom solvent, and ICUTAS array:
+  0  0  3  0  0  0  0  0
+    Check that the solvent-solvent cutoff is OK; using 14 Angstroms here:
+ Solvent-solvent, solute-solvent, NB cutoffs:
+   14.0000    0.0000    0.0000
+    If solvent-solvent rdfs are desired, modify
+ No. of solvent-solvent and solute-solvent rdfs:
+  3  0
+ First atoms for solvent-solvent rdfs:
+  9  9 16  0  0  0  0  0  0  0  0  0  0  0  0
+ Second atoms for solvent-solvent rdfs:
+  9 16 16  0  0  0  0  0  0  0  0  0  0  0  0
+I have chosen to obtain the N-N, N-H, and H-H rdfs. (optional)
+
+(6) Run short test
+csh  liqcmdshort >& log &
+Check liqote2 file and display liqplte2 file. 
+All looks fine.
+
+(7) Submit full run.
+csh liqcmd >& log &
+Final in file is liqin, which is needed for using indole
+as a custom solvent. liqzmat is also needed. They should be
+renamed to, e.g., indole.in and indole.z, and could be
+incorporated in the boss/solbox directory.
+
+

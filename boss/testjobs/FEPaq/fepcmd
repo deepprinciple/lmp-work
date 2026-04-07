@@ -1,0 +1,131 @@
+#
+# Command file for the BOSS  program.  Execute by entering the following:
+# csh fepcmd >& feplog &
+#***********************************************************************
+echo '                 MC/FEP simulation'
+echo '                    25 C & 1 atm '
+echo '                 Equilibration    1M '
+echo '                   Averaging  0-2M '
+#***********************************************************************
+#
+nice +19
+set boss = $BOSSdir/BOSS
+set boxes = $BOSSdir
+#
+
+##### calculation is repeated 'nsteps' times.
+##### RC0 starts with 'startval' and is incremented by 'ninc'
+##### at each step. All these values need to be integers.
+##### ninc needs to be divisable by 2.
+@ startval = 10
+@ ninc = 20
+@ nsteps = 5
+
+#####
+##### ordinary users don't need to edit beyond this line.
+##### '@' indicates an arithmetic operation.
+#####
+@ perturb = $ninc / 2
+@ inc = $startval
+@ i = 0
+
+##### Enter a loop. Repeat until i < nsteps.
+while ($i < $nsteps)
+# compute lambda values - csh doesn't know floating point, so
+        @ rc0 = $inc
+        @ rc1 = $rc0 - $perturb
+        @ rc2 = $rc0 + $perturb
+        @ int0 = $rc0 / 100
+        @ dec0 = $rc0 - $int0 * 100
+        @ int1 = $rc1 / 100
+        @ dec1 = $rc1 - $int1 * 100
+        @ int2 = $rc2 / 100
+        @ dec2 = $rc2 - $int2 * 100
+        @ ten0 = $dec0 / 10
+        @ ten1 = $dec1 / 10
+        @ ten2 = $dec2 / 10
+        @ hun0 = $dec0 - $ten0 * 10
+        @ hun1 = $dec1 - $ten1 * 10
+        @ hun2 = $dec2 - $ten2 * 10
+
+        set rc0 = ${int0}.${ten0}${hun0}
+        set rc1 = ${int1}.${ten1}${hun1}
+        set rc2 = ${int2}.${ten2}${hun2}
+        set lambda = "$rc0 $rc1 $rc2"
+
+	setenv INFILE    f${inc}in
+	setenv UPFILE    f${inc}up
+	setenv SAVE      f${inc}sv
+	setenv AVERAGE   f${inc}av
+	setenv ZMATRIX   fepzmat
+	setenv SLVZMAT   slvzmat
+
+	# The feppar0 file is only used for this initial window; feppar
+	# is used for subsequent windows. The difference is that the
+	# subsequent windows use ZIN and IN for the initial solute and
+	# solvent coordinates, while here they come from ZMAT and BOXES.
+        if (-e tmppar) rm tmppar
+        if ($i == 0) then
+                cp feppar0 tmppar
+        else
+                cp feppar tmppar
+        endif
+        cat $BOSSdir/oplsaa.par >> tmppar
+        setenv PARAMETER tmppar
+
+	setenv BANGPAR   $boxes/oplsaa.sb
+	setenv WATERBOX  $boxes/watbox
+	setenv ORG1BOX   $boxes/org1box
+	setenv ORG2BOX   $boxes/org2box
+	setenv SUMMARY   f${inc}sum
+
+	date
+
+	setenv OUTPUT    f${inc}ota
+	setenv PLTFILE   f${inc}plta
+
+	#    Equilibration
+
+set configurations = "500000"
+echo time $boss 111 $configurations $lambda
+	time $boss 111 $configurations $lambda
+	foreach block (eq)
+        	date
+		setenv OUTPUT    f${inc}ot$block
+		setenv PLTFILE   f${inc}plt$block
+echo time $boss 001 $configurations $lambda
+		time $boss 001 $configurations $lambda
+	end
+
+	#    Averaging
+
+set configurations = "500000"
+	setenv OUTPUT    f${inc}otb
+	setenv PLTFILE   f${inc}pltb
+        rm f${inc}sv
+
+echo time $boss 011 $configurations $lambda
+	time $boss 011 $configurations $lambda
+	foreach block (c d e2)
+        	date
+        	setenv OUTPUT    f${inc}ot$block
+        	setenv PLTFILE   f${inc}plt$block
+echo time $boss 001 $configurations $lambda
+        	time $boss 001 $configurations $lambda
+	end
+	rm $SLVZMAT
+        rm tmppar
+
+	set oldinc = $inc
+
+	##### 'inc' is incremented by 'ninc'.
+	##### copy the current infile for the next calc.
+	@ inc += $ninc
+	cp f${oldinc}in f${inc}in
+
+	##### increment 'i' by one.
+	@ i++
+end
+
+date
+exit

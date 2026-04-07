@@ -1,0 +1,35 @@
+     05_MeOH-MeOH                                           Tot. E =      0.4352
+   1 O    154    0    0    0.000000   0    0.000000   0    0.000000        0
+   2 DUM   -1    0    1    0.500000   0    0.000000   0    0.000000        0
+   3 DUM   -1    0    2    0.500000   1   90.000000   0    0.000000        0
+   4 H    155    0    1    0.960677   2   90.000000   3  180.000000        0
+   5 C    157    0    1    1.410104   4  107.927338   2  180.000000        0
+   6 HC   156    0    5    1.090219   1  110.367502   4  179.797107        0
+   7 HC   156    0    5    1.090279   1  110.363694   6  120.022545        0
+   8 HC   156    0    5    1.090295   1  110.348573   6  239.966456        0
+TERZ                                                                            
+   9 O    154    0    4    1.814385   1  177.059332   2  107.922048        0
+  10 H    155    0    9    0.948056   4  144.647949   2  269.006232        0
+  11 C    157    0    9    1.414642   4  102.569735   2   48.856294        0
+  12 HC   156    0   11    1.090777   9  110.397881  10  180.565973        0
+  13 HC   156    0   11    1.090501   9  110.581139  12  119.902477        0
+  14 HC   156    0   11    1.090576   9  110.543504  12  240.168368        0
+                    Geometry Variations follow                                  
+                    Variable Bonds follow         (I4 or I4-I4)                 
+0004-0009                                                                       
+0010-0014                                                                       
+                    Additional Bonds follow       (2I4)                         
+                    Harmonic Constraints follow                                 
+                    Variable Bond Angles follow   (I4 or I4-I4)                 
+0005-0010                                                                       
+0011-0014                                                                       
+                    Additional Bond Angles follow (3I4)                         
+AUTO                                                                            
+                    Variable Dihedrals follow     (3I4,F12.6)                   
+0006-0011                                                                       
+0012-0014                                                                       
+                    Additional Dihedrals follow   (6I4)                         
+AUTO                                                                            
+                    Domain Definitions follow     (4I4)                         
+                    Conformational Search         (2I4, 2F12.6)                 
+                    Final blank line                                            

@@ -1,0 +1,7 @@
+
+(1) Ran xZCM1A on pyrid.z and pyrazn.z.
+(2) Merged output in sum files to yield pyrpyr.z.
+(3) Checked pyrpyr.z with xOPT and xOPT1.
+(4) Ran xFEPGAS pyrpyr
+(5) Created the aq directory and ran xFEPAQQ pyrpyr
+

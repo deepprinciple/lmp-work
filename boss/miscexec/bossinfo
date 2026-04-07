@@ -1,0 +1,975 @@
+#!/usr/bin/nawk -f
+# @(#) bossinfo - extracts as information from BOSS output.
+#
+# Dongchul Lim, January 15, 1994, lim@rani.chem.yale.edu
+#
+# format of normal modes from BOSS program frequency calculation output
+#	List of Frequencies and Normal Coordinates
+#	Mode = 1   Frequency = freq1
+#	x1 y1 z1 x2 y2 z2 x3 y3 z3 ....
+#
+# 1. reference, 1st and 2nd perturbed solutes
+# 2. radial distribution functions
+# 3. energy and energy pair distributions
+# 4. dihedral angle distributions
+# 5. thermodynamic results for the reference solute
+# 6. components of intra-solute energy for the reference solute
+# 7. components of solvent-solute energy for the reference solute
+# 8. component of intra-solvent energy for the flexible solvents
+# 9. perturbation results (Delta H, S, G)
+#10. normal modes
+
+BEGIN	{
+	number = "^[-+]?([0-9]+[.]?[0-9]*|[.][0-9]+)([eE][-+]?[0-9]+)?$"
+	title = "BOSS zmatrix";
+	nplots = 0;
+	npages = 0;
+
+	nrdfplots = 0;
+	nsrdfplots = 0;
+	rdf_xorig = 100;
+	rdf_yorig = 100;
+
+	xmin = -1;
+	ymin = -1;
+	xmax =  1;
+	ymax =  1;
+	xdiv =  1;
+	ydiv =  1;
+	xmajorticks = 5;
+	xminorticks = 2;
+	ymajorticks = 5;
+	yminorticks = 2;
+	xscaled = 1;
+	yscaled = 1;
+	forceticks = 0;
+
+	txt_x = 100;
+	txt_y = 900;
+	volume_accepted  = 0;
+	volume_attempted = 0;
+	nsolutes = 0;
+
+	solvent_model = "";
+	natoms = 0;
+	nmodes = 0;
+
+	exx_xorig = 100;
+	exx_yorig = 300;
+	exx_n     = 0;
+
+	dihed_xorig = 100;
+	dihed_yorig = 100;
+	dihed_n     = 0;
+}
+
+/Monte Carlo Simulation/ {
+	getline;
+	title = substr($0, 27, 30);
+#printf("title =%s:\n", title);
+	next;
+}
+
+/Solvent Model/	{
+	n = index($0, "Solvent Model");
+	if (n == 0) next;
+	solvent_model = substr($0, n+15, 5);
+#printf("solvent model =%s:\n", solvent_model);
+	next;
+}
+
+/BOSS Version/	{
+	n = index($0, "BOSS Version");
+	if (n == 0) next;
+	boss_version = substr($0, n+13, 4);
+#printf("boss version =%s:\n", boss_version);
+	next;
+}
+
+/Z-Matrix for Reference Solutes/	{
+	nzmat = 0;
+	while (getline > 0) {
+		if (NF == 10 && match($1, number)) break;
+	}
+
+	printf("%s\n", title);
+	while (1) {
+		if (match($0, "TERZ")) print;
+		else if (NF != 10 || match($0, "----")) break;
+		else {
+			nzmat++;
+			printf("%4d %3s %4d %4d %4d % 10.6f %4d % 10.5f %4d % 10.5f\n",
+				nzmat, $2, $3, $4, $5, $6, $7, $8, $9, $10);
+		}
+		if (getline <= 0) break;
+	}
+}
+
+/Geometrical Variations/	{
+	getline;
+	printf("                    Geometry Variations follow    (2I4,F12.6)\n");
+	while (getline > 0) {
+		if (NF != 4) break;
+		printf("%4d%4d% 12.6f\n", $1, $2, $4);
+	}
+	next;
+}
+
+NF == 1 && $1 == "Solvent"	{
+	getline;
+	if (!match($0, "Parameters")) next;
+	getline;
+	printf("Solvent Parameters\n");
+	while (getline > 0) {
+		if (match($0, "Net")) break;
+		printf("% 12.6f % 12.6f % 12.6f\n", $5, $6, $7);
+	}
+	next;
+}
+
+/Initial Random Number/	{
+	final = 1;
+	next;
+}
+
+/Accepted Volume Moves/	{
+	str = "Accepted Volume Moves =";
+	len = length(str);
+	n = index($0, str);
+	if (n == 0) next;
+	volume_accepted = substr($0, n+len, 6);
+
+	str = "Attempted =";
+	len = length(str);
+	n = index($0, str);
+	if (n == 0) next;
+	volume_attempted = substr($0, n+len, 6) + 0.0;
+
+#printf("Volume Moves Accepted = %d Attempted = %d\n", volume_accepted, volume_attempted);
+	next;
+}
+
+/Solute 0:   X          Y          Z/	{
+	if (!final) next;
+#printf("Reference Solute:\n");
+	read_solute_coord();
+	print_text(300, 900, 16, "Reference Solute", 0,0,0);
+	npages++;
+	next;
+}
+
+/Solute 1:   X          Y          Z/	{
+	if (!final) next;
+#printf("1st Perturbed Solute:\n");
+	read_solute_coord();
+	print_text(300, 900, 16, "1st Perturbed Solute", 0,0,0);
+	npages++;
+	next;
+}
+
+/Solute 2:   X          Y          Z/	{
+	if (!final) next;
+#printf("2nd Perturbed Solute:\n");
+	read_solute_coord();
+	print_text(300, 900, 16, "2nd Perturbed Solute", 0,0,0);
+	npages++;
+	next;
+}
+
+/\*\*\* Averages \*\*\*/	{
+	getline;
+	Etotal = substr($0, index($0, "=")+1);
+	getline;
+	CPtotal = substr($0, index($0, "=")+1);
+	getline;
+	Atotal = substr($0, index($0, "=")+1);
+	getline;
+	Ktotal = substr($0, index($0, "=")+1);
+	getline;
+	Vtotal = substr($0, index($0, "=")+1);
+
+
+printf("Etotal  =%s\n", Etotal);
+printf("CPtotal =%s\n", CPtotal);
+printf("Atotal  =%s\n", Atotal);
+printf("Ktotal  =%s\n", Ktotal);
+printf("Vtotal  =%s\n", Vtotal);
+
+	next;
+}
+
+
+NF == 1 && $1 == "Solvent-Solvent"	{
+#print "Solvent-Solvent"
+
+	getline;
+	if (NF == 0) getline;
+	if (match($0, "Energy Distribution")) {	# solvent-solvent energy distribution
+		read_energy_dist();
+		if (ndist > 0) {
+#printf("Solvent-Solvent Energy Distribution\n");
+			print_energy_dist(xdist, ydist, ndist,
+				100.0, 200.0, "Solvent-Solvent Energy Distribution", 0);
+		}
+	} else if (match($0, "Energy Pair Distribution")) {
+		read_energy_dist();
+		if (ndist > 0) {
+#printf("Solvent-Solvent Energy Pair Distribution\n");
+			print_energy_dist(xdist, ydist, ndist,
+				450.0, 200.0, "Solvent-Solvent Energy Pair Distribution", 1);
+		}
+	} else {
+		if (NF == 0) {
+			while (getline > 0) if (NF > 0) break;
+		}
+		if (match($0, "Radial Distribution Functions")) {
+			nrdfplots = 0;
+			rdf_xorig = 100;
+			rdf_yorig = 100;
+
+			getline;
+			read_rdf($0);
+			if (nrdf > 0 && n > 0) print_rdf(rdfx, rdfy, rdftxt, nrdf, n, "Solvent-Solvent");
+
+			nsrdfplots = nrdfplots;
+			nrdfplots = 0;
+			rdf_xorig = 100;
+			rdf_yorig = 100;
+		}
+	}
+	next;
+}
+
+/^[ ]+Radial Distribution Functions[ ]*$/	{
+	getline;
+	if ($1 == "R") {		# radial distribution function 
+		for(i=1;i<=nsrdfplots;i++) {
+			if (i % 2 == 1) rdf_xorig = 100;
+			else rdf_xorig = 450;
+			if (i % 2 == 0) rdf_yorig += 150;
+		}
+
+		nrdfplots = nsrdfplots;
+		read_rdf($0);
+		if (nrdf > 0 && n > 0) print_rdf(rdfx, rdfy, rdftxt, nrdf, n, "Solvent-Solvent");
+
+		nsrdfplots += nrdf;
+		nrdfplots = 0;
+		rdf_xorig = 100;
+		rdf_yorig = 100;
+	}
+	next;
+}
+
+NF == 1 && $1 == "Solute-Solvent"	{
+#print "Solute-Solvent"
+
+	getline;
+	getline;
+	if (match($0, "Energy Distribution")) {
+		read_energy_dist();
+		if (ndist > 0) {
+#printf("Solute-Solvent Energy Distribution\n");
+			print_energy_dist(xdist, ydist, ndist,
+				100.0, 600.0, "Solute-Solvent Energy Distribution", 0);
+		}
+	} else if (match($0, "Energy Pair Distribution")) {
+		read_energy_dist();
+		if (ndist > 0) {
+#printf("Solute-Solvent Energy Pair Distribution\n");
+
+			print_energy_dist(xdist, ydist, ndist,
+				450.0, 600.0, "Solute-Solvent Energy Pair Distribution", 1);
+		}
+	} else if ($1 == "R") {		# radial distribution function 
+		read_rdf($0);
+		if (nrdf > 0 && n > 0) print_rdf(rdfx, rdfy, rdftxt, nrdf, n, "Solute-Solvent");
+	}
+	next;
+}
+
+/Attempted\/Accepted Moves for Each Molecule/	{
+	get_solute_acceptance();
+	next;
+}
+
+# Dihedral Angle Distributions
+/Dihedral Angle Distributions/	{
+	getline;
+	n = 0;
+	while (getline > 0) {
+		if (NF == 0) break;
+		for(i=1;i<=NF;i++) {
+			n++;
+			xdihed[n] = $i;
+		}
+	}
+	while (getline > 0) {
+		if (match($0, /^ Angle/)) {
+			txt = substr($0, index($0, ":")+1);
+			getline;
+			m = 0;
+			while (getline > 0) {
+				if (NF == 0) break;
+				for(i=1;i<=NF;i++) {
+					m++;
+					ydihed[m] = $i;
+				}
+			}
+			if (m > 0 && m == n) {
+				plot_dihed_dist(xdihed, ydihed, n, txt);
+			}
+		} else if (substr($0,1,1) == "1") {
+			if (match($0, /Attempted\/Accepted Moves for Each Molecule/)) {
+				get_solute_acceptance();
+			}
+			break;
+		}
+	}
+	next;
+}
+
+# Thermodynamic Results
+/Thermodynamic Results/	{
+	getline;
+	getline;
+
+	nrun = 0;
+	ndata = 8;
+	while (getline > 0) {
+		if (NF == 0) break;
+		for(i=2;i<=NF;i++) data[i-1,nrun] = $i;
+		nrun++;
+	}
+	if (nrun < 2) next;
+
+	for(i=1;i<=ndata;i++) data[i,nrun] = data[i,0];
+	for(i=1;i<=nrun;i++) run[i] = i;
+
+	thermotxt[1] = "Etotal";
+	thermotxt[2] = "Inter Cp";
+	thermotxt[3] = "Volume";
+	thermotxt[4] = "Enthalpy";
+	thermotxt[5] = "Kappa";
+	thermotxt[6] = "Alpha";
+	thermotxt[7] = "EXX";
+	thermotxt[8] = "ESX";
+
+	xmajorticks = nrun-1;
+	xminorticks = 1;
+	ymajorticks = 5;
+	yminorticks = 2;
+
+	xscaled = 1;
+	xmin = 1;
+	xmax = nrun;
+
+	if (nrun > 10) {
+		n = int(nrun/10);
+		if (nrun%10 != 0) n++;
+		xmax = nrun;
+		while ((xmax-1) % n != 0) xmax++;
+		xmajorticks = (xmax-1)/n;
+	}
+	xdiv = (xmax-xmin)/xmajorticks;
+	yscaled = 0;
+
+	print_new_page();
+	print_text(150,900,16, "Thermodynamic Results for the Reference Solute.", 255,0,0);
+
+	y = 100;
+	for(i=1;i<=ndata;i++) {
+		if (i%2 == 0) x = 450; else x = 100;
+
+		printf("$Plot: %.3f %.3f\n", x, y);
+		for(j=1;j<=nrun;j++) ydata[j] = data[i,j]
+
+		reset_y_min_max();
+		get_y_min_max(ydata, nrun);
+		get_y_div(ymajorticks);
+
+		printf("$Plot: %.3f %.3f\n", x, y);
+		print_plot_dev("", "", "", thermotxt[i], 250, 150, "", 0,0,12);
+		print_plot_set(run, ydata, errdata, nrun, 0);
+		printf("$EndPlot:\n");
+
+		if (i%2 == 0) y += 200;
+	}
+
+	next;
+}
+
+# E-Bond and E-Bend
+/ Run[ ]+E\-Bond/	{
+	print_new_page();
+	print_text(100,900,16, "Components of Intra-Solute Energy for the Reference Solute", 255,0,0);
+
+	thermotxt[1] = "E-Bond";
+	thermotxt[2] = "E-Bend";
+	read_exx(2, thermotxt);
+	next;
+}
+
+/ Run[ ]+E\(phi\)/	{
+	thermotxt[1] = "Etorsion";
+	thermotxt[2] = "Enon-bond";
+	read_exx(2, thermotxt);
+	next;
+}
+
+# E-BCON
+/ Run[ ]+E\-BCON/	{
+	thermotxt[1] = "Ebond-constraints";
+	read_exx(1, thermotxt);
+	next;
+}
+
+# Solvent-Solute energy components
+/ Run[ ]+ESX/	{
+	print_new_page();
+	print_text(100,900,16,"Components of Solvent-Solute Energy for the Reference Solute", 255,0,0);
+	print_text(380,800,12,"Esolvent-solute = Ecoulomb + ELennard-Jones", 0,0,0);
+	exx_xorig = 100;
+	exx_yorig = 500;
+	exx_n     = 0;
+	thermotxt[1] = "Ecoulomb";
+	thermotxt[2] = "ELennard-Jones";
+	thermotxt[3] = "Esolvent-solute";
+
+	ndata = 3;
+	nrun = 0;
+	while (getline > 0) {
+		if (NF == 0) break;
+# Earlier version of BOSS
+#		data[1,nrun] = $3;
+#		data[2,nrun] = $4;
+#		data[3,nrun] = $2;
+
+		data[1,nrun] = $2;
+		data[2,nrun] = $3;
+		data[3,nrun] = $2+$3+0.0;
+
+		nrun++;
+	}
+	if (nrun < 2) next;
+	plot_exx(data, ndata, nrun, thermotxt);
+	next;
+}
+
+# perturbation results
+/^ Run[ ]+Delta G/	{
+	nrun = 0;
+	ndata = 6;
+	while (getline > 0) {
+		if (NF == 0) break;
+		data[1,nrun] = $2;
+		data[3,nrun] = $3;
+		data[5,nrun] = $4;
+		data[2,nrun] = $5;
+		data[4,nrun] = $6;
+		data[6,nrun] = $7;
+		nrun++;
+	}
+	if (nrun < 2) next;
+
+	thermotxt[1] = "^qDG1";
+	thermotxt[3] = "^qDH1";
+	thermotxt[5] = "^qDS1";
+	thermotxt[2] = "^qDG2";
+	thermotxt[4] = "^qDH2";
+	thermotxt[6] = "^qDS2";
+
+	print_new_page();
+	print_text(250,900,16,"Perturbation Results", 255,0,0);
+	print_text(130,800,14,"1st Perturbed Solute", 0,0,0);
+	print_text(480,800,14,"2nd Perturbed Solute", 0,0,0);
+	exx_xorig = 100;
+	exx_yorig = 200;
+	exx_n     = 0;
+	plot_exx(data, ndata, nrun, thermotxt);
+	next;
+}
+
+# Energy Components for Flexible Solvent
+/ Energy Components for Flexible Solvent/	{
+	getline;
+
+	nrun = 0;
+	ndata = 5;
+	while (getline > 0) {
+		if (NF == 0) break;
+		data[1,nrun] = $2;
+		data[2,nrun] = $3;
+		data[3,nrun] = $4;
+		data[4,nrun] = $5;
+		data[5,nrun] = $6;
+		nrun++;
+	}
+	if (nrun < 2) next;
+
+	thermotxt[1] = "Ebond";
+	thermotxt[2] = "Ebend";
+	thermotxt[3] = "Etorsion";
+	thermotxt[4] = "Enon-bond";
+	thermotxt[5] = "Etotal";
+
+	print_new_page();
+	print_text(200,900,16,"Energy Components for Flexible Solvent", 255,0,0);
+	exx_xorig = 100;
+	exx_yorig = 300;
+	exx_n     = 0;
+	plot_exx(data, ndata, nrun, thermotxt);
+	next;
+}
+
+# equilibrium coordinates
+/ Coordinates and Parameters/	{
+	getline; getline; getline;	# skip
+
+	printf("$Coord: Cartesian\n");
+	natoms = 0;
+	while (getline > 0) {
+		if (match($0, "---")) break;
+		natoms++;
+		atomnum[natoms] = $1;
+		xcoord[natoms]  = $2;
+		ycoord[natoms]  = $3;
+		zcoord[natoms]  = $4;
+		printf("%3d % 9.6f % 9.6f % 9.6f % 9.6f % 9.6f * 0 0 0 0 %3s % 9.6f\n",
+			$1, $2, $3, $4, $6, 0.0, $5, $6, $7);
+	}
+	printf("$EndCoord:\n");
+	npages++;
+	print_text(100, 900, 18.0, "Normal Modes", 0, 0, 0);
+
+	next;
+}
+
+# normal coordinates
+/List of Frequencies and Normal Coordinates/	{
+	printf("$NormalMode: %d\n", natoms);
+	printf("Equilibrium:\n");
+	for(i=1;i<=natoms;i++) printf("%3d % 12.6f % 12.6f % 12.6f\n",
+		atomnum[i], xcoord[i], ycoord[i], zcoord[i]);
+	nmodes = 0;
+	while (getline > 0) {
+		getline;
+		if (!match($0, "Mode")) break;
+		nmodes++;
+		printf("MODE = %.3f\n", $6);
+		n = 0;
+		while (getline > 0) {
+			for(i=1;i<=NF;i++) {
+				n++;
+				coord[n] = $i;
+			}
+			if (n >= natoms*3) break;
+		}
+		for(i=1;i<=natoms*3;i+=3) {
+			printf("% 12.6f % 12.6f % 12.6f\n", coord[i], coord[i+1], coord[i+2]);
+		}
+	}
+	printf("$EndNormalMode:\n");
+}
+
+END	{
+	if (npages > 0) print_new_page();
+
+	# title
+	txt_x = 100;
+	txt_y = 900;
+	fontsize = 18.0;
+	str = sprintf("Summary of BOSS Job \"%s\"", title);
+	print_text(txt_x, txt_y, fontsize, str, 0,0,0);
+
+	# solvent model
+	if (solvent_model != "") {
+		txt_x = 50; txt_y -= 30; fontsize = 12.0;
+		str = sprintf("Solvent model = %s", solvent_model);
+		print_text(txt_x, txt_y, fontsize, str, 0,0,0);
+	}
+
+	# volume moves
+	if (volume_attempted > 0+0) {
+		txt_x = 50; txt_y -= 30; fontsize = 12.0;
+		str = sprintf("Volume moves: Accepted = %d Attempted = %d Acceptance Ratio = %.3f",
+			volume_accepted, volume_attempted, volume_accepted/volume_attempted);
+		print_text(txt_x, txt_y, fontsize, str, 0,0,0);
+	}
+
+	# solute moves
+	warning = 0;
+	for(i=1;i<=nsolutes;i++) {
+		if (nattempt[i] + 0 <= 0) continue;
+		txt_x = 50; txt_y -= 30; fontsize = 12.0;
+		ratio = naccept[i]/nattempt[i];
+		str = sprintf("Solute moves (%d): Accepted = %d Attempted = %d Acceptance Ratio = %.3f",
+			i, naccept[i], nattempt[i], ratio);
+		print_text(txt_x, txt_y, fontsize, str, 0,0,0);
+		if (ratio > 0.65+0.0 || ratio < 0.3) warning = 1;
+	}
+	if (warning) {
+		txt_x = 50; txt_y -= 30; fontsize = 14.0;
+		str = sprintf(" Warning: Acceptance ratio is too low or too high. Adjust RDELS1/2 and ADELS1/2.");
+		print_text(txt_x, txt_y, fontsize, str, 255,0,0);
+	}
+}
+
+function	read_solute_coord (an, x, y, z, n, i)
+{
+	n = 0;
+	while (getline > 0) {
+		if (NF < 4) break;
+		n++;
+		an[n] = $1;
+		x[n] = $2;
+		y[n] = $3;
+		z[n] = $4;
+	}
+	if (n > 0) {
+		printf("$Coord: Cartesian\n");
+		for(i=1;i<=n;i++) printf("%3d % 12.6f % 12.6f % 12.6f\n", an[i], x[i], y[i], z[i]);
+		printf("$EndCoord:\n");
+	}
+}
+
+function	read_rdf (txt,	i)
+{
+	n = 0;
+	while (getline > 0) {
+		if (NF == 0) break;
+		n++;
+		rdfx[n] = $1;
+		for(i=2;i<=NF;i++) rdfy[i-1,n] = $i;
+		nrdf = NF-1;
+	}
+	for(i=1;i<=nrdf;i++) rdftxt[i] = substr(txt, 13+(i-1)*12, 10);
+}
+
+function	print_rdf (rdfx, rdfy, rdftxt, nrdf, n, str,	i,j,ydata,errdata)
+{
+	if (nrdfplots == 0+0) {
+		print_new_page();
+		txt = sprintf("%s Radial Distribution Functions", str);
+		print_text(100,950,16, txt, 255,0,0);
+	}
+
+	for(i=1;i<=nrdf;i++) {
+		nrdfplots++;
+		for(j=0;j<n;j++) ydata[j] = rdfy[i,j];
+
+		if (nrdfplots % 2 == 1) rdf_xorig = 100;
+		else rdf_xorig = 450;
+
+#		reset_min_max();
+#		get_min_max(rdfx, ydata, n);
+#		get_div(xmajorticks, ymajorticks);
+
+		xmajorticks = 3;
+		xminorticks = 5;
+		xmin = 0;
+		xmax = 15;
+		xdiv = (xmax-xmin)/xmajorticks;
+
+		ymajorticks = 2;
+		yminorticks = 5;
+		ymin = 0;
+		ymax = 2;
+		ydiv = (ymax-ymin)/ymajorticks;
+
+		xscaled = 1;
+		yscaled = 1;
+		forceticks = 1;
+
+		printf("$Plot: %.3f %.3f\n", rdf_xorig, rdf_yorig);
+		print_plot_dev("", "", "", "", 250, 100, rdftxt[i], 0.1, 0.8, 12);
+		print_plot_set(rdfx, ydata, errdata, n, 0);
+		printf("$EndPlot:\n");
+
+		if (nrdfplots % 2 == 0) rdf_yorig += 150;
+	}
+}
+
+function	read_energy_dist (i,nx,ny)
+{
+	ndist = 0;
+	nx = 0;
+	ny = 0;
+
+	getline;
+	while (getline > 0) {
+		if (NF == 0) break;
+		for(i=1;i<=NF;i++) {nx++; xdist[nx] = $i;}
+	}
+	while (getline > 0) if (NF > 0) break;
+	for(;;) {
+		if (NF == 0) break;
+		for(i=1;i<=NF;i++) {ny++; ydist[ny] = $i;}
+		if (getline <= 0) break;
+	}
+	if (nx > 0 && ny > 0 && nx == ny) ndist = nx;
+}
+
+function	print_energy_dist (xdist, ydist, ndist,	xorig, yorig, title, PED,	errdist,i)
+{
+	if (nplots == 0+0) {
+		print_new_page();
+		print_text(240,900,16,"Energy and Energy Pair Distributions", 255,0,0);
+	}
+	nplots++;
+
+	xmajorticks = 5;
+	xminorticks = 2;
+	ymajorticks = 5;
+	yminorticks = 2;
+	xscaled = 0;
+	yscaled = 0;
+	forceticks = 0;
+
+	reset_min_max();
+	get_min_max(xdist, ydist, ndist);
+	get_div(xmajorticks, ymajorticks);
+	str = "# Mole";
+
+	if (PED) {
+		str = "# Molecule";
+		forceticks = 1;
+
+		xscaled = 1;
+		xmajorticks = 3;
+		xminorticks = 5;
+		xmin = -10;
+		xmax = 5;
+		xdiv = (xmax-xmin)/xmajorticks;
+
+		yscaled = 1;
+		ymajorticks = 4;
+		ymin = 0;
+		ymax = 4;
+		ydiv = (ymax-ymin)/ymajorticks;
+
+#		for(i=1;i<=ndist;i++) if (ydist[i] > ymax) ydist[i] = ymax;
+	}
+
+	printf("$Plot: %.3f %.3f\n", xorig, yorig);
+	print_plot_dev(title, "", "Energy (kcal/mol)", str, 250, 200, "",0,0,12);
+	print_plot_set(xdist, ydist, errdist, ndist, 0);
+	printf("$EndPlot:\n");
+}
+
+function	print_plot_dev (maintitle, subtitle, xtitle, ytitle, w, h, str, xstr, ystr, strsize)
+{
+	printf("BeginDev:\n");
+	printf("   flags = %d\n", 24 + forceticks);
+	printf("   dimension = %.3f %.3f\n", w, h);
+	printf("   title = 0 0 0 14.0 0 (%s)\n", maintitle);
+	printf("   subtitle = 0 0 0 14.0 0 (%s)\n", subtitle);
+	if (str != "") printf("   string = %.3f %.3f 0 %.1f 0 (%s)\n", xstr, ystr, strsize, str);
+	printf("   tick = 5 7 10\n");
+	printf("   BeginAxis 0:\n");
+	printf("      dimension = %.3f %.3f %.3f\n", xmin, xmax, xdiv);
+	printf("      ticks = %d %d 1\n", xmajorticks, xminorticks);
+	printf("      scaling = 0 %d\n", xscaled);
+	printf("      title = 0 0 0 14.0 0 (%s)\n", xtitle);
+	printf("   EndAxis\n");
+	printf("   BeginAxis 1:\n");
+	printf("      dimension = %.3f %.3f %.3f\n", ymin, ymax, ydiv);
+	printf("      ticks = %d %d 1\n", ymajorticks, yminorticks);
+	printf("      scaling = 0 %d\n", yscaled);
+	printf("      title = 0 0 0 14.0 0 (%s)\n", ytitle);
+	printf("   EndAxis\n");
+	printf("EndDev:\n");
+}
+
+function 	print_plot_set (xdata, ydata, errdata, ndata, datatype,	i)
+{
+	printf("BeginSet:\n");
+	printf("   SetData = %d %d 0 0\n", ndata, datatype);
+	for(i=1;i<=ndata;i++) {
+		printf("% 12.6f % 12.6f", xdata[i], ydata[i]);
+		if (datatype > 0) printf(" % 11.6f", errdata[i]);
+		printf("\n");
+	}
+	printf("EndSet:\n");
+}
+
+function	print_new_page ()
+{
+	npages = npages + 1;
+	printf("$NewPage:\n");
+}
+
+function	print_text (x, y, fontsize, str, r, g, b)
+{
+	printf("$Text:\n");
+	printf("Origin = %.3f %.3f\n", x, y);
+	printf("FontStyle = 0\n");
+	printf("FontSize  = %.1f\n", fontsize);
+	printf("Color = %d %d %d\n", r, g, b);
+	printf("BeginStr:\n");
+	printf("%s\n", str);
+	printf("EndStr:\n");
+	printf("$EndText:\n");
+}
+
+function	get_min_max (xdata, ydata, ndata,	i,x,y)
+{
+	for(i=1;i<=ndata;i++) {
+		x = xdata[i];
+		y = ydata[i];
+		if (x < xmin) xmin = x;
+		if (x > xmax) xmax = x;
+		if (y < ymin) ymin = y;
+		if (y > ymax) ymax = y;
+	}
+}
+
+function	reset_min_max ()
+{
+	xmin =  1000000;
+	ymin =  1000000;
+	xmax = -1000000;
+	ymax = -1000000;
+	xdiv =  1000000;
+	ydiv =  1000000;
+}
+
+function	get_div (nx, ny)
+{
+	if (nx <= 0) nx = 2;
+	if (ny <= 0) ny = 2;
+	xdiv = (xmax-xmin)/nx;
+	ydiv = (ymax-ymin)/ny;
+}
+
+function	reset_y_min_max ()
+{
+	ymin =  1000000;
+	ymax = -1000000;
+	ydiv =  1000000;
+}
+
+function	get_y_min_max (ydata, ndata,	i,y)
+{
+	for(i=1;i<=ndata;i++) {
+		y = ydata[i];
+		if (y < ymin) ymin = y;
+		if (y > ymax) ymax = y;
+	}
+}
+
+function	get_y_div (ny)
+{
+	if (ny <= 0) ny = 2;
+	ydiv = (ymax-ymin)/ny;
+}
+
+function	plot_exx (data, ndata, nrun, txt,	i,j,n)
+{
+	if (nrun < 2 || ndata < 1) return;
+
+	for(i=1;i<=ndata;i++) data[i,nrun] = data[i,0];
+	for(i=1;i<=nrun;i++) run[i] = i;
+
+	xmajorticks = nrun-1;
+	xminorticks = 1;
+	ymajorticks = 5;
+	yminorticks = 2;
+
+	xscaled = 1;
+	xmin = 1;
+	xmax = nrun;
+
+	if (nrun > 10) {
+		n = int(nrun/10);
+		if (nrun%10 != 0) n++;
+		xmax = nrun;
+		while ((xmax-1) % n != 0) xmax++;
+		xmajorticks = (xmax-1)/n;
+	}
+	xdiv = (xmax-xmin)/xmajorticks;
+	yscaled = 0;
+
+	for(i=1;i<=ndata;i++) {
+		exx_n++;
+		if (exx_n%2 == 0) exx_xorig = 450; else exx_xorig = 100;
+
+		printf("$Plot: %.3f %.3f\n", exx_xorig, exx_yorig);
+		for(j=1;j<=nrun;j++) ydata[j] = data[i,j]
+
+		reset_y_min_max();
+		get_y_min_max(ydata, nrun);
+		get_y_div(ymajorticks);
+
+		printf("$Plot: %.3f %.3f\n", exx_xorig, exx_yorig);
+		print_plot_dev("", "", "", txt[i], 250, 150, "", 0,0,12);
+		print_plot_set(run, ydata, errdata, nrun, 0);
+		printf("$EndPlot:\n");
+
+		if (exx_n%2 == 0) exx_yorig += 200;
+	}
+}
+
+function	read_exx (ndata, txt,	nrun)
+{
+	nrun = 0;
+	while (getline > 0) {
+		if (NF == 0) break;
+		data[1,nrun] = $2;
+		data[2,nrun] = $5;
+		nrun++;
+	}
+	if (nrun < 2) return;
+	plot_exx(data, ndata, nrun, txt);
+}
+
+function	plot_dihed_dist (xdata, ydata, ndata, txt,	i,errdata)
+{
+	if (dihed_n % 10 == 0) {
+		print_new_page();
+		print_text(200, 900, 16.0, "Dihedral Angle Distributions", 255, 0, 0);
+		dihed_xorig = 100;
+		dihed_yorig = 150;
+	}
+
+	xmajorticks = 6;
+	xminorticks = 1;
+	ymajorticks = 5;
+	yminorticks = 2;
+
+	xscaled = 1;
+	xmin = 0;
+	xmax = 360;
+
+	xdiv = (xmax-xmin)/xmajorticks;
+	yscaled = 0;
+	reset_y_min_max();
+	get_y_min_max(ydata, ndata);
+	get_y_div(ymajorticks);
+
+	dihed_n++;
+	if (dihed_n%2 == 0) dihed_xorig = 450; else dihed_xorig = 100;
+	printf("$Plot: %.3f %.3f\n", dihed_xorig, dihed_yorig);
+
+	printf("$Plot: %.3f %.3f\n", dihed_xorig, dihed_yorig);
+	print_plot_dev("", "", "", txt, 250, 100, "", 0,0,12);
+	print_plot_set(xdata, ydata, errdata, ndata, 0);
+	printf("$EndPlot:\n");
+
+	if (dihed_n%2 == 0) dihed_yorig += 150;
+}
+
+function	get_solute_acceptance (n1, n2)
+{
+	while (getline > 0) {
+		if (match($0, "Solute") != 0) {
+			n1 = index($0, ":")
+			n2 = index($0, "\/")
+			nsolutes++;
+			nattempt[nsolutes] = substr($0, n1+1, n2-n1-1)
+			naccept[nsolutes]  = substr($0, n2+1)
+		} else if (match($0, "Solvent")) break;
+		if ((nsolutes > 0 && NF == 0) || (nsolutes >= 2)) break;
+	}
+}
+

@@ -1,0 +1,32 @@
+cyclopentadiene                                             Tot. E =     25.1360
+   1 X     -1    0    0    0.000000   0    0.000000   0    0.000000        0
+   2 X     -1    0    1    1.000000   0    0.000000   0    0.000000        0
+   3 C    136  136    2    1.000000   1   90.000000   0    0.000000        0
+   4 C    142  142    3    1.516979   2   90.000000   1    0.000000        0
+   5 C    142  142    3    1.516979   2    9.277069   4  175.339070        0
+   6 H    140  140    3    1.090448   4  111.756275   5  242.009935        0
+   7 H    140  140    3    1.090449   4  111.756107   6  235.979924        0
+   8 C    150  150    4    1.338542   3  111.671738   5  359.999633        0
+   9 H    144  144    4    1.080662   3  122.638177   5  179.999568        0
+  10 C    150  150    8    1.452731   4  108.705180   3    0.000179        0
+  11 H    144  144    8    1.080640   4  125.662572  10  179.999894        0
+  12 H    144  144   10    1.080642   8  125.631155   4  180.000223        0
+  13 H    144  144    5    1.080666   3  122.637603   4  179.999987        0
+                    Geometry Variations follow    (2I4,F12.6)                   
+                    Variable Bonds follow         (I4)                          
+0004-0013                                                                       
+                    Additional Bonds follow       (2I4)                         
+   5  10                                                                        
+                    Harmonic Constraints follow   (2I4,4F10.4)                  
+                    Variable Bond Angles follow   (I4)                          
+0005-0013                                                                       
+                    Additional Bond Angles follow (3I4)                         
+AUTO                                                                            
+                    Variable Dihedrals follow     (3I4,F12.6)                   
+0006-0013                                                                       
+                    Additional Dihedrals follow   (6I4)                         
+AUTO                                                                            
+                    Domain Definitions follow     (4I4)                         
+                    Conformational Search (2I4,2F12.6)                          
+                    Final blank line                                            
+                                                                                

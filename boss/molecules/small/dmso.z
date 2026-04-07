@@ -1,0 +1,29 @@
+     Dimethyl sulfoxide                                     Tot. E =     -5.6315
+   1 S    496  496    0    0.000000   0    0.000000   0    0.000000        0    
+   2 X     -1   -1    1    1.000000   0    0.000000   0    0.000000        0    
+   3 X     -1   -1    2    1.000000   1   90.000000   0    0.000000        0    
+   4 C    498  498    1    1.790749   2   90.000000   3    0.000000        0    
+   5 C    498  498    1    1.790749   4   97.675299   2  180.000000        0    
+   6 H    140  140    4    1.089918   1  109.798340   5  175.921204        0    
+   7 H    140  140    4    1.089739   1  110.644453   6  119.761052        0    
+   8 H    140  140    4    1.089979   1  110.628333   6  240.572783        0    
+   9 H    140  140    5    1.089918   1  109.798342   4  184.078782        0    
+  10 H    140  140    5    1.089739   1  110.644455   9  240.238950        0    
+  11 H    140  140    5    1.089979   1  110.628334   9  119.427218        0    
+  12 O    497  497    1    1.528872   4  106.772249   5  249.834639        0    
+                    Geometry Variations follow    (2I4,F12.6)                   
+                    Variable Bonds follow         (I4)                          
+0004-0012                                                                       
+                    Additional Bonds follow       (2I4)                         
+                    Harmonic Constraints follow   (2I4,4F10.4)                  
+                    Variable Bond Angles follow   (I4)                          
+0005-0012                                                                       
+                    Additional Bond Angles follow (3I4)                         
+AUTO                                                                            
+                    Variable Dihedrals follow     (3I4,F12.6)                   
+0006-0012                                                                       
+                   Additional Dihedrals follow   (6I4)                          
+AUTO                                                                            
+                   Domain Definitions follow     (4I4)                          
+                   Conformational Search         (2I4, 2F12.6)                  
+                   Final blank line                                             

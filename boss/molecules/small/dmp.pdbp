@@ -1,0 +1,12 @@
+HEADER    OPLS
+COMPND    DIMETHYLPHOSPHATE ANION
+SOURCE    3-21G* Optimized Geometry
+REMARK    Format:                  x       y       z        q    sigma epsilon
+HETATM    1  P1  DMP     1       0.000   0.352   0.000    0.780  3.740  0.200
+HETATM    2  O2  DMP     1      -0.578   1.108   1.218   -0.660  2.960  0.210
+HETATM    3  O3  DMP     1       0.578   1.108  -1.218   -0.660  2.960  0.210
+HETATM    4  O4  DMP     1      -1.150  -0.750  -0.486   -0.430  3.000  0.170
+HETATM    5  O5  DMP     1       1.150  -0.750   0.486   -0.430  3.000  0.170
+HETATM    6  C6  DMP     1      -2.514  -0.620  -0.067    0.200  3.800  0.170
+HETATM    7  C7  DMP     1       2.514  -0.620   0.067    0.200  3.800  0.170
+END

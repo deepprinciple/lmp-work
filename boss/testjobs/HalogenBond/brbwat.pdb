@@ -1,0 +1,39 @@
+REMARK   0 Title: PhBr...water Complex CBrO line                                 
+REMARK   1 Creator: XChemEdit/AUTOZMAT                                           
+REMARK   2 WL Jorgensen Group, Dept. of Chemistry, Yale University               
+HETATM    1  C   UNK A   0      0.0000  1.4000  0.0000  0.00  0.00   0           
+HETATM    2  C   UNK A   0      0.0000  0.6959 -1.2196  0.00  0.00   0           
+HETATM    3  C   UNK A   0     -0.0000  0.6958  1.2194  0.00  0.00   0           
+HETATM    4  C   UNK A   0     -0.0000 -0.7133 -1.2203  0.00  0.00   0           
+HETATM    5  C   UNK A   0     -0.0000 -0.7133  1.2202  0.00  0.00   0           
+HETATM    6  C   UNK A   0     -0.0000 -1.4181 -0.0001  0.00  0.00   0           
+HETATM    7 Br   UNK A   0      0.0000  3.2687  0.0012  0.00  0.00   0           
+HETATM    8  H   UNK A   0      0.0000  1.2395 -2.1527  0.00  0.00   0           
+HETATM    9  H   UNK A   0      0.0000  1.2400  2.1524  0.00  0.00   0           
+HETATM   10  H   UNK A   0     -0.0000 -1.2522 -2.1567  0.00  0.00   0           
+HETATM   11  H   UNK A   0     -0.0000 -1.2518  2.1567  0.00  0.00   0           
+HETATM   12  H   UNK A   0     -0.0000 -2.4989  0.0001  0.00  0.00   0           
+HETATM   13  X   UNK A   0      0.0000  4.8732  0.0091  0.00  0.00   0           
+TER
+HETATM   14  O   UNK B   0      0.0000  6.4499  0.0031  0.00  0.00   0           
+HETATM   15  HO  UNK B   0     -0.7570  6.6838 -0.5340  0.00  0.00   0           
+HETATM   16  HO  UNK B   0      0.7569  6.6838 -0.5341  0.00  0.00   0           
+HETATM   17  X   UNK B   0     -0.0000  6.5098 -0.1344  0.00  0.00   0           
+TER
+CONECT    1    2    3    7    0    0    0    0    0    0    0                    
+CONECT    2    1    4    8    0    0    0    0    0    0    0                    
+CONECT    3    1    5    9    0    0    0    0    0    0    0                    
+CONECT    4    2    6   10    0    0    0    0    0    0    0                    
+CONECT    5    3    6   11    0    0    0    0    0    0    0                    
+CONECT    6    4    5   12    0    0    0    0    0    0    0                    
+CONECT    7    1    0    0    0    0    0    0    0    0    0                    
+CONECT    8    2    0    0    0    0    0    0    0    0    0                    
+CONECT    9    3    0    0    0    0    0    0    0    0    0                    
+CONECT   10    4    0    0    0    0    0    0    0    0    0                    
+CONECT   11    5    0    0    0    0    0    0    0    0    0                    
+CONECT   12    6    0    0    0    0    0    0    0    0    0                    
+CONECT   14   15   16    0    0    0    0    0    0    0    0                    
+CONECT   15   14    0    0    0    0    0    0    0    0    0                    
+CONECT   16   14    0    0    0    0    0    0    0    0    0                    
+ENDMDL
+END

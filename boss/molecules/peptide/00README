@@ -1,0 +1,43 @@
+This directory contains sample Z-matrices for the common amino
+acids as Ac-aa-NHMe dipeptides. The correct OPLS-AA atom type and
+other parameter assignments are given. 
+
+These Z-matrices can be optimized with xOPT.
+Just enter:
+xOPT peptidename (e.g., xOPT phe)
+Display the resulting plot file (plt.pdb):
+xRAS    
+
+The ranges for the dihedral angles are generally not optimal for
+running MC with BOSS. However, the ala example does have reasonable ranges
+assigned.
+
+The file ala.short illustrates the shortened form of the Z-matrix
+file that is permitted. Compare with ala.
+The dihedral ranges are also now reasonable - see the out file
+after optimization via
+xOPTCG ala.short       
+
+Note that this shortened form may not give correct assignements of dihedral
+types to all residues.
+
+ad.* contain conformers of Ac-Ala-NHMe. The relative energetics are given
+below and in table S5 in the OPLS-AA/M paper.
+
+     Conf       Tot. E   Rel. E
+     --------  --------  ------
+     ad.al*    -35.8863   5.85
+     ad.ap     -34.6871   7.04
+     ad.ar*    -33.6677   8.06
+     ad.b2*    -38.1825   3.55
+     ad.C5     -40.5214   1.21
+     ad.C7ax   -39.5727   2.16
+     ad.C7eq   -41.7310   0.00
+     * not true minima, backbone is fixed at ab initio values.
+
+
+metenk.z contains the lowest energy conformer for Met-enkephalin.
+
+The ytof.z and ftoc.z files illustrate Z-matrices for perturbations
+of tyr to phe and phe to cys.
+

@@ -1,0 +1,39 @@
+
+Optimized procedure for obtaining free energies of hydration for a molecule.
+The molecule is annihilated in the gas-phase and in water at 25 C.
+
+The molecule's zmatrix molecule.z needs to be in the boss/molecules/OPLS2020 directory.
+
+Then, execute 
+
+xDGHYD molecule
+
+This script creates a subdirectory molecule and runs a series of jobs:
+It first creates z-matrices for the charge and LJ annihilations. 
+It then submits 4 FEP jobs with 20 windows each -
+ gas Q  averaging is 2M per window
+ gas LJ averaging is 2M per window
+ aq Q  averaging is 200M per window
+ aq LJ averaging is 500M per window
+These are the commands - 
+
+../xFEPGAS20fQ Q
+../xFEPGAS20bQ LJ
+../xFEP200f20Q Q
+../xFEP500b20Q LJ
+
+The LJ FEPs are done in the growing direction for better acccuracy,
+see: JCTC 2019, 15, 3941-3948. 
+
+When finished, the 4 results can be extracted via
+
+xGETDG molecule
+
+delGhyd = aq (Q + LJ) - gas (Q + LJ)
+
+Results are provided for ethanol. Only the sumout files have been retained.
+
+xGETDG etoh
+
+delGhyd = -1.105 -0.135 -5.972 + 2.604 = -4.608 kcal/mol (expt = -5.00)
+

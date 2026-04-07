@@ -1,0 +1,28 @@
+Si parameters were updated in 2013; see oplsaa.par and oplsaa.sb
+
+type AN         q      sigma     epsilon
+1060 14 Si    0.320     4.00      0.10      Si in tetraalkylsilane R4Si
+1061 14 Si    0.250     4.00      0.10      Si in  R3SiH
+1062 14 Si    0.180     4.00      0.10      Si in  R2SiH2
+1063 14 Si    0.110     4.00      0.10      Si in  RSiH3
+1064 01 H    -0.010     2.50      0.03      H   on Si in silane, silanol, silyl ether
+1065 06 CT   -0.26      3.500     0.066     CH3 on Si in silane,   "
+1066 06 CT   -0.20      3.500     0.066     CH2 on Si in silane,   "
+1067 06 CT   -0.14      3.500     0.066     CH  on Si in silane,   "
+1068 06 CT   -0.08      3.500     0.066     C   on Si in silane,   "
+1069 06 CA   -0.08      3.550     0.070     C ipso in phenyl silane
+1070 14 Si    0.39      4.00      0.10      Si in R3SiOH
+1071 14 Si    0.32      4.00      0.10      Si in R2SiHOH
+1072 14 Si    0.25      4.00      0.10      Si in RSiH2OH
+1073 08 OH   -0.50      3.12      0.17      O in SiOH silanol
+1074 01 HO    0.35      0.00      0.00      H in SiOH silanol
+1075 14 Si    0.39      4.00      0.10      Si in R3SiOR  silyl ether
+1076 14 Si    0.32      4.00      0.10      Si in R2SiHOR     "
+1077 14 Si    0.25      4.00      0.10      Si in RSiH2OR     "
+1078 08 OS   -0.35      2.90      0.14      O: alkyl silyl ether - R on O is 181-185
+1079 14 Si    0.24      4.00      0.10      Si in R3SiSi   disilane
+1080 14 Si    0.17      4.00      0.10      Si in R2SiHSi  disilane
+1081 14 Si    0.10      4.00      0.10      Si in RSiH2Si  disilane
+1082 14 Si    0.03      4.00      0.10      Si in H3Si-Si  disilane
+1083 14 Si    0.040     4.00      0.10      Si in  SiH4
+1084 14 Si    0.18      4.00      0.10      Si in SiH3OH

@@ -1,0 +1,28 @@
+           Pyrimidine                                       Tot. E =      0.8725
+   1 Dum   -1   -1    0    0.000000   0    0.000000   0    0.000000        0    
+   2 Dum   -1   -1    1    1.000000   0    0.000000   0    0.000000        0    
+   3 C2   531  531    1    1.400000   2   90.000000   0    0.000000        0    
+   4 N    530  530    3    1.325416   1   60.000000   2   90.000000        0    
+   5 C4   532  532    4    1.339003   3  116.313846   1    0.000000        0    
+   6 N    530  530    3    1.325416   4  127.574700   5    0.000000        0    
+   7 C4   532  532    6    1.339003   3  116.313845   4    0.000000        0    
+   8 C5   533  533    5    1.398561   4  121.476629   3    0.000000        0    
+   9 H2   534  534    3    1.080000   4  116.212650   5  180.000000        0    
+  10 H4   535  535    5    1.080000   4  117.261686   3  180.000000        0    
+  11 H4   535  535    7    1.080000   6  117.261685   3  180.000000        0    
+  12 H5   536  536    8    1.080000   7  121.577825   6  180.000000        0    
+                    Geometry Variations                                         
+                    Variable Bonds follow         (I4)                          
+0004-0012                                                                       
+                    Additional Bonds follow       (2I4)                         
+00070008                                                                        
+                    Harmonic Constraints                                        
+                    Variable Bond Angles follow   (I4)                          
+0005-0012                                                                       
+                    Additional Bond Angles follow (3I4)                         
+AUTO
+                    Variable Dihedrals follow     (3I4,F12.6)                   
+                    Additional Dihedrals follow   (6I4)                         
+                    Domain Definitions follow     (4I4)                         
+                    Final blank line                                            
+                                                                                

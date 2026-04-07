@@ -1,0 +1,30 @@
+    malonic acid                                            Tot. E =    -16.0682
+   1 C    267    0    0    0.000000   0    0.000000   0    0.000000        0
+   2 DUM   -1    0    1    1.000000   0    0.000000   0    0.000000        0
+   3 DUM   -1    0    2    1.000000   1   90.000000   0    0.000000        0
+   4 O    269    0    1    1.227720   2   90.000000   3    0.000000        0
+   5 OH   268    0    1    1.359673   4  121.841804   2  270.000000        0
+   6 C    136    0    1    1.532185   4  125.977872   5  178.855376        0
+   7 HO   270    0    5    0.944414   1  108.580486   4  359.190838        0
+   8 C    267    0    6    1.530444   1  114.939007   4    9.659599        0
+   9 H    140    0    6    1.089843   1  108.680270   8  237.141483        0
+  10 H    140    0    6    1.089892   1  108.630591   8  121.339569        0
+  11 O    269    0    8    1.227241   6  124.316512   1   87.889752        0
+  12 OH   268    0    8    1.359934   6  113.325874  11  177.090878        0
+  13 HO   270    0   12    0.944232   8  108.546796  11  356.767532        0
+                    Geometry Variations follow    (2I4,F12.6)                   
+                    Variable Bonds follow         (I4 or I4-I4)                 
+0004-0013                                                                       
+                    Additional Bonds follow       (2I4)                         
+                    Harmonic Constraints follow   (2I4,4F10.4)                  
+                    Variable Bond Angles follow   (I4 or I4-I4)                 
+0005-0013                                                                       
+                    Additional Bond Angles follow (3I4)                         
+AUTO                                                                            
+                    Variable Dihedrals follow     (3I4,F12.6)                   
+0006-0013                                                                       
+                    Additional Dihedrals (6I4)                                  
+AUTO                                                                            
+                    Domain Definitions follow     (4I4)                         
+                    Conformational Search         (2I4, 2F12.6)                 
+                    Final blank line                                            

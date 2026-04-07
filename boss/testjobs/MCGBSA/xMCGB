@@ -1,0 +1,25 @@
+#!/bin/csh
+#
+#   script to copy all necessary file from the
+#   test job MCGBSA to execute a gas-phase MC calculation
+#   with GB/SA solvation added.
+#   only the the Z-matrix needs to be present in the current
+#   directory.
+#
+#   Usage, e.g. for the Z-matrix zmat.z
+#           xMCGB zmat
+#
+#
+echo 'starting MC calculation with GB/SA'
+cp ${argv[1]}.z gbzmat
+cp $BOSSdir/testjobs/MCGBSA/gbcmd .
+cp $BOSSdir/testjobs/MCGBSA/gbpar .
+csh gbcmd >& loggb
+#
+rm  gbzmat
+rm  gbpar
+#
+echo 'finished MC calculation with GB/SA'
+echo 'output is in gbout, gbsum, gbplt.pdb'
+#
+exit

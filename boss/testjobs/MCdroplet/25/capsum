@@ -1,0 +1,91 @@
+ Results Summary:       Water Cluster                Wed Apr 12 21:49:25 2006
+
+ NMOL =2200          EDGE =  100.0000  100.0000  100.0000    RCUT =    9.0000
+ NACCPT = 20000000   NRJECT = 11340897   MXCON = 2000000     NCON = 2000000
+ T(C) =     25.00    OLD E = -0.21034777D+05    NEW E = -0.21034777D+05
+ RDEL =    0.1500    ADEL =   15.0000    VDEL =    1100.0    MXS =    2500
+ P(ATM) =     0.0    VOLD =   1000000.0  VNEW =   1000000.0  NVCHG =999999
+ DIELRF =     1.0    Reaction Field NOT Applied
+
+ Information for the Reference Solute:
+ NSCHG=999999        SCUT =    8.5000    ICUT =     0        NCENT =   1    1
+ RDELS1=   0.0000    RDELS2=   0.0000    ADELS1=   0.0000    ADELS2=   0.0000
+ ESOLD=    0.0000    ESONE=    0.0000    WIMAX=  0.000471    WKC =10000.00
+ EXXOLD=   0.0000    EXXNEW=   0.0000    DIELEC=   1.0000    CUTOFF E=    0.000
+ EBNDOL=   0.0000    EBNDNE=   0.0000    EANGOL=   0.0000    EANGNE=   0.0000
+ EDIHOL=   0.0000    EDIHNE=   0.0000    ENBOL=    0.0000    ENBNE=    0.0000
+ EBCOLD=   0.0000    EBCNEW=   0.0000    SANEW =     0.00
+
+
+ 1-4 Scale Factors: Coul.=   0.20000D+01 L-J=   0.20000D+01  CUTNB =   16.000
+ RC0 =    0.0000   RC1 =    0.0000   RC2 =    0.0000
+
+ Solvent Cap is Used:
+ Cap Atom =   1  Cap Radius =   25.0000  Force Const. =    1.5000
+
+
+
+
+            *** Averages ***
+ Total Energy =-20893.9806
+     Inter Cp = 29222.7782
+     Alpha(1/deg*e-5)=     0.0000
+     Kappa(1/atm*e-6)=     0.0000
+     Volume=  1000000.0
+
+
+ Attempts/Accepts: Solute1      20/      20 Solute2       0/       0
+
+                                                Thermodynamic Results
+
+ Run Total Energy     Inter Cp       Volume       Enthalpy        Kappa         Alpha          EXX           ESX
+ 10   -20954.512     12346.401   1000000.000    -20954.512         0.000         0.000         0.000         0.000
+  1   -20941.857     16673.946   1000000.000    -20941.857         0.000         0.000         0.000         0.000
+  2   -20842.989     30283.932   1000000.000    -20842.989         0.000         0.000         0.000         0.000
+  3   -20861.652     14180.703   1000000.000    -20861.652         0.000         0.000         0.000         0.000
+  4   -20914.315     15132.387   1000000.000    -20914.315         0.000         0.000         0.000         0.000
+  5   -20903.703     52148.215   1000000.000    -20903.703         0.000         0.000         0.000         0.000
+  6   -20888.624     15349.868   1000000.000    -20888.624         0.000         0.000         0.000         0.000
+  7   -20854.078     12350.236   1000000.000    -20854.078         0.000         0.000         0.000         0.000
+  8   -20842.795     18968.664   1000000.000    -20842.795         0.000         0.000         0.000         0.000
+  9   -20935.280     13900.012   1000000.000    -20935.280         0.000         0.000         0.000         0.000
+
+                                            Standard Deviations
+          13.357      4956.325         0.000        13.357         0.000         0.000         0.000         0.000
+
+                                                 Averages
+      -20893.981     29222.778   1000000.000    -20893.981         0.000         0.000         0.000         0.000
+
+
+
+ Solvent-Solvent Energy Components
+ Run      L-J         Coulomb
+ 10     3912.333    -24833.801
+  1     3976.465    -24929.477
+  2     3938.752    -24782.718
+  3     3941.085    -24813.353
+  4     3923.209    -24843.496
+  5     3933.130    -24839.533
+  6     3998.885    -24893.244
+  7     3907.186    -24757.071
+  8     3931.885    -24769.647
+  9     3925.241    -24859.376
+
+                                            Standard Deviations
+           8.970        17.150
+
+                                                 Averages
+        3938.817    -24832.172
+
+
+ Title:       Water Cluster           
+ ESX-Coul =      0.000 ESX-LJ =      0.000 SASA =      0.000
+ EXX-Coul =      0.000 EXX-LJ =      0.000 MW =       0.0000
+ Tot SASA =      0.000 Mol Vol=      0.000 Dipole=     0.000
+ H-phobic =      0.000 Philic =      0.000 Arom =      0.000 Wkly Polar=      0.000
+ # SX Ints=      0.000 for Ecut=    -9.500
+ # SX Ints=      0.000 for Ecut=   -11.500
+ #Donor HB=      0.000 Acptr HB=     0.000
+ Intramol E=     0.000
+ #Prot Ns =          0 #Nitro =          0 #Acid =         0 #Amide =          0
+ #Rotor Bonds=       0 #Real Atoms=      0

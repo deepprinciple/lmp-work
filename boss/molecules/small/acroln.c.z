@@ -1,0 +1,27 @@
+      c-acrolein                                            Tot. E =      3.6686
+   1 C2   150  150    0    0.000000   0    0.000000   0    0.000000        0    
+   2 X     -1   -1    1    1.000000   0    0.000000   0    0.000000        0    
+   3 X     -1   -1    2    1.000000   1   90.000000   0    0.000000        0    
+   4 C1   277  277    1    1.466835   2   90.000000   3    0.000000        0    
+   5 O    278  278    4    1.230293   1  124.129216   2    0.000000        0    
+   6 H    279  279    4    1.090026   1  115.065607   5  180.000000        0    
+   7 C3   143  143    1    1.344915   4  121.048253   5  360.000000        0    
+   8 H    144  144    1    1.079630   4  118.980387   7  180.000000        0    
+   9 H    144  144    7    1.079673   1  121.016098   8  360.000000        0    
+  10 H    144  144    7    1.081990   1  121.519800   8  180.000000        0    
+                    Geometry Variations follow    (2I4,F12.6)                   
+                    Variable Bonds follow         (I4 or I4-I4)                 
+0004-0010                                                                       
+                    Additional Bonds follow       (2I4)                         
+                    Harmonic Constraints follow   (2I4,4F10.4)                  
+                    Variable Bond Angles follow   (I4 or I4-I4)                 
+0005-0010                                                                       
+                    Additional Bond Angles follow (3I4)                         
+AUTO                                                                            
+                    Variable Dihedrals follow     (3I4,F12.6)                   
+0006-0010                                                                       
+                   Additional Dihedrals follow   (6I4)                          
+AUTO                                                                            
+                   Domain Definitions follow     (4I4)                          
+                   Conformational Search         (2I4, 2F12.6)                  
+                   Final blank line                                             

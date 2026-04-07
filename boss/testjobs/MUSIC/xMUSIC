@@ -1,0 +1,41 @@
+#!/bin/csh
+set echo
+#
+# script to run a standard MUSIC job             
+#
+# usage:  xMUSIC probe           
+# or to run in background: xMUSIC probe >& log &
+#
+# muscmd, muspar, and protein.z are needed in the calling directory
+#
+if (!($?BOSSdir)) then
+   echo "BOSSdir has not been defined; please see README"
+   exit (-1)
+endif
+
+# make subdirectory
+#
+mkdir $argv[1]
+cd $argv[1]
+#
+# probe zmat is copied from the aazmat area
+#
+if (-e optzmat) rm optzmat
+cp $BOSSdir/molecules/small/${argv[1]}.z optzmat      
+#
+# convert probe zmat to solvent form
+#
+csh $BOSSdir/scripts/SPMcmd >& log
+if (-e probe.z) rm probe.z
+cp sum probe.z
+rm sum      
+#
+# run MUSIC
+#
+cp ../muscmd .
+cp ../muspar .
+cp ../protein.z .
+csh -e muscmd >& log
+#
+cd ..
+exit

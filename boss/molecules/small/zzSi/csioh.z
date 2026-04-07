@@ -1,0 +1,28 @@
+   methylsilanol                                            Tot. E =     -4.3316
+   1 Si  1072 1072    0    0.000000   0    0.000000   0    0.000000        0
+   2 DUM   -1    0    1    0.500000   0    0.000000   0    0.000000        0
+   3 DUM   -1    0    2    0.500000   1   90.000000   0    0.000000        0
+   4 O   1073 1073    1    1.658590   2   90.000000   3  180.000000        0
+   5 HO  1074 1074    4    0.945024   1  116.876046   2    0.000000        0
+   6 C   1065 1065    1    1.866886   4  106.186676   5  179.999955        0
+   7 H   1064 1064    1    1.482726   4  110.610412   6  119.479317        0
+   8 H   1064 1064    1    1.482726   4  110.610250   6  240.520628        0
+   9 H    140  140    6    1.089883   1  111.060280   4  180.000319        0
+  10 H    140  140    6    1.089896   1  111.010602   9  120.029476        0
+  11 H    140  140    6    1.089896   1  111.010850   9  239.969681        0
+                    Geometry Variations follow                                  
+                    Variable Bonds follow         (I4 or I4-I4)                 
+0004-0011                                                                       
+                    Additional Bonds follow       (2I4)                         
+                    Harmonic Constraints follow                                 
+                    Variable Bond Angles follow   (I4 or I4-I4)                 
+0005-0011                                                                       
+                    Additional Bond Angles follow (3I4)                         
+AUTO                                                                            
+                    Variable Dihedrals follow     (3I4,F12.6)                   
+0006-0011                                                                       
+                    Additional Dihedrals follow   (6I4)                         
+AUTO                                                                            
+                    Domain Definitions follow     (4I4)                         
+                    Final blank line                                            
+                                                                                

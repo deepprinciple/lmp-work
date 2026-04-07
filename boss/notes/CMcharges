@@ -1,0 +1,86 @@
+April 2004
+See the gbsa.pdf preprint in the bossman directory for discussion & performance
+for charge choices when performing GB/SA calculations.
+
+April 2003
+For the set of 17 diverse, neutral organic molecules, we have reexamined 
+optimal scaling factors for CM charges by fitting to computed absolute free
+energies of hydration from FEP calculations:
+charge model    scaling factor   AUE            Worst case
+   CM1A             1.14        1.11 kcal/mol     nitro
+   CM3A             1.15        1.28              amides
+
+CM1P and CM3P yield poorer results with significant problems for N-containing molecules.
+
+January 2003
+The ability to calculate CM3 charges for AM1 and PM3 has been implemented. Reference:
+J. D. Thompson, C. J. Cramer, and D. G. Truhlar, J. Comput. Chem. 24, 1291-1304 (2003).
+We have not yet determined the optimal scaling factor for CM3 charges;
+for now, we are assuming that it will be 1.08 as for CM1A charges for neutral
+molecules. You can obtain unscaled CM3 charges with the scripts
+xAM1CM3 and xPM3CM3. The xPDG??? scripts generate CM3 charges.
+Chris Cramer kindly confirmed the correctness of our CM3 results in comparison
+with AMSOL results. He also expressed preference for the AM1/CM3 charges
+feeling that nitrogen is fundamentally too electropositive with PM3.
+
+January 22, 2001
+I completed the FEP calculations for 17 molecules in TIP4P water.
+This is the original set (JPC-B 1998, 102, 1787) plus propane, dimethylamine, 
+NMA, and nitroethane. The mean unsigned errors for free energies of hydration
+for 16 molecules (excluding nitroethane) are:
+
+  charge set     error(kcal/mol)
+  1.20*CM1A       1.53
+  1.10*CM1A       0.91
+  1.08*CM1A       0.90
+  1.00*CM1A       1.33
+  1.30*CM1P       1.62 (from Marina - N=13; original set only)
+
+including nitroethane the errors are
+
+  charge set     error(kcal/mol)
+  1.20*CM1A       1.82
+  1.10*CM1A       1.12
+  1.08*CM1A       1.08
+  1.00*CM1A       1.39
+  1.30*CM1P       1.94 (from Marina - N=14)                    
+
+On this basis, we will use 1.08*CM1A as our default charge set
+from now on.
+The xAM1OPT and xAM1SP scripts now use the 1.08 scale factor
+for neutral molecules; still use 1.0 for charged molecules.
+
+------------------------------------------------------------------------------
+1999
+You can now do an optimization or a single-point AM1 or PM3 calc with BOSS
+and the CM1 charges are written to the sum file with standard L-J parameters.
+
+For the single-point calc, one declares AM1S or PM3S at the top of the par file
+instead of AM1 or PM3 and ICALC = 2 (optimization) in the cmd file.
+We normally scale the CM1A charges by 1.2 (see revision above) and the CM1P by 1.3 for
+neutral moleucles. E.g., the top of the par file is
+
+ parg41: Gas-phase optimization
+ The principal solvent is
+NONE
+ QM method, charge calc & scale, solute charges:
+PM3SCM1P 1.30  0  0  0
+
+The single-point calculation is performed for the geometry in the zmat
+file. 
+
+Thus, with autozmat one can now quickly go
+Sybyl mol2 file -> BOSS zmat file -> CM1 charges and LJ parameters
+
+See the README file in aazmat.
+
+**** Note there are scripts in boss/scripts that automatically handle
+     these operations:
+
+xAM1SP      - AM1 single-point calculation for a neutral system
+xPM3SP      - PM3 single-point calculation for a neutral system
+xAM1OPT     - AM1 optimization for a neutral system
+xPM3OPT     - PM3 optimization for a neutral system
+xMOLZ       - convert MDL .mol file to optimized BOSS Z-matrix file
+xMOL2Z      - convert .mol2 file to optimized BOSS Z-matrix file
+

@@ -1,0 +1,30 @@
+      propane                                               Tot. E =      2.3757
+   1 C2    57   57    0    0.000000   0    0.000000   0    0.000000        0
+   2 X     -1   -1    1    1.000000   0    0.000000   0    0.000000        0
+   3 X     -1   -1    2    1.000000   1   90.000000   0    0.000000        0
+   4 C3    54   54    1    1.532590   2   90.000000   3    0.000000        0
+   5 C1    54   54    1    1.532572   4  112.506659   2  180.000000        0
+   6 H     60   60    4    1.090364   1  110.882473   5  179.999334        0
+   7 H     60   60    4    1.090443   1  111.238562   6  119.823925        0
+   8 H     60   60    4    1.090443   1  111.238278   6  240.176799        0
+   9 H     60   60    5    1.090372   1  110.885660   4  180.000663        0
+  10 H     60   60    5    1.090444   1  111.238923   9  240.176118        0
+  11 H     60   60    5    1.090444   1  111.238883   9  119.823693        0
+  12 H     60   60    1    1.090703   4  109.441539   5  238.107243        0
+  13 H     60   60    1    1.090703   4  109.441738   5  121.893151        0
+                    Geometry Variations follow    (2I4,F12.6)                   
+                    Variable Bonds follow         (I4)                          
+0004-0013                                                                       
+                    Additional Bonds follow       (2I4)                         
+                    Harmonic Constraints follow   (2I4,4F10.4)                  
+                    Variable Bond Angles follow   (I4)                          
+0005-0013                                                                       
+                    Additional Bond Angles follow (3I4)                         
+AUTO                                                                            
+                    Variable Dihedrals follow     (3I4,F12.6)                   
+0006-0013                                                                       
+                   Additional Dihedrals follow   (6I4)                          
+AUTO                                                                            
+                   Domain Definitions follow     (4I4)                          
+                   Conformational Search         (2I4, 2F12.6)                  
+                   Final blank line                                             

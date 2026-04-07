@@ -1,0 +1,58 @@
+#!/bin/csh
+set echo
+#
+# script to run a standard linear response job
+# using the OPLS-AA force field
+# with CM1P charges
+#
+# usage:  runCMPhere moleculename
+# or to run in background: runCMPhere moleculename &
+#
+# make subdirectory
+#
+mkdir $argv[1]
+cd $argv[1]
+#
+# moleculename.z is in the current directory
+#
+cp ../${argv[1]}.z ${argv[1]}.z
+cp $BOSSdir/testjobs/linres/lrcmd .
+cp $BOSSdir/testjobs/linres/lrpar .
+#
+# execute PM3 single-point calculation
+#
+$BOSSdir/scripts/xPM3SP $argv[1]
+#
+# optimize geometry
+#
+rm ${argv[1]}.z
+mv sum ${argv[1]}.z
+$BOSSdir/scripts/xOPTF $argv[1]
+#
+# recompute charges with PM3 single-point calculation
+#
+rm ${argv[1]}.z
+mv sum ${argv[1]}.z
+$BOSSdir/scripts/xPM3SP $argv[1]
+cp sum lrzmat
+rm sum out plt.pdb optzmat ${argv[1]}.z
+#
+# execute MC
+#
+csh lrcmd >& log
+rm *par
+rm *a *b *c *otd *pltd *sv* *eq
+#
+# compute properties
+#
+# if you want to update a csfile that is kept one level up, uncomment
+# if (-e ../csfile) cp ../csfile .
+$BOSSdir/miscexec/PROPCMP
+cd ..
+# and uncomment the next 3 lines
+# if (-e csfold) rm csfold
+# if (-e csfile) mv csfile csfold
+# cp $argv[1]/csfile .
+
+#
+exit

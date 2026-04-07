@@ -1,0 +1,28 @@
+          Acetamide                                         Tot. E =    -35.2642
+   1 C   1054    0    0    0.000000   0    0.000000   0    0.000000        0    
+   2 DUM   -1    0    1    1.000000   0    0.000000   0    0.000000        0    
+   3 DUM   -1    0    2    1.000000   1   90.000000   0    0.000000        0    
+   4 O   1058    0    1    1.221996   2   90.000000   3    0.000000        0    
+   5 N   1050    0    1    1.324339   4  120.790217   2  270.000000        0    
+   6 C   1067    0    1    1.519403   4  121.244916   5  179.999874        0    
+   7 HN  1062    0    5    1.007169   1  116.135082   4    0.000260        0    
+   8 HN  1061    0    5    1.007095   1  121.698351   7  180.000157        0    
+   9 H   1068    0    6    1.090174   1  110.021562   4  359.999963        0    
+  10 H   1068    0    6    1.089550   1  110.517423   9  119.612748        0    
+  11 H   1068    0    6    1.089549   1  110.515433   9  240.387816        0    
+                    Geometry Variations follow    (2I4,F12.6)                   
+                    Variable Bonds follow         (I4 or I4-I4)                 
+0004-0011                                                                       
+                    Additional Bonds follow       (2I4)                         
+                    Harmonic Constraints follow   (2I4,4F10.4)                  
+                    Variable Bond Angles follow   (I4 or I4-I4)                 
+0005-0011                                                                       
+                    Additional Bond Angles follow (3I4)                         
+AUTO                                                                            
+                    Variable Dihedrals follow     (3I4,F12.6)                   
+0006-0011                                                                       
+                    Additional Dihedrals (6I4) - Zero types not shown           
+AUTO                                                                            
+                    Domain Definitions follow     (4I4)                         
+                    Conformational Search         (2I4, 2F12.6)                 
+                    Final blank line                                            

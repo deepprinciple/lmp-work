@@ -1,0 +1,23 @@
+#!/bin/csh
+set echo
+#
+# script to run a MC simulation for a slab     
+#
+# usage:  xTEST moleculename
+# or to run in background: xTEST moleculename &
+#
+# make subdirectory
+#
+mkdir $argv[1]
+cd $argv[1]
+#
+# moleculename.z is copied from above           
+#
+cp ../${argv[1]}.z slzmat        
+cp ../sltestcmd .
+cp ../slpar .
+# execute MC
+csh sltestcmd >& log
+cd ..
+#
+exit

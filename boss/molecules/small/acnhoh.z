@@ -1,0 +1,29 @@
+ acetohydroxamic acid                                       Tot. E =    -12.3665
+   1 X     -1    0    0    0.000000   0    0.000000   0    0.000000        0    
+   2 X     -1    0    1    1.000000   0    0.000000   0    0.000000        0    
+   3 C    990    0    2    1.000000   1   90.000000   0    0.000000        0    
+   4 C    135    0    3    1.519222   2   29.962270   1   -0.163410        0    
+   5 N    993    0    3    1.337550   2   87.252580   4 -179.895700        0    
+   6 O    992    0    3    1.225879   4  120.568053   5  177.617430        0    
+   7 H    140    0    4    1.090126   3  110.060827   5  178.687138        0    
+   8 H    140    0    4    1.089456   3  110.430895   7  240.537434        0    
+   9 H    140    0    4    1.089322   3  110.516595   7  119.618169        0    
+  10 O    995    0    5    1.391799   3  120.847343   4  184.993422        0    
+  11 HN   994    0    5    1.009051   3  123.035413  10  174.639355        0    
+  12 HO   996    0   10    0.948434   5  106.835425   3  282.187843        0    
+                    Geometry Variations follow    (2I4,F12.6)                   
+                    Variable Bonds follow         (I4)                          
+0004-0012                                                                       
+                    Additional Bonds follow       (2I4)                         
+                    Harmonic Constraints follow   (2I4,4F10.4)                  
+                    Variable Bond Angles follow   (I4)                          
+0005-0012                                                                       
+                    Additional Bond Angles follow (3I4)                         
+AUTO                                                                            
+                    Variable Dihedrals follow     (3I4,F12.6)                   
+0006-0012                                                                       
+                    Additional Dihedrals follow   (6I4)                         
+AUTO                                                                            
+                    Domain Definitions follow     (4I4)                         
+                    Conformational Search (2I4,2F12.6)                          
+                    Final blank line                                            

@@ -1,0 +1,27 @@
+   Thiazole                                                 Tot. E =      1.1468
+   1   X   -1   -1    0    0.000000   0    0.000000   0    0.000000        0    
+   2   X   -1   -1    1    1.000000   0    0.000000   0    0.000000        0    
+   3   C  634  634    1    1.000000   2   90.000000   0    0.000000        0    
+   4   N  635  635    3    1.333843   1   57.800000   2   90.000000        0    
+   5   C  636  636    4    1.399764   3  110.997574   1    0.000000        0    
+   6   S  633  633    3    1.749117   4  115.717947   5    0.000000        0    
+   7   C  637  637    6    1.757803   3   87.179549   4    0.000000        0    
+   8   H  638  638    3    1.080000   4  125.441026   5  180.000000        0    
+   9   H  639  639    5    1.080000   4  119.228176   3  180.000000        0    
+  10   H  640  640    7    1.080000   6  114.969372   3  180.000000        0    
+                    Geometry Variations follow    (2I4,F12.6)                   
+                    Variable Bonds follow         (I4)                          
+0004-0010                                                                       
+                    Additional Bonds follow       (2I4)                         
+00050007                                                                        
+                    Harmonic Constraints follow   (2I4,4F10.4)                  
+                    Variable Bond Angles follow   (I4)                          
+0005-0010                                                                       
+                    Additional Bond Angles follow (3I4)                         
+AUTO
+                    Variable Dihedrals follow     (3I4,F12.6)                   
+                    Additional Dihedrals follow   (6I4)                         
+                    Domain Definitions follow     (4I4)                         
+                    Conformational Search (4I2,2F12.6)                          
+                    Final blank line                                            
+                                                                                

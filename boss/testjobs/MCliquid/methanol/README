@@ -1,0 +1,92 @@
+To run a new liquid, 
+
+four files are needed as in the MCliquid test job -
+liqzmat
+dummy.z
+liqpar
+liqcmd
+
+For example, to run pure liquid methanol with OPLS-AA,
+I copied these files from boss/testjobs/MCliquid to a new directory.
+Then, I modified them slightly as follows.
+
+liqzmat:
+To obtain the input methanol Z-matrix,
+(1) I copied ~/boss/aazmat/meoh.z to this directory 
+(2) executed the script xSPM (xSPM meoh). All scripts are in boss/scripts
+    This script expands the Z-matrix to the style needed for solvents.
+(3) made 1 minor edit to the output file "sum" -
+    Changed the title line (first line) to only have a 5-character name.
+(4) renamed sum liqzmat
+
+dummy.z:
+(5) In dummy.z, I changed ethanol to methanol. This is cosmetic.
+
+liqpar:
+(6) In liqpar, I changed the center atom for the solvent
+    molecules from 5 to 1 (the oxygen). Atom 5 (carbon) would have been OK.
+    I checked the atoms for the solvent-solvent rdfs and made no changes.
+
+liqcmd:
+(7) no changes needed
+
+To execute:
+I edited liqcmd to make a liqcmdshort that runs just 100 configurations
+instead of 500000 for each MC run. 
+Then execute:
+csh liqcmdshort >& log &
+The output all looked OK, so I submitted the full job:
+csh liqcmd >& log &
+
+This ran 2M configurations of equilibration followed by 2M configurations of averaging.
+The last output file is liqote2. I note in this file
+ NMOL = 267          EDGE =   26.2363   26.2363   26.2363    RCUT =   11.0000
+ NACCPT = 2000000    NRJECT = 1122065    MXCON = 500000      NCON =  500000
+So, the acceptance rate of (2000000-1122065)/2000000 = 44% is reasonable.
+I also note at the end of the output:
+ Run Total Energy     Inter Cp       Volume    
+  4     -364.025      1700.360     18077.810  
+  1     -329.006      2468.450     18375.331 
+  2     -359.765      3368.924     18333.536
+  3     -349.047      2613.208     18204.650
+                        Standard Deviations
+           7.815       607.380        67.314
+                             Averages
+        -350.461      3407.270     18247.831
+
+                 Energy Components for Flexible Solvent
+ Run      E-Bond        E-Bend       Torsion      Non-Bond        Total
+  4      424.261       495.930        93.505       911.092      1924.788
+  1      432.869       489.899        92.015       910.717      1925.500
+  2      429.216       487.877        90.900       909.614      1917.607
+  3      429.890       489.729        92.106       910.477      1922.201
+
+                                            Standard Deviations
+           1.785         1.751         0.534         0.314         1.785
+
+                                                 Averages
+         429.059       490.859        92.131       910.475      1922.524
+
+The energy is pretty stable, but the volume is decreasing still.
+I would restart the averaging and run at least another 5M configurations
+to obtain more precise averages. It is so fast now that even more could be run.
+To run the 5M averaging:
+csh liqavcmd >& log &
+
+The density from the last run is: N*MW/0.6023*V = 267*32.04/.6023*18077 = 0.786 g/cc. 
+The value in JACS 118, 11225 is 0.779 for OPLS-AA and 0.786 for experiment at 
+25 C and 1 atm.
+
+To compute the heat of vaporization, one should do a gas-phase MC calculation
+(see the MCgas test job); however,
+
+dHvap = E(gas) - E(liq) + RT = E(gas) - Einter(liq) -Eintra(liq) + RT
+      = ca. -Einter(liq) + RT
+      = -(-350.461 -1922.524)/267 + 0.6 = 9.11 kcal/mol
+The value in JACS 118, 11225 is 8.95 and the exptl value is 8.95.
+
+Note also that the average intramolecular energy is 1922.524/267 = 7.20 kcal/mol.
+The value in JACS 118, 11225 is 7.23 and the gas-phase value is 7.08. The monomer
+distort some in the liquid to enhance the hydrogen bonding, and note
+dHvap = 7.08 - (-350.461)/267 + RT = 8.99 kcal/mol
+

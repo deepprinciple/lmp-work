@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+ROOT="/root/lmp-work"
+exec "$ROOT/.compat/tcsh/bin/tcsh" "$@"

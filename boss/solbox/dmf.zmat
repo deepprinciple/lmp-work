@@ -1,0 +1,20 @@
+DMFunited-atom        torsion is from oplsua.par
+   1  C   131  131    0    0.000000   0    0.000000   0    0.000000
+   2 Du    -1   -1    1    1.000000   0    0.000000   0    0.000000
+   3 Du    -1   -1    2    1.000000   1   90.000000   0    0.000000
+   4  O   129  129    1    1.229000   2   90.000000   3  180.000000
+   5  N   130  130    1    1.335000   4  122.900000   2  180.000000
+   6  C   132  132    5    1.449000   1  121.900000   4  180.000000
+   7  C   132  132    5    1.449000   1  121.900000   6  180.000000
+                    Blank Line
+                    Variable Bonds follow         (I4)                          
+                    Additional Bonds follow       (2I4)                         
+                    Blank Line
+                    Variable Bond Angles follow   (I4)                          
+                    Additional Bond Angles follow (3I4)                         
+                    Variable Dihedrals follow     (3I4,F12.6)                   
+   6  24  24   12.00
+                    Additional Dihedrals follow   (6I4)                         
+                    Domain Definitions follow     (4I4)
+   1   7   1   7
+                    Final blank line                                            

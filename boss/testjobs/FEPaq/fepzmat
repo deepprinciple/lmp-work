@@ -1,0 +1,17 @@
+ UA Methanol -> Ethane
+   1 O/C   78   67    0    0.000000   0    0.000000   0    0.000000
+   2 DUM   -1   -1    1    0.500000   0    0.000000   0    0.000000
+   3 DUM   -1   -1    2    0.500000   1   90.000000   0    0.000000
+   4 C     80   67    1    1.430000   2   90.000000   3  180.000000
+   5 H     79  100    1    0.945000   4  108.500000   2  180.000000
+                    Geometry Variations follow    (2I4, F12.6)                  
+00040001 1.530
+                    Variable Bonds follow         (I4 or I4-I4)                 
+                    Additional Bonds follow       (2I4)                         
+                    Harmonic Constraints follow                                 
+                    Variable Bond Angles follow   (I4 or I4-I4)                 
+                    Additional Bond Angles follow (3I4)                         
+                    Variable Dihedrals follow     (3I4,F12.6)                   
+                    Additional Dihedrals follow   (6I4)                         
+                    Domain Definitions follow     (4I4)                         
+                    Final blank line                                            

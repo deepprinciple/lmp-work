@@ -1,0 +1,22 @@
+       Methyl Radical                                       Tot. E =      1.8698
+   1 C    135    0    0    0.000000   0    0.000000   0    0.000000        0    
+   2 DUM   -1    0    1    0.500000   0    0.000000   0    0.000000        0    
+   3 DUM   -1    0    2    0.500000   1   90.000000   0    0.000000        0    
+   4 H    140    0    1    1.090000   2   90.000000   3    0.000000        0    
+   5 H    140    0    1    1.090000   2   65.578314   3  120.000000        0    
+   6 H    140    0    1    1.090000   2   65.578314   3  240.000000        0    
+                    Geometry Variations follow                                  
+                    Variable Bonds follow         (I4 or I4-I4)                 
+0004-0006                                                                       
+                    Additional Bonds follow       (2I4)                         
+                    Harmonic Constraints follow                                 
+                    Variable Bond Angles follow   (I4 or I4-I4)                 
+0005-0006                                                                       
+                    Additional Bond Angles follow (3I4)                         
+000500010006                                                                    
+000500010004                                                                    
+000600010004                                                                    
+                    Variable Dihedrals follow     (3I4,F12.6)                   
+                    Additional Dihedrals follow   (6I4)                         
+                    Domain Definitions follow     (4I4)                         
+                    Final blank line                                            

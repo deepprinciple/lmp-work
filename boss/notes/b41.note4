@@ -1,0 +1,33 @@
+-------------------------------------------
+BOSS 4.1 Release Note #  4   April 13, 1999
+-------------------------------------------
+_________________________________________________________________
+
+(1) Switches NOBNDV and NOANGV have been added to BOSS and MCPRO,
+to turn off (when set to 1) sampling of variable bonds and 
+bond angles for the solute. The idea is to possibly use this
+in equilibrations by local heating the solute and only varying
+dihedral angles.
+
+For mcpro16, the modified par file entry is
+
+IRECNT, INDSOL, IZLONG, MAXOVL, NOXX, NOSS, NOBNDV, NOANGV
+   0   1   0   0   0   0   0   0
+
+For boss41, it is
+
+ IRECNT, INDSOL, IZLONG, MAXOVL, NOXX, NOSS, NOBNDV, NOANGV:
+  0  1  0  0  0  0  0  0
+
+(The only difference is I4 vs I3)
+_________________________________________________________________
+
+(2) I have modified the assignment of dihedral ranges when done 
+    automatically by the programs such that the ranges are
+    +/- 15 degrees about bonds not in rings
+    +/-  5 degrees about bonds in rings (should increase acceptance rate)
+    +/-  2 degrees for improper dihedrals
+    +/-  5 degrees about bonds with V2 > 3
+    +/-  2 degrees about bonds with V2 > 4 (aromatics, alkenes,...)
+
+

@@ -1,0 +1,35 @@
+1,2-dicyanoethane                                           Tot. E =    -19.7534
+   1 C    754  754    0    0.000000   0    0.000000   0    0.000000        0
+   2 X     -1   -1    1    1.000000   0    0.000000   0    0.000000        0
+   3 X     -1   -1    2    1.000000   1   90.000000   0    0.000000        0
+   4 N    753  753    1    1.154705   2   90.000000   3    0.000000        0
+   5 C    756  756    1    1.466040   2   89.753535   3  180.000000        0
+   6 C    756  756    5    1.528592   1  111.805595   2  359.998388        0
+   7 H    759  759    5    1.089944   1  108.018498   6  121.986745        0
+   8 H    759  759    5    1.089944   1  108.018478   6  238.013257        0
+   9 C    754  754    6    1.466036   5  111.808171   1  179.999863        0
+  10 H    759  759    6    1.089944   5  110.659300   9  120.459258        0
+  11 H    759  759    6    1.089944   5  110.659308   9  239.540674        0
+  12 X     -1   -1    9    1.000000   6   90.000000   5  180.000000        0
+  13 N    753  753    9    1.154704  12   90.244463   6  180.000000        0
+                    Geometry Variations follow    (2I4,F12.6)                   
+                    Variable Bonds follow         (I4 or I4-I4)                 
+0004-0011                                                                       
+0013-0013                                                                       
+                    Additional Bonds follow       (2I4)                         
+                    Harmonic Constraints follow   (2I4,4F10.4)                  
+                    Variable Bond Angles follow   (I4 or I4-I4)                 
+0005-0011                                                                       
+0013-0013                                                                       
+                    Additional Bond Angles follow (3I4)                         
+AUTO                                                                            
+000400010005                                                                    
+000600090013                                                                    
+                    Variable Dihedrals follow     (3I4,F12.6)                   
+0006-0011                                                                       
+0013-0013                                                                       
+                   Additional Dihedrals follow   (6I4)                          
+AUTO                                                                            
+                   Domain Definitions follow     (4I4)                          
+                   Conformational Search         (2I4, 2F12.6)                  
+                   Final blank line                                             

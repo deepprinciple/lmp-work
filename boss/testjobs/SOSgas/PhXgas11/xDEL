@@ -1,0 +1,19 @@
+#!/bin/csh
+#
+echo  sum DeltaGs from fep calculation     
+#
+# usage - xDELG DirectoryName           
+#
+# test if the environment variable MCPROdir has been defined
+#
+if (!($?MCPROdir)) then
+   echo "MCPROdir has not been defined; please see README"
+   exit (-1)
+endif
+
+cd ${argv[1]}.gas
+grep DeltaGs sumout
+grep "Sigma          =" sumout
+cd ..
+#
+exit

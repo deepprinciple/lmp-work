@@ -1,0 +1,18 @@
+#!/bin/csh
+#
+#    rm unnecessary FEP files
+#
+rm *sv*
+rm *av*
+rm *up*
+rm *ot*
+rm *plt15*
+rm *plt25*
+rm *plt35*
+rm *plt45*
+rm *plt55*
+rm *plt65*
+rm *plt75*
+rm *plt85*
+#
+exit

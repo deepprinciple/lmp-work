@@ -1,0 +1,63 @@
+#!/bin/csh
+set echo
+#
+#            Queue Version:
+# script to run a BOSS job on the PC cluster
+#
+# for Z-matrix zmat.z
+# usage:           xMC500Q zmat 
+# multiple files:  xMANY filenames xMC500Q
+#
+# the Z-matrix (e.g., zmat.z) needs to be in the 
+# boss/molecules/OPLS2020 directory
+#
+# make subdirectory
+#
+mkdir $argv[1]
+cd $argv[1]
+cp $BOSSdir/molecules/OPLS2020/${argv[1]}.z MC500zmat
+cp $BOSSdir/testjobs/MCsolute/mc500cmd .
+cp $BOSSdir/testjobs/MCsolute/mc500par1 mc500par
+#
+# execute MC
+#
+# set-up for transfer to queue
+cd ..
+cat <<EOF  > ${argv[1]}.q
+hostname
+
+# set variables to hold names of:
+set OD = \$DQS_O_WORKDIR                   # Original Directory
+set LD = /scratch/bill/\$JOB_ID            # Local Directory
+set JN = \$JOB_NAME:r                      # Job name
+set JN = \$JN 
+set AN = \$JN.tar                          # Archive name
+
+cd \$OD/\$JN                               # Create the archive, compress it
+tar cf ../\$AN *
+cd ..
+gzip -9 \$AN
+
+mkdir \$LD                                 # Create local directory, copy archive
+/bin/cp \$AN.gz \$LD                       #    to it, remove original
+/bin/rm \$AN.gz
+
+cd \$LD                                    # Go to local directory, unpack and
+gzip -cd \$AN.gz | tar xof -               #    remove archive
+/bin/rm \$AN.gz
+
+csh mc500cmd                               # run
+#
+
+tar cf ../\$AN *                           # Create output archive, compress
+cd ..                                      #   it and move to Original
+gzip -9 \$AN                               #   directory, remove Local
+/bin/rm -rf \$LD:t                         #   directory.
+/bin/cp \$AN.gz \$OD/\$JN
+/bin/rm \$AN.gz
+cd \$OD/\$JN
+gzip -cd \$AN.gz | tar xf -
+/bin/rm \$AN.gz
+EOF
+q -i ${argv[1]}.q                          # Submit job to queue
+exit

@@ -1,0 +1,23 @@
+    silane                                                  Tot. E =      0.0001
+   1 Si  1083    0    0    0.000000   0    0.000000   0    0.000000        0
+   2 DUM   -1    0    1    0.500000   0    0.000000   0    0.000000        0
+   3 DUM   -1    0    2    0.500000   1   90.000000   0    0.000000        0
+   4 H   1064    0    1    1.483007   2   90.000000   3    0.000000        0
+   5 H   1064    0    1    1.483002   4  109.469954   3    0.000000        0
+   6 H   1064    0    1    1.482994   4  109.470684   5  240.000749        0
+   7 H   1064    0    1    1.482994   4  109.470684   5  119.999251        0
+                    Geometry Variations follow                                  
+                    Variable Bonds follow         (I4 or I4-I4)                 
+0004-0007                                                                       
+                    Additional Bonds follow       (2I4)                         
+                    Harmonic Constraints follow                                 
+                    Variable Bond Angles follow   (I4 or I4-I4)                 
+0005-0007                                                                       
+                    Additional Bond Angles follow (3I4)                         
+AUTO                                                                            
+                    Variable Dihedrals follow     (3I4,F12.6)                   
+0006-0007                                                                       
+                    Additional Dihedrals follow   (6I4)                         
+AUTO                                                                            
+                    Domain Definitions follow     (4I4)                         
+                    Final blank line                                            

@@ -1,0 +1,30 @@
+      allene                                                Tot. E =    -42.0964
+   1 C2  1157 1157    0    0.000000   0    0.000000   0    0.000000        0
+   2 X     -1   -1    1    1.000000   0    0.000000   0    0.000000        0
+   3 X     -1   -1    2    1.000000   1   90.000000   0    0.000000        0
+   4 C1  1154 1154    1    1.304654   2   90.000000   3    0.000000        0
+   5 C3  1154 1154    1    1.304654   2   90.000007   4  180.000000        0
+   6 H   1153 1153    4    1.080305   1  121.386465   2    0.000069        0
+   7 H   1153 1153    4    1.080305   1  121.386468   6  179.999980        0
+   8 H   1153 1153    5    1.080305   1  121.386514   2   90.000065        0
+   9 H   1153 1153    5    1.080305   1  121.386450   8  179.999928        0
+                    Geometry Variations follow    (2I4,F12.6)                   
+                    Variable Bonds follow         (I4)                          
+0004-0009                                                                       
+                    Additional Bonds follow       (2I4)                         
+                    Harmonic Constraints follow   (2I4,4F10.4)                  
+                    Variable Bond Angles follow   (I4)                          
+0005-0009                                                                       
+                    Additional Bond Angles follow (3I4)                         
+AUTO                                                                            
+                    Variable Dihedrals follow     (3I4,F12.6)                   
+0006-0009                                                                       
+                    Additional Dihedrals follow   (6I4)                         
+0006000400050008 277 277                                                        
+0006000400050009 277 277                                                        
+0007000400050008 277 277                                                        
+0007000400050009 277 277                                                        
+AUTO                                                                            
+                    Domain Definitions follow     (4I4)                         
+                    Conformational Search         (2I4, 2F12.6)                 
+                    Final blank line                                            

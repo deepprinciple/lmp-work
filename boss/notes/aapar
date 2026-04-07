@@ -1,0 +1,60 @@
+        Summary of OPLS-AA Atom Types for Amino Acids 
+
+  Backbone entries are:
+   Atom                                Type
+  amide C                              235
+  amide O                              236 
+  Calpha in Gly                        223
+  Calpha in Pro                        246
+  Calpha in Ala, etc.                  224
+  Calpha in Aib                        225
+  H-Calpha in all AA                   140
+  N sec-amide; all AA except Pro       238
+  N tert-amide; Pro                    239
+  H-N in all AA                        241
+
+  Side-chain entries are:
+ H on any saturated C  is type 140
+ H on any sp2 C is type 146 
+  AA   Atom    Type      AA   Atom    Type     AA   Atom    Type
+  Ala   CB     135       Aib   CB     135
+  Val   CB     137       Val   CG     135 
+  Leu   CB     136       Leu   CG     137      Leu   CD     135
+  Ile   CB     137       Ile   CG1    135      Ile   CG2    136
+  Ile   CD2    135
+  Pro   CB     136       Pro   CG     136      Pro   CD     245
+  Phe   CB     149       Phe  CG-CZ   145  
+  Ser   CB     157       Ser   OG     154      Ser   HO     155
+  Thr   CB     158       Thr   OG     154      Thr   HO     155
+  Thr   CG     135
+  Tyr   CB     149       Tyr  CG-CE   145      Tyr   CZ     166
+  Tyr   O      167       Tyr   HO     168
+  Trp   CB     136       Trp   CG     500      Trp  CD (CH) 514
+  Trp   CD (C) 501       Trp   NE     503      Trp  HN      504
+  Trp   CE (C) 502       Trp other CH 145
+  Cys   CB     206       Cys   SG     200      Cys  HS      204
+  Cyx   CB     214       Cyx   SG     203
+  Met   CB     136       Met   CG     210      Met  SD      202
+  Met   CE     209
+  Asp   CB     274       Asp   CG     271      Asp  OD      272
+  Glu   CB     136       Glu   CG     274      Glu  CD      271
+  Glu   OE     272
+  Asn   CB     136       Asn   CG     235      Asn  OD      236
+  Asn   ND     237       Asn   HN     240
+  Gln   CB     136       Gln   CG     136      Gln  CD      235
+  Gln   OE     236       Gln   NE     237      Gln  HN      240
+  Lys CB-CD    136       Lys   CE     292      Lys  NZ      287
+  Lys   HN     290
+  Arg   CB     136       Arg   CG     308      Arg  CD      307
+  Arg   NE     303       Arg   HNE    304      Arg  CZ      302
+  Arg   NN     300       Arg   HNN    301
+  Hid   CB     505       Hid   CG     508      Hid  ND1     503
+  Hid   HND    504       Hid   CE1    506      Hid  HE      146
+  Hid   NE2    511       Hid   CD2    507      Hid  HD      146
+  Hie   CB     505       Hie   CG     507      Hie  ND1     511
+  Hie   CE1    506       Hie   HE     146      Hie  NE2     503
+  Hie   HNE    504       Hie   CD2    508      Hie  HD      146
+  Hip   CB     505       Hip   CG     510      Hip  ND1     512
+  Hip   HND    513       Hip   CE1    509      Hip  HE      146
+  Hip   NE2    512       Hip   HNE    513      Hip  CD2     510
+  Hip   HD     146

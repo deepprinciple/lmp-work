@@ -1,0 +1,51 @@
+FEP examples for                                              wlj August 2007
+PidToPaz: pyridine to pyrazine (look at this first)
+PidToPim: pyridine to pyrimidine                      
+PimToTaz: pyrimidine to 1,3,5-triazine                     
+BenToPid: benzene to pyridine
+BenToPaz: benzene to pyrazine 
+BenToTaz: benzene to 1,3,5-triazine
+
+All use OPLS/CM1A with 1.14*CM1A charges, 
+10 windows with delta lambda =0.05;
+4M/2M/10M for aqueous, 500 TIP4P waters, 
+T= 25 C, P = 1 atm.
+
+deltaG Results
+              pyridine/pyrazine      benzene/pyridine      pyridine/pyrimidine
+Aqueous        3.437 +/- 0.051       -4.944 +/- 0.087      -8.550 +/- 0.068
+Gas            3.766 +/- 0.005       -3.051 +/- 0.018      -7.126 +/- 0.006
+               ---------------       ----------------      -----------------
+deldelG       -0.329 +/- 0.051       -1.893 +/- 0.089      -1.424 +/- 0.068
+exptl           ca. -1.0*                -3.83                 unknown
+
+              pyrimidine/triazine    benzene/triazine      benzene/pyrazine
+Aqueous      -11.400 +/- 0.066      -28.366 +/- 0.226      -2.670 +/- 0.145
+Gas          -11.636 +/- 0.005      -24.850 +/- 0.040      -0.735 +/- 0.021
+             -----------------      -----------------     -------------------
+deldelG        0.236 +/- 0.066       -3.516 +/- 0.230      -1.935 +/- 0.147
+exptl               unk                    unk                 ca. -4.8
+
+*from 2-alkyl analogs
+
+cycles:
+benzene -> pyridine -> pyrimidine -> 1,3,5-triazine -> benzene
+       -1.893    -1.424         0.236            3.516          = 0.435
+benzene -> pyridine -> pyrazine -> benzene
+       -1.893     -0.329      1.935        = -0.287
+
+The hystereses here are reasonable for 4 and 3 step conversions; they
+are similar to those reported in Table 5 of JCC 25, 1322 (2004). They
+could be reduced by using 14 windows for each FEP.
+
+GB/SA results with the 1.14*CM1A charges:
+           delGhyd   delta
+benzene      -2.85     0
+pyridine     -6.13   -3.28
+pyrazine     -7.46   -4.61
+pyrimidine   -9.58   -6.73
+triazine    -10.72   -7.87
+
+With the explicit water, the heterocycles are not hydrophilic
+enough. The discrepancy increases with increasing number of 
+nitrogens. 

@@ -1,0 +1,10 @@
+The Z-matrix for the fep calculation needs to be called fepzmat. Then,
+to execute an entire fep calculation in a 22-A water cap with T=25C,
+just enter
+csh fepcmd >& log &
+
+xFEPCAP provides a convenient way to run a single fep calculation
+in any directory.
+
+Please see testjob feppolrz for an example of 
+Me4N+  -> Me4C in a water cap.

@@ -1,0 +1,10 @@
+3/6/03
+
+Subject: binary solvents
+
+When using binary solvent mixtures with BOSS, the results
+for energy distributions and hydrogen-bond counts include
+contributions from all solvent molecules (both types).
+Radial distribution functions are only computed using atoms
+for the first solvent, as designated in the par file.
+

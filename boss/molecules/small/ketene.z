@@ -1,0 +1,22 @@
+      ketene                                                Tot. E =     -3.9931
+   1 C2  1158 1158    0    0.000000   0    0.000000   0    0.000000        0
+   2 X     -1   -1    1    1.000000   0    0.000000   0    0.000000        0
+   3 X     -1   -1    2    1.000000   1   90.000000   0    0.000000        0
+   4 C1  1154 1154    1    1.303757   2   90.000000   3    0.000000        0
+   5 O   1159 1159    1    1.169716   2   90.000000   4  180.000000        0
+   6 H   1153 1153    4    1.079571   1  121.316250   2    0.000000        0
+   7 H   1153 1153    4    1.079571   1  121.314577   6  180.000000        0
+                    Geometry Variations follow    (2I4,F12.6)                   
+                    Variable Bonds follow         (I4)                          
+0004-0007                                                                       
+                    Additional Bonds follow       (2I4)                         
+                    Harmonic Constraints follow   (2I4,4F10.4)                  
+                    Variable Bond Angles follow   (I4)                          
+0005-0007                                                                       
+                    Additional Bond Angles follow (3I4)                         
+AUTO                                                                            
+                    Variable Dihedrals follow     (3I4,F12.6)                   
+                    Additional Dihedrals follow   (6I4)                         
+                    Domain Definitions follow     (4I4)                         
+                    Conformational Search         (2I4, 2F12.6)                 
+                    Final blank line                                            

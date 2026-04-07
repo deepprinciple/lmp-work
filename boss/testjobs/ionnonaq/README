@@ -1,0 +1,21 @@
+Standard MC simulation for an ion in a non-aqueous solvent:
+
+The ion is specified in ionzmat and the solvent, T and P in ionpar.
+ionzmat currently contains Sr++, and zmatBa is for Ba++, and the
+designated solvent is THF. Other possibilities are:
+CH3OH, CH3CN, MEOME, C3H8, ARGON, MECL2, CHCL3, CCL4, DMSO, or OTHER
+if using a custom solvent (see the user's manual).
+The command file ioncmd or ion.bat (Windows) is set up to
+run 2M configurations of equilibration and 4M configurations of averaging.
+
+to execute, then
+for Linux/UNIX -
+csh ioncmd >& log &
+
+for Windows -
+ion
+
+Time Required: 45 minutes on a 2.4 GHz Pentium
+
+For a related review, see: KM Fromm & ED Gueneau, Polyhedron
+23 (2004) 1479-1504.

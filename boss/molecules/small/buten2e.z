@@ -1,0 +1,31 @@
+ trans-2-Butene full flex.                                  Tot. E =     -0.3126
+   1 C2   142  142    0    0.000000   0    0.000000   0    0.000000        0    
+   2 Du    -1   -1    1    1.000000   0    0.000000   0    0.000000        0    
+   3 Du    -1   -1    2    1.000000   1   90.000000   0    0.000000        0    
+   4 C3   142  142    1    1.342515   2   90.000000   3    0.000000        0    
+   5 C4   135  135    4    1.512944   1  124.343628   2  270.000000        0    
+   6 H1   144  144    4    1.081049   1  119.659126   5  179.999997        0    
+   7 C1   135  135    1    1.512944   4  124.343628   5  180.000004        0    
+   8 H3   144  144    1    1.081049   4  119.659126   7  179.999997        0    
+   9 H    140  140    5    1.090510   4  111.473110   1    0.000001        0    
+  10 H    140  140    5    1.090220   4  110.162540   9  239.736178        0    
+  11 H    140  140    5    1.090220   4  110.162540   9  120.263821        0    
+  12 H    140  140    7    1.090510   1  111.473110   4    0.000001        0    
+  13 H    140  140    7    1.090220   1  110.162540  12  239.736177        0    
+  14 H    140  140    7    1.090220   1  110.162539  12  120.263822        0    
+                    Geometry Variations                                         
+                    Variable Bonds follow         (I4)                          
+0004-0014                                                                       
+                    Additional Bonds follow       (2I4)                         
+                    Harmonic Constraints                                        
+                    Variable Bond Angles follow   (I4)                          
+0005-0014                                                                       
+                    Additional Bond Angles follow (3I4)                         
+AUTO                                                                            
+                    Variable Dihedrals follow     (3I4,F12.6)                   
+0006-0014                                                                       
+                    Additional Dihedrals follow   (6I4)                         
+AUTO                                                                            
+                    Domain Definitions follow     (4I4)                         
+                    Conformational Search                                       
+                    Final blank line                                            

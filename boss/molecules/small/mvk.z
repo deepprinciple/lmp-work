@@ -1,0 +1,30 @@
+ t-methyl vinyl ketone                                      Tot. E =     -4.0894
+   1 C2   150  150    0    0.000000   0    0.000000   0    0.000000        0
+   2 X     -1   -1    1    1.000000   0    0.000000   0    0.000000        0
+   3 X     -1   -1    2    1.000000   1   90.000000   0    0.000000        0
+   4 C1   280  280    1    1.469836   2   90.000000   3    0.000000        0
+   5 O    281  281    4    1.227333   1  122.432805   2    0.000000        0
+   6 C    135  135    4    1.525736   1  118.582965   5  180.000000        0
+   7 C3   143  143    1    1.346040   4  123.013351   5  180.000000        0
+   8 H    144  144    1    1.080307   4  117.784685   7  180.000000        0
+   9 H    144  144    7    1.080116   1  120.107337   8    0.000000        0
+  10 H    144  144    7    1.080110   1  122.977284   9  180.000000        0
+  11 H    282  282    6    1.089957   4  110.067431   5    0.000000        0
+  12 H    282  282    6    1.089560   4  110.459684  11  119.586479        0
+  13 H    282  282    6    1.089560   4  110.459684  11  240.413521        0
+                    Geometry Variations follow    (2I4,F12.6)                   
+                    Variable Bonds follow         (I4 or I4-I4)                 
+0004-0013                                                                       
+                    Additional Bonds follow       (2I4)                         
+                    Harmonic Constraints follow   (2I4,4F10.4)                  
+                    Variable Bond Angles follow   (I4 or I4-I4)                 
+0005-0013                                                                       
+                    Additional Bond Angles follow (3I4)                         
+AUTO                                                                            
+                    Variable Dihedrals follow     (3I4,F12.6)                   
+0006-0013                                                                       
+                   Additional Dihedrals follow   (6I4)                          
+AUTO                                                                            
+                   Domain Definitions follow     (4I4)                          
+                   Conformational Search         (2I4, 2F12.6)                  
+                   Final blank line                                             

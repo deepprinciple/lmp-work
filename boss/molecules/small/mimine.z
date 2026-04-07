@@ -1,0 +1,39 @@
+   N-methylimine                                            Tot. E =      8.4748
+   1 N    800  800    0    0.000000   0    0.000000   0    0.000000        0
+   2 X     -1   -1    1    1.000000   0    0.000000   0    0.000000        0
+   3 X     -1   -1    2    1.000000   1   90.000000   0    0.000000        0
+   4 C3   801  801    1    1.454198   2   90.000000   3    0.000000        0
+   5 C1   802  802    1    1.361618   4  122.241416   2  180.000000        0
+   6 H    803  803    4    1.091064   1  111.241728   5  299.303344        0
+   7 H    804  804    4    1.091064   1  111.242224   6  121.390950        0
+   8 H    805  805    4    1.090662   1  109.757553   6  240.695252        0
+   9 H    806  806    5    1.090793   1  121.972922   4  179.996816        0
+  10 H    807  807    5    1.090766   1  123.182284   9  180.001013        0
+                    Geometry Variations follow    (2I4,F12.6)                   
+                    Variable Bonds follow         (I4)                          
+0004-0010                                                                       
+                    Additional Bonds follow       (2I4)                         
+                    Harmonic Constraints follow   (2I4,4F10.4)                  
+                    Variable Bond Angles follow   (I4)                          
+0005-0010                                                                       
+                    Additional Bond Angles follow (3I4)                         
+AUTO                                                                            
+                    Variable Dihedrals follow     (3I4,F12.6)                   
+0006-0010                                                                       
+                   Additional Dihedrals follow   (6I4)                          
+AUTO                                                                            
+                   Domain Definitions follow     (4I4)                          
+                   Conformational Search         (2I4, 2F12.6)                  
+                   Final blank line                                             
+                                                                                
+ Final Non-Bonded Parameters for QM (AM1 CM1Ax1.14) Atoms:                      
+                                                                                
+ 800  7 NC  -0.451852  3.250000  0.170000                                       
+ 801  6 CT  -0.095010  3.500000  0.066000                                       
+ 802  6 C   -0.002650  3.750000  0.105000                                       
+ 803  1 HC   0.094011  2.500000  0.030000                                       
+ 804  1 HC   0.094011  2.500000  0.030000                                       
+ 805  1 HC   0.094011  2.500000  0.030000                                       
+ 806  1 HC   0.133740  2.500000  0.030000                                       
+ 807  1 HC   0.133740  2.500000  0.030000                                       
+                                                                                

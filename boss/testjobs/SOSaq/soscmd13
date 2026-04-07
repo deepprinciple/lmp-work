@@ -1,0 +1,192 @@
+#
+# Command file for the BOSS  program.  Execute by entering the following:
+# csh soscmd11  >& feplog &
+#***********************************************************************
+echo '                MC/SOS-FEP simulation'
+echo '                     13 windows '
+echo '                    25 C & 1 atm '
+echo '                 Equilibration 6M/3M '
+echo '                   Averaging  0-10M '
+#***********************************************************************
+#
+nice +19
+set boss = $BOSSdir/BOSS
+set boxes = $BOSSdir
+setenv BANGPAR   $boxes/oplsaa.sb
+setenv WATERBOX  $boxes/watbox
+setenv ORG1BOX   $boxes/org1box
+setenv ORG2BOX   $boxes/org2box
+setenv ZMATRIX   fepzmat
+setenv SLVZMAT   slvzmat
+
+# for delta lambda = 0.10, eleven simulations are needed
+# to obtain the deltaGs for overlap sampling.
+# 13 are used here - delta lambda = 0.05 for first & last.
+
+@ nsteps = 13              
+@ i = 0
+##### Enter a loop. Repeat while i < nsteps.
+while ($i < $nsteps)
+# compute lambda values - csh doesn't know floating point, so
+
+        if ($i == 0) then
+           set rc0 = "0.000"
+           set rc1 = "0.000"
+           set rc2 = "0.050"
+           set lab = "000"
+           set nex = "005"
+         # The feppar0 file is only used for this initial window; feppar
+         # is used for subsequent windows. The difference is that the
+         # subsequent windows use ZIN and IN for the initial solute and
+         # solvent coordinates, while here they come from ZMAT and BOXES.
+           if (-e tmppar) rm tmppar
+           cp feppar0 tmppar
+           cat $BOSSdir/oplsaa.par >> tmppar
+        #  double the equilibration for the first window
+           set configurateq = "2000000"
+        endif
+        if ($i == 1) then
+           set rc0 = "0.050"
+           set rc1 = "0.000"
+           set rc2 = "0.100"
+           set lab = "005"
+           set nex = "010"
+           rm tmppar
+           cp feppar tmppar
+           cat $BOSSdir/oplsaa.par >> tmppar
+           set configurateq = "1000000"
+        endif
+       if ($i == 2) then
+           set rc0 = "0.100"
+           set rc1 = "0.050"
+           set rc2 = "0.200"
+           set lab = "010"
+           set nex = "020"
+        endif
+       if ($i == 3) then
+           set rc0 = "0.200"
+           set rc1 = "0.100"
+           set rc2 = "0.300"
+           set lab = "020"
+           set nex = "030"
+        endif
+        if ($i == 4) then
+           set rc0 = "0.300"
+           set rc1 = "0.200"
+           set rc2 = "0.400"
+           set lab = "030"
+           set nex = "040"
+        endif
+        if ($i == 5) then
+           set rc0 = "0.400"
+           set rc1 = "0.300"
+           set rc2 = "0.500"
+           set lab = "040"
+           set nex = "050"
+        endif
+        if ($i == 6) then
+           set rc0 = "0.500"
+           set rc1 = "0.400"
+           set rc2 = "0.600"
+           set lab = "050"
+           set nex = "060"
+        endif
+        if ($i == 7) then
+           set rc0 = "0.600"
+           set rc1 = "0.500"
+           set rc2 = "0.700"
+           set lab = "060"
+           set nex = "070"
+        endif
+        if ($i == 8) then
+           set rc0 = "0.700"
+           set rc1 = "0.600"
+           set rc2 = "0.800"
+           set lab = "070"
+           set nex = "080"
+        endif
+        if ($i == 9) then
+           set rc0 = "0.800"
+           set rc1 = "0.700"
+           set rc2 = "0.900"
+           set lab = "080"
+           set nex = "090"
+        endif
+        if ($i == 10) then
+           set rc0 = "0.900"
+           set rc1 = "0.800"
+           set rc2 = "0.950"
+           set lab = "090"
+           set nex = "095"
+        endif
+        if ($i == 11) then
+           set rc0 = "0.950"
+           set rc1 = "0.900"
+           set rc2 = "1.000"
+           set lab = "095"
+           set nex = "100"
+        endif
+        if ($i == 12) then
+           set rc0 = "1.000"
+           set rc1 = "0.950"
+           set rc2 = "1.000"
+           set lab = "100"
+           set nex = "110"
+        endif
+
+	setenv INFILE    f${lab}in
+	setenv UPFILE    f${lab}up
+	setenv SAVE      f${lab}sv
+	setenv AVERAGE   f${lab}av
+	setenv SUMMARY   f${lab}sum
+        setenv PARAMETER tmppar
+
+
+       set lambda = "$rc0 $rc1 $rc2"
+
+	#    Equilibration
+
+	date
+	setenv OUTPUT    f${lab}ota
+	setenv PLTFILE   f${lab}plta
+        echo time $boss 111 $configurateq $lambda
+	time $boss 111 $configurateq $lambda
+	setenv OUTPUT    f${lab}otb
+	setenv PLTFILE   f${lab}pltb
+        echo time $boss 011 $configurateq $lambda
+	time $boss 011 $configurateq $lambda
+	foreach block (eq)
+        	date
+		setenv OUTPUT    f${lab}ot$block
+		setenv PLTFILE   f${lab}plt$block
+                echo time $boss 001 $configurateq $lambda
+		time $boss 001 $configurateq $lambda
+	end
+
+	#    Averaging
+
+        set configurations = "2000000"
+        rm f${lab}sv
+	setenv OUTPUT    f${lab}ota
+	setenv PLTFILE   f${lab}plta
+
+        echo time $boss 011 $configurations $lambda
+	time $boss 011 $configurations $lambda
+	foreach block (b c d e10)
+        	date
+        	setenv OUTPUT    f${lab}ot$block
+        	setenv PLTFILE   f${lab}plt$block
+                echo time $boss 001 $configurations $lambda
+        	time $boss 001 $configurations $lambda
+	end
+        rm f${lab}*a f${lab}*b f${lab}*c f${lab}*d f${lab}*e
+
+        if ($i < ($nsteps - 1)) cp f${lab}in f${nex}in
+
+	##### increment 'i' by one.
+	@ i++
+end
+	rm $SLVZMAT
+        rm tmppar
+date
+exit

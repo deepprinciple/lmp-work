@@ -1,0 +1,7 @@
+smiles,name,viscosity_target_cP,thermal_target_W_mK,density_g_cm3,reference_temperature_C,density_source,notes
+C1CCOC1,tetrahydrofuran,0.46,0.1448859584626165,0.889,25,public data page / vendor snippet,THF common room-temperature liquid density used for initial packing
+CCO,ethanol,1.263,0.1618471934536164,0.78522,25,Wikipedia Ethanol data page (Lange 1967 table),explicit 25 C density table
+CO,methanol,0.59,0.1832312892566165,0.7866,25,public methanol properties sheet / NIST-linked sources,room-temperature liquid density
+CC#N,acetonitrile,0.358,0.1744430241202602,0.786,25,public acetonitrile data page / common handbook value,room-temperature liquid density
+C1CCCCC1,cyclohexane,0.98,0.1269064303628655,0.7739,25,IUPAC-NIST solubility database snippet,reported pure cyclohexane density at 25 C
+CC(=O)C,acetone,0.303,0.1373514581236165,0.7845,25,NCBI toxicological profile / public handbook snippet,room-temperature liquid density

@@ -1,0 +1,31 @@
+
+Potential Surface Scanning
+
+One can obtain the energy of a system as one variable
+(bond length, angle, or dihedral) is systematically varied
+using the scripts in this directory. For dihedral angle variation,
+please see the dihdrive test job.
+
+Please see the directions in the cmd or bat files for specification
+of the desired variable, size of increments between energy evaluations, 
+and total number of energy evaluations. A full optimization is executed at
+each point. 
+
+The input Z-matrix needs to be called scanzmat
+except scanGB and scanPDGGB use GBzmat.
+
+To obtain a potential of mean force for separating AcO- and MeNH3+ with GB/SA hydration:
+scanGB (Windows)
+csh scanGB (Linux)
+See the output in scansum and scanout.
+
+Scanning is particularly useful for finding transition structures. An example
+is provided for an SN2 reaction in scanzmat. For fixed bond lengths for
+atom 4 (r4), scanning of the bond length for atom five (r5) is requested in the
+scanPDG- command file. Execute via
+scanPDG- (Windows)
+csh scanPDG- (Linux)
+This example must be run with scanPDG- since it requires QM calculations for an anion.
+In subsequent runs, increment r4 in scanzmat and resubmit. The results
+can be tabulated in an array using Excel, which can then provide a nice plot
+of the energy surface.

@@ -1,0 +1,31 @@
+     ethyl methyl ether                                     Tot. E =     -0.4566
+   1 X     -1    0    0    0.000000   0    0.000000   0    0.000000        0
+   2 X     -1    0    1    1.000000   0    0.000000   0    0.000000        0
+   3 O    180    0    2    1.000000   1   90.000000   0    0.000000        0
+   4 C    182    0    3    1.416253   2   90.000000   1    0.000000        0
+   5 C    181    0    3    1.417213   4  112.522175   1  180.000000        0
+   6 C     54    0    4    1.528657   3  108.423148   5  179.999971        0
+   7 H    185    0    4    1.091067   3  110.257597   6  120.565983        0
+   8 H    185    0    4    1.091067   3  110.257608   6  239.434015        0
+   9 H     60    0    6    1.089908   4  111.031412   3  180.000016        0
+  10 H     60    0    6    1.090059   4  110.893072   9  239.922904        0
+  11 H     60    0    6    1.090059   4  110.893075   9  120.077107        0
+  12 H    794    0    5    1.090061   3  109.639858   4  180.000019        0
+  13 H    794    0    5    1.090825   3  111.234643  12  240.694784        0
+  14 H    794    0    5    1.090825   3  111.234632  12  119.305210        0
+                    Geometry Variations follow    (2I4,F12.6)                   
+                    Variable Bonds follow         (I4)                          
+0004-0014                                                                       
+                    Additional Bonds follow       (2I4)                         
+                    Harmonic Constraints follow   (2I4,4F10.4)                  
+                    Variable Bond Angles follow   (I4)                          
+0005-0014                                                                       
+                    Additional Bond Angles follow (3I4)                         
+AUTO                                                                            
+                    Variable Dihedrals follow     (3I4,F12.6)                   
+0006-0014                                                                       
+                    Additional Dihedrals follow   (6I4)                         
+AUTO                                                                            
+                    Domain Definitions follow     (4I4)                         
+                    Conformational Search (2I4,2F12.6)                          
+                    Final blank line                                            

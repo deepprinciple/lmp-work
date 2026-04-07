@@ -1,0 +1,76 @@
+#!/bin/csh
+set echo
+#
+#            Queue Version:
+# script to run an FEP job on the PC cluster
+#
+# for Z-matrix zmat.z
+# usage:           xFEP50b11Q zmat 
+# multiple files:  xMANY filenames xFEP50b11Q
+#
+# the Z-matrix (e.g., zmat.z) needs to be in the directory
+#
+# make subdirectory
+#
+mkdir ${argv[1]}.a50b 
+cd ${argv[1]}.a50b 
+#
+# zmat.z is in the current directory
+#
+cp ../${argv[1]}.z ./fepzmat
+cp $BOSSdir/testjobs/FEPaq/fepaq/f11b50cmd .
+cp $BOSSdir/testjobs/FEPaq/fepaq/feppar0 .
+cp $BOSSdir/testjobs/FEPaq/fepaq/feppar .
+#
+# execute MC
+#
+# set-up for transfer to queue
+cd ..
+cat <<EOF  > ${argv[1]}.q
+hostname
+
+# set variables to hold names of:
+set OD = \$DQS_O_WORKDIR                   # Original Directory
+set LD = /scratch/bill/\$JOB_ID            # Local Directory
+set JN = \$JOB_NAME:r                      # Job name
+set JN = \$JN.a50b
+set AN = \$JN.tar                          # Archive name
+
+cd \$OD/\$JN                               # Create the archive, compress it
+tar cf ../\$AN *
+cd ..
+gzip -9 \$AN
+
+mkdir \$LD                                 # Create local directory, copy archive
+/bin/cp \$AN.gz \$LD                       #    to it, remove original
+/bin/rm \$AN.gz
+
+cd \$LD                                    # Go to local directory, unpack and
+gzip -cd \$AN.gz | tar xof -               #    remove archive
+/bin/rm \$AN.gz
+
+csh f11b50cmd                                 # run
+rm  *a
+rm  *b
+rm  *c
+rm  *eq
+rm  *d
+rm  *ote *plte
+rm  feppar*
+grep DeltaG f*sum >>delgsum
+$BOSSdir/miscexec/sumdelf
+rm delgsum
+#
+
+tar cf ../\$AN f* sumout                   # Create output archive, compress
+cd ..                                      #   it and move to Original
+gzip -9 \$AN                               #   directory, remove Local
+/bin/rm -rf \$LD:t                         #   directory.
+/bin/cp \$AN.gz \$OD/\$JN
+/bin/rm \$AN.gz
+cd \$OD/\$JN
+gzip -cd \$AN.gz | tar xf -
+/bin/rm \$AN.gz
+EOF
+q -i ${argv[1]}.q                          # Submit job to queue
+exit

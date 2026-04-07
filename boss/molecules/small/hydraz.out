@@ -1,0 +1,277 @@
+
+
+
+
+ ********************************************************************************
+ ********************************************************************************
+ ************************** Gas Phase Optimization of  **************************
+ *************************      hydrazine               *************************
+ *************************           BOSS  4.9          *************************
+ *************************  Linux   Version  Jan  2014  *************************
+ ********************************************************************************
+ ********************************************************************************
+
+
+
+
+                         Z-Matrix for Reference Solutes
+
+
+ --------------------------------------------------------------------------------
+                   Init.   Final                        Theta           PHI
+   I    Symbol     Type    Type   J     R(IJ)     K      IJK      L     IJKL
+ --------------------------------------------------------------------------------
+    1    NT        800     800    0     1.0000    0     0.0000    0     0.0000
+    2    DUM        -1      -1    1     1.0000    0     0.0000    0     0.0000
+    3    DUM        -1      -1    2     1.0000    1    90.0000    0     0.0000
+    4    NT        801     801    1     1.4478    2    90.0000    3   180.0000
+    5    H         802     802    1     1.0146    4   111.3688    2   240.0000
+    6    H         803     803    1     1.0151    4   109.5538    2   122.0756
+    7    H         804     804    4     1.0146    1   111.3635    5    42.3702
+    8    H         805     805    4     1.0151    1   109.5515    7   242.0835
+ --------------------------------------------------------------------------------
+ --------------------------------------------------------------------------------
+
+
+
+
+
+                       OPLS Force Field Parameters
+    Atom         Q           Sigma       Epsilon       Alpha
+  NT    1      -0.7279       3.3000       0.1700       0.0000      All Solutes    
+        2       0.0000       0.0000       0.0000       0.0000      All Solutes    
+        3       0.0000       0.0000       0.0000       0.0000      All Solutes    
+  NT    4      -0.7278       3.3000       0.1700       0.0000      All Solutes    
+  H     5       0.3639       0.0000       0.0000       0.0000      All Solutes    
+  H     6       0.3639       0.0000       0.0000       0.0000      All Solutes    
+  H     7       0.3639       0.0000       0.0000       0.0000      All Solutes    
+  H     8       0.3639       0.0000       0.0000       0.0000      All Solutes    
+
+                      Net Charge
+   Reference Solute     0.00000
+ 1st Perturbed Solute   0.00000
+ 2nd Perturbed Solute   0.00000
+
+
+
+ Dihedral                             Fourier Coefficients
+   Angle    Atom  I Type F    V1        V2        V3        V4               Phases          Delta
+      1       6    0    0     0.000     0.000     0.000     0.000      0.00   0.00   0.00    15.0      All Solutes    
+      2       7  301  301     0.000     0.000     0.300     0.000      0.00   0.00   0.00    15.0      All Solutes    
+      3       8    0    0     0.000     0.000     0.000     0.000      0.00   0.00   0.00     2.0      All Solutes    
+      4       8  301  301     0.000     0.000     0.300     0.000      0.00   0.00   0.00     0.0      All Solutes    
+      5       7  301  301     0.000     0.000     0.300     0.000      0.00   0.00   0.00     0.0      All Solutes    
+      6       8  301  301     0.000     0.000     0.300     0.000      0.00   0.00   0.00     0.0      All Solutes    
+
+                 Bond Stretching Parameters
+  Atom1   Atom2      R0           K0         R1           K1         R2           K2       Delta
+    4       1      1.4300      350.00      1.4300      350.00      1.4300      350.00      0.0289     NT-NT
+    5       1      1.0100      434.00      1.0100      434.00      1.0100      434.00      0.0260     H -NT
+    6       1      1.0100      434.00      1.0100      434.00      1.0100      434.00      0.0260     H -NT
+    7       4      1.0100      434.00      1.0100      434.00      1.0100      434.00      0.0260     H -NT
+    8       4      1.0100      434.00      1.0100      434.00      1.0100      434.00      0.0260     H -NT
+
+                 Angle Bending Parameters
+  Atom1 Atom2 Atom3    A0       K0       A1       K1       A2       K2      Delta
+     4     1     5   106.00    35.00   106.00    35.00   106.00    35.00    4.674     NT-NT-H 
+     4     1     6   106.00    35.00   106.00    35.00   106.00    35.00    4.674     NT-NT-H 
+     1     4     7   106.00    35.00   106.00    35.00   106.00    35.00    4.674     NT-NT-H 
+     1     4     8   106.00    35.00   106.00    35.00   106.00    35.00    4.674     NT-NT-H 
+     5     1     6   106.40    43.60   106.40    43.60   106.40    43.60    0.000     H -NT-H 
+     7     4     8   106.40    43.60   106.40    43.60   106.40    43.60    0.000     H -NT-H 
+
+                     Dipole Moment
+   Reference Solute     2.68764 D
+
+ Quadrupole Moment:      XX        XY        XZ        YY        YZ        ZZ
+   Reference Solute     3.0735    0.1203    0.3930    4.4711   -2.9546    3.2462 D-A
+
+
+ Total Mol. Wt. of Reference Solute =   32.0450
+
+
+
+
+                    Non-bonded Pairs List (Except Inter-solute)
+
+
+ Atom    1:
+
+ Atom    2:
+
+ Atom    3:
+
+ Atom    4:
+
+ Atom    5:    7    8
+
+ Atom    6:    7    8
+
+ Atom    7:
+
+ Atom    8:
+
+
+Checking for potential problems in the solute Z-matrix file:
+          For Bond Between Atoms    4    1: Expected  4 Torsion Terms, Found  6
+      1 Potential Problems Found.
+ Note - When improper dihedrals are used, excess torsion terms are normal.
+
+
+
+
+                          hydrazine               
+                        Mon Jan 27 17:16:41 2014
+                            OPLS Potentials
+
+
+                      Parameters and Coordinates
+
+ NMOL =   0          EDGE =  100.0000  100.0000  100.0000    RCUT =   10.0000
+ NACCPT =        0   NRJECT =        0   MXCON =       0     NCON =       0
+ T(C) =      0.00    OLD E =  0.00000000D+00    NEW E =  0.36473249D+02
+ RDEL =    0.2000    ADEL =   20.0000    VDEL =       0.0    MXS =    2500
+ P(ATM) =     0.0    VOLD =   1000000.0  VNEW =   1000000.0  NVCHG =999999
+ DIELRF =     1.0    Reaction Field NOT Applied
+
+ Information for the Reference Solute:
+ NSCHG=     1        SCUT =   10.0000    ICUT =     0        NCENT =   1    1
+ RDELS1=   0.0000    RDELS2=   0.0000    ADELS1=   0.0000    ADELS2=   0.0000
+ ESOLD=      0.00    ESONE=      0.00    WIMAX=  0.000000    WKC =  200.00
+ EXXOLD=     0.00    EXXNEW=     0.00    DIELEC=   1.0000    CUTOFF E=    0.000
+ EPOOLD=     0.00    EPONEW=     0.00    NPOLX =        0    NPOLS =        0
+ EBNDOL=   0.0000    EBNDNE=   0.1521    EANGOL=   0.0000    EANGNE=   0.8873
+ EDIHOL=   0.0000    EDIHNE=   0.1894    ENBOL=      0.00    ENBNE=     35.24
+ EBCOLD=     0.00    EBCNEW=     0.00    SANEW =     0.00    POLCUT=    10.00
+
+
+ 1-4 Scale Factors: Coul.=   0.20000D+01 L-J=   0.20000D+01  CUTNB =  100.000
+
+ Reaction Coordinate or Lambda Values for the Reference and Perturbed Solutes:
+ RC0  =    0.0000    RC1 =     0.0000    RC2  =    0.0000
+
+
+ Coordinates and Distances in Angstroms
+
+
+ Solute 0:   X          Y          Z
+    7     0.00000    0.00000    0.00000  NT 
+    0     1.00000    0.00000    0.00000  DUM
+    0     1.00000    1.00000    0.00000  DUM
+    7     0.00000   -1.44779    0.00000  NT 
+    1    -0.47244    0.36970    0.81829  H  
+    1    -0.50797    0.33975   -0.81054  H  
+    1    -0.90053   -1.81741    0.28618  H  
+    1     0.68282   -1.78751    0.66992  H  
+
+ Variable and Additional Bonds
+ Atom I      Atom J      RIJ
+     4           1       1.4478
+     5           1       1.0146
+     6           1       1.0151
+     7           4       1.0146
+     8           4       1.0151
+
+ Variable and Additional Angles
+ Atom I    J     K      Theta
+     4     1     5      111.369
+     4     1     6      109.554
+     1     4     7      111.364
+     1     4     8      109.551
+     5     1     6      106.799
+     7     4     8      106.796
+
+    Surface Area and Volume with Solvent Radius = 1.40
+ Atom    Radius      Access. Area   Access. Vol.  Solute
+   1     1.852         81.242         95.688         1
+   2     0.000          0.000          0.000         1
+   3     0.000          0.000          0.000         1
+   4     1.852         81.242         95.688         1
+   5     0.000          0.000          0.000         1
+   6     0.000          0.000          0.000         1
+   7     0.000          0.000          0.000         1
+   8     0.000          0.000          0.000         1
+
+ Total Solvent Accessible Surface Area =   162.48
+       Total Solvent Accessible Volume =   191.38
+
+  Type            Area          Volume
+ Hydrophobic        0.000          0.000
+ Hydrophilic      162.484        191.376
+ Aromatic           0.000          0.000
+ Weakly Polar       0.000          0.000
+
+ Initial Random Number =0.90977929
+ +-------------------------------------------------+
+ |   Optimization Cycle =   1                      |
+ +-------------------------------------------------+
+   Etotal =      36.47325
+
+
+
+
+                         Z-Matrix for Reference Solutes
+
+
+ --------------------------------------------------------------------------------
+                   Init.   Final                        Theta           PHI
+   I    Symbol     Type    Type   J     R(IJ)     K      IJK      L     IJKL
+ --------------------------------------------------------------------------------
+    1    NT        800     800    0     1.0000    0     0.0000    0     0.0000
+    2    DUM        -1      -1    1     1.0000    0     0.0000    0     0.0000
+    3    DUM        -1      -1    2     1.0000    1    90.0000    0     0.0000
+    4    NT        801     801    1     1.4478    2    90.0000    3   180.0000
+    5    H         802     802    1     1.0146    4   111.3688    2   240.0000
+    6    H         803     803    1     1.0151    4   109.5538    2   122.0756
+    7    H         804     804    4     1.0146    1   111.3635    5    42.3702
+    8    H         805     805    4     1.0151    1   109.5515    7   242.0835
+ --------------------------------------------------------------------------------
+ --------------------------------------------------------------------------------
+ +-------------------------------------------------+
+ |   Optimization Cycle =   2                      |
+ +-------------------------------------------------+
+
+          RESULTS OF SOLUTE OPTIMIZATION
+
+ Optimization procedure: BFGS                
+
+ No. Iterations =    2     Tolerance =  0.000100 kcal/mol
+ No. Variables  =   12
+
+ Energy components:
+     Bond stretching energy  =       0.15206
+     Angle bending energy    =       0.88734
+     Torsional energy        =       0.18935
+     Intrasolute non-bonded  =      35.24449
+     Intersolute non-bonded  =       0.00000
+     Polarization energy     =       0.00000
+     Bond constraints energy =       0.00000
+     Total Energy            =      36.47325
+
+ Final Dipole Moment =    2.6876 D
+
+ Optimized energy =      36.47325 kcal/mol
+
+ Final Z-Matrix:
+
+
+
+
+                         Z-Matrix for Reference Solutes
+
+
+ --------------------------------------------------------------------------------
+                   Init.   Final                        Theta           PHI
+   I    Symbol     Type    Type   J     R(IJ)     K      IJK      L     IJKL
+ --------------------------------------------------------------------------------
+    1    NT        800     800    0     1.0000    0     0.0000    0     0.0000
+    2    DUM        -1      -1    1     1.0000    0     0.0000    0     0.0000
+    3    DUM        -1      -1    2     1.0000    1    90.0000    0     0.0000
+    4    NT        801     801    1     1.4478    2    90.0000    3   180.0000
+    5    H         802     802    1     1.0146    4   111.3688    2   240.0000
+    6    H         803     803    1     1.0151    4   109.5538    2   122.0756
+    7    H         804     804    4     1.0146    1   111.3635    5    42.3702
+    8    H         805     805    4     1.0151    1   109.5515    7   242.0835
+ --------------------------------------------------------------------------------
+ --------------------------------------------------------------------------------
+total CPU time(sec)  =      0.1

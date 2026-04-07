@@ -1,0 +1,88 @@
+#!/usr/bin/awk -f
+BEGIN	{
+	identifier = "[ \t]*[a-z,A-Z,_]+[0-9,a-z,A-Z,_]*";
+
+	# print header
+	nf = split(FILENAME, tmp, "\.");
+	#header = sprintf("_%s_H_", uppercase(tmp[1]));
+	header = sprintf("%s_INCLUDED_H", uppercase(tmp[1]));
+	print "#ifndef " header
+	print "#define " header
+	printf("\n");
+	}
+
+# blank line
+NF == 0 {
+	next;
+}
+
+/^[ \t]*(static|extern|private|#)/	{
+	next
+}
+
+!/^[ \t]*[a-z,A-Z,_]+[0-9,a-z,A-Z,_]*[ \t*]+[a-z,A-Z,_]+[0-9,a-z,A-Z,_]*[ \t]*\(/ {
+	nf1 = split($0, tok1, /[\(-{]/);
+	if (NF == 1 && (nf1 == 1 && match(tok1[1], identifier))) {
+		printf("LLine %d (%s) not processed...\n", FNR, $1);
+	}
+	next;
+}
+
+{
+	if (is_reserved_word($1)) next;
+	sub(/[ \t]*[{]*[ \t]*$/, "", $0);
+	len = length($0);
+	n1 = 0;
+	n2 = 0;
+	for(i=1;i<=len;i++) {
+		s = substr($0,i,1);
+		if (s == "(") n1++;
+		if (s == ")") n2++;
+	}
+
+	if (n1 != n2) {
+		printf(" NOTE: extern %s\n", $0);
+	} else {
+		printf("extern %s;\n", $0);
+	}
+	next;
+}
+
+END	{
+	printf("\n");
+	print "#endif";
+	}
+
+function	uppercase (str,	i, j, n, c, tmp, UPPER, LOWER)
+{
+	UPPER = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+	LOWER = "abcdefghijklmnopqrstuvwxyz";
+
+	n = length(str);
+	for(i=1;i<=n;i++) {
+		c = substr(str, i, 1);
+		j = index(LOWER, c);
+		if (j) tmp = tmp substr(UPPER,j,1);
+		else tmp = tmp c;
+	}
+	return tmp;
+}
+
+function	is_reserved_word (s, reserved_words, i, n)
+{
+	reserved_words[1] = "if";
+	reserved_words[2] = "else";
+	reserved_words[3] = "for";
+	reserved_words[4] = "do";
+	reserved_words[5] = "while";
+	reserved_words[6] = "case";
+	reserved_words[7] = "switch";
+	reserved_words[8] = "return";
+
+	n = 8;
+	for(i=1;i<=n;i++) {
+		if (s == reserved_words[i]) return 1;
+	}
+	return 0;
+}
+

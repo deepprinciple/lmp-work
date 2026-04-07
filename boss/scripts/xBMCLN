@@ -1,0 +1,19 @@
+#!/bin/csh
+# set echo 
+#
+# clean removes files created by BOMB or BOSS
+#
+rm filenames*
+rm outBM*
+rm outQP*
+rm tmpmod
+rm tmprls
+if (-e tmppar) rm tmppar
+if (-e log) rm log
+if (-e plt.pdb) rm plt.pdb
+if (-e sum) rm sum
+if (-e out) rm out
+if (-e optzmat) rm optzmat
+if (-e outSP) rm outSP  
+#
+exit

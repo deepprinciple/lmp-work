@@ -1,0 +1,53 @@
+tb05.lcc.chem.pvn
+            General MC for a Solute in Water 
+                    25 C & 1 atm 
+                 Equilibration 25M 
+              Averaging     0-5000M 
+            N = 500  T=25  P=1  Rcut = 10.0
+Mon Apr  1 12:57:55 EDT 2024
+Running NVT
+4.255u 0.012s 0:04.28 99.5%	0+0k 4912+624io 20pf+0w
+Equilibrating
+119.692u 0.020s 1:59.76 99.9%	0+0k 0+712io 0pf+0w
+Mon Apr  1 12:59:59 EDT 2024
+Running b
+121.429u 0.007s 2:01.46 99.9%	0+0k 0+616io 0pf+0w
+Mon Apr  1 13:02:01 EDT 2024
+Running c
+120.594u 0.012s 2:00.63 99.9%	0+0k 0+624io 0pf+0w
+Mon Apr  1 13:04:02 EDT 2024
+Running d
+121.181u 0.010s 2:01.21 99.9%	0+0k 0+624io 0pf+0w
+Mon Apr  1 13:06:03 EDT 2024
+Running eq
+121.275u 0.017s 2:01.31 99.9%	0+0k 0+624io 0pf+0w
+Averaging
+12128.484u 0.098s 3:22:10.65 99.9%	0+0k 0+608io 0pf+0w
+Mon Apr  1 16:30:15 EDT 2024
+Running 1
+12113.702u 0.075s 3:21:55.76 99.9%	0+0k 0+616io 0pf+0w
+Mon Apr  1 19:52:11 EDT 2024
+Running b
+12136.916u 0.030s 3:22:18.97 99.9%	0+0k 0+624io 0pf+0w
+Mon Apr  1 23:14:30 EDT 2024
+Running 2
+12131.164u 0.606s 3:22:13.76 99.9%	0+0k 0+624io 0pf+0w
+Tue Apr  2 02:36:44 EDT 2024
+Running c
+12101.164u 0.076s 3:21:43.28 99.9%	0+0k 0+624io 0pf+0w
+Tue Apr  2 05:58:27 EDT 2024
+Running 3
+12119.292u 0.127s 3:22:01.48 99.9%	0+0k 0+624io 0pf+0w
+Tue Apr  2 09:20:29 EDT 2024
+Running d
+12150.653u 0.101s 3:22:32.88 99.9%	0+0k 0+632io 0pf+0w
+Tue Apr  2 12:43:02 EDT 2024
+Running 4
+12151.498u 0.035s 3:22:33.65 99.9%	0+0k 0+632io 0pf+0w
+Tue Apr  2 16:05:36 EDT 2024
+Running a
+12169.434u 0.025s 3:22:51.60 99.9%	0+0k 0+632io 0pf+0w
+Tue Apr  2 19:28:27 EDT 2024
+Running 5
+12171.252u 0.036s 3:22:53.47 99.9%	0+0k 0+632io 0pf+0w
+Tue Apr  2 22:51:21 EDT 2024

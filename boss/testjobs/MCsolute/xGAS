@@ -1,0 +1,20 @@
+#!/bin/csh
+#
+#
+#   Usage, e.g. for the directory xyz   
+#           xMCGAS xyz 
+#
+#
+cd ${argv[1]} 
+if (-e gas) rm -r gas
+mkdir gas
+cd gas
+cp ../MCzmat gaszmat
+cp ../../gascmd .
+cp ../../gaspar .
+cp ~/boss/oplsaa.par .
+csh gascmd >& loggas  &
+#
+#
+#
+exit

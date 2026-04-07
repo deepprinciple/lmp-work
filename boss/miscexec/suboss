@@ -1,0 +1,385 @@
+#!/bin/csh -f
+# @(#) suboss 1.3 --- SUbmit a BOSS job.
+# Written by D. C. Lim, lim@doctor.chem.yale.edu
+# Department of Chemistry, Yale University
+#
+# This is a command file that some group members like to use. Each
+# simulation is placed in its own directory and this file replaces
+# the usual command file. Edit, then execute by entering
+# csh -e suboss >& log &
+# or it can be made an executable file and submitted by entering
+# chmod +x suboss
+# suboss >& log &
+#
+# This script may need updating.
+############################################################################
+# Set essential parameters for running BOSS.
+# (MC = "bgn_equ", "cont_equ", "bgn_ave", or "cont_ave")
+############################################################################
+#
+# MXCON  = a positive integer, e.g., 100000 is OK but 10.0 is not.
+#          max config at each run when CALC = MC.
+#          max optimization cycle when CALC = "opt".
+#          atom number for the chosen dihedral angle when CALC = "dihed".
+#          ignored when CALC = "freq".
+#          max tries for conformational searching when CALC = "search".
+#
+# NRUN   = a positive integer.
+#          total number of BOSS runs. meaningful only when CALC = MC.
+#          Otherwise NRUN = 1 by default.
+#
+# CALC   = a type of calculation to perform. options are:
+#          "bgn_equ"  --- begin equilibration of Monte Carlo simulation.
+#          "cont_equ" --- continue equilibration of Monte Carlo simulation.
+#          "bgn_ave"  --- begin averaging of Monte Carlo simulation.
+#          "cont_ave" --- continue averaging of Monte Carlo simulation.
+#          "opt"      --- geometry optimization.
+#          "dihed"    --- dihedral angle driving.
+#          "freq"     --- frequency calculation.
+#          "search"   --- conformational searching.
+#
+# NEWRUN = begin a new run or continue the previous run? either 0 or 1.
+#          meaningful only when CALC = "search". Else automatically set.
+#          0 --- continue the previous run.
+#          1 --- begin a new run.
+#
+# IPRNT  = verbosity of output. 0, 1, 2, or 3.
+#          0 --- print solute coords and intrasolute distances when CALC=MC.
+#          1 --- print solute coords but no distances when CALC=MC.
+#          2 --- print solute and solvent coords when CALC=MC.
+#          3 --- suppress print of coords when CALC=MC.
+#                but causes output more informative when CALC = "search".
+#
+# RC0,RC1,RC2 = floating-point numbers, e.g, 1.0 or 1. is OK but 1 is not.
+#          rxn coord (RC) or lambda for reference, 1st and 2nd perturbed solutes.
+#          If zmatrix = MINDTOOL format, RC indicates structure numbers.
+#          IF CALC="dihed", RC0 indicates an increment in dihedal angle in deg.
+#
+# BOSS   = path of a BOSS executable.
+# LIB    = BOSS library directory (oplsaa.sb, watbox, org1box, org2box)
+# JOB    = file name without extension
+# SENDMAIL = 0 or 1 (Send or don't send mail upon completion of job)
+#################################################################################
+
+#----------------------------------------------------------------------
+# Assign default values.
+#----------------------------------------------------------------------
+set BOSS_VERSION = 43
+if ( ! $?BOSS_HOME ) then
+	if ($?CHEMEDIT_HOME) then
+		set BOSS_HOME = $CHEMEDIT_HOME
+	else
+		set BOSS_HOME = /usr/local
+	endif
+endif
+
+set BOSS = ${BOSS_HOME}/bin/BOSS${BOSS_VERSION}
+set LIB = ${BOSS_HOME}/lib/boss
+set JOB = test
+
+set MXCON  = 200000
+set NRUN   = 5
+set CALC   = bgn_equ
+set NEWRUN = 1
+set IPRNT  = 1
+
+set RC0 = 0.5000
+set RC1 = 0.0000
+set RC2 = 1.0000
+
+# misc options
+set SENDMAIL = 1
+
+#----------------------------------------------------------------------
+# This part is used only for scripting purposes. (Do not delete)
+#----------------------------------------------------------------------
+#INSERT_CTRL_OVERRIDE#
+
+#----------------------------------------------------------------------
+# Parse command line arguments in type VAR=VAL
+# All of the above variables can be set on the command line. E.g.,
+# % suboss BOSS_HOME=/usr/local CALC=opt test.zmat
+#----------------------------------------------------------------------
+
+foreach arg ( $argv )
+	if ($arg == "-h" || $arg == "-help") then
+		goto PRINT_HELP
+	endif
+
+	if ( "`echo $arg | sed '/=/ x'`" != "" ) continue;
+	shift
+
+	set var = `echo $arg |cut -f1 -d'='`
+	set val = `echo $arg |cut -f2 -d'='`
+	if ( "$var" == "" ) continue
+	if ( "`echo $var |cut -c1 | sed '/^[0-9]/ x'`" == "" ) continue;
+	eval set $var = $val
+	#echo eval set $var = $val
+
+	if ($var == "BOSS_HOME") then
+		set BOSS = ${BOSS_HOME}/bin/BOSS${BOSS_VERSION}
+		set LIB = ${BOSS_HOME}/lib/boss
+	endif
+end
+
+#----------------------------------------------------------------------
+# Set the job name.
+#----------------------------------------------------------------------
+
+if ($# > 0) then
+	set JOB = `basename $1 .zmat`
+endif
+
+#----------------------------------------------------------------------
+# The following environment variables must be set in order to run BOSS.
+#----------------------------------------------------------------------
+setenv INFILE    ${JOB}.in
+setenv UPFILE    ${JOB}.up
+setenv SAVE      ${JOB}.save
+setenv AVERAGE   ${JOB}.ave
+setenv ZMATRIX   ${JOB}.zmat
+setenv SLVZMAT   ${JOB}.slvzmat
+setenv PARAMETER ${JOB}.par
+setenv BANGPAR   ${LIB}/oplsaa.sb
+setenv WATERBOX  ${LIB}/watbox
+setenv ORG1BOX   ${LIB}/org1box
+setenv ORG2BOX   ${LIB}/org2box
+setenv SUMMARY   ${JOB}.sum
+setenv OUTPUT    ${JOB}.out
+setenv PLTFILE   ${JOB}.plt
+
+#----------------------------------------------------------------------
+# This part is used only for scripting purposes. (Do not delete)
+#----------------------------------------------------------------------
+#INSERT_FILE_OVERRIDE#
+
+############################################################################
+# DONE! Do not edit below.
+############################################################################
+set OS = `uname`
+
+#----------------------------------------------------------------------
+# Figure out ICALC from CALC. Then set NEWRUN and NRUN correctly.
+#----------------------------------------------------------------------
+
+set ICALC = 0                                   # continue MC calc
+if ("$CALC" == "bgn_equ") set ICALC = 1         # begin a new MC calc
+if ("$CALC" == "opt")     set ICALC = 2         # geometry optimization
+if ("$CALC" == "dihed")   set ICALC = 3         # diheral angle driving
+if ("$CALC" == "freq")    set ICALC = 4         # frequency calc
+if ("$CALC" == "search")  set ICALC = 5         # conformational search
+
+if ("$CALC" == "bgn_equ"  || "$CALC" == "bgn_ave")  set NEWRUN = 1
+if ("$CALC" == "cont_equ" || "$CALC" == "cont_ave") set NEWRUN = 0
+if ($ICALC > 1 || $NRUN <= 0) set NRUN = 1
+
+#----------------------------------------------------------------------
+# Check the existence of the required files.
+#----------------------------------------------------------------------
+
+if (! -e "$BOSS" || ! -x "$BOSS") then
+   echo "Command '$BOSS' does not exist or is not executable."
+   goto PRINT_USAGE
+   exit 1;
+endif
+
+set i = 1
+set txt = ("ZMATRIX" "PARAMETER" "BANGPAR" "WATERBOX" "ORG1BOX" "ORG2BOX")
+foreach f ("$ZMATRIX" "$PARAMETER" "$BANGPAR" "$WATERBOX" "$ORG1BOX" "$ORG2BOX")
+   if (! -r "$f") then
+      echo "$txt[$i] file '$f' does not exist or is not readable."
+      goto PRINT_USAGE
+      exit 1
+   endif
+   @ i++
+end
+
+# For a restarting job, check if UPFILE is not empty
+if ("$NEWRUN" == "0") then
+   test ! -s "$UPFILE"
+   if ("$status" == "0") then
+      echo "When NEWRUN = 0, UPFILE should contain results from previous run."
+      echo "But UPFILE '$UPFILE' is empty."
+      exit 1;
+   endif
+else if ("$CALC" == "bgn_ave" && "$OS" == "Linux") then
+   # G77-compiled BOSS has a file truncation problem.
+   # So, we rename UPFILE and SUMMARY if they are not going to be read in by
+   # BOSS.
+   if (-r $UPFILE) then
+      /bin/mv $UPFILE ${UPFILE}.orig
+      echo "To avoid a file truncation problem, '$UPFILE' was renamed to '${UPFILE}.orig'."
+   endif
+   if (-r $SUMMARY) then
+      /bin/mv $SUMMARY ${SUMMARY}.orig
+      echo "To avoid a file truncation problem, '$SUMMARY' was renamed to '${SUMMARY}.orig'."
+   endif
+endif
+
+# create INFILE and SLVZMAT if they don't exist
+touch $INFILE
+touch $SLVZMAT
+
+if (! -w "$INFILE") then
+   echo "INFILE '$INFILE' is not writable."
+   exit 1;
+endif
+if ("$ICALC" == "0") then
+   test ! -s "$INFILE"
+   if ("$status" == "0") then
+      echo "INFILE '$INFILE' is empty."
+      exit 1;
+   endif
+endif
+
+#----------------------------------------------------------------------
+# Execute BOSS for NRUN times
+#----------------------------------------------------------------------
+
+echo "HOST = `hostname`"
+nice +19
+
+set OUT = $OUTPUT
+set PLT = $PLTFILE
+set SUM = $SUMMARY
+
+set STATUS = 0
+set i = 0
+while ($i < $NRUN)
+   if ($ICALC <= 1 && $i > 0) then
+      set ICALC  = 0
+      set NEWRUN = 0
+   endif
+   if ($NRUN > 1) then
+      set j = $i
+      @ j++
+      setenv OUTPUT  ${OUT}$j
+      setenv PLTFILE ${PLT}$j
+      setenv SUMMARY ${SUM}$j
+   endif
+
+   set COMMAND = "$BOSS ${ICALC}${NEWRUN}${IPRNT} $MXCON $RC0 $RC1 $RC2"
+   echo "`date '+%H:%M %m/%d/%y'`: $COMMAND"
+   time $COMMAND
+   set STATUS = $status
+   if ($STATUS != 0) break
+   @ i++
+end
+
+############################################################################
+# Upon completion of the job, send mail to the user.
+# If you do not want to receive email, set SENDMAIL to 0.
+############################################################################
+if ("$SENDMAIL" != 0 && "$SENDMAIL" != "false") then
+cat <<! |/usr/lib/sendmail -F "BOSS job on `hostname`" -t $USER
+------------------ BOSS JOB SUMMARY -------------------------------
+
+BOSS         = $BOSS
+WORK DIR     = `pwd`
+HOST         = `hostname`
+ZMATRIX      = $ZMATRIX
+PARAMETER    = $PARAMETER
+CALC         = $CALC
+LAST COMMAND = $COMMAND
+
+NRUN REQUESTED = $NRUN
+NRUN SUCCEEDED = $i
+
+EXIT STATUS    = $STATUS
+NONE ZERO EXIT STATUS INDICATES AN ERROR.
+!
+endif
+
+exit $STATUS
+
+###############################################################
+#            Print Help 
+# Normally execution of this script doesn't get here
+# unless it is invoked with -h or -help option.
+###############################################################
+#
+PRINT_HELP:
+set prog_name = `basename $0`
+
+cat <<!
+Description: $prog_name is a C shell script for submitting a BOSS job.
+Usage: $prog_name -h
+       $prog_name -help       --- Print help message
+
+       $prog_name [VAR1=VAL1 VAR2=VAL2 ...] [filename[.zmat]]
+
+    Valid VAR names are listed below. (no spaces around '=')
+      BOSS  --- path of BOSS executable (default=/usr/local/bin/BOSS${BOSS_VERSION})
+      LIB   --- diretory where BOSS library files (org1box,org2box,watbox,
+                oplsaa.sb) reside (default=/usr/local/lib/boss)
+
+      MXCON --- A positive integer (default=200000)
+                Max configuration if CALC=bgn_equ,cont_equ,bgn_ave, or cont_ave
+                Max optimization cycle if CALC=opt
+                Atom number for the chosen dihedral if CALC=dihed
+                Max tries for conformational searching if CALC=search
+                Ignored when CALC = "freq".
+      NRUN  --- Total number of BOSS runs. (default=5)
+                Meaningful only when CALC=MC
+      CALC  --- A type of calculation to perform. Valid values are
+                bgn_equ  --- begin equilibration of MC simulation. (default)
+                cont_equ --- continue equilibration of MC simulation.
+                bgn_ave  --- begin averaging of MC simulation.
+                cont_ave --- continue averaging of MC simulation.
+                opt      --- geometry optimization.
+                dihed    --- dihedral angle driving.
+                freq     --- frequency calculation.
+                search   --- conformational searching.
+      NEWRUN -- 0 or 1
+                1 = Begin a new conformational searching (default)
+                0 = Restart a previous conformational search
+      RC0   --- Reaction coord for the reference solute     (default=0.5)
+      RC1   --- Reaction coord for the 1st perturbed solute (default=0.0)
+      RC2   --- Reaction coord for the 2nd perturbed solute (default=1.0)
+
+      SENDMAIL -- 0 or 1 (default=1)
+                1 = Send e-mail upon completion of a job
+                0 = Do not send e-mail upon completion of a job
+
+Examples:
+(In all examples, it is assumed that parameter file 'test.par'
+ already exists in the same directory where 'test.zmat' resides.)
+
+1. to begin an equilibrium using Z-matrix 'test.zmat' with total max
+   configurations of 20000*5 and RC0, RC1, RC3 of 0.1, 0.0, and 0.2,
+  % $prog_name CALC=bgn_equ MXCON=20000 NRUN=5 RC0=0.1 RC1=0.0 RC2=0.2 test.zmat
+
+2. to continue an equilibrium of the previous run (mentioned above),
+  % $prog_name CALC=cont_equ MXCON=200000 NRUN=10 RC0=0.1 RC1=0.0 RC2=0.2 test.zmat
+
+3. to begin an averaging of the previously equilibrated system,
+  % $prog_name CALC=bgn_ave MXCON=200000 NRUN=10 RC0=0.1 RC1=0.0 RC2=0.2 test.zmat
+
+4. to optimize a geometry using Z-matrix 'test.zmat' without getting e-mail,
+  % $prog_name CALC=opt SENDMAIL=0 test.zmat
+
+5. to calculate frequencies using Z-matrix 'test.zmat',
+  % $prog_name CALC=freq test.zmat
+
+6. to perform a conformational search using Z-matrix 'test.zmat',
+  % $prog_name CALC=search MXCON=1000 test.zmat
+
+7. to restart a previous conformational search,
+  % $prog_name CALC=search MXCON=1000 NEWRUN=0 test.zmat
+
+8. to use your own BOSS executable (e.g., /home/$USER/boss/BOSS${BOSS_VERSION}),
+  % $prog_name CALC=opt BOSS=/home/$USER/boss/BOSS${BOSS_VERSION} test.zmat
+!
+exit 0
+
+###############################################################
+#            Print a Brief Usage
+###############################################################
+#
+PRINT_USAGE:
+set prog_name = `basename $0`
+cat <<!
+Usage: $prog_name [-help] [VAR1=VAL1 ...] [file.zmat]
+!
+exit 1
+

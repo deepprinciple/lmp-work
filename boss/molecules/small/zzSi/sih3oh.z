@@ -1,0 +1,25 @@
+   silanol                                                  Tot. E =     -1.7022
+   1 Si  1084 1084    0    0.000000   0    0.000000   0    0.000000        0
+   2 DUM   -1    0    1    0.500000   0    0.000000   0    0.000000        0
+   3 DUM   -1    0    2    0.500000   1   90.000000   0    0.000000        0
+   4 O   1073 1073    1    1.659777   2   90.000000   3  180.000000        0
+   5 HO  1074 1074    4    0.944886   1  116.903618   2    0.000000        0
+   6 H   1064 1064    1    1.482854   4  109.468558   5   60.511831        0
+   7 H   1064 1064    1    1.482855   4  109.465798   6  240.350099        0
+   8 H   1064 1064    1    1.482864   4  109.628646   6  120.178792        0
+                    Geometry Variations follow                                  
+                    Variable Bonds follow         (I4 or I4-I4)                 
+0004-0008                                                                       
+                    Additional Bonds follow       (2I4)                         
+                    Harmonic Constraints follow                                 
+                    Variable Bond Angles follow   (I4 or I4-I4)                 
+0005-0008                                                                       
+                    Additional Bond Angles follow (3I4)                         
+AUTO                                                                            
+                    Variable Dihedrals follow     (3I4,F12.6)                   
+0006-0008                                                                       
+                    Additional Dihedrals follow   (6I4)                         
+AUTO                                                                            
+                    Domain Definitions follow     (4I4)                         
+                    Final blank line                                            
+                                                                                

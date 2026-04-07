@@ -1,0 +1,35 @@
+#!/bin/csh
+#
+#   simple script to copy all necessary file from the
+#   test job FEPgas to  execute an fep calculation.
+#   only the the Z-matrix needs to be present in the current
+#   directory.
+#
+#   Usage, e.g. for the Z-matrix zmat.z
+#           xFEPGAS zmat
+#
+#
+echo 'starting gas-phase fep job'
+mkdir $argv[1].gas
+cd $argv[1].gas
+cp ../${argv[1]}.z gaszmat
+cp $BOSSdir/testjobs/FEPgas/g* .
+cp $BOSSdir/testjobs/FEPgas/fepgascmd .
+csh fepgascmd >& loggas
+#
+rm  *a
+rm  *b
+rm  *c
+rm  *eq
+rm  *d
+rm  *sv
+rm  gaszmat
+rm  gaspar*
+#
+if (-e delgsum) rm delgsum
+grep DeltaG g*sum >>delgsum
+$BOSSdir/miscexec/sumdelg
+echo 'finished gas-phase fep job'
+cd ..
+#
+exit

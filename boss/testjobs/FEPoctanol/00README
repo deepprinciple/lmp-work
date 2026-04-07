@@ -1,0 +1,13 @@
+ Compute the free energy of solvation of a solute in liquid octanol (N = 500).
+
+In any directory, one just needs xDGOCT and xGETDGoct
+And the solute Z-matrix (zmat.z) needs to be (currently) in boss/molecules/OPLS2020.
+Then just execute
+xDGOCT zmat
+
+This will create the directory zmat with subdirectories for the 4 FEP jobs -
+Q and LJ for gas phase and in octanol.
+
+After the 4 jobs finish, the results can be collected via
+xGETDGoct zmat
+

@@ -1,0 +1,22 @@
+#!/bin/csh
+set echo
+#
+# take BOSS Z-matrix to PDB file
+#
+# usage - xZPDB moleculename
+#
+# test if the enviroment variable BOSSdir has been defined
+#
+if (!($?BOSSdir)) then
+   echo "BOSSdir has not been defined; please see README"
+   exit (-1)
+endif
+
+if (-e tmppar) rm tmppar
+cp $BOSSdir/scripts/OPLSpar tmppar
+cat $BOSSdir/oplsaa.par >> tmppar
+if (-e ${argv[1]}.pdb) rm ${argv[1]}.pdb
+$BOSSdir/autozmat -x -i boss -o pdb -p tmppar <${argv[1]}.z >${argv[1]}.pdb
+rm tmppar
+#
+exit

@@ -1,0 +1,27 @@
+REMARK    PhBr...Acetone Complex opt Cl-
+REMARK    Created by BOSS 4.9 Feb 12 Linux 
+ATOM      1  C00 UNK     1       0.000   1.400   0.000
+ATOM      2  C01 UNK     1       0.000   0.696  -1.220
+ATOM      3  C02 UNK     1       0.000   0.696   1.219
+ATOM      4  C03 UNK     1       0.000  -0.713  -1.220
+ATOM      5  C04 UNK     1       0.000  -0.713   1.220
+ATOM      6  C05 UNK     1       0.000  -1.418   0.000
+ATOM      7 Br06 UNK     1       0.000   3.268   0.001
+ATOM      8  H07 UNK     1       0.000   1.240  -2.153
+ATOM      9  H08 UNK     1       0.000   1.241   2.152
+ATOM     10  H09 UNK     1       0.000  -1.252  -2.156
+ATOM     11  H0A UNK     1       0.000  -1.251   2.157
+ATOM     12  H0B UNK     1       0.000  -2.499   0.000
+ATOM     13 He0C UNK     1       0.000   4.872   0.008
+TER   
+ATOM     14  O0D UNK     2       0.000   6.446   0.002
+ATOM     15  C0E UNK     2       0.000   7.096  -1.040
+ATOM     16  C0F UNK     2       0.000   6.411  -2.398
+ATOM     17  C0G UNK     2       0.000   8.617  -1.021
+ATOM     18  H0H UNK     2       0.000   5.328  -2.274
+ATOM     19  H0I UNK     2       0.886   6.694  -2.965
+ATOM     20  H0J UNK     2      -0.886   6.694  -2.965
+ATOM     21  H0K UNK     2       0.000   8.980   0.007
+ATOM     22  H0M UNK     2      -0.886   9.002  -1.525
+ATOM     23  H0N UNK     2       0.887   9.001  -1.525
+END

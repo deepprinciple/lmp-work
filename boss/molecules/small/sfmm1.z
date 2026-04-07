@@ -1,0 +1,29 @@
+   methanesulfonamide                                       Tot. E =   -126.5645
+   1 S    474  474    0    0.000000   0    0.000000   0    0.000000        0
+   2 DUM   -1   -1    1    1.000000   0    0.000000   0    0.000000        0
+   3 DUM   -1   -1    2    1.000000   1   90.000000   0    0.000000        0
+   4 O    475  475    1    1.431364   2   50.000000   3   90.000000        0
+   5 O    475  475    1    1.431372   4  121.112962   2    0.000000        0
+   6 N    478  478    1    1.637388   4  105.154926   2  118.676554        0
+   7 C    476  476    1    1.748673   6  103.895182   2  192.410848        0
+   8 HC   477  477    7    1.087697   1  107.941067   6  180.025901        0
+   9 HC   477  477    7    1.086542   1  109.875345   8  119.076992        0
+  10 HC   477  477    7    1.086550   1  109.870409   8  240.928802        0
+  11 HN   479  479    6    1.005447   1  108.398889   7  247.185926        0
+  12 HN   479  479    6    1.005455   1  108.396814  11  225.648449        0
+                    Geometry Variations follow    (2I4,F12.6)                   
+                    Variable Bonds follow         (I4)                          
+0004-0012                                                                       
+                    Additional Bonds follow       (2I4)                         
+                    Harmonic Constraints follow   (2I4,4F10.4)                  
+                    Variable Bond Angles follow   (I4)                          
+0005-0012                                                                       
+                    Additional Bond Angles follow (3I4)                         
+AUTO                                                                            
+                    Variable Dihedrals follow     (3I4,F12.6)                   
+0006-0012                                                                       
+                    Additional Dihedrals follow   (6I4)                         
+AUTO                                                                            
+                    Domain Definitions follow     (4I4)                         
+                    Conformational Search (4I2,2F12.6)                          
+                    Final blank line                                            

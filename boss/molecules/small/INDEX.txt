@@ -1,0 +1,880 @@
+**********************************************************************************
+
+       Z-Matrices for Common Organic Molecules, Ions, and Complexes   
+
+**********************************************************************************
+
+ Notes:
+
+ The directory above OPLS2020 has z-matrices with OPLS/2020 atom type assignments.
+ The principal changes are for alkane carbons. Compare with the corresponding files 
+ here that have traditional OPLS-AA atom types.
+
+ For UNIX/Linux scripts for many standard jobs, see ~/boss/scripts,               
+ or for Windows see %BOSSdir%\scripts.
+
+ E.g., to perform a gas-phase optimization for any of the Z-matrices -
+ use the xOPT script -
+ xOPT moleculename
+ Output is in out, sum, and plt.pdb
+ To also obtain vibrational frequencies, use the xFREQ script.
+ For more information, see the optimize test job.
+
+ To perform a gas-phase Monte Carlo simulation at 25C for any of the Z-matrices,
+ use the xMCGAS script -
+ xMCGAS moleculename
+ For more information, see the MCgas test job.
+
+ To perform dihedral driving, see the dihdrive test job.        
+ 
+ See the zzIons subdirectory for ions.
+
+ See the zzArenes subdirectory for polycyclic conjugated hydrocarbons.
+
+ Most files here use OPLS-AA charges. To obtain 1.14*CM1A charges, use        
+ xAM1SP molecule
+ The output Z-matrix is in sum  with the CM1A charges appended.
+ For mono cations and anions use xAM1SP+ and xAM1SP-
+ For repetitive charge calculation and optimization, use
+ xZCM1A molecule
+ 
+ The treatment of variable and additional bond angles and dihedral angles
+ has been automated in BOSS versions >= 4.0. This allows for much simplified
+ Z-matrix files. Please compare butane.old and butane.z. Some of the older Z-matrix
+ files have not been converted to the new format, but they could be. The old
+ format is still operable and allows for detailed control.
+
+ These Z-matrix files have been accumulated over several years. Since there have
+ been some changes and additions of force-field parameters during this time, the
+ total energies that are on line one of the .z files are not necessarily current.
+ Reoptimize (xOPT moleculename) to obtain the correct energy and structure; the
+ new .z file is written to the file sum. Then cp sum moleculename.z (copy sum
+ moleculename.z).
+
+ The subdirectory zzConformers contains conformational results for many molecules;
+ please see the README file in that directory.
+
+**********************************************************************************
+    Z-MATRICES - the following list may be incomplete
+
+    HYDROCARBONS - also see zzArenes
+    methan.z       methane
+    ethane.z       ethane
+    etheth.z       ethane to ethene FEP
+    propan.z       propane
+    butane.z       butane anti
+    isobut.z       isobutane (2-methylpropane)
+    pentan.z       pentane - tt
+    isopen.z       isopentane
+    pent2m.z       2-methylpentane
+    pent3m.z       3-methylpentane
+    pen24m.z       2,4-dimethylpentane
+    neopen.z       neopentane
+    hexane.z       hexane - ttt     
+    but22m.z       2,2-dimethylbutane
+    but23m.z       2,3-dimethylbutane
+    pentua.z       pentane - united atom
+    ioenua.z       isopentane - united atom
+    heptan.z       heptane tttt
+    octane.z       octane ttttt
+    isooct.z       isooctane (2,2,4-trimethylpentane)
+    nonaua.z       nonane  - united atom
+    nonane.z       nonane AA
+    decane.z       decane AA
+    dodecua.z      dodecane -united atom
+    dodeca.z       dodecane AA
+    C16T.z 
+    C16U.z         this set of structures is for
+    C18T.z         higher n-alkanes
+    C18U.z         
+    C20T.z         T = all trans
+    C20U.z         U = single hairpin
+    C21T.z         W = double hairpin
+    C21W.z         C = broken paperclip
+    C22T.z 
+    C22U.z 
+    C22W.z 
+    C24T.z 
+    C24U.z 
+    C24W.z 
+    C26W.z 
+    C26W2.z 
+    C26W3.z 
+    C28C.z 
+    C28T.z 
+    C28W.z 
+    C30C.z 
+    C30C2.z 
+    C30T.z 
+    C30U.z 
+    C30W.z 
+    C31C.z 
+    C32C.z 
+    C32T.z 
+    C33C.z 
+    C33T.z 
+    C34C.z 
+    C34T.z 
+    cypro.z        cyclopropane
+    cyprom.z       methylcyclopropane
+    cypro2m.z      1,1-dimethylcyclopropane
+    bnzcy3.z       benzylcyclopropane
+    cypron.z       cyclopropane-neon complex
+    cbutan.z       cyclobutane
+    cypent.z       cyclopentane
+    chexan.z       cyclohexane
+    coctan.z       cyclooctane
+    cypenm.z       methylcyclopentane
+    chexme.z       methylcyclohexane
+    chxm12t.z      trans-1,2-dimethylcyclohexane
+    chxm14t.z      trans-1,4-dimethylcyclohexane
+    dm13c6.z       cis-1,3-diemthylcyclohexane  
+    decali.z       trans-decalin
+    decalcis.z     cis-decalin
+    cbuten.z       cyclobutene
+    cbdien.z       cyclobutadiene
+    pentnc.z       cyclopentene
+    chexen.z       cyclohexene
+    chdien.z       cyclohexadiene
+    norbor.z       norbornane
+    norben.z       norbornene
+    b222oc.z       bicyclo[2.2.2]octane
+    admntn.z       adamantane
+    admton.z       adamantanone
+    adm2ph.z       2-phenyladamantane
+    ethene.z       ethene
+    propen.z       propene
+    buten1.z       1-butene
+    buten2e.z      E-2-butene (trans-2-butene)
+    buten2m.z      2-methyl-1-butene
+    pentn1.z       1-pentene
+    pentn2e.z      E-2-pentene
+    pentn2z.z      Z-2-pentene
+    pentn3m.z      Z-3-methyl-2-pentene
+    bnzal3.z       E-cyclopropylallyl benzene
+    allen.z        allene
+    allen1m.z      methylallene (1,2-butadiene)
+    allen2m.z      1,2-dimethylallene (2,3-pentadiene)
+    pentyn.z       pent-1-yne
+    butyn1.z       but-1-yne
+    bnzcch.z       benzylacetylene
+    bnzccm.z       benzylmethylacetylene
+    bnzcci.z       benzylisopropylacetylene
+    bnzcct.z       benzyl-t-butylacetylene
+    ph2cc.z        diphenylacetylene
+    benyne.z       but-1-en-3-yne  (an enyne)
+    bdiene.z       1,3-butadiene
+    bdi2m.z        2-methyl-1,3-butadiene
+    15hexdi.z      1,5-hexadiene
+    htrien.z       (E)-1,3,5-hexatriene
+    oct4en.z       (E)-1,3,5,7-octatetraene
+    e2modi.z       (E)-2-Me-2,6-octadiene
+    cpdien.z       cyclopentadiene
+    squaln.z       squalene
+    hopene.z       hopene
+    tbucat.z       t-butyl cation
+    tbuwat.z       t-butyl cation - water complex
+    c5h5-.z        cyclopentadienyl anion
+    c60            C60 Buckyball - PDB file
+    buckyester.mol C60 cyclopropyl ester - mol file
+
+    BENZENES
+    benzen.z       benzene
+    toluen.z       toluene
+    ph2ch2.z       diphenylmethane
+    ph2ch2OMe.z    o-methoxydiphenylmethane
+    benme2.z       1,2-dimethylbenzene (o-xylene)
+    benme3.z       1,2,4-trimethylbenzene
+    benme6.z       hexamethylbenzene
+    bnzeth.z       ethyl benzene
+    bnzpro.z       propyl benzene
+    bnzipr.z       isopropyl benzene
+    bnzsbuR.z      R-sec-butyl benzene
+    bnzsbuS.z      S-sec-butyl benzene
+    bnzcpr.z       cyclopropyl benzene
+    cybtph.z       cyclobutyl benzene
+    bnztbu.z       t-butyl benzene
+    bnz11p.z       2-methyl, 2-phenylbutane
+    bnzaly.z       allyl benzene
+    dpdmme.z       dimethyldiphenylmethane
+    bnzcyh.z       benzocyclohexene
+    phbcyp.z       5-phenyl-benzocyclopentene
+    ph1bcp.z       1-phenyl-benzocyclopentene
+    ph2bcp.z       2-phenyl-benzocyclopentene
+    bnzalm.z       E-methylallyl benzene
+    cypnph.z       phenylcyclopentane
+    cyhxph.z       phenylcyclohexane
+    naphth.z       naphthalene
+    nap1me.z       1-methylnaphthalene
+    phnapa.z       1-phenylnaphthalene
+    phnapb.z       2-phenylnaphthalene
+    anthra.z       anthracene
+    anth2H.z       9,10-dihydroanthracene
+    phenan.z       phenanthrene
+    fluore.z       fluorene
+    pyrene.z       pyrene
+    bperyl.z       benzo(ghi)perylene
+    biphen.z       biphenyl
+    biaryl??.z     various biaryl systems
+    para22.z       2.2-paracyclophane
+    bencat.z       benzene-t-butyl cation complex
+    benchx.z       benzene to cyclohexane perturbation
+    phenol.z       phenol
+    pcreso.z       p-cresol
+    nolxyl.z       3,4-xylenol
+    pfphe.z        p-fluorophenol
+    pclphe.z       p-chlorophenol
+    oclphe.z       o-chlorophenol
+    oiphoh.z       o-iodophenol
+    otbphe.z       o-t-butylphenol
+    cl3phe.z       2,4,6-trichlorophenol
+    pbrphe.z       p-bromophenol 
+    pohcl2.z       2,3-dichlorophenol
+    resorc.z       resorcinol
+    thymol.z       thymol
+    pheben.z       phenol-benzene complex
+    phohwat.z      phenol-water (TIP4P) complex
+    phohf.z        4-fluorophenol
+    phohfw.z       4-fluorophenol-water (TIP4P) complex
+    phohcl.z       4-chlorophenol
+    phohclw.z      4-chlorophenol-water (TIP4P) complex
+    phohme.z       4-methylphenol
+    phohmew.z      4-methylphenol-water (TIP4P) complex
+    phohno2.z      4-nitrophenol
+    phohno2w.z     4-nitrophenol-water (TIP4P) complex
+    phohcn.z       4-hydroxybenzonitrile
+    phohcnw.z      4-hydroxybenzonitrile-water (TIP4P) complex
+    phohoh.z       hydroquinone              
+    phohohw.z      hydroquinone-water (TIP4P) complex
+    phoac.z        phenyl acetate
+    anilin.z       aniline
+    anln1m.z       N-methylaniline
+    anln1e.z       N-ethylaniline
+    anln2m.z       N,N-dimethylaniline
+    anln2e.z       N,N-diethylaniline
+    ph2nh.z        diphenylamine
+    clanil.z       p-chloroaniline
+    anil3m.z       3-methoxyaniline
+    an3no2.z       3-nitroaniline
+    benzid.z       benzidine
+    anisol.z       anisole
+    ben2ome.z      1,2-dimethoxybenzene
+    anis3f.z       trifluoromethoxybenzene
+    benzf.z        fluorobenzene
+    benz6f.z       hexafluorobenzene
+    bencf2.z       difluoromethylbenzene
+    bencf3.z       trifluoromethylbenzene
+    benzcl.z       chlorobenzene
+    benzbr.z       bromobenzene
+    benzi.z        iodobenzene
+    phcl5.z        pentachlorobenzene
+    bnzamd.z       benzamide
+    bnzamm.z       N-methylbenzamide
+    bnzam2.z       N,N-dimethylbenzamide
+    bnzae2.z       N,N-diethylbenzamide
+    bnzphm.z       N-benzyl,N-methylbenzamide
+    nphea.z        N-phenylacetamide
+    npheaS.z       N-phenylthioacetamide
+    bnzaph.z       N-phenylbenzamide
+    bzlpip.z       N-benzoylpiperidine
+    bzlpyr.z       N-benzoylpyrrolidine
+    bzlmor.z       N-benzoylmorpholine
+    bzlpaz.z       N-benzoylpiperazine
+    bzlpzm.z       N-benzoyl,N'-methylpiperazine
+    nphmeaZ.z      N-methyl,N-phenylacetamide (Z)
+    nphmeaE.z      N-methyl,N-phenylacetamide (E)
+    bnzmdn.z       benzamidine - protonated
+    bnamdn.z       benzamidine - neutral
+    phenem.?       2-phenethylamine
+    acephe.z       acetophenone
+    bnzald.z       benzaldehyde
+    bnzloh.z       p-hydroxybenzaldehyde
+    bnzoic.z       benzoic acid
+    bnzate.z       benzoate ion
+    pclbnz.z       p-chlorobenzoic acid
+    bnzome.z       methyl benzoate
+    bnzoet.z       ethyl benzoate
+    bnzoip.z       isopropyl benzoate
+    bnzotb.z       t-butyl   benzoate
+    phslfm.z       benzenesulfonamide
+    s5.z           N-methyl-benzenesulfonamide
+    sfmnpm.z       N-phenyl-methanesulfonamide
+    sfmnpb.z       N-phenyl-benzenesulfonamide
+    phso3h.z       benzenesulfonic acid
+    meso3h.z       methanesulfonic acid
+    prso3h.z       propanesulfonic acid
+    styren.z       styrene
+    styrme.z       1-methylstyrene
+    sty2mt.z       E-2-methylstyrene
+    sty2mc.z       Z-2-methylstyrene
+    sty2cc.z       Z-2-cyclopropylstyrene
+    sty2ct.z       E-2-cyclopropylstyrene
+    sty2ic.z       Z-2-isopropylstyrene
+    sty2it.z       E-2-isopropylstyrene
+    stlbnt.z       E-stilbene
+    stlbnc.z       Z-stilbene
+    ethph2.z       1,2-diphenylethane
+    phacty.z       phenylacetylene
+    mephac.z       methylphenylacetylene
+    tbphac.z       t-butylphenylacetylene
+    cpphac.z       cyclopropylphenylacetylene
+    salica.z       salicylic acid
+    benz2.z        benzene dimer - see Arenes for all forms
+    benwat.z       benzene-water CH-O complex
+    benwpi.z       benzene-water pi complex
+    benKion.z      benzene-K+ pi complex
+    benKw1.z       Benzene-K+(H2O)
+    benKw2.z       Benzene-K+(H2O)2
+    benKw3.z       Benzene-K+(H2O)3
+    benNH4.z       benzene-NH4+ pi complex
+    benNMe4.z      benzene-NMe4+ pi complex
+    benmom.z       benzene-dimethyl ether complex
+    benmsm.z       benzene-dimethyl sulfide complex
+    pyrben.z       benzene-pyridine complex
+    phopo3.z       phenyl phosphate(2-) ion
+
+    ALCOHOLS
+    meoh.z         methanol
+    meoh2.z        methanol dimer
+    meohf.z        methanol-fluoride complex
+    etoh.z         ethanol
+    etohx.z        ethanol-chloride ion complex
+    tfe.z          2,2,2-trifluoroethanol
+    nproh.z        1-propanol
+    isopro.z       2-propanol
+    nbutoh.z       1-butanol
+    ibutoh.z       isobutanol
+    tbuoh.z        t-butanol
+    tbuooh.z       t-butylhydroperoxide
+    pennol.z       1-pentanol
+    hexnol.z       1-hexanol
+    hepnol.z       1-heptanol
+    octnol.z       1-octanol
+    chexol.z       cyclohexanol
+    allyla.z       allyl alcohol
+    bnzalc.z       benzyl alcohol
+    bzmoh.z        2-phenylethanol
+    napol1.z       1-naphthol
+    c6phoh.z       1-hydroxy,1-phenylcyclohexane
+    etdiol.z       1,2-ethanediol
+    butdiol.z      1,3-butanediol  
+    diglycol.z     diethylene glycol
+    glycer.z       glycerol
+    chexol1.z      t-1,2-cyclohexanediol Ggt
+    chexol2.z      t-1,2-cyclohexanediol Ggg
+    chexol3.z      t-1,2-cyclohexanediol GgG
+    dhmcyh.z       e,e-1,4-dihyroxymethylcyclohexane
+    chdmee.z       UA version of "
+    chdmea.z       UA version of e,a   "
+    aminol.z       2-aminoethanol
+    etoetoh.z      2-ethoxyethanol
+    meoion.z       methoxide ion
+    choles.z       cholesterol
+    etohua.z       UA ethanol
+    prohua.z       UA 1-propanol
+    ipohua.z       UA 2-propanol
+    tbihua.z       UA t-butanol
+
+    CARBOHYDRATES
+    allose.z       beta-D-allopyranose
+    fucose.z       alpha-L-fucose
+    galact.z       alpha-D-galactopyranose
+    galactb.z      beta-D-galactopyranose
+    glucos.z       alpha-D-glucopyranose
+    glumeo.z       methyl-alpha-D-glucopyranoside
+    mannos.z       alpha-D-mannopyranose
+    manmeo.z       methyl-alpha-D-mannopyranoside
+    lactos.z       lactose
+    cydex.z        beta-cyclodextrin
+    cydexb.z       beta-cyclodextrin/benzene complex
+
+    ETHERS, P and S COMPOUNDS
+    crn186.z       18-crown-6 (crown conformer)
+    c186k.z        18-crown-6 K+ ion complex
+    crnaza.z       1,10-diaza-18-crown-6
+    crp222.z       [2.2.2]cryptand
+    diglym.z       diglyme tttttt
+    diglym.crn     diglyme tgttGt
+    dme???.z       1,2-dimethoxyethane conformers
+    mmphos.z       methyl methylphosphonate anion
+    mbphos.z       methyl benzylphosphonate anion
+    meopo3.z       methyl phosphate(2-)
+    me2po4.z       dimethyl phosphate(1-)
+    ppacid.z       phenylphosphonic acid
+    mesh.z         methanethiol
+    mesion.z       methanethiolate ion
+    etsh.z         ethanethiol
+    prsh.z         propanethiol
+    etshoh.z       2-mercaptoethanol
+    phsh.z         thiophenol
+    mesulf.z       dimethyl sulfide
+    emsulf.z       ethyl methyl sulfide
+    thioan.z       thioanisole
+    etsph.z        ethyl phenyl sulfide
+    prsph.z        propyl phenyl sulfide
+    phscy6.z       cyclohexyl phenyl sulfide
+    bzsme.z        benzyl methyl sulfide
+    dpteth.z       diphenyl sulfide
+    thiane.z       thiane
+    me2s2.z        dimethyl disulfide
+    et2s2.z        diethyl  disulfide
+    dmso.z         dimethyl sulfoxide (DMSO)
+    dmsow.z        DMSO - water complex
+    mpslfx.z       methyl phenyl sulfoxide
+    epslfx.z        ethyl phenyl sulfoxide
+    ppslfx.z       propyl phenyl sulfoxide
+    dmsfon.z       dimethyl sulfone
+    dmsfonw.z      dimethyl sulfone - water complex
+    emsfon.z       ethyl methyl sulfone
+    mpslfn.z       methyl phenyl sulfone
+    ph2so2.z       diphenyl sulfone
+    sulfol.z       sulfolane
+    c6sfon.z       thiane sulfone
+    oxirane.z      oxirane
+    mether.z       dimethyl ether
+    methna.z       dimethyl ether/Na+ ion complex
+    emether.z      ethyl methyl ether
+    eether.z       diethyl ether
+    deeUA.z        united-atom diethyl ether
+    mtbether.z     methyl t-butyl ether
+    anisol.z       anisole
+    etpher.z       ethyl phenyl ether
+    prpher.z       phenyl propyl ether
+    phmee.z        methoxyethyl phenyl ether
+    etherp2.z      diphenyl ether
+    etherp2OMe.z   o-methoxydiphenyl ether
+    phocy6.z       cyclohexyl phenyl ether
+    bzome.z        benzyl methyl ether
+    bzoet.z        benzyl ethyl ether
+    bzopr.z        benzyl propyl ether
+    bzobu.z        benzyl butyl  ether
+    bzotb.z        benzyl t-butyl ether
+    bzoph.z        benzyl phenyl ether
+    bzobz.z        dibenzyl ether
+    bzoetoh.z      benzyl 2-hydroxyethyl ether
+    bzmom.z        methyl phenylethyl ether
+    phoipr.z       isopropyl phenyl ether
+    photbu.z       t-butyl   phenyl ether
+    chexom.z       methoxycyclohexane
+    mve.z          methyl vinyl ether
+    allve.z        allyl vinyl ether
+    alphet.z       allyl phenyl ether
+    thf.z          tetrahydrofuran
+    oxane.z        oxane
+    diox14.z       1,4-dioxane
+    bdioxo.z       1,3-benzodioxole
+    tcdiox.z       tetrachloro-dibenzodioxin
+    d4.z           octamethylcyclotetrasiloxane
+    dmm.z          dimethoxymethane
+    diox2m.z       2,5-dimethyl-1,3-dioxane 
+    tep+.z         tetraethylphosphonium ion
+    tmp+.z         tetramethylphosphonium ion
+    tepgly.z       tep-diglyme complex
+    dmp.pdbp       dimethylphosphate anion in PDBP format
+    etphos.z       ethylphosphonate,O-ethyl,S-(2-ethylthioethyl)
+    oxepin.z       oxepin
+    benzox.z       benzene oxide
+
+    SILANES
+    si2but.z       1,4-disilabutane
+    siet4.z        tetraethylsilane
+    sietha.z       silaethane
+    sime4.z        tetramethylsilane
+    siprop1.z      1-silapropane
+    siprop2.z      2-silapropane
+
+    PRIMARY AMINES
+    ammonia.z      ammonia
+    hydraz.z       hydrazine
+    metam.z        methylamine
+    etham.z        ethylamine
+    cletam.z       2-chloroethylamine
+    propam.z       propylamine
+    bnzami.z       benzylamine
+    amantn.z       amantadine
+    napam2.z       2-naphthylamine
+    etdiam.z       ethylenediamine
+    NH4ion.z       ammonium ion
+    metam+.z       methylammonium ion
+    NMe4ion.z      tetramethylammonium ion
+    phenem.?       2-phenethylamine
+    phenem+.?      2-phenethylammonium ion
+    guanid.z       guanidine
+    guanum.z       guanidinium ion
+    phguaZ.z       phenylguanidine (Z)  
+    phgua.z        phenylguanidinium ion
+    guanac.z       guanidinium acetate complex
+    bengua.z       guanidinium-benzene complex T-shaped
+    benguapl.z     guanidinium-benzene complex stacked 
+    tmguan.z       1,1,3,3-tetramethylguanidinium ion
+    SECONDARY AMINES
+    dimeam.z       dimethylamine
+    etmeam.z       ethylmethylamine
+    bznhme.z       benzylmethylamine
+    dietam.z	   diethylamine
+    hydz2m.z       dimethylhydrazine
+    hydrox.z       N-methylhydroxylamine
+    TERTIARY AMINES
+    trimam.z       trimethylamine
+    et2mam.z       ethyldimethylamine
+    trietam.z      triethylamine
+    bzm2am.z       benzyldimethylamine
+    dabco.z        DABCO 1,4-diazabicyclo[2.2.2]octane
+    CYCLIC AMINES
+    azirid.z       aziridine
+    azetid.z       azetidine
+    pyroldn.z      pyrrolidine            (equatorial)
+    prl1ph.z       N-phenylpyrrolidine
+    pyroldm.z      N-methylpyrrolidine    (equatorial)
+    piperdn.z      piperidine             (equatorial)
+    piperax.z      piperidine             (axial)
+    mepipdn.z      1-methylpiperidine     (equatorial)
+    pdn1ph.z       N-phenylpiperidine 
+    piperaz.z      piperazine             (diequatorial)
+    mepipaz.z      1-methylpiperazine     (diequatorial)
+    dimpipz.z      1,4-dimethylpiperazine (diequatorial)
+    pip1ph.z       N-phenylpiperazine
+    pip1m4p.z      1-methyl,4-phenylpiperazine
+    morpho.z       morpholine
+    morphm.z       N-methylmorpholine
+    mrf4ph.z       N-phenylmorpholine
+
+    AMIDES and SULFONAMIDES
+    fam.z          formamide
+    dmf.z          dimethylformamide
+    nphfam.z       N-phenylformamide
+    acramd.z       acrylamide
+    acetam.z       acetamide
+    acamdim.z      acetamide dimer
+    acamw?.z       acetamide-water complexes
+    acoham.z       acetic acid - acetamide complex
+    sacetm.z       thioacetamide
+    nef.z          N-ethylformamide
+    nma.z          N-methylacetamide
+    nmaE.z         (E)-N-methylacetamide
+    nmaben.z       NMA-benzene complex
+    nma2.z         NMA dimer
+    nma2fb.z       NMA - 2-fluoro-but-2-ene complex
+    snma.z         thio-NMA
+    nmf.z          N-methylformamide
+    npf.z          N-propylformamide
+    dma.z          N,N-dimethylacetamide
+    nmp.z          N-methylpyrrolidinone
+    nmp3m.z        1,3-dimethyl-2-pyrrolidinone
+    nmp4m.z        1,4-dimethyl-2-pyrrolidinone
+    nmp5m.z        1,5-dimethyl-2-pyrrolidinone
+    dm2opm.z       N,N-dimethyl-2-oxo-propanamide
+    nphea.z        N-phenylacetamide (acetanilide)
+    npheac.z       p-chloro-N-phenylacetamide
+    bnzamd.z       benzamide
+    s2.z           methanesulfonamide
+    s3.z           N-methyl-methanesulfonamide
+    s4.z           N-ethyl-methanesulfonamide
+    s5.z           N-methyl-benzenesulfonamide
+    s6.z           p-toluenesulfonamide
+    sfmnpm.z       N-phenyl-methanesulfonamide
+    sfmnpb.z       N-phenyl-benzenesulfonamide
+    phso3h.z       benzenesulfonic acid
+    urea.z         urea
+    ureadm.z       N,N'-dimethylurea
+    ureatm.z       tetramethylurea
+    ureaph.z       phenylurea
+    surea.z        thiourea
+    sureadm.z      N,N'-dimethylthiourea
+    stmure.z       tetramethylthiourea
+    ureaoh.z       hydroxyurea
+    uretoh.z       3-ethyl-hydroxyurea
+    acnhoh.z       acetohydroxamic acid
+    ureax.z        urea-halide complex
+    ureabn.z       urea-benzene complex
+    carbam.z       O,N-dimethylcarbamate
+    hydant.z       hydantoin
+    sucimd.z       succinimide
+    phimid.z       phthalimide
+    phimim.z       N-methyl phthalimide
+
+    NITRILES, IMINES and NITRO COMPOUNDS
+    ch3cn.z        acetonitrile
+    ch3cnw.z       acetonitrile-water complex
+    etcn.z         propionitrile
+    chexcn.z       cyanocyclohexane - equatorial
+    chexcn.ax.z    cyanocyclohexane - axial
+    c6cn3ax.z      1,3,5-tricyanocyclohexane axial
+    c6cn3eq.z      1,3,5-tricyanocyclohexane equatorial
+    dicnet.z       1,2-dicyanoethane
+    dicnpr.z       1,3-dicyanopropane
+    bnzcn.z        benzonitrile
+    benzcv.z       (E)-cyanovinylbenzene
+    phohcn.z       4-hydroxybenzonitrile
+    bnzlcn.z       benzyl cyanide (nitrile)
+    acnion.z       anion of acetonitrile
+    nitrom.z       nitromethane
+    nitroe.z       nitroethane
+    nitrob.z       nitrobenzene
+    napno2.z       1-nitronaphthalene
+    nitboh.z       p-nitrophenol
+    nitrow.z       nitromethane-water complex
+    mimine.z       N-methylimine
+    bdie2n.z       2-aza-buta-1,3-diene
+    diazop.z       diazopropane
+
+    CARBOXYLIC and OTHER ACIDS
+    formic.z       formic acid
+    acetat.z       acetate ion
+    phaco.z        phenylacetate ion
+    acetf.z        fluoroacetate ion
+    acetcl.z       chloroacetate ion
+    acoh.z         acetic acid
+    acohdim.z      acetic acid dimer
+    tfa.z          trifluoroacetic acid
+    acohf.z        fluoroacetic acid
+    acohcl.z       chloroacetic acid
+    acohbr.z       bromoacetic acid
+    acohi.z        iodoacetic acid
+    acohw.z        acetic acid-water complex
+    pracid.z       propionic acid
+    buacid.z       butyric acid
+    pnacid.z       pentanoic acid (valeric acid)
+    prclac.z       3-chloropropionic acid
+    valpro.z       valproic acid
+    oxalic.z       oxalic acid
+    malonic.z      malonic acid
+    suca.z         succinic acid
+    sucate.z       succinate monoanion
+    acryla.z       acrylic acid
+    adipic.z	   adipic acid 
+    adipal.z       6-oxohexanoic acid
+    glyoxy.z       glyoxylic acid
+    furac2.z       2-furancarboxylic acid
+    furac3.z       2-furancarboxylic acid
+    furac24.z      2,4-furandicarboxylic acid
+    acnhoh.z       acetohydroxamic acid
+    etcof.z        propionyl fluoride
+    etcocl.z       propionyl chloride
+    etcobr.z       propionyl bromide 
+    ppacid.z       phenylphosphonic acid
+
+    KETONES and ALDEHYDES
+    acroln.z       acrolein
+    glyoxa.z       glyoxal
+    ketene.z       ketene
+    mecho.z        acetaldehyde
+    etcho.z        propanal
+    prcho.z        butanal
+    hexnal.z       hexanal
+    furfur.Z.z     Z-furfural
+    furfur.E.z     E-furfural
+    malona.z       malonic acid - multiple files malona*
+    me2co.z        acetone (propanone)
+    acenol.z       enol of acetone
+    me2cow.z       acetone-water complex
+    acoxim.z       acetone oxime
+    acac.z         acetylacetone
+    butano.z       butanone
+    mvk.z          methyl vinyl ketone
+    mmvk.z         E-3-penten-2-one
+    acephe.z       acetophenone
+    c6onom.z       4-methoxycyclohexanone
+    chalco.z       chalcone
+
+    ESTERS
+    esterea.z      ethyl acetate
+    esteria.z      isopropyl acetate
+    esterma.z      methyl acetate
+    estermb.z      methyl butyrate
+    estermf.z      methyl formate
+    esteref.z      ethyl formate
+    estermp.z      methyl propionate
+    esterta.z      t-butyl acetate
+    phoac.z        phenyl acetate
+    bnzome.z       methyl benzoate
+    dmcbon.z       dimethyl carbonate
+    procar.z       propylene carbonate
+    butlac.z       butyrolactone
+    DOP.z          DOP
+    lactide.z      polylactide
+
+    HETEROCYCLES (see also CYCLIC AMINES)
+    adenin.z       adenine
+    uracil.z       uracil
+    uraDAP.z       uracil/2,6-diaminopyridine complex
+    guanin.z       guanine
+    cytosn.z       cytosine
+    thymin.z       thymine
+    didano.z       didanosine
+    thycf3.z       5-trifluoromethyluracil
+    DAP.z          2,6-diaminopyridine
+    adesucWC.z     adenine/succinimide complex (Watson-Crick)
+    adesucH.z      adenine/succinimide complex (Hoogsteen)
+    azepam.z       azepam
+    azepmm.z       N-methylazepam
+    furan.z        furan
+    fur2et.z       2-ethylfuran
+    nfuran.z       nitrofuran
+    benfur.z       benzofuran
+    phbdox.z       5-phenyl-1,3-benzodioxole
+    phbthf.z       5-phenyl-benzotetrahydrofuran
+    furph2.z       2-phenylfuran
+    furph3.z       3-phenylfuran
+    furbph2.z      2-phenylbenzofuran
+    furbph3.z      3-phenylbenzofuran
+    thioph.z       thiophene
+    thi2et.z       2-ethylthiophene
+    benthi.z       benzothiophene
+    thiph2.z       2-phenylthiophene
+    thiph3.z       3-phenylthiophene
+    furn2p.z       dibenzofuran
+    imidaz.z       imidazole
+    imid1m.z       1-methylimidazole
+    imid1e.z       1-ethylimidazole
+    im1mom.z       1-methoxymethylimidazole
+    imiph4.z       4-phenylimidazole
+    indcat.z       indole-t-butyl cation complex
+    indole.z       indole
+    indol3.z       3-methylindole
+    bpyrdon.z      benzopyrrolidinone
+    morpho.z       morpholine
+    isoxaz.z       isoxazole
+    oxazol.z       oxazole
+    benoxa.z       benzoxazole
+    pterid.z       pteridine
+    pter2m.z       2-methyl pteridine
+    pter7m.z       7-methyl pteridine
+    purine.z       purine
+    pur6SH.z       6-mercaptopurine
+    pyrazl.z       pyrazole
+    tzlph1.z       1-phenyltriazole
+    tzlph4.z       4-phenyltriazole
+    tzlph5.z       5-phenyltriazole
+    tzlpyr.z       2-pyridinyl-4-triazole
+    pyrazn.z       pyrazine
+    pyraznw.z      pyrazine-water complex
+    pazn2m.z       2-methylpyrazine
+    pyrid.z        pyridine
+    pyridw.z       pyridine-water complex
+    pyrid2.z       pyridine dimer
+    pyrid2NH2.z    2-aminopyridine
+    pyrid2Ph.z     2-phenylpyridine
+    pyrid2Vi.z     2-vinylpyridine
+    pyrid2Et.z     2-ethylpyridine
+    pyrid2Cyp.z    2-cyclopropylpyridine
+    pyrid2SMe.z    2-thiomethylpyridine
+    pyrid3Ph.z     3-phenylpyridine
+    pyrid4Ph.z     4-phenylpyridine
+    phpyno.z       4-phenylpyridine-N-oxide
+    pyrooh.z       2-hydroxypyridine-N-oxide
+    feppyrdon.z    2-pyridone to 2-hydroxypyridine FEP
+    pyrdnm.z       N-methyl-2-pyridone
+    pyridaz.z      pyridazine
+    pyrdzw.z       pyridazine-water complex
+    pyrim.z        pyrimidine
+    pyrimw.z       pyrimidine-water complex
+    pyrrol.z       pyrrole
+    pyrole.z       2-ethylpyrrole
+    pyrph3.z       3-phenylpyrrole
+    quinoln.z      quinoline
+    quinoxa.z      quinoxaline
+    isoqui.z       isoquinoline
+    acridn.z       acridine
+    quinlon.z      quinolone
+    thiazl.z       thiazole
+    thiazlnh2.z    2-aminothiazole
+    tdizol.z       1,2,5-thiadiazole
+    thpome.z       2-methoxytetrahydropyran axial
+    thpome.e       2-methoxytetrahydropyran equatorial
+    triaz.z        1,3,5-triazine
+    phnant.z       1,10-phenanthroline
+    hydant.z       hydantoin
+    chroman.z      chromane
+    chromen.z      2H-chromene
+    dhp.z          3,4-dihydro-2H-pyran
+    quinzl.z       quinazoline
+
+
+    HALIDES
+    clmecl.z       Cl..CH3..Cl-  SN2 TS
+    cletcl.ts.z    Cl...CH3CH2...Cl- SN2 TS PDDG/PM3
+    cletcl.idc.z   Cl...CH3CH2...Cl- SN2 ion-dipole complex PDDG/PM3
+    clnpcl.ts.z    Cl...CMe3CH2...Cl- SN2 TS PDDG/PM3
+    clnpcl.idc.z   Cl...CMe3CH2...Cl- SN2 ion-dipole complex PDDG/PM3
+    dce.z          1,2-dichloroethane
+    mecl.z         methyl chloride
+    etcl.z         ethyl chloride
+    prcl.z         1-chloropropane
+    prcl2.z        1,3-dichloropropane
+    ethcl3.z       1,1,1-trichloroethane
+    dclb14.z       1,4-dichlorobutane
+    pentcl.z       1-chloropentane
+    dclchx.z       1,4-dichlorocyclohexane
+    c6cl2.z        1,2-dichlorocyclohexane
+    diclec.z       cis-1,2-dichloroethene
+    diclet.z       trans-1,2-dichloroethene
+    enecl3.z       trichloroethene
+    mef.z          methyl fluoride
+    mefw.z         methyl fluoride - water complex
+    etf.z          ethyl fluoride
+    ethf6.z        perfluoroethane
+    prf.z          1-fluoropropane
+    prbr.z         1-bromopropane
+    pentbr.z       1-bromopentane
+    pri.z          1-iodopropane
+    prbr2.z        1,3-dibromopropane  
+    cyhexf.z       cyclohexyl fluoride
+    cyhexcl.z      cyclohexyl chloride
+    butf10.z       perfluorobutane
+    penf12.z       perfluoropentane
+    penisf.z       perfluoroisopentane
+    cypenf.z       perfluorocyclopentane
+    pfh.z          perfluorohexane
+    pfC10.z        perfluorodecane
+    dfe.z          1,2-difluoroethane
+    cfe.z          1-chloro,2-fluoroethane
+    pcbcl2.z       4,4'-dichlorobiphenyl
+    pcbcl5.z       2,3,4,5,6-pentachlorobiphenyl
+    pcbcl9.z       2,2',3,3',4,4',5,5',6-nonachlorobiphenyl
+    pcbpcl.z       decachlorobiphenyl
+
+    OTHER ATOM TYPES
+    trimeb.z       trimethylborane
+
+    WATER
+    spcdim.z       SPC   water dimer
+    t3pdim.z       TIP3P water dimer
+    t4pdim.z       TIP4P water dimer
+    t4pbif.z       TIP4P water dimer - bifurcated
+    t5pdim.z       TIP5P water dimer
+    watt3f.z       water - flexible TIP3F
+    wation.z       TIP4P-halide ion complex
+    meohf.z        methanol-fluoride complex
+    ih2o.z         water-iodide ion complex
+    kwat.z         water-K+ complex
+    kwat2.z        (water)2-K+ complex
+    kwat3.z        (water)3-K+ complex
+    watt4p.z       water - rigid TIP4P
+    watt5p.z       water - rigid TIP5P
+
+    PEPTIDES (see the peptide directory for many)
+    ad.C5.z        alanine dipeptide C5
+    ad.C7ax.z      alanine dipeptide C7ax
+    ad.C7eq.z      alanine dipeptide C7eq
+    alanin.z       alanine dipeptide C5, simplified Z-matrix
+    betag.z        Ac-betaglycine-NH2
+    glycin.z       neutral glycine
+    glycn2.z       neutral glycine - 2nd minimum
+    glyzwi.z       glycine zwitterion - 6-31G* CHELPG charges
+    nmacid.z       N-acetylglycine
+    dmacid.z       N-acetyl,N-methylglycine
+
+    DRUGS (see the drugs directory, if provided, for hundreds)     
+    acmphn.z       acetaminophen (Tylenol; analgesic) 
+    phactn.z       phenacetin (p-ethoxyacetanilide; analgesic)
+    ibupro.z       ibuprofen (Advil, Motrin, Nuprin) NSAID
+    ketpro.z       ketoprofen (Actron) NSAID
+    naprox.z       naproxen (Alleve) NSAID
+    zoloft.z       Zoloft (antidepressant)
+    asptam.z       aspartame
+    aspbnz.z       aspartame-benzoate complex
+    morphi.z       morphine
+    dopami.z       dopamine
+    epinep.z       epinephrine
+    barbit.z       barbital

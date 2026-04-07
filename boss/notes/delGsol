@@ -1,0 +1,46 @@
+For quick estimates of free energies of solvation, use QikProp.
+
+Alternatively, for dipolar solutes, one can
+use the Onsager-Kirkwood-Bell equation in the following convenient form:
+
+ deltaGsolvation = -80*(dipole^2/V)*(e-1/2e+1)
+ where dipole = dipole moment in D, V is solvent accessible volume from
+ BOSS output in Angstroms^3, and e is the dielectric constant of the solvent.
+
+E.g., for 1,2-dichloroethane, deltaGsolvation for trans = 0, and for gauche
+
+in cyclohexane,
+ deltaGsolvation = -80(3.5^2/347)*(2-1/4+1) = -0.56 kcal/mol (observed -0.5)
+in dibutyl ether
+ deltaGsolvation = -80(3.5^2/347)*(3.1-1/6.2+1) = -0.82 kcal/mol (observed -0.7)
+in THF,        
+ deltaGsolvation = -80(3.5^2/347)*(7.6-1/15.2+1) = -1.15 kcal/mol (observed -1.1)
+in neat DCE,   
+ deltaGsolvation = -80(3.5^2/347)*(10.4-1/20.8+1) = -1.22 kcal/mol (observed -1.2)
+in acetone,    
+ deltaGsolvation = -80(3.5^2/347)*(20.7-1/41.4+1) = -1.31 kcal/mol (observed -1.3)
+in acetonitrile,
+ deltaGsolvation = -80(3.5^2/347)*(36 -1/72 +1) = -1.35 kcal/mol (observed -1.4)
+
+(experimental data from Wiberg et al, JPC 1995, 99, 9072; see also JACS 1995, 117, 11809)
+
+-----------------------------------------------------------------------------------------
+Then to compute an equilibrium constant at a given T and P:
+
+  deltaG = deltaE + PdeltaV -TdeltaS + deltaGsolvation
+
+obtain deltaE from BOSS frequency calculations (you need to specify the
+T in the par file; the P is taken as 1 atm in the frequency calculation
+output)
+
+obtain deltaV from the volume calculations in BOSS; it probably doesn't
+matter if you leave the probe radius at the default value (0 = 1.4 A in
+the par file) or make it effectively 0 by assigning it to be 0.001
+
+obtain delta S from BOSS frequency calculations
+
+obtain the solvent effect, deltaGsolvation, from QikProp or the Onsager equation using
+the experimental dielectric constant at the chosen T,P
+
+then K = exp(-deltaG/RT)
+

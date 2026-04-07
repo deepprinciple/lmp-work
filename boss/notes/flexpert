@@ -1,0 +1,40 @@
+
+When a real atom is transformed into a dummy atom with full flexibility, 
+the stretch-bend file (oplsaa.sb) must be modified to contain entries for
+the bonds and angles to the dummy atoms.  Bond lengths to dummy atoms
+should have an equilibrium value shorter
+than the hard-shell van der Waals radius of the connecting atom to 
+prevent convergence problems owing to cavity formation.  Typically a 
+value of 0.4 Angstroms is sufficient.  At least one angle to each dummy
+atom is required to avert linear angles that can cause some numerical instability.
+
+To improve convergence, however, the MAXIMUM number of angles to each
+dummy atom should be assigned non-zero force constants, provided that
+they do not spuriously constrain real atoms.  The latter situation
+occurs if a dummy atom has more than two 1,3 partners
+that are real atoms, and non-zero force constants are assigned 
+to at least three of the angles between them.  This essentially increases 
+the force constants between the angles involving only the real atoms, 
+and can potentially alter the equilibrium value
+of the angle between the real atoms.  In general, the equilibrium values
+and motions of real atoms SHOULD NOT be affected by the addition of dummy
+atoms in the z-matrix.  To achieve the best convergence without     
+nonphysically coupling real atoms, all angles that are being transformed
+from Y-X-Z -> DM-X-DM should have unchanging force constants, and two or
+less angles being transformed from Y-X-Z -> DM-X-Z should have unchanging  
+force constants (where X, Y, and Z are real atoms).  Remaining DM-X-Z
+angles should have zero force constants.
+
+As an example, an ethane to methane mutation should have DM-HC-CT and  
+DM-HC-DM defined with non-zero force constants equivalent to their  
+HC-CT-CT and HC-CT-HC counterparts (that is, all of the angles to dummy
+atoms  are defined).  However, an aniline to toluene mutation should have
+DM-N-H defined with a force constants equal to HC-CT-HC; DM-N-CA should
+have a k(theta)=0.
+
+Note: if the entries for the dummy atom are not made in the oplsaa.sb
+file, the force constant and zero value are taken to be the same as
+when the atom was not a dummy. E.g., if CT-OH-HO is being perturbed
+to CT-HC-DM, and an entry is not made for HC-DM in the oplsaa.sb file,
+it is taken to be the same as for OH-HO.
+

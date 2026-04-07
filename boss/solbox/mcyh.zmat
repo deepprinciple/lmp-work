@@ -1,0 +1,20 @@
+MeCyH          rigid
+   1 DUM   -1    0    0    0.000000   0    0.000000   0    0.000000        0
+   2 DUM   -1    0    1    1.000000   0    0.000000   0    0.000000        0
+   3 C1    71   71    2    1.000000   1   90.000000   0    0.000000        0
+   4 C2    71   71    3    1.525746   2  109.500000   1  240.000000        0
+   5 C3    71   71    4    1.525677   3  110.287107   2  180.000000        0
+   6 C4    73   73    5    1.526336   4  110.628005   3   57.826403        0
+   7 C5    71   71    6    1.526386   5  110.269639   4  302.249761        0
+   8 C6    71   71    7    1.526465   6  110.543991   5   57.225555        0
+   9 C7    69   69    6    1.526018   5  111.836695   4  177.152223        0
+                    Blank Line
+                    Variable Bonds follow         (I4)                          
+                    Additional Bonds follow       (2I4)                         
+                    Blank Line
+                    Variable Bond Angles follow   (I4)                          
+                    Additional Bond Angles follow (3I4)                         
+                    Variable Dihedrals follow     (3I4,F12.6)                   
+                    Additional Dihedrals follow   (6I4)                         
+                    Domain Definitions follow     (4I4)                         
+                    Final blank line                                            

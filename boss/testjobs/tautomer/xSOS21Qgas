@@ -1,0 +1,65 @@
+#!/bin/csh
+set echo
+#
+#            Queue Version:
+# script to run an FEP job on the PC cluster
+#
+# usage:           xSOS21Qgas  name-of-Zmatrix(ending in .z)
+# multiple files:  xMANY filenames xSOS21Qgas
+#
+# files sosgas21 gaspar0 gaspar are copied from the SOSgas testjob      
+# The Z-matrix (e.g., zmat.z) must be in the submitting directory.
+#
+# make subdirectory
+#
+mkdir ${argv[1]}.gas
+cd ${argv[1]}.gas
+#
+# name-of-Zmatrix is in the current directory
+#
+cp ../${argv[1]}.z ./gaszmat
+cp ../sosgas21 .
+cp ../gaspar0 . 
+cp ../gaspar  . 
+#
+# execute MC
+#
+# set-up for transfer to queue
+cd ..
+cat <<EOF  > ${argv[1]}.q
+hostname
+
+# set variables to hold names of:
+set OD = \$DQS_O_WORKDIR                   # Original Directory
+set LD = /scratch/bill/\$JOB_ID            # Local Directory
+set JN = \$JOB_NAME:r                      # Job name
+set JN = \$JN.gas
+set AN = \$JN.tar                          # Archive name
+
+cd \$OD/\$JN                               # Create the archive, compress it
+tar cf ../\$AN *
+cd ..
+gzip -9 \$AN
+
+mkdir \$LD                                 # Create local directory, copy archive
+/bin/cp \$AN.gz \$LD                       #    to it, remove original
+/bin/rm \$AN.gz
+
+cd \$LD                                    # Go to local directory, unpack and
+gzip -cd \$AN.gz | tar xof -               #    remove archive
+/bin/rm \$AN.gz
+
+csh sosgas21                               # run
+
+tar cf ../\$AN g*                          # Create output archive, compress
+cd ..                                      #   it and move to Original
+gzip -9 \$AN                               #   directory, remove Local
+/bin/rm -rf \$LD:t                         #   directory.
+/bin/cp \$AN.gz \$OD/\$JN
+/bin/rm \$AN.gz
+cd \$OD/\$JN
+gzip -cd \$AN.gz | tar xf -
+/bin/rm \$AN.gz
+EOF
+q -i ${argv[1]}.q                          # Submit job to queue
+exit

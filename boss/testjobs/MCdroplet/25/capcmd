@@ -1,0 +1,70 @@
+#
+# Command file for the BOSS program.  Execute by entering the following:
+# csh capcmd >& caplog &
+#***********************************************************************
+echo '                  25 A Water Cluster '
+echo '                  Equilibration  10  M '
+echo '                  Averaging      20  M '
+echo '                 T=25       Rcut =   9.0'
+#***********************************************************************
+#!/bin/csh -f
+#
+nice +19
+set boss = $BOSSdir/BOSS
+set configurations = "2000000"
+set lambda = "0.0 0.0 0.0"
+set boxes = $BOSSdir
+#
+setenv INFILE    capin
+setenv UPFILE    capup
+if (-e capsv) rm capsv
+setenv SAVE      capsv
+setenv AVERAGE   capav
+setenv ZMATRIX   capzmat
+setenv SLVZMAT   slvzmat
+
+if (-e tmppar) rm tmppar
+cp cappar tmppar
+cat $BOSSdir/oplsaa.par >> tmppar
+setenv PARAMETER tmppar
+
+setenv BANGPAR   $boxes/oplsua.sb
+setenv WATERBOX  $boxes/watbox
+setenv ORG1BOX   $boxes/org1box
+setenv ORG2BOX   $boxes/org2box
+setenv SUMMARY   capsum
+
+date
+
+#  Equilibration
+
+setenv OUTPUT    capota
+setenv PLTFILE   capplta
+time $boss 111 $configurations $lambda
+
+foreach block (b c d eq)
+        date
+	setenv OUTPUT    capot$block
+	setenv PLTFILE   capplt$block
+	time $boss 001 $configurations $lambda
+end
+
+#  Averaging
+
+rm capsv
+setenv OUTPUT    capota
+setenv PLTFILE   capplta
+time $boss 011 $configurations $lambda
+
+foreach block (b c d a b c d a e20)
+        date
+	setenv OUTPUT    capot$block
+	setenv PLTFILE   capplt$block
+	time $boss 001 $configurations $lambda
+end
+rm  tmppar slvzmat 
+rm *ota *otb *otc *otd 
+rm *plta *pltb *pltc *pltd 
+
+date
+exit

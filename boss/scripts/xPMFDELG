@@ -1,0 +1,14 @@
+#!/bin/csh
+#
+#   Extract deltaG results from sum files and summarize
+#   Usage,
+#           xPMFDELG    
+#
+#
+if (-e delgsum) rm delgsum
+grep "DeltaG ("  *sum* >>delgsum
+$BOSSdir/miscexec/pmfdelg
+rm delgsum
+echo 'summary is in pmf.CSV'    
+#
+exit

@@ -1,0 +1,19 @@
+ EtOH                                                       
+   1 O     78    0    0    0.000000   0    0.000000   0    0.000000     0
+   2 DUM   -1    0    1    0.500000   0    0.000000   0    0.000000     0
+   3 DUM   -1    0    2    0.500000   1   90.000000   0    0.000000     0
+   4 H     79    0    1    0.945000   2   90.000000   3  180.000000     0
+   5 CH2   81    0    1    1.430000   4  108.500000   2  180.000000     0
+   6 CH3   68    0    5    1.530000   1  112.000000   4  180.000000     0
+                    Geometry Variations
+                    Variable Bonds follow         (I4)                          
+                    Additional Bonds follow       (2I4)                         
+                    Harmonic Restraints
+                    Variable Bond Angles follow   (I4)                          
+                    Additional Bond Angles follow (3I4)                         
+                    Variable Dihedrals follow     (3I4,F12.6)                   
+000600510051  15.0
+                    Additional Dihedrals follow   (6I4)                         
+                    Domain Definitions follow     (4I4)
+0001000600010006
+                    Final blank line                                            

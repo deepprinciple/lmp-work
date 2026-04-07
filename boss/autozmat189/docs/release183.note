@@ -1,0 +1,68 @@
++--------------------------+
+| Release of autozmat 1.83 |
++--------------------------+
+
+Changes from the previous version
+----------------------------------
+
+1. Atomtyping is performed on domain by domain basis.
+   This saves time and yields a better atomtyping.
+   For a domain with more than 500 atoms, atomtyping will
+   not be tried because it may cause a system crash due to
+   a heavy memory consumption.
+
+2. Z-matrix can be written in PEPZ format.
+
+3. Mindtool format can retain chain and residue information
+   as well as charge, sigma, epsilon, and atom name.
+
+4. Sample data files for each format were added in 'sample' directory.
+   Now testing the program can be performed easily just by typing
+   'make test'.
+
+5. '-g' (general) option was added. Options may be combined using ','
+delimiter.
+   E.g., -g verbose,remove_dummy
+
+   -g verbose        (same as -V)
+   -g remove_dummy   (same as -x)
+   -g no_atomtyping  (same as -a)
+   -g break_mind     (In mindtool format, '%' is treated as molecule
+separator,
+                      rather than a residue separator)
+   -g pepz=number    (specifies a starting atom type in PEPZ format. E.g.,
+                      -g pepz=500)
+
+6. Option '-z default' is equivalent to
+ '-z varbond,addbond,varangle,auto_addangle,vardihed_explicit,auto_adddihed'.
+   'vardihed_explicit' gives a list of all variable dihedrals with
+   explicit torsion types. 'vardihed' results in merely a range of atom
+   centers, e.g., 6-12.
+   In this case, torsion typing will be done inside BOSS.
+
+   So, if you want to leave torsion typing to BOSS, use
+   '-z varbond,addbond,varangle,auto_addangle,vardihed,auto_adddihed' for
+   fully flexible molecules. This is equivalent to
+   '-z default,~vardihed_explicit,vardihed'.
+   (The '~' sign negates an option.)
+
+7. Numberous bug fixes and enhancements.
+   I can't list them all here. I think this version is much more stable
+than 1.82.
+
+Availability
+-------------
+
+Source code and binaries for a few operating systems are available
+from ~lim/autozmat directory on doctor.
+Get 'autozmat1.83_atomtype.tar.gz' for a version with atomtyping
+and 'autozmat1.83_noatomtype.tar.gz' for one without atomtyping.
+For compilation and installation, read 00README file in the distribution.
+Impatient people would want to do just
+        make clean_installed
+        make
+        make test
+        make install
+
+Of course, patient people should read 00README file first.
+

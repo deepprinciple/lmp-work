@@ -1,0 +1,86 @@
+
+OPTIMIZATIONS
+
+Optimizations are carried out for the molecule in the acmphn.z file
+(acetaminophen) 
+
+Execute via
+xOPT acmphn           - this is for an optimization with OPLS-AA
+xOPTFGB acmphn        - this is an optimization using OPLS-AA with GB/SA solvation
+xAM1OPT acmphn        - this is for an optimization with AM1    
+xPDGOPT acmphn        - this is for an optimization with PDDG/PM3
+
+Each job writes the output to out (printed output) and plt.pdb
+(PDB file of structure). So, the second job will write over the files
+from the first one unless you rename them. The file sum contains the
+resultant optimized Z-matrix.
+
+To display the output plt.pdb file, enter
+xRAS
+
+Time required for full optimization of acetaminophen:
+with OPLS-AA on a 2.4 GHz Pentium:     2 sec for BFGS optimization
+with AM1 or PDG on a 2.4 GHz Pentium: 15 sec for Fletcher-Powell optimization
+
+The files OPLSout, GBout, AM1out, and PDGout contain 
+the full output as executed by W. Jorgensen.
+_______________________________________________________________________________
+
+The same input Z-matrix was used in these two cases; however, the Z-matrix
+file could be simplified for the quantum calculations
+since the OPLS-AA atom types and specification of additional parameters and
+dihedral types are not needed. The atomic numbers are given instead of the
+OPLS-AA atom types. If the OPLS-AA atom types are given, there is  no
+problem as BOSS looks up the atomic numbers in the oplsaa.par file.
+The acmphnQM.z file illustrates the simplifications - compare it with acmphn.z.
+xPDGOPT acmphnQM
+_______________________________________________________________________________
+OPTIMIZATION of a COMPLEX
+benwpi.z contains the Z-matrix for the benzene-water (TIP4P) complex.
+Display the Z-matrix; note the use of TERZ to separate the two molecules
+and the treatment of the TIP4P water molecule with the rigid geometry
+and 4th site for the partial negative charge. Optimize via
+xOPTF benwpi  [xOPTF (Fletcher-Powell)  and  xOPT (BFGS) both work well -  
+               sometimes it is worth checking more than one optimizer;
+               also watch for optimization to a saddle-point rather than 
+               a minimum.]
+Total energy = 2.89 kcal/mol
+To compute the interaction energy, the optimized energy for benzene is needed.
+xOPTF benzen
+Total energy = 6.68 kcal/mol
+Energy of TIP4P water = 0 since it is rigid.
+benzene + TIP4P water -> benzene...water
+deltaE = 2.89 - 6.68 - 0 = -3.79 kcal/mol
+_______________________________________________________________________________
+
+SINGLE-POINT QM CALCULATIONS for CHARGES
+One can obtain the CM1 charges and Lennard-Jones parameters
+for the solute(s) by doing a single-point AM1 or PM3 calculation.
+Use the scripts:
+xAM1SP acmphnQM 
+xPM3SP acmphnQM 
+The resultant charges and Lennard-Jones parameters are written
+to the sum file along with the Z-matrix modified to use the atom-type
+numbers (800-899) assigned for the new parameters. One could then replace
+the original Z-matrix with this one.
+
+For CM3 charges, use the xAM1CM3, xPM3CM3 and xPDGCM3 scripts.
+
+OPLS/CM1A FORCE FIELD (PNAS 102, 6665 (2005) - in boss/bossman) 
+To obtain converged CM1A charges, one should perform a series of
+xAM1SP and xOPT cycles. This is done with the script xZCM1A - use
+it to get converged 1.14*CM1A charges for neutral molecules,e.g.,
+xZCM1A benzen
+The optimized OPLS/CM1A Z-matrix is in the output sum file.
+
+For a cation, use xZCM1A+  
+For an anion, use xZCM1A-  
+_______________________________________________________________________________
+POLARIZATION
+For optimizations including polarization (OPLS-AAP), see
+the optimize subdirectory in the FEPpolrz test job.
+
+_______________________________________________________________________________
+
+Many scripts for execution of standard jobs can be found in the
+boss/scripts directory.

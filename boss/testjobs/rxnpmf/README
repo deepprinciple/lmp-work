@@ -1,0 +1,24 @@
+
+This illustrates a pmf calculation for a reaction. A QM/MM
+calculation is performed with complete solute flexibility.
+The reaction is the Michael addition of methane thiolate to
+methyl crotonate. The reaction coordinate is taken as the
+Cbeta - S distance. The solute energetics are evaluated with
+AM1; the solute-solvent interactions use the unscaled CM1A
+charges and generic L-J parameters for the solute atoms. The 
+solvent box contains 390 OPLS-UA methanol molecules.
+
+Only one window is executed; however, the entire pmf could be
+run by chaining jobs or as separate jobs on multiple processors.
+See the dihpmf/fullpmf directory for more information.
+
+Four equilibration runs of 250K each and four averaging runs of
+250K each are executed. For the real calculation, 2M configurations
+of equilibration and 4M of averaging would be reasonable.
+
+Time required for the 2M configurations: 2.2 h on an R5000 SGI.
+(This includes the execution of 30,000 AM1 calculations.)
+
+Use bossinfo and ChemEdit to graphically display the results:
+bossinfo < r1850ote2 > out
+ce -i mol out

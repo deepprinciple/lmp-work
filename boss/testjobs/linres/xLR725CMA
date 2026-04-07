@@ -1,0 +1,57 @@
+#!/bin/csh
+set echo
+#
+# script to run a standard linear response job
+# using the OPLS-AA force field
+# with CM1A charges
+#
+# usage:  xLR725CMA moleculename
+# or to run in background: xLR725CMA moleculename &
+#
+# make subdirectory
+#
+mkdir $argv[1]
+cd $argv[1]
+#
+# moleculename.z is copied from the drugs area
+#
+cp $BOSSdir/molecules/drugs/${argv[1]}.z ${argv[1]}.z
+cp $BOSSdir/testjobs/linres/lr725cmd .
+cp $BOSSdir/testjobs/linres/lr725par .
+#
+# execute AM1 single-point calculation
+#
+$BOSSdir/scripts/xAM1SP $argv[1]
+#
+# optimize geometry
+#
+rm ${argv[1]}.z
+mv sum ${argv[1]}.z
+$BOSSdir/scripts/xOPTF $argv[1]
+#
+# recompute charges with AM1 single-point calculation
+#
+rm ${argv[1]}.z
+mv sum ${argv[1]}.z
+$BOSSdir/scripts/xAM1SP $argv[1]
+cp sum lrzmat
+rm sum out plt.pdb optzmat ${argv[1]}.z
+#
+# execute MC
+#
+csh lr725cmd >& log
+rm *par
+rm *a *b *c *otd *pltd *sv* *eq
+#
+# compute properties
+#
+# if you want to update a csfile that is kept one level up, uncomment
+# if (-e ../csfile) cp ../csfile .
+$BOSSdir/miscexec/PROPCMP
+cd ..
+# and uncomment the next 3 lines
+# if (-e csfold) rm csfold
+# if (-e csfile) mv csfile csfold
+# cp $argv[1]/csfile .
+#
+exit

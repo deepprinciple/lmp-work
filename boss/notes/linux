@@ -1,0 +1,42 @@
+May 12, 2003 - The default version of BOSS switched from IRIX to Linux.
+
+------------------------------------------------------------------------
+2002
+        The Jorgensen lab linux cluster consists of a mix
+of Pentium-based PCs ranging from 333 MHz Pentium IIs to
+2.4 GHz Pentium IVs, mostly dual-processor machines from Dell.              
+
+The newest ones are configured as follows:                 
+        2 - Intel 2.4 GHz Xeon processors
+        1 GB RAM 
+        80 GB SCSI hard drive
+        100 baseT ethernet
+
+        All of the machines are running linux 2.4.18, which is a very
+stable and robust version of the freeware operating system, linux.
+We obtained the kernel itself via ftp from the internet--linux is
+freeware and is freely available; see http://www.linux.org. We have,
+however, used the main installation and formatting utilities from
+Caldera (http://www.caldera.com), and we have also used Red Hat
+linux (http://www.redhat.com). Both companies have satisfactory
+variants of linux, as well as instructions and support.
+        The dual-processor machines use a version of the 2.2.7 kernel
+that was compiled here in the lab. This mainly involves configuring the
+kernel with various device drivers and then setting a flag that causes
+the kernel to be compiled for SMP (shared memory multi-processing) and
+then compiling the kernel. Caldera and Red Hat do not readily supply a
+pre-compiled SMP kernel with the drivers compiled in the kernel, but
+rather use loadable modules for most hardware devices, so it is
+generally necessary to compile the SMP kernel oneself.
+        Because of the computationally intensive nature of the simulations
+that are performed in the lab, we have attempted to use the most reliable
+and efficient FORTAN compilers possible for the generation of our software.
+To that end, we have tested a variety of FORTRAN compilers, and the one that
+we have determined to combine best ease of use with efficient compiled software 
+is from Intel. A reasonable alternative
+is from the Portland Group, Inc. (PGI); see http://www.pgroup.com.
+        In order to efficiently use our mix of ca. 100 processors, the cluster
+has a queuing system implemented. We have been using DQS 3.1 from
+Florida State University; http://www.scri.fsu.edu. DQS, like linux, is
+free software.
+

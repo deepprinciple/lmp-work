@@ -1,0 +1,37 @@
+         mesh
+   1 SH   800  800    0    0.000000   0    0.000000   0    0.000000
+   2 DUM   -1   -1    1    0.500000   0    0.000000   0    0.000000
+   3 DUM   -1   -1    2    0.500000   1   90.000000   0    0.000000
+   4 HS   801  801    1    1.336532   2   90.000000   3  180.000000
+   5 CT   802  802    1    1.811119   4   96.401770   2  180.000000
+   6 HC   803  803    5    1.090187   1  110.255589   4  179.999947
+   7 HC   804  804    5    1.090135   6  108.527646   1  121.053891
+   8 HC   805  805    5    1.090135   6  108.527646   1  238.946114
+   9 XS   806  806    1    0.700000   5   96.584202   4   97.543159
+  10 XS   807  807    1    0.700000   5   96.584202   4  -97.543159
+                Geometry Variations follow  (2I4,F12.6)
+                Variable Bonds follow       (I4)
+0004-  10
+                Additional Bonds follow     (2I4)
+                Harmonic Constraints follow (2I4,4F10.4)
+                Variable Bond Angles follow (I4 or I4-I4)
+0005-  10
+                Additional Bond Angles follow   (3I4)
+AUTO
+                Variable Dihedrals follow   (3I4,F12.6)
+0006-  10
+                Additional Dihedrals follow (6I4)
+AUTO
+                Domain Definitions follow   (4I4)
+                Final blank line
+
+ Final Non-Bonded Parameters for Atoms:
+
+ 800 16 SH   0.085000  3.639000  0.381000
+ 801  1 HS   0.147000  0.000000  0.000000
+ 802  6 CT  -0.012000  3.500000  0.066000
+ 803  1 HC   0.060000  2.500000  0.030000
+ 804  1 HC   0.060000  2.500000  0.030000
+ 805  1 HC   0.060000  2.500000  0.030000
+ 806  0 XS  -0.200000  0.000000  0.000000
+ 807  0 XS  -0.200000  0.000000  0.000000

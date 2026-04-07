@@ -1,0 +1,17 @@
+#!/bin/csh
+# set echo 
+#
+# run the pargen program for interactively generating a par file
+#
+# usage - xPARGEN
+#
+# test if the enviroment variable BOSSdir has been defined
+# setenv BOSSdir ~/BOSS  
+#
+if (!($?BOSSdir)) then
+    echo "BOSSdir has not been defined; please see README"
+    exit (-1)
+endif
+
+$BOSSdir/miscexec/pargen  
+exit

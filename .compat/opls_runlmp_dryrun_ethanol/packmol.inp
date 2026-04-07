@@ -1,0 +1,10 @@
+tolerance 2.000000
+seed 20260507
+nloop 200
+filetype xyz
+output /root/lmp-work/.compat/opls_runlmp_dryrun_ethanol/system.xyz
+
+structure /root/lmp-work/.compat/opls_runlmp_dryrun_ethanol/ethanol_500mol_viscosity_squarebox_negk_opls_lbcc_20260407.xyz
+  number 500
+  inside box 2.000000 2.000000 2.000000 36.554275 36.554275 36.554275
+end structure

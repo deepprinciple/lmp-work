@@ -1,0 +1,3 @@
+This is a standard MC simulation for gas-phase dodecane
+except that it has been run for 10M averaging after 5M equilibration
+for precision on the final energies.

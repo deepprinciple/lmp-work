@@ -1,0 +1,85 @@
+#
+# Command file for the BOSS program.  Execute by entering the following:
+# csh sltestcmd >& log &
+# Just need to copy solute zmat to slzmat, then execute.
+#***********************************************************************
+echo '                  Solute on a Slab    '
+echo '                    25 C & 1 atm '
+echo '                    Short Test      '
+echo '            N = 500  T=25  P=1  Rcut = 10.0'
+#***********************************************************************
+#!/bin/csh -f
+#
+nice +19
+set boss = $BOSSdir/BOSS
+set lambda = "0.000 0.000 0.000"
+set boxes = $BOSSdir
+# use stored slab with 512 water molecules
+cp $BOSSdir/solbox/wslabin.512 slin
+setenv INFILE    slin
+setenv UPFILE    slup
+setenv SAVE      slsv
+setenv AVERAGE   slav
+setenv ZMATRIX   slzmat
+setenv SLVZMAT   slvzmat
+setenv BANGPAR   $boxes/oplsaa.sb
+setenv WATERBOX  $boxes/watbox
+setenv ORG1BOX   $boxes/org1box
+setenv ORG2BOX   $boxes/org2box
+setenv SUMMARY   slsum
+
+date
+
+#    short NVT Equilibration
+
+set configurations = "2000"
+
+if (-e tmppar) rm tmppar
+cp slpar tmppar
+cat $BOSSdir/oplsaa.par >> tmppar
+sed s/'NVTNPT'/'999999'/ tmppar > NVTpar
+setenv PARAMETER NVTpar
+
+setenv OUTPUT    slota
+setenv PLTFILE   slplta
+echo Running NVT
+time $boss 110 $configurations $lambda
+
+#    NPT Equilibration
+
+set configurations = "1000"
+
+sed s/'NVTNPT'/'     0'/ tmppar > NPTpar
+setenv PARAMETER NPTpar
+
+setenv OUTPUT    slota
+setenv PLTFILE   slplta
+echo Equilibrating
+time $boss 010 $configurations $lambda
+foreach block (b c d eq)
+        date
+	setenv OUTPUT    slot$block
+	setenv PLTFILE   slplt$block
+        echo Running $block
+	time $boss 001 $configurations $lambda
+end
+
+#    Averaging
+
+rm slsv
+set configurations = "5000"
+setenv OUTPUT    slota
+setenv PLTFILE   slplta
+echo Averaging
+time $boss 011 $configurations $lambda
+foreach block (b c d e25)
+        date
+        setenv OUTPUT    slot$block
+        setenv PLTFILE   slplt$block
+        echo Running $block
+        time $boss 001 $configurations $lambda
+end
+
+rm slvzmat NVTpar NPTpar
+date
+exit

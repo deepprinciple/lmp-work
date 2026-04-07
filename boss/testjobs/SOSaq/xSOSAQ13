@@ -1,0 +1,29 @@
+#!/bin/csh
+#
+#   simple script to copy all necessary file from the
+#   test job SOSaq  to execute an fep calculation.
+#   only the the Z-matrix needs to be present in the current
+#   directory.
+#
+#   Usage, e.g. for the Z-matrix zmat.z
+#           xSOSAQ13 zmat
+#          uses 13 windows
+#
+echo 'starting aqueous sos-fep job'
+mkdir $argv[1].sos
+cd $argv[1].sos
+cp ../${argv[1]}.z fepzmat
+cp $BOSSdir/testjobs/SOSaq/feppar* .
+cp $BOSSdir/testjobs/SOSaq/soscmd13 .
+csh soscmd13 >& log
+#
+rm  feppar*
+#
+if (-e delgsum) rm delgsum
+grep DelSOS f*sum >>delgsum
+$BOSSdir/miscexec/sumdelg
+rm delgsum
+echo 'finished aqueous sos-fep job'
+cd ..
+#
+exit

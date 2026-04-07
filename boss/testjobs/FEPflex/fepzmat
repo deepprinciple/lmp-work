@@ -1,0 +1,31 @@
+   UA Cylcohexane to THP      
+   1 DUM   -1    0    0    0.000000   0    0.000000   0    0.000000
+   2 DUM   -1    0    1    1.000000   0    0.000000   0    0.000000
+   3 C1    71   71    2    1.000000   1   90.000000   0    0.000000
+   4 C2    71   71    3    1.530000   2  109.500000   1  240.000000
+   5 C3    71  110    4    1.530000   3  109.500000   2  180.000000
+   6 C/O   71  108    5    1.530000   4  109.500000   3   60.000000
+   7 C5    71  110    6    1.530000   5  109.500000   4  -60.000000
+   8 C6    71   71    7    1.530000   6  109.500000   5   60.000000
+                    Geometry Variations follow    (2I4,F12.6)                   
+                    Variable Bonds follow         (I4 or I4-I4)                          
+0004-0008
+                    Additional Bonds follow       (2I4)                         
+00030008
+                    Harmonic Constraints follow   (2I4,4F10.4)                  
+                    Variable Bond Angles follow   (I4 or I4-I4)                          
+0005-0008
+                    Additional Bond Angles follow (3I4)                         
+   7   8   3
+   8   3   4
+                    Variable Dihedrals follow     (3I4,F12.6)                   
+   6   1  44    5.000000
+   7   1  41    5.000000
+   8   1  41    5.000000
+                    Additional Dihedrals follow   (6I4)                         
+   6   7   8   3   1  44
+   7   8   3   4   1   1
+   8   3   4   5   1   1
+                    Domain Definitions follow     (4I4)                         
+                    Conformational Search         (2I4, 2F12.6)
+                    Final blank line                                            

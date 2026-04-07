@@ -1,0 +1,55 @@
+REMARK   0 Title:  Benzene Dimer T-shaped                                        
+REMARK   1 Creator: XChemEdit/AUTOZMAT                                           
+REMARK   2 WL Jorgensen Group, Dept. of Chemistry, Yale University               
+HETATM    1  C   UNK A   0      0.0000  1.4088  0.0000  0.00  0.00   0           
+HETATM    2  C   UNK A   0      0.0000  0.7043 -1.2202  0.00  0.00   0           
+HETATM    3  C   UNK A   0     -0.0000  0.7043  1.2201  0.00  0.00   0           
+HETATM    4  C   UNK A   0     -0.0004 -0.7046 -1.2201  0.00  0.00   0           
+HETATM    5  C   UNK A   0     -0.0005 -0.7046  1.2201  0.00  0.00   0           
+HETATM    6  C   UNK A   0     -0.0009 -1.4091 -0.0000  0.00  0.00   0           
+HETATM    7  H   UNK A   0      0.0003  2.4893  0.0002  0.00  0.00   0           
+HETATM    8  H   UNK A   0      0.0009  1.2443 -2.1560  0.00  0.00   0           
+HETATM    9  H   UNK A   0      0.0011  1.2444  2.1559  0.00  0.00   0           
+HETATM   10  H   UNK A   0      0.0005 -1.2446 -2.1560  0.00  0.00   0           
+HETATM   11  H   UNK A   0     -0.0001 -1.2446  2.1560  0.00  0.00   0           
+HETATM   12  H   UNK A   0     -0.0009 -2.4896 -0.0003  0.00  0.00   0           
+TER
+HETATM   13  C   UNK B   0      3.7006  0.0000  0.0000  0.00  0.00   0           
+HETATM   14  C   UNK B   0      4.4047  1.1748 -0.3277  0.00  0.00   0           
+HETATM   15  C   UNK B   0      4.4031 -1.1758  0.3280  0.00  0.00   0           
+HETATM   16  C   UNK B   0      5.8136  1.1739 -0.3276  0.00  0.00   0           
+HETATM   17  C   UNK B   0      5.8119 -1.1769  0.3281  0.00  0.00   0           
+HETATM   18  C   UNK B   0      6.5171 -0.0020  0.0003  0.00  0.00   0           
+HETATM   19  H   UNK B   0      2.6205  0.0008 -0.0001  0.00  0.00   0           
+HETATM   20  H   UNK B   0      3.8624  2.0748 -0.5787  0.00  0.00   0           
+HETATM   21  H   UNK B   0      3.8594 -2.0749  0.5788  0.00  0.00   0           
+HETATM   22  H   UNK B   0      6.3541  2.0750 -0.5789  0.00  0.00   0           
+HETATM   23  H   UNK B   0      6.3511 -2.0787  0.5795  0.00  0.00   0           
+HETATM   24  H   UNK B   0      7.5975 -0.0027  0.0004  0.00  0.00   0           
+TER
+CONECT    1    2    3    7    0    0    0    0    0    0    0                    
+CONECT    2    1    4    8    0    0    0    0    0    0    0                    
+CONECT    3    1    5    9    0    0    0    0    0    0    0                    
+CONECT    4    2    6   10    0    0    0    0    0    0    0                    
+CONECT    5    3    6   11    0    0    0    0    0    0    0                    
+CONECT    6    4    5   12    0    0    0    0    0    0    0                    
+CONECT    7    1    0    0    0    0    0    0    0    0    0                    
+CONECT    8    2    0    0    0    0    0    0    0    0    0                    
+CONECT    9    3    0    0    0    0    0    0    0    0    0                    
+CONECT   10    4    0    0    0    0    0    0    0    0    0                    
+CONECT   11    5    0    0    0    0    0    0    0    0    0                    
+CONECT   12    6    0    0    0    0    0    0    0    0    0                    
+CONECT   13   14   15   19    0    0    0    0    0    0    0                    
+CONECT   14   13   16   20    0    0    0    0    0    0    0                    
+CONECT   15   13   17   21    0    0    0    0    0    0    0                    
+CONECT   16   14   18   22    0    0    0    0    0    0    0                    
+CONECT   17   15   18   23    0    0    0    0    0    0    0                    
+CONECT   18   16   17   24    0    0    0    0    0    0    0                    
+CONECT   19   13    0    0    0    0    0    0    0    0    0                    
+CONECT   20   14    0    0    0    0    0    0    0    0    0                    
+CONECT   21   15    0    0    0    0    0    0    0    0    0                    
+CONECT   22   16    0    0    0    0    0    0    0    0    0                    
+CONECT   23   17    0    0    0    0    0    0    0    0    0                    
+CONECT   24   18    0    0    0    0    0    0    0    0    0                    
+ENDMDL
+END

@@ -1,0 +1,29 @@
+    guanidinium ion                                         Tot. E =    -74.9468
+   1 C    302    0    0    0.000000   0    0.000000   0    0.000000        0
+   2 DUM   -1    0    1    1.000000   0    0.000000   0    0.000000        0
+   3 DUM   -1    0    2    1.000000   1   90.000000   0    0.000000        0
+   4 N    300    0    1    1.330687   2   90.000000   3    0.000000        0
+   5 N    300    0    1    1.330687   4  120.000146   2  270.000000        0
+   6 N    300    0    1    1.330687   4  120.000146   5  179.999608        0
+   7 H    301    0    4    1.013383   1  122.329881   6  179.993950        0
+   8 H    301    0    4    1.013383   1  122.329911   7  180.003157        0
+   9 H    301    0    5    1.013383   1  122.329945   4  179.993951        0
+  10 H    301    0    5    1.013383   1  122.329888   9  180.003157        0
+  11 H    301    0    6    1.013383   1  122.329858   5  179.993951        0
+  12 H    301    0    6    1.013383   1  122.329976  11  180.003157        0
+                    Geometry Variations follow    (2I4,F12.6)                   
+                    Variable Bonds follow         (I4 or I4-I4)                 
+0004-0012                                                                       
+                    Additional Bonds follow       (2I4)                         
+                    Harmonic Constraints follow   (2I4,4F10.4)                  
+                    Variable Bond Angles follow   (I4 or I4-I4)                 
+0005-0012                                                                       
+                    Additional Bond Angles follow (3I4)                         
+AUTO                                                                            
+                    Variable Dihedrals follow     (3I4,F12.6)                   
+0006-0012                                                                       
+                    Additional Dihedrals follow   (6I4)                         
+AUTO                                                                            
+                    Domain Definitions follow     (4I4)                         
+                    Conformational Search         (2I4, 2F12.6)                 
+                    Final blank line                                            

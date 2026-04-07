@@ -1,0 +1,66 @@
+#
+# Command file for the BOSS program.  Execute by entering the following:
+# csh gbcmd >& gblog &
+#***********************************************************************
+echo '       Monte Carlo for a Single Solute with GB/SA'
+echo '             Equilibration: 1000 K'
+echo '                Averaging:  2000 K'
+#***********************************************************************
+#
+nice +19
+set boss = $BOSSdir/BOSS
+set configurations = "200000"
+set lambda = "0.0 0.000 0.000"
+set boxes = $BOSSdir
+#
+setenv INFILE    gbin
+setenv UPFILE    gbup
+setenv SAVE      svmtmp
+setenv AVERAGE   gbav
+setenv ZMATRIX   gbzmat
+setenv SLVZMAT   slvzmat
+
+if (-e tmppar) rm tmppar
+cp gbpar tmppar
+cat $BOSSdir/oplsaa.par >> tmppar
+setenv PARAMETER tmppar
+
+setenv BANGPAR   $boxes/oplsaa.sb
+setenv WATERBOX  $boxes/watbox
+setenv ORG1BOX   $boxes/org1box
+setenv ORG2BOX   $boxes/org2box
+setenv SUMMARY   gbsum
+
+date
+setenv OUTPUT    gbota
+setenv PLTFILE   gbplta
+
+#    Equilibration
+
+time $boss 111 $configurations $lambda
+foreach block (b c d e)
+       date
+       setenv OUTPUT    gbot$block
+       setenv PLTFILE   gbplt$block
+       time $boss 001 $configurations $lambda
+end
+
+#    Averaging
+
+setenv OUTPUT    gbota
+setenv PLTFILE   gbplta
+
+set configurations = "250000"
+time $boss 011 $configurations $lambda
+foreach block (b c d a b c e2)
+       date
+       setenv OUTPUT    gbot$block
+       setenv PLTFILE   gbplt$block
+       time $boss 001 $configurations $lambda
+end
+cp gbote2 gbout
+rm gbot* slvzmat svmtmp
+cp gbplte2 gbplt.pdb
+rm gbplt* tmppar
+exit
+

@@ -1,0 +1,17 @@
+REMARK         Benzene-K+               
+REMARK    Created by BOSS 4.9 Oct 13 Linux 
+ATOM      1  C00 UNK     1       0.000   1.400   0.000
+ATOM      2  C01 UNK     1       0.000   0.695  -1.220
+ATOM      3  C02 UNK     1       0.000   0.695   1.220
+ATOM      4  C03 UNK     1      -0.001  -0.714  -1.221
+ATOM      5  C04 UNK     1       0.002  -0.714   1.220
+ATOM      6  C05 UNK     1      -0.002  -1.419   0.000
+ATOM      7  H06 UNK     1       0.039   2.481   0.000
+ATOM      8  H07 UNK     1       0.039   1.237  -2.156
+ATOM      9  H08 UNK     1       0.039   1.237   2.156
+ATOM     10  H09 UNK     1       0.047  -1.253  -2.158
+ATOM     11  H0A UNK     1       0.048  -1.253   2.157
+ATOM     12  H0B UNK     1       0.048  -2.500   0.000
+TER   
+ATOM     13  K0C UNK     2      -2.928  -0.226  -0.010
+END

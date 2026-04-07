@@ -1,0 +1,33 @@
+      Acetate Anion                                         Tot. E =   -148.4699
+   1 C1   271  271    0    0.000000   0    0.000000   0    0.000000        0
+   2 DUM   -1    0    1    1.000000   0    0.000000   0    0.000000        0
+   3 DUM   -1    0    2    0.200000   1   90.000000   0    0.000000        0
+   4 O4   272  272    1    1.252358   2   60.000000   3    0.000000        0
+   5 O5   272  272    1    1.252239   2   59.926446   3  180.000000        0
+   6 C6   273  273    1    1.512740   4  119.995964   5  179.848853        0
+   7 H7   140  140    6    1.089520   1  110.348983   4   32.690829        0
+   8 H8   140  140    6    1.089087   1  109.998893   7  240.006719        0
+   9 H9   140  140    6    1.089559   1  110.372604   7  120.027309        0
+TERZ                                                                            
+  10 N    286    0    1    2.000000   4   59.835644   6  180.140946        0
+  11 H    289    0   10    1.035801   1   45.198660   4    0.009173        0
+  12 H    289    0   10    1.033730  11   91.706544   4    0.014755        0
+  13 H    289    0   10    0.999812  11  110.885379  12  246.443312        0
+  14 H    289    0   10    0.999806  11  110.905764  12  113.628539        0
+                    Geometry Variations follow    (2I4,F12.6)                   
+                    Variable Bonds follow         (I4)                          
+0004-0009
+0011-0014                                                                       
+                    Additional Bonds follow       (2I4)                         
+                    Harmonic Constraints follow   (2I4,4F10.4)                  
+                    Variable Bond Angles follow   (I4)                          
+0005-0014                                                                       
+                    Additional Bond Angles follow (3I4)                         
+AUTO                                                                            
+                    Variable Dihedrals follow     (3I4,F12.6)                   
+0006-0014                                                                       
+                    Additional Dihedrals follow   (6I4)                         
+AUTO                                                                            
+                    Domain Definitions follow     (4I4)                         
+                    Conformational Search         (2I4, 2F12.6)                 
+                    Final blank line                                            

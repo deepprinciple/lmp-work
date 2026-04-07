@@ -1,0 +1,26 @@
+Results for optimizing a slightly distorted decalin.
+BOSS 4.2 on an R5000 SGI O2.
+Initial energy = 26.3 kcal/mol
+
+Optimizer        Final Energy      Time (sec)
+BFGS                16.38            14.4
+Fletcher-Powell     16.38            13.8
+Conjugate Grad.     16.38           118.2
+Simplex             16.49            26.5
+Powell              16.38            23.2
+Hooke-Jeeves        16.39            27.8
+
+For anisomycin (40 atoms); initial energy = 31.4
+BFGS                -3.72            18.4  
+Fletcher-Powell      0.44            19.9
+Powell              -6.64            76.1
+The structure output by Powell is a different conformer with
+an internal hydrogen bond between the hydroxyl and acetyl groups.
+Powell output structure submitted to BFGS:
+BFGS                -6.64            14.2
+
+=> the gradient methods (BFGS and FP) are generally preferred near a minimum;
+they generally converge to the nearest local minimum.
+They are not always the best on a flat potential
+surface, e.g., for a hydrogen-bonded complex. For larger systems,
+BFGS gives the lowest energies; with other optimizers, try resubmitting.

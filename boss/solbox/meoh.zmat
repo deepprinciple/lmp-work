@@ -1,0 +1,29 @@
+CH3OH       All-Atom                              Tot. E =      3.4258 
+   1 O    154    0    0    0.000000   0    0.000000   0    0.000000        0
+   2 DUM   -1    0    1    0.500000   0    0.000000   0    0.000000        0
+   3 DUM   -1    0    2    0.500000   1   90.000000   0    0.000000        0
+   4 H    155    0    1    0.945691   2   90.000000   3  180.000000        0
+   5 C    157    0    1    1.411937   4  108.990535   2  180.000000        0
+   6 HC   156    0    5    1.090462   1  110.235090   4  180.178256        0
+   7 HC   156    0    5    1.090392   6  108.446039   1  121.185354        0
+   8 HC   156    0    5    1.090437   6  108.400982   1  238.906269        0
+                    Blank Line
+                    Variable Bonds follow         (I4 or I4-I4)                 
+0004-0008                                                                       
+                    Additional Bonds follow       (2I4)                         
+                    Blank Line
+                    Variable Bond Angles follow   (I4 or I4-I4)                 
+0005-0008                                                                       
+                    Additional Bond Angles follow (3I4)                         
+000100050007                                                                    
+000100050008                                                                    
+000700050008                                                                    
+                    Variable Dihedrals follow     (3I4,F12.6)                   
+000600080008  20.0                                                              
+000700000000   5.0                                                              
+000800000000   5.0                                                              
+                    Additional Dihedrals follow   (6I4)                         
+000400010005000700080008                                                        
+000400010005000800080008                                                        
+                    Domain Definitions follow     (4I4)                         
+                    Final blank line                                            

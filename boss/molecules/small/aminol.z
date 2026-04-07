@@ -1,0 +1,33 @@
+        2-ethanolamine                                      Tot. E =     -6.6652
+   1 O    154    0    0    0.000000   0    0.000000   0    0.000000        0    
+   2 DUM   -1    0    1    0.500000   0    0.000000   0    0.000000        0    
+   3 DUM   -1    0    2    0.500000   1   90.000000   0    0.000000        0    
+   4 HO   155    0    1    0.956503   2   90.000000   3  180.000000        0    
+   5 CH2  157    0    1    1.403388   4  102.296762   2  180.000000        0    
+   6 CH2  906    0    5    1.532776   1  103.921013   4   28.172953        0    
+   7 N    900    0    6    1.459399   5  108.465958   1  310.692588        0    
+   8 H    140    0    5    1.091156   1  110.755177   6  120.654484        0    
+   9 H    140    0    5    1.091096   1  109.965830   6  240.326523        0    
+  10 H    911    0    6    1.091536   5  110.761052   7  238.388775        0    
+  11 H    911    0    6    1.091975   5  110.278551   7  119.791661        0    
+  12 DUM   -1    0    7    1.000000   6  110.800325   5   55.795298        0    
+  13 H    909    0    7    1.012570   6  109.691800  12  238.027151        0    
+  14 H    909    0    7    1.012175   6  109.682163  12  121.685475        0    
+                    Geometry Variations           (I4)                          
+                    Variable Bonds follow         (I4)                          
+0004-0011                                                                       
+0013-0014                                                                       
+                    Additional Bonds follow       (2I4)                         
+                    Harmonic Constraints follow   (2I4, 4F10.4)                 
+                    Variable Bond Angles follow   (I4)                          
+0005-0011                                                                       
+0013-0014                                                                       
+                    Additional Bond Angles follow (3I4)                         
+AUTO                                                                            
+                    Variable Dihedrals follow     (3I4,F12.6)                   
+0006-0014                                                                       
+                    Additional Dihedrals follow   (6I4)                         
+AUTO                                                                            
+                    Domain Definitions follow     (4I4)                         
+                    Conformational Search                                       
+                    Final blank line                                            

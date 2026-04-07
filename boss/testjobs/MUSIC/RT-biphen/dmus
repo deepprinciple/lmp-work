@@ -1,0 +1,13 @@
+select all
+wireframe off
+select unk and not hydrogens
+wireframe 20
+color green
+select unk and nitrogen
+color blue
+select unk and oxygen
+color red
+select not unk and not hydrogens
+wireframe 30
+zoom 150
+set picking distance

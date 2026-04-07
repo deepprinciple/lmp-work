@@ -1,0 +1,21 @@
+       Bromopropane (UA)                                    Tot. E =     -0.2908
+   1  C1  723  723    0    0.000000   0    0.000000   0    0.000000        0    
+   2   X   -1   -1    1    1.000000   0    0.000000   0    0.000000        0    
+   3   X   -1   -1    2    1.000000   1   90.000000   0    0.000000        0    
+   4  C2   71   71    1    1.531880   2   90.000000   3    0.000000        0    
+   5  C3   68   68    4    1.529531   1  114.158116   2    0.000000        0    
+   6  Br  722  722    1    1.950906   4  113.515732   5   64.133816        0    
+                    Geometry Variations follow    (2I4,F12.6)                   
+                    Variable Bonds follow         (I4)                          
+0004-0006                                                                       
+                    Additional Bonds follow       (2I4)                         
+                    Harmonic Constraints follow   (2I4,4F10.4)                  
+                    Variable Bond Angles follow   (I4)                          
+0005-0006                                                                       
+                    Additional Bond Angles follow (3I4)                         
+                    Variable Dihedrals follow     (3I4,F12.6)                   
+000602310231 20.                                                                
+                   Additional Dihedrals follow   (6I4)                          
+                   Domain Definitions follow     (4I4)                          
+                   Conformational Search         (2I4, 2F12.6)                  
+                   Final blank line                                             

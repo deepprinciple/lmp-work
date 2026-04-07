@@ -1,0 +1,15 @@
+XS-SH 600.       0.70           XCY thiol XS test
+XS-S  600.       0.70           XCY sulfide, disulfide XS test
+XS-SA 600.       0.70           XCY thiophene, thiazole XS test
+XS-SH-XS   200.       160.00    XCY thiol XS test
+XS-SH-HS   200.        96.46    XCY thiol XS test
+CT-SH-XS   200.        96.46    XCY thiol XS test
+CA-SH-XS   200.        96.46    XCY thiol XS test
+XS-S -XS   200.       160.00    XCY sulfide, disulfide XS test
+CT-S -XS   200.        96.46    XCY sulfide, disulfide XS test
+CA-S -XS   200.        96.46    XCY sulfide XS test
+S -S -XS   200.        96.46    XCY disulfide XS test
+XS-SA-CP   200.        96.46    XCY thiophene XS test
+XS-SA-XS   200.       160.00    XCY thiophene, thiazole XS test
+XS-SA-CR   200.        96.46    XCY thiazole XS test
+XS-SA-CW   200.        96.46    XCY thiazole XS test

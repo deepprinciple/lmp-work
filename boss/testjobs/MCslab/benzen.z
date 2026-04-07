@@ -1,0 +1,30 @@
+            Benzene                                         Tot. E =      6.6806
+   1   X   -1   -1    0    0.000000   0    0.000000   0    0.000000        0    
+   2   X   -1   -1    1    1.000000   0    0.000000   0    0.000000        0    
+   3   C  145  145    1    1.400000   2   90.000000   0    0.000000        0    
+   4   C  145  145    3    1.408854   1   60.000000   2   90.000000        0    
+   5   C  145  145    3    1.408854   4  120.000000   1    0.000000        0    
+   6   C  145  145    4    1.408854   3  120.000000   5    0.000000        0    
+   7   C  145  145    5    1.408854   3  120.000002   4    0.000000        0    
+   8   C  145  145    6    1.408854   4  119.999999   3    0.000000        0    
+   9   H  146  146    3    1.080432   4  120.000000   6  180.000000        0    
+  10   H  146  146    4    1.080432   3  120.000002   5  180.000000        0    
+  11   H  146  146    5    1.080432   3  119.999998   4  180.000000        0    
+  12   H  146  146    6    1.080432   4  120.000007   3  180.000000        0    
+  13   H  146  146    7    1.080432   5  120.000009   3  180.000000        0    
+  14   H  146  146    8    1.080432   6  120.000005   4  180.000000        0    
+                    Geometry Variations follow    (2I4,F12.6)                   
+                    Variable Bonds follow         (I4)                          
+0004-0014                                                                       
+                    Additional Bonds follow       (2I4)                         
+00070008                                                                        
+                    Harmonic Constraints follow   (2I4,4F10.4)                  
+                    Variable Bond Angles follow   (I4)                          
+0005-0014                                                                       
+                    Additional Bond Angles follow (3I4)                         
+AUTO                                                                            
+                    Variable Dihedrals follow     (3I4,F12.6)                   
+                    Additional Dihedrals follow   (6I4)                         
+                    Domain Definitions follow     (4I4)                         
+                    Conformational Search (4I2,2F12.6)                          
+                    Final blank line                                            

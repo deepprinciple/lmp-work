@@ -1,0 +1,30 @@
+           Furan                                            Tot. E =      0.2231
+   1 Dum   -1   -1    0    0.000000   0    0.000000   0    0.000000        0    
+   2 Dum   -1   -1    1    1.000000   0    0.000000   0    0.000000        0    
+   3 O    566  566    1    1.400000   2   90.000000   0    0.000000        0    
+   4 C2   567  567    3    1.361540   1   54.000000   2   90.000000        0    
+   5 C3   568  568    4    1.366668   3  110.801861   1    0.000000        0    
+   6 C2   567  567    3    1.361540   4  106.278216   5    0.000000        0    
+   7 C3   568  568    6    1.366668   3  110.801861   4    0.000000        0    
+   8 H2   569  569    4    1.080000   3  115.249070   6  180.000000        0    
+   9 H3   570  570    5    1.080000   4  126.070484   3  180.000000        0    
+  10 H2   569  569    6    1.080000   3  115.249070   4  180.000000        0    
+  11 H3   570  570    7    1.080000   6  126.070484   3  180.000000        0    
+                    Geometry Variations                                         
+                    Variable Bonds follow         (I4)                          
+0004-0011                                                                       
+                    Additional Bonds follow       (2I4)                         
+00050007                                                                        
+                    Harmonic Constraints                                        
+                    Variable Bond Angles follow   (I4)                          
+0005-0011                                                                       
+                    Additional Bond Angles follow (3I4)                         
+AUTO
+                    Variable Dihedrals follow     (3I4,F12.6)                   
+0006-0011
+                    Additional Dihedrals follow   (6I4)                         
+AUTO
+                    Domain Definitions follow     (4I4)                         
+                    Conformational Search                                       
+                    Final blank line                                            
+                                                                                

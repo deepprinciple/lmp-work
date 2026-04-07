@@ -1,0 +1,25 @@
+            Methane                                         Tot. E =      0.1685
+   1 C    138    0    0    0.000000   0    0.000000   0    0.000000        0    
+   2 DUM   -1    0    1    0.500000   0    0.000000   0    0.000000        0    
+   3 DUM   -1    0    2    0.500000   1   90.000000   0    0.000000        0    
+   4 H    140    0    1    1.090000   2   90.000000   3    0.000000        0    
+   5 H    140    0    1    1.090000   4  109.471221   3    0.000000        0    
+   6 H    140    0    1    1.090000   4  109.471221   5  240.000000        0    
+   7 H    140    0    1    1.090000   4  109.471221   5  120.000000        0    
+                    Geometry Variations follow                                  
+                    Variable Bonds follow         (I4 or I4-I4)                 
+0004-0007                                                                       
+                    Additional Bonds follow       (2I4)                         
+                    Harmonic Constraints follow                                 
+                    Variable Bond Angles follow   (I4 or I4-I4)                 
+0005-0007                                                                       
+                    Additional Bond Angles follow (3I4)                         
+000500010006                                                                    
+000500010007                                                                    
+000600010007                                                                    
+                    Variable Dihedrals follow     (3I4,F12.6)                   
+000600000000   5.0                                                              
+000700000000   5.0                                                              
+                    Additional Dihedrals follow   (6I4)                         
+                    Domain Definitions follow     (4I4)                         
+                    Final blank line                                            

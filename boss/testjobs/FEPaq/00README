@@ -1,0 +1,70 @@
+
+This illustrates the classic FEP mutation of OPLS-UA methanol
+to ethane, as in J Chem Phys 83, 3050 (1985). The principal
+difference is that 210 TIP4P water molecules are used here for 
+the solvent instead of the 125 in the JCP paper. We no longer
+have the smaller water box handy; the minimum size of stored
+water boxes in BOSS is 216.
+
+For UNIX, the entire FEP is run by submission of just the fepcmd file.
+However, the DOS command language is less flexible, so for Windows,
+the jobs are chained together using the five .bat files - just
+submit f10.bat.
+ 
+Five windows are executed with delta lambda = +- 0.10.
+Each window has 1M configurations of equilibration and 2M
+of averaging.
+
+The feppar0 and feppar files here are for use with the OPLS-UA force
+field. Use the files in the fepaq directory for OPLS-AA.
+
+Time required: 5.8 hours on an R5000 SGI.
+               22 minutes on a 2.4 GHz Pentium IV.
+
+Summary of results:
+
+fsum10: DeltaG (  0.000 to   0.100)  =      2.171 +/-     0.074
+fsum10: DeltaG (  0.100 to   0.200)  =      1.724 +/-     0.061
+fsum30: DeltaG (  0.200 to   0.300)  =      0.967 +/-     0.115
+fsum30: DeltaG (  0.300 to   0.400)  =      0.698 +/-     0.099
+fsum50: DeltaG (  0.400 to   0.500)  =      0.486 +/-     0.049
+fsum50: DeltaG (  0.500 to   0.600)  =      0.371 +/-     0.048
+fsum70: DeltaG (  0.600 to   0.700)  =      0.265 +/-     0.033
+fsum70: DeltaG (  0.700 to   0.800)  =      0.180 +/-     0.032
+fsum90: DeltaG (  0.800 to   0.900)  =      0.114 +/-     0.024
+fsum90: DeltaG (  0.900 to   1.000)  =      0.066 +/-     0.024
+
+                           Total DeltaG     7.042 +/-     0.200
+
+                 DeltaG in JCP 83, 3050     6.75  +/-     0.2
+                Exptl. DeltaG Hydration     6.93
+
+Note1: The above summary, total DeltaG and error bars are readily obtained by
+grep DeltaG *sum* >>delgsum
+c:\boss\miscexec\sumdelg
+Or use the xSUMDELG or xSUMDW scripts.
+
+Note2: The subdirectory fepaq contains updated cmd file with a
+delta lambda of 0.05 and longer averaging (10M per window). 
+Scripts are provided for
+easy execution of FEP calculations in water.
+
+Note3: The subdirectory fepgas contains the cmd files and scripts for
+easy execution of FEP calculations in the gas phase.
+
+Note4: The subdirectory PhXtoY illustrates execution of both gas-phase and
+aqueous FEP calculations for conversion of substituted benzenes                   
+with full flexibility of the solute. The difference in free energies of
+hydration for the two molecules is computed with the OPLS-AA force field.
+
+Note5: The file f010cmd for UNIX/Linux is provided to illustrate a command file
+to execute just one step of an FEP calculation. One could generate manually
+additional command files (f030cmd, f050cmd, f070cmd, f090cmd)
+that can be called in order starting with the submission of
+f010cmd to complete a full FEP calculation. fepcmd automates this process.
+If one wants to run the five windows on five different computers
+simultaneously, submit the five separate cmd files
+(f010cmd, f030cmd, f050cmd, f070cmd, f090cmd). Each needs
+to use feppar0 as the par file.
+
+Note5: ArtoAr illustrates FEP calculations between azines.

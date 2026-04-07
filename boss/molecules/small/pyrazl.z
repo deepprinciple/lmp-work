@@ -1,0 +1,29 @@
+            Pyrazole                                        Tot. E =      3.8119
+   1 N1   548  548    0    0.000000   0    0.000000   0    0.000000        0
+   2 DUM   -1   -1    1    1.000000   0    0.000000   0    0.000000        0
+   3 DUM   -1   -1    2    1.000000   1   90.000000   0    0.000000        0
+   4 N2   549  549    1    1.346819   2   54.000000   3  270.000000        0
+   5 C3   550  550    4    1.322805   1  103.948990   2    0.000000        0
+   6 C4   551  551    5    1.424150   4  112.359572   1    0.000000        0
+   7 C5   552  552    6    1.367154   5  104.615390   4    0.000000        0
+   8 H1   553  553    1    1.011734   4  121.514771   5  180.000000        0
+   9 H3   554  554    5    1.080822   4  118.943480   1  180.000000        0
+  10 H4   555  555    6    1.079958   5  128.660779   4  180.000000        0
+  11 H5   556  556    7    1.080748   6  132.264698   5  180.000000        0
+                    Geometry Variations                                         
+                    Variable Bonds follow         (I4)                          
+0004-0011                                                                       
+                    Additional Bonds follow       (2I4)                         
+00010007                                                                        
+                    Harmonic Constraints                                        
+                    Variable Bond Angles follow   (I4)                          
+0005-0011                                                                       
+                    Additional Bond Angles follow (3I4)                         
+AUTO                                                                            
+                    Variable Dihedrals follow     (3I4,F12.6)                   
+0006-0011                                                                       
+                    Additional Dihedrals follow   (6I4)                         
+AUTO                                                                            
+                    Domain Definitions follow     (4I4)                         
+                    Final blank line                                            
+                                                                                

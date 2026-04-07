@@ -1,0 +1,31 @@
+    cyclopropane-neon                                       Tot. E =      5.1285
+   1 C2   711  711    0    0.000000   0    0.000000   0    0.000000        0    
+   2 X     -1   -1    1    1.000000   0    0.000000   0    0.000000        0    
+   3 X     -1   -1    2    1.000000   1   90.000000   0    0.000000        0    
+   4 C3   711  711    1    1.509991   2   90.000000   3    0.000000        0    
+   5 C1   711  711    1    1.509990   4   60.000001   2  180.000000        0    
+   6 H    140  140    4    1.088407   1  117.636695   5  107.595888        0    
+   7 H    140  140    4    1.088401   1  117.646433   5  252.396544        0    
+   8 H    140  140    5    1.088401   1  117.646424   4  107.603495        0    
+   9 H    140  140    5    1.088407   1  117.636695   4  252.404045        0    
+  10 H    140  140    1    1.088401   4  117.646462   5  107.603470        0    
+  11 H    140  140    1    1.088407   4  117.636672   5  252.404105        0    
+TERZ                                                                            
+  12 Ne   102  102    1    3.542053   2   97.068844   3   77.597458        0    
+                    Geometry Variations follow    (2I4,F12.6)                   
+                    Variable Bonds follow         (I4)                          
+0004-0012                                                                       
+                    Additional Bonds follow       (2I4)                         
+00040005                                                                        
+                    Harmonic Constraints follow   (2I4,4F10.4)                  
+                    Variable Bond Angles follow   (I4)                          
+0005-0012                                                                       
+                    Additional Bond Angles follow (3I4)                         
+AUTO                                                                            
+                    Variable Dihedrals follow     (3I4,F12.6)                   
+0006-0012                                                                       
+                   Additional Dihedrals follow   (6I4)                          
+AUTO                                                                            
+                   Domain Definitions follow     (4I4)                          
+                   Conformational Search         (2I4, 2F12.6)                  
+                   Final blank line                                             

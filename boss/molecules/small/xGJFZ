@@ -1,0 +1,41 @@
+#!/bin/csh
+#
+# take Gaussian job file to optimized BOSS Z-matrix
+# with CM1A charges
+#
+# usage:  xGJFZ moleculename
+#
+# file moleculename.gjf must be in the directory
+# file moleculename.z is created
+# file plt.pdb contains the PDB file of the optimized structure
+#
+# test if the enviroment variable BOSSdir has been defined
+#
+if (!($?BOSSdir)) then
+   echo "BOSSdir has not been defined; please see README"
+   exit (-1)
+endif
+
+if (-e tmppdb) rm tmppdb
+if (-e tmpzmat) rm tmpzmat
+$BOSSdir/autozmat -i gauss -o pdb <${argv[1]}.gjf >tmppdb       
+$BOSSdir/autozmat -i pdb -z default <tmppdb >tmpzmat      
+if (-e optzmat) rm optzmat
+cp tmpzmat optzmat
+csh $BOSSdir/scripts/AM1SPcmd >& log
+rm optzmat
+cp sum optzmat
+csh $BOSSdir/scripts/OPTFcmd >& log
+rm optzmat
+cp sum optzmat
+csh $BOSSdir/scripts/AM1SPcmd >& log
+rm optzmat
+cp sum optzmat
+csh $BOSSdir/scripts/OPTFcmd >& log
+
+if (-e ${argv[1]}.z) rm ${argv[1]}.z
+cp sum ${argv[1]}.z
+cp tmpzmat ${argv[1]}.gjf.z
+echo "output in ${argv[1]}.z (optimized) and ${argv[1]}.gjf.z"
+#
+exit

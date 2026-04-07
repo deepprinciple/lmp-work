@@ -1,0 +1,25 @@
+#!/bin/csh
+# set echo
+#
+# combine QikProp and BOSS conformational search results
+#
+# usage - xQPCON
+# The program is interactive and queries for file names for
+# propsum and plt.mol.
+#
+# output is in out
+#
+#
+# test if the enviroment variable BOSSdir has been defined
+#
+if (!($?BOSSdir)) then
+   echo "BOSSdir has not been defined; please see README"
+   exit (-1)
+endif
+
+if (-e conout) rm conout
+$BOSSdir/miscexec/qpcona
+
+more conout
+#
+exit

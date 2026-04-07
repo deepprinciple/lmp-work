@@ -1,0 +1,93 @@
+ Results Summary:         1,2-ethanediol             Tue Jan 17 16:30:59 2023
+
+ NMOL =   0          EDGE =  100.0000  100.0000  100.0000    RCUT =   10.0000
+ NACCPT =        0   NRJECT =        0   MXCON =     100     NCON =       0
+ T(C) =      0.00    OLD E =  0.00000000D+00    NEW E =  0.37440663D+00
+ RDEL =    0.2000    ADEL =   20.0000    VDEL =       0.0    MXS =    2500
+ P(ATM) =     0.0    VOLD =   1000000.0  VNEW =   1000000.0  NVCHG =999999
+ DIELRF =     1.0    Reaction Field NOT Applied
+
+ Information for the Reference Solute:
+ NSCHG=     1        SCUT =   10.0000    ICUT =     0        NCENT =   1    1
+ RDELS1=   0.0000    RDELS2=   0.0000    ADELS1=   0.0000    ADELS2=   0.0000
+ ESOLD=      0.00    ESONE=      0.00    WIMAX=  0.000000    WKC =  200.00
+ EXXOLD=     0.00    EXXNEW=     0.00    DIELEC=   1.0000    CUTOFF E=    0.000
+ EPOOLD=     0.00    EPONEW=     0.00    NPOLX =        0    NPOLS =        0
+ EBNDOL=   0.0000    EBNDNE=   0.1153    EANGOL=   0.0000    EANGNE=   1.1932
+ EDIHOL=   0.0000    EDIHNE=   7.9587    ENBOL=      0.00    ENBNE=     -8.89
+ EBCOLD=     0.00    EBCNEW=     0.00    SANEW =     0.00    POLCUT=    10.00
+
+ ESXCUT=    0.000    ESXCT1=    0.000    ESXCT2=    0.000
+
+
+ 1-4 Scale Factors: Coul.=   0.20000D+01 L-J=   0.20000D+01  CUTNB =  100.000
+ RC0 =    0.0000   RC1 =    0.0000   RC2 =    0.0000
+
+ Total Solvent Accessible Surface Area =   223.78
+       Total Solvent Accessible Volume =   296.59
+
+
+********************************************************************************
+**************     Summary of Conformational Searching     *********************
+********************************************************************************
+
+Variables sampled in the conformational search
+ ----------------------------------------------------------------
+   Type         I   -   J   -   K   -   L      Min         Max
+ ----------------------------------------------------------------
+ Bond           4       3       0       0    0.000000    0.000000
+ Bond           5       4       0       0    0.000000    0.000000
+ Bond           6       5       0       0    0.000000    0.000000
+ Bond           7       6       0       0    0.000000    0.000000
+ Bond           8       7       0       0    0.000000    0.000000
+ Bond           9       5       0       0    0.000000    0.000000
+ Bond          10       5       0       0    0.000000    0.000000
+ Bond          11       6       0       0    0.000000    0.000000
+ Bond          12       6       0       0    0.000000    0.000000
+ Angle          5       4       3       0    0.000000    0.000000
+ Angle          6       5       4       0    0.000000    0.000000
+ Angle          7       6       5       0    0.000000    0.000000
+ Angle          8       7       6       0    0.000000    0.000000
+ Angle          9       5       4       0    0.000000    0.000000
+ Angle         10       5       4       0    0.000000    0.000000
+ Angle         11       6       5       0    0.000000    0.000000
+ Angle         12       6       5       0    0.000000    0.000000
+ Dihedral       6       5       4       3    0.000000    0.000000
+ Dihedral       7       6       5       4    0.000000    0.000000
+ Dihedral       8       7       6       5    0.000000    0.000000
+ Dihedral       9       5       4       6    0.000000    0.000000
+ Dihedral      10       5       4       6    0.000000    0.000000
+ Dihedral      11       6       5       7    0.000000    0.000000
+ Dihedral      12       6       5       7    0.000000    0.000000
+ ----------------------------------------------------------------
+
+MC Steps:
+ Number of MC steps requested in this run =          100
+ Number of MC steps completed in this run =          100
+ Number of MC steps in the previous run   =            0
+ Total number of MC steps completed       =          100
+ A new conformer has not been found for the last       3 MC steps.
+
+Search Options:
+ Energy tolerance                (CSETOL) =        0.070
+ RMS tolerance                   (CSRMS ) =        0.200
+ Internuclear distance tolerance (CSRTOL) =        4.000
+ Upper bound energy rel to IGM   (CSREUP) =  0.10000E+03
+ Absolute lower bound energy     (CSAELO) = -0.99990E+04
+ Absolute upper bound energy     (CSAEUP) =  0.99990E+04
+
+Total Number of Conformers =   7
+Conformer   1:
+   Etotal =       0.317232 R^2total = 0.702375E+02 Nopt =     13 ( 22.4%) Nuse =     19
+Conformer   2:
+   Etotal =       0.627734 R^2total = 0.607824E+02 Nopt =      9 ( 15.5%) Nuse =     18
+Conformer   3:
+   Etotal =       2.309377 R^2total = 0.618816E+02 Nopt =      2 (  3.4%) Nuse =      3
+Conformer   4:
+   Etotal =       2.323541 R^2total = 0.124318E+03 Nopt =     11 ( 19.0%) Nuse =     16
+Conformer   5:
+   Etotal =       2.710505 R^2total = 0.102351E+03 Nopt =     11 ( 19.0%) Nuse =     16
+Conformer   6:
+   Etotal =       3.043392 R^2total = 0.111842E+03 Nopt =      9 ( 15.5%) Nuse =     15
+Conformer   7:
+   Etotal =       3.757097 R^2total = 0.989044E+02 Nopt =      3 (  5.2%) Nuse =     12

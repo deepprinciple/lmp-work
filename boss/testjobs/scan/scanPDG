@@ -1,0 +1,41 @@
+#
+# Command file for the BOSS program.  Execute by entering the following:
+# csh scancmd >& log &
+#***********************************************************************
+echo '          PDDG/PM3 Energy Scan for Neutral System'
+#***********************************************************************
+#!/bin/csh -f
+nice +19
+set boss = $BOSSdir/BOSS
+# The Z-matrix needs to be in scanzmat.
+# next line specifies the atom for the chosen variable
+set atom = "000007"
+# specify the increment; 1.0,2.0 or 3.0 for bond length, angle or dihedral;
+# number of energy minimizations to perform
+set lambda = "15.000 3.000 23.00"
+set boxes = $BOSSdir
+#
+setenv INFILE    scanin
+setenv UPFILE    scanup
+setenv SAVE      svscan
+setenv AVERAGE   scanav
+setenv ZMATRIX   scanzmat
+setenv SLVZMAT   slvzmat
+if (-e scanmp) rm scanmp
+cp $BOSSdir/scripts/PDGOPTpar scanmp
+cat $BOSSdir/oplsaa.par >> scanmp
+setenv PARAMETER scanmp
+setenv BANGPAR   $BOSSdir/oplsaa.sb
+setenv WATERBOX  $boxes/watbox
+setenv ORG1BOX   $boxes/org1box
+setenv ORG2BOX   $boxes/org2box
+setenv SUMMARY   scansum
+setenv OUTPUT    scanout
+setenv PLTFILE   plt.pdb
+
+date
+
+# the 3 below requests the potential surface scan
+time $boss 311 $atom $lambda
+rm slvzmat svscan scanav scanup scanmp scanin
+exit

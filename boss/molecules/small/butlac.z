@@ -1,0 +1,34 @@
+     butyrolactone                                          Tot. E =      3.4177
+   1 X     -1    0    0    0.000000   0    0.000000   0    0.000000        0    
+   2 X     -1    0    1    1.000000   0    0.000000   0    0.000000        0    
+   3 C    490    0    1    1.000000   2   90.000000   0    0.000000        0    
+   4 O    467    0    3    1.415955   1   45.000000   2   90.000000        0    
+   5 C    136    0    3    1.530028   4  103.836519   1    0.000000        0    
+   6 H    469    0    3    1.090651   5  111.057372   4  117.099988        0    
+   7 H    469    0    3    1.090287   5  112.439722   6  121.967955        0    
+   8 C    136    0    5    1.523592   3  104.177368   4  334.596754        0    
+   9 H    140    0    5    1.090823   3  109.830171   8  117.301876        0    
+  10 H    140    0    5    1.090037   3  112.343085   8  237.509403        0    
+  11 C    465    0    8    1.517392   5  102.459080   3   22.311911        0    
+  12 H    282    0    8    1.089837   5  111.696821  11  243.545483        0    
+  13 H    282    0    8    1.089870   5  112.835125  11  120.139778        0    
+  14 O    466    0   11    1.226883   8  123.733648   5  166.973975        0    
+                    Geometry Variations follow    (2I4,F12.6)                   
+                    Variable Bonds follow         (I4)                          
+0004-0014                                                                       
+                    Additional Bonds follow       (2I4)                         
+00040011                                                                        
+                    Harmonic Constraints follow   (2I4,4F10.4)                  
+                    Variable Bond Angles follow   (I4)                          
+0005-0014                                                                       
+                    Additional Bond Angles follow (3I4)                         
+AUTO                                                                            
+                    Variable Dihedrals follow     (3I4,F12.6)                   
+0006-0014                                                                       
+                    Additional Dihedrals follow   (6I4)                         
+0014001100080004 160 160                                                        
+AUTO                                                                            
+                    Domain Definitions follow     (4I4)                         
+                    Conformational Search (2I4,2F12.6)                          
+                    Final blank line                                            
+                                                                                

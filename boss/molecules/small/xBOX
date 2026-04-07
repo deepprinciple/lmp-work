@@ -1,0 +1,21 @@
+#!/bin/csh
+#
+#   execute a MC calculation in water.
+#   only the the Z-matrix needs to be present in the current
+#   directory.
+#
+#   Useage, e.g. for the Z-matrix zmat.z
+#           xBOX zmat
+#
+#
+echo 'starting MC calculation'
+mkdir ${argv[1]}.mc
+cd ${argv[1]}.mc
+cp ../${argv[1]}.z MCzmat
+csh $BOSSdir/scripts/boxcmd >& log &
+#
+#
+echo 'MC calculation was submitted'
+cd ..
+#
+exit

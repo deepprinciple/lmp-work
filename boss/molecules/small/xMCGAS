@@ -1,0 +1,24 @@
+#!/bin/csh
+#
+#   simple script to copy all necessary file from the
+#   test job MCgas to execute a gas-phase MC calculation.
+#   only the the Z-matrix needs to be present in the current
+#   directory.
+#
+#   Useage, e.g. for the Z-matrix zmat.z
+#           xMCGAS zmat
+#
+#
+echo 'starting gas-phase MC calculation'
+cp ${argv[1]}.z gaszmat
+cp $BOSSdir/testjobs/MCgas/gascmd .
+cp $BOSSdir/testjobs/MCgas/gaspar .
+csh gascmd >& loggas
+#
+rm  gaszmat
+rm  gaspar
+#
+echo 'finished gas-phase MC calculation'
+echo 'output is in gasout, gassum, gas.pdb'
+#
+exit

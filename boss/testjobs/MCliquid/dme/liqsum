@@ -1,0 +1,114 @@
+ Results Summary: Liquid Dimethoxyethane             Sun May 20 14:29:18 2007
+
+ NMOL = 267          EDGE =   35.9393   35.9393   35.9393    RCUT =   11.0000
+ NACCPT =  8000000   NRJECT =  6266418   MXCON = 1000000     NCON = 1000000
+ T(C) =     25.00    OLD E =  0.28365636D+04    NEW E =  0.28378632D+04
+ RDEL =    0.1200    ADEL =   12.0000    VDEL =     390.0    MXS =    2500
+ P(ATM) =     1.0    VOLD =     46420.4  VNEW =     46420.4  NVCHG =  1625
+ DIELRF =     1.0    Reaction Field NOT Applied
+
+ Information for the Reference Solute:
+ NSCHG=999999        SCUT =   10.0000    ICUT =     0        NCENT =   1    1
+ RDELS1=   0.0000    RDELS2=   0.0000    ADELS1=   0.0000    ADELS2=   0.0000
+ ESOLD=      0.00    ESONE=      0.00    WIMAX=  0.003846    WKC =10000.00
+ EXXOLD=     0.00    EXXNEW=     0.00    DIELEC=   1.0000    CUTOFF E=  -77.196
+ EPOOLD=     0.00    EPONEW=     0.00    NPOLX =        0    NPOLS =        0
+ EBNDOL=   0.0000    EBNDNE=   1.1956    EANGOL=   0.0000    EANGNE=   5.5324
+ EDIHOL=   0.0000    EDIHNE=   1.8369    ENBOL=      0.00    ENBNE=      6.72
+ EBCOLD=     0.00    EBCNEW=     0.00    SANEW =     0.00    POLCUT=    10.00
+
+ ESBNOL=  1223.10    ESBNNE=  1223.15    ESANOL=  1902.40    ESANNE=  1902.55
+ ESDIOL=   394.99    ESDINE=   395.83    ESNBOL=  1774.59    ESNBNE=  1774.63
+
+
+ 1-4 Scale Factors: Coul.=   0.20000D+01 L-J=   0.20000D+01  CUTNB =   16.000
+ RC0 =    0.0000   RC1 =    0.0000   RC2 =    0.0000
+
+
+
+
+            *** Averages ***
+ Total Energy =  2763.4079
+     Inter Cp =  7912.8265
+     Alpha(1/deg*e-5)=   200.3122
+     Kappa(1/atm*e-6)=   109.2330
+     Volume=    46318.3
+
+ Flexible Solvent Energy Components:
+ Bond Stretch E      1217.2662
+ Angle Bending E     1857.5609
+ Torsional Energy     375.5051
+ Non-bonded E        1786.8076
+ Total Internal E    5237.1399
+
+
+ Attempts/Accepts: Solute1       8/       8 Solute2       0/       0
+
+                                                Thermodynamic Results
+
+ Run Total Energy     Inter Cp       Volume       Enthalpy        Kappa         Alpha          EXX           ESX
+  8     2820.719      2557.550     46544.958      2821.398        49.244        33.177         0.000         0.000
+  1     2734.215      5372.174     46176.071      2734.888        76.105       170.737         0.000         0.000
+  2     2767.405      3512.161     46389.375      2768.081        57.831        87.153         0.000         0.000
+  3     2781.288      4933.647     46440.855      2781.965        80.346        95.472         0.000         0.000
+  4     2753.957      3036.982     45911.181      2754.627        45.390        89.570         0.000         0.000
+  5     2697.366      2385.202     46055.228      2698.037        61.878       125.510         0.000         0.000
+  6     2760.319     12123.452     46447.411      2760.996       203.615       390.188         0.000         0.000
+  7     2791.994      4091.952     46581.109      2792.673        79.733        24.783         0.000         0.000
+
+                                            Standard Deviations
+          13.195      1636.810        85.812        13.196        20.818        49.521         0.000         0.000
+
+                                                 Averages
+        2763.408      7912.826     46318.273      2764.083       109.233       200.312         0.000         0.000
+
+
+
+ Energy Components for Flexible Solvent
+ Run      E-Bond        E-Bend       Torsion      Non-Bond        Total
+  8     1225.593      1876.200       384.296      1774.841      5260.931
+  1     1217.787      1842.066       371.035      1790.830      5221.719
+  2     1229.607      1871.063       370.818      1781.464      5252.952
+  3     1229.878      1863.702       370.562      1789.972      5254.114
+  4     1241.679      1859.749       363.098      1801.238      5265.763
+  5     1188.852      1833.312       370.729      1795.008      5187.900
+  6     1190.387      1863.649       381.878      1785.627      5221.541
+  7     1214.347      1850.746       391.625      1775.482      5232.200
+
+                                            Standard Deviations
+           6.702         5.148         3.330         3.282         9.310
+
+                                                 Averages
+        1217.266      1857.561       375.505      1786.808      5237.140
+
+
+
+ Solvent-Solvent Energy Components
+ Run      L-J         Coulomb
+  8    -2007.402      -439.040
+  1    -2030.660      -457.276
+  2    -2016.348      -462.475
+  3    -2015.655      -456.231
+  4    -2042.513      -467.297
+  5    -2033.116      -456.117
+  6    -2015.426      -448.251
+  7    -2003.206      -439.787
+
+                                            Standard Deviations
+           4.788         3.595
+
+                                                 Averages
+       -2020.541      -453.309
+
+
+ Title: Liquid Dimethoxyethane        
+ ESX-Coul =      0.000 ESX-LJ =      0.000 SASA =      0.000
+ EXX-Coul =      0.000 EXX-LJ =      0.000 MW =       0.0000
+ Tot SASA =      0.000 Mol Vol=      0.000 Dipole=     0.000
+ H-phobic =      0.000 Philic =      0.000 Arom =      0.000 Wkly Polar=      0.000
+ # SX Ints=      0.000 for Ecut=    -9.500
+ # SX Ints=      0.000 for Ecut=   -11.500
+ #Donor HB=      0.000 Acptr HB=     0.000
+ Intramol E=     0.000
+ #Prot Ns =          0 #Nitro =          0 #Acid =         0 #Amide =          0
+ #Rotor Bonds=       0 #Real Atoms=      0

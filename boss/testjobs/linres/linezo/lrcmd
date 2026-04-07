@@ -1,0 +1,86 @@
+#
+# Command file for the BOSS program.  Execute by entering the following:
+# csh lrcmd >& log &
+# Just need to copy solute zmat to lrzmat, then execute.
+#***********************************************************************
+echo '            General Linear Response Setup    '
+echo '                    25 C & 1 atm '
+echo '                 Equilibration 5.2M '
+echo '              Averaging     0-25M '
+echo '            N = 500  T=25  P=1  Rcut = 10.0'
+#***********************************************************************
+#!/bin/csh -f
+#
+nice +19
+set boss = $BOSSdir/BOSS
+set lambda = "0.000 0.000 0.000"
+set boxes = $BOSSdir
+setenv INFILE    lrin
+setenv UPFILE    lrup
+setenv SAVE      lrsv
+setenv AVERAGE   lrav
+setenv ZMATRIX   lrzmat
+setenv SLVZMAT   slvzmat
+setenv BANGPAR   $boxes/oplsaa.sb
+setenv WATERBOX  $boxes/watbox
+setenv ORG1BOX   $boxes/org1box
+setenv ORG2BOX   $boxes/org2box
+setenv SUMMARY   lrsum
+
+date
+
+#    short NVT Equilibration
+
+set configurations = "200000"
+
+if (-e tmppar) rm tmppar
+cp lrpar tmppar
+cat $BOSSdir/oplsaa.par >> tmppar
+sed s/'NVTNPT'/'999999'/ tmppar > NVTpar
+setenv PARAMETER NVTpar
+
+setenv OUTPUT    lrota
+setenv PLTFILE   lrplta
+echo Running NVT
+time $boss 110 $configurations $lambda
+
+#    NPT Equilibration
+
+set configurations = "1000000"
+
+sed s/'NVTNPT'/'     0'/ tmppar > NPTpar
+setenv PARAMETER NPTpar
+
+setenv OUTPUT    lrota
+setenv PLTFILE   lrplta
+echo Equilibrating
+time $boss 010 $configurations $lambda
+foreach block (b  c d eq)
+        date
+	setenv OUTPUT    lrot$block
+	setenv PLTFILE   lrplt$block
+        echo Running $block
+	time $boss 001 $configurations $lambda
+end
+
+#    Averaging
+
+set configurations = "5000000"
+setenv OUTPUT    lrota
+setenv PLTFILE   lrplta
+echo Averaging
+time $boss 011 $configurations $lambda
+mv lrsv lrsav
+foreach block (b c d e25)
+        date
+        setenv OUTPUT    lrot$block
+        setenv PLTFILE   lrplt$block
+        echo Running $block
+        time $boss 001 $configurations $lambda
+        cat lrsv >>lrsav
+end
+
+rm lrsv slvzmat NVTpar NPTpar
+# clnlr
+date
+exit

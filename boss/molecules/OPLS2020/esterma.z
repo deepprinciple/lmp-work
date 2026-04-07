@@ -1,0 +1,30 @@
+         Methyl Acetate                                     Tot. E =    -11.2326
+   1   C  465    0    0    0.000000   0    0.000000   0    0.000000        0
+   2   X   -1   -1    1    1.000000   0    0.000000   0    0.000000        0
+   3   X   -1   -1    2    1.000000   1   90.000000   0    0.000000        0
+   4   O  466    0    1    1.229883   2   90.000000   3    0.000000        0
+   5   O  467    0    1    1.338108   4  125.726420   2    0.000000        0
+   6   C   54    0    1    1.520938   4  121.630668   5  179.999992        0
+   7   C  468    0    5    1.416809   1  118.929500   4  359.999979        0
+   8   H  469    0    7    1.089800   5  109.978292   1  179.999993        0
+   9   H  469    0    7    1.090819   5  110.854317   8  240.326889        0
+  10   H  469    0    7    1.090819   5  110.854324   8  119.673128        0
+  11   H   60    0    6    1.089943   1  110.453573   4    0.000000        0
+  12   H   60    0    6    1.089606   1  110.250388  11  240.045572        0
+  13   H   60    0    6    1.089606   1  110.250394  11  119.954442        0
+                    Geometry Variations follow    (2I4,F12.6)                   
+                    Variable Bonds follow         (I4)                          
+0004-0013                                                                       
+                    Additional Bonds follow       (2I4)                         
+                    Harmonic Constraints follow   (2I4,4F10.4)                  
+                    Variable Bond Angles follow   (I4)                          
+0005-0013                                                                       
+                    Additional Bond Angles follow (3I4)                         
+AUTO                                                                            
+                    Variable Dihedrals follow     (3I4,F12.6)                   
+0006-0013                                                                       
+                    Additional Dihedrals follow   (6I4)                         
+AUTO                                                                            
+                    Domain Definitions follow     (4I4)                         
+                    Conformational Search (4I2,2F12.6)                          
+                    Final blank line                                            

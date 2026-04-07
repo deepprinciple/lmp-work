@@ -1,0 +1,47 @@
+#!/bin/csh
+# set echo 
+#
+# execute QikProp                   
+#
+# usage - xQPROP moleculefile
+# works with BOSS Z-matrix, MDL mol, PDB files, or file list,
+# e.g., xQPROP sustiv.z or xQPROP sustiv.mol or xQPROP sustiv.pdb
+#
+# output is in QPSA.out, QP.out, QP.CSV, QPwarning
+#
+#
+# test if the enviroment variable QPdir has been defined
+#
+if (!($?QPdir)) then
+   echo "QPdir has not been defined; please see 00README"
+   exit (-1)
+endif
+
+if (-e QPwarning)    rm QPwarning
+if (-e QPpar)        rm QPpar
+if (-e QPxpd1.CSV)   rm QPxpd1.CSV
+if (-e QPxpd2.CSV)   rm QPxpd2.CSV
+if (-e Similar.name) rm Similar.name
+
+if !(-e QPlimits) cp $QPdir/QPlimits .
+if !(-e Similar.CSV) cp $QPdir/CSVfiles/Similar.CSV .
+cp $QPdir/oplsaa.par QPpar
+cp $QPdir/CSVfiles/QPxpd1.CSV .
+cp $QPdir/CSVfiles/QPxpd2.CSV .
+
+$QPdir/qikprop $argv[1] >& QPlog 
+
+rm QPpar QPxpd1.CSV QPxpd2.CSV
+if !(-z QPwarning) then
+   echo "***************************************************************************"
+   more QPwarning
+   echo "***************************************************************************"
+   exit
+endif
+
+if (-z QPlog)     rm QPlog
+if (-z QPwarning) rm QPwarning
+if (-z QPmyfits)  rm QPmyfits
+
+#
+exit

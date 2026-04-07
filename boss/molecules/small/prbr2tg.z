@@ -1,0 +1,32 @@
+      1,3-dibromoopropane tg                                Tot. E =      0.2587
+   1 C2   136  136    0    0.000000   0    0.000000   0    0.000000        0    
+   2 X     -1   -1    1    1.000000   0    0.000000   0    0.000000        0    
+   3 X     -1   -1    2    1.000000   1   90.000000   0    0.000000        0    
+   4 C3   976  976    1    1.535052   2   90.000000   3    0.000000        0    
+   5 C1   976  976    1    1.535369   4  113.526231   2  180.000000        0    
+   6 Br   975  975    4    1.944750   1  109.992960   5  176.223119        0    
+   7 H    977  977    4    1.090797   1  111.755589   6  119.425971        0    
+   8 H    977  977    4    1.090314   1  111.688214   6  240.554274        0    
+   9 Br   975  975    5    1.946466   1  111.074753   4   62.029268        0    
+  10 H    977  977    5    1.090605   1  111.642957   9  239.495132        0    
+  11 H    977  977    5    1.090749   1  110.893554   9  119.423304        0    
+  12 H    140  140    1    1.090594   4  109.027212   5  238.351015        0    
+  13 H    140  140    1    1.090713   4  109.380999   5  122.621454        0    
+                    Geometry Variations follow    (2I4,F12.6)                   
+                    Variable Bonds follow         (I4)                          
+0004-0013                                                                       
+                    Additional Bonds follow       (2I4)                         
+                    Harmonic Constraints follow   (2I4,4F10.4)                  
+                    Variable Bond Angles follow   (I4)                          
+0005-0013                                                                       
+                    Additional Bond Angles follow (3I4)                         
+AUTO                                                                            
+                    Variable Dihedrals follow     (3I4,F12.6)                   
+0006-0013                                                                       
+                   Additional Dihedrals follow   (6I4)                          
+AUTO                                                                            
+                   Domain Definitions follow     (4I4)                          
+                   Conformational Search         (2I4, 2F12.6)                  
+00060003   0.0      360.0                                                       
+00090003   0.0      360.0                                                       
+                   Final blank line                                             

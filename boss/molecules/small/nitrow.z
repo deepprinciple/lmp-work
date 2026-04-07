@@ -1,0 +1,37 @@
+     Nitromethane-Water                                     Tot. E =    -12.2296
+   1 N1   760  760    0    0.000000   0    0.000000   0    0.000000        0    
+   2 DUM   -1    0    1    1.000000   0    0.000000   0    0.000000        0    
+   3 DUM   -1    0    2    0.200000   1   90.000000   0    0.000000        0    
+   4 O4   761  761    1    1.224498   2   60.000000   3    0.000000        0    
+   5 O5   761  761    1    1.227268   2   64.707427   3  180.000000        0    
+   6 C6   762  762    1    1.491101   4  117.727788   5  180.000000        0    
+   7 H7   763  763    6    1.089862   1  108.615214   4  359.999999        0    
+   8 H8   763  763    6    1.089767   1  107.694926   7  239.760325        0    
+   9 H9   763  763    6    1.089767   1  107.694926   7  120.239676        0    
+TERZ                                                                            
+  10 OW   113    0    5    2.801400   1  113.342957   4  179.999995        0    
+  11 HW   114    0   10    0.957200   5  122.623268   1  180.000003        0    
+  12 HW   114    0   10    0.957200  11  104.520000   5    0.000001        0    
+  13 M    115    0   10    0.150000  11   52.260000  12    0.000000        0    
+                    Geometry Variations follow    (2I4,F12.6)                   
+                    Variable Bonds follow         (I4)                          
+0004-0009                                                                       
+0010                                                                            
+                    Additional Bonds follow       (2I4)                         
+                    Harmonic Constraints follow   (2I4,4F10.4)                  
+                    Variable Bond Angles follow   (I4)                          
+0005-0009                                                                       
+0010-0011                                                                       
+                    Additional Bond Angles follow (3I4)                         
+AUTO                                                                            
+                    Variable Dihedrals follow     (3I4,F12.6)                   
+0007  00  00    15.0                                                            
+0008  00  00     3.0                                                            
+0009  00  00     3.0                                                            
+0010  00  00     0.0                                                            
+0011  00  00     0.0                                                            
+0012  00  00     0.0                                                            
+                    Additional Dihedrals follow   (6I4)                         
+                    Domain Definitions follow     (4I4)                         
+                    Conformational Search         (2I4, 2F12.6)                 
+                    Final blank line                                            

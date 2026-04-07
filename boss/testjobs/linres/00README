@@ -1,0 +1,87 @@
+
+Full linear response calculation for a solute in water.
+Standard setup including 500 TIP4P water molecules.
+Equilibration = 5M; Averaging = 25M configurations.
+Time required: 1.5 hours on a 2.4 GHz Pentium.
+
+If you have a solute Z-matrix and just want to run a standard MC simulation
+in TIP4P water, use the xBOX or xBOX725 scripts in boss/scripts
+
+-----------------------------------------------------------------------------
+xLRCMP is a script to automatically execute an LR job using Z-matrices
+from the drugs directory and the OPLS-AA force field with scaled
+CM1P charges, e.g., enter
+
+xLRCMP linezo
+
+The linezolid  subdirectory contains output from this command; the directory
+was renamed from linezo. If you execute the above command, a directory
+named linezo will be created.
+
+This is the most general way to do LR calculations since the OPLS-AA
+atom types do not need to be assigned in the Z-matrix. With minor modification
+to the xLRCMP script, one could also start from a PDB or mol file rather
+than a BOSS Z-matrix; just include execution of the xPDBZ or xMOLZ script.
+
+At the end of the xLRCMP script, the PROPCMP program is executed to estimate
+pharmacologically important properties. The key results are in the file propout.
+The results are also written to the comma-separated file called csfile. Note:
+if csfile does not exist, it is created and includes a header, or if csfile
+exists, the results for the current molecule are appended. You could modify
+the xLRCMP script so that each time it is executed, the csfile is updated -
+please see the xLRCMP script or use the xLRCMPup script. 
+
+One could perform LR calculations for a list of molecules via one job
+submission as follows. 
+(1) Make a file with the molecule names called "names";
+each line has the name of a molecule from the drugs directory like
+azt
+linezo
+etc.
+(2) Execute; the results will be summarized in csfile.
+xMANY names xLRCMPup
+----------------------------------------------------------------------------
+xLRCMPhere is a script to automatically execute an LR job using a Z-matrix  
+from the current directory and the OPLS-AA force field with scaled
+CM1P charges, e.g., enter
+
+xLRCMPhere molecule
+
+The file molecule.z must be in the current directory.
+
+If you wished to start with a mol2 file, e.g., zoloft.mol2, enter
+$BOSSdir/scripts/xMOL2Z zoloft   
+xLRCMPhere zoloft   
+
+or starting with a PDB file, molecule.pdb, enter
+$BOSSdir/scripts/xPDBZ molecule
+xLRCMPhere molecule
+
+----------------------------------------------------------------------------
+xLRAA is a script to automatically execute an LR job using Z-matrices
+from the small directory and the OPLS-AA force field, e.g., enter
+
+xLRAA acmphn
+
+xLR725CMA is a script to automatically execute an LR job using Z-matrices
+from the drugs directory, 1.08*CM1A charges, and 725 water molecules, e.g.,
+xLR725CMA captop
+----------------------------------------------------------------------------
+
+With each script, ADME properties are automatically computed after
+the LR job is executed with the PROPCMP or PROPAA programs.
+The output is in the propout file. More properties are output with PROPCMP.
+
+----------------------------------------------------------------------------
+
+If you just want to run an MC simulation for a solute in water using
+the charges as specified in your Z-matrix (OPLS-AA or CMx), then
+copy the desired Z-matrix to lrzmat and
+csh -e lrcmd >& log &
+
+If appropriate, PROPAA or  PROPCMP could be executed subsequently.
+
+Also, please read the lr.info file.
+
+----------------------------------------------------------------------------
+

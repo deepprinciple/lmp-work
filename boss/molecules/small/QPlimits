@@ -1,0 +1,63 @@
+QP 3.0: This file lets the user change the names of the output QP.out and QP.CSV files,
+suppress the QPSA.out file, choose the fast (no QM) or slower processing modes, and
+change the default ranges for 95% of Drugs that are used to determine the "star" count.
+Enter name of QP.out file      (20 characters max):                 
+QP.out
+Enter name of QP.CSV file      (20 characters max):
+QP.CSV
+Enter number of Most Similar Molecules to be output:     
+20             
+Suppress output of QPSA.out file? (y or n)
+n
+Processing Mode (FAST or NORMAL; FAST does not output dipole moment, IP and EA)
+normal
+SD File Processing: Output All Data Fields in QP.CSV file (yes or no)
+yes
+Molecular Weight                      standard is:  ( 130.0 / 725.0) 
+ 130.0 / 725.0
+Dipole Moment (D)                     standard is:  (   1.0 /  12.5) 
+   1.0 /  12.5
+Total        SASA                     standard is:  ( 300.0 /1000.0) 
+ 300.0 /1000.0
+Hydrophobic  SASA                     standard is:  (   0.0 / 750.0) 
+   0.0 / 750.0
+Hydrophilic  SASA                     standard is:  (   7.0 / 330.0) 
+   7.0 / 330.0
+Carbon Pi    SASA                     standard is:  (   0.0 / 450.0) 
+   0.0 / 450.0
+Weakly Polar SASA                     standard is:  (   0.0 / 175.0) 
+   0.0 / 175.0
+Molecular Volume (A^3)                standard is:  ( 500.0 /2000.0) 
+ 500.0 /2000.0
+No. of Rotatable Bonds                standard is:  (   0.0 /  15.0) 
+   0.0 /  15.0
+Solute as Donor -    Hydrogen Bonds   standard is:  (   0.0 /   6.0) 
+   0.0 /   6.0
+Solute as Acceptor - Hydrogen Bonds   standard is:  (   2.0 /  20.0) 
+   2.0 /  20.0
+Solute Globularity   (Sphere = 1)     standard is:  (  0.75 /  0.95) 
+  0.75 /  0.95
+Solute Ionization Potential (eV)      standard is:  (   7.9 /  10.5)
+   7.9 /  10.5
+Solute Electron Affinity    (eV)      standard is:  (  -0.7 /   1.7)
+  -0.9 /   1.7
+QP Polarizability (Angstroms^3)       standard is:  (  13.0 /  70.0) 
+  13.0 /  70.0
+QP log P  for     hexadecane/gas      standard is:  (   4.0 /  18.0) 
+   4.0 /  18.0
+QP log P  for     octanol/gas         standard is:  (   8.0 /  35.0) 
+   8.0 /  35.0
+QP log P  for     water/gas           standard is:  (   4.0 /  45.0) 
+   4.0 /  45.0
+QP log P  for     octanol/water       standard is:  (  -2.0 /   6.5) 
+  -2.0 /   6.5
+QP log S  for   aqueous solubility    standard is:  (  -6.5 /   0.5) 
+  -6.5 /   0.5
+QP log K hsa Serum Protein Binding    standard is:  (  -1.5 /   1.5)
+  -1.5 /   1.5
+QP log BB for      brain/blood        standard is:  (  -3.0 /   1.2) 
+  -3.0 /   1.2
+No. of Primary Metabolites            standard is:  (   1.0 /   8.0) 
+   1.0 /   8.0
+vdW Hydrophilic SASA (PSA)            standard is:  (   7.0 / 200.0) 
+   7.0 / 200.0

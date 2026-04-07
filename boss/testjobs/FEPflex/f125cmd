@@ -1,0 +1,94 @@
+#
+# Command file for the BOSS  program.  Execute by entering the following:
+# csh f125cmd >& f125log &
+#***********************************************************************
+echo '                   FEP Calculation'
+echo '                    25 C & 1 atm '
+echo '                 Equilibration    0.2M '
+echo '                   Averaging  0-0.4M '
+echo '            N = 260  T=25  P=1  Rcut = 10.0'
+#***********************************************************************
+#
+nice +19
+set boss = $BOSSdir/BOSS
+set configurations = "100000"
+# inc is current window
+set inc = "125"
+# ninc is next window
+set ninc = "375"
+set lambda = "0.125 0.000 0.250"
+set boxes = $BOSSdir
+#
+# The f125in file for this initial run has been set equal
+# to the etoh267.in file, which contains 267 equilibrated
+# ethanol molecules from a pure liquid simulation. The solvent
+# origin is, therefore, designated as IN in the par file.
+#
+# The following line is removed in the command files for
+# additional runs for this system.
+cp $boxes/solbox/etoh267.in f${inc}in
+
+setenv INFILE    f${inc}in
+setenv UPFILE    f${inc}up
+setenv SAVE      f${inc}sv
+setenv AVERAGE   f${inc}av
+setenv ZMATRIX   fepzmat
+setenv SLVZMAT   etoh.zmat
+
+# The feppar0 file is only used for this initial window; feppar
+# is used for subsequent windows. The difference is that the
+# subsequent windows use ZIN and IN for the initial solute and
+# solvent coordinates, while here they come from ZMAT and IN.
+# feppar0 would be used for all windows if they are run in parallel
+# rather than chained.
+# Note that the united atom parameter file, oplsua.par, is used here.
+
+if (-e tmppar) rm tmppar
+cp feppar0 tmppar
+cat $BOSSdir/oplsua.par >> tmppar
+setenv PARAMETER tmppar
+
+setenv BANGPAR   $boxes/oplsaa.sb
+setenv WATERBOX  $boxes/watbox
+setenv ORG1BOX   $boxes/org1box
+setenv ORG2BOX   $boxes/org2box
+setenv SUMMARY   f${inc}sum
+
+date
+
+setenv OUTPUT    f${inc}ota
+setenv PLTFILE   f${inc}plta
+
+#    Equilibration
+
+time $boss 111 $configurations $lambda
+foreach block (eq)
+        date
+	setenv OUTPUT    f${inc}ot$block
+	setenv PLTFILE   f${inc}plt$block
+	time $boss 001 $configurations $lambda
+end
+
+#    Averaging
+
+setenv OUTPUT    f${inc}otb
+setenv PLTFILE   f${inc}pltb
+time $boss 011 $configurations $lambda
+mv f${inc}sv f${inc}sav
+foreach block (c d e2)
+        date
+        setenv OUTPUT    f${inc}ot$block
+        setenv PLTFILE   f${inc}plt$block
+        time $boss 001 $configurations $lambda
+        cat f${inc}sv >>f${inc}sav
+end
+
+rm f${inc}sv
+
+#    Submit Next Window
+
+cp f${inc}in f${ninc}in
+csh f${ninc}cmd >& log$ninc &
+
+date
+exit

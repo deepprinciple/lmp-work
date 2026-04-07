@@ -1,0 +1,58 @@
+<!--       Generated with LigParGen   --> 
+<!--        William L. Jorgensen Lab  -->
+<!--     Author: israel.cabezadevaca@yale.edu  -->
+<!--    OPLS Force Field with CM1A derived Atomic Charges  -->
+<ForceField>
+<AtomTypes>
+<Type name="opls_800" class="C800" element="C" mass="12.011"/>
+<Type name="opls_801" class="O801" element="O" mass="15.999"/>
+<Type name="opls_802" class="H802" element="H" mass="1.008"/>
+<Type name="opls_803" class="H803" element="H" mass="1.008"/>
+<Type name="opls_804" class="H804" element="H" mass="1.008"/>
+<Type name="opls_805" class="H805" element="H" mass="1.008"/>
+</AtomTypes>
+<Residues>
+<Residue name="MOL">
+<Atom name="C1" type="opls_800"/>
+<Atom name="O1" type="opls_801"/>
+<Atom name="H1" type="opls_802"/>
+<Atom name="H2" type="opls_803"/>
+<Atom name="H3" type="opls_804"/>
+<Atom name="H4" type="opls_805"/>
+<Bond from="1" to="0"/>
+<Bond from="2" to="0"/>
+<Bond from="3" to="0"/>
+<Bond from="4" to="0"/>
+<Bond from="5" to="1"/>
+</Residue>
+</Residues>
+<HarmonicBondForce>
+<Bond class1="O801" class2="C800" length="0.141000" k="267776.000000"/>
+<Bond class1="H802" class2="C800" length="0.109000" k="284512.000000"/>
+<Bond class1="H803" class2="C800" length="0.109000" k="284512.000000"/>
+<Bond class1="H804" class2="C800" length="0.109000" k="284512.000000"/>
+<Bond class1="H805" class2="O801" length="0.094500" k="462750.400000"/>
+</HarmonicBondForce>
+<HarmonicAngleForce>
+<Angle class1="H802" class2="C800" class3="O801" angle="1.911136" k="292.880000"/>
+<Angle class1="H803" class2="C800" class3="O801" angle="1.911136" k="292.880000"/>
+<Angle class1="H804" class2="C800" class3="O801" angle="1.911136" k="292.880000"/>
+<Angle class1="H805" class2="O801" class3="C800" angle="1.893682" k="460.240000"/>
+<Angle class1="H803" class2="C800" class3="H802" angle="1.881465" k="276.144000"/>
+<Angle class1="H804" class2="C800" class3="H802" angle="1.881465" k="276.144000"/>
+<Angle class1="H804" class2="C800" class3="H803" angle="1.881465" k="276.144000"/>
+</HarmonicAngleForce>
+<PeriodicTorsionForce>
+<Proper class1="H805" class2="O801" class3="C800" class4="H802" k1="0.000000" k2="0.000000" k3="0.736384" k4="0.000000" periodicity1="1" periodicity2="2" periodicity3="3" periodicity4="4" phase1="0.00" phase2="3.141592653589793" phase3="0.00" phase4="3.141592653589793"/>
+<Proper class1="H805" class2="O801" class3="C800" class4="H803" k1="0.000000" k2="0.000000" k3="0.736384" k4="0.000000" periodicity1="1" periodicity2="2" periodicity3="3" periodicity4="4" phase1="0.00" phase2="3.141592653589793" phase3="0.00" phase4="3.141592653589793"/>
+<Proper class1="H805" class2="O801" class3="C800" class4="H804" k1="0.000000" k2="0.000000" k3="0.736384" k4="0.000000" periodicity1="1" periodicity2="2" periodicity3="3" periodicity4="4" phase1="0.00" phase2="3.141592653589793" phase3="0.00" phase4="3.141592653589793"/>
+</PeriodicTorsionForce>
+<NonbondedForce coulomb14scale="0.5" lj14scale="0.5">
+<Atom type="opls_800" charge="0.050801" sigma="0.350000" epsilon="0.276144"/>
+<Atom type="opls_801" charge="-0.687165" sigma="0.312000" epsilon="0.711280"/>
+<Atom type="opls_802" charge="0.076721" sigma="0.250000" epsilon="0.125520"/>
+<Atom type="opls_803" charge="0.076721" sigma="0.250000" epsilon="0.125520"/>
+<Atom type="opls_804" charge="0.076721" sigma="0.250000" epsilon="0.125520"/>
+<Atom type="opls_805" charge="0.406201" sigma="0.000000" epsilon="0.000000"/>
+</NonbondedForce>
+</ForceField>

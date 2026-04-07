@@ -1,0 +1,23 @@
+---
+description: Python naming, style, and complexity standards
+alwaysApply: true
+---
+
+# Python Project Standards
+
+- Follow PEP 8 and PEP 257 for all Python code.
+- Use `snake_case` for variables and functions, `PascalCase` for classes, and `UPPER_CASE` for constants.
+- Keep lines at 79 characters or fewer and use 4 spaces per indent level.
+- End every file with a trailing newline.
+- Use docstrings for modules, classes, and functions. Follow the `Args` / `Returns` style already requested by the team.
+- Keep inline comments short and place them at the end of a line after two spaces and `#`.
+- Use block comments or docstrings for multi-line explanations.
+- Avoid using Python built-in names such as `list`, `dict`, `str`, or `match` as identifiers.
+- Prefer `with` statements for file and resource handling.
+- Prefer focused exception handling. Do not use broad `except Exception` unless there is a clear, documented reason.
+- Avoid global variables unless they are true module-level constants.
+- Keep functions focused on one responsibility, usually under 50 lines when practical.
+- Keep nesting shallow. Aim for no more than 4 nested control-flow levels.
+- Prefer splitting complex logic into helper functions or modules instead of growing a single function.
+- Prefer generators or iterators when they improve memory or streaming behavior.
+- When editing Python files, preserve or improve readability instead of only making code "work".

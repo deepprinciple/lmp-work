@@ -1,0 +1,28 @@
+REMARK    N-Methylacetamide syn dimer   
+REMARK    Created by BOSS 5.1 Apr  24 Linux 
+ATOM      1  C00 UNK     1       0.000   0.000   0.000
+ATOM      2  O01 UNK     1       0.000   1.228   0.000
+ATOM      3  N02 UNK     1       0.000  -0.721   1.122
+ATOM      4  C03 UNK     1      -0.014  -0.768  -1.313
+ATOM      5  C04 UNK     1       0.027  -0.146   2.458
+ATOM      6  H05 UNK     1      -0.034  -1.741   1.031
+ATOM      7  H06 UNK     1       0.926   0.456   2.597
+ATOM      8  H07 UNK     1      -0.842   0.493   2.619
+ATOM      9  H08 UNK     1       0.020  -0.937   3.208
+ATOM     10  H09 UNK     1       0.124  -0.087  -2.153
+ATOM     11  H0A UNK     1       0.789  -1.505  -1.331
+ATOM     12  H0B UNK     1      -0.964  -1.285  -1.438
+TER   
+ATOM     13  O0C UNK     2      -0.429  -3.413   0.732
+ATOM     14  C0D UNK     2      -1.370  -4.188   0.580
+ATOM     15  N0E UNK     2      -2.642  -3.813   0.740
+ATOM     16  C0F UNK     2      -1.117  -5.637   0.192
+ATOM     17  C0G UNK     2      -3.048  -2.464   1.110
+ATOM     18  H0H UNK     2      -3.365  -4.501   0.598
+ATOM     19  H0I UNK     2      -0.047  -5.821   0.099
+ATOM     20  H0J UNK     2      -1.514  -6.311   0.951
+ATOM     21  H0K UNK     2      -1.586  -5.864  -0.765
+ATOM     22  H0M UNK     2      -2.776  -1.751   0.331
+ATOM     23  H0N UNK     2      -4.127  -2.416   1.255
+ATOM     24  H0O UNK     2      -2.565  -2.153   2.038
+END

@@ -1,0 +1,55 @@
+#
+# Command file for the BOSS program.  Execute by entering the following:
+# csh cmd >& log &
+# Just need to copy solute zmat to zmat, then execute.
+#***********************************************************************
+echo '            General MC for a Single Solute   '
+echo '                 Restart Averaging  10M  '
+echo '            N = 266  T=25  P=1  Rcut = 11.0'
+echo '                  Solvent: AA EtOH'
+#***********************************************************************
+#!/bin/csh -f
+#
+nice +19
+set boss = $BOSSdir/BOSS
+set configurations = "1000000"
+set lambda = "0.000 0.000 0.000"
+set boxes = $BOSSdir
+if (-e sav) rm sav
+setenv INFILE    in
+setenv UPFILE    up
+setenv SAVE      sv
+setenv AVERAGE   av
+setenv ZMATRIX   zmat
+setenv SLVZMAT   slvzmat
+
+if (-e tmppar) rm tmppar
+cp par tmppar
+cat $BOSSdir/oplsaa.par >> tmppar
+setenv PARAMETER tmppar
+
+setenv BANGPAR   $boxes/oplsaa.sb
+setenv WATERBOX  $boxes/watbox
+setenv ORG1BOX   $boxes/org1box
+setenv ORG2BOX   $boxes/org2box
+setenv SUMMARY   sum
+
+date
+
+#    Averaging
+
+setenv OUTPUT    ota
+setenv PLTFILE   plta
+time $boss 011 $configurations $lambda
+mv sv sav
+foreach block (b c f e5 a b c f e10)
+        date
+        setenv OUTPUT    ot$block
+        setenv PLTFILE   plt$block
+        time $boss 001 $configurations $lambda
+        cat sv >>sav
+end
+
+rm sv tmppar *b *c *f ota plta  
+date
+exit

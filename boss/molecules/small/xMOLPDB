@@ -1,0 +1,20 @@
+#!/bin/csh
+set echo
+#
+# take mdl mol file to PDB file
+#
+# usage:  xMOLPDB  moleculename
+#
+# file moleculename.mol must be in the directory
+# file moleculename.pdb is created
+#
+# test if the enviroment variable BOSSdir has been defined
+#
+if (!($?BOSSdir)) then
+   echo "BOSSdir has not been defined; please see README"
+   exit (-1)
+endif
+
+$BOSSdir/autozmat -i mdl -o pdb <${argv[1]}.mol >${argv[1]}.pdb
+#
+exit

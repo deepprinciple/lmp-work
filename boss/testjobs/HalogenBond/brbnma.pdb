@@ -1,0 +1,29 @@
+REMARK    PhBr...NMA Complex            
+REMARK    Created by BOSS 4.9 Feb 12 Linux 
+ATOM      1  C00 UNK     1       0.000   1.400   0.000
+ATOM      2  C01 UNK     1       0.000   0.696  -1.219
+ATOM      3  C02 UNK     1       0.000   0.696   1.220
+ATOM      4  C03 UNK     1       0.000  -0.713  -1.220
+ATOM      5  C04 UNK     1       0.000  -0.713   1.220
+ATOM      6  C05 UNK     1       0.001  -1.418   0.000
+ATOM      7 Br06 UNK     1      -0.004   3.268   0.000
+ATOM      8  H07 UNK     1       0.001   1.240  -2.152
+ATOM      9  H08 UNK     1       0.001   1.241   2.152
+ATOM     10  H09 UNK     1       0.002  -1.252  -2.157
+ATOM     11  H0A UNK     1       0.002  -1.251   2.157
+ATOM     12  H0B UNK     1       0.002  -2.499   0.000
+ATOM     13 He0C UNK     1      -0.008   4.872   0.000
+TER   
+ATOM     14  O0D UNK     2      -0.218   6.420   0.000
+ATOM     15  C0E UNK     2      -1.137   7.235   0.000
+ATOM     16  C0F UNK     2      -0.837   8.726   0.002
+ATOM     17  N0G UNK     2      -2.425   6.878  -0.001
+ATOM     18  H0H UNK     2       0.240   8.896   0.003
+ATOM     19  H0I UNK     2      -1.256   9.200   0.890
+ATOM     20  H0J UNK     2      -1.255   9.202  -0.884
+ATOM     21  H0K UNK     2      -3.125   7.603  -0.001
+ATOM     22  C0M UNK     2      -2.877   5.493  -0.003
+ATOM     23  H0N UNK     2      -2.512   4.966   0.880
+ATOM     24  H0O UNK     2      -3.965   5.446  -0.005
+ATOM     25  H0P UNK     2      -2.510   4.968  -0.887
+END

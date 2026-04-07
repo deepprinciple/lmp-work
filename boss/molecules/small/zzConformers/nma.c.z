@@ -1,0 +1,31 @@
+       N-Methylacetamide (E)                                Tot. E =    -14.1404
+   1 C    235    0    0    0.000000   0    0.000000   0    0.000000        0
+   2 DUM   -1    0    1    1.000000   0    0.000000   0    0.000000        0
+   3 DUM   -1    0    2    1.000000   1   90.000000   0    0.000000        0
+   4 O    236    0    1    1.224715   2   90.000000   3    0.000000        0
+   5 N    238    0    1    1.336450   4  120.689580   2  270.000000        0
+   6 C    135    0    1    1.525624   4  120.028136   5  179.999998        0
+   7 C    242    0    5    1.456339   1  126.263765   4  179.999997        0
+   8 H    241    0    5    1.009512   1  115.581192   7  179.999998        0
+   9 H    140    0    7    1.090903   5  111.041424   1  299.462336        0
+  10 H    140    0    7    1.090903   5  111.041426   9  121.075321        0
+  11 H    140    0    7    1.090188   5  109.984452   9  240.537661        0
+  12 H    140    0    6    1.090314   1  110.162941   4  359.999999        0
+  13 H    140    0    6    1.089607   1  110.739269  12  119.413525        0
+  14 H    140    0    6    1.089607   1  110.739274  12  240.586472        0
+                    Geometry Variations follow    (2I4,F12.6)                   
+                    Variable Bonds follow         (I4 or I4-I4)                 
+0004-0014                                                                       
+                    Additional Bonds follow       (2I4)                         
+                    Harmonic Constraints follow   (2I4,4F10.4)                  
+                    Variable Bond Angles follow   (I4 or I4-I4)                 
+0005-0014                                                                       
+                    Additional Bond Angles follow (3I4)                         
+AUTO                                                                            
+                    Variable Dihedrals follow     (3I4,F12.6)                   
+0006-0014                                                                       
+                    Additional Dihedrals (6I4)                                  
+AUTO                                                                            
+                    Domain Definitions follow     (4I4)                         
+                    Conformational Search         (2I4, 2F12.6)                 
+                    Final blank line                                            

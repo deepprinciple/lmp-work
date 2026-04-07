@@ -1,0 +1,27 @@
+Cl..CH3CH2..Cl- pmf fix r4, r5, t5, p6
+   1 C      6    0    0    0.000000   0    0.000000   0    0.000000        0
+   2 DUM   -1    0    1    1.000000   0    0.000000   0    0.000000        0
+   3 DUM   -1    0    2    1.000000   1   90.000000   0    0.000000        0
+   4 CL    17    0    1    5.500000   2   90.000000   3    0.000000        0
+   5 CL    17    0    1    1.770000   2   77.000000   3  180.000000        0
+   6 C      6    0    1    1.500000   5  107.000000   2  180.000000        0
+   7 H      1    0    1    1.110000   5  110.000000   6  120.000000        0
+   8 H      1    0    1    1.110000   5  110.000000   6  240.000000        0
+   9 H      1    0    6    1.100000   1  107.000000   5  180.000000        0
+  10 H      1    0    6    1.100000   1  112.000000   9  120.000000        0
+  11 H      1    0    6    1.100000   1  112.000000   9  240.000000        0
+                    Geometry Variations follow    (2I4,F12.6)                   
+00040001 2.39 
+00050001 2.39 
+                    Variable Bonds follow         (I4)                          
+0006-0011                                                                       
+                    Additional Bonds follow       (2I4)                         
+                    Harmonic Constraints follow   (2I4,4F10.4)                  
+                    Variable Bond Angles follow   (I4)                          
+0006-0011                                                                       
+                    Additional Bond Angles follow (3I4)                         
+                    Variable Dihedrals follow     (3I4,F12.6)                   
+0007-0011                                                                       
+                    Additional Dihedrals follow   (6I4)                         
+                    Domain Definitions follow     (4I4)                         
+                    Final blank line                                            

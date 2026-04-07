@@ -1,0 +1,20 @@
+#!/bin/csh
+# set echo
+#
+# run makpar to help make par file and mods.z entries
+#
+# usage - xMP
+#
+# test if the enviroment variable GMdir has been defined
+# setenv GMdir ~/GenMol
+#
+if (!($?GMdir)) then
+    echo "GMdir has not been defined; please see README"
+    exit (-1)
+endif
+
+$GMdir/source/makpar
+rm oplsaa.par
+cp oplsaa.new oplsaa.par
+rm oplsaa.new
+exit

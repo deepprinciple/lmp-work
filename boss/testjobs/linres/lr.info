@@ -1,0 +1,47 @@
+The size dependence and cutoff issues for 
+linear response calculation have been addressed:
+
+Results for runs with OPLS-AA acetamide (fully flexible)  in TIP4P water.
+8M averaging/2M equilibration, 25 C, 1 atm
+
+# Water   RCUT  SCUT  ICUT  RxnFld  ESX-Coul  ESX-LJ   E-Total
+  260      8.5   8.5    0     N     -25.6      -3.9    -2654
+  260      9.5   9.5    0     N     -29.6      -3.9    -2643
+  500      8.5   8.5    0     N     -25.9      -4.0    -5048
+  500     10.0  10.0    0     N     -26.4      -4.1    -5071
+  500     10.0  12.0    0     N     -25.4      -4.8    -5063
+ 
+  260      8.5   8.5    0     Y     -24.9      -4.0    -2586
+  260      9.5   9.5    0     Y     -24.0      -4.4    -2598
+  500      8.5   8.5    0     Y     -24.6      -3.2    -4964
+  500     10.0  10.0    0     Y     -25.8      -4.1    -4953
+
+  500     10.0  10.0    5     N     -26.1      -4.2    -5074
+  500     10.0  10.0    5     Y     -24.8      -4.4    -4962
+
+  800 Cap 10.0  10.0    0     N     -24.5      -4.4    -7403
+
+Key points:
+
+(1) The only striking problem is the significantly
+    lower ESX-Coul with 260 waters and RCUT,SCUT > 8.5. This is
+    apparently too close to the edge of the box. There is little
+    sensitivity to the choices of cutoffs for 500 waters.
+
+(2) From different runs with the same protocol, the noise in
+    ESX-Coul is +/- 0.5 at least.
+
+(3) The rxn field with erf = 80 makes the total E and ESX-Coul less
+    negative by ca. 2% - not significant for ESX-Coul.
+
+(4) Adding the rxn field for Nw = 260 with RCUT=SCUT= 9.5 repairs
+    ESX-Coul.
+
+(5) ICUT = 5 and ICUT = 0 give the same results for this small solute.
+    For larger solutes, ICUT=5 is a more logical choice and differences
+    would emerge.
+
+(6) As a general protocol for linear response calculations, the following
+    are recommended:
+    Nw = 500(TIP4P)  RCUT = SCUT = 9  ICUT = 5  RxnFld = No 
+

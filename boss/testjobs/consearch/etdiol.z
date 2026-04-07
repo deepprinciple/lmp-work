@@ -1,0 +1,34 @@
+        1,2-ethanediol                                      Tot. E =      0.5311
+   1   X   -1   -1    0    0.000000   0    0.000000   0    0.000000        0
+   2   X   -1   -1    1    1.000000   0    0.000000   0    0.000000        0
+   3   H  170  170    2    1.000000   1   90.000000   0    0.000000        0
+   4   O  169  169    3    0.947147   2   90.000000   1  180.000000        0
+   5   C  173  173    4    1.420714   3  108.709677   2  180.000000        0
+   6   C  173  173    5    1.530260   4  107.246710   3  179.093925        0
+   7   O  169  169    6    1.404692   5  104.248377   4   48.779250        0
+   8   H  170  170    7    0.955799   6  102.483131   5  322.856936        0
+   9   H  176  176    5    1.091678   4  109.644863   6  120.260779        0
+  10   H  176  176    5    1.091232   4  110.734440   6  238.909620        0
+  11   H  176  176    6    1.090816   5  112.404504   7  120.672765        0
+  12   H  176  176    6    1.091089   5  110.946146   7  242.158080        0
+                    Geometry Variations follow    (2I4,F12.6)                   
+                    Variable Bonds follow         (I4 or I4-I4)                 
+0004-0012                                                                       
+                    Additional Bonds follow       (2I4)                         
+                    Harmonic Constraints follow   (2I4,4F10.4)                  
+                    Variable Bond Angles follow   (I4 or I4-I4)                 
+0005-0012                                                                       
+                    Additional Bond Angles follow (3I4)                         
+AUTO                                                                            
+                    Variable Dihedrals follow     (3I4,F12.6)                   
+0006-0012                                                                       
+                   Additional Dihedrals follow   (6I4)                          
+AUTO                                                                            
+                   Domain Definitions follow     (4I4)                          
+                   Conformational Search (2I4, 2F12.6) and (36X,I4,3F10.4)
+                   Final blank line                                             
+
+
+note: this uses the default settings for conformational search. For
+other settings, entries are made after the Conformational Search line
+above - please see the user's manual.

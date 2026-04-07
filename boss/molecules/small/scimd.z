@@ -1,0 +1,34 @@
+ succinimide                                                Tot. E =    -16.1093
+   1 X     -1    0    0    0.000000   0    0.000000   0    0.000000        0    
+   2 X     -1    0    1    0.800000   0    0.000000   0    0.000000        0    
+   3 C    257    0    2    0.800000   1   90.000000   0    0.000000        0    
+   4 C    257    0    3    1.543746   2   90.000000   1    0.000000        0    
+   5 C    252    0    3    1.523485   4  103.042981   1    0.000000        0    
+   6 H    140    0    3    1.090159   4  112.096084   5  118.555663        0    
+   7 H    140    0    3    1.090159   4  112.096140   6  122.888788        0    
+   8 C    252    0    4    1.523486   3  103.042907   5  359.999905        0    
+   9 H    140    0    4    1.090159   3  112.096639   8  241.444448        0    
+  10 H    140    0    4    1.090159   3  112.095797   8  118.555651        0    
+  11 N    251    0    8    1.324142   4  109.543459   3    0.000192        0    
+  12 O    253    0    8    1.226399   4  124.390956  11  179.999343        0    
+  13 H    254    0   11    1.006892   8  122.586186   4  180.000726        0    
+  14 O    253    0    5    1.226398   3  124.390989   4  179.999215        0    
+                    Geometry Variations follow    (2I4,F12.6)                   
+                    Variable Bonds follow         (I4)                          
+0004-0014                                                                       
+                    Additional Bonds follow       (2I4)                         
+  11   5                                                                        
+                    Harmonic Constraints follow   (2I4,4F10.4)                  
+                    Variable Bond Angles follow   (I4)                          
+0005-0014                                                                       
+                    Additional Bond Angles follow (3I4)                         
+AUTO                                                                            
+                    Variable Dihedrals follow     (3I4,F12.6)                   
+0006-0014                                                                       
+                    Additional Dihedrals follow   (6I4)                         
+AUTO                                                                            
+                    Domain Definitions follow     (4I4)                         
+                    Conformational Search (2I4,2F12.6)                          
+                    Final blank line                                            
+                                                                                
+                                                                                

@@ -1,0 +1,86 @@
+This folder contains a set of 66 complexes optimized by OPLS-AA using 
+Fletcher-Powell optimization as implemented in BOSS. 
+The S66 database have been calculated using CCSD(T), JCTC, 2011, 7, 2427.
+Note: Hobza most likely used reported wrong coordinated of 12_water-MeNH2.
+
+All complexes have been optimized without constraints exept the following molecules 
+where the angle and dihedral angle were constrained:
+
+30_Benzene-Ethene.z
+32_Uracil_Ethyne.z
+33_Pyridine-Ethene.z
+49_Benzene-Pyridine_TS.z
+58_Pyridine-Pyridine_CH-N.z
+65_Pyridine_Ethyne.z
+66_MeNH2-Pyridine.z
+
+Complex                                                              (kcal/mol)
+01_Water-Water                                           Tot. E =     -6.2314
+02_Water-MeOH                                            Tot. E =     -3.5663
+03_Water-MeNH2                                           Tot. E =      1.0665
+04_Water-Peptide                                         Tot. E =    -24.4861
+05_MeOH-MeOH                                             Tot. E =      0.4352
+06_MeOH-MeNH2                                            Tot. E =      5.1408
+07_MeOH-peptide                                          Tot. E =    -20.7125
+08_MeOH-water                                            Tot. E =     -2.0467
+09_MeNH2-MeOH                                            Tot. E =      7.5685
+10_MeNH2-MeNH2                                           Tot. E =     12.4770
+11_MeNH2-peptide                                         Tot. E =    -13.6845
+12_MeNH2-water                                           Tot. E =      5.3908
+12_water-MeNH2                                           Tot. E =      1.0624
+13_peptide-MeOH                                          Tot. E =    -19.9914
+14_peptide-MeNH2                                         Tot. E =    -15.0478
+15_Peptide-Peptide                                       Tot. E =    -40.7793
+16_Peptide-Water                                         Tot. E =    -22.1515
+17_Uracil-Uracil_BP                                      Tot. E =    -71.5650
+18_Water-Pyridine                                        Tot. E =    -36.2446
+19_MeOH-pyridine                                         Tot. E =    -32.7576
+20_AcOH-AcOH                                             Tot. E =    -52.8883
+21_AcNH2-AcNH2                                           Tot. E =    -73.4561
+22_AcOH-Uracil                                           Tot. E =    -62.8584
+23_AcNH2-Uracil                                          Tot. E =    -73.8322
+24_Benzene-Benzene_pi-pi.z                               Tot. E =     11.2461
+25_Pyridine-Pyridine_pi-pi                               Tot. E =    -63.7638
+26_Uracil-Uracil_pi-pi                                   Tot. E =    -67.8016
+27_Benzene-pyridine_pi-pi                                Tot. E =    -26.1273
+28_Benzene-Uracil_pi-pi                                  Tot. E =    -28.2337
+29_Pyridine-Uracil_pi-p                                  Tot. E =    -65.9531
+30_Benzene-Ethene                                        Tot. E =      9.0180
+31_Uracil_Ethene                                         Tot. E =    -29.5921
+32_Uracil_Ethyne                                         Tot. E =    -30.1634
+33_Pyridine-Ethene                                       Tot. E =    -28.0479
+34_Pentane-Pentane                                       Tot. E =      1.5893
+33_Pyridine-Ethene                                       Tot. E =    -28.0479
+34_Pentane-Pentane                                       Tot. E =      1.5893
+35_Pentane-Neopentane                                    Tot. E =     -0.4759
+36_Neopentane-Neopentane                                 Tot. E =     -2.9793
+37_Neopentane-Cyclopentane                               Tot. E =     18.9938
+38_Cyclopentane-Cyclopentan                              Tot. E =     41.6898
+39_Benzene_Cyclopentane                                  Tot. E =     25.7989
+40_Benzene-Neopentane                                    Tot. E =      3.7650
+41_Uracil_Pentane                                        Tot. E =    -32.2897
+42_Uracil-Cyclopentane                                   Tot. E =    -12.6173
+43_Uracil-Neopentane                                     Tot. E =    -34.2427
+44_Ethene-pentane                                        Tot. E =      4.0498
+45_Pentane-Ethyne                                        Tot. E =      3.2564
+46_Peptide_Pentane                                       Tot. E =    -17.5144
+47_Benzene-Benzene_TS                                    Tot. E =     11.0490
+48_Pyridine-Pyridine_TS                                  Tot. E =    -62.7622
+49_Benzene-Pyridine_TS                                   Tot. E =    -25.9325
+50_Benzene-Ethyne                                        Tot. E =      6.6535
+51_Ethyne-Ethyne                                         Tot. E =      3.0742
+52_Benzene_AcOH                                          Tot. E =    -19.4952
+53_Benzene-AcNH2                                    	 Tot. E =    -27.9745
+54_Benzene-Water_pi                                      Tot. E =      2.8867
+55_Benzene_MeOH                                          Tot. E =      5.7768
+56_Benzene-MeNH2                                         Tot. E =     12.0855
+57_Benzene-Peptide                                       Tot. E =    -15.3300
+58_Pyridine-Pyridine_CH-N                                Tot. E =    -61.8366
+59_Ethyne_Water                                          Tot. E =      0.3793
+60_Ethyne_AcOH                                           Tot. E =    -22.1215
+61_Pentane-AcOH                                          Tot. E =    -20.0641
+62_Pentane-AcNH2                                         Tot. E =    -30.0535
+63_Benzene_AcOH                                          Tot. E =    -15.9478
+64_Peptide-Ethene                                        Tot. E =    -16.4407
+65_Pyridine_Ethyne                                       Tot. E =    -29.8627
+66_MeNH2-Py                                              Tot. E =    -24.5809
