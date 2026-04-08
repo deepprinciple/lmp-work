@@ -2,15 +2,16 @@ __pycache__/
 *.py[cod]
 *.swp
 *.swo
+*.deb
+*.log
 .pytest_cache/
 .mypy_cache/
 .ruff_cache/
 cases/
 
-# Runtime outputs live under bench_runs/. Keep only human-written docs/scripts.
+# Runtime outputs live under bench_runs/.
 bench_runs/*
 !bench_runs/README.md
-!bench_runs/generate_5mol_baseline_configs.py
 
 # Additional runtime artifacts that may also appear elsewhere.
 bench_runs/**/run_*.log
@@ -23,9 +24,6 @@ bench_runs/**/.openff_cache/
 bench_runs/**/*.pdb
 bench_runs/**/*.xyz
 
-# Local compatibility or temporary parameterization workdirs.
-.gpu11_compat_libs/
+# Local temporary parameterization workdirs.
 openff_extchg_*/
-
-# Generated diagnostic output folders from standalone method tests.
-diagnostics/methanol_500mol_emd_diag_*/
+.gpu11_compat_libs/
