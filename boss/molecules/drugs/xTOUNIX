@@ -1,9 +1,0 @@
-#!/bin/csh
-set echo
-#
-# convert a DOS to Unix format file
-#
-# usage - xTOUNIX file
-#
-dos2unix ${argv[1]} 
-exit

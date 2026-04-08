@@ -1,6 +1,0 @@
-#!/bin/csh
-#
-rm liqot* liqplt* liqav liqup liqin
-rm liqsv liqsum log
-#
-exit

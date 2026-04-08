@@ -1,1 +1,0 @@
-/root/lmp-work/boss/00README.txt

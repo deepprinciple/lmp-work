@@ -27,3 +27,5 @@ bench_runs/**/*.xyz
 # Local temporary parameterization workdirs.
 openff_extchg_*/
 .gpu11_compat_libs/
+boss/
+.compat/

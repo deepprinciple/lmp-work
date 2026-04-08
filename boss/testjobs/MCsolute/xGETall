@@ -1,9 +1,0 @@
-#!/bin/csh
-#
-#
-#
-cd ${argv[1]} 
-grep -A 16 "Run Total" MCot5
-cd ..
-#
-exit

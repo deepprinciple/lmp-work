@@ -1,2 +1,0 @@
-macros.h should not be included in "molecules.h".
-

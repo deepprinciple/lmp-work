@@ -71,7 +71,10 @@ class LigParGen(ForceField):
         """
         if not self.wrapper_script.exists():
             raise FileNotFoundError(
-                f"LigParGen wrapper script not found: {self.wrapper_script}"
+                "LigParGen wrapper script not found: "
+                f"{self.wrapper_script}. "
+                "Please provide --forcefield_wrapper_script pointing to your "
+                "locally licensed LigParGen/BOSS runtime."
             )
 
         formal_charge = int(

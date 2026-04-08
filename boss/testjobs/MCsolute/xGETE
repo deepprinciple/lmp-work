@@ -1,6 +1,0 @@
-#!/bin/csh
-
-cd ${argv[1]}
-cd gas
-grep "Total Energy =  " gasout
-exit

@@ -33,6 +33,13 @@ python run_thermal_rnemd.py --input config.smoke.yaml
 - 默认：`forcefield.engine: openff`，`forcefield.charge_method: am1bcc`
 - 可选：`forcefield.engine: ligpargen`（依赖 LigParGen/BOSS 运行环境）
 
+## 授权与分发声明
+
+- 本仓库不再包含 `BOSS` 程序及其兼容运行时副本。
+- `BOSS` 为受限授权软件，使用者需自行向权利方申请授权并在本地安装。
+- `LigParGen + BOSS` 路径仅保留接口能力；实际运行需通过本地 `wrapper_script`
+  指向你自己的合法安装环境。
+
 ## HFACF 后处理示例
 
 ```bash
