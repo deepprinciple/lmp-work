@@ -11,22 +11,38 @@
 ## 主入口
 
 ```bash
-python run_thermal_rnemd.py --input config.yaml
+python scripts/run_thermal_rnemd.py --config configs/config.yaml
 ```
 
 短程 smoke test：
 
 ```bash
-python run_thermal_rnemd.py --input config.smoke.yaml
+python scripts/run_thermal_rnemd.py --config configs/config.smoke.yaml
 ```
+
+## CLI 参数约定
+
+- 统一使用 `kebab-case` 参数名，如 `--temperature-k`、`--timestep-fs`
+- 需要显式单位时，直接写进参数名：`-k`、`-fs`、`-a`、`-a3`、`-g-cm3`
+- CLI 只保留这一套参数命名，不再兼容旧别名
 
 ## 核心文件
 
-- `build_system.py`: `SMILES -> system.data`
-- `run_thermal_rnemd.py`: 热导率主流程入口
-- `write_lammps_input.py`: 平衡段和 rNEMD 输入生成
+- `scripts/build_system.py`: `SMILES -> system.data`
+- `scripts/run_thermal_rnemd.py`: 热导率主流程入口
+- `scripts/write_lammps_input.py`: 手动生成平衡段/GK 输入的 CLI
+- `analysis/hfacf.py`: HFACF 热导率分析与后处理核心
+- `workflow/input_thermal.py`: 平衡段和 rNEMD 输入生成
 - `analysis/rnemd.py`: rNEMD 热导率拟合与收敛分析
-- `analyze_thermal_hfacf.py`: HFACF 后处理和图形输出
+- `scripts/analyze_thermal_hfacf.py`: HFACF 热导率后处理 CLI
+
+## 目录说明
+
+- `scripts/`: 当前建议使用的 CLI 入口
+- `scripts/env/`: 环境兼容 shell 脚本
+- `configs/`: 当前主线配置文件
+- `workflow/`: 热导率主线所需的运行与输入生成模块
+- `legacy/`: 仅保留手动 GK 输入模板
 
 ## 力场选择
 
@@ -43,9 +59,9 @@ python run_thermal_rnemd.py --input config.smoke.yaml
 ## HFACF 后处理示例
 
 ```bash
-python analyze_thermal_hfacf.py \
-  --hfacf ./hfacf.dat \
-  --gk-data ./gk_data.dat \
+python scripts/analyze_thermal_hfacf.py \
+  --hfacf-file ./hfacf.dat \
+  --gk-data-file ./gk_data.dat \
   --temperature-k 298.15
 ```
 
@@ -53,3 +69,27 @@ python analyze_thermal_hfacf.py \
 
 - `thermal_hfacf_summary.json`
 - `thermal_hfacf_analysis.png`
+
+## 其他 CLI 示例
+
+构建 `system.data`：
+
+```bash
+python scripts/build_system.py \
+  --smiles CCO \
+  --name ethanol \
+  --workdir ./demo_ethanol \
+  --n-molecules 200 \
+  --density-g-cm3 0.789
+```
+
+生成手动平衡/GK 输入：
+
+```bash
+python scripts/write_lammps_input.py \
+  --workdir ./demo_case \
+  --mode replica \
+  --temperature-k 298.15 \
+  --decorrelation-steps 500000 \
+  --gk-steps 10000000
+```

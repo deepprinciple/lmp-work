@@ -4,7 +4,7 @@ LAMMPS多分子体系构建器
 from pathlib import Path
 import numpy as np
 from typing import Dict, List
-from ..utils.io import parse_lammps_data, write_lammps_data, make_lammps_header
+from utils.io import parse_lammps_data, write_lammps_data, make_lammps_header
 
 
 class LAMMPSBuilder:

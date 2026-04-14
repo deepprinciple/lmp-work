@@ -9,22 +9,17 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
 from typing import Any
 
-sys.path.insert(0, str(Path(__file__).resolve().parent))
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
-from gk_workflow.analysis.rnemd import analyze_rnemd_replica
-from gk_workflow.build_system import build_system_data_only
-from gk_workflow.write_lammps_input import (
+from scripts.build_system import build_system_data_only
+from scripts._cli import Argv, new_parser
+from workflow.config import get_required, get_section, load_yaml
+from workflow.input_thermal import (
     build_equilibration_input_text,
     build_rnemd_replica_input_text,
 )
-from workflow import (
-    build_forcefield_settings,
-    get_required,
-    get_section,
-    load_yaml,
-    run_lammps,
-    write_branch_manifest,
-)
+from workflow.lammps_runner import build_forcefield_settings, run_lammps
+from workflow.shared_branch import write_branch_manifest
 
 DEFAULT_THERMAL_REPLICA_DIR_PREFIX = "thermal_conductivity/method_rnemd/replica_"
 DEFAULT_THERMAL_REPLICA_INPUT_FILENAME = "in.thermal_rnemd.lammps"
@@ -177,12 +172,14 @@ def build_branch_manifest_payload(
     }
 
 
-def parse_args() -> argparse.Namespace:
-    parser = argparse.ArgumentParser(
-        description="Run thermal-only reverse-NEMD conductivity workflow"
-    )
-    parser.add_argument("--input", required=True, help="YAML config file")
-    return parser.parse_args()
+def build_parser() -> argparse.ArgumentParser:
+    parser = new_parser("Run the thermal-only reverse-NEMD conductivity workflow.")
+    parser.add_argument("--config", required=True, help="YAML workflow config file")
+    return parser
+
+
+def parse_args(argv: Argv = None) -> argparse.Namespace:
+    return build_parser().parse_args(argv)
 
 
 def _build_system(
@@ -236,9 +233,34 @@ def _build_system(
     )
 
 
-def main() -> None:
-    args = parse_args()
-    cfg = load_yaml(Path(args.input))
+def _analyze_replica(repdir: Path, *, sim_cfg: dict[str, Any], thermal_cfg: dict[str, Any]) -> dict[str, Any]:
+    from analysis.rnemd import analyze_rnemd_replica
+
+    return analyze_rnemd_replica(
+        repdir,
+        timestep_fs=float(sim_cfg.get("timestep_fs", 1.0)),
+        nbin=int(thermal_cfg.get("nbin", 20)),
+        edim=str(thermal_cfg.get("edim", "z")),
+        plateau_start_ps=float(thermal_cfg.get("plateau_start_ps", 20.0)),
+        swap_buffer_bins=int(thermal_cfg.get("swap_buffer_bins", 2)),
+        kappa_rel_std_tol=float(thermal_cfg.get("kappa_rel_std_tol", 0.15)),
+        kappa_drift_tol=float(thermal_cfg.get("kappa_drift_tol", 0.15)),
+        min_window_points=int(thermal_cfg.get("min_window_points", 5)),
+        profile_file=str(thermal_cfg.get("profile_file", "temp_profile.dat")),
+        exchange_file=str(thermal_cfg.get("exchange_file", "thermal_exchange.dat")),
+        summary_name=_resolve_thermal_layout(thermal_cfg)["summary_file"],
+        figure_profile_name=str(
+            thermal_cfg.get("profile_plot_file", "thermal_profile_latest.png")
+        ),
+        figure_kappa_name=str(
+            thermal_cfg.get("kappa_plot_file", "thermal_kappa_running.png")
+        ),
+    )
+
+
+def main(argv: Argv = None) -> int:
+    args = parse_args(argv)
+    cfg = load_yaml(Path(args.config).resolve())
     run_cfg = get_section(cfg, "run")
     structure_cfg = get_section(cfg, "structure")
     model_cfg = get_section(cfg, "model")
@@ -340,27 +362,13 @@ def main() -> None:
         layout = _resolve_thermal_layout(thermal_cfg)
         results = []
         for idx, repdir, _ in replica_specs:
-            result = analyze_rnemd_replica(
+            result = _analyze_replica(
                 repdir,
-                timestep_fs=float(sim_cfg.get("timestep_fs", 1.0)),
-                nbin=int(thermal_cfg.get("nbin", 20)),
-                edim=str(thermal_cfg.get("edim", "z")),
-                plateau_start_ps=float(thermal_cfg.get("plateau_start_ps", 20.0)),
-                swap_buffer_bins=int(thermal_cfg.get("swap_buffer_bins", 2)),
-                kappa_rel_std_tol=float(thermal_cfg.get("kappa_rel_std_tol", 0.15)),
-                kappa_drift_tol=float(thermal_cfg.get("kappa_drift_tol", 0.15)),
-                min_window_points=int(thermal_cfg.get("min_window_points", 5)),
-                profile_file=str(thermal_cfg.get("profile_file", "temp_profile.dat")),
-                exchange_file=str(
-                    thermal_cfg.get("exchange_file", "thermal_exchange.dat")
-                ),
-                summary_name=layout["summary_file"],
-                figure_profile_name=str(
-                    thermal_cfg.get("profile_plot_file", "thermal_profile_latest.png")
-                ),
-                figure_kappa_name=str(
-                    thermal_cfg.get("kappa_plot_file", "thermal_kappa_running.png")
-                ),
+                sim_cfg=sim_cfg,
+                thermal_cfg={
+                    **thermal_cfg,
+                    "summary_file": layout["summary_file"],
+                },
             )
             result["replica_index"] = idx
             results.append(result)
@@ -381,7 +389,8 @@ def main() -> None:
         summary_file = workdir / layout["batch_summary_file"]
         summary_file.write_text(json.dumps(summary, indent=2))
         print(f"Wrote thermal branch summary: {summary_file}")
+    return 0
 
 
 if __name__ == "__main__":
-    main()
+    raise SystemExit(main())

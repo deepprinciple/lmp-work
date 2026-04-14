@@ -4,7 +4,7 @@ Packmol liquid-box builder.
 import shutil
 import subprocess
 from pathlib import Path
-from ..utils.constants import AVOGADRO
+from utils.constants import AVOGADRO
 
 
 class PackmolBuilder:

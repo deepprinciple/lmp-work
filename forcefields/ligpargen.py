@@ -11,7 +11,7 @@ from typing import Any, Dict
 
 from rdkit import Chem
 
-from ..core.forcefield import ForceField
+from core.forcefield import ForceField
 
 
 LIGPARGEN_LAMMPS_SETTINGS: Dict[str, Any] = {

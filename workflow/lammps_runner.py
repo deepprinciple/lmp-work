@@ -1,3 +1,4 @@
+"""LAMMPS command construction and execution helpers."""
 from __future__ import annotations
 
 import os
@@ -5,39 +6,7 @@ import subprocess
 from pathlib import Path
 from typing import Any
 
-from gk_workflow.forcefields import get_lammps_settings_for_engine
-
-
-def load_yaml(path: Path) -> dict[str, Any]:
-    try:
-        import yaml
-    except ImportError as exc:
-        raise RuntimeError(
-            "PyYAML is required for thermal workflow configs."
-        ) from exc
-
-    with open(path) as handle:
-        data = yaml.safe_load(handle)
-    if not isinstance(data, dict):
-        raise ValueError(f"Config must be a mapping: {path}")
-    return data
-
-
-def get_required(cfg: dict[str, Any], section: str, key: str) -> Any:
-    if section not in cfg or not isinstance(cfg[section], dict):
-        raise KeyError(f"Missing section '{section}' in config")
-    if key not in cfg[section]:
-        raise KeyError(f"Missing key '{section}.{key}' in config")
-    return cfg[section][key]
-
-
-def get_section(cfg: dict[str, Any], section: str) -> dict[str, Any]:
-    value = cfg.get(section, {})
-    if value is None:
-        return {}
-    if not isinstance(value, dict):
-        raise TypeError(f"Section '{section}' must be a mapping")
-    return value
+from forcefields import get_lammps_settings_for_engine
 
 
 def build_forcefield_settings(forcefield_cfg: dict[str, Any]) -> dict[str, Any]:
@@ -88,3 +57,10 @@ def run_lammps(
         print("  OMP     :", env["OMP_NUM_THREADS"])
 
     subprocess.run(cmd, cwd=workdir, env=env, check=True)
+
+
+__all__ = [
+    "build_forcefield_settings",
+    "build_lammps_command",
+    "run_lammps",
+]

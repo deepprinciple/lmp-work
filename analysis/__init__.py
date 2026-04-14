@@ -1,31 +1,29 @@
-"""Thermal-focused analysis exports."""
+"""Thermal mainline analysis exports."""
 
-from .greenkubo import (
-    GreenKuboAnalyzer,
-    compute_thermal_conductivity,
-    parse_ave_correlate_detail,
-)
-from .rnemd import analyze_rnemd_replica
-from .statistics import (
-    autocorrelation_time,
-    equilibration_check,
-    integrate_acf,
-    running_average,
-    block_average,
-    block_average_scan,
-    statistical_inefficiency,
-)
+from __future__ import annotations
+
+from importlib import import_module
+from typing import Any
 
 __all__ = [
-    "GreenKuboAnalyzer",
-    "compute_thermal_conductivity",
-    "parse_ave_correlate_detail",
+    "analyze_hfacf_file",
     "analyze_rnemd_replica",
-    "autocorrelation_time",
-    "equilibration_check",
-    "integrate_acf",
-    "running_average",
-    "block_average",
-    "block_average_scan",
-    "statistical_inefficiency",
+    "compute_thermal_conductivity",
+    "load_volume_from_gk_data",
+    "parse_ave_correlate_detail",
 ]
+
+
+def __getattr__(name: str) -> Any:
+    if name in {
+        "analyze_hfacf_file",
+        "compute_thermal_conductivity",
+        "load_volume_from_gk_data",
+        "parse_ave_correlate_detail",
+    }:
+        module = import_module(".hfacf", __name__)
+        return getattr(module, name)
+    if name == "analyze_rnemd_replica":
+        module = import_module(".rnemd", __name__)
+        return getattr(module, name)
+    raise AttributeError(f"module {__name__!r} has no attribute {name!r}")

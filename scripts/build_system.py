@@ -15,10 +15,11 @@ import sys
 from pathlib import Path
 
 # Import through the project root so the script works from this directory.
-sys.path.insert(0, str(Path(__file__).resolve().parent))
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
-from gk_workflow.core import MoleculeStructure, PackmolBuilder, LAMMPSBuilder
-from gk_workflow.forcefields import LigParGen, OpenFF
+from core import MoleculeStructure, PackmolBuilder, LAMMPSBuilder
+from forcefields import LigParGen, OpenFF
+from scripts._cli import Argv, new_parser
 
 
 def build_system_data_only(
@@ -201,34 +202,62 @@ def build_system_data_only(
     return result
 
 
-def parse_args() -> argparse.Namespace:
-    parser = argparse.ArgumentParser(description="Build system.data from SMILES")
+def build_parser() -> argparse.ArgumentParser:
+    parser = new_parser("Build `system.data` from a SMILES string.")
     parser.add_argument("--smiles", required=True, help="SMILES string")
     parser.add_argument("--name", required=True, help="Molecule name")
     parser.add_argument("--workdir", required=True, help="Working directory")
-    parser.add_argument("--n_mol", required=True, type=int, help="Number of molecules")
-    parser.add_argument("--density", required=True, type=float, help="Initial packing density (g/cm^3)")
+    parser.add_argument("--n-molecules", required=True, type=int, help="Number of molecules")
     parser.add_argument(
-        "--packmol_density_scale",
+        "--density-g-cm3",
+        required=True,
+        type=float,
+        help="Target liquid density in g/cm^3",
+    )
+    parser.add_argument(
+        "--packmol-density-scale",
         type=float,
         default=0.85,
         help="Scale factor applied to target density when building the initial Packmol box",
     )
     parser.add_argument(
-        "--packmol_tolerance",
+        "--packmol-tolerance-a",
         type=float,
         default=2.0,
         help="Packmol tolerance in angstrom",
     )
-    parser.add_argument("--packmol_seed", type=int, default=192911, help="Packmol random seed")
-    parser.add_argument("--packmol_max_attempts", type=int, default=3, help="Packmol maximum attempts")
-    parser.add_argument("--packmol_seed_step", type=int, default=97, help="Packmol seed increment per retry")
-    parser.add_argument("--packmol_nloop", type=int, default=None, help="Optional Packmol nloop")
-    parser.add_argument("--packmol_full_box", action="store_true", help="Use inside box instead of inside cube")
-    parser.add_argument("--packmol_margin", type=float, default=None, help="Margin for inside cube mode (A)")
-    parser.add_argument("--packmol_strict", action="store_true", help="Require perfect packing only")
+    parser.add_argument("--packmol-seed", type=int, default=192911, help="Packmol random seed")
     parser.add_argument(
-        "--box_aspect_ratio",
+        "--packmol-max-attempts",
+        type=int,
+        default=3,
+        help="Packmol maximum attempts",
+    )
+    parser.add_argument(
+        "--packmol-seed-step",
+        type=int,
+        default=97,
+        help="Packmol seed increment per retry",
+    )
+    parser.add_argument("--packmol-nloop", type=int, default=None, help="Optional Packmol nloop")
+    parser.add_argument(
+        "--packmol-full-box",
+        action="store_true",
+        help="Use inside box instead of inside cube",
+    )
+    parser.add_argument(
+        "--packmol-margin-a",
+        type=float,
+        default=None,
+        help="Margin for inside cube mode in angstrom",
+    )
+    parser.add_argument(
+        "--packmol-strict",
+        action="store_true",
+        help="Require perfect packing only",
+    )
+    parser.add_argument(
+        "--box-aspect-ratio",
         nargs=3,
         type=float,
         default=None,
@@ -236,7 +265,7 @@ def parse_args() -> argparse.Namespace:
         help="Orthorhombic box aspect ratio used to derive (Lx, Ly, Lz) from total target volume",
     )
     parser.add_argument(
-        "--box_lengths_A",
+        "--box-lengths-a",
         nargs=3,
         type=float,
         default=None,
@@ -244,71 +273,99 @@ def parse_args() -> argparse.Namespace:
         help="Explicit orthorhombic box lengths in angstrom",
     )
     parser.add_argument(
-        "--structure_formats",
+        "--structure-formats",
         nargs="*",
         default=("xyz",),
         help="Structure files to export alongside the internal XYZ (xyz/mol/pdb)",
     )
     parser.add_argument(
-        "--forcefield_engine",
+        "--forcefield-engine",
         default="openff",
         choices=("openff", "ligpargen"),
         help="Force-field engine used for single-molecule parameterization",
     )
-    parser.add_argument("--forcefield_version", default="openff-2.0.0", help="OpenFF force-field version")
-    parser.add_argument("--forcefield_charge_method", default="am1bcc", help="OpenFF partial charge method")
-    parser.add_argument("--forcefield_charge_fallback", default="gasteiger", help="Fallback partial charge method")
-    parser.add_argument("--forcefield_charge_file", default=None, help="External partial charges file (JSON or plain text)")
-    parser.add_argument("--forcefield_no_cache", action="store_true", help="Disable OpenFF local cache")
-    parser.add_argument("--forcefield_relaxed_stereo", action="store_true", help="Allow undefined stereochemistry")
     parser.add_argument(
-        "--forcefield_input_mode",
+        "--forcefield-version",
+        default="openff-2.0.0",
+        help="OpenFF force-field version",
+    )
+    parser.add_argument(
+        "--forcefield-charge-method",
+        default="am1bcc",
+        help="OpenFF partial charge method",
+    )
+    parser.add_argument(
+        "--forcefield-charge-fallback",
+        default="gasteiger",
+        help="Fallback partial charge method",
+    )
+    parser.add_argument(
+        "--forcefield-charge-file",
+        default=None,
+        help="External partial charges file (JSON or plain text)",
+    )
+    parser.add_argument(
+        "--forcefield-no-cache",
+        action="store_true",
+        help="Disable OpenFF local cache",
+    )
+    parser.add_argument(
+        "--forcefield-relaxed-stereo",
+        action="store_true",
+        help="Allow undefined stereochemistry",
+    )
+    parser.add_argument(
+        "--forcefield-input-mode",
         default="generated_pdb",
         help="LigParGen input mode (smiles or generated_pdb)",
     )
     parser.add_argument(
-        "--forcefield_residue_name",
+        "--forcefield-residue-name",
         default="MOL",
         help="LigParGen residue name for generated outputs",
     )
     parser.add_argument(
-        "--forcefield_n_optimizations",
+        "--forcefield-n-optimizations",
         type=int,
         default=0,
         help="LigParGen geometry optimization count",
     )
     parser.add_argument(
-        "--forcefield_wrapper_script",
+        "--forcefield-wrapper-script",
         default=None,
         help="LigParGen wrapper script path",
     )
     parser.add_argument(
-        "--forcefield_debug",
+        "--forcefield-debug",
         action="store_true",
         help="Keep LigParGen/BOSS intermediate files",
     )
-    return parser.parse_args()
+    return parser
 
 
-def main() -> None:
-    args = parse_args()
+def parse_args(argv: Argv = None) -> argparse.Namespace:
+    return build_parser().parse_args(argv)
+
+
+def main(argv: Argv = None) -> int:
+    args = parse_args(argv)
     build_system_data_only(
         smiles=args.smiles,
         name=args.name,
-        workdir=Path(args.workdir),
-        n_molecules=args.n_mol,
-        density=args.density,
+        workdir=Path(args.workdir).resolve(),
+        n_molecules=args.n_molecules,
+        density=args.density_g_cm3,
         packmol_density_scale=args.packmol_density_scale,
-        packmol_tolerance=args.packmol_tolerance,
+        packmol_tolerance=args.packmol_tolerance_a,
         packmol_seed=args.packmol_seed,
         packmol_max_attempts=args.packmol_max_attempts,
         packmol_seed_step=args.packmol_seed_step,
         packmol_nloop=args.packmol_nloop,
         packmol_full_box=args.packmol_full_box,
-        packmol_margin=args.packmol_margin,
+        packmol_margin=args.packmol_margin_a,
         packmol_strict=args.packmol_strict,
         box_aspect_ratio=tuple(args.box_aspect_ratio) if args.box_aspect_ratio is not None else None,
-        box_lengths=tuple(args.box_lengths_A) if args.box_lengths_A is not None else None,
+        box_lengths=tuple(args.box_lengths_a) if args.box_lengths_a is not None else None,
         structure_output_formats=tuple(args.structure_formats),
         forcefield_engine=args.forcefield_engine,
         forcefield_version=args.forcefield_version,
@@ -323,7 +380,8 @@ def main() -> None:
         forcefield_wrapper_script=args.forcefield_wrapper_script,
         forcefield_debug=args.forcefield_debug,
     )
+    return 0
 
 
 if __name__ == "__main__":
-    main()
+    raise SystemExit(main())

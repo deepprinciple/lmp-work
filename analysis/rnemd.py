@@ -17,12 +17,20 @@ try:
 except ImportError:  # pragma: no cover - plotting is optional at runtime
     plt = None
 
-from ..utils.constants import (
-    ANGSTROM_TO_METER,
-    AVOGADRO,
-    FEMTOSECOND_TO_SECOND,
-    KCAL_MOL_TO_JOULE,
-)
+try:
+    from ..utils.constants import (
+        ANGSTROM_TO_METER,
+        AVOGADRO,
+        FEMTOSECOND_TO_SECOND,
+        KCAL_MOL_TO_JOULE,
+    )
+except ImportError:
+    from utils.constants import (
+        ANGSTROM_TO_METER,
+        AVOGADRO,
+        FEMTOSECOND_TO_SECOND,
+        KCAL_MOL_TO_JOULE,
+    )
 
 
 def _load_exchange_file(path: Path, timestep_fs: float) -> Dict[str, np.ndarray]:

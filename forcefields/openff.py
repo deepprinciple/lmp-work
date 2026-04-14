@@ -8,7 +8,7 @@ import shutil
 from pathlib import Path
 from rdkit import Chem
 from typing import Dict, Any
-from ..core.forcefield import ForceField
+from core.forcefield import ForceField
 
 
 OPENFF_LAMMPS_SETTINGS: Dict[str, Any] = {
