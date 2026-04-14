@@ -1,92 +1,168 @@
+# 运行阶段开关。
+# 想只生成体系和输入文件时，可将 run_lammps / analyze 设为 false。
 run:
   build_system: true
   write_input: true
   run_lammps: true
   analyze: true
 
+# 目标分子与案例输出目录。
 case:
+  # 待模拟分子的 SMILES。
   smiles: "C1CCOC1"
-  name: "thf_thermal_only"
+  # 分子简称，用于输出文件命名。
+  name: "thf"
+  # 案例工作目录；所有中间文件和结果都写到这里。
   workdir: "./cases/thf_thermal_only"
 
+# 额外导出的单分子结构文件格式。
 structure:
   output_formats:
     - "xyz"
     - "pdb"
 
+# 建盒参数。
 model:
+  # 液体盒中分子个数。
   n_molecules: 500
+  # 目标液体密度，单位 g/cm^3。
   density_g_cm3: 0.889
+  # Packmol 初始装箱密度缩放因子；小于 1 可降低初始重叠风险。
   packmol_density_scale: 0.85
+  # Packmol 容差，单位埃。
   packmol_tolerance_A: 2.0
+  # Packmol 随机种子。
   packmol_seed: 20260407
+  # Packmol 失败时最大重试次数。
   packmol_max_attempts: 5
+  # 每次重试时随机种子的递增量。
   packmol_seed_step: 17
+  # Packmol 内部循环次数；更大通常更稳，但更慢。
   packmol_nloop: 200
+  # 是否使用 full-box 模式；一般保持 false 即可。
   packmol_full_box: false
+  # 盒边留白，单位埃；null 表示使用默认行为。
   packmol_margin_A: null
+  # true 表示严格要求完美装箱；false 更适合试跑。
   packmol_strict: false
 
+# 单分子参数化设置。
 forcefield:
+  # 力场后端：openff 或 ligpargen。
   engine: "openff"
+  # OpenFF 力场版本。
   version: "openff-2.0.0"
+  # 是否严格要求 SMILES 具有完整立体化学信息。
   strict_stereo: true
+  # 首选电荷方法。
   charge_method: "am1bcc"
+  # 主电荷方法失败时的回退选项。
   charge_fallback: "gasteiger"
+  # 是否启用本地参数缓存，重复跑同分子会更快。
   use_cache: true
 
+# 平衡阶段和 replica 的通用设置。
 simulation:
+  # 平衡阶段输入文件名。
   equil_input_filename: "in.equil.lammps"
+  # 模拟温度，单位 K。
   temperature_K: 298.15
-  seed: 20260407
-  timestep_fs: 0.5
+  # 平衡阶段随机种子。
+  seed: 20260414
+  # 时间步长，单位 fs。
+  timestep_fs: 1
+  # 生产段 replica 数量；试跑建议先用 1。
   n_replicas: 1
+  # 第一个 replica 的随机种子起点。
   replica_seed_base: 207000
+  # 不同 replica 间随机种子的步进。
   replica_seed_step: 11
+  # 生产段开始前的短程 decorrelation 步数。
   replica_decorrelation_steps: 0
+  # 预留字段，当前热导率流程默认未使用该 50 atm 预平衡段。
   npt_pre_50_steps: 0
+  # 预留字段，当前热导率流程默认未使用该 10 atm 预平衡段。
   npt_pre_10_steps: 0
+  # 1 atm NPT 平衡步数。
   npt_1atm_steps: 100000
+  # 固定体积 NVT 平衡步数。
   nvt_steps: 200000
+  # 通用采样步数字段；本配置中以 thermal_rnemd.run_steps 为准。
   fit_sample_steps: 2000000
+  # 多个 replica 是否并行执行。
   parallel_replicas: false
 
+# LAMMPS 执行方式。
 lammps:
+  # LAMMPS 可执行文件路径。
   executable: "/opt/lammps/bin/lmp"
+  # MPI 启动命令。
   mpi_command: "mpirun"
+  # MPI rank 数。
   mpi_ranks: 4
+  # 是否允许 root 运行 mpirun。
   allow_run_as_root: true
-  use_gpu: false
-  gpu_count: 0
+  # 是否启用 LAMMPS GPU package。
+  use_gpu: true
+  # 使用 GPU 数量。
+  gpu_count: 1
+  # OpenMP 线程数。
   omp_threads: 1
-  equil_log_file: "run_thermal_case_equil.log"
+  # 平衡阶段日志文件名。
+  equil_log_file: "run_equil.log"
+  # 是否允许 MPI 使用超线程逻辑核。
   use_hwthread_cpus: true
 
+# 可视化选项。
 visualization:
+  # 是否在结束时渲染最后一帧结构图。
   render_last_frame: false
 
+# reverse-NEMD 热导率生产段参数。
 thermal_rnemd:
+  # 盒子长宽高比例；热导率计算常沿传热方向拉长盒子。
   box_aspect_ratio: [1.0, 1.0, 3.0]
+  # 每个 replica 子目录前缀。
   replica_dir_prefix: "thermal_conductivity/method_rnemd/replica_"
-  replica_input_filename: "in.thermal_rnemd.lammps"
-  replica_log_prefix: "../../../run_thermal_case_replica"
+  # 每个 replica 的输入文件名。
+  replica_input_filename: "in.thermal.lammps"
+  # 每个 replica 的日志前缀。
+  replica_log_prefix: "../../../thermal_replica"
+  # reverse-NEMD 生产段总步数。
   run_steps: 2000000
+  # 传热方向，可选 x / y / z。
   edim: "z"
+  # 沿传热方向分箱数量；必须为偶数。
   nbin: 20
+  # 每隔多少步交换一次能量。
   swap_every_steps: 100
+  # 每次交换的能量包个数。
   nswap: 1
+  # 温度剖面采样参数，对应 fix ave/chunk 的三个整数。
   profile_every_steps: 10
   profile_repeat: 100
   profile_freq: 1000
+  # 温度剖面输出文件。
   profile_file: "temp_profile.dat"
+  # 能量交换记录文件，用于计算热流。
   exchange_file: "thermal_exchange.dat"
+  # 生产段热力学量输出文件。
   thermo_file: "thermal_rnemd_thermo.dat"
+  # 从多少 ps 之后开始寻找热导率稳定平台。
   plateau_start_ps: 50.0
+  # 拟合温度梯度时，忽略冷热交换层附近的箱数。
   swap_buffer_bins: 2
+  # 稳定平台允许的相对标准差阈值。
   kappa_rel_std_tol: 0.15
+  # 稳定平台允许的首尾漂移阈值。
   kappa_drift_tol: 0.15
+  # 平台区至少包含的采样点数。
   min_window_points: 5
-  summary_file: "thermal_rnemd_summary.json"
-  profile_plot_file: "thermal_profile_latest.png"
-  kappa_plot_file: "thermal_kappa_running.png"
-  batch_summary_file: "thermal_rnemd_results.json"
+  # 单个 replica 的汇总 JSON。
+  summary_file: "thermal_summary.json"
+  # 温度剖面图文件名。
+  profile_plot_file: "thermal_profile.png"
+  # 热导率收敛图文件名。
+  kappa_plot_file: "thermal_kappa.png"
+  # 所有 replica 的汇总结果文件名。
+  batch_summary_file: "thermal_results.json"
