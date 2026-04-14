@@ -11,13 +11,13 @@
 ## 主入口
 
 ```bash
-python scripts/run_thermal_rnemd.py --config configs/config.yaml
+python md_run.py --config configs/config.yaml
 ```
 
 短程 smoke test：
 
 ```bash
-python scripts/run_thermal_rnemd.py --config configs/config.smoke.yaml
+python md_run.py --config configs/config.smoke.yaml
 ```
 
 ## CLI 参数约定
@@ -28,8 +28,8 @@ python scripts/run_thermal_rnemd.py --config configs/config.smoke.yaml
 
 ## 核心文件
 
+- `md_run.py`: 热导率主流程入口
 - `scripts/build_system.py`: `SMILES -> system.data`
-- `scripts/run_thermal_rnemd.py`: 热导率主流程入口
 - `scripts/write_lammps_input.py`: 手动生成平衡段/GK 输入的 CLI
 - `analysis/hfacf.py`: HFACF 热导率分析与后处理核心
 - `workflow/input_thermal.py`: 平衡段和 rNEMD 输入生成
@@ -38,8 +38,10 @@ python scripts/run_thermal_rnemd.py --config configs/config.smoke.yaml
 
 ## 目录说明
 
-- `scripts/`: 当前建议使用的 CLI 入口
+- `scripts/`: 辅助 CLI 与环境脚本
 - `scripts/env/`: 环境兼容 shell 脚本
+- `configs/config.yaml`: 当前主线默认配置，按 CPU 安全默认值提供
+- `configs/config.smoke.yaml`: 短程 smoke test 配置
 - `configs/`: 当前主线配置文件
 - `workflow/`: 热导率主线所需的运行与输入生成模块
 - `legacy/`: 仅保留手动 GK 输入模板
@@ -93,3 +95,6 @@ python scripts/write_lammps_input.py \
   --decorrelation-steps 500000 \
   --gk-steps 10000000
 ```
+
+启用 GPU 时，将 `configs/config.yaml` 或你自己的配置中的 `lammps.use_gpu`
+改为 `true`，并把 `lammps.gpu_count` 设为实际可用卡数。

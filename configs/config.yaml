@@ -102,10 +102,10 @@ lammps:
   mpi_ranks: 4
   # 是否允许 root 运行 mpirun。
   allow_run_as_root: true
-  # 是否启用 LAMMPS GPU package。
-  use_gpu: true
-  # 使用 GPU 数量。
-  gpu_count: 1
+  # 默认关闭 GPU；确认本机可用时再手动开启。
+  use_gpu: false
+  # GPU 数量；启用 GPU 时按实际硬件修改。
+  gpu_count: 0
   # OpenMP 线程数。
   omp_threads: 1
   # 平衡阶段日志文件名。

@@ -4,12 +4,9 @@ from __future__ import annotations
 import argparse
 import json
 import os
-import sys
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
 from typing import Any
-
-sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 from scripts.build_system import build_system_data_only
 from scripts._cli import Argv, new_parser
