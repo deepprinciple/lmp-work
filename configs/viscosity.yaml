@@ -1,0 +1,96 @@
+# ================================================================
+# ANI Green-Kubo viscosity workflow configuration
+# Usage: python md_viscosity.py --config configs/viscosity.yaml
+# ================================================================
+
+# Stage switches – set false to skip individual stages.
+run:
+  build_system: true
+  write_input:  true
+  run_lammps:   true
+  analyze:      true
+
+# Target molecule and output location.
+case:
+  # SMILES of the molecule to simulate.
+  smiles:   "O"             # water
+  # Short name used for file naming.
+  name:     "water"
+  # All intermediate files and results are written here.
+  workdir:  "./cases/water_viscosity_300K"
+
+# Extra single-molecule structure exports (xyz is always written for Packmol).
+structure:
+  output_formats:
+    - "xyz"
+
+# Box-building parameters (Packmol).
+model:
+  n_molecules:            500     # number of molecules in the box
+  density_g_cm3:          0.997   # target liquid density at 300 K (g/cm³)
+  packmol_density_scale:  0.85    # start Packmol at lower density to avoid clashes
+  packmol_tolerance_A:    2.0     # minimum intermolecular distance (Å)
+  packmol_seed:           20260415
+  packmol_max_attempts:   5       # retry seeds on failure
+  packmol_seed_step:      17
+  packmol_nloop:          200
+  packmol_full_box:       false
+  packmol_margin_A:       null
+  packmol_strict:         false
+
+# ANI model settings.
+ani:
+  # Path to the TorchScript model file (.pt).
+  model_file:   "/path/to/ani2x.pt"
+  # "cuda" or "cpu".
+  device:       "cuda"
+  # Number of ensemble models (-1 = all, 1 = fastest).
+  num_models:   1
+
+# Simulation parameters.
+simulation:
+  temperature_K:    300.0   # K
+  timestep_fs:      0.5     # fs  (0.5 fs recommended for ANI)
+  seed:             20260415
+
+  # --- Equilibration (NVT) ---
+  nvt_steps:        40000   # 20 ps @ 0.5 fs
+
+  # --- Green-Kubo production (NVE) ---
+  prod_steps:       2000000   # 1 ns @ 0.5 fs
+  # Number of lag steps for the stress ACF (Nrepeat in fix ave/correlate).
+  # corr_length × timestep_fs / 1000 = correlation window in ps.
+  # 40 000 × 0.5 fs = 20 ps – sufficient for most small organic liquids.
+  corr_length:      40000
+  # Sample pressure every N steps (1 = every step; recommended).
+  sample_every:     1
+
+  # Input / output file names (relative to workdir).
+  equil_input_filename: "in.equil.lammps"
+  equil_restart_file:   "equil_nvt.restart"
+  gk_input_filename:    "in.gk.lammps"
+  acf_file:             "stress_acf.dat"
+  thermo_file:          "gk_thermo.dat"
+  equil_log_file:       "run_equil.log"
+  gk_log_file:          "run_gk.log"
+
+# LAMMPS execution.
+lammps:
+  executable:         "lmp_mpi"
+  mpi_command:        "mpirun"
+  mpi_ranks:          1
+  allow_run_as_root:  true
+  # ANI handles GPU internally via PyTorch – do NOT use LAMMPS GPU package here.
+  use_hwthread_cpus:  false
+
+# Post-processing parameters.
+analysis:
+  # Maximum lag time used in the GK integral (ps).
+  # Should be ≤ corr_length × timestep_fs / 1000.
+  t_max_ps:           20.0
+  # Earliest time (ps) to start searching for a stable plateau.
+  plateau_start_ps:   5.0
+  # Smoothing window applied to the running integral before plateau detection.
+  smooth_window:      11
+  summary_file:       "viscosity_summary.json"
+  plot_file:          "viscosity_analysis.png"
