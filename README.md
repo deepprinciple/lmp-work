@@ -1,14 +1,17 @@
-# Thermal-Only Workflow
+# lmp-work — LAMMPS 输运性质计算工作流
 
-该目录已精简为热导率单线流程，核心能力如下：
+基于 LAMMPS 的液体输运性质计算流水线，目前支持两条工作流：
 
-1. 读取 `SMILES` 并生成 3D 分子结构
-2. 力场参数化（默认 `OpenFF + AM1BCC`，可选 `LigParGen + BOSS`）
-3. 使用 `Packmol` 建立液体体系
-4. 生成并运行 LAMMPS reverse-NEMD 热导率模拟
-5. 对热导率进行后处理拟合与可视化
+| 工作流 | 方法 | 力场 | 入口 |
+|--------|------|------|------|
+| **热导率** | reverse-NEMD | OpenFF / LigParGen | `md_run.py` |
+| **粘度** | Green-Kubo 应力 ACF | ANI 神经网络势 | `md_viscosity.py` |
 
-## 主入口
+---
+
+## 热导率工作流
+
+SMILES → OpenFF 参数化 → Packmol 建盒 → LAMMPS reverse-NEMD → κ
 
 ```bash
 python md_run.py --config configs/config.yaml
@@ -20,61 +23,107 @@ python md_run.py --config configs/config.yaml
 python md_run.py --config configs/config.smoke.yaml
 ```
 
-## CLI 参数约定
+### 核心文件（热导率）
 
-- 统一使用 `kebab-case` 参数名，如 `--temperature-k`、`--timestep-fs`
-- 需要显式单位时，直接写进参数名：`-k`、`-fs`、`-a`、`-a3`、`-g-cm3`
-- CLI 只保留这一套参数命名，不再兼容旧别名
+- `md_run.py` — 主流程入口
+- `workflow/input_thermal.py` — 平衡段和 rNEMD 输入生成
+- `analysis/hfacf.py` — HFACF 热导率分析核心（也被粘度工作流复用）
+- `analysis/rnemd.py` — rNEMD 热导率拟合与收敛分析
+- `scripts/analyze_thermal_hfacf.py` — HFACF 后处理 CLI
+- `configs/config.yaml` — 主配置模板
 
-## 核心文件
-
-- `md_run.py`: 热导率主流程入口
-- `scripts/build_system.py`: `SMILES -> system.data`
-- `scripts/write_lammps_input.py`: 手动生成平衡段/GK 输入的 CLI
-- `analysis/hfacf.py`: HFACF 热导率分析与后处理核心
-- `workflow/input_thermal.py`: 平衡段和 rNEMD 输入生成
-- `analysis/rnemd.py`: rNEMD 热导率拟合与收敛分析
-- `scripts/analyze_thermal_hfacf.py`: HFACF 热导率后处理 CLI
-
-## 目录说明
-
-- `scripts/`: 辅助 CLI 与环境脚本
-- `scripts/env/`: 环境兼容 shell 脚本
-- `configs/config.yaml`: 当前主线默认配置，按 CPU 安全默认值提供
-- `configs/config.smoke.yaml`: 短程 smoke test 配置
-- `configs/`: 当前主线配置文件
-- `workflow/`: 热导率主线所需的运行与输入生成模块
-- `legacy/`: 仅保留手动 GK 输入模板
-
-## 力场选择
+### 力场选择
 
 - 默认：`forcefield.engine: openff`，`forcefield.charge_method: am1bcc`
 - 可选：`forcefield.engine: ligpargen`（依赖 LigParGen/BOSS 运行环境）
 
-## 授权与分发声明
+### 授权与分发声明
 
 - 本仓库不再包含 `BOSS` 程序及其兼容运行时副本。
 - `BOSS` 为受限授权软件，使用者需自行向权利方申请授权并在本地安装。
 - `LigParGen + BOSS` 路径仅保留接口能力；实际运行需通过本地 `wrapper_script`
   指向你自己的合法安装环境。
 
-## HFACF 后处理示例
+---
+
+## 粘度工作流（ANI Green-Kubo）
+
+SMILES → Packmol 建盒 → ANI pair style → NVT 平衡 → NVE + 应力 ACF → η
+
+> **依赖**：需要编译安装 [lammps-ani](https://github.com/roitberg-group/lammps-ani)
+> 并准备 ANI TorchScript 模型文件（`ani2x.pt`）。
 
 ```bash
-python scripts/analyze_thermal_hfacf.py \
-  --hfacf-file ./hfacf.dat \
-  --gk-data-file ./gk_data.dat \
-  --temperature-k 298.15
+python md_viscosity.py --config configs/viscosity.yaml
 ```
 
-输出：
+编辑 `configs/viscosity.yaml`，至少修改：
 
-- `thermal_hfacf_summary.json`
-- `thermal_hfacf_analysis.png`
+```yaml
+case:
+  smiles:  "CCO"          # 目标分子 SMILES
+  name:    "ethanol"
+  workdir: "./cases/ethanol_viscosity_300K"
+
+ani:
+  model_file: "/path/to/ani2x.pt"   # ← 必填
+  device:     "cuda"
+```
+
+### 四个可独立跳过的阶段
+
+```
+build_system → write_input → run_lammps → analyze
+```
+
+在配置文件的 `run:` 节中将对应项设为 `false` 即可跳过：
+
+```yaml
+run:
+  build_system: false   # 已有 system.data 时跳过
+  write_input:  true
+  run_lammps:   true
+  analyze:      true
+```
+
+### 核心文件（粘度）
+
+- `md_viscosity.py` — 主流程入口
+- `core/data_builder.py` — `AniDataBuilder`：Packmol XYZ → LAMMPS atomic data
+- `workflow/input_ani_viscosity.py` — NVT 平衡段和 NVE GK 产出段输入生成
+- `analysis/viscosity.py` — Green-Kubo η 积分（复用 `hfacf` 引擎）
+- `configs/viscosity.yaml` — 粘度配置模板（水，300 K 示例）
+
+### 技术说明
+
+- ANI 通过原子质量识别元素，`pair_coeff` 只需 `* *`，无需写元素符号
+- 必须使用 `pyaev full`（CUAEV 不支持 virial/stress 计算）
+- 非 Kokkos 模式要求 `newton off`
+- 单位换算：`ETA_CONV = atm² × Å³ × fs / k_B × 10³ ≈ 7.44×10⁻¹⁰ mPa·s·K/Å³ per atm²·fs`
+
+---
+
+## 公共基础设施
+
+两条工作流共享以下模块：
+
+| 模块 | 作用 |
+|------|------|
+| `core/structure.py` | SMILES → RDKit 3D 结构 |
+| `core/packing.py` | Packmol 多分子建盒 |
+| `analysis/hfacf.py` | `parse_ave_correlate_detail`、`_integrate_acf`、收敛窗口检测 |
+| `utils/constants.py` | 物理常数与单位换算 |
+| `utils/io.py` | LAMMPS data 文件读写 |
+| `workflow/config.py` | YAML 配置解析 |
+
+## CLI 参数约定
+
+- 统一使用 `kebab-case` 参数名，如 `--temperature-k`、`--timestep-fs`
+- 需要显式单位时，直接写进参数名：`-k`、`-fs`、`-a`、`-a3`、`-g-cm3`
 
 ## 其他 CLI 示例
 
-构建 `system.data`：
+构建 `system.data`（热导率工作流）：
 
 ```bash
 python scripts/build_system.py \
@@ -85,16 +134,14 @@ python scripts/build_system.py \
   --density-g-cm3 0.789
 ```
 
-生成手动平衡/GK 输入：
+HFACF 热导率后处理：
 
 ```bash
-python scripts/write_lammps_input.py \
-  --workdir ./demo_case \
-  --mode replica \
-  --temperature-k 298.15 \
-  --decorrelation-steps 500000 \
-  --gk-steps 10000000
+python scripts/analyze_thermal_hfacf.py \
+  --hfacf-file ./hfacf.dat \
+  --gk-data-file ./gk_data.dat \
+  --temperature-k 298.15
 ```
 
-启用 GPU 时，将 `configs/config.yaml` 或你自己的配置中的 `lammps.use_gpu`
-改为 `true`，并把 `lammps.gpu_count` 设为实际可用卡数。
+启用 LAMMPS GPU 包（热导率工作流）时，将配置中的 `lammps.use_gpu` 改为 `true`
+并设置 `lammps.gpu_count`。粘度工作流的 GPU 由 ANI/PyTorch 自行管理，无需此项。
