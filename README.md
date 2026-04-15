@@ -20,6 +20,19 @@ python md_run.py --config configs/config.yaml
 python md_run.py --config configs/config.smoke.yaml
 ```
 
+## 环境准备
+
+完整环境安装请优先参考 `INSTALL.md`。
+
+- `INSTALL.md` 覆盖了 `LAMMPS`、`Packmol`、`OpenFF`、`AmberTools`、MPI/GPU 相关依赖的安装方式
+- 仓库根目录的 `requirements.txt` 只保留了补充安装的 Python 包，不负责完整环境引导
+
+环境准备完成后，如果还需要补装仓库中的 Python 依赖，再执行：
+
+```bash
+pip install -r requirements.txt
+```
+
 ## 结果在哪里看
 
 主流程的所有中间文件和结果都会写到配置里的 `case.workdir` 目录。
