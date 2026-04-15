@@ -1,7 +1,5 @@
 # LAMMPS 环境搭建手册（GPU + OpenMPI + FFTW3 + KOKKOS）
 
-本文用于搭建可运行当前 [`in.lammps`](/Users/heisenberg/work/gk_workflow/in.lammps) 的环境。
-
 目标能力：
 
 - 使用 `mpirun` 并行（OpenMPI）

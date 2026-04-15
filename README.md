@@ -8,18 +8,6 @@
 4. 生成并运行 LAMMPS reverse-NEMD 热导率模拟
 5. 对热导率进行后处理拟合与可视化
 
-## 主入口
-
-```bash
-python md_run.py --config configs/config.yaml
-```
-
-短程 smoke test：
-
-```bash
-python md_run.py --config configs/config.smoke.yaml
-```
-
 ## 环境准备
 
 完整环境安装请优先参考 `INSTALL.md`。
@@ -31,6 +19,19 @@ python md_run.py --config configs/config.smoke.yaml
 
 ```bash
 pip install -r requirements.txt
+```
+
+
+## 主入口
+
+```bash
+python md_run.py --config configs/config.yaml
+```
+
+smoke test：
+
+```bash
+python md_run.py --config configs/config.smoke.yaml
 ```
 
 ## 结果在哪里看
