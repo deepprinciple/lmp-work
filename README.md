@@ -20,6 +20,50 @@ python md_run.py --config configs/config.yaml
 python md_run.py --config configs/config.smoke.yaml
 ```
 
+## 结果在哪里看
+
+主流程的所有中间文件和结果都会写到配置里的 `case.workdir` 目录。
+
+- 默认主配置：`configs/config.yaml` -> `./cases/thf_thermal_only`
+- smoke test 配置：`configs/config.smoke.yaml` -> `./cases/methanol_thermal_smoke`
+
+通常跑完后，先看 `case.workdir` 根目录下的总汇总文件，再看各个 replica 子目录里的单次结果：
+
+```text
+case.workdir/
+├─ build_system_report.json
+├─ system.data
+├─ in.equil.lammps
+├─ run_equil.log
+├─ thermal_branch_manifest.json
+├─ thermal_replica1.log
+├─ thermal_replica2.log
+├─ ...
+├─ thermal_results.json
+└─ thermal_conductivity/method_rnemd/
+   ├─ replica_01/
+   │  ├─ in.thermal.lammps
+   │  ├─ temp_profile.dat
+   │  ├─ thermal_exchange.dat
+   │  ├─ thermal_rnemd_thermo.dat
+   │  ├─ thermal_summary.json
+   │  ├─ thermal_profile.png
+   │  └─ thermal_kappa.png
+   └─ replica_02/
+      └─ ...
+```
+
+重点看这几个文件：
+
+- `thermal_results.json`: 整个案例的总汇总，包含所有 replica 的热导率结果和均值
+- `thermal_conductivity/method_rnemd/replica_XX/thermal_summary.json`: 单个 replica 的详细分析结果
+- `thermal_conductivity/method_rnemd/replica_XX/thermal_profile.png`: 最新温度剖面拟合图
+- `thermal_conductivity/method_rnemd/replica_XX/thermal_kappa.png`: 热导率随时间的收敛图
+- `run_equil.log` 和 `thermal_replica*.log`: LAMMPS 运行日志，排查报错时先看这里
+
+如果你改了 `thermal_rnemd.summary_file`、`batch_summary_file`、`profile_plot_file`、`kappa_plot_file`
+或 `replica_dir_prefix`，实际文件名和目录会随配置一起变化。
+
 ## CLI 参数约定
 
 - 统一使用 `kebab-case` 参数名，如 `--temperature-k`、`--timestep-fs`
