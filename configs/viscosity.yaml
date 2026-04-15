@@ -19,10 +19,9 @@ case:
   # All intermediate files and results are written here.
   workdir:  "./cases/water_viscosity_300K"
 
-# Extra single-molecule structure exports (xyz is always written for Packmol).
+# Optional extra single-molecule structure exports (xyz is always written for Packmol).
 structure:
-  output_formats:
-    - "xyz"
+  output_formats: []
 
 # Box-building parameters (Packmol).
 model:

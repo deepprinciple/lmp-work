@@ -24,12 +24,14 @@ from __future__ import annotations
 # Shared formatting helper
 # ──────────────────────────────────────────────────────────────────────────
 
-def _pair_block(model_file: str, device: str, num_models: int) -> str:
-    """Return the pair_style / pair_coeff block for ANI with pyaev."""
-    return (
-        f"pair_style      ani 5.1 {model_file} {device} {num_models} pyaev full single\n"
-        f"pair_coeff      * *"
-    )
+def _pair_style_line(model_file: str, device: str, num_models: int) -> str:
+    """Return the pair_style line for ANI with pyaev."""
+    return f"pair_style      ani 5.1 {model_file} {device} {num_models} pyaev full single"
+
+
+def _pair_coeff_line() -> str:
+    """Return the pair_coeff line for ANI."""
+    return "pair_coeff      * *"
 
 
 # ──────────────────────────────────────────────────────────────────────────
@@ -76,7 +78,8 @@ def build_equil_input(
     str
         Complete LAMMPS input text.
     """
-    pair = _pair_block(model_file, device, num_models)
+    pair_style = _pair_style_line(model_file, device, num_models)
+    pair_coeff = _pair_coeff_line()
     return f"""\
 # ================================================================
 # LAMMPS Input: ANI NVT equilibration for viscosity workflow
@@ -88,9 +91,10 @@ units           real
 atom_style      atomic
 boundary        p p p
 
-{pair}
+{pair_style}
 
 read_data       {data_file}
+{pair_coeff}
 
 neighbor        2.0 bin
 neigh_modify    every 10 delay 0 check yes
@@ -188,7 +192,8 @@ def build_gk_input(
     str
         Complete LAMMPS input text.
     """
-    pair = _pair_block(model_file, device, num_models)
+    pair_style = _pair_style_line(model_file, device, num_models)
+    pair_coeff = _pair_coeff_line()
     # fix ave/correlate: Nfreq must be a multiple of Nevery.
     # With ave running, writing every corr_length steps gives good interim output.
     nfreq = sample_every * corr_length
@@ -209,7 +214,8 @@ boundary        p p p
 
 read_restart    {restart_file}
 
-{pair}
+{pair_style}
+{pair_coeff}
 
 neighbor        2.0 bin
 neigh_modify    every 10 delay 0 check yes

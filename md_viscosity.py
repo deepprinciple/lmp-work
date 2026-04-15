@@ -90,7 +90,6 @@ def stage_build_system(
     -------
     (data_file_path, (Lx, Ly, Lz))
     """
-    case_cfg = get_section(cfg, "case")
     model_cfg = get_section(cfg, "model")
     struct_cfg = get_section(cfg, "structure")
 
@@ -102,17 +101,28 @@ def stage_build_system(
     # 1a. Generate 3-D single-molecule geometry.
     mol = MoleculeStructure(smiles=smiles, name=name)
     mol.generate(optimize=True)
-    for fmt in struct_cfg.get("output_formats", ["xyz"]):
-        getattr(mol, f"save_{fmt}")(workdir / f"{name}.{fmt}")
+    mol_xyz = workdir / f"{name}.xyz"
+    mol.save_xyz(mol_xyz)
+    for fmt in struct_cfg.get("output_formats", []):
+        fmt_name = str(fmt).strip().lower()
+        if fmt_name == "xyz":
+            continue
+        save_fn = getattr(mol, f"save_{fmt_name}", None)
+        if save_fn is None:
+            raise ValueError(f"Unsupported structure output format: {fmt}")
+        save_fn(workdir / f"{name}.{fmt_name}")
 
     # 1b. Pack molecules into a box.
     n_mol = int(model_cfg.get("n_molecules", 500))
     density = float(model_cfg.get("density_g_cm3", 1.0))
+    packmol_density_scale = float(model_cfg.get("packmol_density_scale", 0.85))
+    if packmol_density_scale <= 0:
+        raise ValueError("model.packmol_density_scale must be > 0")
     packer = PackmolBuilder(workdir=workdir)
     system_xyz, box_lengths = packer.build_box(
-        mol_xyz=str(workdir / f"{name}.xyz"),
+        mol_xyz=mol_xyz,
         n_molecules=n_mol,
-        density=density,
+        density=density * packmol_density_scale,
         mol_weight=mol.molecular_weight,
         tolerance=float(model_cfg.get("packmol_tolerance_A", 2.0)),
         seed=int(model_cfg.get("packmol_seed", 12345)),
@@ -122,7 +132,6 @@ def stage_build_system(
         full_box=bool(model_cfg.get("packmol_full_box", False)),
         margin=model_cfg.get("packmol_margin_A"),
         allow_imperfect=not bool(model_cfg.get("packmol_strict", False)),
-        density_scale=float(model_cfg.get("packmol_density_scale", 0.85)),
     )
 
     # 1c. Convert XYZ → LAMMPS atomic data file.
