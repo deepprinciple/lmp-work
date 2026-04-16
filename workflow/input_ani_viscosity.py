@@ -47,6 +47,7 @@ def build_equil_input(
     timestep_fs: float,
     nvt_steps: int,
     npt_steps: int,
+    npt_thermo_file: str,
     seed: int,
     device: str = "cuda",
     num_models: int = 1,
@@ -69,6 +70,8 @@ def build_equil_input(
     npt_steps:
         Number of isotropic NPT steps used to relax the box toward the
         target liquid density at 1 atm.
+    npt_thermo_file:
+        Output file used to record NPT density samples for post-run checks.
     seed:
         Random seed for velocity initialisation and Langevin thermostat.
     device:
@@ -137,11 +140,15 @@ unfix           f_nve
 # ================================================================
 # Stage 3: isotropic NPT density equilibration at 1 atm
 # ================================================================
+variable        rho_trace equal density
 fix             f_npt all npt temp ${{T}} ${{T}} 100.0 iso 1.0 1.0 1000.0 drag 2.0
+fix             f_npt_rho all print 1000 "$(step) $(v_rho_trace)" file {npt_thermo_file} screen no &
+                title "# step density_g_cm3"
 
 run             {npt_steps}
 
 unfix           f_npt
+unfix           f_npt_rho
 
 write_restart   {restart_file}
 """

@@ -28,7 +28,14 @@ try:
     from core.data_builder import AniDataBuilder
     from core.packing import PackmolBuilder
     from core.structure import MoleculeStructure
-    from workflow.config import get_required, get_section, load_yaml
+    from workflow.config import (
+        REPO_ROOT,
+        apply_default_lammps_ani_environment,
+        apply_md_viscosity_path_resolution,
+        get_required,
+        get_section,
+        load_yaml,
+    )
     from workflow.input_ani_viscosity import build_equil_input, build_gk_input
     from analysis.viscosity import analyze_viscosity_file, load_volume_from_thermo
 except ImportError as exc:  # pragma: no cover
@@ -60,10 +67,16 @@ def _run_lammps(
     mpi_command = lammps_cfg.get("mpi_command", "mpirun")
     mpi_ranks = int(lammps_cfg.get("mpi_ranks", 1))
     allow_root = bool(lammps_cfg.get("allow_run_as_root", True))
+    use_hwthread_cpus = bool(lammps_cfg.get("use_hwthread_cpus", False))
+    oversubscribe = bool(lammps_cfg.get("oversubscribe", False))
 
     cmd: list[str] = [mpi_command]
     if allow_root:
         cmd.append("--allow-run-as-root")
+    if use_hwthread_cpus:
+        cmd.append("--use-hwthread-cpus")
+    if oversubscribe:
+        cmd.append("--oversubscribe")
     cmd += ["-np", str(mpi_ranks), executable, "-in", input_file.name, "-log", log_file]
 
     print("=" * 70)
@@ -73,7 +86,75 @@ def _run_lammps(
     print(f"  cmd    : {' '.join(cmd)}")
 
     env = os.environ.copy()
+    extra_env = lammps_cfg.get("env") or {}
+    if not isinstance(extra_env, dict):
+        raise TypeError("lammps.env must be a mapping when provided")
+    for key, value in extra_env.items():
+        env[str(key)] = str(value)
+
     subprocess.run(cmd, cwd=workdir, env=env, check=True)
+
+
+def _validate_npt_density_trace(
+    workdir: Path,
+    sim_cfg: dict[str, Any],
+    model_cfg: dict[str, Any],
+) -> None:
+    """Check that the tail of the NPT density trace is close to target."""
+    if bool(sim_cfg.get("equil_skip_density_check", False)):
+        print("  [skip] NPT density check (equil_skip_density_check: true)")
+        return
+
+    trace_name = str(sim_cfg.get("npt_thermo_file", "npt_thermo.dat"))
+    trace_path = workdir / trace_name
+    if not trace_path.exists():
+        raise FileNotFoundError(f"NPT density trace missing: {trace_path}")
+
+    target_density = float(model_cfg.get("density_g_cm3", 0.0))
+    if target_density <= 0:
+        raise ValueError("model.density_g_cm3 must be > 0 for NPT density check")
+
+    npt_steps = int(sim_cfg.get("npt_steps", 1))
+    last_steps = int(sim_cfg.get("equil_density_check_last_steps", 50000))
+    rel_tol = float(sim_cfg.get("equil_density_rel_tol", 0.05))
+    min_step = max(1, npt_steps - last_steps + 1)
+
+    samples: list[tuple[int, float]] = []
+    for line in trace_path.read_text(encoding="utf-8").splitlines():
+        line = line.strip()
+        if not line or line.startswith("#"):
+            continue
+        parts = line.split()
+        if len(parts) < 2:
+            continue
+        try:
+            step = int(float(parts[0]))
+            rho = float(parts[1])
+        except ValueError:
+            continue
+        if step >= min_step:
+            samples.append((step, rho))
+
+    if len(samples) < 3:
+        raise ValueError(
+            f"Not enough NPT density samples in {trace_path} for steps >= {min_step} "
+            f"(got {len(samples)} rows)"
+        )
+
+    densities = [rho for _, rho in samples]
+    mean_density = sum(densities) / len(densities)
+    rel_err = abs(mean_density - target_density) / target_density
+    if rel_err > rel_tol:
+        raise RuntimeError(
+            f"NPT density check failed: mean rho={mean_density:.6f} g/cm^3 vs target "
+            f"{target_density:.6f} g/cm^3 (relative error {rel_err:.4f} > {rel_tol}) "
+            f"over steps >= {min_step} (n={len(densities)} samples)"
+        )
+
+    print(
+        f"  NPT density check OK: mean rho={mean_density:.4f} g/cm^3 vs target "
+        f"{target_density:.4f} g/cm^3 (|Δ|/ρ <= {rel_tol}; {len(densities)} samples)"
+    )
 
 
 # ──────────────────────────────────────────────────────────────────────────
@@ -175,6 +256,7 @@ def stage_write_input(
         data_file=data_file.name,
         nvt_steps=int(sim_cfg.get("nvt_steps", 40000)),
         npt_steps=int(sim_cfg.get("npt_steps", 200000)),
+        npt_thermo_file=str(sim_cfg.get("npt_thermo_file", "npt_thermo.dat")),
         seed=int(sim_cfg.get("seed", 12345)),
         restart_file=restart_file,
         **common,
@@ -204,17 +286,37 @@ def stage_run_lammps(
     workdir: Path,
     equil_path: Path,
     gk_path: Path,
+    *,
+    run_equil: bool = True,
+    run_gk: bool = True,
 ) -> None:
-    """Run equilibration then GK production."""
+    """Run equilibration and/or GK production."""
     lammps_cfg = get_section(cfg, "lammps")
+    model_cfg = get_section(cfg, "model")
     sim_cfg = get_section(cfg, "simulation")
 
     print("\n── Stage 3: run LAMMPS ─────────────────────────────────────────")
 
-    _run_lammps(workdir, lammps_cfg, equil_path,
-                str(sim_cfg.get("equil_log_file", "run_equil.log")))
-    _run_lammps(workdir, lammps_cfg, gk_path,
-                str(sim_cfg.get("gk_log_file", "run_gk.log")))
+    if run_equil:
+        _run_lammps(
+            workdir,
+            lammps_cfg,
+            equil_path,
+            str(sim_cfg.get("equil_log_file", "run_equil.log")),
+        )
+        _validate_npt_density_trace(workdir, sim_cfg, model_cfg)
+    else:
+        print("  [skip] equilibration run")
+
+    if run_gk:
+        _run_lammps(
+            workdir,
+            lammps_cfg,
+            gk_path,
+            str(sim_cfg.get("gk_log_file", "run_gk.log")),
+        )
+    else:
+        print("  [skip] Green-Kubo run")
 
 
 def stage_analyze(
@@ -267,7 +369,13 @@ def main(argv: list[str] | None = None) -> None:
     parser.add_argument("--config", required=True, help="Path to YAML config file")
     args = parser.parse_args(argv)
 
-    cfg = load_yaml(args.config)
+    cfg = load_yaml(Path(args.config).resolve())
+    lammps_cfg = cfg.get("lammps")
+    if not isinstance(lammps_cfg, dict):
+        lammps_cfg = {}
+    if lammps_cfg.get("auto_environment", True):
+        apply_default_lammps_ani_environment()
+    apply_md_viscosity_path_resolution(cfg, REPO_ROOT)
     run_flags = get_section(cfg, "run")
 
     workdir = Path(get_required(cfg, "case", "workdir")).resolve()
@@ -296,7 +404,14 @@ def main(argv: list[str] | None = None) -> None:
 
     if run_flags.get("run_lammps", True):
         assert equil_path is not None and gk_path is not None
-        stage_run_lammps(cfg, workdir, equil_path, gk_path)
+        stage_run_lammps(
+            cfg,
+            workdir,
+            equil_path,
+            gk_path,
+            run_equil=bool(run_flags.get("run_equil", True)),
+            run_gk=bool(run_flags.get("run_gk", True)),
+        )
     else:
         print("\n[skip] run_lammps")
 

@@ -8,6 +8,8 @@ run:
   build_system: true
   write_input:  true
   run_lammps:   true
+  run_equil:    true
+  run_gk:       true
   analyze:      true
 
 # Target molecule and output location.
@@ -57,6 +59,14 @@ simulation:
   nvt_steps:        40000    # 20 ps @ 0.5 fs
   # Isotropic NPT relaxation used to bring the box back toward target density.
   npt_steps:        200000   # 100 ps @ 0.5 fs
+  # Density trace written during NPT for post-run validation.
+  npt_thermo_file:  "npt_thermo.dat"
+  # Average the last N NPT steps and compare against model.density_g_cm3.
+  equil_density_check_last_steps: 50000
+  # Allowed relative error of the tail-mean density versus target density.
+  equil_density_rel_tol: 0.05
+  # Set true only when you intentionally want to skip the automatic density check.
+  equil_skip_density_check: false
 
   # --- Green-Kubo production (NVE) ---
   prod_steps:       2000000   # 1 ns @ 0.5 fs
@@ -81,6 +91,10 @@ lammps:
   executable:         "lmp_mpi"
   mpi_command:        "mpirun"
   mpi_ranks:          1
+  # Auto-populate conservative ANI runtime env vars if they are currently unset.
+  auto_environment:   true
+  # Optional extra environment passed directly to mpirun/lmp_mpi.
+  env: {}
   allow_run_as_root:  true
   # ANI handles GPU internally via PyTorch – do NOT use LAMMPS GPU package here.
   use_hwthread_cpus:  false

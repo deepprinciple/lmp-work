@@ -86,6 +86,15 @@ run:
   analyze:      true
 ```
 
+如果你只想重跑平衡段或只想重跑 GK 生产段，可以继续细分：
+
+```yaml
+run:
+  run_lammps: true
+  run_equil:  false   # 复用已有 equil_nvt.restart
+  run_gk:     true
+```
+
 ### 核心文件（粘度）
 
 - `md_viscosity.py` — 主流程入口
@@ -99,6 +108,8 @@ run:
 - ANI 通过原子质量识别元素，`pair_coeff` 只需 `* *`，无需写元素符号
 - 必须使用 `pyaev full`（CUAEV 不支持 virial/stress 计算）
 - 非 Kokkos 模式要求 `newton off`
+- NPT 平衡会额外写出 `npt_thermo.dat`，并默认检查后段平均密度是否接近 `model.density_g_cm3`
+- 粘度入口会先尝试补齐保守的 ANI 运行环境；如需完全手动控制，可设 `lammps.auto_environment: false`
 - 单位换算：`ETA_CONV = atm² × Å³ × fs / k_B × 10³ ≈ 7.44×10⁻¹⁰ mPa·s·K/Å³ per atm²·fs`
 
 ---
