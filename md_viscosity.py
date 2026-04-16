@@ -16,6 +16,8 @@ Any stage can be skipped by setting its flag to ``false`` in the config.
 from __future__ import annotations
 
 import argparse
+import datetime as dt
+import hashlib
 import json
 import os
 import subprocess
@@ -157,6 +159,198 @@ def _validate_npt_density_trace(
     )
 
 
+def _state_paths(workdir: Path) -> tuple[Path, Path]:
+    """Return paths for stage marker and machine-readable state."""
+    return workdir / "stage.done", workdir / "state.json"
+
+
+def _utc_now_iso() -> str:
+    """Return a compact UTC timestamp for state tracking."""
+    return dt.datetime.now(dt.UTC).isoformat(timespec="seconds").replace("+00:00", "Z")
+
+
+def _load_state(workdir: Path) -> dict[str, Any]:
+    """Load existing ``state.json`` or return a fresh state mapping."""
+    _, state_file = _state_paths(workdir)
+    if state_file.exists():
+        try:
+            data = json.loads(state_file.read_text())
+            if isinstance(data, dict):
+                return data
+        except Exception:
+            pass
+    return {
+        "status": "running",
+        "stages": {},
+    }
+
+
+def _save_state(workdir: Path, state: dict[str, Any]) -> None:
+    """Persist stage state to ``state.json``."""
+    _, state_file = _state_paths(workdir)
+    state_file.write_text(json.dumps(state, indent=2, sort_keys=True))
+
+
+def _mark_stage(
+    workdir: Path,
+    state: dict[str, Any],
+    stage: str,
+    *,
+    status: str,
+    extra: dict[str, Any] | None = None,
+) -> None:
+    """Update ``stage.done`` + ``state.json`` for a stage transition."""
+    stage_file, _ = _state_paths(workdir)
+    entry: dict[str, Any] = {
+        "status": status,
+        "time_utc": _utc_now_iso(),
+    }
+    if extra:
+        entry.update(extra)
+    state.setdefault("stages", {})[stage] = entry
+    state["last_stage"] = stage
+    _save_state(workdir, state)
+    with stage_file.open("a", encoding="utf-8") as fh:
+        fh.write(f"{entry['time_utc']} {stage} {status}\n")
+
+
+def _workflow_paths(cfg: dict[str, Any], workdir: Path) -> dict[str, Path]:
+    """Collect key workflow file paths under *workdir*."""
+    sim_cfg = get_section(cfg, "simulation")
+    analysis_cfg = get_section(cfg, "analysis")
+    return {
+        "data_file": workdir / "system.data",
+        "equil_input": workdir / str(sim_cfg.get("equil_input_filename", "in.equil.lammps")),
+        "gk_input": workdir / str(sim_cfg.get("gk_input_filename", "in.gk.lammps")),
+        "equil_restart": workdir / str(sim_cfg.get("equil_restart_file", "equil_nvt.restart")),
+        "npt_thermo": workdir / str(sim_cfg.get("npt_thermo_file", "npt_thermo.dat")),
+        "acf_file": workdir / str(sim_cfg.get("acf_file", "stress_acf.dat")),
+        "thermo_file": workdir / str(sim_cfg.get("thermo_file", "gk_thermo.dat")),
+        "summary_file": workdir / str(analysis_cfg.get("summary_file", "viscosity_summary.json")),
+        "plot_file": workdir / str(analysis_cfg.get("plot_file", "viscosity_analysis.png")),
+    }
+
+
+def _relative_paths(paths: list[Path], workdir: Path) -> list[str]:
+    """Return paths relative to *workdir* when possible."""
+    out: list[str] = []
+    for path in paths:
+        try:
+            out.append(str(path.relative_to(workdir)))
+        except ValueError:
+            out.append(str(path))
+    return out
+
+
+def _paths_exist(paths: list[Path]) -> bool:
+    """Return True when every path in *paths* exists."""
+    return all(path.exists() for path in paths)
+
+
+def _outputs_up_to_date(outputs: list[Path], inputs: list[Path]) -> bool:
+    """Return True when outputs exist and are newer than all inputs."""
+    if not outputs or not inputs:
+        return False
+    if not _paths_exist(outputs) or not _paths_exist(inputs):
+        return False
+    oldest_output = min(path.stat().st_mtime for path in outputs)
+    newest_input = max(path.stat().st_mtime for path in inputs)
+    return oldest_output >= newest_input
+
+
+def _stage_signature(cfg: dict[str, Any], stage: str) -> str | None:
+    """Build a compact hash for the config subset relevant to *stage*."""
+    if stage == "build_system":
+        payload: dict[str, Any] = {
+            "case": get_section(cfg, "case"),
+            "structure": get_section(cfg, "structure"),
+            "model": get_section(cfg, "model"),
+        }
+    elif stage == "write_input":
+        payload = {
+            "ani": get_section(cfg, "ani"),
+            "simulation": get_section(cfg, "simulation"),
+        }
+    elif stage == "analyze":
+        sim_cfg = get_section(cfg, "simulation")
+        payload = {
+            "analysis": get_section(cfg, "analysis"),
+            "simulation": {
+                "temperature_K": sim_cfg.get("temperature_K"),
+                "acf_file": sim_cfg.get("acf_file"),
+                "thermo_file": sim_cfg.get("thermo_file"),
+            },
+        }
+    else:
+        return None
+
+    raw = json.dumps(payload, sort_keys=True, ensure_ascii=True, separators=(",", ":"))
+    return hashlib.sha1(raw.encode("utf-8")).hexdigest()[:12]
+
+
+def _can_reuse_stage(
+    state: dict[str, Any],
+    stage: str,
+    *,
+    outputs: list[Path],
+    inputs: list[Path] | None = None,
+    signature: str | None = None,
+    allow_artifact_fallback: bool = False,
+) -> bool:
+    """Return True when an existing stage output set is safe to reuse."""
+    if not _paths_exist(outputs):
+        return False
+    if inputs is not None and not _outputs_up_to_date(outputs, inputs):
+        return False
+    if signature is None:
+        return True
+
+    stages = state.get("stages")
+    entry = stages.get(stage) if isinstance(stages, dict) else None
+    if not isinstance(entry, dict):
+        return allow_artifact_fallback
+
+    recorded = entry.get("signature")
+    if recorded is None:
+        return allow_artifact_fallback
+    return recorded == signature
+
+
+def _print_reuse(label: str, workdir: Path, outputs: list[Path]) -> None:
+    """Log that a stage is reusing up-to-date artifacts."""
+    files = ", ".join(_relative_paths(outputs, workdir))
+    print(f"  [reuse] {label} – using {files}")
+
+
+def _rollup_status(*statuses: str) -> str:
+    """Collapse sub-step statuses into one stage status."""
+    active = [status for status in statuses if status != "skipped"]
+    if not active:
+        return "skipped"
+    if all(status == "reused" for status in active):
+        return "reused"
+    return "done"
+
+
+def _load_summary_file(summary_file: Path) -> dict[str, Any]:
+    """Load a JSON summary produced by the analysis stage."""
+    data = json.loads(summary_file.read_text(encoding="utf-8"))
+    if not isinstance(data, dict):
+        raise ValueError(f"Summary file must contain a JSON object: {summary_file}")
+    return data
+
+
+def _print_viscosity_result(summary: dict[str, Any]) -> None:
+    """Pretty-print the viscosity summary."""
+    eta = float(summary["eta_mPas"])
+    comps = [float(x) for x in summary["eta_components_mPas"]]
+    print(f"\n  ┌─ Result ─────────────────────────────────────────")
+    print(f"  │  η = {eta:.3f} mPa·s (cP)")
+    print(f"  │  components: xy={comps[0]:.3f}  xz={comps[1]:.3f}  yz={comps[2]:.3f} mPa·s")
+    print(f"  │  plateau   : {float(summary['plateau_start_ps']):.1f} – {float(summary['plateau_end_ps']):.1f} ps")
+    print(f"  └──────────────────────────────────────────────────")
+
+
 # ──────────────────────────────────────────────────────────────────────────
 # Stage helpers
 # ──────────────────────────────────────────────────────────────────────────
@@ -289,34 +483,57 @@ def stage_run_lammps(
     *,
     run_equil: bool = True,
     run_gk: bool = True,
-) -> None:
+) -> dict[str, Any]:
     """Run equilibration and/or GK production."""
     lammps_cfg = get_section(cfg, "lammps")
     model_cfg = get_section(cfg, "model")
     sim_cfg = get_section(cfg, "simulation")
+    paths = _workflow_paths(cfg, workdir)
+    result: dict[str, Any] = {
+        "run_equil": run_equil,
+        "run_gk": run_gk,
+        "equil_outputs": _relative_paths([paths["equil_restart"], paths["npt_thermo"]], workdir),
+        "gk_outputs": _relative_paths([paths["acf_file"], paths["thermo_file"]], workdir),
+    }
 
     print("\n── Stage 3: run LAMMPS ─────────────────────────────────────────")
 
     if run_equil:
-        _run_lammps(
-            workdir,
-            lammps_cfg,
-            equil_path,
-            str(sim_cfg.get("equil_log_file", "run_equil.log")),
-        )
+        equil_outputs = [paths["equil_restart"], paths["npt_thermo"]]
+        if _outputs_up_to_date(equil_outputs, [equil_path]):
+            _print_reuse("equilibration run", workdir, equil_outputs)
+            result["equil_status"] = "reused"
+        else:
+            _run_lammps(
+                workdir,
+                lammps_cfg,
+                equil_path,
+                str(sim_cfg.get("equil_log_file", "run_equil.log")),
+            )
+            result["equil_status"] = "done"
         _validate_npt_density_trace(workdir, sim_cfg, model_cfg)
     else:
         print("  [skip] equilibration run")
+        result["equil_status"] = "skipped"
 
     if run_gk:
-        _run_lammps(
-            workdir,
-            lammps_cfg,
-            gk_path,
-            str(sim_cfg.get("gk_log_file", "run_gk.log")),
-        )
+        gk_outputs = [paths["acf_file"], paths["thermo_file"]]
+        if _outputs_up_to_date(gk_outputs, [gk_path, paths["equil_restart"]]):
+            _print_reuse("Green-Kubo run", workdir, gk_outputs)
+            result["gk_status"] = "reused"
+        else:
+            _run_lammps(
+                workdir,
+                lammps_cfg,
+                gk_path,
+                str(sim_cfg.get("gk_log_file", "run_gk.log")),
+            )
+            result["gk_status"] = "done"
     else:
         print("  [skip] Green-Kubo run")
+        result["gk_status"] = "skipped"
+
+    return result
 
 
 def stage_analyze(
@@ -346,14 +563,7 @@ def stage_analyze(
         plot_out=str(analysis_cfg.get("plot_file", "viscosity_analysis.png")),
     )
 
-    eta = summary["eta_mPas"]
-    comps = summary["eta_components_mPas"]
-    print(f"\n  ┌─ Result ─────────────────────────────────────────")
-    print(f"  │  η = {eta:.3f} mPa·s (cP)")
-    print(f"  │  components: xy={comps[0]:.3f}  xz={comps[1]:.3f}  yz={comps[2]:.3f} mPa·s")
-    print(f"  │  plateau   : {summary['plateau_start_ps']:.1f} – {summary['plateau_end_ps']:.1f} ps")
-    print(f"  └──────────────────────────────────────────────────")
-
+    _print_viscosity_result(summary)
     return summary
 
 
@@ -369,7 +579,8 @@ def main(argv: list[str] | None = None) -> None:
     parser.add_argument("--config", required=True, help="Path to YAML config file")
     args = parser.parse_args(argv)
 
-    cfg = load_yaml(Path(args.config).resolve())
+    config_path = Path(args.config).resolve()
+    cfg = load_yaml(config_path)
     lammps_cfg = cfg.get("lammps")
     if not isinstance(lammps_cfg, dict):
         lammps_cfg = {}
@@ -380,47 +591,191 @@ def main(argv: list[str] | None = None) -> None:
 
     workdir = Path(get_required(cfg, "case", "workdir")).resolve()
     workdir.mkdir(parents=True, exist_ok=True)
+    paths = _workflow_paths(cfg, workdir)
     print(f"\nWorkdir: {workdir}")
+    state = _load_state(workdir)
+    state.update(
+        {
+            "status": "running",
+            "config_path": str(config_path),
+            "started_at_utc": _utc_now_iso(),
+        }
+    )
+    state.pop("error", None)
+    state.pop("ended_at_utc", None)
+    state.pop("failed_stage", None)
+    _save_state(workdir, state)
 
     # Track paths across stages so skipped stages can still read outputs.
     data_file: Path | None = None
     equil_path: Path | None = None
     gk_path: Path | None = None
+    current_stage: str | None = None
 
-    if run_flags.get("build_system", True):
-        data_file, _ = stage_build_system(cfg, workdir)
-    else:
-        data_file = workdir / "system.data"
-        print(f"\n[skip] build_system – expecting {data_file}")
+    try:
+        if run_flags.get("build_system", True):
+            current_stage = "build_system"
+            build_signature = _stage_signature(cfg, "build_system")
+            if _can_reuse_stage(
+                state,
+                "build_system",
+                outputs=[paths["data_file"]],
+                signature=build_signature,
+                allow_artifact_fallback=True,
+            ):
+                data_file = paths["data_file"]
+                _print_reuse("build_system", workdir, [data_file])
+                _mark_stage(
+                    workdir,
+                    state,
+                    "build_system",
+                    status="reused",
+                    extra={
+                        "signature": build_signature,
+                        "outputs": _relative_paths([data_file], workdir),
+                    },
+                )
+            else:
+                data_file, _ = stage_build_system(cfg, workdir)
+                _mark_stage(
+                    workdir,
+                    state,
+                    "build_system",
+                    status="done",
+                    extra={
+                        "signature": build_signature,
+                        "outputs": _relative_paths([data_file], workdir),
+                    },
+                )
+        else:
+            data_file = paths["data_file"]
+            print(f"\n[skip] build_system – expecting {data_file}")
+            _mark_stage(workdir, state, "build_system", status="skipped")
 
-    if run_flags.get("write_input", True):
-        assert data_file is not None
-        equil_path, gk_path = stage_write_input(cfg, workdir, data_file)
-    else:
-        sim_cfg = get_section(cfg, "simulation")
-        equil_path = workdir / str(sim_cfg.get("equil_input_filename", "in.equil.lammps"))
-        gk_path = workdir / str(sim_cfg.get("gk_input_filename", "in.gk.lammps"))
-        print(f"\n[skip] write_input – expecting {equil_path.name} / {gk_path.name}")
+        if run_flags.get("write_input", True):
+            current_stage = "write_input"
+            assert data_file is not None
+            write_signature = _stage_signature(cfg, "write_input")
+            write_outputs = [paths["equil_input"], paths["gk_input"]]
+            if _can_reuse_stage(
+                state,
+                "write_input",
+                outputs=write_outputs,
+                inputs=[data_file],
+                signature=write_signature,
+                allow_artifact_fallback=True,
+            ):
+                equil_path = paths["equil_input"]
+                gk_path = paths["gk_input"]
+                _print_reuse("write_input", workdir, write_outputs)
+                _mark_stage(
+                    workdir,
+                    state,
+                    "write_input",
+                    status="reused",
+                    extra={
+                        "signature": write_signature,
+                        "outputs": _relative_paths(write_outputs, workdir),
+                    },
+                )
+            else:
+                equil_path, gk_path = stage_write_input(cfg, workdir, data_file)
+                _mark_stage(
+                    workdir,
+                    state,
+                    "write_input",
+                    status="done",
+                    extra={
+                        "signature": write_signature,
+                        "outputs": _relative_paths([equil_path, gk_path], workdir),
+                    },
+                )
+        else:
+            equil_path = paths["equil_input"]
+            gk_path = paths["gk_input"]
+            print(f"\n[skip] write_input – expecting {equil_path.name} / {gk_path.name}")
+            _mark_stage(workdir, state, "write_input", status="skipped")
 
-    if run_flags.get("run_lammps", True):
-        assert equil_path is not None and gk_path is not None
-        stage_run_lammps(
-            cfg,
-            workdir,
-            equil_path,
-            gk_path,
-            run_equil=bool(run_flags.get("run_equil", True)),
-            run_gk=bool(run_flags.get("run_gk", True)),
-        )
-    else:
-        print("\n[skip] run_lammps")
+        if run_flags.get("run_lammps", True):
+            current_stage = "run_lammps"
+            assert equil_path is not None and gk_path is not None
+            run_equil = bool(run_flags.get("run_equil", True))
+            run_gk = bool(run_flags.get("run_gk", True))
+            run_info = stage_run_lammps(
+                cfg,
+                workdir,
+                equil_path,
+                gk_path,
+                run_equil=run_equil,
+                run_gk=run_gk,
+            )
+            _mark_stage(
+                workdir,
+                state,
+                "run_lammps",
+                status=_rollup_status(
+                    str(run_info.get("equil_status", "skipped")),
+                    str(run_info.get("gk_status", "skipped")),
+                ),
+                extra=run_info,
+            )
+        else:
+            print("\n[skip] run_lammps")
+            _mark_stage(workdir, state, "run_lammps", status="skipped")
 
-    if run_flags.get("analyze", True):
-        stage_analyze(cfg, workdir)
-    else:
-        print("\n[skip] analyze")
+        if run_flags.get("analyze", True):
+            current_stage = "analyze"
+            analyze_signature = _stage_signature(cfg, "analyze")
+            analyze_outputs = [paths["summary_file"], paths["plot_file"]]
+            if _can_reuse_stage(
+                state,
+                "analyze",
+                outputs=analyze_outputs,
+                inputs=[paths["acf_file"], paths["thermo_file"]],
+                signature=analyze_signature,
+            ):
+                try:
+                    summary = _load_summary_file(paths["summary_file"])
+                except Exception:
+                    summary = stage_analyze(cfg, workdir)
+                    analyze_status = "done"
+                else:
+                    _print_reuse("analyze", workdir, analyze_outputs)
+                    _print_viscosity_result(summary)
+                    analyze_status = "reused"
+            else:
+                summary = stage_analyze(cfg, workdir)
+                analyze_status = "done"
+            _mark_stage(
+                workdir,
+                state,
+                "analyze",
+                status=analyze_status,
+                extra={
+                    "signature": analyze_signature,
+                    "eta_mPas": summary.get("eta_mPas"),
+                    "outputs": _relative_paths(analyze_outputs, workdir),
+                },
+            )
+        else:
+            print("\n[skip] analyze")
+            _mark_stage(workdir, state, "analyze", status="skipped")
 
-    print("\nDone.")
+        state["status"] = "succeeded"
+        state["ended_at_utc"] = _utc_now_iso()
+        _save_state(workdir, state)
+        print("\nDone.")
+    except Exception as exc:
+        state["status"] = "failed"
+        if current_stage is not None:
+            state["failed_stage"] = current_stage
+        state["error"] = {
+            "type": exc.__class__.__name__,
+            "message": str(exc),
+        }
+        state["ended_at_utc"] = _utc_now_iso()
+        _save_state(workdir, state)
+        raise
 
 
 if __name__ == "__main__":

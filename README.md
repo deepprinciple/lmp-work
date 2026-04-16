@@ -95,6 +95,17 @@ run:
   run_gk:     true
 ```
 
+同一 `workdir` 下重复执行时，粘度入口会自动判断哪些产物可以直接复用：
+
+- `build_system`：已有 `system.data`
+- `write_input`：已有 `in.equil.lammps` 和 `in.gk.lammps`
+- `run_lammps`：已有 `equil_nvt.restart` + `npt_thermo.dat`，或已有 `stress_acf.dat` + `gk_thermo.dat`
+- `analyze`：已有 `viscosity_summary.json` + `viscosity_analysis.png`
+
+如果上游输入更新了，下游阶段会自动失效并重新执行。每次运行还会在 `workdir`
+写出 `state.json` 和 `stage.done`，记录各阶段的 `done / reused / skipped / failed`
+状态，方便续跑和排错。
+
 ### 核心文件（粘度）
 
 - `md_viscosity.py` — 主流程入口
