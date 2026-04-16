@@ -57,6 +57,12 @@ SMILES → Packmol 建盒 → ANI pair style → NVT 预热 → NPT 压回目标
 python md_viscosity.py --config configs/viscosity.yaml
 ```
 
+短程 smoke test：
+
+```bash
+python md_viscosity.py --config configs/viscosity.smoke.yaml
+```
+
 编辑 `configs/viscosity.yaml`，至少修改：
 
 ```yaml
@@ -112,7 +118,8 @@ run:
 - `core/data_builder.py` — `AniDataBuilder`：Packmol XYZ → LAMMPS atomic data
 - `workflow/input_ani_viscosity.py` — NVT 预热 + NPT 密度平衡 + NVE GK 输入生成
 - `analysis/viscosity.py` — Green-Kubo η 积分（复用 `hfacf` 引擎）
-- `configs/viscosity.yaml` — 粘度配置模板（水，300 K 示例）
+- `configs/viscosity.yaml` — 官方默认长程配置模板
+- `configs/viscosity.smoke.yaml` — 短程 smoke test 模板
 
 ### 技术说明
 

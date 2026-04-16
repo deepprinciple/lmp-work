@@ -1,0 +1,78 @@
+# ================================================================
+# ANI Green-Kubo viscosity smoke-test configuration
+# Usage: python md_viscosity.py --config configs/viscosity.smoke.yaml
+# ================================================================
+
+run:
+  build_system: true
+  write_input:  true
+  run_lammps:   true
+  run_equil:    true
+  run_gk:       true
+  analyze:      true
+
+case:
+  smiles:   "O"             # water
+  name:     "water"
+  workdir:  "./cases/water_viscosity_smoke"
+
+structure:
+  output_formats: []
+
+model:
+  n_molecules:            200
+  density_g_cm3:          0.997
+  packmol_density_scale:  0.85
+  packmol_tolerance_A:    2.0
+  packmol_seed:           20260415
+  packmol_max_attempts:   5
+  packmol_seed_step:      17
+  packmol_nloop:          200
+  packmol_full_box:       false
+  packmol_margin_A:       null
+  packmol_strict:         false
+
+ani:
+  model_file:   "/path/to/ani2x.pt"
+  device:       "cuda"
+  num_models:   1
+
+simulation:
+  temperature_K:    300.0
+  timestep_fs:      0.5
+  seed:             20260415
+
+  nvt_steps:        5000
+  npt_steps:        10000
+  npt_thermo_file:  "npt_thermo.dat"
+  equil_density_check_last_steps: 5000
+  equil_density_rel_tol: 0.10
+  equil_skip_density_check: false
+
+  prod_steps:       4000
+  corr_length:      2000
+  sample_every:     1
+
+  equil_input_filename: "in.equil.lammps"
+  equil_restart_file:   "equil_nvt.restart"
+  gk_input_filename:    "in.gk.lammps"
+  acf_file:             "stress_acf.dat"
+  thermo_file:          "gk_thermo.dat"
+  equil_log_file:       "run_equil.log"
+  gk_log_file:          "run_gk.log"
+
+lammps:
+  executable:         "lmp_mpi"
+  mpi_command:        "mpirun"
+  mpi_ranks:          1
+  auto_environment:   true
+  env: {}
+  allow_run_as_root:  true
+  use_hwthread_cpus:  false
+
+analysis:
+  t_max_ps:           2.0
+  plateau_start_ps:   0.2
+  smooth_window:      5
+  summary_file:       "viscosity_summary.json"
+  plot_file:          "viscosity_analysis.png"

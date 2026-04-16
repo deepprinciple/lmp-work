@@ -52,6 +52,43 @@ except ImportError as exc:  # pragma: no cover
 # LAMMPS execution helper
 # ──────────────────────────────────────────────────────────────────────────
 
+def _build_lammps_env(lammps_cfg: dict[str, Any]) -> dict[str, str]:
+    """Build the runtime environment for ``lmp_mpi``.
+
+    ``LAMMPS_PLUGIN_PATH`` priority:
+    1. Current process environment
+    2. ``lammps.env.LAMMPS_PLUGIN_PATH`` from YAML
+    3. ``$LAMMPS_ANI_ROOT/build`` when ``ani_plugin.so`` is present
+    """
+    env = os.environ.copy()
+    extra_env = lammps_cfg.get("env") or {}
+    if not isinstance(extra_env, dict):
+        raise TypeError("lammps.env must be a mapping when provided")
+
+    extra = {str(key): str(value) for key, value in extra_env.items()}
+    plugin_yaml = os.path.expandvars(extra.pop("LAMMPS_PLUGIN_PATH", "").strip())
+
+    for key, value in extra.items():
+        env[key] = value
+
+    plugin_os = os.environ.get("LAMMPS_PLUGIN_PATH", "").strip()
+    if plugin_os:
+        env["LAMMPS_PLUGIN_PATH"] = plugin_os
+        return env
+
+    if plugin_yaml and "${" not in plugin_yaml:
+        env["LAMMPS_PLUGIN_PATH"] = plugin_yaml
+        return env
+
+    ani_root = env.get("LAMMPS_ANI_ROOT", "").strip()
+    if ani_root:
+        plugin_dir = Path(ani_root) / "build"
+        if (plugin_dir / "ani_plugin.so").is_file():
+            env["LAMMPS_PLUGIN_PATH"] = str(plugin_dir.resolve())
+
+    return env
+
+
 def _run_lammps(
     workdir: Path,
     lammps_cfg: dict[str, Any],
@@ -87,13 +124,7 @@ def _run_lammps(
     print(f"  cwd    : {workdir}")
     print(f"  cmd    : {' '.join(cmd)}")
 
-    env = os.environ.copy()
-    extra_env = lammps_cfg.get("env") or {}
-    if not isinstance(extra_env, dict):
-        raise TypeError("lammps.env must be a mapping when provided")
-    for key, value in extra_env.items():
-        env[str(key)] = str(value)
-
+    env = _build_lammps_env(lammps_cfg)
     subprocess.run(cmd, cwd=workdir, env=env, check=True)
 
 

@@ -2,6 +2,7 @@ __pycache__/
 *.py[cod]
 *.swp
 *.swo
+.DS_Store
 *.deb
 *.log
 .pytest_cache/
