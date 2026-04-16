@@ -174,6 +174,7 @@ def stage_write_input(
     equil_text = build_equil_input(
         data_file=data_file.name,
         nvt_steps=int(sim_cfg.get("nvt_steps", 40000)),
+        npt_steps=int(sim_cfg.get("npt_steps", 200000)),
         seed=int(sim_cfg.get("seed", 12345)),
         restart_file=restart_file,
         **common,

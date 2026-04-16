@@ -52,8 +52,11 @@ simulation:
   timestep_fs:      0.5     # fs  (0.5 fs recommended for ANI)
   seed:             20260415
 
-  # --- Equilibration (NVT) ---
-  nvt_steps:        40000   # 20 ps @ 0.5 fs
+  # --- Equilibration ---
+  # Short fixed-volume warmup before enabling the barostat.
+  nvt_steps:        40000    # 20 ps @ 0.5 fs
+  # Isotropic NPT relaxation used to bring the box back toward target density.
+  npt_steps:        200000   # 100 ps @ 0.5 fs
 
   # --- Green-Kubo production (NVE) ---
   prod_steps:       2000000   # 1 ns @ 0.5 fs

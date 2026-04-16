@@ -48,7 +48,7 @@ python md_run.py --config configs/config.smoke.yaml
 
 ## 粘度工作流（ANI Green-Kubo）
 
-SMILES → Packmol 建盒 → ANI pair style → NVT 平衡 → NVE + 应力 ACF → η
+SMILES → Packmol 建盒 → ANI pair style → NVT 预热 → NPT 压回目标密度 → NVE + 应力 ACF → η
 
 > **依赖**：需要编译安装 [lammps-ani](https://github.com/roitberg-group/lammps-ani)
 > 并准备 ANI TorchScript 模型文件（`ani2x.pt`）。
@@ -90,7 +90,7 @@ run:
 
 - `md_viscosity.py` — 主流程入口
 - `core/data_builder.py` — `AniDataBuilder`：Packmol XYZ → LAMMPS atomic data
-- `workflow/input_ani_viscosity.py` — NVT 平衡段和 NVE GK 产出段输入生成
+- `workflow/input_ani_viscosity.py` — NVT 预热 + NPT 密度平衡 + NVE GK 输入生成
 - `analysis/viscosity.py` — Green-Kubo η 积分（复用 `hfacf` 引擎）
 - `configs/viscosity.yaml` — 粘度配置模板（水，300 K 示例）
 
