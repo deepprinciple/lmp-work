@@ -9,6 +9,33 @@
 
 ---
 
+## 环境搭建
+
+推荐先创建独立 Python 环境：
+
+```bash
+conda create -n lmp-work python=3.11 -y
+conda activate lmp-work
+pip install -r requirements.txt
+```
+
+如果默认热导率路径使用 `OpenFF + AM1BCC` 电荷分配时报缺依赖，建议再补：
+
+```bash
+conda install -c conda-forge ambertools -y
+```
+
+```bash
+conda install -c conda-forge rdkit openff-toolkit openff-interchange openff-units -y
+```
+
+除了 Python 包，还需要准备外部程序：
+
+- `packmol`：两条工作流都需要，并且命令应在 `PATH` 中
+- `lmp_mpi` 或等价 LAMMPS 可执行程序：两条工作流都需要
+- `lammps-ani` + ANI 模型文件：粘度工作流需要
+- `BOSS`：仅当你选择 `LigParGen + BOSS` 路径时需要
+
 ## 热导率工作流
 
 SMILES → OpenFF 参数化 → Packmol 建盒 → LAMMPS reverse-NEMD → κ
