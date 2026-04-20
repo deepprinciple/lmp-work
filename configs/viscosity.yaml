@@ -19,7 +19,28 @@ case:
   # Short name used for file naming.
   name:     "water"
   # All intermediate files and results are written here.
-  workdir:  "./cases/water_viscosity_300K"
+  workdir:  "./cases/water_viscosity_300K_3x3_demo"
+
+# Optional multi-replica demo mode.
+# Keep all replicas at the same trajectory length; if you want to study
+# production-time effects, change simulation.prod_steps in a separate run.
+replica:
+  n_replicates:  3
+  seed_stride:   1000
+  dir_prefix:    "replica_"
+  summary_file:  "viscosity_replicas_summary.json"
+
+# Optional production-length scan.
+# Typical 0.5 / 1.0 / 2.0 ns examples at 0.5 fs are:
+# [1000000, 2000000, 4000000]
+length_scan:
+  enabled:       true
+  prod_steps:
+    - 1000000
+    - 2000000
+    - 4000000
+  dir_prefix:    "len_"
+  summary_file:  "viscosity_length_scan_summary.json"
 
 # Optional extra single-molecule structure exports (xyz is always written for Packmol).
 structure:

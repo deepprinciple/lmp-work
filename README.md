@@ -90,6 +90,44 @@ python md_viscosity.py --config configs/viscosity.yaml
 python md_viscosity.py --config configs/viscosity.smoke.yaml
 ```
 
+最小 replicate demo：
+
+```yaml
+replica:
+  n_replicates: 3
+  seed_stride:  1000
+```
+
+这会在 `case.workdir` 下生成 `replica_01/`、`replica_02/`、`replica_03/`，每个副本使用同一套
+体系和时长参数，但 `simulation.seed` 会自动错开；顶层额外写出
+`viscosity_replicas_summary.json`，汇总 `eta_replica_mean/std/sem`。
+
+如果你要研究“模拟时长是否足够”，建议保持 `n_replicates` 固定不变，只修改
+`simulation.prod_steps` 分多次运行比较，而不是让不同 replica 混用不同长度。
+
+最小 length scan demo：
+
+```yaml
+replica:
+  n_replicates: 3
+
+length_scan:
+  enabled: true
+  prod_steps:
+    - 1000000   # 0.5 ns @ 0.5 fs
+    - 2000000   # 1.0 ns @ 0.5 fs
+    - 4000000   # 2.0 ns @ 0.5 fs
+```
+
+这会在 `case.workdir` 下生成：
+
+- `len_1000000/`
+- `len_2000000/`
+- `len_4000000/`
+
+每个长度点内部再按 `replica_01/02/03` 组织；顶层额外写出
+`viscosity_length_scan_summary.json`，把每个长度点的 `eta_mean/std/sem` 汇总到一起。
+
 编辑 `configs/viscosity.yaml`，至少修改：
 
 ```yaml
