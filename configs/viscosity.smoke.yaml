@@ -56,10 +56,14 @@ simulation:
 
   nvt_steps:        5000
   npt_steps:        10000
+  final_nvt_steps:  2000
   npt_thermo_file:  "npt_thermo.dat"
   equil_density_check_last_steps: 5000
   equil_density_rel_tol: 0.10
   equil_skip_density_check: false
+  equil_temp_check_last_steps: 1000
+  equil_temp_abs_tol_K: 20.0
+  equil_skip_temperature_check: false
 
   prod_steps:       4000
   corr_length:      2000

@@ -80,7 +80,9 @@ simulation:
   nvt_steps:        40000    # 20 ps @ 0.5 fs
   # Isotropic NPT relaxation used to bring the box back toward target density.
   npt_steps:        200000   # 100 ps @ 0.5 fs
-  # Density trace written during NPT for post-run validation.
+  # Short fixed-volume NVT settling after NPT, before entering NVE production.
+  final_nvt_steps:  20000    # 10 ps @ 0.5 fs
+  # Equilibration trace written during NPT and final NVT for post-run validation.
   npt_thermo_file:  "npt_thermo.dat"
   # Average the last N NPT steps and compare against model.density_g_cm3.
   equil_density_check_last_steps: 50000
@@ -88,6 +90,12 @@ simulation:
   equil_density_rel_tol: 0.05
   # Set true only when you intentionally want to skip the automatic density check.
   equil_skip_density_check: false
+  # Average the last N final-NVT steps and compare against simulation.temperature_K.
+  equil_temp_check_last_steps: 10000
+  # Allowed absolute temperature deviation of the final-NVT tail mean.
+  equil_temp_abs_tol_K: 15.0
+  # Set true only when you intentionally want to skip the automatic temperature check.
+  equil_skip_temperature_check: false
 
   # --- Green-Kubo production (NVE) ---
   prod_steps:       2000000   # 1 ns @ 0.5 fs

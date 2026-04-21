@@ -130,31 +130,18 @@ def _run_lammps(
     subprocess.run(cmd, cwd=workdir, env=env, check=True)
 
 
-def _validate_npt_density_trace(
+def _validate_equilibration_trace(
     workdir: Path,
     sim_cfg: dict[str, Any],
     model_cfg: dict[str, Any],
 ) -> None:
-    """Check that the tail of the NPT density trace is close to target."""
-    if bool(sim_cfg.get("equil_skip_density_check", False)):
-        print("  [skip] NPT density check (equil_skip_density_check: true)")
-        return
-
+    """Check that the equilibration tail is close to target density/temperature."""
     trace_name = str(sim_cfg.get("npt_thermo_file", "npt_thermo.dat"))
     trace_path = workdir / trace_name
     if not trace_path.exists():
-        raise FileNotFoundError(f"NPT density trace missing: {trace_path}")
+        raise FileNotFoundError(f"Equilibration trace missing: {trace_path}")
 
-    target_density = float(model_cfg.get("density_g_cm3", 0.0))
-    if target_density <= 0:
-        raise ValueError("model.density_g_cm3 must be > 0 for NPT density check")
-
-    npt_steps = int(sim_cfg.get("npt_steps", 1))
-    last_steps = int(sim_cfg.get("equil_density_check_last_steps", 50000))
-    rel_tol = float(sim_cfg.get("equil_density_rel_tol", 0.05))
-    min_step = max(1, npt_steps - last_steps + 1)
-
-    samples: list[tuple[int, float]] = []
+    samples: list[tuple[int, float | None, float]] = []
     for line in trace_path.read_text(encoding="utf-8").splitlines():
         line = line.strip()
         if not line or line.startswith("#"):
@@ -164,31 +151,92 @@ def _validate_npt_density_trace(
             continue
         try:
             step = int(float(parts[0]))
-            rho = float(parts[1])
         except ValueError:
             continue
-        if step >= min_step:
-            samples.append((step, rho))
+        try:
+            if len(parts) >= 3:
+                temp = float(parts[1])
+                rho = float(parts[2])
+            else:
+                temp = None
+                rho = float(parts[1])
+        except ValueError:
+            continue
+        samples.append((step, temp, rho))
 
     if len(samples) < 3:
+        raise ValueError(f"Not enough equilibration samples in {trace_path} (got {len(samples)} rows)")
+
+    nvt_steps = int(sim_cfg.get("nvt_steps", 0))
+    npt_steps = int(sim_cfg.get("npt_steps", 1))
+    final_nvt_steps = int(sim_cfg.get("final_nvt_steps", 0))
+
+    if not bool(sim_cfg.get("equil_skip_density_check", False)):
+        target_density = float(model_cfg.get("density_g_cm3", 0.0))
+        if target_density <= 0:
+            raise ValueError("model.density_g_cm3 must be > 0 for NPT density check")
+
+        last_steps = int(sim_cfg.get("equil_density_check_last_steps", 50000))
+        rel_tol = float(sim_cfg.get("equil_density_rel_tol", 0.05))
+        npt_end = nvt_steps + npt_steps
+        min_step = max(nvt_steps + 1, npt_end - last_steps + 1)
+        densities = [rho for step, _, rho in samples if min_step <= step <= npt_end]
+        if len(densities) < 3:
+            raise ValueError(
+                f"Not enough NPT density samples in {trace_path} for steps {min_step}..{npt_end} "
+                f"(got {len(densities)} rows)"
+            )
+
+        mean_density = sum(densities) / len(densities)
+        rel_err = abs(mean_density - target_density) / target_density
+        if rel_err > rel_tol:
+            raise RuntimeError(
+                f"NPT density check failed: mean rho={mean_density:.6f} g/cm^3 vs target "
+                f"{target_density:.6f} g/cm^3 (relative error {rel_err:.4f} > {rel_tol}) "
+                f"over steps {min_step}..{npt_end} (n={len(densities)})"
+            )
+
+        print(
+            f"  NPT density check OK: mean rho={mean_density:.4f} g/cm^3 vs target "
+            f"{target_density:.4f} g/cm^3 (|Δ|/ρ <= {rel_tol}; {len(densities)} samples)"
+        )
+    else:
+        print("  [skip] NPT density check (equil_skip_density_check: true)")
+
+    if bool(sim_cfg.get("equil_skip_temperature_check", False)):
+        print("  [skip] final NVT temperature check (equil_skip_temperature_check: true)")
+        return
+    if final_nvt_steps <= 0:
+        print("  [skip] final NVT temperature check (final_nvt_steps <= 0)")
+        return
+
+    target_temp = float(sim_cfg.get("temperature_K", 0.0))
+    if target_temp <= 0:
+        raise ValueError("simulation.temperature_K must be > 0 for equilibration temperature check")
+
+    last_steps = int(sim_cfg.get("equil_temp_check_last_steps", 10000))
+    abs_tol = float(sim_cfg.get("equil_temp_abs_tol_K", 15.0))
+    final_nvt_end = nvt_steps + npt_steps + final_nvt_steps
+    min_step = max(nvt_steps + npt_steps + 1, final_nvt_end - last_steps + 1)
+    temps = [temp for step, temp, _ in samples if temp is not None and min_step <= step <= final_nvt_end]
+    if len(temps) < 3:
         raise ValueError(
-            f"Not enough NPT density samples in {trace_path} for steps >= {min_step} "
-            f"(got {len(samples)} rows)"
+            f"Not enough final NVT temperature samples in {trace_path} for steps {min_step}..{final_nvt_end} "
+            f"(got {len(temps)} rows)"
         )
 
-    densities = [rho for _, rho in samples]
-    mean_density = sum(densities) / len(densities)
-    rel_err = abs(mean_density - target_density) / target_density
-    if rel_err > rel_tol:
+    mean_temp = sum(temps) / len(temps)
+    abs_err = abs(mean_temp - target_temp)
+    if abs_err > abs_tol:
         raise RuntimeError(
-            f"NPT density check failed: mean rho={mean_density:.6f} g/cm^3 vs target "
-            f"{target_density:.6f} g/cm^3 (relative error {rel_err:.4f} > {rel_tol}) "
-            f"over steps >= {min_step} (n={len(densities)} samples)"
+            f"Final NVT temperature check failed: mean T={mean_temp:.3f} K vs target "
+            f"{target_temp:.3f} K (|ΔT|={abs_err:.3f} K > {abs_tol}) "
+            f"over steps {min_step}..{final_nvt_end} (n={len(temps)})"
         )
 
     print(
-        f"  NPT density check OK: mean rho={mean_density:.4f} g/cm^3 vs target "
-        f"{target_density:.4f} g/cm^3 (|Δ|/ρ <= {rel_tol}; {len(densities)} samples)"
+        f"  Final NVT temperature check OK: mean T={mean_temp:.2f} K vs target "
+        f"{target_temp:.2f} K (|ΔT| <= {abs_tol}; {len(temps)} samples)"
     )
 
 
@@ -677,6 +725,7 @@ def stage_write_input(
         data_file=data_file.name,
         nvt_steps=int(sim_cfg.get("nvt_steps", 40000)),
         npt_steps=int(sim_cfg.get("npt_steps", 200000)),
+        final_nvt_steps=int(sim_cfg.get("final_nvt_steps", 20000)),
         npt_thermo_file=str(sim_cfg.get("npt_thermo_file", "npt_thermo.dat")),
         seed=int(sim_cfg.get("seed", 12345)),
         restart_file=restart_file,
@@ -727,7 +776,15 @@ def stage_run_lammps(
 
     if run_equil:
         equil_outputs = [paths["equil_restart"], paths["npt_thermo"]]
-        if _outputs_up_to_date(equil_outputs, [equil_path]):
+        reuse_equil = _outputs_up_to_date(equil_outputs, [equil_path])
+        if reuse_equil:
+            try:
+                _validate_equilibration_trace(workdir, sim_cfg, model_cfg)
+            except Exception as exc:
+                print(f"  [rerun] equilibration outputs failed validation: {exc}")
+                reuse_equil = False
+
+        if reuse_equil:
             _print_reuse("equilibration run", workdir, equil_outputs)
             result["equil_status"] = "reused"
         else:
@@ -738,7 +795,7 @@ def stage_run_lammps(
                 str(sim_cfg.get("equil_log_file", "run_equil.log")),
             )
             result["equil_status"] = "done"
-        _validate_npt_density_trace(workdir, sim_cfg, model_cfg)
+            _validate_equilibration_trace(workdir, sim_cfg, model_cfg)
     else:
         print("  [skip] equilibration run")
         result["equil_status"] = "skipped"

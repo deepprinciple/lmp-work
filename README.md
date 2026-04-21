@@ -75,7 +75,7 @@ python md_run.py --config configs/config.smoke.yaml
 
 ## 粘度工作流（ANI Green-Kubo）
 
-SMILES → Packmol 建盒 → ANI pair style → NVT 预热 → NPT 压回目标密度 → NVE + 应力 ACF → η
+SMILES → Packmol 建盒 → ANI pair style → NVT 预热 → NPT 压回目标密度 → 短 NVT 收尾 → NVE + 应力 ACF → η
 
 > **依赖**：需要编译安装 [lammps-ani](https://github.com/roitberg-group/lammps-ani)
 > 并准备 ANI TorchScript 模型文件（`ani2x.pt`）。
@@ -181,7 +181,7 @@ run:
 
 - `md_viscosity.py` — 主流程入口
 - `core/data_builder.py` — `AniDataBuilder`：Packmol XYZ → LAMMPS atomic data
-- `workflow/input_ani_viscosity.py` — NVT 预热 + NPT 密度平衡 + NVE GK 输入生成
+- `workflow/input_ani_viscosity.py` — NVT 预热 + NPT 密度平衡 + 短 NVT 收尾 + NVE GK 输入生成
 - `analysis/viscosity.py` — Green-Kubo η 积分（复用 `hfacf` 引擎）
 - `configs/viscosity.yaml` — 官方默认长程配置模板
 - `configs/viscosity.smoke.yaml` — 短程 smoke test 模板
@@ -191,7 +191,7 @@ run:
 - ANI 通过原子质量识别元素，`pair_coeff` 只需 `* *`，无需写元素符号
 - 必须使用 `pyaev full`（CUAEV 不支持 virial/stress 计算）
 - 非 Kokkos 模式要求 `newton off`
-- NPT 平衡会额外写出 `npt_thermo.dat`，并默认检查后段平均密度是否接近 `model.density_g_cm3`
+- 平衡阶段会额外写出 `npt_thermo.dat`，并默认检查 NPT 尾段平均密度和最终 NVT 尾段平均温度
 - 粘度入口会先尝试补齐保守的 ANI 运行环境；如需完全手动控制，可设 `lammps.auto_environment: false`
 - 单位换算：`ETA_CONV = atm² × Å³ × fs / k_B × 10³ ≈ 7.44×10⁻¹⁰ mPa·s·K/Å³ per atm²·fs`
 
