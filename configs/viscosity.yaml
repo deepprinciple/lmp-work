@@ -1,6 +1,6 @@
 # ================================================================
 # BAMBOO Green-Kubo viscosity workflow configuration
-# Usage: python md_viscosity.py --config configs/viscosity.yaml
+# Usage: python md_transport.py --config configs/viscosity.yaml
 # ================================================================
 
 run:

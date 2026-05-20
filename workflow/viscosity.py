@@ -1,8 +1,8 @@
-"""BAMBOO Green-Kubo viscosity workflow entry point.
+"""Internal BAMBOO Green-Kubo viscosity workflow.
 
 Usage
 -----
-    python md_viscosity.py --config configs/viscosity.yaml
+    python md_transport.py --config configs/viscosity.yaml
 
 Workflow stages
 ---------------
@@ -32,7 +32,7 @@ from typing import Any
 try:
     from workflow.config import (
         REPO_ROOT,
-        apply_md_viscosity_path_resolution,
+        apply_viscosity_path_resolution,
         get_required,
         get_section,
         load_yaml,
@@ -48,7 +48,7 @@ except ImportError as exc:  # pragma: no cover
     sys.exit(
         f"Import error: {exc}\n"
         "Run this script from the lmp-work project root:\n"
-        "  python md_viscosity.py --config configs/viscosity.yaml"
+        "  python md_transport.py --config configs/viscosity.yaml"
     )
 
 
@@ -1240,6 +1240,14 @@ def _run_workflow(
     return _run_replicas(cfg, config_path)
 
 
+def run_config(config_path: str | Path) -> dict[str, Any] | None:
+    """Run the viscosity workflow for one YAML config."""
+    config_path = Path(config_path).resolve()
+    cfg = load_yaml(config_path)
+    apply_viscosity_path_resolution(cfg, REPO_ROOT)
+    return _run_workflow(cfg, config_path)
+
+
 def main(argv: list[str] | None = None) -> None:
     parser = argparse.ArgumentParser(
         description="BAMBOO Green-Kubo viscosity workflow",
@@ -1248,10 +1256,7 @@ def main(argv: list[str] | None = None) -> None:
     parser.add_argument("--config", required=True, help="Path to YAML config file")
     args = parser.parse_args(argv)
 
-    config_path = Path(args.config).resolve()
-    cfg = load_yaml(config_path)
-    apply_md_viscosity_path_resolution(cfg, REPO_ROOT)
-    _run_workflow(cfg, config_path)
+    run_config(args.config)
 
 
 if __name__ == "__main__":

@@ -1,4 +1,4 @@
-"""Thermal-only entrypoint for elongated-box reverse-NEMD conductivity."""
+"""Internal reverse-NEMD thermal-conductivity workflow."""
 from __future__ import annotations
 
 import argparse
@@ -255,9 +255,9 @@ def _analyze_replica(repdir: Path, *, sim_cfg: dict[str, Any], thermal_cfg: dict
     )
 
 
-def main(argv: Argv = None) -> int:
-    args = parse_args(argv)
-    cfg = load_yaml(Path(args.config).resolve())
+def run_config(config_path: str | Path) -> int:
+    """Run the thermal-conductivity workflow for one YAML config."""
+    cfg = load_yaml(Path(config_path).resolve())
     run_cfg = get_section(cfg, "run")
     structure_cfg = get_section(cfg, "structure")
     model_cfg = get_section(cfg, "model")
@@ -387,6 +387,11 @@ def main(argv: Argv = None) -> int:
         summary_file.write_text(json.dumps(summary, indent=2))
         print(f"Wrote thermal branch summary: {summary_file}")
     return 0
+
+
+def main(argv: Argv = None) -> int:
+    args = parse_args(argv)
+    return run_config(args.config)
 
 
 if __name__ == "__main__":

@@ -52,7 +52,7 @@ def _expand_lammps_env_value(value: Any, repo_root: Path) -> str:
     return text
 
 
-def apply_md_viscosity_path_resolution(cfg: dict[str, Any], repo_root: Path | None = None) -> None:
+def apply_viscosity_path_resolution(cfg: dict[str, Any], repo_root: Path | None = None) -> None:
     """Mutate viscosity config in place to resolve file paths and env values."""
     root = repo_root if repo_root is not None else REPO_ROOT
 
@@ -109,7 +109,7 @@ def get_section(cfg: dict[str, Any], section: str) -> dict[str, Any]:
 
 __all__ = [
     "REPO_ROOT",
-    "apply_md_viscosity_path_resolution",
+    "apply_viscosity_path_resolution",
     "get_required",
     "get_section",
     "load_yaml",

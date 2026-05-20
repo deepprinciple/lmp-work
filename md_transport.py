@@ -3,16 +3,10 @@
 Usage
 -----
     python md_transport.py --config configs/viscosity.yaml
-    python md_transport.py --config configs/config.yaml
+    python md_transport.py --config configs/thermal.yaml
 
-The actual physics workflows remain in their focused entry points:
-
-* ``md_viscosity.py`` for BAMBOO Green-Kubo viscosity
-* ``md_run.py`` for reverse-NEMD thermal conductivity
-
-This dispatcher reads ``job.type`` from the YAML config and forwards the run to
-the matching workflow.  If ``job.type`` is missing, it infers the route from the
-sections present in the config so existing YAML files remain usable.
+This is the only top-level workflow entry.  It reads ``job.type`` from the YAML
+config and forwards to the matching internal workflow module.
 """
 from __future__ import annotations
 
@@ -137,14 +131,14 @@ def main(argv: list[str] | None = None) -> int:
         return 0
 
     if workflow == "thermal_conductivity":
-        from md_run import main as run_thermal
+        from workflow.thermal import run_config
 
-        return int(run_thermal(["--config", str(config_path)]) or 0)
+        return int(run_config(config_path) or 0)
 
     if workflow == "viscosity":
-        from md_viscosity import main as run_viscosity
+        from workflow.viscosity import run_config
 
-        run_viscosity(["--config", str(config_path)])
+        run_config(config_path)
         return 0
 
     raise AssertionError(f"Unhandled workflow: {workflow}")

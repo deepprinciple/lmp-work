@@ -41,7 +41,7 @@ conda install -c conda-forge rdkit openff-toolkit openff-interchange openff-unit
 推荐使用统一入口，让 YAML 中的 `job.type` 决定走哪条路线：
 
 ```bash
-python md_transport.py --config configs/config.yaml
+python md_transport.py --config configs/thermal.yaml
 python md_transport.py --config configs/viscosity.yaml
 ```
 
@@ -62,35 +62,29 @@ analysis:
   method: rnemd               # 粘度可用 pressure_blocks / acf / auto
 ```
 
-旧入口仍然保留，方便兼容已有脚本：
-
-```bash
-python md_run.py --config configs/config.yaml
-python md_viscosity.py --config configs/viscosity.yaml
-```
-
 ## 热导率工作流
 
 SMILES → OpenFF 参数化 → Packmol 建盒 → LAMMPS reverse-NEMD → κ
 
 ```bash
-python md_transport.py --config configs/config.yaml
+python md_transport.py --config configs/thermal.yaml
 ```
 
 短程 smoke test：
 
 ```bash
-python md_transport.py --config configs/config.smoke.yaml
+python md_transport.py --config configs/thermal.smoke.yaml
 ```
 
 ### 核心文件（热导率）
 
-- `md_run.py` — 主流程入口
+- `workflow/thermal.py` — 热导率 workflow 实现
 - `workflow/input_thermal.py` — 平衡段和 rNEMD 输入生成
 - `analysis/hfacf.py` — HFACF 热导率分析核心（也被粘度工作流复用）
 - `analysis/rnemd.py` — rNEMD 热导率拟合与收敛分析
 - `scripts/analyze_thermal_hfacf.py` — HFACF 后处理 CLI
-- `configs/config.yaml` — 主配置模板
+- `configs/thermal.yaml` — 热导率主配置模板
+- `configs/thermal.smoke.yaml` — 热导率 smoke test 模板
 
 ### 结果文件（热导率）
 
@@ -238,7 +232,7 @@ run:
 
 ### 核心文件（粘度）
 
-- `md_viscosity.py` — 主流程入口
+- `workflow/viscosity.py` — 粘度 workflow 实现
 - `core/composition.py` — 多组分 counts / molality / molarity 解析
 - `core/bamboo_structure.py` — SMILES → RDKit 3D 结构，或 ion preset 几何
 - `core/bamboo_packing.py` — 多组分 Packmol 建盒

@@ -1,6 +1,6 @@
 # ================================================================
 # BAMBOO Green-Kubo viscosity smoke-test configuration
-# Usage: python md_viscosity.py --config configs/viscosity.smoke.yaml
+# Usage: python md_transport.py --config configs/viscosity.smoke.yaml
 # ================================================================
 
 run:
