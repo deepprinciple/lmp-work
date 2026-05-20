@@ -78,7 +78,8 @@ python md_run.py --config configs/config.smoke.yaml
 components/composition → RDKit/ion preset → 多组分 Packmol 建盒 → BAMBOO `atom_style full` data → NVT 预热 → NPT 压回目标密度 → 短 NVT 收尾 → NVE + 应力 ACF → η
 
 > **依赖**：需要使用 ByteDance BAMBOO 对应的 LAMMPS 构建，并准备 BAMBOO 模型文件。
-> 运行命令默认会给 LAMMPS 加 `-k on g 1 -sf kk`，可在 `lammps:` 配置里关闭或覆盖。
+> 默认配置会把 `/root/bamboo/pair/lammps/output` prepend 到 `PATH`，并给 LAMMPS 加
+> `-k on g 1 -sf kk`；可在 `lammps:` 配置里关闭或覆盖。
 
 ```bash
 python md_viscosity.py --config configs/viscosity.yaml
@@ -209,6 +210,7 @@ run:
 - `pair_style bamboo` 的参数默认来自 BAMBOO 示例：`[5.0, 5.0, 10.0, 1]`
 - 默认启用 PPPM，体系总电荷会在写 `in.data` 前检查为近似中性
 - 默认通过 Kokkos 后缀运行：`lmp_mpi -k on g 1 -sf kk`
+- 默认运行环境等价于先执行：`export PATH="/root/bamboo/pair/lammps/output:$PATH"`
 - 平衡阶段会额外写出 `npt_thermo.dat`，并默认检查 NPT 尾段平均密度和最终 NVT 尾段平均温度
 - 单位换算：`ETA_CONV = atm² × Å³ × fs / k_B × 10³ ≈ 7.44×10⁻¹⁰ mPa·s·K/Å³ per atm²·fs`
 

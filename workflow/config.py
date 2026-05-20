@@ -37,10 +37,10 @@ def resolve_lammps_executable(value: Any, repo_root: Path | None = None) -> str:
 
 def _expand_lammps_env_value(value: Any, repo_root: Path) -> str:
     """Expand YAML ``lammps.env`` values without mangling PATH-like strings."""
-    text = os.path.expandvars(os.path.expanduser(str(value)))
+    text = os.path.expanduser(str(value))
     if not text.strip():
         return text
-    if "${" in text:
+    if "$" in text:
         return text
     if ":" in text:
         return text

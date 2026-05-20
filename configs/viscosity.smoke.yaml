@@ -104,7 +104,8 @@ lammps:
   kokkos_gpus:        1
   suffix:             "kk"
   extra_args:         []
-  env: {}
+  env:
+    PATH: "/root/bamboo/pair/lammps/output:${PATH}"
 
 analysis:
   t_max_ps:           2.0

@@ -22,6 +22,7 @@ import hashlib
 import json
 import math
 import os
+import re
 import subprocess
 import sys
 from pathlib import Path
@@ -51,6 +52,19 @@ except ImportError as exc:  # pragma: no cover
 # LAMMPS execution helper
 # ──────────────────────────────────────────────────────────────────────────
 
+_ENV_VAR_RE = re.compile(r"\$(?:\{([^}]+)\}|([A-Za-z_][A-Za-z0-9_]*))")
+
+
+def _expand_runtime_env_value(value: str, env: dict[str, str]) -> str:
+    """Expand ``$VAR`` / ``${VAR}`` against the environment being built."""
+
+    def repl(match: re.Match[str]) -> str:
+        name = match.group(1) or match.group(2) or ""
+        return env.get(name, "")
+
+    return _ENV_VAR_RE.sub(repl, os.path.expanduser(value))
+
+
 def _build_lammps_env(lammps_cfg: dict[str, Any]) -> dict[str, str]:
     """Build the runtime environment for BAMBOO LAMMPS."""
     env = os.environ.copy()
@@ -59,7 +73,7 @@ def _build_lammps_env(lammps_cfg: dict[str, Any]) -> dict[str, str]:
         raise TypeError("lammps.env must be a mapping when provided")
 
     for key, value in extra_env.items():
-        env[str(key)] = str(value)
+        env[str(key)] = _expand_runtime_env_value(str(value), env)
     return env
 
 
