@@ -115,9 +115,9 @@ replica:
 length_scan:
   enabled: true
   prod_steps:
-    - 1000000   # 0.5 ns @ 0.5 fs
-    - 2000000   # 1.0 ns @ 0.5 fs
-    - 4000000   # 2.0 ns @ 0.5 fs
+    - 1000000   # 1.0 ns @ 1.0 fs
+    - 2000000   # 2.0 ns @ 1.0 fs
+    - 4000000   # 4.0 ns @ 1.0 fs
 ```
 
 这会在 `case.workdir` 下生成：

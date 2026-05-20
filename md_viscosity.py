@@ -586,7 +586,7 @@ def _length_scan_row_from_summary(
     sim_cfg = get_section(cfg, "simulation")
     analysis_cfg = get_section(cfg, "analysis")
     replica_cfg = get_section(cfg, "replica")
-    timestep_fs = float(sim_cfg.get("timestep_fs", 0.5))
+    timestep_fs = float(sim_cfg.get("timestep_fs", 1.0))
     prod_time_ps = prod_steps * timestep_fs / 1000.0
 
     if "eta_replica_mean_mPas" in summary:
@@ -701,7 +701,7 @@ def stage_write_input(
         pppm_mesh=pppm_mesh,
         temperature=float(sim_cfg.get("temperature_K", 300.0)),
         pressure_atm=float(sim_cfg.get("pressure_atm", 1.0)),
-        timestep_fs=float(sim_cfg.get("timestep_fs", 0.5)),
+        timestep_fs=float(sim_cfg.get("timestep_fs", 1.0)),
         thermo_every=int(sim_cfg.get("thermo_every", 1000)),
     )
 
@@ -862,7 +862,7 @@ def stage_analyze(
     if method == "pressure_blocks":
         summary = analyze_viscosity_pressure_file(
             pressure_file,
-            timestep_fs=float(sim_cfg.get("timestep_fs", 0.5)),
+            timestep_fs=float(sim_cfg.get("timestep_fs", 1.0)),
             block_size_ps=float(analysis_cfg.get("block_size_ps", 200.0)),
             auto_plateau=bool(analysis_cfg.get("auto_plateau", True)),
             auto_window_ps=float(analysis_cfg.get("auto_window_ps", 10.0)),
@@ -1181,7 +1181,7 @@ def _run_length_scan(cfg: dict[str, Any], config_path: Path) -> dict[str, Any] |
             prod_steps=prod_steps,
             dir_prefix=dir_prefix,
         )
-        prod_time_ps = prod_steps * float(sim_cfg.get("timestep_fs", 0.5)) / 1000.0
+        prod_time_ps = prod_steps * float(sim_cfg.get("timestep_fs", 1.0)) / 1000.0
         print(f"\n=== Length scan [{scan_workdir.name}]  prod_steps={prod_steps}  ({prod_time_ps:.3f} ps) ===")
         summary = _run_workflow(scan_cfg_copy, config_path, allow_length_scan=False)
 
@@ -1206,7 +1206,7 @@ def _run_length_scan(cfg: dict[str, Any], config_path: Path) -> dict[str, Any] |
     summary_path = _write_length_scan_summary(
         root_workdir,
         config_path,
-        timestep_fs=float(sim_cfg.get("timestep_fs", 0.5)),
+        timestep_fs=float(sim_cfg.get("timestep_fs", 1.0)),
         summary_name=summary_name,
         rows=rows,
     )
