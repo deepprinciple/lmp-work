@@ -9,7 +9,7 @@ Workflow stages
 1. ``build_system``  – composition → 3-D geometries → Packmol box → BAMBOO data
 2. ``write_input``   – generate equilibration and Green-Kubo LAMMPS input files
 3. ``run_lammps``    – run equilibration then GK production with BAMBOO pair style
-4. ``analyze``       – integrate stress ACF → shear viscosity + convergence plot
+4. ``analyze``       – post-process stress traces → shear viscosity + convergence plot
 
 Any stage can be skipped by setting its flag to ``false`` in the config.
 """
@@ -39,7 +39,11 @@ try:
     )
     from workflow.bamboo_system import build_bamboo_system, load_bamboo_build_report
     from workflow.input_viscosity import build_equil_input, build_gk_input
-    from analysis.viscosity import analyze_viscosity_file, load_volume_from_thermo
+    from analysis.viscosity import (
+        analyze_viscosity_file,
+        analyze_viscosity_pressure_file,
+        load_volume_from_thermo,
+    )
 except ImportError as exc:  # pragma: no cover
     sys.exit(
         f"Import error: {exc}\n"
@@ -302,9 +306,12 @@ def _workflow_paths(cfg: dict[str, Any], workdir: Path) -> dict[str, Path]:
         "equil_restart": workdir / str(sim_cfg.get("equil_restart_file", "equil_nvt.restart")),
         "npt_thermo": workdir / str(sim_cfg.get("npt_thermo_file", "npt_thermo.dat")),
         "acf_file": workdir / str(sim_cfg.get("acf_file", "stress_acf.dat")),
+        "pressure_file": workdir / str(sim_cfg.get("pressure_file", "pressure_tensor.dat")),
         "thermo_file": workdir / str(sim_cfg.get("thermo_file", "gk_thermo.dat")),
         "summary_file": workdir / str(analysis_cfg.get("summary_file", "viscosity_summary.json")),
         "plot_file": workdir / str(analysis_cfg.get("plot_file", "viscosity_analysis.png")),
+        "running_file": workdir / str(analysis_cfg.get("running_file", "viscosity_running.csv")),
+        "blocks_file": workdir / str(analysis_cfg.get("blocks_file", "viscosity_blocks.csv")),
     }
 
 
@@ -361,7 +368,9 @@ def _stage_signature(cfg: dict[str, Any], stage: str) -> str | None:
             "analysis": get_section(cfg, "analysis"),
             "simulation": {
                 "temperature_K": sim_cfg.get("temperature_K"),
+                "timestep_fs": sim_cfg.get("timestep_fs"),
                 "acf_file": sim_cfg.get("acf_file"),
+                "pressure_file": sim_cfg.get("pressure_file"),
                 "thermo_file": sim_cfg.get("thermo_file"),
             },
         }
@@ -428,10 +437,14 @@ def _print_viscosity_result(summary: dict[str, Any]) -> None:
     """Pretty-print the viscosity summary."""
     eta = float(summary["eta_mPas"])
     comps = [float(x) for x in summary["eta_components_mPas"]]
+    method = str(summary.get("analysis_method", "acf"))
+    sem = summary.get("eta_sem_mPas")
+    sem_text = f" ± {float(sem):.3f}" if sem is not None else ""
     print(f"\n  ┌─ Result ─────────────────────────────────────────")
-    print(f"  │  η = {eta:.3f} mPa·s (cP)")
+    print(f"  │  η = {eta:.3f}{sem_text} mPa·s (cP)")
+    print(f"  │  method     : {method}")
     print(f"  │  components: xy={comps[0]:.3f}  xz={comps[1]:.3f}  yz={comps[2]:.3f} mPa·s")
-    print(f"  │  plateau   : {float(summary['plateau_start_ps']):.1f} – {float(summary['plateau_end_ps']):.1f} ps")
+    print(f"  │  plateau   : {float(summary['plateau_start_ps']):.2f} – {float(summary['plateau_end_ps']):.2f} ps")
     print(f"  └──────────────────────────────────────────────────")
 
 
@@ -590,6 +603,9 @@ def _length_scan_row_from_summary(
             "source_summary_file": str(workdir / str(replica_cfg.get("summary_file", "viscosity_replicas_summary.json"))),
         }
 
+    eta_sem = float(summary.get("eta_sem_mPas", 0.0))
+    n_blocks = int(summary.get("diagnostics", {}).get("n_blocks", 1)) if isinstance(summary.get("diagnostics"), dict) else 1
+    eta_std = eta_sem * math.sqrt(n_blocks) if n_blocks > 1 and math.isfinite(eta_sem) else 0.0
     return {
         "prod_steps": prod_steps,
         "prod_time_ps": prod_time_ps,
@@ -597,8 +613,8 @@ def _length_scan_row_from_summary(
         "workdir": str(workdir),
         "n_replicates": 1,
         "eta_mean_mPas": float(summary["eta_mPas"]),
-        "eta_std_mPas": 0.0,
-        "eta_sem_mPas": 0.0,
+        "eta_std_mPas": eta_std,
+        "eta_sem_mPas": eta_sem if math.isfinite(eta_sem) else 0.0,
         "source": "single_run",
         "source_summary_file": str(workdir / str(analysis_cfg.get("summary_file", "viscosity_summary.json"))),
     }
@@ -712,6 +728,8 @@ def stage_write_input(
         corr_length=int(sim_cfg.get("corr_length", 40000)),
         sample_every=int(sim_cfg.get("sample_every", 1)),
         acf_file=str(sim_cfg.get("acf_file", "stress_acf.dat")),
+        pressure_file=str(sim_cfg.get("pressure_file", "pressure_tensor.dat")),
+        pressure_every=int(sim_cfg.get("pressure_every", sim_cfg.get("sample_every", 1))),
         thermo_file=str(sim_cfg.get("thermo_file", "gk_thermo.dat")),
         model_file=common["model_file"],
         elements=common["elements"],
@@ -743,11 +761,14 @@ def stage_run_lammps(
     model_cfg = get_section(cfg, "model")
     sim_cfg = get_section(cfg, "simulation")
     paths = _workflow_paths(cfg, workdir)
+    gk_outputs = [paths["acf_file"], paths["thermo_file"]]
+    if sim_cfg.get("pressure_file", "pressure_tensor.dat"):
+        gk_outputs.append(paths["pressure_file"])
     result: dict[str, Any] = {
         "run_equil": run_equil,
         "run_gk": run_gk,
         "equil_outputs": _relative_paths([paths["equil_restart"], paths["npt_thermo"]], workdir),
-        "gk_outputs": _relative_paths([paths["acf_file"], paths["thermo_file"]], workdir),
+        "gk_outputs": _relative_paths(gk_outputs, workdir),
     }
 
     print("\n── Stage 3: run LAMMPS ─────────────────────────────────────────")
@@ -779,7 +800,6 @@ def stage_run_lammps(
         result["equil_status"] = "skipped"
 
     if run_gk:
-        gk_outputs = [paths["acf_file"], paths["thermo_file"]]
         if _outputs_up_to_date(gk_outputs, [gk_path, paths["equil_restart"]]):
             _print_reuse("Green-Kubo run", workdir, gk_outputs)
             result["gk_status"] = "reused"
@@ -802,28 +822,69 @@ def stage_analyze(
     cfg: dict[str, Any],
     workdir: Path,
 ) -> dict[str, Any]:
-    """Integrate stress ACF → shear viscosity + convergence plot."""
+    """Analyze the Green-Kubo production traces."""
     sim_cfg = get_section(cfg, "simulation")
     analysis_cfg = get_section(cfg, "analysis")
 
     print("\n── Stage 4: analyze ────────────────────────────────────────────")
 
     acf_file = workdir / str(sim_cfg.get("acf_file", "stress_acf.dat"))
+    pressure_file = workdir / str(sim_cfg.get("pressure_file", "pressure_tensor.dat"))
     thermo_file = workdir / str(sim_cfg.get("thermo_file", "gk_thermo.dat"))
 
     volume_a3 = load_volume_from_thermo(thermo_file)
     print(f"  NVE mean volume : {volume_a3:.1f} Å³")
 
-    summary = analyze_viscosity_file(
-        acf_file,
-        temperature_k=float(get_section(cfg, "simulation").get("temperature_K", 300.0)),
+    method = str(analysis_cfg.get("method", "acf")).strip().lower()
+    if method not in {"acf", "pressure_blocks", "auto"}:
+        raise ValueError("analysis.method must be one of: acf, pressure_blocks, auto")
+
+    if method == "auto":
+        method = "pressure_blocks" if pressure_file.exists() else "acf"
+
+    print(f"  analysis method : {method}")
+    common = dict(
+        temperature_k=float(sim_cfg.get("temperature_K", 300.0)),
         volume_a3=volume_a3,
         t_max_ps=float(analysis_cfg.get("t_max_ps", 20.0)),
         plateau_start_ps=float(analysis_cfg.get("plateau_start_ps", 5.0)),
-        smooth_window=int(analysis_cfg.get("smooth_window", 11)),
+        plateau_end_ps=(
+            None
+            if analysis_cfg.get("plateau_end_ps") is None
+            else float(analysis_cfg.get("plateau_end_ps"))
+        ),
+        min_window_ps=float(analysis_cfg.get("min_window_ps", 0.0)),
+        require_stable_window=bool(analysis_cfg.get("require_stable_window", False)),
         json_out=str(analysis_cfg.get("summary_file", "viscosity_summary.json")),
         plot_out=str(analysis_cfg.get("plot_file", "viscosity_analysis.png")),
     )
+
+    if method == "pressure_blocks":
+        summary = analyze_viscosity_pressure_file(
+            pressure_file,
+            timestep_fs=float(sim_cfg.get("timestep_fs", 0.5)),
+            block_size_ps=float(analysis_cfg.get("block_size_ps", 200.0)),
+            auto_plateau=bool(analysis_cfg.get("auto_plateau", True)),
+            auto_window_ps=float(analysis_cfg.get("auto_window_ps", 10.0)),
+            auto_step_ps=float(analysis_cfg.get("auto_step_ps", 1.0)),
+            min_blocks=int(analysis_cfg.get("min_blocks", 3)),
+            rel_std_tol=float(analysis_cfg.get("rel_std_tol", 0.25)),
+            drift_tol=float(analysis_cfg.get("drift_tol", 0.25)),
+            start_step=(
+                None
+                if analysis_cfg.get("start_step") is None
+                else int(analysis_cfg.get("start_step"))
+            ),
+            running_out=str(analysis_cfg.get("running_file", "viscosity_running.csv")),
+            blocks_out=str(analysis_cfg.get("blocks_file", "viscosity_blocks.csv")),
+            **common,
+        )
+    else:
+        summary = analyze_viscosity_file(
+            acf_file,
+            smooth_window=int(analysis_cfg.get("smooth_window", 11)),
+            **common,
+        )
 
     _print_viscosity_result(summary)
     return summary
@@ -977,11 +1038,20 @@ def _run_single_case(cfg: dict[str, Any], config_path: Path) -> dict[str, Any] |
             current_stage = "analyze"
             analyze_signature = _stage_signature(cfg, "analyze")
             analyze_outputs = [paths["summary_file"], paths["plot_file"]]
+            analysis_cfg = get_section(cfg, "analysis")
+            analyze_method = str(analysis_cfg.get("method", "acf")).strip().lower()
+            if analyze_method == "auto":
+                analyze_method = "pressure_blocks" if paths["pressure_file"].exists() else "acf"
+            if analyze_method == "pressure_blocks":
+                analyze_outputs.extend([paths["running_file"], paths["blocks_file"]])
+                analyze_inputs = [paths["pressure_file"], paths["thermo_file"]]
+            else:
+                analyze_inputs = [paths["acf_file"], paths["thermo_file"]]
             if _can_reuse_stage(
                 state,
                 "analyze",
                 outputs=analyze_outputs,
-                inputs=[paths["acf_file"], paths["thermo_file"]],
+                inputs=analyze_inputs,
                 signature=analyze_signature,
             ):
                 try:

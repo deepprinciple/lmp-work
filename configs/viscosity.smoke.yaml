@@ -89,6 +89,8 @@ simulation:
   equil_restart_file:   "equil_nvt.restart"
   gk_input_filename:    "in.gk.lammps"
   acf_file:             "stress_acf.dat"
+  pressure_file:        "pressure_tensor.dat"
+  pressure_every:       1
   thermo_file:          "gk_thermo.dat"
   equil_log_file:       "run_equil.log"
   gk_log_file:          "run_gk.log"
@@ -108,8 +110,14 @@ lammps:
     PATH: "/root/bamboo/pair/lammps/output:${PATH}"
 
 analysis:
+  method:             "acf"
   t_max_ps:           2.0
   plateau_start_ps:   0.2
+  plateau_end_ps:     null
+  min_window_ps:      0.1
+  require_stable_window: false
   smooth_window:      5
   summary_file:       "viscosity_summary.json"
   plot_file:          "viscosity_analysis.png"
+  running_file:       "viscosity_running.csv"
+  blocks_file:        "viscosity_blocks.csv"

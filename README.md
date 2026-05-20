@@ -5,7 +5,7 @@
 | 工作流 | 方法 | 力场 | 入口 |
 |--------|------|------|------|
 | **热导率** | reverse-NEMD | OpenFF / LigParGen | `md_run.py` |
-| **粘度** | Green-Kubo 应力 ACF | ByteDance BAMBOO | `md_viscosity.py` |
+| **粘度** | Green-Kubo 压力张量 block ACF | ByteDance BAMBOO | `md_viscosity.py` |
 
 ---
 
@@ -75,7 +75,7 @@ python md_run.py --config configs/config.smoke.yaml
 
 ## 粘度工作流（BAMBOO Green-Kubo）
 
-components/composition → RDKit/ion preset → 多组分 Packmol 建盒 → BAMBOO `atom_style full` data → NVT 预热 → NPT 压回目标密度 → 短 NVT 收尾 → NVE + 应力 ACF → η
+components/composition → RDKit/ion preset → 多组分 Packmol 建盒 → BAMBOO `atom_style full` data → NVT 预热 → NPT 压回目标密度 → 短 NVT 收尾 → NVE + 压力张量/应力 ACF → η
 
 > **依赖**：需要使用 ByteDance BAMBOO 对应的 LAMMPS 构建，并准备 BAMBOO 模型文件。
 > 默认配置会把 `/root/bamboo/pair/lammps/output` prepend 到 `PATH`，并给 LAMMPS 加
@@ -183,8 +183,8 @@ run:
 
 - `build_system`：已有 `in.data` + `build_report.json`
 - `write_input`：已有 `in.equil.lammps` 和 `in.gk.lammps`
-- `run_lammps`：已有 `equil_nvt.restart` + `npt_thermo.dat`，或已有 `stress_acf.dat` + `gk_thermo.dat`
-- `analyze`：已有 `viscosity_summary.json` + `viscosity_analysis.png`
+- `run_lammps`：已有 `equil_nvt.restart` + `npt_thermo.dat`，或已有 `stress_acf.dat` + `pressure_tensor.dat` + `gk_thermo.dat`
+- `analyze`：已有 `viscosity_summary.json` + `viscosity_analysis.png`；`pressure_blocks` 方法还会复用 `viscosity_running.csv` 和 `viscosity_blocks.csv`
 
 如果上游输入更新了，下游阶段会自动失效并重新执行。每次运行还会在 `workdir`
 写出 `state.json` 和 `stage.done`，记录各阶段的 `done / reused / skipped / failed`
@@ -199,7 +199,7 @@ run:
 - `core/data_builder.py` — BAMBOO `atom_style full` data writer
 - `workflow/bamboo_system.py` — YAML components/composition → `in.data` + `build_report.json`
 - `workflow/input_viscosity.py` — BAMBOO NPT 平衡 + NVE Green-Kubo 输入生成
-- `analysis/viscosity.py` — Green-Kubo η 积分（复用 `hfacf` 引擎）
+- `analysis/viscosity.py` — Green-Kubo η 后处理（ACF 兼容路径 + pressure-block SEM）
 - `configs/viscosity.yaml` — 官方默认长程配置模板
 - `configs/viscosity.smoke.yaml` — 短程 smoke test 模板
 
@@ -212,6 +212,9 @@ run:
 - 默认通过 Kokkos 后缀运行：`lmp_mpi -k on g 1 -sf kk`
 - 默认运行环境等价于先执行：`export PATH="/root/bamboo/pair/lammps/output:$PATH"`
 - 平衡阶段会额外写出 `npt_thermo.dat`，并默认检查 NPT 尾段平均密度和最终 NVT 尾段平均温度
+- GK 生产阶段默认额外写出 `pressure_tensor.dat`，包含 `step pxy pxz pyz`
+- 长程配置默认使用 `analysis.method: pressure_blocks`：从压力张量时间序列分 block 计算 ACF、running η 和 block SEM，并用固定长度窗口选择 plateau
+- smoke 配置默认保留 `analysis.method: acf`：直接分析 `stress_acf.dat`，适合快速验证流程，不应作为 production 粘度
 - 单位换算：`ETA_CONV = atm² × Å³ × fs / k_B × 10³ ≈ 7.44×10⁻¹⁰ mPa·s·K/Å³ per atm²·fs`
 
 ---
