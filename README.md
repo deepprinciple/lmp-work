@@ -91,43 +91,14 @@ python md_viscosity.py --config configs/viscosity.yaml
 python md_viscosity.py --config configs/viscosity.smoke.yaml
 ```
 
-最小 replicate demo：
+当前粘度 workflow 默认只运行一个 case，不会自动展开多副本或不同生产时长的
+length scan。需要更长或更短的 GPU 验证任务时，直接修改
+`simulation.prod_steps` 即可。
 
 ```yaml
-replica:
-  n_replicates: 3
-  seed_stride:  1000
+simulation:
+  prod_steps: 2000000   # 2.0 ns @ 1.0 fs
 ```
-
-这会在 `case.workdir` 下生成 `replica_01/`、`replica_02/`、`replica_03/`，每个副本使用同一套
-体系和时长参数，但 `simulation.seed` 会自动错开；顶层额外写出
-`viscosity_replicas_summary.json`，汇总 `eta_replica_mean/std/sem`。
-
-如果你要研究“模拟时长是否足够”，建议保持 `n_replicates` 固定不变，只修改
-`simulation.prod_steps` 分多次运行比较，而不是让不同 replica 混用不同长度。
-
-最小 length scan demo：
-
-```yaml
-replica:
-  n_replicates: 3
-
-length_scan:
-  enabled: true
-  prod_steps:
-    - 1000000   # 1.0 ns @ 1.0 fs
-    - 2000000   # 2.0 ns @ 1.0 fs
-    - 4000000   # 4.0 ns @ 1.0 fs
-```
-
-这会在 `case.workdir` 下生成：
-
-- `len_1000000/`
-- `len_2000000/`
-- `len_4000000/`
-
-每个长度点内部再按 `replica_01/02/03` 组织；顶层额外写出
-`viscosity_length_scan_summary.json`，把每个长度点的 `eta_mean/std/sem` 汇总到一起。
 
 编辑 `configs/viscosity.yaml`，至少修改：
 

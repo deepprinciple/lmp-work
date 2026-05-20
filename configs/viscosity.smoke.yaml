@@ -29,18 +29,6 @@ composition:
     Li:  2
     PF6: 2
 
-replica:
-  n_replicates:  1
-  seed_stride:   1000
-  dir_prefix:    "replica_"
-  summary_file:  "viscosity_replicas_summary.json"
-
-length_scan:
-  enabled:       false
-  prod_steps:    []
-  dir_prefix:    "len_"
-  summary_file:  "viscosity_length_scan_summary.json"
-
 model:
   density_g_cm3:          1.24
   packmol_density_scale:  0.70
