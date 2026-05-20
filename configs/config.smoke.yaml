@@ -4,6 +4,13 @@ run:
   run_lammps: true
   analyze: true
 
+job:
+  type: thermal_conductivity
+  method: rnemd
+
+analysis:
+  method: rnemd
+
 case:
   smiles: "CO"
   name: "methanol_smoke"

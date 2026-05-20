@@ -4,8 +4,8 @@
 
 | 工作流 | 方法 | 力场 | 入口 |
 |--------|------|------|------|
-| **热导率** | reverse-NEMD | OpenFF / LigParGen | `md_run.py` |
-| **粘度** | Green-Kubo 压力张量 block ACF | ByteDance BAMBOO | `md_viscosity.py` |
+| **热导率** | reverse-NEMD | OpenFF / LigParGen | `md_transport.py` |
+| **粘度** | Green-Kubo 压力张量 block ACF | ByteDance BAMBOO | `md_transport.py` |
 
 ---
 
@@ -36,18 +36,51 @@ conda install -c conda-forge rdkit openff-toolkit openff-interchange openff-unit
 - BAMBOO-enabled LAMMPS + BAMBOO 模型文件：粘度工作流需要
 - `BOSS`：仅当你选择 `LigParGen + BOSS` 路径时需要
 
+## 统一入口
+
+推荐使用统一入口，让 YAML 中的 `job.type` 决定走哪条路线：
+
+```bash
+python md_transport.py --config configs/config.yaml
+python md_transport.py --config configs/viscosity.yaml
+```
+
+先检查配置会被分发到哪个 workflow，而不真正启动 LAMMPS：
+
+```bash
+python md_transport.py --config configs/viscosity.yaml --dry-run
+```
+
+配置示例：
+
+```yaml
+job:
+  type: thermal_conductivity  # 或 viscosity
+  method: rnemd               # 粘度使用 green_kubo
+
+analysis:
+  method: rnemd               # 粘度可用 pressure_blocks / acf / auto
+```
+
+旧入口仍然保留，方便兼容已有脚本：
+
+```bash
+python md_run.py --config configs/config.yaml
+python md_viscosity.py --config configs/viscosity.yaml
+```
+
 ## 热导率工作流
 
 SMILES → OpenFF 参数化 → Packmol 建盒 → LAMMPS reverse-NEMD → κ
 
 ```bash
-python md_run.py --config configs/config.yaml
+python md_transport.py --config configs/config.yaml
 ```
 
 短程 smoke test：
 
 ```bash
-python md_run.py --config configs/config.smoke.yaml
+python md_transport.py --config configs/config.smoke.yaml
 ```
 
 ### 核心文件（热导率）
@@ -58,6 +91,19 @@ python md_run.py --config configs/config.smoke.yaml
 - `analysis/rnemd.py` — rNEMD 热导率拟合与收敛分析
 - `scripts/analyze_thermal_hfacf.py` — HFACF 后处理 CLI
 - `configs/config.yaml` — 主配置模板
+
+### 结果文件（热导率）
+
+主流程的中间文件和结果写到 `case.workdir`。默认主配置是
+`./cases/thf_thermal_only`，smoke test 是 `./cases/methanol_thermal_smoke`。
+
+常用输出：
+
+- `thermal_results.json` — 整个案例的总汇总，包含所有 replica 的热导率结果和均值
+- `thermal_conductivity/method_rnemd/replica_XX/thermal_summary.json` — 单个 replica 的详细分析结果
+- `thermal_conductivity/method_rnemd/replica_XX/thermal_profile.png` — 温度剖面拟合图
+- `thermal_conductivity/method_rnemd/replica_XX/thermal_kappa.png` — 热导率随时间的收敛图
+- `run_equil.log` 和 `thermal_replica*.log` — LAMMPS 运行日志
 
 ### 力场选择
 
@@ -82,13 +128,13 @@ components/composition → RDKit/ion preset → 多组分 Packmol 建盒 → BAM
 > `-k on g 1 -sf kk`；可在 `lammps:` 配置里关闭或覆盖。
 
 ```bash
-python md_viscosity.py --config configs/viscosity.yaml
+python md_transport.py --config configs/viscosity.yaml
 ```
 
 短程 smoke test：
 
 ```bash
-python md_viscosity.py --config configs/viscosity.smoke.yaml
+python md_transport.py --config configs/viscosity.smoke.yaml
 ```
 
 最小 replicate demo：

@@ -11,6 +11,10 @@ run:
   run_gk:       true
   analyze:      true
 
+job:
+  type:   viscosity
+  method: green_kubo
+
 case:
   name:     "LiPF6_EC_DMC"
   workdir:  "./cases/lipf6_ec_dmc_viscosity"

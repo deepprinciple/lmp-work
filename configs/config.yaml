@@ -6,6 +6,13 @@ run:
   run_lammps: true
   analyze: true
 
+job:
+  type: thermal_conductivity
+  method: rnemd
+
+analysis:
+  method: rnemd
+
 # 目标分子与案例输出目录。
 case:
   # 待模拟分子的 SMILES。
