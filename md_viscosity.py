@@ -1,4 +1,4 @@
-"""ANI Green-Kubo viscosity workflow entry point.
+"""BAMBOO Green-Kubo viscosity workflow entry point.
 
 Usage
 -----
@@ -6,9 +6,9 @@ Usage
 
 Workflow stages
 ---------------
-1. ``build_system``  – SMILES → 3-D geometry → Packmol box → LAMMPS data file
+1. ``build_system``  – composition → 3-D geometries → Packmol box → BAMBOO data
 2. ``write_input``   – generate equilibration and Green-Kubo LAMMPS input files
-3. ``run_lammps``    – run equilibration then GK production with ANI pair style
+3. ``run_lammps``    – run equilibration then GK production with BAMBOO pair style
 4. ``analyze``       – integrate stress ACF → shear viscosity + convergence plot
 
 Any stage can be skipped by setting its flag to ``false`` in the config.
@@ -29,18 +29,15 @@ from typing import Any
 
 # ── project-local imports (all relative to lmp-work root) ─────────────────
 try:
-    from core.data_builder import AniDataBuilder
-    from core.packing import PackmolBuilder
-    from core.structure import MoleculeStructure
     from workflow.config import (
         REPO_ROOT,
-        apply_default_lammps_ani_environment,
         apply_md_viscosity_path_resolution,
         get_required,
         get_section,
         load_yaml,
     )
-    from workflow.input_ani_viscosity import build_equil_input, build_gk_input
+    from workflow.bamboo_system import build_bamboo_system, load_bamboo_build_report
+    from workflow.input_viscosity import build_equil_input, build_gk_input
     from analysis.viscosity import analyze_viscosity_file, load_volume_from_thermo
 except ImportError as exc:  # pragma: no cover
     sys.exit(
@@ -55,39 +52,14 @@ except ImportError as exc:  # pragma: no cover
 # ──────────────────────────────────────────────────────────────────────────
 
 def _build_lammps_env(lammps_cfg: dict[str, Any]) -> dict[str, str]:
-    """Build the runtime environment for ``lmp_mpi``.
-
-    ``LAMMPS_PLUGIN_PATH`` priority:
-    1. Current process environment
-    2. ``lammps.env.LAMMPS_PLUGIN_PATH`` from YAML
-    3. ``$LAMMPS_ANI_ROOT/build`` when ``ani_plugin.so`` is present
-    """
+    """Build the runtime environment for BAMBOO LAMMPS."""
     env = os.environ.copy()
     extra_env = lammps_cfg.get("env") or {}
     if not isinstance(extra_env, dict):
         raise TypeError("lammps.env must be a mapping when provided")
 
-    extra = {str(key): str(value) for key, value in extra_env.items()}
-    plugin_yaml = os.path.expandvars(extra.pop("LAMMPS_PLUGIN_PATH", "").strip())
-
-    for key, value in extra.items():
-        env[key] = value
-
-    plugin_os = os.environ.get("LAMMPS_PLUGIN_PATH", "").strip()
-    if plugin_os:
-        env["LAMMPS_PLUGIN_PATH"] = plugin_os
-        return env
-
-    if plugin_yaml and "${" not in plugin_yaml:
-        env["LAMMPS_PLUGIN_PATH"] = plugin_yaml
-        return env
-
-    ani_root = env.get("LAMMPS_ANI_ROOT", "").strip()
-    if ani_root:
-        plugin_dir = Path(ani_root) / "build"
-        if (plugin_dir / "ani_plugin.so").is_file():
-            env["LAMMPS_PLUGIN_PATH"] = str(plugin_dir.resolve())
-
+    for key, value in extra_env.items():
+        env[str(key)] = str(value)
     return env
 
 
@@ -97,19 +69,21 @@ def _run_lammps(
     input_file: Path,
     log_file: str,
 ) -> None:
-    """Execute LAMMPS for an ANI simulation.
-
-    The ANI pair style manages its own GPU via PyTorch, so we do NOT pass
-    LAMMPS GPU-package flags (-sf gpu).  The command is simply::
-
-        mpirun [--allow-run-as-root] -np N lmp_mpi -in input.in -log log.out
-    """
+    """Execute BAMBOO-enabled LAMMPS."""
     executable = lammps_cfg.get("executable", "lmp_mpi")
     mpi_command = lammps_cfg.get("mpi_command", "mpirun")
     mpi_ranks = int(lammps_cfg.get("mpi_ranks", 1))
     allow_root = bool(lammps_cfg.get("allow_run_as_root", True))
     use_hwthread_cpus = bool(lammps_cfg.get("use_hwthread_cpus", False))
     oversubscribe = bool(lammps_cfg.get("oversubscribe", False))
+    kokkos = bool(lammps_cfg.get("kokkos", True))
+    kokkos_gpus = int(lammps_cfg.get("kokkos_gpus", 1))
+    suffix = str(lammps_cfg.get("suffix", "kk")).strip()
+    extra_args = lammps_cfg.get("extra_args", [])
+    if extra_args is None:
+        extra_args = []
+    if not isinstance(extra_args, list):
+        raise TypeError("lammps.extra_args must be a list when provided")
 
     cmd: list[str] = [mpi_command]
     if allow_root:
@@ -118,7 +92,13 @@ def _run_lammps(
         cmd.append("--use-hwthread-cpus")
     if oversubscribe:
         cmd.append("--oversubscribe")
-    cmd += ["-np", str(mpi_ranks), executable, "-in", input_file.name, "-log", log_file]
+    cmd += ["-np", str(mpi_ranks), executable]
+    if kokkos:
+        cmd += ["-k", "on", "g", str(kokkos_gpus)]
+    if suffix:
+        cmd += ["-sf", suffix]
+    cmd += [str(arg) for arg in extra_args]
+    cmd += ["-in", input_file.name, "-log", log_file]
 
     print("=" * 70)
     print(f"Run LAMMPS  [{input_file.name}]")
@@ -299,8 +279,10 @@ def _workflow_paths(cfg: dict[str, Any], workdir: Path) -> dict[str, Path]:
     """Collect key workflow file paths under *workdir*."""
     sim_cfg = get_section(cfg, "simulation")
     analysis_cfg = get_section(cfg, "analysis")
+    bamboo_cfg = get_section(cfg, "bamboo")
     return {
-        "data_file": workdir / "system.data",
+        "data_file": workdir / str(bamboo_cfg.get("data_file", "in.data")),
+        "build_report": workdir / str(bamboo_cfg.get("build_report_file", "build_report.json")),
         "equil_input": workdir / str(sim_cfg.get("equil_input_filename", "in.equil.lammps")),
         "gk_input": workdir / str(sim_cfg.get("gk_input_filename", "in.gk.lammps")),
         "equil_restart": workdir / str(sim_cfg.get("equil_restart_file", "equil_nvt.restart")),
@@ -344,12 +326,19 @@ def _stage_signature(cfg: dict[str, Any], stage: str) -> str | None:
     if stage == "build_system":
         payload: dict[str, Any] = {
             "case": get_section(cfg, "case"),
+            "components": cfg.get("components"),
+            "composition": cfg.get("composition"),
             "structure": get_section(cfg, "structure"),
             "model": get_section(cfg, "model"),
+            "bamboo": {
+                "data_file": get_section(cfg, "bamboo").get("data_file"),
+                "build_report_file": get_section(cfg, "bamboo").get("build_report_file"),
+                "neutrality_tolerance": get_section(cfg, "bamboo").get("neutrality_tolerance"),
+            },
         }
     elif stage == "write_input":
         payload = {
-            "ani": get_section(cfg, "ani"),
+            "bamboo": get_section(cfg, "bamboo"),
             "simulation": get_section(cfg, "simulation"),
         }
     elif stage == "analyze":
@@ -634,65 +623,21 @@ def stage_build_system(
     cfg: dict[str, Any],
     workdir: Path,
 ) -> tuple[Path, tuple[float, float, float]]:
-    """SMILES → geometry → Packmol box → LAMMPS data file.
+    """Composition → geometries → Packmol box → BAMBOO LAMMPS data file.
 
     Returns
     -------
     (data_file_path, (Lx, Ly, Lz))
     """
-    model_cfg = get_section(cfg, "model")
-    struct_cfg = get_section(cfg, "structure")
-
-    smiles = get_required(cfg, "case", "smiles")
-    name = get_required(cfg, "case", "name")
-
-    print("\n── Stage 1: build system ──────────────────────────────────────")
-
-    # 1a. Generate 3-D single-molecule geometry.
-    mol = MoleculeStructure(smiles=smiles, name=name)
-    mol.generate(optimize=True)
-    mol_xyz = workdir / f"{name}.xyz"
-    mol.save_xyz(mol_xyz)
-    for fmt in struct_cfg.get("output_formats", []):
-        fmt_name = str(fmt).strip().lower()
-        if fmt_name == "xyz":
-            continue
-        save_fn = getattr(mol, f"save_{fmt_name}", None)
-        if save_fn is None:
-            raise ValueError(f"Unsupported structure output format: {fmt}")
-        save_fn(workdir / f"{name}.{fmt_name}")
-
-    # 1b. Pack molecules into a box.
-    n_mol = int(model_cfg.get("n_molecules", 500))
-    density = float(model_cfg.get("density_g_cm3", 1.0))
-    packmol_density_scale = float(model_cfg.get("packmol_density_scale", 0.85))
-    if packmol_density_scale <= 0:
-        raise ValueError("model.packmol_density_scale must be > 0")
-    packer = PackmolBuilder(workdir=workdir)
-    system_xyz, box_lengths = packer.build_box(
-        mol_xyz=mol_xyz,
-        n_molecules=n_mol,
-        density=density * packmol_density_scale,
-        mol_weight=mol.molecular_weight,
-        tolerance=float(model_cfg.get("packmol_tolerance_A", 2.0)),
-        seed=int(model_cfg.get("packmol_seed", 12345)),
-        nloop=int(model_cfg.get("packmol_nloop", 200)),
-        max_attempts=int(model_cfg.get("packmol_max_attempts", 5)),
-        seed_step=int(model_cfg.get("packmol_seed_step", 17)),
-        full_box=bool(model_cfg.get("packmol_full_box", False)),
-        margin=model_cfg.get("packmol_margin_A"),
-        allow_imperfect=not bool(model_cfg.get("packmol_strict", False)),
-    )
-
-    # 1c. Convert XYZ → LAMMPS atomic data file.
-    data_file = workdir / "system.data"
-    builder = AniDataBuilder()
-    builder.build(system_xyz, box_lengths, data_file)
-
+    result = build_bamboo_system(cfg, workdir)
+    box_lengths = result.box_lengths
     Lx, Ly, Lz = box_lengths
     V = Lx * Ly * Lz
-    print(f"  system.data : {n_mol} molecules  |  box {Lx:.1f}×{Ly:.1f}×{Lz:.1f} Å  |  V={V:.0f} Å³")
-    return data_file, box_lengths
+    print(
+        f"  in.data : {result.n_molecules} molecules  |  "
+        f"box {Lx:.1f} x {Ly:.1f} x {Lz:.1f} A  |  V={V:.0f} A^3"
+    )
+    return result.data_file, box_lengths
 
 
 def stage_write_input(
@@ -707,16 +652,27 @@ def stage_write_input(
     (equil_input_path, gk_input_path)
     """
     sim_cfg = get_section(cfg, "simulation")
-    ani_cfg = get_section(cfg, "ani")
+    bamboo_cfg = get_section(cfg, "bamboo")
+    build_report = load_bamboo_build_report(workdir, cfg)
+    elements = build_report.get("elements_in_pair_coeff")
+    if not isinstance(elements, list) or not elements:
+        raise ValueError("BAMBOO build report is missing elements_in_pair_coeff")
 
-    print("\n── Stage 2: write LAMMPS inputs ───────────────────────────────")
+    print("\n-- Stage 2: write BAMBOO Green-Kubo inputs --------------------")
+    pppm_mesh = bamboo_cfg.get("pppm_mesh")
+    if pppm_mesh is not None:
+        pppm_mesh = tuple(int(value) for value in pppm_mesh)
 
     common = dict(
-        model_file=get_required(cfg, "ani", "model_file"),
+        model_file=get_required(cfg, "bamboo", "model_file"),
+        elements=[str(element) for element in elements],
+        pair_style_args=tuple(bamboo_cfg.get("pair_style_args", (5.0, 5.0, 10.0, 1))),
+        pppm_accuracy=float(bamboo_cfg.get("pppm_accuracy", 1.0e-6)),
+        pppm_mesh=pppm_mesh,
         temperature=float(sim_cfg.get("temperature_K", 300.0)),
+        pressure_atm=float(sim_cfg.get("pressure_atm", 1.0)),
         timestep_fs=float(sim_cfg.get("timestep_fs", 0.5)),
-        device=str(ani_cfg.get("device", "cuda")),
-        num_models=int(ani_cfg.get("num_models", 1)),
+        thermo_every=int(sim_cfg.get("thermo_every", 1000)),
     )
 
     restart_file = str(sim_cfg.get("equil_restart_file", "equil_nvt.restart"))
@@ -729,6 +685,7 @@ def stage_write_input(
         npt_thermo_file=str(sim_cfg.get("npt_thermo_file", "npt_thermo.dat")),
         seed=int(sim_cfg.get("seed", 12345)),
         restart_file=restart_file,
+        minimize=bool(sim_cfg.get("minimize", True)),
         **common,
     )
     equil_path = workdir / str(sim_cfg.get("equil_input_filename", "in.equil.lammps"))
@@ -742,7 +699,14 @@ def stage_write_input(
         sample_every=int(sim_cfg.get("sample_every", 1)),
         acf_file=str(sim_cfg.get("acf_file", "stress_acf.dat")),
         thermo_file=str(sim_cfg.get("thermo_file", "gk_thermo.dat")),
-        **common,
+        model_file=common["model_file"],
+        elements=common["elements"],
+        pair_style_args=common["pair_style_args"],
+        pppm_accuracy=common["pppm_accuracy"],
+        pppm_mesh=common["pppm_mesh"],
+        temperature=common["temperature"],
+        timestep_fs=common["timestep_fs"],
+        thermo_every=common["thermo_every"],
     )
     gk_path = workdir / str(sim_cfg.get("gk_input_filename", "in.gk.lammps"))
     gk_path.write_text(gk_text)
@@ -889,12 +853,13 @@ def _run_single_case(cfg: dict[str, Any], config_path: Path) -> dict[str, Any] |
             if _can_reuse_stage(
                 state,
                 "build_system",
-                outputs=[paths["data_file"]],
+                outputs=[paths["data_file"], paths["build_report"]],
                 signature=build_signature,
                 allow_artifact_fallback=True,
             ):
                 data_file = paths["data_file"]
-                _print_reuse("build_system", workdir, [data_file])
+                build_outputs = [paths["data_file"], paths["build_report"]]
+                _print_reuse("build_system", workdir, build_outputs)
                 _mark_stage(
                     workdir,
                     state,
@@ -902,11 +867,12 @@ def _run_single_case(cfg: dict[str, Any], config_path: Path) -> dict[str, Any] |
                     status="reused",
                     extra={
                         "signature": build_signature,
-                        "outputs": _relative_paths([data_file], workdir),
+                        "outputs": _relative_paths(build_outputs, workdir),
                     },
                 )
             else:
                 data_file, _ = stage_build_system(cfg, workdir)
+                build_outputs = [data_file, paths["build_report"]]
                 _mark_stage(
                     workdir,
                     state,
@@ -914,7 +880,7 @@ def _run_single_case(cfg: dict[str, Any], config_path: Path) -> dict[str, Any] |
                     status="done",
                     extra={
                         "signature": build_signature,
-                        "outputs": _relative_paths([data_file], workdir),
+                        "outputs": _relative_paths(build_outputs, workdir),
                     },
                 )
         else:
@@ -1192,7 +1158,7 @@ def _run_workflow(
 
 def main(argv: list[str] | None = None) -> None:
     parser = argparse.ArgumentParser(
-        description="ANI Green-Kubo viscosity workflow",
+        description="BAMBOO Green-Kubo viscosity workflow",
         formatter_class=argparse.ArgumentDefaultsHelpFormatter,
     )
     parser.add_argument("--config", required=True, help="Path to YAML config file")
@@ -1200,11 +1166,6 @@ def main(argv: list[str] | None = None) -> None:
 
     config_path = Path(args.config).resolve()
     cfg = load_yaml(config_path)
-    lammps_cfg = cfg.get("lammps")
-    if not isinstance(lammps_cfg, dict):
-        lammps_cfg = {}
-    if lammps_cfg.get("auto_environment", True):
-        apply_default_lammps_ani_environment()
     apply_md_viscosity_path_resolution(cfg, REPO_ROOT)
     _run_workflow(cfg, config_path)
 

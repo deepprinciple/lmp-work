@@ -1,5 +1,5 @@
 # ================================================================
-# ANI Green-Kubo viscosity smoke-test configuration
+# BAMBOO Green-Kubo viscosity smoke-test configuration
 # Usage: python md_viscosity.py --config configs/viscosity.smoke.yaml
 # ================================================================
 
@@ -12,9 +12,22 @@ run:
   analyze:      true
 
 case:
-  smiles:   "O"             # water
-  name:     "water"
-  workdir:  "./cases/water_viscosity_smoke"
+  name:     "LiPF6_EC_DMC_smoke"
+  workdir:  "./cases/lipf6_ec_dmc_viscosity_smoke"
+
+components:
+  - { name: EC,  kind: solvent, smiles: "C1COC(=O)O1", charge_source: openff_am1bcc }
+  - { name: DMC, kind: solvent, smiles: "COC(=O)OC",   charge_source: openff_am1bcc }
+  - { name: Li,  kind: cation,  preset: "Li+" }
+  - { name: PF6, kind: anion,   preset: "PF6-" }
+
+composition:
+  mode: counts
+  counts:
+    EC:  10
+    DMC: 10
+    Li:  2
+    PF6: 2
 
 replica:
   n_replicates:  1
@@ -28,13 +41,9 @@ length_scan:
   dir_prefix:    "len_"
   summary_file:  "viscosity_length_scan_summary.json"
 
-structure:
-  output_formats: []
-
 model:
-  n_molecules:            200
-  density_g_cm3:          0.997
-  packmol_density_scale:  0.85
+  density_g_cm3:          1.24
+  packmol_density_scale:  0.70
   packmol_tolerance_A:    2.0
   packmol_seed:           20260415
   packmol_max_attempts:   5
@@ -44,25 +53,32 @@ model:
   packmol_margin_A:       null
   packmol_strict:         false
 
-ani:
-  model_file:   "/path/to/ani2x.pt"
-  device:       "cuda"
-  num_models:   1
+bamboo:
+  model_file:             "/root/bamboo/benchmark/paper_new_disp.pt"
+  pair_style_args:        [5.0, 5.0, 10.0, 1]
+  pppm_accuracy:          1.0e-6
+  pppm_mesh:              [32, 32, 32]
+  data_file:              "in.data"
+  build_report_file:      "build_report.json"
+  neutrality_tolerance:   1.0e-3
 
 simulation:
   temperature_K:    300.0
+  pressure_atm:     1.0
   timestep_fs:      0.5
   seed:             20260415
+  minimize:         true
+  thermo_every:     100
 
   nvt_steps:        5000
   npt_steps:        10000
   final_nvt_steps:  2000
   npt_thermo_file:  "npt_thermo.dat"
   equil_density_check_last_steps: 5000
-  equil_density_rel_tol: 0.10
+  equil_density_rel_tol: 0.15
   equil_skip_density_check: false
   equil_temp_check_last_steps: 1000
-  equil_temp_abs_tol_K: 20.0
+  equil_temp_abs_tol_K: 25.0
   equil_skip_temperature_check: false
 
   prod_steps:       4000
@@ -81,10 +97,14 @@ lammps:
   executable:         "lmp_mpi"
   mpi_command:        "mpirun"
   mpi_ranks:          1
-  auto_environment:   true
-  env: {}
   allow_run_as_root:  true
   use_hwthread_cpus:  false
+  oversubscribe:      false
+  kokkos:             true
+  kokkos_gpus:        1
+  suffix:             "kk"
+  extra_args:         []
+  env: {}
 
 analysis:
   t_max_ps:           2.0

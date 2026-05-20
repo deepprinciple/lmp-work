@@ -5,7 +5,7 @@
 | 工作流 | 方法 | 力场 | 入口 |
 |--------|------|------|------|
 | **热导率** | reverse-NEMD | OpenFF / LigParGen | `md_run.py` |
-| **粘度** | Green-Kubo 应力 ACF | ANI 神经网络势 | `md_viscosity.py` |
+| **粘度** | Green-Kubo 应力 ACF | ByteDance BAMBOO | `md_viscosity.py` |
 
 ---
 
@@ -33,7 +33,7 @@ conda install -c conda-forge rdkit openff-toolkit openff-interchange openff-unit
 
 - `packmol`：两条工作流都需要，并且命令应在 `PATH` 中
 - `lmp_mpi` 或等价 LAMMPS 可执行程序：两条工作流都需要
-- `lammps-ani` + ANI 模型文件：粘度工作流需要
+- BAMBOO-enabled LAMMPS + BAMBOO 模型文件：粘度工作流需要
 - `BOSS`：仅当你选择 `LigParGen + BOSS` 路径时需要
 
 ## 热导率工作流
@@ -73,12 +73,12 @@ python md_run.py --config configs/config.smoke.yaml
 
 ---
 
-## 粘度工作流（ANI Green-Kubo）
+## 粘度工作流（BAMBOO Green-Kubo）
 
-SMILES → Packmol 建盒 → ANI pair style → NVT 预热 → NPT 压回目标密度 → 短 NVT 收尾 → NVE + 应力 ACF → η
+components/composition → RDKit/ion preset → 多组分 Packmol 建盒 → BAMBOO `atom_style full` data → NVT 预热 → NPT 压回目标密度 → 短 NVT 收尾 → NVE + 应力 ACF → η
 
-> **依赖**：需要编译安装 [lammps-ani](https://github.com/roitberg-group/lammps-ani)
-> 并准备 ANI TorchScript 模型文件（`ani2x.pt`）。
+> **依赖**：需要使用 ByteDance BAMBOO 对应的 LAMMPS 构建，并准备 BAMBOO 模型文件。
+> 运行命令默认会给 LAMMPS 加 `-k on g 1 -sf kk`，可在 `lammps:` 配置里关闭或覆盖。
 
 ```bash
 python md_viscosity.py --config configs/viscosity.yaml
@@ -132,13 +132,25 @@ length_scan:
 
 ```yaml
 case:
-  smiles:  "CCO"          # 目标分子 SMILES
-  name:    "ethanol"
-  workdir: "./cases/ethanol_viscosity_300K"
+  name:    "LiPF6_EC_DMC"
+  workdir: "./cases/lipf6_ec_dmc_viscosity"
 
-ani:
-  model_file: "/path/to/ani2x.pt"   # ← 必填
-  device:     "cuda"
+components:
+  - { name: EC,  kind: solvent, smiles: "C1COC(=O)O1", charge_source: openff_am1bcc }
+  - { name: DMC, kind: solvent, smiles: "COC(=O)OC",   charge_source: openff_am1bcc }
+  - { name: Li,  kind: cation,  preset: "Li+" }
+  - { name: PF6, kind: anion,   preset: "PF6-" }
+
+composition:
+  mode: counts
+  counts:
+    EC:  182
+    DMC: 182
+    Li:  14
+    PF6: 14
+
+bamboo:
+  model_file: "/path/to/bamboo_model.pt"   # 必填
 ```
 
 ### 四个可独立跳过的阶段
@@ -151,7 +163,7 @@ build_system → write_input → run_lammps → analyze
 
 ```yaml
 run:
-  build_system: false   # 已有 system.data 时跳过
+  build_system: false   # 已有 in.data + build_report.json 时跳过
   write_input:  true
   run_lammps:   true
   analyze:      true
@@ -168,7 +180,7 @@ run:
 
 同一 `workdir` 下重复执行时，粘度入口会自动判断哪些产物可以直接复用：
 
-- `build_system`：已有 `system.data`
+- `build_system`：已有 `in.data` + `build_report.json`
 - `write_input`：已有 `in.equil.lammps` 和 `in.gk.lammps`
 - `run_lammps`：已有 `equil_nvt.restart` + `npt_thermo.dat`，或已有 `stress_acf.dat` + `gk_thermo.dat`
 - `analyze`：已有 `viscosity_summary.json` + `viscosity_analysis.png`
@@ -180,19 +192,24 @@ run:
 ### 核心文件（粘度）
 
 - `md_viscosity.py` — 主流程入口
-- `core/data_builder.py` — `AniDataBuilder`：Packmol XYZ → LAMMPS atomic data
-- `workflow/input_ani_viscosity.py` — NVT 预热 + NPT 密度平衡 + 短 NVT 收尾 + NVE GK 输入生成
+- `core/composition.py` — 多组分 counts / molality / molarity 解析
+- `core/bamboo_structure.py` — SMILES → RDKit 3D 结构，或 ion preset 几何
+- `core/bamboo_packing.py` — 多组分 Packmol 建盒
+- `core/data_builder.py` — BAMBOO `atom_style full` data writer
+- `workflow/bamboo_system.py` — YAML components/composition → `in.data` + `build_report.json`
+- `workflow/input_viscosity.py` — BAMBOO NPT 平衡 + NVE Green-Kubo 输入生成
 - `analysis/viscosity.py` — Green-Kubo η 积分（复用 `hfacf` 引擎）
 - `configs/viscosity.yaml` — 官方默认长程配置模板
 - `configs/viscosity.smoke.yaml` — 短程 smoke test 模板
 
 ### 技术说明
 
-- ANI 通过原子质量识别元素，`pair_coeff` 只需 `* *`，无需写元素符号
-- 必须使用 `pyaev full`（CUAEV 不支持 virial/stress 计算）
-- 非 Kokkos 模式要求 `newton off`
+- BAMBOO 使用 `atom_style full`，`Atoms` 行为 `id mol_id type charge x y z`
+- `core/data_builder.py` 会按 atomic number 给元素分配 type，并把同一顺序写进 `pair_coeff`
+- `pair_style bamboo` 的参数默认来自 BAMBOO 示例：`[5.0, 5.0, 10.0, 1]`
+- 默认启用 PPPM，体系总电荷会在写 `in.data` 前检查为近似中性
+- 默认通过 Kokkos 后缀运行：`lmp_mpi -k on g 1 -sf kk`
 - 平衡阶段会额外写出 `npt_thermo.dat`，并默认检查 NPT 尾段平均密度和最终 NVT 尾段平均温度
-- 粘度入口会先尝试补齐保守的 ANI 运行环境；如需完全手动控制，可设 `lammps.auto_environment: false`
 - 单位换算：`ETA_CONV = atm² × Å³ × fs / k_B × 10³ ≈ 7.44×10⁻¹⁰ mPa·s·K/Å³ per atm²·fs`
 
 ---
@@ -205,6 +222,7 @@ run:
 |------|------|
 | `core/structure.py` | SMILES → RDKit 3D 结构 |
 | `core/packing.py` | Packmol 多分子建盒 |
+| `core/bamboo_structure.py` / `core/bamboo_packing.py` | BAMBOO 粘度工作流的多组分建系 |
 | `analysis/hfacf.py` | `parse_ave_correlate_detail`、`_integrate_acf`、收敛窗口检测 |
 | `utils/constants.py` | 物理常数与单位换算 |
 | `utils/io.py` | LAMMPS data 文件读写 |
@@ -238,4 +256,5 @@ python scripts/analyze_thermal_hfacf.py \
 ```
 
 启用 LAMMPS GPU 包（热导率工作流）时，将配置中的 `lammps.use_gpu` 改为 `true`
-并设置 `lammps.gpu_count`。粘度工作流的 GPU 由 ANI/PyTorch 自行管理，无需此项。
+并设置 `lammps.gpu_count`。粘度工作流使用 BAMBOO/Kokkos，相关参数在 `lammps.kokkos`、
+`lammps.kokkos_gpus` 和 `lammps.suffix` 中配置。

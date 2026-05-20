@@ -2,96 +2,11 @@
 from __future__ import annotations
 
 import os
-import sys
 from pathlib import Path
 from typing import Any
 
 # Repository root (this file lives in <repo>/workflow/config.py).
 REPO_ROOT: Path = Path(__file__).resolve().parent.parent
-
-
-def _default_lammps_ani_root(home: Path) -> str:
-    """Pick a tree that actually contains ``build/ani_plugin.so``."""
-    plugin = Path("build") / "ani_plugin.so"
-    candidates = [
-        home / "lammps-ani-src",
-        home / "src" / "lammps-ani",
-        Path("/root/src/lammps-ani"),
-        REPO_ROOT.parent / "lammps-ani-src",
-    ]
-    seen: set[str] = set()
-    for candidate in candidates:
-        try:
-            resolved = candidate.expanduser().resolve()
-        except (OSError, RuntimeError):
-            continue
-        key = str(resolved)
-        if key in seen:
-            continue
-        seen.add(key)
-        if (resolved / plugin).is_file():
-            return key
-    return str((home / "lammps-ani-src").resolve())
-
-
-def apply_default_lammps_ani_environment() -> None:
-    """Populate conservative default env vars for the ANI workflow."""
-    if os.environ.get("LAMMPS_SKIP_AUTO_ENV", "").strip() == "1":
-        return
-
-    home = Path.home()
-
-    if not os.environ.get("LAMMPS_PREFIX", "").strip():
-        os.environ["LAMMPS_PREFIX"] = str(home / ".local-lammps-ani")
-
-    if not os.environ.get("LAMMPS_ANI_ROOT", "").strip():
-        os.environ["LAMMPS_ANI_ROOT"] = _default_lammps_ani_root(home)
-
-    prefix = Path(os.environ["LAMMPS_PREFIX"])
-    bin_dir = prefix / "bin"
-    if bin_dir.is_dir():
-        path = os.environ.get("PATH", "")
-        resolved_bin = str(bin_dir.resolve())
-        parts = [part for part in path.split(":") if part]
-        if resolved_bin not in parts:
-            os.environ["PATH"] = f"{resolved_bin}:{path}" if path else resolved_bin
-
-    prepend_ld: list[str] = []
-    lib_dir = prefix / "lib"
-    if lib_dir.is_dir():
-        prepend_ld.append(str(lib_dir.resolve()))
-
-    try:
-        import torch
-
-        torch_lib = Path(torch.__file__).resolve().parent / "lib"
-        if torch_lib.is_dir():
-            prepend_ld.append(str(torch_lib))
-        nccl_lib = Path(torch.__file__).resolve().parent.parent / "nvidia" / "nccl" / "lib"
-        if nccl_lib.is_dir():
-            prepend_ld.append(str(nccl_lib.resolve()))
-    except ImportError:
-        pass
-
-    cuda_lib = Path("/usr/local/cuda/lib64")
-    if cuda_lib.is_dir():
-        prepend_ld.append(str(cuda_lib.resolve()))
-
-    conda_or_venv = os.environ.get("CONDA_PREFIX", "").strip() or sys.prefix
-    if conda_or_venv:
-        env_lib = Path(conda_or_venv) / "lib"
-        if env_lib.is_dir():
-            prepend_ld.append(str(env_lib.resolve()))
-
-    if not prepend_ld:
-        return
-
-    existing = os.environ.get("LD_LIBRARY_PATH", "").strip()
-    existing_parts = [part for part in existing.split(":") if part] if existing else []
-    for entry in prepend_ld:
-        if entry not in existing_parts:
-            existing_parts.insert(0, entry)
-    os.environ["LD_LIBRARY_PATH"] = ":".join(existing_parts)
 
 
 def resolve_config_file_path(value: Any, repo_root: Path | None = None) -> str:
@@ -141,9 +56,15 @@ def apply_md_viscosity_path_resolution(cfg: dict[str, Any], repo_root: Path | No
     """Mutate viscosity config in place to resolve file paths and env values."""
     root = repo_root if repo_root is not None else REPO_ROOT
 
-    ani_cfg = cfg.get("ani")
-    if isinstance(ani_cfg, dict) and ani_cfg.get("model_file") is not None:
-        ani_cfg["model_file"] = resolve_config_file_path(ani_cfg["model_file"], root)
+    bamboo_cfg = cfg.get("bamboo")
+    if isinstance(bamboo_cfg, dict) and bamboo_cfg.get("model_file") is not None:
+        bamboo_cfg["model_file"] = resolve_config_file_path(bamboo_cfg["model_file"], root)
+
+    components_cfg = cfg.get("components")
+    if isinstance(components_cfg, list):
+        for component in components_cfg:
+            if isinstance(component, dict) and component.get("charge_file") is not None:
+                component["charge_file"] = resolve_config_file_path(component["charge_file"], root)
 
     lammps_cfg = cfg.get("lammps")
     if not isinstance(lammps_cfg, dict):
@@ -188,7 +109,6 @@ def get_section(cfg: dict[str, Any], section: str) -> dict[str, Any]:
 
 __all__ = [
     "REPO_ROOT",
-    "apply_default_lammps_ani_environment",
     "apply_md_viscosity_path_resolution",
     "get_required",
     "get_section",

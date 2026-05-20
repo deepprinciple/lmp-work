@@ -8,6 +8,39 @@ AVOGADRO = 6.02214076e23          # 1/mol
 ELEMENTARY_CHARGE = 1.602176634e-19  # C
 VACUUM_PERMITTIVITY = 8.8541878128e-12  # F/m
 
+# Atomic data for BAMBOO data-file generation.  Atom types are assigned in
+# ascending atomic-number order so the data file and pair_coeff elements stay
+# synchronized.
+ATOMIC_MASS: dict[str, float] = {
+    "H":  1.008,
+    "Li": 6.941,
+    "B":  10.811,
+    "C":  12.011,
+    "N":  14.007,
+    "O":  15.9994,
+    "F":  18.998,
+    "Na": 22.990,
+    "P":  30.974,
+    "S":  32.06,
+    "Cl": 35.45,
+    "K":  39.098,
+}
+
+ATOMIC_NUMBER: dict[str, int] = {
+    "H": 1,
+    "Li": 3,
+    "B": 5,
+    "C": 6,
+    "N": 7,
+    "O": 8,
+    "F": 9,
+    "Na": 11,
+    "P": 15,
+    "S": 16,
+    "Cl": 17,
+    "K": 19,
+}
+
 # 单位转换
 ANGSTROM_TO_METER = 1e-10
 ATM_TO_PASCAL = 101325.0

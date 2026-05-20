@@ -1,9 +1,8 @@
 # ================================================================
-# ANI Green-Kubo viscosity workflow configuration
+# BAMBOO Green-Kubo viscosity workflow configuration
 # Usage: python md_viscosity.py --config configs/viscosity.yaml
 # ================================================================
 
-# Stage switches – set false to skip individual stages.
 run:
   build_system: true
   write_input:  true
@@ -12,27 +11,30 @@ run:
   run_gk:       true
   analyze:      true
 
-# Target molecule and output location.
 case:
-  # SMILES of the molecule to simulate.
-  smiles:   "O"             # water
-  # Short name used for file naming.
-  name:     "water"
-  # All intermediate files and results are written here.
-  workdir:  "./cases/water_viscosity_300K_3x3_demo"
+  name:     "LiPF6_EC_DMC"
+  workdir:  "./cases/lipf6_ec_dmc_viscosity"
 
-# Optional multi-replica demo mode.
-# Keep all replicas at the same trajectory length; if you want to study
-# production-time effects, change simulation.prod_steps in a separate run.
+components:
+  - { name: EC,  kind: solvent, smiles: "C1COC(=O)O1", charge_source: openff_am1bcc }
+  - { name: DMC, kind: solvent, smiles: "COC(=O)OC",   charge_source: openff_am1bcc }
+  - { name: Li,  kind: cation,  preset: "Li+" }
+  - { name: PF6, kind: anion,   preset: "PF6-" }
+
+composition:
+  mode: counts
+  counts:
+    EC:  182
+    DMC: 182
+    Li:  14
+    PF6: 14
+
 replica:
   n_replicates:  3
   seed_stride:   1000
   dir_prefix:    "replica_"
   summary_file:  "viscosity_replicas_summary.json"
 
-# Optional production-length scan.
-# Typical 0.5 / 1.0 / 2.0 ns examples at 0.5 fs are:
-# [1000000, 2000000, 4000000]
 length_scan:
   enabled:       true
   prod_steps:
@@ -42,71 +44,52 @@ length_scan:
   dir_prefix:    "len_"
   summary_file:  "viscosity_length_scan_summary.json"
 
-# Optional extra single-molecule structure exports (xyz is always written for Packmol).
-structure:
-  output_formats: []
-
-# Box-building parameters (Packmol).
 model:
-  n_molecules:            500     # number of molecules in the box
-  density_g_cm3:          0.997   # target liquid density at 300 K (g/cm³)
-  packmol_density_scale:  0.85    # start Packmol at lower density to avoid clashes
-  packmol_tolerance_A:    2.0     # minimum intermolecular distance (Å)
+  density_g_cm3:          1.24
+  packmol_density_scale:  0.85
+  packmol_tolerance_A:    2.0
   packmol_seed:           20260415
-  packmol_max_attempts:   5       # retry seeds on failure
+  packmol_max_attempts:   5
   packmol_seed_step:      17
   packmol_nloop:          200
   packmol_full_box:       false
   packmol_margin_A:       null
   packmol_strict:         false
 
-# ANI model settings.
-ani:
-  # Path to the TorchScript model file (.pt).
-  model_file:   "/path/to/ani2x.pt"
-  # "cuda" or "cpu".
-  device:       "cuda"
-  # Number of ensemble models (-1 = all, 1 = fastest).
-  num_models:   1
+bamboo:
+  model_file:             "/root/bamboo/benchmark/paper_new_disp.pt"
+  pair_style_args:        [5.0, 5.0, 10.0, 1]
+  pppm_accuracy:          1.0e-6
+  pppm_mesh:              [64, 64, 64]
+  data_file:              "in.data"
+  build_report_file:      "build_report.json"
+  neutrality_tolerance:   1.0e-3
 
-# Simulation parameters.
 simulation:
-  temperature_K:    300.0   # K
-  timestep_fs:      0.5     # fs  (0.5 fs recommended for ANI)
+  temperature_K:    300.0
+  pressure_atm:     1.0
+  timestep_fs:      0.5
   seed:             20260415
+  minimize:         true
+  thermo_every:     1000
 
-  # --- Equilibration ---
-  # Short fixed-volume warmup before enabling the barostat.
-  nvt_steps:        40000    # 20 ps @ 0.5 fs
-  # Isotropic NPT relaxation used to bring the box back toward target density.
-  npt_steps:        200000   # 100 ps @ 0.5 fs
-  # Short fixed-volume NVT settling after NPT, before entering NVE production.
-  final_nvt_steps:  20000    # 10 ps @ 0.5 fs
-  # Equilibration trace written during NPT and final NVT for post-run validation.
+  # Equilibration.
+  nvt_steps:        40000
+  npt_steps:        200000
+  final_nvt_steps:  20000
   npt_thermo_file:  "npt_thermo.dat"
-  # Average the last N NPT steps and compare against model.density_g_cm3.
   equil_density_check_last_steps: 50000
-  # Allowed relative error of the tail-mean density versus target density.
   equil_density_rel_tol: 0.05
-  # Set true only when you intentionally want to skip the automatic density check.
   equil_skip_density_check: false
-  # Average the last N final-NVT steps and compare against simulation.temperature_K.
   equil_temp_check_last_steps: 10000
-  # Allowed absolute temperature deviation of the final-NVT tail mean.
   equil_temp_abs_tol_K: 15.0
-  # Set true only when you intentionally want to skip the automatic temperature check.
   equil_skip_temperature_check: false
 
-  # --- Green-Kubo production (NVE) ---
-  prod_steps:       2000000   # 1 ns @ 0.5 fs
-  # Number of lag steps for the stress ACF (Nrepeat in fix ave/correlate).
-  # corr_length × timestep_fs / 1000 = correlation window in ps.
-  # 40 000 × 0.5 fs = 20 ps – sufficient for most small organic liquids.
+  # Green-Kubo production (NVE).
+  prod_steps:       2000000
   corr_length:      40000
-  # Sample pressure every N steps (1 = every step; recommended).
   sample_every:     1
 
-  # Input / output file names (relative to workdir).
   equil_input_filename: "in.equil.lammps"
   equil_restart_file:   "equil_nvt.restart"
   gk_input_filename:    "in.gk.lammps"
@@ -115,27 +98,22 @@ simulation:
   equil_log_file:       "run_equil.log"
   gk_log_file:          "run_gk.log"
 
-# LAMMPS execution.
 lammps:
   executable:         "lmp_mpi"
   mpi_command:        "mpirun"
   mpi_ranks:          1
-  # Auto-populate conservative ANI runtime env vars if they are currently unset.
-  auto_environment:   true
-  # Optional extra environment passed directly to mpirun/lmp_mpi.
-  env: {}
   allow_run_as_root:  true
-  # ANI handles GPU internally via PyTorch – do NOT use LAMMPS GPU package here.
   use_hwthread_cpus:  false
+  oversubscribe:      false
+  kokkos:             true
+  kokkos_gpus:        1
+  suffix:             "kk"
+  extra_args:         []
+  env: {}
 
-# Post-processing parameters.
 analysis:
-  # Maximum lag time used in the GK integral (ps).
-  # Should be ≤ corr_length × timestep_fs / 1000.
   t_max_ps:           20.0
-  # Earliest time (ps) to start searching for a stable plateau.
   plateau_start_ps:   5.0
-  # Smoothing window applied to the running integral before plateau detection.
   smooth_window:      11
   summary_file:       "viscosity_summary.json"
   plot_file:          "viscosity_analysis.png"

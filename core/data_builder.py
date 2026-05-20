@@ -1,137 +1,124 @@
-"""LAMMPS atomic data file builder for ANI pair style.
+"""Write a BAMBOO-compatible LAMMPS data file (``in.data``).
 
-Converts a Packmol XYZ output to a LAMMPS data file using the ``atomic``
-atom style (no bonds, angles, or charges).  Element identification by ANI
-is done via atomic masses in the Masses section, so pair_coeff needs no
-element symbols – just ``pair_coeff * *``.
+BAMBOO expects ``atom_style full`` with per-atom partial charges. The data file
+does *not* contain Bonds / Angles / Dihedrals / Impropers — BAMBOO learns the
+short-range physics from coordinates + element types, and PPPM handles
+long-range electrostatics via the charges we write here.
+
+Atom-type ordering: we use ascending atomic number for whichever elements are
+present in the system. The element list is returned alongside the data path so
+that ``workflow.input_viscosity`` can render the matching ``pair_coeff`` line.
+
+The element symbols used in Masses comments, Atoms comments, and the
+``pair_coeff`` line are all upper-cased (``Li → LI``) to match the BAMBOO
+sample data file convention.
 """
 from __future__ import annotations
 
 from pathlib import Path
 
-# ANI-2x supported elements and their standard atomic masses (g/mol).
-ANI_ELEMENTS: list[str] = ["H", "C", "N", "O", "S", "F", "Cl"]
+from utils.constants import ATOMIC_MASS, ATOMIC_NUMBER
 
-_MASSES: dict[str, float] = {
-    "H":  1.008,
-    "C": 12.011,
-    "N": 14.007,
-    "O": 15.999,
-    "S": 32.06,
-    "F": 18.998,
-    "Cl": 35.45,
-}
+AtomRecord = tuple[str, float, float, float, float, int]
+# (element_symbol, partial_charge, x, y, z, mol_id)
 
 
-class AniDataBuilder:
-    """Convert a Packmol XYZ file to a LAMMPS data file for ANI simulations.
+def build_bamboo_data(
+    atoms: list[AtomRecord],
+    box_lengths: tuple[float, float, float],
+    output: Path,
+    *,
+    title: str = "LAMMPS data file - BAMBOO system",
+    neutrality_tolerance: float = 1e-3,
+) -> tuple[Path, list[str]]:
+    """Write ``in.data`` and return ``(output_path, elements_for_pair_coeff)``.
 
-    Atom types are numbered in ANI element order (H=1, C=2, …) for only the
-    elements actually present in the system.  The Masses section encodes the
-    standard atomic masses so the pair_ani plugin can identify element species.
+    Parameters
+    ----------
+    atoms:
+        Per-atom records ``(element, charge, x, y, z, mol_id)`` in the order
+        they appear in the packed box. ``mol_id`` should be sequentially
+        assigned, one unique value per molecule.
+    box_lengths:
+        Orthorhombic box dimensions ``(Lx, Ly, Lz)`` in A. Origin at ``(0,0,0)``.
+    output:
+        Destination path.
+    title:
+        First-line title comment.
+    neutrality_tolerance:
+        Abort if the box's net charge exceeds this — PPPM cannot converge on
+        a non-neutral system.
 
-    Usage
-    -----
-    >>> builder = AniDataBuilder()
-    >>> data_path = builder.build("system.xyz", (30.0, 30.0, 30.0), "system.data")
+    Returns
+    -------
+    output_path:
+        Absolute path to the data file.
+    elements:
+        Element symbols (UPPER-cased) ordered so that the index corresponds to
+        the atom_type number used in the data file. Pass this through to the
+        ``pair_coeff`` writer.
     """
+    if not atoms:
+        raise ValueError("Empty atom list — nothing to write.")
 
-    def build(
-        self,
-        system_xyz: str | Path,
-        box_lengths: tuple[float, float, float],
-        output: str | Path,
-    ) -> Path:
-        """Read a Packmol XYZ file and write a LAMMPS atomic data file.
+    Lx, Ly, Lz = box_lengths
+    if min(Lx, Ly, Lz) <= 0:
+        raise ValueError(f"Box must have positive lengths, got {box_lengths}")
 
-        Parameters
-        ----------
-        system_xyz:
-            Path to the XYZ file produced by Packmol.
-        box_lengths:
-            ``(Lx, Ly, Lz)`` box dimensions in Ångström.  The box origin is
-            placed at (0, 0, 0) and is orthorhombic.
-        output:
-            Destination path for the LAMMPS data file.
+    # Neutrality check (whole box) before any I/O.
+    total_charge = sum(charge for _, charge, *_ in atoms)
+    if abs(total_charge) > neutrality_tolerance:
+        raise RuntimeError(
+            f"System is not charge-neutral: net charge = {total_charge:+.6f} e "
+            f"(tolerance {neutrality_tolerance}). PPPM cannot run on a charged "
+            "cell — check composition / charge assignment."
+        )
 
-        Returns
-        -------
-        Path
-            Absolute path to the written data file.
-        """
-        atoms = self._read_xyz(Path(system_xyz))
-        out = Path(output)
-        out.parent.mkdir(parents=True, exist_ok=True)
-        self._write_data(atoms, box_lengths, out)
-        return out.resolve()
+    # Determine present elements and assign deterministic type IDs.
+    present = {elem for elem, *_ in atoms}
+    unknown = [e for e in present if e not in ATOMIC_NUMBER]
+    if unknown:
+        raise RuntimeError(
+            f"Unknown element(s) {unknown}. Extend ATOMIC_NUMBER / ATOMIC_MASS "
+            "in utils/constants.py to include them."
+        )
+    elements_internal = sorted(present, key=lambda e: ATOMIC_NUMBER[e])
+    elements_display = [e.upper() for e in elements_internal]
+    type_map = {e: i + 1 for i, e in enumerate(elements_internal)}
 
-    # ------------------------------------------------------------------
-    # Private helpers
-    # ------------------------------------------------------------------
+    lines: list[str] = [
+        f"# {title}",
+        "",
+        f"{len(atoms)} atoms",
+        f"{len(elements_internal)} atom types",
+        "",
+        f"0.0 {Lx:.6f} xlo xhi",
+        f"0.0 {Ly:.6f} ylo yhi",
+        f"0.0 {Lz:.6f} zlo zhi",
+        "",
+        "Masses",
+        "",
+    ]
+    for e in elements_internal:
+        lines.append(f"{type_map[e]} {ATOMIC_MASS[e]:.4f} # {e.upper()}")
 
-    @staticmethod
-    def _read_xyz(
-        xyz: Path,
-    ) -> list[tuple[str, float, float, float]]:
-        """Parse XYZ file and return list of (element, x, y, z)."""
-        with open(xyz) as fh:
-            lines = fh.readlines()
+    lines += ["", "Atoms # full", ""]
+    for idx, (elem, charge, x, y, z, mol_id) in enumerate(atoms, start=1):
+        lines.append(
+            f"{idx} {mol_id} {type_map[elem]} {charge:.6f} "
+            f"{x:.6f} {y:.6f} {z:.6f} # {elem.upper()}"
+        )
 
-        n_declared = int(lines[0].strip())
-        # Line 1 is the comment/title line – skip it.
-        atoms: list[tuple[str, float, float, float]] = []
-        for raw in lines[2 : 2 + n_declared]:
-            parts = raw.split()
-            if len(parts) < 4:
-                continue
-            elem = parts[0].capitalize()
-            if elem not in _MASSES:
-                raise ValueError(
-                    f"Element '{elem}' in {xyz} is not supported by ANI-2x. "
-                    f"Supported elements: {ANI_ELEMENTS}"
-                )
-            atoms.append((elem, float(parts[1]), float(parts[2]), float(parts[3])))
+    output = Path(output)
+    output.parent.mkdir(parents=True, exist_ok=True)
+    output.write_text("\n".join(lines) + "\n")
 
-        if len(atoms) != n_declared:
-            raise ValueError(
-                f"{xyz} declares {n_declared} atoms but {len(atoms)} were parsed."
-            )
-        return atoms
-
-    @staticmethod
-    def _write_data(
-        atoms: list[tuple[str, float, float, float]],
-        box_lengths: tuple[float, float, float],
-        output: Path,
-    ) -> None:
-        """Write LAMMPS atomic data file."""
-        # Only include elements that actually appear, preserving ANI order.
-        present = {elem for elem, *_ in atoms}
-        used_elements = [el for el in ANI_ELEMENTS if el in present]
-        type_map = {el: i + 1 for i, el in enumerate(used_elements)}
-
-        Lx, Ly, Lz = box_lengths
-        lines: list[str] = [
-            "# LAMMPS data file – generated by AniDataBuilder (core/data_builder.py)",
-            "",
-            f"{len(atoms)} atoms",
-            f"{len(used_elements)} atom types",
-            "",
-            f"0.0 {Lx:.6f} xlo xhi",
-            f"0.0 {Ly:.6f} ylo yhi",
-            f"0.0 {Lz:.6f} zlo zhi",
-            "",
-            "Masses",
-            "",
-        ]
-        for el in used_elements:
-            lines.append(f"  {type_map[el]}  {_MASSES[el]:.4f}  # {el}")
-
-        lines += ["", "Atoms # atomic", ""]
-        for idx, (elem, x, y, z) in enumerate(atoms, start=1):
-            lines.append(f"  {idx}  {type_map[elem]}  {x:.6f}  {y:.6f}  {z:.6f}")
-
-        output.write_text("\n".join(lines) + "\n")
+    print(
+        f"  wrote {output}  "
+        f"({len(atoms)} atoms, {len(elements_internal)} types: "
+        f"{' '.join(elements_display)})"
+    )
+    return output.resolve(), elements_display
 
 
-__all__ = ["AniDataBuilder", "ANI_ELEMENTS"]
+__all__ = ["AtomRecord", "build_bamboo_data"]
