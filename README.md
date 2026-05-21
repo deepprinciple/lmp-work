@@ -5,7 +5,7 @@
 和生产向参数化路径已经移除。
 
 默认 case 是 `LiPF6 + EC/DMC`。工作流会生成 BAMBOO `atom_style full`
-的 `in.data`、LAMMPS 输入文件，运行 NPT/NVE，并对压力张量做粘度后处理。
+的 `in.data`、LAMMPS 输入文件，运行 NPT/NVT，并对压力张量做粘度后处理。
 
 ## 环境搭建
 
@@ -83,8 +83,14 @@ python md_viscosity.py --config configs/viscosity.smoke.yaml
 ```yaml
 simulation:
   timestep_fs: 1.0
+  prod_ensemble: "nvt"
+  prod_temp_damp_fs: 10.0
   prod_steps: 2000000   # 2.0 ns @ 1.0 fs
 ```
+
+默认生产段参考 BAMBOO 示例输入，使用 `fix nvt temp 300 300 10`，并用
+`fix ave/time 1 1 1` 输出压力张量。`prod_ensemble` 可以改成 `"nve"`，但 NVE
+下必须额外检查能量漂移；1 fs 在 NVT 中能跑稳，不代表 NVE 中也一定守恒良好。
 
 ## 配置重点
 
@@ -149,12 +155,13 @@ run:
 
 - `in.data`：BAMBOO `atom_style full` data file。
 - `in.equil.lammps`：minimize + NVT + NPT + short NVT 平衡输入。
-- `equil_nvt.restart`：NVE 生产段初始 restart。
-- `in.gk.lammps`：NVE Green-Kubo 生产输入。
+- `equil_nvt.restart`：生产段初始 restart。
+- `in.gk.lammps`：NVT Green-Kubo pressure-trace 生产输入。
 - `npt_thermo.dat`：平衡段密度/温度 trace。
-- `gk_thermo.dat`：NVE 生产段温度/压力/体积 trace。
-- `pressure_tensor.dat`：`step pxy pxz pyz` 原始压力张量。
+- `gk_thermo.dat`：生产段温度/压力/体积 trace。
+- `dump_pressure.out`：`step pxy pxz pyz` 原始压力张量。
 - `stress_acf.dat`：LAMMPS `fix ave/correlate` 的应力 ACF。
+- `nvt.data`：生产段结束后的 data 文件。
 
 后处理产物：
 
@@ -163,7 +170,7 @@ run:
 - `viscosity_blocks.csv`：pressure-block plateau 数据。
 - `viscosity_analysis.png`：ACF 与 running η 图。
 
-长程配置默认使用 `analysis.method: pressure_blocks`，会从 `pressure_tensor.dat`
+长程配置默认使用 `analysis.method: pressure_blocks`，会从 `dump_pressure.out`
 切 block 做 ACF、running η 和 block SEM。smoke 配置默认使用 `analysis.method: acf`，
 只用于快速验证流程，不建议把 smoke 结果当成正式粘度。
 

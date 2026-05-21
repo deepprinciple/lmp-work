@@ -78,7 +78,12 @@ simulation:
   equil_temp_abs_tol_K: 15.0
   equil_skip_temperature_check: false
 
-  # Green-Kubo production (NVE).
+  # Green-Kubo pressure-trace production. The default follows the BAMBOO
+  # reference input: 1 fs timestep plus a thermostatted NVT production run
+  # with 10 fs temperature damping. Set prod_ensemble: "nve" only when doing
+  # strict NVE Green-Kubo validation, and then check energy drift carefully.
+  prod_ensemble:     "nvt"
+  prod_temp_damp_fs: 10.0
   # This demo runs one production length only. Increase/decrease this value
   # directly when changing the GPU validation wall time.
   prod_steps:       2000000
@@ -91,9 +96,11 @@ simulation:
   equil_restart_file:   "equil_nvt.restart"
   gk_input_filename:    "in.gk.lammps"
   acf_file:             "stress_acf.dat"
-  pressure_file:        "pressure_tensor.dat"
+  # Pressure trace is written with fix ave/time, matching BAMBOO's example.
+  pressure_file:        "dump_pressure.out"
   pressure_every:       1
   thermo_file:          "gk_thermo.dat"
+  prod_data_file:       "nvt.data"
   equil_log_file:       "run_equil.log"
   gk_log_file:          "run_gk.log"
 
@@ -116,7 +123,7 @@ lammps:
 
 analysis:
   # pressure_blocks is the main post-processing path for non-smoke runs:
-  # it uses pressure_tensor.dat, block ACFs, running eta, and block SEM.
+  # it uses the pressure trace, block ACFs, running eta, and block SEM.
   method:             "pressure_blocks"
   # Maximum correlation lag used by the Green-Kubo integral.
   t_max_ps:           20.0
