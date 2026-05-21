@@ -73,6 +73,9 @@ simulation:
   equil_temp_abs_tol_K: 25.0
   equil_skip_temperature_check: false
 
+  # Match the BAMBOO reference input style for 1 fs demo runs.
+  prod_ensemble:     "nvt"
+  prod_temp_damp_fs: 10.0
   prod_steps:       4000
   corr_length:      2000
   sample_every:     1
@@ -81,9 +84,10 @@ simulation:
   equil_restart_file:   "equil_nvt.restart"
   gk_input_filename:    "in.gk.lammps"
   acf_file:             "stress_acf.dat"
-  pressure_file:        "pressure_tensor.dat"
+  pressure_file:        "dump_pressure.out"
   pressure_every:       1
   thermo_file:          "gk_thermo.dat"
+  prod_data_file:       "nvt.data"
   equil_log_file:       "run_equil.log"
   gk_log_file:          "run_gk.log"
 

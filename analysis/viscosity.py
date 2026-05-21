@@ -159,7 +159,7 @@ def compute_viscosity(
     T:
         Simulation temperature (K).
     volume:
-        Simulation box volume (Å³) – use the NVE-averaged volume.
+        Simulation box volume (Å³) – use the production-averaged volume.
     t_max_ps:
         Maximum lag time to include in the integral (ps).
         ``None`` → auto-detect from first zero-crossing of the mean ACF.
@@ -231,7 +231,7 @@ def _read_pressure_tensor(
     *,
     start_step: int | None = None,
 ) -> tuple[np.ndarray, np.ndarray]:
-    """Read ``step pxy pxz pyz`` samples written during NVE production."""
+    """Read ``step pxy pxz pyz`` samples written during production."""
     path = Path(pressure_file)
     raw = np.loadtxt(path, comments="#", dtype=np.float64)
     if raw.ndim == 1:
@@ -618,9 +618,9 @@ def compute_viscosity_from_pressure_file(
 # ──────────────────────────────────────────────────────────────────────────
 
 def load_volume_from_thermo(thermo_file: Path) -> float:
-    """Return the mean NVE volume (Å³) from *gk_thermo.dat*.
+    """Return the mean production volume (Å³) from *gk_thermo.dat*.
 
-    Expected format (written by ``fix print`` in ``build_gk_input``)::
+    Expected format (written by the production thermo log in ``build_gk_input``)::
 
         # step temp press vol
         1000  300.1  -5.3  28341.7
@@ -629,7 +629,7 @@ def load_volume_from_thermo(thermo_file: Path) -> float:
     Parameters
     ----------
     thermo_file:
-        Path to the thermo log written during the NVE production run.
+        Path to the thermo log written during the production run.
 
     Returns
     -------
@@ -816,7 +816,7 @@ def analyze_viscosity_file(
     temperature_k:
         Simulation temperature in Kelvin.
     volume_a3:
-        NVE-averaged volume in Å³ (from ``load_volume_from_thermo``).
+        Production-averaged volume in Å³ (from ``load_volume_from_thermo``).
     t_max_ps:
         Maximum ACF lag time to integrate (ps).
     plateau_start_ps:

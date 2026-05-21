@@ -304,8 +304,9 @@ def _workflow_paths(cfg: dict[str, Any], workdir: Path) -> dict[str, Path]:
         "equil_restart": workdir / str(sim_cfg.get("equil_restart_file", "equil_nvt.restart")),
         "npt_thermo": workdir / str(sim_cfg.get("npt_thermo_file", "npt_thermo.dat")),
         "acf_file": workdir / str(sim_cfg.get("acf_file", "stress_acf.dat")),
-        "pressure_file": workdir / str(sim_cfg.get("pressure_file", "pressure_tensor.dat")),
+        "pressure_file": workdir / str(sim_cfg.get("pressure_file", "dump_pressure.out")),
         "thermo_file": workdir / str(sim_cfg.get("thermo_file", "gk_thermo.dat")),
+        "prod_data_file": workdir / str(sim_cfg.get("prod_data_file") or "nvt.data"),
         "summary_file": workdir / str(analysis_cfg.get("summary_file", "viscosity_summary.json")),
         "plot_file": workdir / str(analysis_cfg.get("plot_file", "viscosity_analysis.png")),
         "running_file": workdir / str(analysis_cfg.get("running_file", "viscosity_running.csv")),
@@ -534,9 +535,16 @@ def stage_write_input(
         corr_length=int(sim_cfg.get("corr_length", 40000)),
         sample_every=int(sim_cfg.get("sample_every", 1)),
         acf_file=str(sim_cfg.get("acf_file", "stress_acf.dat")),
-        pressure_file=str(sim_cfg.get("pressure_file", "pressure_tensor.dat")),
+        pressure_file=str(sim_cfg.get("pressure_file", "dump_pressure.out")),
         pressure_every=int(sim_cfg.get("pressure_every", sim_cfg.get("sample_every", 1))),
         thermo_file=str(sim_cfg.get("thermo_file", "gk_thermo.dat")),
+        prod_ensemble=str(sim_cfg.get("prod_ensemble", "nvt")),
+        prod_temp_damp_fs=float(sim_cfg.get("prod_temp_damp_fs", 10.0)),
+        prod_data_file=(
+            None
+            if sim_cfg.get("prod_data_file") is None
+            else str(sim_cfg.get("prod_data_file", "nvt.data"))
+        ),
         model_file=common["model_file"],
         elements=common["elements"],
         pair_style_args=common["pair_style_args"],
@@ -568,8 +576,10 @@ def stage_run_lammps(
     sim_cfg = get_section(cfg, "simulation")
     paths = _workflow_paths(cfg, workdir)
     gk_outputs = [paths["acf_file"], paths["thermo_file"]]
-    if sim_cfg.get("pressure_file", "pressure_tensor.dat"):
+    if sim_cfg.get("pressure_file", "dump_pressure.out"):
         gk_outputs.append(paths["pressure_file"])
+    if sim_cfg.get("prod_data_file", "nvt.data"):
+        gk_outputs.append(paths["prod_data_file"])
     result: dict[str, Any] = {
         "run_equil": run_equil,
         "run_gk": run_gk,
@@ -635,11 +645,12 @@ def stage_analyze(
     print("\n── Stage 4: analyze ────────────────────────────────────────────")
 
     acf_file = workdir / str(sim_cfg.get("acf_file", "stress_acf.dat"))
-    pressure_file = workdir / str(sim_cfg.get("pressure_file", "pressure_tensor.dat"))
+    pressure_file = workdir / str(sim_cfg.get("pressure_file", "dump_pressure.out"))
     thermo_file = workdir / str(sim_cfg.get("thermo_file", "gk_thermo.dat"))
 
     volume_a3 = load_volume_from_thermo(thermo_file)
-    print(f"  NVE mean volume : {volume_a3:.1f} Å³")
+    ensemble = str(sim_cfg.get("prod_ensemble", "nvt")).upper()
+    print(f"  {ensemble} mean volume : {volume_a3:.1f} Å³")
 
     method = str(analysis_cfg.get("method", "acf")).strip().lower()
     if method not in {"acf", "pressure_blocks", "auto"}:

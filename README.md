@@ -115,7 +115,7 @@ python md_transport.py --config configs/thermal.smoke.yaml
 
 ## 粘度工作流（BAMBOO Green-Kubo）
 
-components/composition → RDKit/ion preset → 多组分 Packmol 建盒 → BAMBOO `atom_style full` data → NVT 预热 → NPT 压回目标密度 → 短 NVT 收尾 → NVE + 压力张量/应力 ACF → η
+components/composition → RDKit/ion preset → 多组分 Packmol 建盒 → BAMBOO `atom_style full` data → NVT 预热 → NPT 压回目标密度 → 短 NVT 收尾 → NVT pressure trace / 应力 ACF → η
 
 > **依赖**：需要使用 ByteDance BAMBOO 对应的 LAMMPS 构建，并准备 BAMBOO 模型文件。
 > 默认配置会把 `/root/bamboo/pair/lammps/output` prepend 到 `PATH`，并给 LAMMPS 加
@@ -137,8 +137,15 @@ length scan。需要更长或更短的 GPU 验证任务时，直接修改
 
 ```yaml
 simulation:
+  timestep_fs: 1.0
+  prod_ensemble: "nvt"
+  prod_temp_damp_fs: 10.0
   prod_steps: 2000000   # 2.0 ns @ 1.0 fs
 ```
+
+默认生产段参考 BAMBOO 示例输入，使用 `fix nvt temp 300 300 10`，并用
+`fix ave/time 1 1 1` 输出压力张量。`prod_ensemble` 可以改成 `"nve"`，但 NVE
+下必须额外检查能量漂移；1 fs 在 NVT 中能跑稳，不代表 NVE 中也一定守恒良好。
 
 编辑 `configs/viscosity.yaml`，至少修改：
 
@@ -194,7 +201,7 @@ run:
 
 - `build_system`：已有 `in.data` + `build_report.json`
 - `write_input`：已有 `in.equil.lammps` 和 `in.gk.lammps`
-- `run_lammps`：已有 `equil_nvt.restart` + `npt_thermo.dat`，或已有 `stress_acf.dat` + `pressure_tensor.dat` + `gk_thermo.dat`
+- `run_lammps`：已有 `equil_nvt.restart` + `npt_thermo.dat`，或已有 `stress_acf.dat` + `dump_pressure.out` + `gk_thermo.dat` + `nvt.data`
 - `analyze`：已有 `viscosity_summary.json` + `viscosity_analysis.png`；`pressure_blocks` 方法还会复用 `viscosity_running.csv` 和 `viscosity_blocks.csv`
 
 如果上游输入更新了，下游阶段会自动失效并重新执行。每次运行还会在 `workdir`
@@ -209,7 +216,7 @@ run:
 - `core/bamboo_packing.py` — 多组分 Packmol 建盒
 - `core/data_builder.py` — BAMBOO `atom_style full` data writer
 - `workflow/bamboo_system.py` — YAML components/composition → `in.data` + `build_report.json`
-- `workflow/input_viscosity.py` — BAMBOO NPT 平衡 + NVE Green-Kubo 输入生成
+- `workflow/input_viscosity.py` — BAMBOO NPT 平衡 + NVT/NVE Green-Kubo 输入生成
 - `analysis/viscosity.py` — Green-Kubo η 后处理（ACF 兼容路径 + pressure-block SEM）
 - `configs/viscosity.yaml` — 官方默认长程配置模板
 - `configs/viscosity.smoke.yaml` — 短程 smoke test 模板
@@ -223,7 +230,7 @@ run:
 - 默认通过 Kokkos 后缀运行：`lmp_mpi -k on g 1 -sf kk`
 - 默认运行环境等价于先执行：`export PATH="/root/bamboo/pair/lammps/output:$PATH"`
 - 平衡阶段会额外写出 `npt_thermo.dat`，并默认检查 NPT 尾段平均密度和最终 NVT 尾段平均温度
-- GK 生产阶段默认额外写出 `pressure_tensor.dat`，包含 `step pxy pxz pyz`
+- GK 生产阶段默认用 `fix ave/time` 写出 `dump_pressure.out`，包含 `step pxy pxz pyz`，并在结束时写出 `nvt.data`
 - 长程配置默认使用 `analysis.method: pressure_blocks`：从压力张量时间序列分 block 计算 ACF、running η 和 block SEM，并用固定长度窗口选择 plateau
 - smoke 配置默认保留 `analysis.method: acf`：直接分析 `stress_acf.dat`，适合快速验证流程，不应作为 production 粘度
 - 单位换算：`ETA_CONV = atm² × Å³ × fs / k_B × 10³ ≈ 7.44×10⁻¹⁰ mPa·s·K/Å³ per atm²·fs`
