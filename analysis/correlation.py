@@ -1,46 +1,12 @@
-"""HFACF thermal-conductivity analysis utilities."""
-
+"""Generic correlation parsing and running-integral helpers."""
 from __future__ import annotations
 
-import json
 import warnings
 from collections import Counter
 from pathlib import Path
 from typing import Any, Dict, Optional
 
 import numpy as np
-
-try:
-    from ..utils.constants import (
-        ANGSTROM_TO_METER,
-        AVOGADRO,
-        BOLTZMANN_J_K,
-        FEMTOSECOND_TO_SECOND,
-        KCAL_MOL_TO_JOULE,
-    )
-except ImportError:
-    from utils.constants import (
-        ANGSTROM_TO_METER,
-        AVOGADRO,
-        BOLTZMANN_J_K,
-        FEMTOSECOND_TO_SECOND,
-        KCAL_MOL_TO_JOULE,
-    )
-
-
-HF_TO_SI = (
-    KCAL_MOL_TO_JOULE
-    / AVOGADRO
-    / ANGSTROM_TO_METER ** 2
-    / FEMTOSECOND_TO_SECOND
-)
-
-KAPPA_CONV = (
-    ANGSTROM_TO_METER ** 3
-    * HF_TO_SI ** 2
-    * FEMTOSECOND_TO_SECOND
-    / BOLTZMANN_J_K
-)
 
 
 def _running_average(data: np.ndarray, window: int) -> np.ndarray:
@@ -71,7 +37,7 @@ def _relative_metric(value: float, reference: float, fallback_scale: float) -> f
 
 
 def parse_ave_correlate_detail(filepath: Path) -> Dict[str, np.ndarray | int | float | bool]:
-    """Parse LAMMPS `fix ave/correlate` output and keep the last complete block."""
+    """Parse LAMMPS ``fix ave/correlate`` output and keep the last full block."""
     numeric_rows = []
     row_lengths = []
     with open(filepath) as handle:
@@ -87,12 +53,12 @@ def parse_ave_correlate_detail(filepath: Path) -> Dict[str, np.ndarray | int | f
             row_lengths.append(len(values))
 
     if not numeric_rows:
-        raise ValueError(f"文件无数据: {filepath}")
+        raise ValueError(f"No numeric data found in {filepath}")
 
     count_by_len = Counter(row_lengths)
     data_len = max(count_by_len.items(), key=lambda kv: (kv[1], kv[0]))[0]
     if data_len < 5:
-        raise ValueError(f"ave/correlate 数据列数异常: {data_len}（期望至少5列）")
+        raise ValueError(f"Unexpected ave/correlate column count: {data_len}")
 
     blocks = []
     current_block = []
@@ -117,12 +83,12 @@ def parse_ave_correlate_detail(filepath: Path) -> Dict[str, np.ndarray | int | f
     if not blocks:
         filtered = [row for row in numeric_rows if len(row) == data_len]
         if not filtered:
-            raise ValueError(f"未找到有效相关函数数据: {filepath}")
+            raise ValueError(f"No valid correlation block found in {filepath}")
         blocks = [np.asarray(filtered, dtype=float)]
 
     if dropped_rows > 0:
         warnings.warn(
-            f"{filepath} 中有 {dropped_rows} 行无法识别，已忽略",
+            f"{filepath} contains {dropped_rows} unrecognized rows; ignored",
             RuntimeWarning,
         )
 
@@ -149,7 +115,7 @@ def parse_ave_correlate_detail(filepath: Path) -> Dict[str, np.ndarray | int | f
         corr = arr[:, 2:]
 
     if corr.shape[1] < 3:
-        raise ValueError(f"相关函数列不足: {corr.shape[1]}（文件: {filepath}）")
+        raise ValueError(f"Need at least 3 correlation columns in {filepath}")
 
     ncount = arr[:, 2] if arr.shape[1] >= 6 and looks_index else arr[:, 1]
 
@@ -224,7 +190,7 @@ def _select_analysis_window(
 ) -> Dict[str, object]:
     n_points = min(len(time_ps), len(running_integral))
     if n_points == 0:
-        raise ValueError("无法从空时间序列中选择分析窗口")
+        raise ValueError("Cannot select an analysis window from an empty series")
     if len(time_ps) != len(running_integral):
         time_ps = time_ps[:n_points]
         running_integral = running_integral[:n_points]
@@ -356,7 +322,7 @@ def _analyze_transport_running_integral(
     corr = detail["corr"]
     ncount = detail["ncount"]
     if corr.shape[1] < 3:
-        raise ValueError(f"{corr_file} 需要至少 3 个相关函数分量，实际 {corr.shape[1]}")
+        raise ValueError(f"{corr_file} needs at least 3 correlation components")
 
     time_ps = time_fs / 1000.0
     effective_t_max_ps = _estimate_effective_cutoff_ps(
@@ -365,7 +331,7 @@ def _analyze_transport_running_integral(
         t_max_ps,
         min_ps_before_cutoff=min_ps_before_cutoff,
     )
-    t_max_fs = effective_t_max_ps * 1000.0 if effective_t_max_ps is not None else None
+    t_max_fs = effective_t_max_ps * 1000.0
 
     running_components = []
     for col in range(3):
@@ -460,180 +426,7 @@ def _analyze_transport_running_integral(
     }
 
 
-def compute_thermal_conductivity(
-    corr_flux_file: Path,
-    T: float,
-    volume: float,
-    t_max_ps: Optional[float] = None,
-    plateau_start_ps: float = 2.0,
-    plateau_end_ps: Optional[float] = None,
-    smooth_window: int = 1,
-) -> Dict[str, object]:
-    """Compute thermal conductivity from a heat-flux autocorrelation function."""
-    analysis = _analyze_transport_running_integral(
-        corr_file=corr_flux_file,
-        T=T,
-        volume=volume,
-        t_max_ps=t_max_ps,
-        plateau_start_ps=plateau_start_ps,
-        plateau_end_ps=plateau_end_ps,
-        smooth_window=smooth_window,
-        rel_std_tol=0.20,
-        drift_tol=0.20,
-        min_ps_before_cutoff=max(0.3, plateau_start_ps * 0.5),
-        converter_scale=KAPPA_CONV,
-        component_factor=volume / (T ** 2),
-        component_unit="W/(m·K)",
-        result_key="kappa_W_mK",
-    )
-    kappa = float(analysis["kappa_W_mK"])
-    kappa_std = float(analysis["plateau_std"])
-    kappa_components = list(analysis["component_values"])
-
-    return {
-        "kappa_W_mK": kappa,
-        "kappa_components_W_mK": kappa_components,
-        "plateau_mean_W_mK": kappa,
-        "plateau_std_W_mK": kappa_std,
-        "plateau_start_ps": float(analysis["window_start_ps"]),
-        "plateau_end_ps": float(analysis["window_end_ps"]),
-        "running_integral_W_mK": analysis["running_integral"],
-        "time_ps": analysis["time_ps"],
-        "analysis_window_mask": analysis["window_mask"],
-        "effective_t_max_ps": float(analysis["effective_t_max_ps"]),
-        "diagnostics": analysis["diagnostics"],
-        "temperature": T,
-        "volume_A3": volume,
-    }
-
-
-def load_volume_from_gk_data(gk_data_file: Path) -> float:
-    rows = []
-    with open(gk_data_file) as handle:
-        for line in handle:
-            line = line.strip()
-            if not line or line.startswith("#"):
-                continue
-            parts = line.split()
-            if len(parts) < 3:
-                continue
-            rows.append(parts)
-
-    if not rows:
-        raise ValueError(f"No numeric rows found in gk_data file: {gk_data_file}")
-    return sum(float(row[2]) for row in rows) / len(rows)
-
-
-def _resolve_output_path(base_dir: Path, output: str | Path | None) -> Path | None:
-    if output is None:
-        return None
-    path = Path(output)
-    if path.is_absolute():
-        return path
-    return base_dir / path
-
-
-def _write_hfacf_plot(
-    detail: Dict[str, np.ndarray | int | float | bool],
-    result: Dict[str, object],
-    *,
-    plot_out: Path,
-) -> None:
-    import matplotlib
-
-    matplotlib.use("Agg")
-    import matplotlib.pyplot as plt
-
-    time_ps = np.asarray(result["time_ps"], dtype=float)
-    running_kappa = np.asarray(result["running_integral_W_mK"], dtype=float)
-    hfacf_time_ps = np.asarray(detail["time_fs"], dtype=float) / 1000.0
-    hfacf_mean = np.mean(np.asarray(detail["corr"], dtype=float), axis=1)
-    norm = np.max(np.abs(hfacf_mean))
-    hfacf_norm = hfacf_mean / norm if norm > 0 else hfacf_mean
-
-    fig, axes = plt.subplots(2, 1, figsize=(7.5, 8.0))
-    axes[0].plot(hfacf_time_ps, hfacf_norm, lw=1.2)
-    axes[0].axhline(0.0, color="gray", lw=0.8)
-    axes[0].set_xlabel("Time (ps)")
-    axes[0].set_ylabel("Normalized HFACF")
-    axes[0].set_title("Heat-flux autocorrelation function")
-
-    axes[1].plot(time_ps, running_kappa, lw=1.4, label="running kappa")
-    axes[1].axvspan(
-        float(result["plateau_start_ps"]),
-        float(result["plateau_end_ps"]),
-        color="tab:green",
-        alpha=0.15,
-        label="analysis window",
-    )
-    axes[1].axhline(
-        float(result["kappa_W_mK"]),
-        color="tab:red",
-        ls="--",
-        lw=1.2,
-        label=f"kappa = {result['kappa_W_mK']:.4f} W/mK",
-    )
-    axes[1].set_xlabel("Time (ps)")
-    axes[1].set_ylabel("Thermal conductivity (W/mK)")
-    axes[1].set_title("Green-Kubo thermal conductivity convergence")
-    axes[1].legend()
-
-    fig.tight_layout()
-    fig.savefig(plot_out, dpi=180)
-    plt.close(fig)
-
-
-def analyze_hfacf_file(
-    hfacf_file: Path,
-    *,
-    temperature_k: float,
-    volume_a3: float,
-    t_max_ps: float = 20.0,
-    plateau_start_ps: float = 2.0,
-    smooth_window: int = 11,
-    json_out: str | Path | None = "thermal_hfacf_summary.json",
-    plot_out: str | Path | None = "thermal_hfacf_analysis.png",
-) -> Dict[str, Any]:
-    hfacf = Path(hfacf_file).resolve()
-    if not hfacf.exists():
-        raise FileNotFoundError(f"HFACF file not found: {hfacf}")
-
-    detail = parse_ave_correlate_detail(hfacf)
-    result = compute_thermal_conductivity(
-        corr_flux_file=hfacf,
-        T=float(temperature_k),
-        volume=float(volume_a3),
-        t_max_ps=float(t_max_ps),
-        plateau_start_ps=float(plateau_start_ps),
-        smooth_window=int(smooth_window),
-    )
-
-    plot_path = _resolve_output_path(hfacf.parent, plot_out)
-    if plot_path is not None:
-        _write_hfacf_plot(detail, result, plot_out=plot_path)
-
-    summary = {
-        "hfacf_file": str(hfacf),
-        "temperature_K": float(temperature_k),
-        "volume_A3": float(volume_a3),
-        "kappa_W_mK": float(result["kappa_W_mK"]),
-        "kappa_components_W_mK": result["kappa_components_W_mK"],
-        "plateau_start_ps": float(result["plateau_start_ps"]),
-        "plateau_end_ps": float(result["plateau_end_ps"]),
-        "effective_t_max_ps": float(result["effective_t_max_ps"]),
-        "plot_file": str(plot_path) if plot_path is not None else None,
-    }
-
-    json_path = _resolve_output_path(hfacf.parent, json_out)
-    if json_path is not None:
-        json_path.write_text(json.dumps(summary, indent=2))
-
-    return summary
-
-
 __all__ = [
-    "analyze_hfacf_file",
-    "compute_thermal_conductivity",
-    "load_volume_from_gk_data",
+    "_analyze_transport_running_integral",
     "parse_ave_correlate_detail",
 ]

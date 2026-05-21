@@ -1,14 +1,19 @@
-"""
-核心模块：结构生成、打包、力场、LAMMPS构建
-"""
-from .structure import MoleculeStructure
-from .packing import PackmolBuilder
-from .forcefield import ForceField
-from .lammps_builder import LAMMPSBuilder
+"""Core builders for the BAMBOO viscosity demo."""
+
+from .bamboo_packing import PackmolBuilder, PackmolComponent
+from .bamboo_structure import XyzAtoms, generate_molecule, load_ion_preset, write_xyz
+from .composition import ResolvedComponent, resolve_composition
+from .data_builder import AtomRecord, build_bamboo_data
 
 __all__ = [
-    'MoleculeStructure',
-    'PackmolBuilder',
-    'ForceField',
-    'LAMMPSBuilder',
+    "AtomRecord",
+    "PackmolBuilder",
+    "PackmolComponent",
+    "ResolvedComponent",
+    "XyzAtoms",
+    "build_bamboo_data",
+    "generate_molecule",
+    "load_ion_preset",
+    "resolve_composition",
+    "write_xyz",
 ]

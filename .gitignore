@@ -10,23 +10,5 @@ __pycache__/
 .ruff_cache/
 cases/
 
-# Runtime outputs live under bench_runs/.
-bench_runs/*
-!bench_runs/README.md
-
-# Additional runtime artifacts that may also appear elsewhere.
-bench_runs/**/run_*.log
-bench_runs/**/packmol.log
-bench_runs/**/packmol_try*.log
-bench_runs/**/*live_convergence*.json
-bench_runs/**/*live_latest.json
-bench_runs/**/*.dat
-bench_runs/**/.openff_cache/
-bench_runs/**/*.pdb
-bench_runs/**/*.xyz
-
-# Local temporary parameterization workdirs.
-openff_extchg_*/
-.gpu11_compat_libs/
-boss/
-.compat/
+# Local charge caches created inside ad-hoc workdirs.
+.charge_cache/

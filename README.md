@@ -1,17 +1,15 @@
-# lmp-work — LAMMPS 输运性质计算工作流
+# lmp-work — BAMBOO 粘度 GPU 测试 demo
 
-基于 LAMMPS 的液体输运性质计算流水线，目前支持两条工作流：
+这个分支只保留一个用途：用 ByteDance BAMBOO 跑 Green-Kubo 剪切粘度，用来给 GPU
+供应商做 MD 任务跑通性、性能和结果一致性验证。旧的其他输运性质 workflow
+和生产向参数化路径已经移除。
 
-| 工作流 | 方法 | 力场 | 入口 |
-|--------|------|------|------|
-| **热导率** | reverse-NEMD | OpenFF / LigParGen | `md_run.py` |
-| **粘度** | Green-Kubo 压力张量 block ACF | ByteDance BAMBOO | `md_viscosity.py` |
-
----
+默认 case 是 `LiPF6 + EC/DMC`。工作流会生成 BAMBOO `atom_style full`
+的 `in.data`、LAMMPS 输入文件，运行 NPT/NVE，并对压力张量做粘度后处理。
 
 ## 环境搭建
 
-推荐先创建独立 Python 环境：
+建议先创建独立 Python 环境：
 
 ```bash
 conda create -n lmp-work python=3.11 -y
@@ -19,67 +17,55 @@ conda activate lmp-work
 pip install -r requirements.txt
 ```
 
-如果默认热导率路径使用 `OpenFF + AM1BCC` 电荷分配时报缺依赖，建议再补：
+还需要外部程序：
 
-```bash
-conda install -c conda-forge ambertools -y
+- `packmol`：用于生成初始盒子，命令需要在 `PATH` 中。
+- `ambertools`：默认溶剂电荷为 OpenFF AM1-BCC，OpenFF toolkit 通常需要
+  AmberTools 的 `sqm`。缺失时可用 `conda install -c conda-forge ambertools -y`。
+- BAMBOO-enabled LAMMPS：必须使用 BAMBOO 自己编译过的 LAMMPS。
+- BAMBOO 模型文件：请按 [bytedance/bamboo](https://github.com/bytedance/bamboo)
+  官方说明安装 BAMBOO，并选用 `paper_new_disp.pt` 模型。
+
+开发机上当前模型路径是：
+
+```text
+/root/bamboo/benchmark/paper_new_disp.pt
 ```
 
-```bash
-conda install -c conda-forge rdkit openff-toolkit openff-interchange openff-units -y
+这只是本机路径。GPU 供应商机器上的安装目录很可能不同，运行前需要在
+`configs/viscosity.yaml` 里改成目标机器上的实际路径：
+
+```yaml
+bamboo:
+  model_file: "/path/to/bamboo/benchmark/paper_new_disp.pt"
 ```
 
-除了 Python 包，还需要准备外部程序：
-
-- `packmol`：两条工作流都需要，并且命令应在 `PATH` 中
-- `lmp_mpi` 或等价 LAMMPS 可执行程序：两条工作流都需要
-- BAMBOO-enabled LAMMPS + BAMBOO 模型文件：粘度工作流需要
-- `BOSS`：仅当你选择 `LigParGen + BOSS` 路径时需要
-
-## 热导率工作流
-
-SMILES → OpenFF 参数化 → Packmol 建盒 → LAMMPS reverse-NEMD → κ
+同理，BAMBOO LAMMPS 的可执行程序目录也要指向目标机器的安装位置。开发机等价于先执行：
 
 ```bash
-python md_run.py --config configs/config.yaml
+export PATH="/root/bamboo/pair/lammps/output:$PATH"
 ```
 
-短程 smoke test：
+对应 YAML 配置是：
 
-```bash
-python md_run.py --config configs/config.smoke.yaml
+```yaml
+lammps:
+  executable: "lmp_mpi"
+  env:
+    PATH: "/root/bamboo/pair/lammps/output:${PATH}"
 ```
 
-### 核心文件（热导率）
+生成的 LAMMPS 输入中，`pair_coeff` 会由 `bamboo.model_file` 和体系元素顺序一起渲染，例如：
 
-- `md_run.py` — 主流程入口
-- `workflow/input_thermal.py` — 平衡段和 rNEMD 输入生成
-- `analysis/hfacf.py` — HFACF 热导率分析核心（也被粘度工作流复用）
-- `analysis/rnemd.py` — rNEMD 热导率拟合与收敛分析
-- `scripts/analyze_thermal_hfacf.py` — HFACF 后处理 CLI
-- `configs/config.yaml` — 主配置模板
+```text
+pair_coeff      /root/bamboo/benchmark/paper_new_disp.pt   H LI C O F P
+```
 
-### 力场选择
+如果模型文件路径不对，LAMMPS 会在启动 BAMBOO pair style 时失败。
 
-- 默认：`forcefield.engine: openff`，`forcefield.charge_method: am1bcc`
-- 可选：`forcefield.engine: ligpargen`（依赖 LigParGen/BOSS 运行环境）
+## 运行
 
-### 授权与分发声明
-
-- 本仓库不再包含 `BOSS` 程序及其兼容运行时副本。
-- `BOSS` 为受限授权软件，使用者需自行向权利方申请授权并在本地安装。
-- `LigParGen + BOSS` 路径仅保留接口能力；实际运行需通过本地 `wrapper_script`
-  指向你自己的合法安装环境。
-
----
-
-## 粘度工作流（BAMBOO Green-Kubo）
-
-components/composition → RDKit/ion preset → 多组分 Packmol 建盒 → BAMBOO `atom_style full` data → NVT 预热 → NPT 压回目标密度 → 短 NVT 收尾 → NVE + 压力张量/应力 ACF → η
-
-> **依赖**：需要使用 ByteDance BAMBOO 对应的 LAMMPS 构建，并准备 BAMBOO 模型文件。
-> 默认配置会把 `/root/bamboo/pair/lammps/output` prepend 到 `PATH`，并给 LAMMPS 加
-> `-k on g 1 -sf kk`；可在 `lammps:` 配置里关闭或覆盖。
+主配置：
 
 ```bash
 python md_viscosity.py --config configs/viscosity.yaml
@@ -91,20 +77,22 @@ python md_viscosity.py --config configs/viscosity.yaml
 python md_viscosity.py --config configs/viscosity.smoke.yaml
 ```
 
-当前粘度 workflow 默认只运行一个 case，不会自动展开多副本或不同生产时长的
-length scan。需要更长或更短的 GPU 验证任务时，直接修改
-`simulation.prod_steps` 即可。
+默认只运行一个 case，不会自动展开多副本或多段模拟时长。需要调整 GPU 验证任务长度时，
+直接改 `simulation.prod_steps`：
 
 ```yaml
 simulation:
+  timestep_fs: 1.0
   prod_steps: 2000000   # 2.0 ns @ 1.0 fs
 ```
 
-编辑 `configs/viscosity.yaml`，至少修改：
+## 配置重点
+
+`configs/viscosity.yaml` 里通常只需要改这些部分：
 
 ```yaml
 case:
-  name:    "LiPF6_EC_DMC"
+  name: "LiPF6_EC_DMC"
   workdir: "./cases/lipf6_ec_dmc_viscosity"
 
 components:
@@ -122,115 +110,72 @@ composition:
     PF6: 14
 
 bamboo:
-  model_file: "/path/to/bamboo_model.pt"   # 必填
+  model_file: "/path/to/paper_new_disp.pt"
+
+lammps:
+  env:
+    PATH: "/path/to/bamboo/pair/lammps/output:${PATH}"
 ```
 
-### 四个可独立跳过的阶段
+溶剂电荷默认仍用 OpenFF toolkit 的 AM1-BCC 生成；离子使用仓库内置 preset。
+BAMBOO 本身负责短程相互作用，`in.data` 中不会写 Bonds/Angles/Dihedrals。
 
-```
-build_system → write_input → run_lammps → analyze
+## 阶段控制
+
+工作流阶段：
+
+```text
+build_system -> write_input -> run_lammps -> analyze
 ```
 
-在配置文件的 `run:` 节中将对应项设为 `false` 即可跳过：
+在配置文件的 `run:` 节中将对应项设为 `false` 可以跳过：
 
 ```yaml
 run:
   build_system: false   # 已有 in.data + build_report.json 时跳过
   write_input:  true
   run_lammps:   true
+  run_equil:    false   # 复用已有 equil_nvt.restart
+  run_gk:       true
   analyze:      true
 ```
 
-如果你只想重跑平衡段或只想重跑 GK 生产段，可以继续细分：
+同一 `workdir` 下重复执行时，入口会复用仍然有效的产物；上游输入更新后，下游阶段会重新执行。
+`state.json` 和 `stage.done` 会记录每个阶段的 `done / reused / skipped / failed` 状态。
 
-```yaml
-run:
-  run_lammps: true
-  run_equil:  false   # 复用已有 equil_nvt.restart
-  run_gk:     true
-```
+## 输出文件
 
-同一 `workdir` 下重复执行时，粘度入口会自动判断哪些产物可以直接复用：
+主要输入和运行产物：
 
-- `build_system`：已有 `in.data` + `build_report.json`
-- `write_input`：已有 `in.equil.lammps` 和 `in.gk.lammps`
-- `run_lammps`：已有 `equil_nvt.restart` + `npt_thermo.dat`，或已有 `stress_acf.dat` + `pressure_tensor.dat` + `gk_thermo.dat`
-- `analyze`：已有 `viscosity_summary.json` + `viscosity_analysis.png`；`pressure_blocks` 方法还会复用 `viscosity_running.csv` 和 `viscosity_blocks.csv`
+- `in.data`：BAMBOO `atom_style full` data file。
+- `in.equil.lammps`：minimize + NVT + NPT + short NVT 平衡输入。
+- `equil_nvt.restart`：NVE 生产段初始 restart。
+- `in.gk.lammps`：NVE Green-Kubo 生产输入。
+- `npt_thermo.dat`：平衡段密度/温度 trace。
+- `gk_thermo.dat`：NVE 生产段温度/压力/体积 trace。
+- `pressure_tensor.dat`：`step pxy pxz pyz` 原始压力张量。
+- `stress_acf.dat`：LAMMPS `fix ave/correlate` 的应力 ACF。
 
-如果上游输入更新了，下游阶段会自动失效并重新执行。每次运行还会在 `workdir`
-写出 `state.json` 和 `stage.done`，记录各阶段的 `done / reused / skipped / failed`
-状态，方便续跑和排错。
+后处理产物：
 
-### 核心文件（粘度）
+- `viscosity_summary.json`：最终粘度、窗口选择和诊断信息。
+- `viscosity_running.csv`：running viscosity 曲线。
+- `viscosity_blocks.csv`：pressure-block plateau 数据。
+- `viscosity_analysis.png`：ACF 与 running η 图。
 
-- `md_viscosity.py` — 主流程入口
-- `core/composition.py` — 多组分 counts / molality / molarity 解析
-- `core/bamboo_structure.py` — SMILES → RDKit 3D 结构，或 ion preset 几何
-- `core/bamboo_packing.py` — 多组分 Packmol 建盒
-- `core/data_builder.py` — BAMBOO `atom_style full` data writer
-- `workflow/bamboo_system.py` — YAML components/composition → `in.data` + `build_report.json`
-- `workflow/input_viscosity.py` — BAMBOO NPT 平衡 + NVE Green-Kubo 输入生成
-- `analysis/viscosity.py` — Green-Kubo η 后处理（ACF 兼容路径 + pressure-block SEM）
-- `configs/viscosity.yaml` — 官方默认长程配置模板
-- `configs/viscosity.smoke.yaml` — 短程 smoke test 模板
+长程配置默认使用 `analysis.method: pressure_blocks`，会从 `pressure_tensor.dat`
+切 block 做 ACF、running η 和 block SEM。smoke 配置默认使用 `analysis.method: acf`，
+只用于快速验证流程，不建议把 smoke 结果当成正式粘度。
 
-### 技术说明
+## 核心文件
 
-- BAMBOO 使用 `atom_style full`，`Atoms` 行为 `id mol_id type charge x y z`
-- `core/data_builder.py` 会按 atomic number 给元素分配 type，并把同一顺序写进 `pair_coeff`
-- `pair_style bamboo` 的参数默认来自 BAMBOO 示例：`[5.0, 5.0, 10.0, 1]`
-- 默认启用 PPPM，体系总电荷会在写 `in.data` 前检查为近似中性
-- 默认通过 Kokkos 后缀运行：`lmp_mpi -k on g 1 -sf kk`
-- 默认运行环境等价于先执行：`export PATH="/root/bamboo/pair/lammps/output:$PATH"`
-- 平衡阶段会额外写出 `npt_thermo.dat`，并默认检查 NPT 尾段平均密度和最终 NVT 尾段平均温度
-- GK 生产阶段默认额外写出 `pressure_tensor.dat`，包含 `step pxy pxz pyz`
-- 长程配置默认使用 `analysis.method: pressure_blocks`：从压力张量时间序列分 block 计算 ACF、running η 和 block SEM，并用固定长度窗口选择 plateau
-- smoke 配置默认保留 `analysis.method: acf`：直接分析 `stress_acf.dat`，适合快速验证流程，不应作为 production 粘度
-- 单位换算：`ETA_CONV = atm² × Å³ × fs / k_B × 10³ ≈ 7.44×10⁻¹⁰ mPa·s·K/Å³ per atm²·fs`
-
----
-
-## 公共基础设施
-
-两条工作流共享以下模块：
-
-| 模块 | 作用 |
-|------|------|
-| `core/structure.py` | SMILES → RDKit 3D 结构 |
-| `core/packing.py` | Packmol 多分子建盒 |
-| `core/bamboo_structure.py` / `core/bamboo_packing.py` | BAMBOO 粘度工作流的多组分建系 |
-| `analysis/hfacf.py` | `parse_ave_correlate_detail`、`_integrate_acf`、收敛窗口检测 |
-| `utils/constants.py` | 物理常数与单位换算 |
-| `utils/io.py` | LAMMPS data 文件读写 |
-| `workflow/config.py` | YAML 配置解析 |
-
-## CLI 参数约定
-
-- 统一使用 `kebab-case` 参数名，如 `--temperature-k`、`--timestep-fs`
-- 需要显式单位时，直接写进参数名：`-k`、`-fs`、`-a`、`-a3`、`-g-cm3`
-
-## 其他 CLI 示例
-
-构建 `system.data`（热导率工作流）：
-
-```bash
-python scripts/build_system.py \
-  --smiles CCO \
-  --name ethanol \
-  --workdir ./demo_ethanol \
-  --n-molecules 200 \
-  --density-g-cm3 0.789
-```
-
-HFACF 热导率后处理：
-
-```bash
-python scripts/analyze_thermal_hfacf.py \
-  --hfacf-file ./hfacf.dat \
-  --gk-data-file ./gk_data.dat \
-  --temperature-k 298.15
-```
-
-启用 LAMMPS GPU 包（热导率工作流）时，将配置中的 `lammps.use_gpu` 改为 `true`
-并设置 `lammps.gpu_count`。粘度工作流使用 BAMBOO/Kokkos，相关参数在 `lammps.kokkos`、
-`lammps.kokkos_gpus` 和 `lammps.suffix` 中配置。
+- `md_viscosity.py`：主流程入口。
+- `configs/viscosity.yaml`：默认 GPU 验证配置。
+- `configs/viscosity.smoke.yaml`：短程 smoke test 配置。
+- `workflow/bamboo_system.py`：components/composition 到 `in.data`。
+- `workflow/input_viscosity.py`：BAMBOO LAMMPS 输入生成。
+- `core/bamboo_structure.py`：SMILES/RDKit 结构和 ion preset。
+- `core/bamboo_packing.py`：Packmol 建盒。
+- `core/data_builder.py`：BAMBOO data writer。
+- `analysis/viscosity.py`：粘度后处理。
+- `analysis/correlation.py`：LAMMPS ACF 解析和 running integral 公共逻辑。

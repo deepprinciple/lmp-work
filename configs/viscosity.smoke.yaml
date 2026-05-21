@@ -42,7 +42,9 @@ model:
   packmol_strict:         false
 
 bamboo:
+  # Developer-machine path; change this on any supplier/test machine.
   model_file:             "/root/bamboo/benchmark/paper_new_disp.pt"
+  # BAMBOO example defaults: pair_style bamboo 5.0 5.0 10.0 1
   pair_style_args:        [5.0, 5.0, 10.0, 1]
   pppm_accuracy:          1.0e-6
   pppm_mesh:              [32, 32, 32]
@@ -53,6 +55,7 @@ bamboo:
 simulation:
   temperature_K:    300.0
   pressure_atm:     1.0
+  # Smoke test only. The main demo also uses 1 fs by default.
   timestep_fs:      1.0
   seed:             20260415
   minimize:         true
@@ -84,6 +87,7 @@ simulation:
   gk_log_file:          "run_gk.log"
 
 lammps:
+  # Must point to the BAMBOO-enabled LAMMPS build.
   executable:         "lmp_mpi"
   mpi_command:        "mpirun"
   mpi_ranks:          1
@@ -95,9 +99,11 @@ lammps:
   suffix:             "kk"
   extra_args:         []
   env:
+    # Developer-machine BAMBOO LAMMPS path; change on supplier machines.
     PATH: "/root/bamboo/pair/lammps/output:${PATH}"
 
 analysis:
+  # Smoke keeps the direct ave/correlate path for a very short validation run.
   method:             "acf"
   t_max_ps:           2.0
   plateau_start_ps:   0.2

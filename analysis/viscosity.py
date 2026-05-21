@@ -30,7 +30,7 @@ from typing import Any, Dict, Optional
 import numpy as np
 
 try:
-    from ..analysis.hfacf import (
+    from ..analysis.correlation import (
         _analyze_transport_running_integral,
         parse_ave_correlate_detail,
     )
@@ -41,7 +41,7 @@ try:
         FEMTOSECOND_TO_SECOND,
     )
 except ImportError:
-    from analysis.hfacf import (
+    from analysis.correlation import (
         _analyze_transport_running_integral,
         parse_ave_correlate_detail,
     )

@@ -16,6 +16,8 @@ case:
   workdir:  "./cases/lipf6_ec_dmc_viscosity"
 
 components:
+  # Solvents use RDKit geometries plus OpenFF AM1-BCC charges. Ions use the
+  # preset geometries/charges in forcefields/ions.py.
   - { name: EC,  kind: solvent, smiles: "C1COC(=O)O1", charge_source: openff_am1bcc }
   - { name: DMC, kind: solvent, smiles: "COC(=O)OC",   charge_source: openff_am1bcc }
   - { name: Li,  kind: cation,  preset: "Li+" }
@@ -42,9 +44,14 @@ model:
   packmol_strict:         false
 
 bamboo:
+  # Local developer-machine path to ByteDance BAMBOO's paper_new_disp.pt.
+  # GPU suppliers must change this to the model path on their own machine.
+  # This value is rendered directly into the LAMMPS pair_coeff line.
   model_file:             "/root/bamboo/benchmark/paper_new_disp.pt"
+  # BAMBOO example defaults: pair_style bamboo 5.0 5.0 10.0 1
   pair_style_args:        [5.0, 5.0, 10.0, 1]
   pppm_accuracy:          1.0e-6
+  # Keep this consistent with the target system size and BAMBOO/LAMMPS build.
   pppm_mesh:              [64, 64, 64]
   data_file:              "in.data"
   build_report_file:      "build_report.json"
@@ -53,6 +60,7 @@ bamboo:
 simulation:
   temperature_K:    300.0
   pressure_atm:     1.0
+  # Use 1 fs for this demo: the BAMBOO example input runs with timestep 1.
   timestep_fs:      1.0
   seed:             20260415
   minimize:         true
@@ -71,8 +79,12 @@ simulation:
   equil_skip_temperature_check: false
 
   # Green-Kubo production (NVE).
+  # This demo runs one production length only. Increase/decrease this value
+  # directly when changing the GPU validation wall time.
   prod_steps:       2000000
+  # Maximum ACF lag in samples for stress_acf.dat.
   corr_length:      40000
+  # Pressure tensor and ACF sampling stride in MD steps.
   sample_every:     1
 
   equil_input_filename: "in.equil.lammps"
@@ -86,6 +98,7 @@ simulation:
   gk_log_file:          "run_gk.log"
 
 lammps:
+  # Must resolve to the BAMBOO-enabled LAMMPS executable, not a stock LAMMPS.
   executable:         "lmp_mpi"
   mpi_command:        "mpirun"
   mpi_ranks:          1
@@ -97,13 +110,20 @@ lammps:
   suffix:             "kk"
   extra_args:         []
   env:
+    # Developer-machine BAMBOO LAMMPS path. GPU suppliers should replace this
+    # with their own BAMBOO build output directory.
     PATH: "/root/bamboo/pair/lammps/output:${PATH}"
 
 analysis:
+  # pressure_blocks is the main post-processing path for non-smoke runs:
+  # it uses pressure_tensor.dat, block ACFs, running eta, and block SEM.
   method:             "pressure_blocks"
+  # Maximum correlation lag used by the Green-Kubo integral.
   t_max_ps:           20.0
+  # Length of each independent pressure block. Must be larger than t_max_ps.
   block_size_ps:      200.0
   min_blocks:         3
+  # Earliest integration time considered for selecting the viscosity window.
   plateau_start_ps:   5.0
   plateau_end_ps:     null
   auto_plateau:       true

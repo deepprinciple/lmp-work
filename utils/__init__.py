@@ -1,8 +1,6 @@
-"""
-工具函数模块
-"""
+"""Shared constants for the BAMBOO viscosity demo."""
+
 from .constants import *
-from .io import *
 
 __all__ = [
     'BOLTZMANN_J_K',
@@ -11,8 +9,4 @@ __all__ = [
     'VACUUM_PERMITTIVITY',
     'LAMMPSUnits',
     'Defaults',
-    'parse_lammps_data',
-    'write_lammps_data',
-    'read_xyz',
-    'make_lammps_header',
 ]
