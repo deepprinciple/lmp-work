@@ -674,12 +674,23 @@ def _mark_plateau_window(
         ax.axvline(end, color="tab:green", ls=":", lw=1.0, alpha=0.85)
 
 
+def _prepare_matplotlib_import() -> None:
+    """Patch a NumPy 2.x compatibility gap seen with old matplotlib."""
+    try:
+        import numpy.core.umath as umath
+    except Exception:
+        return
+    if not hasattr(umath, "ERR_IGNORE"):
+        setattr(umath, "ERR_IGNORE", 0)
+
+
 def _write_viscosity_plot(
     detail: Dict[str, Any],
     result: Dict[str, Any],
     *,
     plot_out: Path,
 ) -> None:
+    _prepare_matplotlib_import()
     import matplotlib
     matplotlib.use("Agg")
     import matplotlib.pyplot as plt
@@ -739,6 +750,7 @@ def _write_pressure_block_plot(
     *,
     plot_out: Path,
 ) -> None:
+    _prepare_matplotlib_import()
     import matplotlib
     matplotlib.use("Agg")
     import matplotlib.pyplot as plt
