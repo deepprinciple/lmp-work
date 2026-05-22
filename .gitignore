@@ -9,6 +9,25 @@ __pycache__/
 .mypy_cache/
 .ruff_cache/
 cases/
+/lipf6_ec_dmc_viscosity*/
+
+# Common LAMMPS/workflow outputs. The configured workdir is under cases/, but
+# these patterns also catch ad-hoc runs copied to the repository root.
+in.data
+in.*.lammps
+*.restart
+*.lammpstrj
+dump_*.out
+stress_acf.dat
+*_thermo.dat
+*.data
+build_report.json
+state.json
+stage.done
+viscosity_summary.json
+viscosity_running.csv
+viscosity_blocks.csv
+viscosity_analysis.png
 
 # Local charge caches created inside ad-hoc workdirs.
 .charge_cache/
