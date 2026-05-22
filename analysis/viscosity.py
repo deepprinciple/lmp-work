@@ -657,6 +657,23 @@ def load_volume_from_thermo(thermo_file: Path) -> float:
 # Plotting
 # ──────────────────────────────────────────────────────────────────────────
 
+def _mark_plateau_window(
+    ax: Any,
+    *,
+    start_ps: float,
+    end_ps: float,
+    label: str = "plateau window",
+) -> None:
+    """Mark an analysis window without relying on matplotlib patch spans."""
+    start = float(start_ps)
+    end = float(end_ps)
+    if not (math.isfinite(start) and math.isfinite(end)):
+        return
+    ax.axvline(start, color="tab:green", ls="--", lw=1.0, alpha=0.85, label=label)
+    if abs(end - start) > 1.0e-12:
+        ax.axvline(end, color="tab:green", ls=":", lw=1.0, alpha=0.85)
+
+
 def _write_viscosity_plot(
     detail: Dict[str, Any],
     result: Dict[str, Any],
@@ -695,12 +712,10 @@ def _write_viscosity_plot(
     comp_labels = ["η_xy", "η_xz", "η_yz"]
     # (running integrals per component are not stored separately; show mean only)
     axes[1].plot(time_ps, running_eta, lw=1.6, color="tab:blue", label="running η (mean)")
-    axes[1].axvspan(
-        float(result["window_start_ps"]),
-        float(result["window_end_ps"]),
-        color="tab:green",
-        alpha=0.15,
-        label="plateau window",
+    _mark_plateau_window(
+        axes[1],
+        start_ps=float(result["window_start_ps"]),
+        end_ps=float(result["window_end_ps"]),
     )
     axes[1].axhline(
         float(result["eta_mPas"]),
@@ -765,12 +780,10 @@ def _write_pressure_block_plot(
             linewidth=0,
             label="block SEM",
         )
-    axes[1].axvspan(
-        float(result["window_start_ps"]),
-        float(result["window_end_ps"]),
-        color="tab:green",
-        alpha=0.15,
-        label="plateau window",
+    _mark_plateau_window(
+        axes[1],
+        start_ps=float(result["window_start_ps"]),
+        end_ps=float(result["window_end_ps"]),
     )
     axes[1].axhline(
         float(result["eta_mPas"]),
@@ -852,9 +865,7 @@ def analyze_viscosity_file(
     )
 
     plot_path = _resolve_output_path(acf_path.parent, plot_out)
-    if plot_path is not None:
-        _write_viscosity_plot(detail, result, plot_out=plot_path)
-
+    plot_error: str | None = None
     summary: Dict[str, Any] = {
         "analysis_method": "acf",
         "stress_acf_file": str(acf_path),
@@ -869,6 +880,15 @@ def analyze_viscosity_file(
         "plot_file": str(plot_path) if plot_path is not None else None,
         "diagnostics": result["diagnostics"],
     }
+
+    if plot_path is not None:
+        try:
+            _write_viscosity_plot(detail, result, plot_out=plot_path)
+        except Exception as exc:  # noqa: BLE001 - plotting is optional output.
+            plot_error = f"{type(exc).__name__}: {exc}"
+            summary["plot_file"] = None
+            summary["plot_error"] = plot_error
+            print(f"  [warn] viscosity plot failed: {plot_error}")
 
     json_path = _resolve_output_path(acf_path.parent, json_out)
     if json_path is not None:
@@ -954,9 +974,7 @@ def analyze_viscosity_pressure_file(
         )
 
     plot_path = _resolve_output_path(pressure_path.parent, plot_out)
-    if plot_path is not None:
-        _write_pressure_block_plot(result, plot_out=plot_path)
-
+    plot_error: str | None = None
     summary: Dict[str, Any] = {
         "analysis_method": "pressure_blocks",
         "pressure_file": str(pressure_path),
@@ -974,6 +992,15 @@ def analyze_viscosity_pressure_file(
         "plot_file": str(plot_path) if plot_path is not None else None,
         "diagnostics": result["diagnostics"],
     }
+
+    if plot_path is not None:
+        try:
+            _write_pressure_block_plot(result, plot_out=plot_path)
+        except Exception as exc:  # noqa: BLE001 - plotting is optional output.
+            plot_error = f"{type(exc).__name__}: {exc}"
+            summary["plot_file"] = None
+            summary["plot_error"] = plot_error
+            print(f"  [warn] viscosity plot failed: {plot_error}")
 
     json_path = _resolve_output_path(pressure_path.parent, json_out)
     if json_path is not None:
