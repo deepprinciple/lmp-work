@@ -657,6 +657,27 @@ def load_volume_from_thermo(thermo_file: Path) -> float:
 # Plotting
 # ──────────────────────────────────────────────────────────────────────────
 
+def _import_matplotlib_pyplot():
+    """Import matplotlib.pyplot with a clear error for NumPy 2.x mismatches."""
+    import matplotlib
+
+    mpl_parts = matplotlib.__version__.split(".")[:2]
+    np_parts = np.__version__.split(".")[:2]
+    mpl_major_minor = tuple(int(part) for part in mpl_parts)
+    np_major_minor = tuple(int(part) for part in np_parts)
+    if np_major_minor >= (2, 0) and mpl_major_minor < (3, 9):
+        raise ImportError(
+            "matplotlib>=3.9 is required with NumPy 2.x "
+            f"(found matplotlib {matplotlib.__version__}, "
+            f"numpy {np.__version__}). "
+            "Install with: python -m pip install 'matplotlib>=3.9'"
+        )
+    matplotlib.use("Agg")
+    import matplotlib.pyplot as plt
+
+    return plt
+
+
 def _mark_plateau_window(
     ax: Any,
     *,
@@ -680,9 +701,7 @@ def _write_viscosity_plot(
     *,
     plot_out: Path,
 ) -> None:
-    import matplotlib
-    matplotlib.use("Agg")
-    import matplotlib.pyplot as plt
+    plt = _import_matplotlib_pyplot()
 
     time_ps = np.asarray(result["time_ps"], dtype=float)
     running_eta = np.asarray(result["running_integral_mPas"], dtype=float)
@@ -739,9 +758,7 @@ def _write_pressure_block_plot(
     *,
     plot_out: Path,
 ) -> None:
-    import matplotlib
-    matplotlib.use("Agg")
-    import matplotlib.pyplot as plt
+    plt = _import_matplotlib_pyplot()
 
     time_ps = np.asarray(result["time_ps"], dtype=float)
     running_eta = np.asarray(result["running_integral_mPas"], dtype=float)

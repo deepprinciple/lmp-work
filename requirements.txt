@@ -1,7 +1,8 @@
 # Python dependencies for the BAMBOO viscosity demo.
 numpy>=1.24
 PyYAML>=6.0
-matplotlib>=3.7
+# matplotlib 3.9+ is required when numpy 2.x is installed (ERR_IGNORE import).
+matplotlib>=3.9
 rdkit>=2023.9
 openff-toolkit>=0.16
 openff-units>=0.2
